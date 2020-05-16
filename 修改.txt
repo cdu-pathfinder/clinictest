@@ -1,0 +1,11 @@
+默认程序是月结算，如果你想修改为周结算，就使用
+
+数据库:
+shopnc_order_statis 表里面字段 os_month 的类型改为 INT(11)
+
+
+http://localhost/data/crontab/index.php
+
+
+最后输入这个地址 把localhost修改为你的网址
+

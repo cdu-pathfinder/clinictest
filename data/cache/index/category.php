@@ -1,0 +1,1 @@
+<?php defined('InShopNC') or exit('Access Invalid!'); return array ( 1058 => array ( 'gc_id' => '1058', 'gc_name' => 'Item-testing', 'type_id' => '0', 'gc_parent_id' => '0', 'gc_sort' => '0', ), ) ?>
