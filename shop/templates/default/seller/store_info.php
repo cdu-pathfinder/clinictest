@@ -3,34 +3,34 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">公司及联系人信息</th>
+                    <th colspan="20">clinic and contact information</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">公司名称：</th>
+                    <th class="w150">clinic name:</th>
                     <td colspan="20"><?php echo $output['joinin_detail']['company_name'];?></td>
                 </tr>
                 <tr>
-                    <th>公司所在地：</th>
+                    <th>clinic location:</th>
                     <td><?php echo $output['joinin_detail']['company_address'];?></td>
-                    <th>公司详细地址：</th>
+                    <th>clinic address:</th>
                     <td colspan="20"><?php echo $output['joinin_detail']['company_address_detail'];?></td>
                 </tr>
                 <tr>
-                    <th>公司电话：</th>
+                    <th>clinic phone number</th>
                     <td><?php echo $output['joinin_detail']['company_phone'];?></td>
-                    <th>员工总数：</th>
-                    <td><?php echo $output['joinin_detail']['company_employee_count'];?>&nbsp;人</td>
-                    <th>注册资金：</th>
-                    <td><?php echo $output['joinin_detail']['company_registered_capital'];?>&nbsp;万元 </td>
+                    <th>Total number of employees:</th>
+                    <td><?php echo $output['joinin_detail']['company_employee_count'];?>&nbsp;people</td>
+                    <th>Registered capital:</th>
+                    <td><?php echo $output['joinin_detail']['company_registered_capital'];?>&nbsp;Billion </td>
                 </tr>
                 <tr>
-                    <th>联系人姓名：</th>
+                    <th>Contact name:</th>
                     <td><?php echo $output['joinin_detail']['contacts_name'];?></td>
-                    <th>联系人电话：</th>
+                    <th>Contact number:</th>
                     <td><?php echo $output['joinin_detail']['contacts_phone'];?></td>
-                    <th>电子邮箱：</th>
+                    <th>Email address:</th>
                     <td><?php echo $output['joinin_detail']['contacts_email'];?></td>
                 </tr>
             </tbody>
@@ -38,27 +38,27 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">营业执照信息（副本）</th>
+                    <th colspan="20">Business license information (copy)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">营业执照号：</th>
+                    <th class="w150">Business license no. :</th>
                     <td><?php echo $output['joinin_detail']['business_licence_number'];?></td></tr><tr>
 
-                    <th>营业执照所在地：</th>
+                    <th>Location of business license:</th>
                     <td><?php echo $output['joinin_detail']['business_licence_address'];?></td></tr><tr>
 
-                    <th>营业执照有效期：</th>
+                    <th>Validity of business license:</th>
                     <td><?php echo $output['joinin_detail']['business_licence_start'];?> - <?php echo $output['joinin_detail']['business_licence_end'];?></td>
                 </tr>
                 <tr>
-                    <th>法定经营范围：</th>
+                    <th>Legal business scope:</th>
                     <td colspan="20"><?php echo $output['joinin_detail']['business_sphere'];?></td>
                 </tr>
                 <tr>
-                    <th>营业执照号<br />
-                        电子版：</th>
+                    <th>Business license no.<br />
+                        Electronic version:</th>
                     <td colspan="20"><a nctype="nyroModal"  href="<?php echo getStoreJoininImageUrl($output['joinin_detail']['business_licence_number_electronic']);?>"> <img src="<?php echo getStoreJoininImageUrl($output['joinin_detail']['business_licence_number_electronic']);?>" alt="" /> </a></td>
                 </tr>
             </tbody>
@@ -66,16 +66,16 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">组织机构代码证</th>
+                    <th colspan="20">Organization code certificate</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>组织机构代码：</th>
+                    <th>Organization code</th>
                     <td colspan="20"><?php echo $output['joinin_detail']['organization_code'];?></td>
                 </tr>
                 <tr>
-                    <th>组织机构代码证<br/>          电子版：</th>
+                    <th>Organization code certificate<br/>          Electronic version:</th>
                     <td colspan="20"><a nctype="nyroModal"  href="<?php echo getStoreJoininImageUrl($output['joinin_detail']['organization_code_electronic']);?>"> <img src="<?php echo getStoreJoininImageUrl($output['joinin_detail']['organization_code_electronic']);?>" alt="" /> </a></td>
                 </tr>
             </tbody>
@@ -83,12 +83,12 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">一般纳税人证明：</th>
+                    <th colspan="20">General taxpayer certificate:</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>一般纳税人证明：</th>
+                    <th>General taxpayer certificate:</th>
                     <td colspan="20"><a nctype="nyroModal"  href="<?php echo getStoreJoininImageUrl($output['joinin_detail']['general_taxpayer']);?>"> <img src="<?php echo getStoreJoininImageUrl($output['joinin_detail']['general_taxpayer']);?>" alt="" /> </a></td>
                 </tr>
             </tbody>
@@ -96,29 +96,29 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">开户银行信息：</th>
+                    <th colspan="20">Bank information:</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">银行开户名：</th>
+                    <th class="w150">Bank account name:</th>
                     <td><?php echo $output['joinin_detail']['bank_account_name'];?></td>
                     </tr><tr>
-                    <th>公司银行账号：</th>
+                    <th>Company bank account:</th>
                     <td><?php echo $output['joinin_detail']['bank_account_number'];?></td></tr>
                 <tr>
-                    <th>开户银行支行名称：</th>
+                    <th>Bank branch name:</th>
                     <td><?php echo $output['joinin_detail']['bank_name'];?></td>
                 </tr>
                 <tr>
-                    <th>支行联行号：</th>
+                    <th>Branch no. :</th>
                     <td><?php echo $output['joinin_detail']['bank_code'];?></td>
                     </tr><tr>
-                    <th>开户银行所在地：</th>
+                    <th>Bank address:</th>
                     <td colspan="20"><?php echo $output['joinin_detail']['bank_address'];?></td>
                 </tr>
                 <tr>
-                    <th>开户银行许可证<br/>电子版：</th>
+                    <th>Bank license<br/>Electronic version:</th>
                     <td colspan="20"><a nctype="nyroModal"  href="<?php echo getStoreJoininImageUrl($output['joinin_detail']['bank_licence_electronic']);?>"> <img src="<?php echo getStoreJoininImageUrl($output['joinin_detail']['bank_licence_electronic']);?>" alt="" /> </a></td>
                 </tr>
             </tbody>
@@ -127,28 +127,28 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">结算账号信息：</th>
+                    <th colspan="20">Settlement account information:</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">银行开户名：</th>
+                    <th class="w150">Bank account name:</th>
                     <td><?php echo $output['joinin_detail']['settlement_bank_account_name'];?></td>
                 </tr>
                 <tr>
-                    <th>公司银行账号：</th>
+                    <th>Company bank account:</th>
                     <td><?php echo $output['joinin_detail']['settlement_bank_account_number'];?></td>
                 </tr>
                 <tr>
-                    <th>开户银行支行名称：</th>
+                    <th>Bank branch name:</th>
                     <td><?php echo $output['joinin_detail']['settlement_bank_name'];?></td>
                 </tr>
                 <tr>
-                    <th>支行联行号：</th>
+                    <th>Branch no. :</th>
                     <td><?php echo $output['joinin_detail']['settlement_bank_code'];?></td>
                 </tr>
                 <tr>
-                    <th>开户银行所在地：</th>
+                    <th>Bank address:</th>
                     <td><?php echo $output['joinin_detail']['settlement_bank_address'];?></td>
                 </tr>
             </tbody>
@@ -157,21 +157,21 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">税务登记证</th>
+                    <th colspan="20">Tax registration certificate</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">税务登记证号：</th>
+                    <th class="w150">Tax registration certificate no. :</th>
                     <td><?php echo $output['joinin_detail']['tax_registration_certificate'];?></td>
                 </tr>
                 <tr>
-                    <th>纳税人识别号：</th>
+                    <th>Taxpayer identification no. :</th>
                     <td><?php echo $output['joinin_detail']['taxpayer_id'];?></td>
                 </tr>
                 <tr>
-                    <th>税务登记证号<br />
-                        电子版：</th>
+                    <th>Tax registration number<br />
+                        Electronic version:</th>
                     <td><a nctype="nyroModal"  href="<?php echo getStoreJoininImageUrl($output['joinin_detail']['tax_registration_certificate_electronic']);?>"> <img src="<?php echo getStoreJoininImageUrl($output['joinin_detail']['tax_registration_certificate_electronic']);?>" alt="" /> </a></td>
                 </tr>
             </tbody>
@@ -179,35 +179,35 @@
         <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
             <thead>
                 <tr>
-                    <th colspan="20">店铺经营信息</th>
+                    <th colspan="20"> clinic operation information</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th class="w150">卖家帐号：</th>
+                    <th class="w150">clinic account:</th>
                     <td><?php echo $output['joinin_detail']['seller_name'];?></td>
                 </tr>
                 <tr>
-                    <th class="w150">店铺名称：</th>
+                    <th class="w150">clinic name：</th>
                     <td><?php echo $output['joinin_detail']['store_name'];?></td>
                 </tr>
                 <tr>
-                    <th class="w150">店铺等级：</th>
+                    <th class="w150">clinic level:</th>
                     <td><?php echo $output['store_grade_name'];?></td>
                 </tr>
                 <tr>
-                    <th class="w150">店铺分类：</th>
+                    <th class="w150">clinic classification:</th>
                     <td><?php echo $output['store_class_name'];?></td>
                 </tr>
                 <tr>
-                    <th>经营类目：</th>
+                    <th>Business category:</th>
                     <td colspan="2"><table border="0" cellpadding="0" cellspacing="0" id="table_category" class="type">
                             <thead>
                                 <tr>
-                                    <th>分类1</th>
-                                    <th>分类2</th>
-                                    <th>分类3</th>
-                                    <th>比例</th>
+                                    <th>category1</th>
+                                    <th>category2</th>
+                                    <th>category3</th>
+                                    <th>proportion</th>
                                 </tr>
                             </thead>
                             <?php if(!empty($output['store_bind_class_list']) && is_array($output['store_bind_class_list'])) {?>
@@ -224,7 +224,7 @@
                     </table></td>
                 </tr>
                 <tr>
-                    <th>审核意见：</th>
+                    <th>Audit opinions:</th>
                     <td colspan="2"><?php echo $output['joinin_detail']['joinin_message'];?></td>
                 </tr>
             </tbody>

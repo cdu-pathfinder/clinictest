@@ -880,7 +880,7 @@ class BaseSellerControl extends Control {
         if(empty($current_menu)) {
             $current_menu = array(
                 'model' => 'index',
-                'model_name' => '首页'
+                'model_name' => 'Homepage'
             );
         }
         return $current_menu;
@@ -888,66 +888,67 @@ class BaseSellerControl extends Control {
 
     private function _getMenuList() {
         $menu_list = array(
-            'goods' => array('name' => '商品', 'child' => array(
-                array('name' => '商品发布', 'act'=>'store_goods_add', 'op'=>'index'),
-				array('name' => '淘宝导入', 'act'=>'taobao_import', 'op'=>'index'),
-                array('name' => '出售中的商品', 'act'=>'store_goods_online', 'op'=>'index'),
-                array('name' => '仓库中的商品', 'act'=>'store_goods_offline', 'op'=>'index'),
-                array('name' => '库存警报', 'act'=>'store_storage_alarm', 'op' => 'index'),
-                array('name' => '关联板式', 'act'=>'store_plate', 'op'=>'index'),
-                array('name' => '商品规格', 'act' => 'store_spec', 'op' => 'index'),
-                array('name' => '图片空间', 'act'=>'store_album', 'op'=>'album_cate'),
+            'goods' => array('name' => 'doctor', 'child' => array(
+                array('name' => 'Doctors released', 'act'=>'store_goods_add', 'op'=>'index'),
+				array('name' => 'import CSV', 'act'=>'taobao_import', 'op'=>'index'),
+                array('name' => 'Doctors who are available', 'act'=>'store_goods_online', 'op'=>'index'),
+                array('name' => 'Doctors in storage', 'act'=>'store_goods_offline', 'op'=>'index'),
+                array('name' => 'storage warning', 'act'=>'store_storage_alarm', 'op' => 'index'),
+                array('name' => 'Connection plate', 'act'=>'store_plate', 'op'=>'index'),
+                array('name' => 'specification setting', 'act' => 'store_spec', 'op' => 'index'),
+                array('name' => 'picture space', 'act'=>'store_album', 'op'=>'album_cate'),
             )),
-            'order' => array('name' => '订单', 'child' => array(
-                array('name' => '订单管理', 'act'=>'store_order', 'op'=>'index'),
-                array('name' => '发货', 'act'=>'store_deliver', 'op'=>'index'),
-                array('name' => '发货设置', 'act'=>'store_deliver_set', 'op'=>'daddress_list'),
-                array('name' => '评价管理', 'act'=>'store_evaluate', 'op'=>'list'),
-                array('name' => '打印设置', 'act'=>'store_printsetup', 'op'=>'index'),
+            'order' => array('name' => 'booking order', 'child' => array(
+                array('name' => 'order management', 'act'=>'store_order', 'op'=>'index'),
+                array('name' => 'arrange', 'act'=>'store_deliver', 'op'=>'index'),
+                array('name' => 'arrange setting', 'act'=>'store_deliver_set', 'op'=>'daddress_list'),
+                array('name' => 'Evaluation management', 'act'=>'store_evaluate', 'op'=>'list'),
+                array('name' => 'Print setting', 'act'=>'store_printsetup', 'op'=>'index'),
             )),
-            'promotion' => array('name' => '促销', 'child' => array(
-                array('name' => '团购管理', 'act'=>'store_groupbuy', 'op'=>'index'),
-                array('name' => '限时折扣', 'act'=>'store_promotion_xianshi', 'op'=>'xianshi_list'),
-                array('name' => '满即送', 'act'=>'store_promotion_mansong', 'op'=>'mansong_list'),
-                array('name' => '优惠套装', 'act'=>'store_promotion_bundling', 'op'=>'bundling_list'),
-                array('name' => '推荐展位', 'act' => 'store_promotion_booth', 'op' => 'booth_goods_list'),
-                array('name' => '代金券管理', 'act'=>'store_voucher', 'op'=>'templatelist'),
-                array('name' => '活动管理', 'act'=>'store_activity', 'op'=>'store_activity'),
+            // 先不用了，注释掉
+            // 'promotion' => array('name' => '促销', 'child' => array(
+            //     array('name' => '团购管理', 'act'=>'store_groupbuy', 'op'=>'index'),
+            //     array('name' => '限时折扣', 'act'=>'store_promotion_xianshi', 'op'=>'xianshi_list'),
+            //     array('name' => '满即送', 'act'=>'store_promotion_mansong', 'op'=>'mansong_list'),
+            //     array('name' => '优惠套装', 'act'=>'store_promotion_bundling', 'op'=>'bundling_list'),
+            //     array('name' => '推荐展位', 'act' => 'store_promotion_booth', 'op' => 'booth_goods_list'),
+            //     array('name' => '代金券管理', 'act'=>'store_voucher', 'op'=>'templatelist'),
+            //     array('name' => '活动管理', 'act'=>'store_activity', 'op'=>'store_activity'),
+            // )),
+            'store' => array('name' => 'clinic', 'child' => array(
+                array('name' => 'clinic setting', 'act'=>'store_setting', 'op'=>'store_setting'),
+                array('name' => 'clinic navigation', 'act'=>'store_navigation', 'op'=>'navigation_list'),
+                array('name' => 'clinic news', 'act'=>'store_sns', 'op'=>'index'),
+                array('name' => 'clinic information', 'act'=>'store_info', 'op'=>'store_info'),
+                // array('name' => '店铺分类', 'act'=>'store_goods_class', 'op'=>'index'),
+                // array('name' => '品牌申请', 'act'=>'store_brand', 'op'=>'brand_list'),
             )),
-            'store' => array('name' => '店铺', 'child' => array(
-                array('name' => '店铺设置', 'act'=>'store_setting', 'op'=>'store_setting'),
-                array('name' => '店铺导航', 'act'=>'store_navigation', 'op'=>'navigation_list'),
-                array('name' => '店铺动态', 'act'=>'store_sns', 'op'=>'index'),
-                array('name' => '店铺信息', 'act'=>'store_info', 'op'=>'store_info'),
-                array('name' => '店铺分类', 'act'=>'store_goods_class', 'op'=>'index'),
-                array('name' => '品牌申请', 'act'=>'store_brand', 'op'=>'brand_list'),
+            // 'transport' => array('name' => '物流', 'child' => array(
+            //     array('name' => '物流工具', 'act'=>'store_transport', 'op'=>'index'),
+            //     array('name' => '免运费额度', 'act'=>'store_free_freight', 'op'=>'index'),
+            // )),
+            'consult' => array('name' => 'Customer service', 'child' => array(
+                array('name' => 'Customer service setting', 'act'=>'store_callcenter', 'op'=>'index'),
+                array('name' => 'consulting management', 'act'=>'store_consult', 'op'=>'consult_list'),
+                array('name' => 'Complaint management', 'act'=>'store_complain', 'op'=>'list'),
             )),
-            'transport' => array('name' => '物流', 'child' => array(
-                array('name' => '物流工具', 'act'=>'store_transport', 'op'=>'index'),
-                array('name' => '免运费额度', 'act'=>'store_free_freight', 'op'=>'index'),
+            'service' => array('name' => 'After-sales service', 'child' => array(
+                array('name' => 'refund record', 'act'=>'store_refund', 'op'=>'index'),
+                array('name' => 'cancellation record', 'act'=>'store_return', 'op'=>'index'),
             )),
-            'consult' => array('name' => '客服', 'child' => array(
-                array('name' => '客服设置', 'act'=>'store_callcenter', 'op'=>'index'),
-                array('name' => '咨询管理', 'act'=>'store_consult', 'op'=>'consult_list'),
-                array('name' => '投诉管理', 'act'=>'store_complain', 'op'=>'list'),
-            )),
-            'service' => array('name' => '售后', 'child' => array(
-                array('name' => '退款记录', 'act'=>'store_refund', 'op'=>'index'),
-                array('name' => '退货记录', 'act'=>'store_return', 'op'=>'index'),
-            )),
-            'settle' => array('name' => '结算', 'child' => array(
-                    array('name' => '结算管理', 'act'=>'store_bill', 'op'=>'index'),
+            'settle' => array('name' => 'settlement', 'child' => array(
+                    array('name' => 'settlement management', 'act'=>'store_bill', 'op'=>'index'),
             )),
             'statistics' => array('name' => '统计', 'child' => array(
-                array('name' => '流量统计', 'act'=>'statistics_flow', 'op'=>'flow_statistics'),
-                array('name' => '销量统计', 'act'=>'statistics_sale', 'op'=>'sale_statistics'),
-                array('name' => '购买率统计', 'act'=>'statistics_probability', 'op'=>'probability_statistics'),
+                array('name' => 'Traffic statistics', 'act'=>'statistics_flow', 'op'=>'flow_statistics'),
+                array('name' => 'Sales statistics', 'act'=>'statistics_sale', 'op'=>'sale_statistics'),
+                array('name' => 'Reservation rate statistics', 'act'=>'statistics_probability', 'op'=>'probability_statistics'),
             )),
-            'account' => array('name' => '帐号', 'child' => array(
-                array('name' => '帐号列表', 'act'=>'store_account', 'op'=>'account_list'),
-                array('name' => '帐号组', 'act'=>'store_account_group', 'op'=>'group_list'),
-                array('name' => '帐号日志', 'act'=>'seller_log', 'op'=>'log_list'),
-                array('name' => '店铺消费', 'act'=>'store_cost', 'op'=>'cost_list'),
+            'account' => array('name' => 'account', 'child' => array(
+                array('name' => 'Account list', 'act'=>'store_account', 'op'=>'account_list'),
+                array('name' => 'account group', 'act'=>'store_account_group', 'op'=>'group_list'),
+                array('name' => 'Account log', 'act'=>'seller_log', 'op'=>'log_list'),
+                array('name' => 'clinic consumption', 'act'=>'store_cost', 'op'=>'cost_list'),
             ))
         );
         return $menu_list;

@@ -2250,7 +2250,7 @@ INSERT INTO `#__web_code` (`code_id`, `web_id`, `code_type`, `var_name`, `code_i
 
 INSERT INTO `#__spec` (`sp_id`, `sp_name`, `sp_sort`, `class_id`, `class_name`) VALUES (1, '颜色', 0, 0, '');
 INSERT INTO `#__area` (`area_id`, `area_name`, `area_parent_id`, `area_sort`, `area_deep`) VALUES
-(1, '北京', 0, 0, 1),
+(1, 'beijing', 0, 0, 1),
 (2, '天津', 0, 0, 1),
 (3, '河北省', 0, 0, 1),
 (4, '山西省', 0, 0, 1),

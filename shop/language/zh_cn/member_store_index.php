@@ -7,7 +7,7 @@ $lang['store_storeinfo_error']			= '店铺信息错误';
 /**
  * 开店
  */
-$lang['store_create_right_closed']		= '暂时关闭了申请店铺的权限';
+$lang['store_create_right_closed']		= 'You have already created the clinic and cannot create it again';
 $lang['store_create_created']			= '您已经创建了店铺，不能重复创建';
 $lang['store_create_grade_not_exists']	= '错误的操作，该等级不存在';
 $lang['store_create_choose_store_class']	= '选择店铺类型';
@@ -255,11 +255,11 @@ $lang['store_setting_lack_uri']				= '该二级域名不符合域名命名规范
 $lang['store_create_store_name_hint']		= '店铺名称请控制长度不超过20字';
 $lang['store_create_store_zy_hint']			= '主营商品关键字（Tag）有助于搜索店铺时找到您的店铺<br/>关键字最多可输入50字，请用","进行分隔，例如”男装,女装,童装”';
 
-$lang['store_setting_change_label']			= '店铺logo';
+$lang['store_setting_change_label']			= 'cliniclogo';
 $lang['store_setting_label_tip']			= '此处为您的店铺logo，将显示在店铺Logo栏里；<br/><span style="color:orange;">建议使用宽200像素-高60像素内的GIF或PNG透明图片；点击下方"提交"按钮后生效。</span>';
-$lang['store_setting_change_sign']			= '店铺标志';
+$lang['store_setting_change_sign']			= 'clinic标志';
 $lang['store_setting_sign_tip']				= '此处为您的店铺标志，将显示在店铺信息栏里；<br/><span style="color:orange;">建议使用宽100像素*高100像素内的方型图片；点击下方"提交"按钮后生效。</span>';
-$lang['store_setting_change_banner']		= '店铺条幅';
+$lang['store_setting_change_banner']		= 'clinic条幅';
 $lang['store_setting_banner_tip']			= '此处为您的店铺条幅，将显示在店铺导航上方的banner位置；<br/><span style="color:orange;">建议使用宽1000像素*高250像素的图片；点击下方"提交"按钮后生效。</span>';
 $lang['store_setting_uri']					= '二级域名';
 $lang['store_setting_uri_tip']				= '可留空，域名长度应为';
