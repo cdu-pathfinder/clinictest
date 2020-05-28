@@ -1,63 +1,63 @@
 <?php
 defined('InShopNC') or exit('Access Invalid!');
 
-$lang['limit_admin']			= '管理员';
-$lang['limit_gadmin']			= '权限组';
-$lang['admin_add_limit_admin']			= '添加管理员';
-$lang['admin_add_limit_gadmin']			= '添加权限组';
+$lang['limit_admin']			= 'Admin';
+$lang['limit_gadmin']			= 'Authority';
+$lang['admin_add_limit_admin']			= 'Add Admin';
+$lang['admin_add_limit_gadmin']			= 'Add Authority';
 /**
  * 管理员列表
  */
-$lang['admin_index_not_allow_del']	= '该帐号为系统管理员,不得删除';
-$lang['admin_index_login_null']		= '此管理员未登录过';
-$lang['admin_index_username']		= '登录名';
-$lang['admin_index_password']		= '密码';
-$lang['admin_rpassword']			= '确认密码';
-$lang['admin_index_truename']		= '真实姓名';
-$lang['admin_index_email']			= '电子邮件';
-$lang['admin_index_im']				= '即时通讯';
-$lang['admin_index_last_login']		= '上次登录';
-$lang['admin_index_login_times']	= '登录次数';
-$lang['admin_index_sys_admin']		= '系统管理员';
-$lang['admin_index_del_admin']		= '删除';
-$lang['admin_index_sys_admin_no']	= '超级管理员不可编辑';
+$lang['admin_index_not_allow_del']	= 'Admin account not allowed to delete';
+$lang['admin_index_login_null']		= 'This admin has not logged in';
+$lang['admin_index_username']		= 'Username';
+$lang['admin_index_password']		= 'Password';
+$lang['admin_rpassword']			= 'Comfrim password';
+$lang['admin_index_truename']		= 'Name';
+$lang['admin_index_email']			= 'Email address';
+$lang['admin_index_im']				= 'Contact number';
+$lang['admin_index_last_login']		= 'Last login';
+$lang['admin_index_login_times']	= 'Login time';
+$lang['admin_index_sys_admin']		= 'Systme Admin';
+$lang['admin_index_del_admin']		= 'Delete';
+$lang['admin_index_sys_admin_no']	= 'System admin not allow edit';
 /**
  * 管理员添加
  */
-$lang['admin_add_admin_not_exists']		= '该名称已存在';
-$lang['admin_add_username_tip']			= '请输入登录名';
-$lang['admin_add_password_tip']			= '请输入密码';
+$lang['admin_add_admin_not_exists']		= 'The name already exists';
+$lang['admin_add_username_tip']			= 'Please enter your login name';
+$lang['admin_add_password_tip']			= 'Please enter your password';
 $lang['admin_add_gid_tip']				= '请选择一个权限组，如果还未设置，请马上设置';
-$lang['admin_add_username_null']		= '登录名不能为空';
-$lang['admin_add_username_max']			= '登录名长度为3-20';
-$lang['admin_add_password_null']		= '密码不能为空';
+$lang['admin_add_username_null']		= 'The login name cannot be empty';
+$lang['admin_add_username_max']			= 'login name length is 3-20';
+$lang['admin_add_password_null']		= 'Password cannot be empty';
 $lang['admin_add_gid_null']				= '请选择一个权限组';
-$lang['admin_add_password_type']		= '密码为英文或数字';
-$lang['admin_add_password_max']			= '密码长度为6-20';
-$lang['admin_add_username_not_exists']	= '该名称不存在，请换一个';
+$lang['admin_add_password_type']		= 'Password is in English or numerals';
+$lang['admin_add_password_max']			= 'Password length is 6-20';
+$lang['admin_add_username_not_exists']	= 'name already exists，please change';
 /**
  * 管理权限设置
  */
-$lang['admin_set_admin_not_exists']		= '此管理员不存在';
-$lang['admin_set_back_to_admin_list']	= '返回管理员列表';
-$lang['admin_set_back_to_member_list']	= '返回会员列表';
-$lang['admin_set_limt']					= '设置权限';
-$lang['admin_set_system_login']			= '后台登录';
-$lang['admin_set_website_manage']		= '网站管理';
-$lang['admin_set_clear_cache']			= '清空缓存';
+$lang['admin_set_admin_not_exists']		= 'This admin does not exist';
+$lang['admin_set_back_to_admin_list']	= 'Back to Admin list';
+$lang['admin_set_back_to_member_list']	= 'Back to member list';
+$lang['admin_set_limt']					= 'Setting authority';
+$lang['admin_set_system_login']			= 'System login';
+$lang['admin_set_website_manage']		= 'Website management';
+$lang['admin_set_clear_cache']			= 'Clear the cache';
 $lang['admin_set_operation']			= '运营管理';
 $lang['admin_set_operation_ztc_class']	= '直通车管理';
 $lang['admin_set_operation_gold_buy']	= '金币购买管理';
-$lang['admin_set_operation_pointprod']	= '积分兑换管理';
+$lang['admin_set_operation_pointprod']	= 'Clinic point management';
 /**
  * 管理员修改
  */
-$lang['admin_edit_success']				= '更新成功';
-$lang['admin_edit_fail']				= '更新失败';
-$lang['admin_edit_repeat_error']		= '两次输入的密码不一致，请重新输入';
-$lang['admin_edit_admin_error']			= '管理员信息错误';
-$lang['admin_edit_admin_pw']			= '密码';
-$lang['admin_edit_admin_pw2']			= '确认密码';
+$lang['admin_edit_success']				= 'Update successful';
+$lang['admin_edit_fail']				= 'Update Fail';
+$lang['admin_edit_repeat_error']		= 'Password inccorect ,please enter again';
+$lang['admin_edit_admin_error']			= 'Admin inforamtion error';
+$lang['admin_edit_admin_pw']			= 'Password';
+$lang['admin_edit_admin_pw2']			= 'Confrim password';
 $lang['admin_edit_pwd_tip1']			= '不修改留空即可';
 
 

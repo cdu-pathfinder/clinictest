@@ -3057,7 +3057,7 @@ class SaeTClientV2
 	 *  - city		int		搜索的城市范围，城市ID。
 	 *  - gender	string	搜索的性别范围，m：男、f：女。
 	 *  - comorsch	string	搜索的公司学校名称。
-	 *  - sort		int		排序方式，1：按更新时间、2：按粉丝数，默认为1。
+	 *  - sort		int		Sorting method，1：按更新时间、2：按粉丝数，默认为1。
 	 *  - count		int		单页返回的记录条数，默认为10。
 	 *  - page		int		返回结果的页码，默认为1。
 	 *  - base_app	int		是否只获取当前应用的数据。0为否（所有数据），1为是（仅当前应用），默认为0。

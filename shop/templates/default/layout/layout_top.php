@@ -20,9 +20,9 @@
         <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order">my order</a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_new">Order to be paid</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_send">Appointment to be confirmed</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_noeval">For evaluation</a></li>
+            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_new">To pay</a></li>
+            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_send">To confirm</a></li>
+            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_noeval">To evaluate</a></li>
           </ul>
         </dd>
       </dl>
@@ -30,18 +30,18 @@
         <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_favorites'];?></a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist">doctors collection</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fslist">clinics collection</a></li>
+            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist">doctors</a></li>
+            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fslist">clinics</a></li>
           </ul>
         </dd>
       </dl>
       <dl>
-        <dt>Customer service<i></i></dt>
+        <dt>service<i></i></dt>
         <dd>
           <ul>
             <li><a href="<?php echo urlShop('article', 'article', array('ac_id' => 2));?>">help center</a></li>
-            <li><a href="<?php echo urlShop('article', 'article', array('ac_id' => 5));?>">back service</a></li>
-            <li><a href="<?php echo urlShop('article', 'article', array('ac_id' => 6));?>">Customer service center</a></li>
+            <li><a href="<?php echo urlShop('article', 'article', array('ac_id' => 5));?>">back-serve</a></li>
+            <li><a href="<?php echo urlShop('article', 'article', array('ac_id' => 6));?>">serve-center</a></li>
           </ul>
         </dd>
       </dl>

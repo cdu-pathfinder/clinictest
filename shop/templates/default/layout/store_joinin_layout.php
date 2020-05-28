@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-<title>商家入驻</title>
+<title>clinic enter</title>
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>">
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
@@ -48,10 +48,10 @@ var COOKIE_PRE = '<?php echo COOKIE_PRE;?>';var _CHARSET = '<?php echo strtolowe
   <h1 class="logo"><a href="<?php echo SHOP_SITE_URL;?>"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['site_logo']; ?>" class="pngFix"></a></h1>
   <nav>
     <ul>
-      <li class="step1 <?php echo $output['step'] == 'step1' ? 'current' : '';?>">在线开店申请</li>
-      <li class="step2 <?php echo $output['step'] == 'step2' ? 'current' : '';?>">商家信息提交</li>
-      <li class="step3 <?php echo $output['step'] == 'step3' ? 'current' : '';?>">合同签订及缴费</li>
-      <li class="step4 <?php echo $output['step'] == 'step4' ? 'current' : '';?>">店铺开通</li>
+      <li class="step1 <?php echo $output['step'] == 'step1' ? 'current' : '';?>">Application</li>
+      <li class="step2 <?php echo $output['step'] == 'step2' ? 'current' : '';?>">clinic information</li>
+      <li class="step3 <?php echo $output['step'] == 'step3' ? 'current' : '';?>">Contract and payment</li>
+      <li class="step4 <?php echo $output['step'] == 'step4' ? 'current' : '';?>">Clinic opening</li>
     </ul>
   </nav>
 </header>

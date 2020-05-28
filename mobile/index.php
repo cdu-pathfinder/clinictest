@@ -3,9 +3,9 @@
  * 手机接口初始化文件
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net
- * @link       http://www.shopnc.net
+ * @copyright  gourp10 
+ * liam
+ * @license    cdu
  * @since      File available since Release v1.1
  */
 

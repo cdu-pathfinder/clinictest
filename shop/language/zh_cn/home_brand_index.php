@@ -3,7 +3,7 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 共有语言
  */
-$lang['index_no_record']				= '没有找到符合条件的商品';
+$lang['index_no_record']				= 'No qualified doctor was found';
 
 /**
  * 列表页
@@ -18,15 +18,15 @@ $lang['brand_index_brand_list']			= '品牌申请';
 $lang['brand_index_other']				= '其他';
 
 
-$lang['brand_index_sold']				= '销量';
-$lang['brand_index_sold_asc']			= '点击按销量从低到高排序';
-$lang['brand_index_sold_desc']			= '点击按销量从高到低排序';
+$lang['brand_index_sold']				= 'Num';
+$lang['brand_index_sold_asc']			= 'Click to sort by booking volume from low to high';
+$lang['brand_index_sold_desc']			= 'Click to sort by booking volume from high to low';
 $lang['brand_index_credit']				= '信用';
 $lang['brand_index_credit_asc']			= '点击按信用从低到高排序';
 $lang['brand_index_credit_desc']		= '点击按信用从高到低排序';
-$lang['brand_index_price']				= '价格';
-$lang['brand_index_price_asc']			= '点击按价格从低到高排序';
-$lang['brand_index_price_desc']			= '点击按价格从高到低排序';
+$lang['brand_index_price']				= 'price';
+$lang['brand_index_price_asc']			= 'Click to sort by price from low to high';
+$lang['brand_index_price_desc']			= 'Click to sort by price from high to low';
 $lang['brand_index_click']				= '人气';
 $lang['brand_index_click_asc']			= '点击按人气从低到高排序';
 $lang['brand_index_click_desc']			= '点击按人气从高到低排序';

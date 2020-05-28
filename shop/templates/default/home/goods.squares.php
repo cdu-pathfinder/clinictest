@@ -47,7 +47,7 @@
            <?php if ($value['group_flag']) {?>
            <a href="javascript:void(0);" nctype="buy_now" data-param="{goods_id:<?php echo $value['goods_id'];?>}"><i class="icon-shopping-cart"></i>Booking now</a>
            <?php } else {?>
-           <a href="javascript:void(0);" nctype="add_cart" data-param="{goods_id:<?php echo $value['goods_id'];?>}"><i class="icon-shopping-cart"></i>加入购物车</a>
+           <a href="javascript:void(0);" nctype="add_cart" data-param="{goods_id:<?php echo $value['goods_id'];?>}"><i class="icon-shopping-cart"></i>select</a>
            <?php }?>
          </div>
         </div>

@@ -198,7 +198,7 @@ body { background-color: #FEFEFE; min-width: 1200px;}
 .sort-bar { background: #F7F7F7; display: block; height: 36px; border: solid 1px #D7D7D7; }
 
 
-/* 商品列表排序方式 */
+/* 商品列表Sorting method */
 .nch-all-category { vertical-align: top; display: none; width: 210px; height: 36px;}
 /*分类导航菜单*/
 .nch-all-category .all-category { display: block; width: 210px; height: 36px; float: left;}

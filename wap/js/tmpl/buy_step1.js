@@ -12,7 +12,7 @@ $(function() {
 	}
 
 
-	$.ajax({//提交订单信息
+	$.ajax({//submit appointment信息
 		type:'post',
 		url:ApiUrl+'/index.php?act=member_buy&op=buy_step1',
 		dataType:'json',
@@ -35,7 +35,7 @@ $(function() {
 				}
 				i++;
 				htmldata+='<p class="buys-yt-tlt">店铺名称：'+v.store_name+'</p>';
-						$.each(v.goods_list,function(k1,v1){//循环商品列表
+						$.each(v.goods_list,function(k1,v1){//循环doctor list
 							if(j==0){
 								htmldata+=	'<div class="buys1-pdlist">';
 							}else{
@@ -49,36 +49,36 @@ $(function() {
 												+'</a>'
 												+'<div class="buys1-pdlcnt">'
 													+'<p><a class="buys1-pdlc-name" href="'+WapSiteUrl+'/tmpl/product_detail.html?goods_id='+v1.goods_id+'">'+v1.goods_name+'</a></p>'
-													+'<p>单价(元)：￥'+v1.goods_price+'</p>'
+													+'<p>单价(元)：$'+v1.goods_price+'</p>'
 													+'<p>数量：'+v1.goods_num+'</p>'
 												+'</div>'
 											+'</div>'
 										+'</div>';
 						});
-						htmldata+= '<div class="shop-total"><p>运费：￥<span id="store'+k+'"></span></p>';
+						htmldata+= '<div class="shop-total"><p>运费：$<span id="store'+k+'"></span></p>';
 						if(v.store_mansong_rule_list != null){
 							htmldata+= '<p>满级送-'+v.store_mansong_rule_list.desc+':-'+v.store_mansong_rule_list.discount+'</p>';
 						}
 						
 						htmldata+='<p><select name="voucher" store_id="'+k+'">';
-						htmldata+='<option value="0">请选择...</option>';
+						htmldata+='<option value="0">please choose...</option>';
 						$.each(v.store_voucher_list,function(k2,v2){
 							htmldata+='<option value="'+v2.voucher_t_id+'|'+k+'|'+v2.voucher_price+'">'+v2.voucher_title+'</option>'
 						});
-						htmldata+='</select>:￥-<span id="sv'+k+'">0.00</span></p>';
+						htmldata+='</select>:$-<span id="sv'+k+'">0.00</span></p>';
 						if(v.store_mansong_rule_list != null){
 							var sp_total = eval(v.store_goods_total-v.store_mansong_rule_list.discount);
-							htmldata+='<p class="clr-c07">本店合计：￥<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
+							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
 						}else{
 							var sp_total = v.store_goods_total;
-							htmldata+='<p class="clr-c07">本店合计：￥<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
+							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
 						}
 						htmldata+='</div>';
 						htmldata+='</li>';
 						total_price = eval(parseInt(sp_total)+total_price);
 			});
 			
-			$("#deposit").before(htmldata);//订单列表
+			$("#deposit").before(htmldata);//appointment list
 			if(data.address_info == ''){//收获地址是否存在
                 //如果是发票 就是buys1-invoice-cnt
                 var thisPrarent = $(".buys1-address-cnt");
@@ -100,14 +100,14 @@ $(function() {
 				$('input[name=available_predeposit]').val(data.available_predeposit);
 			}			
 			
-			if(data.ifshow_offpay){//支付方式
+			if(data.ifshow_offpay){//pay method
 				$('#offline').show();
 			}else{
 				$('#offline').hide();
 			}
 			
 			$('#inv_content').html(data.inv_info.content);
-			//$('#inv_content').html(data.inv_info.inv_title+"&nbsp;"+data.inv_info.inv_content);//发票信息
+			//$('#inv_content').html(data.inv_info.inv_title+"&nbsp;"+data.inv_info.inv_content);//invoice
 			$('input[name=address_id]').val(data.address_info.address_id);
 			$('input[name=area_id]').val(data.address_info.area_id);
 			$('input[name=city_id]').val(data.address_info.city_id);
@@ -120,7 +120,7 @@ $(function() {
 			var city_id = data.address_info.city_id;
 			var freight_hash = data.freight_hash;
 			
-			$.ajax({//保存地址
+			$.ajax({//save 地址
 				type:'post',
 				url:ApiUrl+'/index.php?act=member_buy&op=change_address',
 				data:{key:key,area_id:area_id,city_id:city_id,freight_hash:freight_hash},
@@ -130,7 +130,7 @@ $(function() {
 						var sp_s_total = 0;
 						$.each(result.datas.content,function(k,v){
 							$('#store'+k).html(v);
-	        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品价格
+	        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
 	        				sp_s_total = v+sp_s_total;
 	        				$('#st'+k).html(eval(sp_toal+v));
 						});	
@@ -184,7 +184,7 @@ $(function() {
 		}
 	});
 	
-	$.ajax({//获取发票内容
+	$.ajax({//获取invoice content
 		type:'post',
 		url:ApiUrl+'/index.php?act=member_invoice&op=invoice_content_list',
 		data:{key:key},
@@ -210,17 +210,17 @@ $(function() {
 			success:function(result){
 				checklogin(result.login);
 				var data = result.datas;
-				var city_html = '<option value="">请选择...</option>';
+				var city_html = '<option value="">please choose...</option>';
 				for(var i=0;i<data.area_list.length;i++){
 					city_html+='<option value="'+data.area_list[i].area_id+'">'+data.area_list[i].area_name+'</option>';
 				}
 				$("select[name=city]").html(city_html);
-				$("select[name=region]").html('<option value="">请选择...</option>');
+				$("select[name=region]").html('<option value="">please choose...</option>');
 			}
 		});
 	});
 	
-	$("select[name=city]").change(function(){//选择城市
+	$("select[name=city]").change(function(){//选择city
 		var city_id = $(this).val();
 		$.ajax({
 			type:'post',
@@ -230,7 +230,7 @@ $(function() {
 			success:function(result){
 				checklogin(result.login);
 				var data = result.datas;
-				var region_html = '<option value="">请选择...</option>';
+				var region_html = '<option value="">please choose...</option>';
 				for(var i=0;i<data.area_list.length;i++){
 					region_html+='<option value="'+data.area_list[i].area_id+'">'+data.area_list[i].area_name+'</option>';
 				}
@@ -283,7 +283,7 @@ $(function() {
     $(".head-invoice").click(function (){
         $(this).parent().find(".inv-tlt-sle").prop("checked",true);
     });
-    $(".buys1-edit-address").click(function(){//修改收获地址
+    $(".buys1-edit-address").click(function(){//modify收获地址
         var self = this;
         $.ajax({
         	url:ApiUrl+"/index.php?act=member_address&op=address_list",
@@ -340,12 +340,12 @@ $(function() {
             vaddress:"required",
         },
         messages:{
-        	vtrue_name:"姓名必填！",
-        	vmob_phone:"手机号必填！",
-            vprov:"省份必填！",
-            vcity:"城市必填！",
-            vregion:"区县必填！",
-            vaddress:"街道必填！",
+        	vtrue_name:"namemandatory！",
+        	vmob_phone:"手机号mandatory！",
+            vprov:"statemandatory！",
+            vcity:"citymandatory！",
+            vregion:"areamandatory！",
+            vaddress:"streetmandatory！",
         },
         callback:function (eId,eMsg,eRules){
             if(eId.length >0){
@@ -386,7 +386,7 @@ $(function() {
         			var sp_s_total = 0;
         			$.each(data.content,function(k,v){
 						$('#store'+k).html(v);
-        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品价格
+        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
         				sp_s_total = v+sp_s_total;
         				$('#st'+k).html(eval(sp_toal+v));
         			});
@@ -401,7 +401,7 @@ $(function() {
         			return false;
         		}
         	});
-        }else{//保存地址
+        }else{//save 地址
 			if($.sValid()){
 				var index = $('select[name=prov]')[0].selectedIndex;
 				var aa = $('select[name=prov]')[0].options[index].innerHTML;
@@ -446,7 +446,7 @@ $(function() {
 									var city_id = data1.address_info.city_id;
 									var freight_hash = $('input[name=freight_hash]').val();
 									
-									$.ajax({//保存收货地址
+									$.ajax({//save 收货地址
 										type:'post', 
 										url:ApiUrl+'/index.php?act=member_buy&op=change_address',
 										data:{key:key,area_id:area_id,city_id:city_id,freight_hash:freight_hash},
@@ -456,7 +456,7 @@ $(function() {
 											var sp_s_total = 0;
 											$.each(result.datas.content,function(k,v){
 												$('#store'+k).html(v);
-						        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品价格
+						        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
 						        				sp_s_total = v+sp_s_total;
 						        				$('#st'+k).html(eval(sp_toal+v));
 											});	
@@ -479,7 +479,7 @@ $(function() {
         var thisPrarent = $(this).parents(".buys1-address-cnt");
         showDetial(thisPrarent);
     });
-    $(".save-invoice").click(function (){//保存发票信息
+    $(".save-invoice").click(function (){//save invoice
         var self = this;
         //获取address_id
         var invRadio = $('.inv-radio');
@@ -490,11 +490,11 @@ $(function() {
             }
         }
         
-        if(inv_id>0){//选择发票信息
+        if(inv_id>0){//选择invoice
         	var inv_info = $('#inv_'+inv_id).html();
-        	$('#inv_content').html(inv_info);//发票信息
+        	$('#inv_content').html(inv_info);//invoice
         	$("input[name=invoice_id]").val(inv_id);
-        }else{//添加发票信息
+        }else{//添加invoice
             var invtRadio = $('input[name=inv_title_select]');
             var inv_title_select;
             for(var i =0;i<invtRadio.length;i++){
@@ -528,7 +528,7 @@ $(function() {
 									+'</li>';
     					
     					$('#invoice_add').before(html1);
-            			$('#inv_content').html(html+inv_content);//发票信息
+            			$('#inv_content').html(html+inv_content);//invoice
             			$('input[name=invoice_id]').val(result.datas.inv_id);
             			
             			
@@ -557,17 +557,17 @@ $(function() {
         showDetial(thisPrarent);
     });
     $(".no-invoice").click(function (){
-        $('#inv_content').html("不需要发票");
+        $('#inv_content').html("No invoice");
         $('input[name=invoice_id]').val('');
         var thisPrarent = $(this).parents(".buys1-invoice-cnt");
         showDetial(thisPrarent);
     });
     
-    $('#pguse').click(function(){//验证密码
+    $('#pguse').click(function(){//验证password
     	var loginpassword = $("input[name=loginpassword]").val();
     	if(loginpassword == ''){
     		$('.password_error_tip').show();
-    		$('.password_error_tip').html('登录密码不能为空');
+    		$('.password_error_tip').html('loginpassword不能为空');
     		return false;
     	}
     	$.ajax({
@@ -588,7 +588,7 @@ $(function() {
     	});
     });
     
-    $('#usepdpy').click(function(){//验证密码切换
+    $('#usepdpy').click(function(){//验证password切换
     	if($(this).attr('checked')){
     		$('#pd').show();
     	}else{
@@ -597,10 +597,10 @@ $(function() {
     });
     
     
-    $('#buy_step2').click(function(){//提交订单step2
+    $('#buy_step2').click(function(){//submit appointmentstep2
     	var data = {};
     	data.key = key;
-    	if(ifcart == 1){//购物车订单
+    	if(ifcart == 1){//chart订单
     		data.ifcart = ifcart;
     	}
     	data.cart_id = cart_id;
@@ -638,7 +638,7 @@ $(function() {
         if(available_predeposit>0){
             if($('#usepdpy').prop('checked')){//使用预存款
             	var passwd_verify = parseInt($('input[name=passwd_verify]').val());
-            	if(passwd_verify != 1){//验证密码失败       		
+            	if(passwd_verify != 1){//验证password失败       		
             		return false;
             	}
             	

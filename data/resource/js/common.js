@@ -322,7 +322,7 @@ function load_cart_information(){
 		        }
 		        obj.find('.addcart-goods-num').html(result.cart_goods_num);
 	      } else {
-	      	html="<div class='no-order'><span>您的购物车中暂无商品，赶快选择心爱的商品吧！</span></div>";
+	      	html="<div class='no-order'><span>You haven't made an appointment yet</span></div>";
 	      	obj.find('.incart-goods').html(html);
 	      	obj.find('.total-price').html('');
 	      }
@@ -337,7 +337,7 @@ function drop_topcart_item(cart_id,goods_id){
             var obj = $('.head-user-menu .my-cart');
             //删除成功
             if(result.quantity == 0){
-    	      	html="<div class='no-order'><span>您的购物车中暂无商品，赶快选择心爱的商品吧！</span></div>";
+    	      	html="<div class='no-order'><span>You haven't made an appointment yet</span></div>";
     	      	obj.find('.incart-goods').html(html);
     	      	obj.find('.total-price').html('');
 		        obj.find('.addcart-goods-num').remove();

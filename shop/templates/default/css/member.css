@@ -461,7 +461,7 @@ h4 { font-size: 12px; font-weight: 600;}
 .business-handle em.i6 { background-position: -120px -380px;}
 .business-handle em.i7 { background-position: -140px -380px;}
 .business-handle em.i8 { background-position: -160px -380px;}
-.business-handle dl dd, .member-handle ul li { clear:both; padding: 6px 0 6px 48px; overflow:hidden; }
+.business-handle dl dd, .member-handle ul li { clear:both; padding: 6px 0 6px 30px; overflow:hidden; }
 .business-handle dl dd.active { background-color: #FFF; box-shadow: 0 2px 1px rgba(213,229,245,0.7); zoom:1;}
 .business-handle dl { overflow: hidden;}
 .business-handle dl.collapsed { height: 32px;}
@@ -493,7 +493,7 @@ h4 { font-size: 12px; font-weight: 600;}
 .member-intro dl dd { display: inline-block; *float:left/*IE7*/; _float: left/*IE6*/; margin: 0 10px; line-height: 26px; height: 26px;}
 .member-intro dl dd.predeposit { position:relative; z-index:1; height: 26px;}
 .member-intro dl dd.predeposit i { font-size: 0; line-height: 0; display:inline-block; width: 0; height: 0; margin: 0 0 0 2px; border-color: #333 transparent transparent; border-style: solid dashed dashed; border-width: 3px;}
-.member-intro dl dd.predeposit .down-menu { background: #FFF; display: none; border: solid 1px #D8D8D8; padding:5px 15px; width:86px; position: absolute; z-index: 1; top:24px; right: 0;}
+.member-intro dl dd.predeposit .down-menu { background: #FFF; display: none; border: solid 1px #D8D8D8; padding:5px 14px; width:120px; position: absolute; z-index: 1; top:24px; right: 0;}
 .member-intro dl dd.predeposit .down-menu p { line-height: 24px; }
 .member-intro dl dd.predeposit:hover .down-menu { display:block;}
 .member-intro dl dd.predeposit:hover .down-menu p a { border:0; padding:0; background: none;}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>订单列表</title>
+    <title>appointment list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,7 +34,7 @@
                                 <div class="order-lcnt">
                                     <div class="order-lcnt-shop">
                                         <p>店铺名称：<%=orderlist[j].store_name%></p>
-                                        <p>订单编号：<%=orderlist[j].order_sn%></p>
+                                        <p>order No.：<%=orderlist[j].order_sn%></p>
                                     </div>
                                     <div class="order-shop-pd">
                                         <%for (var k = 0;k<order_goods.length;k++){%>
@@ -45,18 +45,18 @@
                                             <div class="order-pdinfor">
                                                 <p><%=order_goods[k].goods_name%></p>
                                                 <p>
-                                                    单价：<span class="clr-d94">￥<%=order_goods[k].goods_price%></span>
+                                                    单价：<span class="clr-d94">$<%=order_goods[k].goods_price%></span>
                                                 </p>
                                                  <p>
-                                                    商品数目：<%=order_goods[k].goods_num%>
+                                                    appointments：<%=order_goods[k].goods_num%>
                                                 </p>
                                             </div>
                                         </a>
                                         <%}%>
                                     </div>
                                     <div class="order-shop-total">
-                                        <p>运费：<span class="clr-d94">￥<%=orderlist[j].shipping_fee%></span></p>
-                                        <p class="clr-c07">合计：￥<%=orderlist[j].order_amount%> </p>
+                                        <p>运费：<span class="clr-d94">$<%=orderlist[j].shipping_fee%></span></p>
+                                        <p class="clr-c07">合计：$<%=orderlist[j].order_amount%> </p>
                                         <p class="mt5">
                                             <%
                                                 var stateClass ="ot-finish";
@@ -87,12 +87,12 @@
                     <%}%>
                 </ul>
                 <div class="pagination mt10">
-                    <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">上一页</a>
-                    <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">下一页</a>
+                    <a href="javascript:void(0);" class="pre-page <%if(curpage <=1 ){%>disabled<%}%>">previous page</a>
+                    <a href="javascript:void(0);" has_more="<%if (hasmore){%>true<%}else{%>false<%}%>"  class="next-page <%if (!hasmore){%>disabled<%}%>">next page</a>
                 </div>
             <%}else {%>
                 <div class="no-record">
-                    暂无记录
+                    No record
                 </div>
             <%}%>
         </div>

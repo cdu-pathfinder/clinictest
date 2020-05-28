@@ -12,13 +12,13 @@ $(function() {
     });
     $(".save-address").click(function (){
         var self = this;
-        //ajax 提交添加发票信息
+        //ajax 提交添加invoice
         //.....
         showDetail(self);
     });
     $(".save-invoice").click(function (){
         var self = this;
-        //ajax 提交添加发票信息
+        //ajax 提交添加invoice
         //.....
         showDetail(self);
     });

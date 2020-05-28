@@ -4,10 +4,10 @@ defined('InShopNC') or exit('Access Invalid!');
  * 共有语言
  */
 
-$lang['refund_manage']            = '退款管理';
-$lang['refund_add']	= '退款';
+$lang['refund_manage']            = 'refund manage';
+$lang['refund_add']	= 'Refund';
 $lang['refund_order_amount']	= '订单金额';
-$lang['refund_refund_amount']	= '已退金额';
+$lang['refund_refund_amount']	= 'Refunded amount';
 $lang['refund_order_refund']	= '退款金额';
 $lang['refund_pay_refund']	= '可退金额';
 $lang['refund_message']	= '备注信息';

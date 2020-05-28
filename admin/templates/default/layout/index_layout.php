@@ -273,8 +273,8 @@ function addFavorite(url, title) {
       <td class="menutd" valign="top" width="161"><div id="mainMenu" class="main-menu">
           <?php echo $output['left_nav'];?>
         </div><div class="copyright">
-        <p>Powered By <em><a href="http://www.shopnc.net" target="_blank"><?php echo $GLOBALS['setting_config']['shopnc_version'];?></a></em></p>
-        <p>&copy;2007-2014 <a href="http://www.shopnc.net/" target="_blank">ShopNC Inc.</a></p></div></td>
+        <p>Powered By <em><a href="http://cdu.edu.au" target="_blank"><?php echo $GLOBALS['setting_config']['shopnc_version'];?></a></em></p>
+        <p>&copy;2020 <a href="http://cdu.edu.au/" target="_blank"> group10.</a></p></div></td>
       <td valign="top" width="100%"><iframe src="" id="workspace" name="workspace" style="overflow: visible;" frameborder="0" width="100%" height="100%" scrolling="yes" onload="window.parent"></iframe></td>
     </tr>
   </tbody>

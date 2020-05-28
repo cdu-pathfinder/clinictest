@@ -13,7 +13,7 @@ $(document).ready(function(){
   <?php foreach($output['consult_list'] as $k=>$v){ ?>
   <div class="ncs-cosult-list">
     <dl class="asker">
-      <dt>咨询网友<?php echo $lang['nc_colon'];?></dt>
+      <dt>ask for users<?php echo $lang['nc_colon'];?></dt>
       <dd>
 	  <?php if($v['member_id']== '0') echo $lang['nc_guest']; else if($v['isanonymous'] == 1){?>
         <?php echo str_cut($v['cmember_name'],2).'***';?>
@@ -58,7 +58,7 @@ $(document).ready(function(){
       <label for="gbCheckbox"><input type="checkbox" class="checkbox" name="hide_name" value="hide" id="gbCheckbox"><?php echo $lang['goods_index_anonymous_publish'];?></label>
       <?php }else{ ?>
       <label for="gbTextfield"><strong><?php echo $lang['goods_index_email'];?></strong>
-        <input type="text" name="email" id="gbTextfield" class="text w300" placeholder="非会员可输入邮件进行咨询，以便客服人员给您回执。" value="" /><span></span>
+        <input type="text" name="email" id="gbTextfield" class="text w300" placeholder="Non-members can enter email for consultation, so that customer service staff to give you a receipt." value="" /><span></span>
       </label>
       <?php }?>
       <?php if($output['setting_config']['captcha_status_goodsqa'] == '1') { ?>
@@ -67,7 +67,7 @@ $(document).ready(function(){
         <img src="index.php?act=seccode&op=makecode&nchash=<?php echo getNchash();?>" name="codeimage" border="0" id="codeimage" onclick="this.src='index.php?act=seccode&op=makecode&nchash=<?php echo $output['nchash'];?>&t=' + Math.random()"/><span><?php echo $lang['goods_index_change_checkcode'];?></span></label>
       <?php } ?>
     </div>
-    <div class="ask-content"> <strong>咨询内容：</strong>
+    <div class="ask-content"> <strong>Ask for:</strong>
       <textarea name="goods_content" id="textfield3" class="textarea w700 h60"></textarea><span></span>
     </div>
     <div class="bottom"><a href="JavaScript:void(0);" nc_type="consult_submit" title="<?php echo $lang['goods_index_publish_consult'];?>" class="ncs-btn ncs-btn-red"><?php echo $lang['goods_index_publish_consult'];?></a><span id="consultcharcount"></span></div>

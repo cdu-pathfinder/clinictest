@@ -144,28 +144,28 @@ $(function(){
     </div>
     <div class="head-user-menu">
       <dl class="my-mall">
-        <dt><span class="ico"></span>Personl Center<i class="arrow"></i></dt>
+        <dt><span class="ico"></span>Person Center<i class="arrow"></i></dt>
         <dd>
           <div class="sub-title">
             <h4><?php echo $_SESSION['member_name'];?></h4>
-            <a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_snsindex" class="arrow">我的用户中心<i></i></a></div>
+            <a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_snsindex" class="arrow">user center<i></i></a></div>
           <div class="user-centent-menu">
             <ul>
-              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=home&op=message">站内消息(<span><?php echo $output['message_num']>0 ? $output['message_num']:'0';?></span>)</a></li>
-              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order" class="arrow">我的订单<i></i></a></li>
-              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_consult&op=my_consult">咨询回复(<span id="member_consult">0</span>)</a></li>
-              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist" class="arrow">我的收藏<i></i></a></li>
-              <?php if (C('voucher_allow') == 1){?>
-              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_voucher">代金券(<span id="member_voucher">0</span>)</a></li>
+              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=home&op=message">massage from platfrom(<span><?php echo $output['message_num']>0 ? $output['message_num']:'0';?></span>)</a></li>
+              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order" class="arrow">my booking order<i></i></a></li>
+              <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_consult&op=my_consult">Consulting reply(<span id="member_consult">0</span>)</a></li>
+              <!-- <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist" class="arrow">My collection<i></i></a></li> -->
+              <!-- <?php if (C('voucher_allow') == 1){?> -->
+              <!-- <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_voucher">代金券(<span id="member_voucher">0</span>)</a></li>
               <?php } ?>
               <?php if (C('points_isuse') == 1){ ?>
               <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_points" class="arrow">我的积分<i></i></a></li>
-              <?php } ?>
+              <?php } ?> -->
             </ul>
           </div>
           <div class="browse-history">
             <div class="part-title">
-              <h4>最近浏览的商品</h4>
+              <h4>The recently visited doctor</h4>
             </div>
             <ul>
               <li class="no-goods"><img class="loading" src="<?php echo SHOP_TEMPLATES_URL;?>/images/loading.gif" /></li>
@@ -177,15 +177,15 @@ $(function(){
         <?php if ($output['cart_goods_num'] > 0) { ?>
         <div class="addcart-goods-num"><?php echo $output['cart_goods_num'];?></div>
         <?php } ?>
-        <dt><span class="ico"></span>购物车结算<i class="arrow"></i></dt>
+        <dt><span class="ico"></span>Cart<i class="arrow"></i></dt>
         <dd>
           <div class="sub-title">
-            <h4>最新加入的商品</h4>
+            <h4>Newly added appointments</h4>
           </div>
           <div class="incart-goods-box">
             <div class="incart-goods"> <img class="loading" src="<?php echo SHOP_TEMPLATES_URL;?>/images/loading.gif" /> </div>
           </div>
-          <div class="checkout"> <span class="total-price">共<i><?php echo $output['cart_goods_num'];?></i><?php echo $lang['nc_kindof_goods'];?></span><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=cart" class="btn-cart">结算购物车中的商品</a> </div>
+          <div class="checkout"> <span class="total-price">共<i><?php echo $output['cart_goods_num'];?></i><?php echo $lang['nc_kindof_goods'];?></span><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=cart" class="btn-cart">Check out your cart</a> </div>
         </dd>
       </dl>
     </div>
@@ -204,7 +204,7 @@ $(function(){
       <?php if (C('groupbuy_allow')){ ?>
       <li><a href="<?php echo urlShop('show_groupbuy', 'index');?>" <?php if($output['index_sign'] == 'groupbuy' && $output['index_sign'] != '0') {echo 'class="current"';} ?>> <?php echo $lang['nc_groupbuy'];?></a></li>
       <?php } ?>
-      <li><a href="<?php echo urlShop('brand', 'index');?>" <?php if($output['index_sign'] == 'brand' && $output['index_sign'] != '0') {echo 'class="current"';} ?>> <?php echo $lang['nc_brand'];?></a></li>
+<!--       <li><a href="<?php echo urlShop('brand', 'index');?>" <?php if($output['index_sign'] == 'brand' && $output['index_sign'] != '0') {echo 'class="current"';} ?>> <?php echo $lang['nc_brand'];?></a></li> -->
       <?php if (C('points_isuse') && C('pointshop_isuse')){ ?>
       <li><a href="<?php echo urlShop('pointprod', 'index');?>" <?php if($output['index_sign'] == 'pointprod' && $output['index_sign'] != '0') {echo 'class="current"';} ?>> <?php echo $lang['nc_pointprod'];?></a></li>
       <?php } ?>

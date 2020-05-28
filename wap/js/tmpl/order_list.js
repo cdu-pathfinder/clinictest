@@ -13,11 +13,11 @@ $(function(){
 			data:{key:key},
 			dataType:'json',
 			success:function(result){
-				checklogin(result.login);//检测是否登录了
+				checklogin(result.login);//检测是否login了
 				var data = result.datas;
-				data.hasmore = result.hasmore;//是不是可以用下一页的功能，传到页面里去判断下一页是否可以用
+				data.hasmore = result.hasmore;//是不是可以用next page的功能，传到页面里去判断next page是否可以用
 				data.WapSiteUrl = WapSiteUrl;//页面地址
-				data.curpage = curpage;//当前页，判断是否上一页的disabled是否显示
+				data.curpage = curpage;//当前页，判断是否previous page的disabled是否显示
 				data.ApiUrl = ApiUrl;
 				data.key = getcookie('key');
 				template.helper('$getLocalTime', function (nS) {
@@ -27,9 +27,9 @@ $(function(){
 				$("#order-list").html(html);
 				//取消订单
 				$(".cancel-order").click(cancelOrder);
-				//下一页
+				//next page
 				$(".next-page").click(nextPage);
-				//上一页
+				//previous page
 				$(".pre-page").click(prePage);
 				//确认订单
 				$(".sure-order").click(sureOrder);
@@ -54,7 +54,7 @@ $(function(){
 			}
 		});
 	}
-	//下一页
+	//next page
 	function nextPage (){
 		var self = $(this);
 		var hasMore = self.attr("has_more");
@@ -63,7 +63,7 @@ $(function(){
 			initPage(page,curpage);
 		}
 	}
-	//上一页
+	//previous page
 	function prePage (){
 		var self = $(this);
 		if(curpage >1){

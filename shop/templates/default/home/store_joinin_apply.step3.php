@@ -13,7 +13,7 @@ $(document).ready(function(){
             data:{seller_name: $('#seller_name').val()},  
             success: function(data){  
                 if(data == 'true') {
-                    $.validator.messages.seller_name_exist = "卖家帐号已存在";
+                    $.validator.messages.seller_name_exist = "clinic account already exists";
                     result = false;
                 }
             }  
@@ -48,22 +48,22 @@ $(document).ready(function(){
         },
         messages : {
             seller_name: {
-                required: '请填写卖家用户名',
-                maxlength: jQuery.validator.format("最多{0}个字")
+                required: 'Please fill in the clinic user name',
+                maxlength: jQuery.validator.format("less than {0} words")
             },
             store_name: {
-                required: '请填写店铺名称',
-                maxlength: jQuery.validator.format("最多{0}个字")
+                required: 'Please fill clinic name',
+                maxlength: jQuery.validator.format("less than {0} words")
             },
             sg_name: {
-                required: '请选择店铺等级'
+                required: 'Please select the clinic level'
             },
             sc_name: {
-                required: '请选择店铺分类'
+                required: 'Please select the clnic category'
             },
             store_class: {
-                required: '请选择经营类目',
-                min: '请选择经营类目'
+                required: 'Please select business category',
+                min: 'Please select business category'
             }
         }
     });
@@ -97,7 +97,7 @@ $(document).ready(function(){
             for(; class_count < 3; class_count++) {
                 tr_category += '<td></td>';
             }
-            tr_category += '<td><a nctype="btn_drop_category" href="javascript:;">删除</a></td>';
+            tr_category += '<td><a nctype="btn_drop_category" href="javascript:;">delete</a></td>';
             tr_category += '<input name="store_class_ids[]" type="hidden" value="' + category_id + '" />';
             tr_category += '<input name="store_class_names[]" type="hidden" value="' + category_name + '" />';
             tr_category += '</tr>';
@@ -106,7 +106,7 @@ $(document).ready(function(){
             $('#btn_select_category').show();
             select_store_class_count();
         } else {
-            showError('请选择分类');
+            showError('Please select category');
         }
     });
 
@@ -155,35 +155,35 @@ $(document).ready(function(){
 
 <div id="apply_store_info" class="apply-store-info">
   <div id="apply_company_info" class="apply-company-info">
-    <div class="note"><i></i>店铺经营类目为商城商品分类，请根据实际运营情况添加一个或多个经营类目。</div>
+    <div class="note"><i></i>The operating categories of clinics are classified as doctors. Please add one or more operating categories according to the actual operating conditions.</div>
     <form id="form_store_info" action="index.php?act=store_joinin&op=step4" method="post" >
       <table border="0" cellpadding="0" cellspacing="0" class="all">
         <thead>
           <tr>
-            <th colspan="20">店铺经营信息</th>
+            <th colspan="20">clinic operation information</th>
           </tr>
         </thead>
         <tbody>
         <tr>
-            <th class="w150"><i>*</i>商家帐号：</th>
+            <th class="w150"><i>*</i>Merchant account:</th>
             <td><input id="seller_name" name="seller_name" type="text" class="w200"/>
               <span></span>
-              <p class="emphasis">此帐号为日后登录并管理商家中心时使用，注册后不可修改，请牢记。</p></td>
+              <p class="emphasis">This account will be used for future login and administration of the clinic center. It cannot be modified after registration. Please keep in mind.</p></td>
           </tr>
           <tr>
-            <th class="w150"><i>*</i>店铺名称：</th>
+            <th class="w150"><i>*</i>clinic name:</th>
             <td><input name="store_name" type="text" class="w200"/>
               <span></span>
-              <p class="emphasis">店铺名称注册后不可修改，请认真填写。</p></td>
+              <p class="emphasis">The name of the clinic cannot be modified after registration, please fill in carefully.</p></td>
           </tr>
           <tr>
-            <th><i>*</i>店铺等级：</th>
+            <th><i>*</i>clinic level:</th>
             <td><select name="sg_id" id="sg_id">
-                <option value="0">请选择</option>
+                <option value="0">please choose</option>
                 <?php if(!empty($output['grade_list']) && is_array($output['grade_list'])){ ?>
                 <?php foreach($output['grade_list'] as $k => $v){ ?>
-                <?php $goods_limit = empty($v['sg_goods_limit'])?'不限':$v['sg_goods_limit'];?>
-                <?php $explain = '商品数：'.$goods_limit.' 模板数：'.$v['sg_template_number'].' 收费标准：'.$v['sg_price'].' 附加功能：'.$v['function_str'];?>
+                <?php $goods_limit = empty($v['sg_goods_limit'])?'no limit':$v['sg_goods_limit'];?>
+                <?php $explain = 'doctors：'.$goods_limit.' templates：'.$v['sg_template_number'].' Charge standard:'.$v['sg_price'].' Additional features:'.$v['function_str'];?>
                 <option value="<?php echo $v['sg_id'];?>" data-explain="<?php echo $explain;?>"><?php echo $v['sg_name'];?></option>
                 <?php } ?>
                 <?php } ?>
@@ -193,9 +193,9 @@ $(document).ready(function(){
               <div id="grade_explain" class="grade_explain"></div></td>
           </tr>
           <tr>
-            <th><i>*</i>店铺分类：</th>
+            <th><i>*</i>clinic classification:</th>
             <td><select name="sc_id" id="sc_id">
-                <option value="0">请选择</option>
+                <option value="0">please choose</option>
                 <?php if(!empty($output['store_class']) && is_array($output['store_class'])){ ?>
                 <?php foreach($output['store_class'] as $k => $v){ ?>
                 <option value="<?php echo $v['sc_id'];?>"><?php echo $v['sc_name'];?></option>
@@ -204,22 +204,22 @@ $(document).ready(function(){
               </select>
               <input id="sc_name" name="sc_name" type="hidden" />
               <span></span>
-              <p class="emphasis">请根据您所经营的内容认真选择店铺分类，注册后商家不可自行修改。</p></td>
+              <p class="emphasis">Please carefully select the clinic classification according to the content of your business. After registration, the business cannot modify by itself.</p></td>
           </tr>
           <tr>
-            <th><i>*</i>经营类目：</th>
-            <td><a href="###" id="btn_select_category" class="btn">+选择添加类目</a>
+            <th><i>*</i>Business category:</th>
+            <td><a href="###" id="btn_select_category" class="btn">+Select add category</a>
               <div id="gcategory" style="display:none;">
                 <select id="gcategory_class1">
-                  <option value="0">请选择</option>
+                  <option value="0">please choose</option>
                   <?php if(!empty($output['gc_list']) && is_array($output['gc_list']) ) {?>
                   <?php foreach ($output['gc_list'] as $gc) {?>
                   <option value="<?php echo $gc['gc_id'];?>"><?php echo $gc['gc_name'];?></option>
                   <?php }?>
                   <?php }?>
                 </select>
-                <input id="btn_add_category" type="button" value="确认" />
-                <input id="btn_cancel_category" type="button" value="取消" />
+                <input id="btn_add_category" type="button" value="comfirm" />
+                <input id="btn_cancel_category" type="button" value="cancel" />
             </div>
               <input id="store_class" name="store_class" type="hidden" />
               <span></span>
@@ -229,10 +229,10 @@ $(document).ready(function(){
             <td colspan="2"><table border="0" cellpadding="0" cellspacing="0" id="table_category" class="type">
                 <thead>
                   <tr>
-                    <th>一级类目</th>
-                    <th>二级类目</th>
-                    <th>三级类目</th>
-                    <th>操作</th>
+                    <th>The primary category</th>
+                    <th>The secondary category</th>
+                    <th>The tertiary category</th>
+                    <th>operation</th>
                   </tr>
                 </thead>
               </table></td>
@@ -245,6 +245,6 @@ $(document).ready(function(){
         </tfoot>
       </table>
     </form>
-    <div class="bottom"><a id="btn_apply_store_next" href="javascript:;" class="btn">下一步</a></div>
+    <div class="bottom"><a id="btn_apply_store_next" href="javascript:;" class="btn">Next</a></div>
   </div>
 </div>

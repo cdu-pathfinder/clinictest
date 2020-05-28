@@ -7,7 +7,7 @@ $lang['currency']			= '$';
 $lang['currency_zh']		= 'Dollar';
 $lang['nc_common_price']		= 'Price';
 $lang['nc_common_goto']		= 'see';
-$lang['piece']				= '件';
+$lang['piece']				= 'person';
 $lang['welcome_to_site']	= 'Welcome to';
 $lang['site_search_goods']	= "doctor";
 $lang['site_search_store']	= "clinic";
@@ -45,25 +45,25 @@ $lang['circle_administrator']	= '管理员';
 $lang['circle_no_limit']		= '不限制';
 $lang['circle_violation']	= '违规';
 $lang['circle_share']				= '分享';
-$lang['nc_name']					= '名称';
-$lang['nc_sort']					= '排序';
-$lang['nc_status']					= '状态';
-$lang['nc_check_all']				= '全选';
-$lang['nc_open']					= '开启';
-$lang['nc_close']					= '关闭';
-$lang['nc_yes']						= '是';
-$lang['nc_no']						= '否';
-$lang['nc_edit']					= '编辑';
+$lang['nc_name']					= 'name';
+$lang['nc_sort']					= 'sort';
+$lang['nc_status']					= 'status';
+$lang['nc_check_all']				= 'checkall';
+$lang['nc_open']					= 'open';
+$lang['nc_close']					= 'close';
+$lang['nc_yes']						= 'yes';
+$lang['nc_no']						= 'no';
+$lang['nc_edit']					= 'edit';
 $lang['nc_rank']					= '本圈头衔';
 $lang['nc_exp']						= '本圈经验';
-$lang['nc_inro_personal_center']	= '进入个人中心';
-$lang['nc_default']					= '默认';
+$lang['nc_inro_personal_center']	= 'to personal center';
+$lang['nc_default']					= 'default';
 // manage top
-$lang['circle_basic_setting']		= '设置';
-$lang['circle_member_manage']		= '成员';
+$lang['circle_basic_setting']		= 'setting';
+$lang['circle_member_manage']		= 'memeber';
 $lang['circle_member_level']		= '头衔';
-$lang['circle_wait_apply']			= '审核';
-$lang['circle_tclass']				= '分类';
+$lang['circle_wait_apply']			= 'review';
+$lang['circle_tclass']				= 'class';
 $lang['circle_inform']				= '举报';
 $lang['fcircle']					= '友情圈子';
 $lang['circle_mapply']				= '申请管理';
@@ -107,13 +107,13 @@ $lang['nc_debug_load_files']			= "加载文件";
 $lang['nc_debug_trace_title']			= "页面Trace信息";
 
 //操作提示
-$lang['nc_ensure_del'] 	= '确认删除？';
-$lang['nc_common_op_succ'] 	= '操作成功';
-$lang['nc_common_op_fail'] 	= '操作失败';
-$lang['nc_common_del_succ'] = '删除成功';
-$lang['nc_common_del_fail'] = '删除失败';
-$lang['nc_common_save_succ'] = '保存成功';
-$lang['nc_common_save_fail'] = '保存失败';
+$lang['nc_ensure_del'] 	= 'delete？';
+$lang['nc_common_op_succ'] 	= 'Op success';
+$lang['nc_common_op_fail'] 	= 'Op failed';
+$lang['nc_common_del_succ'] = 'del success';
+$lang['nc_common_del_fail'] = 'del failed';
+$lang['nc_common_save_succ'] = 'save success';
+$lang['nc_common_save_fail'] = 'save failed';
 
 //站外分享接口
 $lang['nc_shareset_qqzone'] 		= 'QQ空间';
@@ -124,22 +124,22 @@ $lang['nc_shareset_sinaweibo'] 	= '新浪微博';
  * header中的文字
  */
 $lang['nc_hello']	= "Hello";
-$lang['nc_logout']	= "退出";
-$lang['nc_guest']	= "游客";
-$lang['nc_login']	= "登录";
+$lang['nc_logout']	= "logout";
+$lang['nc_guest']	= "quest";
+$lang['nc_login']	= "login";
 $lang['nc_register']	= "注册";
-$lang['nc_seller'] = '卖家中心';
+$lang['nc_seller'] = 'clinic center';
 $lang['nc_user_center']	= "Personl Center";
-$lang['nc_message']		= "站内消息";
-$lang['nc_help_center']	= "帮助中心";
-$lang['nc_more_links']	= "更多链接";
-$lang['nc_index']		= "首页";
+$lang['nc_message']		= "Inmessage";
+$lang['nc_help_center']	= "help center";
+$lang['nc_more_links']	= "more links";
+$lang['nc_index']		= "home";
 $lang['nc_cart']			= "购物车";
 $lang['nc_kindof_goods']	= "种商品";
 $lang['nc_favorites']		= "我的收藏";
 $lang['nc_nothing']			= "无";
 $lang['nc_filter'] = '筛选';
-$lang['nc_all_goods'] = '全部商品';
+$lang['nc_all_goods'] = 'all doctors';
 $lang['nc_search'] = '搜索';
 $lang['nc_search_nbsp']	= '搜&nbsp;索';
 $lang['nc_publish'] = '发布';
@@ -149,7 +149,7 @@ $lang['nc_mysns']					= "个人主页";
 $lang['nc_myfriends']				= "我的好友";
 $lang['nc_selled_goods']			= "已售出的商品";
 $lang['nc_selling_goods']			= "销售中的商品";
-$lang['nc_mystroe']					= "我的店铺";
+$lang['nc_mystroe']					= "myclinic";
 $lang['nc_favorites_goods']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
 $lang['nc_check_cart']				= "查看购物车";
@@ -171,10 +171,10 @@ $lang['nc_memory_cost']		= "占用内存";
 /**
  * 翻页
  **/
-$lang['first_page'] = '首页';
-$lang['last_page'] = '末页';
-$lang['pre_page'] = '上一页';
-$lang['next_page'] = '下一页';
+$lang['first_page'] = 'first';
+$lang['last_page'] = 'last';
+$lang['pre_page'] = 'previous';
+$lang['next_page'] = 'next';
 
 
 

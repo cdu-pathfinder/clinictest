@@ -16,19 +16,19 @@
 <ul class="add-goods-step">
   <li><i class="icon icon-list-alt"></i>
     <h6>STIP.1</h6>
-    <h2>选择商品分类</h2>
+    <h2>select classs</h2>
     <i class="arrow icon-angle-right"></i> </li>
   <li class="current"><i class="icon icon-edit"></i>
     <h6>STIP.2</h6>
-    <h2>填写商品详情</h2>
+    <h2>doctor details</h2>
     <i class="arrow icon-angle-right"></i> </li>
   <li><i class="icon icon-camera-retro "></i>
     <h6>STIP.3</h6>
-    <h2>上传商品图片</h2>
+    <h2>profile picture</h2>
     <i class="arrow icon-angle-right"></i> </li>
   <li><i class="icon icon-ok-circle"></i>
     <h6>STIP.4</h6>
-    <h2>商品发布成功</h2>
+    <h2>completed</h2>
   </li>
 </ul>
 <?php }?>
@@ -70,7 +70,7 @@
           <p class="hint"><?php echo $lang['store_goods_index_store_price_help'];?>，且不能高于市场价。<br>此价格为商品实际销售价格，如果商品存在规格，该价格显示最低价格。</p>
         </dd>
       </dl>
-      <dl>
+      <!-- <dl>
         <dt><i class="required">*</i>市场价<?php echo $lang['nc_colon'];?></dt>
         <dd>
           <input name="g_marketprice" value="<?php echo $output['goods']['goods_marketprice']; ?>" type="text" class="text w60" /><em class="add-on"><i class="icon-renminbi"></i></em> <span></span>
@@ -90,7 +90,7 @@
           <input name="g_discount" value="<?php echo $output['goods']['goods_discount']; ?>" type="text" class="text w60" readonly="readonly" style="background:#E7E7E7 none;" /><em class="add-on">%</em>
           <p class="hint">根据销售价与市场价比例自动生成，不需要编辑。</p>
         </dd>
-      </dl>
+      </dl> -->
       <?php if(is_array($output['spec_list']) && !empty($output['spec_list'])){?>
       <?php $i = '0';?>
       <?php foreach ($output['spec_list'] as $k=>$val){?>

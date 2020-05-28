@@ -260,12 +260,12 @@ label.error i { margin-right: 4px;}
 .ncsc-head-layout .search-input-btn:hover { background-color: transparent;}
 /* 头部导航条 */
 .ncsc-head-layout .ncsc-nav { font-size: 0; *word-spacing:-1px/*IE6、7*/; height: 10px; float: left; padding: 31px 8px;}
-.ncsc-head-layout .ncsc-nav dl { vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; text-align: center; width: 52px; height: 10px; border-style: solid; border-color: transparent #000 transparent #333; border-width: 0 1px; position: relative; z-index: 2;}
+.ncsc-head-layout .ncsc-nav dl { vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; text-align: center; width: 55px; height: 10px; border-style: solid; border-color: transparent #000 transparent #333; border-width: 0 1px; position: relative; z-index: 2;}
 .ncsc-head-layout .ncsc-nav dl { *display:inline/*IE6、7*/; zoom: 1;}
 .ncsc-head-layout .ncsc-nav dl:hover { z-index: 3;}
 .ncsc-head-layout .ncsc-nav dl:first-child { border-left: 0;}
 .ncsc-head-layout .ncsc-nav dl:last-child { border-right: 0;}
-.ncsc-head-layout .ncsc-nav dl dt { text-align: center; width: 51px; height: 30px; margin: 1px 1px 0 1px; position: absolute; z-index: 2; top: -10px; left: -1px; text-shadow: 1px 1px 0 rgba(0,0,0,0.15);}
+.ncsc-head-layout .ncsc-nav dl dt { text-align: center; width: 75px; height: 30px; margin: 1px 1px 0 1px; position: absolute; z-index: 2; top: -10px; left: -1px; text-shadow: 1px 1px 0 rgba(0,0,0,0.15);}
 .ncsc-head-layout .ncsc-nav dl.hover dt { background-color: #FFF; margin: 0; border-style: solid; border-color: #1F262D; border-width: 1px 1px 0 1px;}
 .ncsc-head-layout .ncsc-nav dl dt a { font: normal 14px/30px "microsoft yahei";; color: #999;}
 .ncsc-head-layout .ncsc-nav dl.hover dt a { color: #333; text-shadow: none;}

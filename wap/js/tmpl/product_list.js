@@ -121,7 +121,7 @@ $(function(){
 		var keyword = $("input[name=keyword]").val();
 		var hasmore = $("input[name=hasmore]").val();
 
-		var curkey = $(this).attr('key');//1.销量 2.浏览量 3.价格 4.最新排序
+		var curkey = $(this).attr('key');//1.appointments 2.浏览量 3.price 4.最新排序
 		if(curkey == key){
 			if(order == 1){
 				var curorder = 2;
@@ -155,7 +155,7 @@ $(function(){
 		});
 	});
 	
-	$('.pre-page').click(function(){//上一页
+	$('.pre-page').click(function(){//previous page
 		var key = parseInt($("input[name=key]").val());
 		var order = parseInt($("input[name=order]").val());
 		var page = parseInt($("input[name=page]").val());			
@@ -205,7 +205,7 @@ $(function(){
 		});
 	});
 	
-	$('.next-page').click(function(){//下一页
+	$('.next-page').click(function(){//next page
 		var hasmore = $('input[name=hasmore]').val();
 		if(hasmore == 'false'){
 			return false;

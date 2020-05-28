@@ -58,12 +58,12 @@
     	            success: function(result) {
     	                checklogin(result.login);
     	                var data = result.datas;
-    	                var city_html = '<option value="">请选择...</option>';
+    	                var city_html = '<option value="">please choose...</option>';
     	                for (var i = 0; i < data.area_list.length; i++) {
     	                    city_html += '<option value="' + data.area_list[i].area_id + '">' + data.area_list[i].area_name + '</option>';
     	                }
     	                $("select[name=city]").html(city_html);
-    	                $("select[name=region]").html('<option value="">请选择...</option>');
+    	                $("select[name=region]").html('<option value="">please choose...</option>');
     	            }
     	        });
     	    });
@@ -81,7 +81,7 @@
     	            success: function(result) {
     	                checklogin(result.login);
     	                var data = result.datas;
-    	                var region_html = '<option value="">请选择...</option>';
+    	                var region_html = '<option value="">please choose...</option>';
     	                for (var i = 0; i < data.area_list.length; i++) {
     	                    region_html += '<option value="' + data.area_list[i].area_id + '">' + data.area_list[i].area_name + '</option>';
     	                }
@@ -110,12 +110,12 @@
                     address:"required"
                 },
                 messages:{
-                    true_name:"姓名必填！",
-                    mob_phone:"手机号必填！",
-                    prov_select:"省份必填！",
-                    city_select:"城市必填！",
-                    region_select:"区县必填！",
-                    address:"街道必填！"
+                    true_name:"namemandatory！",
+                    mob_phone:"手机号mandatory！",
+                    prov_select:"statemandatory！",
+                    city_select:"citymandatory！",
+                    region_select:"areamandatory！",
+                    address:"streetmandatory！"
                 },
                 callback:function (eId,eMsg,eRules){
                     if(eId.length >0){

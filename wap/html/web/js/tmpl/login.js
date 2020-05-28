@@ -11,9 +11,9 @@ $(function (){
             }
         },
         messages:{
-            username:"用户名必须填写！",
+            username:"user name is required！",
             userpwd:{
-                required:"密码必填！",
+                required:"password is required！",
                 maxlength:'长度不能超过2'
             }
         },

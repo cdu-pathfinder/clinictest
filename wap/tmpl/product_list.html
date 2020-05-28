@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>商品列表</title>
+	<title>doctor list</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -15,31 +15,31 @@
 	<header id="header"></header>
 		<div class="content">
 		<div class="product-filter">
-			<a href="javascript:void(0);" class="clearfix current keyorder" key="4">
+<!-- 			<a href="javascript:void(0);" class="clearfix current keyorder" key="4">
 				<span class="pf-newpd-icon f-icon fleft"></span>
 				<span class="pf-title">新品</span>
 			</a>
-			<a href="javascript:;" class="clearfix keyorder" key='3'>
+ -->			<a href="javascript:;" class="clearfix keyorder" key='3'>
 				<span class="pf-price-icon  desc f-icon fleft"></span>
-				<span class="pf-title">价格</span>
+				<span class="pf-title">price</span>
 			</a>
 			<a href="javascript:;" class="clearfix keyorder" key='1'>
 				<span class="pf-sales-icon f-icon fleft"></span>
-				<span class="pf-title">销量</span>
+				<span class="pf-title">appointments</span>
 			</a>
 			<a href="javascript:;" class="clearfix keyorder" key='2'>
 				<span class="pf-popularity-icon f-icon fleft"></span>
-				<span class="pf-title">人气</span>
+				<span class="pf-title">popularity</span>
 			</a>
 		</div>
 		<div class="product-cnt">
 			<div id="product_list"></div>
 			<div class="pagination mt10">
-				<a href="javascript:void(0);" class="pre-page disabled">上一页</a>
+				<a href="javascript:void(0);" class="pre-page disabled">previous page</a>
 				<select name="page_list" style="padding: 7px 4px;  vertical-align: top;">
 					
 				</select>
-				<a href="javascript:void(0);" class="next-page ">下一页</a>
+				<a href="javascript:void(0);" class="next-page ">next page</a>
 			</div>
 		</div>
 	</div>
@@ -66,7 +66,7 @@
 							<%=goods_list[i].goods_name;%>
 						</p>
 						<p class="pdlist-iwc-pdprice">
-							￥<%=goods_list[i].goods_price;%>
+							$<%=goods_list[i].goods_price;%>
 							<%
 								if(goods_list[i].group_flag){
 							%>
@@ -103,7 +103,7 @@
 	   }else {
 	%>
 		<div class="no-record">
-            暂无记录
+            No record
         </div>
 	<%
 	   }

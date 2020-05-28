@@ -151,44 +151,44 @@ $(document).ready(function(){
     <table border="0" cellpadding="0" cellspacing="0" class="all">
       <thead>
         <tr>
-          <th colspan="20">开户银行信息</th>
+          <th colspan="20">Bank information：</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th class="w150"><i>*</i>银行开户名：</th>
+          <th class="w150"><i>*</i>Bank account name:</th>
           <td><input name="bank_account_name" type="text" class="w200" />
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>公司银行账号：</th>
+          <th><i>*</i>Company bank account:</th>
           <td><input name="bank_account_number" type="text" class="w200" />
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>开户银行支行名称：</th>
+          <th><i>*</i>Bank branch name:</th>
           <td><input name="bank_name" type="text" class="w200" />
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>支行联行号：</th>
+          <th><i>*</i>Branch no. :</th>
           <td><input name="bank_code" type="text" class="w200" />
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>开户银行所在地：</th>
+          <th><i>*</i>Bank is located:</th>
           <td><input id="bank_address" name="bank_address" type="hidden" />
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>开户银行许可证电子版：</th>
+          <th><i>*</i>Electronic version of bank license:</th>
           <td><input name="bank_licence_electronic" type="file" />
-            <span class="block">请确保图片清晰，文字可辨并有清晰的红色公章。</span></td>
+            <span class="block">Please make sure the picture is clear, the text is legible.</span></td>
         </tr>
         <tr>
           <th></th>
           <td><input id="is_settlement_account" name="is_settlement_account" type="checkbox" />
-            <label for="is_settlement_account">此账号为结算账号</label></td>
+            <label for="is_settlement_account">This account is the settlement account</label></td>
         </tr>
       </tbody>
       <tfoot>
@@ -201,32 +201,32 @@ $(document).ready(function(){
       <table border="0" cellpadding="0" cellspacing="0" class="all">
         <thead>
           <tr>
-            <th colspan="20">结算账号信息</th>
+            <th colspan="20">Settlement account information</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th class="w150"><i>*</i>银行开户名：</th>
+            <th class="w150"><i>*</i>Bank account name:</th>
             <td><input id="settlement_bank_account_name" name="settlement_bank_account_name" type="text" class="w200"/>
               <span></span></td>
           </tr>
           <tr>
-            <th><i>*</i>公司银行账号：</th>
+            <th><i>*</i>Company bank account:</th>
             <td><input id="settlement_bank_account_number" name="settlement_bank_account_number" type="text" class="w200"/>
               <span></span></td>
           </tr>
           <tr>
-            <th><i>*</i>开户银行支行名称：</th>
+            <th><i>*</i>Bank branch name:</th>
             <td><input id="settlement_bank_name" name="settlement_bank_name" type="text" class="w200"/>
               <span></span></td>
           </tr>
           <tr>
-            <th><i>*</i>支行联行号：</th>
+            <th><i>*</i>Branch no. :</th>
             <td><input id="settlement_bank_code" name="settlement_bank_code" type="text" class="w200"/>
               <span></span></td>
           </tr>
           <tr>
-            <th><i>*</i>开户银行所在地：</th>
+            <th><i>*</i>Bank is located:</th>
             <td><input id="settlement_bank_address" name="settlement_bank_address" type="hidden" />
               <span></span></td>
           </tr>
@@ -241,24 +241,24 @@ $(document).ready(function(){
     <table border="0" cellpadding="0" cellspacing="0" class="all">
       <thead>
         <tr>
-          <th colspan="20">税务登记证</th>
+          <th colspan="20">Tax registration certificate</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th class="w150"><i>*</i>税务登记证号：</th>
+          <th class="w150"><i>*</i>Tax registration No.:</th>
           <td><input name="tax_registration_certificate" type="text" class="w200"/>
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>纳税人识别号：</th>
+          <th><i>*</i>Taxpayer identification no. :</th>
           <td><input name="taxpayer_id" type="text" class="w200"/>
             <span></span></td>
         </tr>
         <tr>
-          <th><i>*</i>税务登记证号电子版：</th>
+          <th><i>*</i>Electronic version of TRC :</th>
           <td><input name="tax_registration_certificate_electronic" type="file" />
-            <span class="block">请确保图片清晰，文字可辨并有清晰的红色公章。</span></td>
+            <span class="block">Please make sure the picture is clear, the text is legible.</span></td>
         </tr>
       </tbody>
       <tfoot>

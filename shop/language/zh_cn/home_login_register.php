@@ -23,36 +23,36 @@ $lang['login_register_code_wrong']			= "The captcha is incorrect";
 $lang['login_register_must_agree']			= "Please read and agree to this agreement";
 $lang['login_register_join_us']				= "User registration";
 $lang['login_register_input_info']			= "Fill in the user registration information";
-$lang['login_register_username']			= "The user name";
+$lang['login_register_username']			= "user name";
 $lang['login_register_username_to_login']	= "3-20 characters，can include, English and numerals and “_”、“-”";
-$lang['login_register_pwd']					= "Set the password";
+$lang['login_register_pwd']					= "password";
 $lang['login_register_password_to_login']	= "Your login password";
 $lang['login_register_password_to_login']	= "6-16 characters, can be composed of English, numerals and punctuation";
-$lang['login_register_ensure_password']		= "Confirm password";
+$lang['login_register_ensure_password']		= "Confirm pwd";
 $lang['login_register_input_password_again']= "Please enter your password again";
 $lang['login_register_email']				= "email";
 $lang['login_register_input_valid_email']	= "Please enter your usual email address, which will be used to retrieve your password, accept order notification, etc";
-$lang['login_register_code']				= "Verification code";
-$lang['login_register_click_to_change_code']= "I can't read it. I'll change it";
+$lang['login_register_code']				= "Verification";
+$lang['login_register_click_to_change_code']= "change it";
 $lang['login_register_input_code']			= "Please enter a captcha, case - insensitive";
-$lang['login_register_agreed']				= "Read and agree";
-$lang['login_register_agreement']			= "The service agreement";
+$lang['login_register_agreed']				= "agree";
+$lang['login_register_agreement']			= "the agreement";
 $lang['login_register_regist_now']			= "Register now";
 $lang['login_register_enter_now']			= "Confirm to submit";
 $lang['login_register_connect_now']			= "Binding account";
 $lang['login_register_after_regist']		= "After registration you can";
-$lang['login_register_buy_info']			= "Purchase doctor and pay for orders";
+$lang['login_register_buy_info']			= "make a appointment";
 $lang['login_register_collect_info']		= "Collect clinic";
 $lang['login_register_honest_info']			= "Safe transaction";
-$lang['login_register_openstore_info']		= "Application for admission to clinic";
+$lang['login_register_openstore_info']		= "Apply for a clinic";
 $lang['login_register_sns_info']			= " share";
 $lang['login_register_talk_info']			= "service evaluation";
 
 $lang['login_register_already_have_account']= "If you are a user of this site";
-$lang['login_register_login_now_1']			= "I have registered an account, right now";
+$lang['login_register_login_now_1']			= "I have registered an account,";
 $lang['login_register_login_now_2']			= "login";
 $lang['login_register_login_now_3']			= "or";
-$lang['login_register_login_forget']		= "Retrieve your password?";
+$lang['login_register_login_forget']		= "Retrieve password?";
 /**
  * 登录-用户保存
  */

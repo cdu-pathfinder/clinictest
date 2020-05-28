@@ -31,55 +31,24 @@
       </ul>
     </div>
     <!-- 分享心情和宝贝 -->
-    <ul class="release-tab">
+    <!-- <ul class="release-tab">
       <li class="sharemood"><em></em><a href="javascript:void(0)"><?php echo $lang['sns_sharemood']; ?></a><i></i></li>
       <li class="sharegoods" id="snssharegoods"><em></em><a href="javascript:void(0)"><?php echo $lang['sns_sharegoods']; ?></a><i></i></li>
       <li class="sharestore" id="snssharestore"><em></em><a href="javascript:void(0)"><?php echo $lang['sns_sharestore']; ?></a></li>
-    </ul>
-    <div class="release-content"><span class="arrow"></span>
-      <form id="weiboform" method="post" action="index.php?act=member_snsindex&op=addtrace">
-        <textarea name="content" id="content_weibo" nc_type="contenttxt" class="textarea"resize="none"></textarea>
-        <span class="error"></span>
-        <div class="smile"><em></em><a href="javascript:void(0)" nc_type="smiliesbtn" data-param='{"txtid":"weibo"}'><?php echo $lang['sns_smiles'];?></a></div>
-        <div id="weibocharcount" class="weibocharcount"></div>
-        <div id="weiboseccode" class="weiboseccode">
-          <label for="captcha" class="ml5 fl"><strong><?php echo $lang['nc_checkcode'].$lang['nc_colon'];?></strong></label>
-          <input name="captcha" class="w40 fl text" type="text" id="captcha" size="4" maxlength="4"/>
-          <a href="javascript:void(0)" class="ml5 fl"><img src="" title="<?php echo $lang['wrong_checkcode_change'];?>" name="codeimage" border="0" id="codeimage" onclick="this.src='index.php?act=seccode&op=makecode&nchash=<?php echo $output['nchash'];?>&t=' + Math.random()" /></a>
-          <input type="hidden" name="nchash" value="<?php echo $output['nchash'];?>"/>
-        </div>
-        <div class="handle">
-          <div nc_type="formprivacydiv" class="privacy-module"><span class="privacybtn" style="width:55px;" nc_type="formprivacybtn"><i></i><?php echo $lang['sns_weiboprivacy_default'];?></span>
-            <div class="privacytab" nc_type="formprivacytab" style="display:none;">
-              <ul class="menu-bd">
-                <li nc_type="formprivacyoption" data-param='{"v":"0"}'><span class="selected"><?php echo $lang['sns_weiboprivacy_all'];?></span></li>
-                <li nc_type="formprivacyoption" data-param='{"v":"1"}'><span><?php echo $lang['sns_weiboprivacy_friend'];?></span></li>
-                <li nc_type="formprivacyoption" data-param='{"v":"2"}'><span><?php echo $lang['sns_weiboprivacy_self'];?></span></li>
-              </ul>
-            </div>
-          </div>
-          <input type="hidden" name="privacy" id="privacy" value="0"/>
-        </div>
-        <input type="text" class="text" style="display:none;" />
-        <!-- 防止点击Enter键提交 -->
-        <input name="<?php echo $lang['nc_snsshare'];?>" type="button" class="button" value="<?php echo $lang['nc_snsshare'];?>" id="weibobtn" />
-      </form>
-      <!-- 表情弹出层 -->
-      <div id="smilies_div" class="smilies-module"></div>
-    </div>
+    </ul> -->
 
     <!-- 动态列表 -->
-    <div class="tabmenu" style="z-index:0;">
+    <!-- <div class="tabmenu" style="z-index:0;">
       <ul class="tab pngFix">
         <li class="active" nctype="friendtrace"><a id="tabGoodsIntro" href="javascript:void(0)" ><span><?php echo $lang['sns_friendtrace'];?></span></a></li>
         <li class="normal" nctype="storetrace"><a href="javascript:void(0)" ><span><?php echo $lang['nc_member_path_store_sns'];?></span></a></li>
       </ul>
-    </div>
-    <div id="friendtrace" class="mt20"></div>
+    </div> -->
+    <!-- <div id="friendtrace" class="mt20"></div> -->
     <div id="storetrace" class="mt20" style="display:none;"></div>
   </div>
   <div class="layout-r">
-    <div class="visitors pngFix">
+    <!-- <div class="visitors pngFix">
       <h4><span class="active" nc_type="visitmodule" data-param='{"name":"visit_me"}'><?php echo $lang['sns_visit_me']; ?></span><span class="line">|</span><span class="normal" nc_type="visitmodule" data-param='{"name":"visit_other"}'><?php echo $lang['sns_visit_other']; ?></span></h4>
       <ul id="visit_me" nc_type="visitlist">
         <?php if (!empty($output['visitme_list'])){?>
@@ -107,7 +76,7 @@
         <?php echo $lang['sns_visitother_tip_1'];?><a href="index.php?act=member_snsfriend&op=follow"><?php echo $lang['sns_visitother_tip_2'];?></a><?php echo $lang['sns_visitother_tip_3'];?>
         <?php }?>
       </ul>
-    </div>
+    </div> -->
     <?php echo loadadv(372,'html');?> </div>
   <div class="clear"></div>
 </div>

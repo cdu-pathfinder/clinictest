@@ -1949,7 +1949,7 @@ CREATE TABLE `#__web_code` (
 INSERT INTO `#__setting` (`name`, `value`) VALUES ('captcha_status_goodsqa', '1'),
 ('captcha_status_login', '1'),
 ('captcha_status_register', '1'),
-('closed_reason', '升级中……'),
+('closed_reason', 'updating……'),
 ('complain_time_limit', '2592000'),
 ('default_goods_image', 'default_goods_image.gif'),
 ('default_store_logo', 'default_store_logo.gif'),

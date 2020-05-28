@@ -7,13 +7,13 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * index
  */
-$lang['store_goods_index_store_close']	 		= '您的店铺已关闭';
+$lang['store_goods_index_store_close']	 		= 'your clinic has been closed';
 $lang['store_goods_index_taobao_import']		= '淘宝助理导入';
-$lang['store_goods_index_new_goods']			= '新增商品';
-$lang['store_goods_index_add_goods']			= '发布新商品';
-$lang['store_goods_index_add_time']				= '发布时间';
-$lang['store_goods_index_store_goods_class']	= '本店分类';
-$lang['store_goods_index_state']	 			= '状态';
+$lang['store_goods_index_new_goods']			= 'new doctor';
+$lang['store_goods_index_add_goods']			= 'add new doctor';
+$lang['store_goods_index_add_time']				= 'add time';
+$lang['store_goods_index_store_goods_class']	= 'class';
+$lang['store_goods_index_state']	 			= 'status';
 $lang['store_goods_index_show']	 				= '上架';
 $lang['store_goods_index_unshow']	 			= '下架';
 $lang['store_goods_index_recommend']	 		= '推荐';
@@ -26,7 +26,7 @@ $lang['store_goods_index_goods_name']	 		= '商品名称';
 $lang['store_goods_index_goods_name_help']	 	= '商品标题名称长度至少3个字符，最长50个汉字';
 $lang['store_goods_index_goods_class']	 		= '商品分类';
 $lang['store_goods_index_brand']	 			= '品牌';
-$lang['store_goods_index_price']	 			= '价格';
+$lang['store_goods_index_price']	 			= 'price';
 $lang['store_goods_index_stock']				= '库存';
 $lang['store_goods_index_goods_limit']			= '您已经达到了添加商品的上限';
 $lang['store_goods_index_goods_limit1']			= '个，如果您想继续增加商品，请到“店铺设置”升级店铺等级';
@@ -42,21 +42,21 @@ $lang['store_goods_index_face']					= '设为封面';
 $lang['store_goods_index_insert_editor']		= '插入编辑器';
 $lang['store_goods_index_goods_class_null']		= '商品分类不能为空';
 $lang['store_goods_index_goods_class_error']	= '选择商品分类（必须选到最后一级）';
-$lang['store_goods_index_goods_name_null']		= '商品名称不能为空';
-$lang['store_goods_index_store_price_null']		= '商品价格不能为空';
-$lang['store_goods_index_store_price_error']	= '商品价格只能是数字';
-$lang['store_goods_index_store_price_interval']	= '商品价格必须是0.01~9999999之间的数字';
+$lang['store_goods_index_goods_name_null']		= 'doctor name mustnot empty';
+$lang['store_goods_index_store_price_null']		= 'price mustnot empty';
+$lang['store_goods_index_store_price_error']	= 'price only number';
+$lang['store_goods_index_store_price_interval']	= 'price should be 0.01~9999999';
 $lang['store_goods_index_goods_stock_null']		= '商品库存不能为空';
 $lang['store_goods_index_goods_stock_error']	= '库存只能填写数字';
 $lang['store_goods_index_edit_goods_spec']		= '编辑商品规格';
 $lang['store_goods_index_goods_spec_tip']		= '您最多可以添加两种规格（如：颜色和尺码）规格名称可以自定义<br/>两种规格必须填写完整';
-$lang['store_goods_index_no']					= '货号';
+$lang['store_goods_index_no']					= 'Dictor ID';
 $lang['store_goods_index_new_goods_spec']		= '添加新的规格属性';
 $lang['store_goods_index_save_spec']			= '保存规格';
 $lang['store_goods_index_new_class']			= '新增分类';
 $lang['store_goods_index_belong_multiple_store_class']	= '商品可以从属于店铺的多个分类之下,</br>店铺分类可以由 "用户中心 -> 卖家 -> 商品管理 -> 分类管理" 中自定义';
-$lang['store_goods_index_goods_base_info']		= '商品基本信息';
-$lang['store_goods_index_goods_detail_info']	= '商品详情描述';
+$lang['store_goods_index_goods_base_info']		= 'doctor info';
+$lang['store_goods_index_goods_detail_info']	= 'doctor detail';
 $lang['store_goods_index_goods_transport']		= '商品物流信息';
 $lang['store_goods_index_goods_szd']			= '所在地';
 $lang['store_goods_index_use_tpl']				= '使用运费模板';
@@ -99,17 +99,17 @@ $lang['store_goods_index_upload_pic']			= '上传图片';
 $lang['store_goods_index_spec']					= '规格';
 $lang['store_goods_index_edit_goods']			= '编辑商品';
 $lang['store_goods_index_add_sclasserror']		= '该分类已经选择,请选择其他分类';
-$lang['store_goods_index_goods_add_success']	= '商品添加成功';
-$lang['store_goods_index_goods_add_fail']		= '商品添加失败';
-$lang['store_goods_index_goods_edit_success']	= '商品编辑成功';
-$lang['store_goods_index_goods_edit_fail']		= '商品编辑失败';
-$lang['store_goods_index_goods_del_success']	= '商品删除成功';
-$lang['store_goods_index_goods_del_fail']		= '商品删除失败';
+$lang['store_goods_index_goods_add_success']	= 'doctor add successfully';
+$lang['store_goods_index_goods_add_fail']		= 'doctor add failed';
+$lang['store_goods_index_goods_edit_success']	= 'doctor edit successfully';
+$lang['store_goods_index_goods_edit_fail']		= 'doctor edit failed';
+$lang['store_goods_index_goods_del_success']	= 'doctor delete successfully';
+$lang['store_goods_index_goods_del_fail']		= 'doctor delete failed';
 $lang['store_goods_index_goods_unshow_success']	= '商品下架成功';
 $lang['store_goods_index_goods_unshow_fail']	= '商品下架失败';
 $lang['store_goods_index_goods_show_success']	= '商品上架成功';
 $lang['store_goods_index_goods_show_fail']		= '商品上架失败';
-$lang['store_goods_index_goods_seo_keywords']		    = 'SEO关键字</br>(keywords)';
+$lang['store_goods_index_goods_seo_keywords']		    = 'SEO keywords</br>(keywords)';
 $lang['store_goods_index_goods_seo_description']		= 'SEO描述</br>(description)';
 $lang['store_goods_index_goods_seo_keywords_help']		= 'SEO关键字 (keywords) 出现在商品详细页面头部的 Meta 标签中，</br>用于记录本页面商品的关键字，多个关键字间请用半角逗号 "," 隔开';
 $lang['store_goods_index_goods_seo_description_help']   = 'SEO描述 (description) 出现在商品详细页面头部的 Meta 标签中，</br>用于记录本页面商品内容的概要与描述，建议120字以内';
@@ -158,14 +158,14 @@ $lang['store_goods_step1_ajax_add_class']				= '添加常用分类成功';
 /**
  * 商品发布第三步
  */
-$lang['store_goods_step3_goods_release_success']		= '恭喜您，商品发布成功！';
-$lang['store_goods_step3_viewed_product']				= '去店铺查看商品详情';
-$lang['store_goods_step3_edit_product']					= '重新编辑刚发布的商品';
-$lang['store_goods_step3_more_actions']					= '您还可以:';
-$lang['store_goods_step3_continue']						= '继续';
-$lang['store_goods_step3_release_new_goods']			= '发布新商品';
-$lang['store_goods_step3_access']						= '进入';
-$lang['store_goods_step3_manage']						= '管理';
+$lang['store_goods_step3_goods_release_success']		= 'Doctor published successfully';
+$lang['store_goods_step3_viewed_product']				= 'To clinic to see details doctor';
+$lang['store_goods_step3_edit_product']					= 'Reedit the doctor just posted';
+$lang['store_goods_step3_more_actions']					= 'You can also:';
+$lang['store_goods_step3_continue']						= 'continue';
+$lang['store_goods_step3_release_new_goods']			= 'publish new doctor';
+$lang['store_goods_step3_access']						= 'enter';
+$lang['store_goods_step3_manage']						= 'namage';
 $lang['store_goods_step3_choose_product_add']			= '选择商品添加申请';
 $lang['store_goods_step3_choose_add']					= '选择商品参加';
 $lang['store_goods_step3_groupbuy_activity']			= '团购活动';
@@ -205,11 +205,11 @@ $lang['store_goods_img_upload']					= '图片上传';
 /**
  * 相册
  */
-$lang['store_goods_album_goods_pic']			= '商品图片';
-$lang['store_goods_album_select_from_album']	= '从用户相册选择';
-$lang['store_goods_album_users']				= '用户相册';
-$lang['store_goods_album_all_photo']			= '全部图片';
-$lang['store_goods_album_insert_users_photo']	= '插入相册图片';
+$lang['store_goods_album_goods_pic']			= 'doctor picture';
+$lang['store_goods_album_select_from_album']	= 'from picture space';
+$lang['store_goods_album_users']				= 'picture space';
+$lang['store_goods_album_all_photo']			= 'all pictures';
+$lang['store_goods_album_insert_users_photo']	= 'insert picture';
 /**
  * ajax
  */
@@ -218,46 +218,45 @@ $lang['store_goods_ajax_update_fail']			= '更新数据库失败';
 /**
  * 淘宝导入
  */
-$lang['store_goods_import_choose_file']		= '请选择要上传csv的文件';
-$lang['store_goods_import_unknown_file']	= '文件来源不明';
-$lang['store_goods_import_wrong_type']		= '文件类型必须为csv,您所上传的文件类型为:';
-$lang['store_goods_import_size_limit']		= '文件大小必须为'.ini_get('upload_max_filesize').'以内';
-$lang['store_goods_import_wrong_class']		= '请选择商品分类（必须选到最后一级）';
+$lang['store_goods_import_choose_file']		= 'please choose csv file';
+$lang['store_goods_import_unknown_file']	= 'File source unknown';
+$lang['store_goods_import_wrong_type']		= 'file type should be csv,your type is:';
+$lang['store_goods_import_size_limit']		= 'file size should be less than'.ini_get('upload_max_filesize').'以内';
+$lang['store_goods_import_wrong_class']		= 'Please select the doctor category (must be selected to the last level)
+';
 $lang['store_goods_import_wrong_class1']	= '该商品分类不可用，请重新选择商品分类（必须选到最后一级）';
 $lang['store_goods_import_wrong_class2']	= '必须选到最后一级';
 $lang['store_goods_import_wrong_column']	= '文件内字段与系统要求的字段不符,请详细阅读导入说明';
-$lang['store_goods_import_choose']			= '请选择...';
-$lang['store_goods_import_step1']			= '导入CSV文件';
-$lang['store_goods_import_choose_csv']		= '请选择文件：';
+$lang['store_goods_import_choose']			= 'please choose...';
+$lang['store_goods_import_step1']			= 'import CSV file';
+$lang['store_goods_import_choose_csv']		= 'please choose file：';
 $lang['store_goods_import_title_csv']		= '导入程序默认从第二行执行导入，请保留CSV文件第一行的标题行，最大'.ini_get('upload_max_filesize');
-$lang['store_goods_import_goods_class']		= '商品分类：';
-$lang['store_goods_import_store_goods_class']	= '本店分类：';
-$lang['store_goods_import_new_class']			= '新增分类';
-$lang['store_goods_import_belong_multiple_store_class']	= '可以从属于多个本店分类';
-$lang['store_goods_import_unicode']			= '字符编码：';
-$lang['store_goods_import_file_type']		= '文件格式：';
-$lang['store_goods_import_file_csv']		= 'csv文件';
-$lang['store_goods_import_desc']			= '导入说明：';
-$lang['store_goods_import_csv_desc']		= '1.如果修改CSV文件请务必使用微软excel软件，且必须保证第一行表头名称含有如下项目: 
-宝贝名称、宝贝类目、新旧程度、宝贝价格、宝贝数量、有效期、运费承担、平邮、EMS、快递、橱窗推荐、宝贝描述、新图片。<br/>
-2.如果因为淘宝助理版本差异表头名称有出入，请先修改成上述的名称方可导入，不区分全新、二手、闲置等新旧程度，导入后商品类型都是全新。<br/>
-3.如果CSV文件超过'.ini_get('upload_max_filesize').'请通过excel软件编辑拆成多个文件进行导入。<br/>
-4.每个商品最多支持导入5张图片。';
-$lang['store_goods_import_submit']			= '导入';
-$lang['store_goods_import_step2']			= '上传商品图片';
-$lang['store_goods_import_tbi_desc']		= '请上传与csv文件同级的images目录(或与csv文件同名的目录)内的tbi文件';
-$lang['store_goods_import_upload_complete'] = "上传完毕";
-$lang['store_goods_import_doing'] 			= "正在导入...";
-$lang['store_goods_import_step3']			= '整理数据';
-$lang['store_goods_import_remind']			= '前两步完成后才可进行数据整理，确认整理数据吗';
-$lang['store_goods_import_remind2']			= '（如果图片分多次上传，请在所有图片上传完成后整理）';
-$lang['store_goods_import_pack']			= '整理数据';
-$lang['store_goods_pack_wrong1']			= '请先导入CSV文件';
-$lang['store_goods_pack_wrong2']			= '请导入正确的CSV文件';
-$lang['store_goods_pack_success']			= '数据整理成功';
-$lang['store_goods_import_end']				= '，最后';
-$lang['store_goods_import_products_no_import']	= '件商品没有导入';
-$lang['store_goods_import_area']			= '所在地：';
+$lang['store_goods_import_goods_class']		= 'doctor classification：';
+$lang['store_goods_import_store_goods_class']	= 'Our categories：';
+$lang['store_goods_import_new_class']			= 'add category';
+$lang['store_goods_import_belong_multiple_store_class']	= 'Can be subject to more than one clinic classification';
+$lang['store_goods_import_unicode']			= 'Character encoding：';
+$lang['store_goods_import_file_type']		= 'File format:';
+$lang['store_goods_import_file_csv']		= 'csv flie';
+$lang['store_goods_import_desc']			= 'Import instructions:';
+$lang['store_goods_import_csv_desc']		= '1. If you modify CSV file, be sure to use Microsoft excel, and make sure the first line of the header contains the following items:
+name, category, price, expiry date<<br/>
+3.If the CSV file exceed'.ini_get('upload_max_filesize').'Please use excel software to edit and split into multiple files for import.<br/>';
+$lang['store_goods_import_submit']			= 'import';
+$lang['store_goods_import_step2']			= 'upload picture';
+$lang['store_goods_import_tbi_desc']		= 'Please upload the tbi file in the images directory at the same level as the CSV file (or in a directory with the same name as the CSV file)';
+$lang['store_goods_import_upload_complete'] = "uploaded";
+$lang['store_goods_import_doing'] 			= "importing...";
+$lang['store_goods_import_step3']			= 'Sorting data';
+$lang['store_goods_import_remind']			= 'The data can be sorted out after the first two steps are completed. Is the data sorted out confirmed';
+$lang['store_goods_import_remind2']			= '(if the pictures are uploaded multiple times, please arrange them after uploading all the pictures)';
+$lang['store_goods_import_pack']			= 'Sorting data';
+$lang['store_goods_pack_wrong1']			= 'please import CSV file';
+$lang['store_goods_pack_wrong2']			= 'please import correct CSV file';
+$lang['store_goods_pack_success']			= 'sorted data successfully';
+$lang['store_goods_import_end']				= '，finally';
+$lang['store_goods_import_products_no_import']	= 'goods are not imported';
+$lang['store_goods_import_area']			= 'location:';
 
 /*淘宝文件导入*/
 $lang['store_goods_import_upload_album'] = '导入相册选择';
@@ -279,14 +278,14 @@ $lang['store_goods_stock_input_error']		= '请填写不小于零的数字!';
 /**
  * ajax修改商品库存
  */
-$lang['store_goods_price_change_price']		= '修改价格';
-$lang['store_goods_price_change_tip']		= '单击修改价格';
-$lang['store_goods_price_change_more_price']= '修改更多价格信息';
-$lang['store_goods_price_input_error']		= '请填写正确的价格！';
+$lang['store_goods_price_change_price']		= 'change price';
+$lang['store_goods_price_change_tip']		= 'Click to change price';
+$lang['store_goods_price_change_more_price']= 'change more price';
+$lang['store_goods_price_input_error']		= 'Please fill in the correct price!';
 
 /**
  * ajax修改商品推荐
  */
-$lang['store_goods_commend_change_tip']		= '选择是否作为店铺推荐商品';
+$lang['store_goods_commend_change_tip']		= 'Choose whether to serve as a referral for the clinic';
 
 ?>

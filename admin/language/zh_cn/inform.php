@@ -4,38 +4,38 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 页面需要的语言
  */
-$lang['inform_page_title'] = '举报商品';
-$lang['inform_manage_title'] = '举报管理';
-$lang['inform'] 			= '举报';
+$lang['inform_page_title'] = 'Report doctor';
+$lang['inform_manage_title'] = 'Report management';
+$lang['inform'] 			= 'Report';
 
-$lang['inform_state_all'] = '所有举报';
-$lang['inform_state_handled'] = '已处理';
-$lang['inform_state_unhandle'] = '未处理';
-$lang['inform_goods_name'] = '商品名称';
-$lang['inform_member_name'] = '举报人';
-$lang['inform_subject'] = '举报主题';
-$lang['inform_type'] = '举报类型';
-$lang['inform_type_desc'] = '举报类型描述';
-$lang['inform_pic'] = '图片';
-$lang['inform_pic_view'] = '查看图片';
-$lang['inform_pic_none'] = '暂无图片';
-$lang['inform_datetime'] = '举报时间';
-$lang['inform_state'] = '状态';
-$lang['inform_content'] = '举报内容';
-$lang['inform_handle_message'] = '处理信息';
-$lang['inform_handle_type'] = '处理结果';
-$lang['inform_handle_type_unuse'] = '无效举报';
-$lang['inform_handle_type_venom'] = '恶意举报';
-$lang['inform_handle_type_valid'] = '有效举报';
+$lang['inform_state_all'] = 'All report';
+$lang['inform_state_handled'] = 'Handled';
+$lang['inform_state_unhandle'] = 'Pending';
+$lang['inform_goods_name'] = 'Doctor name';
+$lang['inform_member_name'] = 'Informer';
+$lang['inform_subject'] = 'Report subject';
+$lang['inform_type'] = 'Report type';
+$lang['inform_type_desc'] = 'Report type description';
+$lang['inform_pic'] = 'Image';
+$lang['inform_pic_view'] = 'View image';
+$lang['inform_pic_none'] = 'No image';
+$lang['inform_datetime'] = 'Report time';
+$lang['inform_state'] = 'State';
+$lang['inform_content'] = 'Report ccontent';
+$lang['inform_handle_message'] = 'Processing';
+$lang['inform_handle_type'] = 'Result';
+$lang['inform_handle_type_unuse'] = 'Invalid report';
+$lang['inform_handle_type_venom'] = 'Venom report';
+$lang['inform_handle_type_valid'] = 'Sucess';
 $lang['inform_handle_type_unuse_message'] = '无效举报--商品会正常销售';
 $lang['inform_handle_type_venom_message'] = '恶意举报--该用户的所有未处理举报将被取消，用户将被禁止举报';
 $lang['inform_handle_type_valid_message'] = '有效举报--商品将被违规下架';
-$lang['inform_subject_add'] = '添加主题';
-$lang['inform_type_add'] = '添加类型';
+$lang['inform_subject_add'] = 'Add titile';
+$lang['inform_type_add'] = 'Add type';
 
-$lang['inform_text_none'] = '无';
-$lang['inform_text_handle'] = '处理';
-$lang['inform_text_select'] = '请选择...';
+$lang['inform_text_none'] = 'None';
+$lang['inform_text_handle'] = 'Process';
+$lang['inform_text_select'] = 'Select...';
 
 /**
  * 提示信息

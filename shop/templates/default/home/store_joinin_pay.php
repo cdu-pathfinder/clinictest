@@ -40,7 +40,7 @@
   <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
     <thead>
       <tr>
-        <th colspan="6">公司及联系人信息</th>
+        <th colspan="6">Company and contact information</th>
       </tr>
     </thead>
     <tbody>
@@ -133,25 +133,25 @@
   <table border="0" cellpadding="0" cellspacing="0" class="store-joinin">
     <thead>
       <tr>
-        <th colspan="2">开户银行信息：</th>
+        <th colspan="2">Bank information：</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th class="w150">银行开户名：</th>
+        <th class="w150">Bank account name:</th>
         <td><?php echo $output['joinin_detail']['bank_account_name'];?></td>
       </tr><tr>
-        <th class="w150">公司银行账号：</th>
+        <th class="w150">Company bank account:</th>
         <td><?php echo $output['joinin_detail']['bank_account_number'];?></td></tr>
       <tr>
-        <th class="w150">开户银行支行名称：</th>
+        <th class="w150">Bank branch name:</th>
         <td><?php echo $output['joinin_detail']['bank_name'];?></td>
       </tr>
       <tr>
-        <th class="w150">支行联行号：</th>
+        <th class="w150">Branch no. :</th>
         <td><?php echo $output['joinin_detail']['bank_code'];?></td>
       </tr><tr>
-        <th class="w150">开户银行所在地：</th>
+        <th class="w150">Bank is located:</th>
         <td colspan="20"><?php echo $output['joinin_detail']['bank_address'];?></td>
       </tr>
       <tr>
@@ -169,23 +169,23 @@
     </thead>
     <tbody>
       <tr>
-        <th class="w150">银行开户名：</th>
+        <th class="w150">Bank account name:</th>
         <td><?php echo $output['joinin_detail']['settlement_bank_account_name'];?></td>
       </tr>
       <tr>
-        <th class="w150">公司银行账号：</th>
+        <th class="w150">Company bank account:</th>
         <td><?php echo $output['joinin_detail']['settlement_bank_account_number'];?></td>
       </tr>
       <tr>
-        <th class="w150">开户银行支行名称：</th>
+        <th class="w150">Bank branch name:</th>
         <td><?php echo $output['joinin_detail']['settlement_bank_name'];?></td>
       </tr>
       <tr>
-        <th class="w150">支行联行号：</th>
+        <th class="w150">Branch no. :</th>
         <td><?php echo $output['joinin_detail']['settlement_bank_code'];?></td>
       </tr>
       <tr>
-        <th class="w150">开户银行所在地：</th>
+        <th class="w150">Bank is located:</th>
         <td><?php echo $output['joinin_detail']['settlement_bank_address'];?></td>
       </tr>
     </tbody>

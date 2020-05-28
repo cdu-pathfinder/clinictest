@@ -5,7 +5,7 @@
  * 
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.vimhui.com)
+ * @copyright  gourp10  (http://www.vimhui.com)
  * @license    http://www.vimhui.com
  * @link       http://www.vimhui.com
  * @since      File available since Release v1.1

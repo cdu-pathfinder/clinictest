@@ -26,7 +26,7 @@ function AddViewGoods(goods_id){
 							+'</span>'
 							+'<div class="mf-infor">'
 							+'<p class="mf-pd-name">'+result.datas.goods_info.goods_name+'</p>'
-							+'<p class="mf-pd-price">￥'+result.datas.goods_info.goods_price+'</p></div>';
+							+'<p class="mf-pd-price">$'+result.datas.goods_info.goods_price+'</p></div>';
 						+'</a></li>';
 			$('#viewlist').append(html);
 		}

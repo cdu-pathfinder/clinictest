@@ -3,16 +3,16 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 共有语言
  */
-$lang['store_storeinfo_error']			= '店铺信息错误';
+$lang['store_storeinfo_error']			= 'Clinic Informaion Error';
 /**
  * 开店
  */
 $lang['store_create_right_closed']		= 'You have already created the clinic and cannot create it again';
-$lang['store_create_created']			= '您已经创建了店铺，不能重复创建';
+$lang['store_create_created']			= 'You have already created the clinic and cannot create it again';
 $lang['store_create_grade_not_exists']	= '错误的操作，该等级不存在';
-$lang['store_create_choose_store_class']	= '选择店铺类型';
+$lang['store_create_choose_store_class']	= 'Select Clinic Type';
 $lang['store_create_input_owner_info']	= '填写店主和店铺信息';
-$lang['store_create_finish']			= '完成';
+$lang['store_create_finish']			= 'Finish';
 $lang['store_create_goods_num']			= '商品数';
 $lang['store_create_upload_space']		= '上传空间';
 $lang['store_create_template_num']		= '模板数';

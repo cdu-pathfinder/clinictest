@@ -86,7 +86,7 @@ $(function (){
             });
             //收藏
             $(".pd-collect").click(function (){
-                var key = getcookie('key');//登录标记
+                var key = getcookie('key');//login标记
                 if(key==''){
                   window.location.href = WapSiteUrl+'/tmpl/member/login.html';
                 }else {
@@ -117,9 +117,9 @@ $(function (){
                   });
                 }
             });
-            //加入购物车
+            //加入chart
             $(".add-to-cart").click(function (){
-              var key = getcookie('key');//登录标记
+              var key = getcookie('key');//login标记
                if(key==''){
                   window.location.href = WapSiteUrl+'/tmpl/member/login.html';
                }else{
@@ -134,9 +134,9 @@ $(function (){
                           if(!rData.datas.error){
                              $.sDialog({
                                 skin:"block",
-                                content:"添加购物车成功！",
+                                content:"添加chart成功！",
                                 "okBtnText": "再逛逛",
-                                "cancelBtnText": "去购物车",
+                                "cancelBtnText": "去chart",
                                 okFn:function (){},
                                 cancelFn:function (){
                                   window.location.href = WapSiteUrl+'/tmpl/cart_list.html';
@@ -158,7 +158,7 @@ $(function (){
 
             //立即购买
             $(".buy-now").click(function (){
-               var key = getcookie('key');//登录标记
+               var key = getcookie('key');//login标记
                if(key==''){
                   window.location.href = WapSiteUrl+'/tmpl/member/login.html';
                }else{
@@ -271,7 +271,7 @@ $(function (){
             }
         }  
     });
-  //检测商品数目是否为正整数
+  //检测appointments是否为正整数
   function buyNumer(){
     $.sValid();
   }

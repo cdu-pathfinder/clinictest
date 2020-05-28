@@ -50,9 +50,9 @@ catch(e){}
 <div id="ajaxwaitid"></div><?php if (!empty($output['store_closed'])) { ?>
   <div class="store-closed"><i class="icon-warning-sign"></i>
     <dl>
-      <dt>您的店铺已被平台关闭</dt>
-      <dd>关闭原因：<?php echo $output['store_close_info'];?></dd>
-      <dd>在此期间，您的店铺以及商品将无法访问；如果您有异议或申诉请及时联系平台管理。</dd>
+      <dt>your clinic has been closed</dt>
+      <dd>closed reason：<?php echo $output['store_close_info'];?></dd>
+      <dd>During this period, your store and goods will not be accessible. If you have any objection or complaint, please contact the platform management in time.</dd>
     </dl>
   </div>
   <?php } ?>
@@ -61,22 +61,22 @@ catch(e){}
     <div class="ncsc-admin">
       <dl class="ncsc-admin-info">
         <dt class="admin-avatar"><img src="<?php echo getMemberAvatarForID($_SESSION['member_id']);?>" width="32" class="pngFix" alt=""/></dt>
-        <dd class="admin-permission">当前用户</dd>
+        <dd class="admin-permission">current user</dd>
         <dd class="admin-name"><?php echo $_SESSION['seller_name'];?></dd>
       </dl>
-      <div class="ncsc-admin-function"><a href="<?php echo urlShop('show_store', 'index', array('store_id'=>$_SESSION['store_id']), $output['store_info']['store_domain']);?>" target="_blank" title="前往店铺" ><i class="icon-home"></i></a><a href="<?php echo urlShop('home', 'message');?>" title="站内消息" class="pr" target="_blank"><i class="icon-envelope-alt"></i><em><?php echo $output['message_num'];?></em></a><a href="<?php echo urlShop('home', 'passwd');?>" title="修改密码" target="_blank"><i class="icon-wrench"></i></a><a href="<?php echo urlShop('seller_logout', 'logout');;?>" title="安全退出"><i class="icon-signout"></i></a></div>
+      <div class="ncsc-admin-function"><a href="<?php echo urlShop('show_store', 'index', array('store_id'=>$_SESSION['store_id']), $output['store_info']['store_domain']);?>" target="_blank" title="go to clinic" ><i class="icon-home"></i></a><a href="<?php echo urlShop('home', 'message');?>" title="message from platform" class="pr" target="_blank"><i class="icon-envelope-alt"></i><em><?php echo $output['message_num'];?></em></a><a href="<?php echo urlShop('home', 'passwd');?>" title="change password" target="_blank"><i class="icon-wrench"></i></a><a href="<?php echo urlShop('seller_logout', 'logout');;?>" title="quit"><i class="icon-signout"></i></a></div>
     </div>
     <div class="center-logo">
         <a href="<?php echo SHOP_SITE_URL;?>" target="_blank"><img src="<?php echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('seller_center_logo');?>" class="pngFix" alt=""/></a>
-      <h1>商家中心</h1>
+      <h1>clinic center</h1>
     </div>
     <div class="index-search-container">
-      <div class="index-sitemap"><a href="javascript:void(0);">导航管理 <i class="icon-angle-down"></i></a>
+      <div class="index-sitemap"><a href="javascript:void(0);">Navigation manage <i class="icon-angle-down"></i></a>
         <div class="sitemap-menu-arrow"></div>
         <div class="sitemap-menu">
           <div class="title-bar">
             <h2>
-            <i class="icon-sitemap"></i>管理导航<em>小提示：添加您经常使用的功能到首页侧边栏，方便操作。</em>
+            <i class="icon-sitemap"></i>manage Nav<em>Tip: add features you often use to the home page sidebar for easy access.</em>
             </h5>
             <span id="closeSitemap" class="close">X</span></div>
           <div id="quicklink_list" class="content">
@@ -86,7 +86,7 @@ catch(e){}
               <dt><?php echo $menu_value['name'];?></dt>
               <?php if(!empty($menu_value['child']) && is_array($menu_value['child'])) {?>
               <?php foreach($menu_value['child'] as $submenu_value) {?>
-              <dd <?php if(!empty($output['seller_quicklink'])) {echo in_array($submenu_value['act'], $output['seller_quicklink'])?'class="selected"':'';}?>><i nctype="btn_add_quicklink" data-quicklink-act="<?php echo $submenu_value['act'];?>" class="icon-check" title="添加为常用功能菜单"></i><a href="index.php?act=<?php echo $submenu_value['act'];?>&op=<?php echo $submenu_value['op'];?>"> <?php echo $submenu_value['name'];?> </a></dd>
+              <dd <?php if(!empty($output['seller_quicklink'])) {echo in_array($submenu_value['act'], $output['seller_quicklink'])?'class="selected"':'';}?>><i nctype="btn_add_quicklink" data-quicklink-act="<?php echo $submenu_value['act'];?>" class="icon-check" title="Add as common function menu"></i><a href="index.php?act=<?php echo $submenu_value['act'];?>&op=<?php echo $submenu_value['op'];?>"> <?php echo $submenu_value['name'];?> </a></dd>
               <?php } ?>
               <?php } ?>
             </dl>
@@ -98,14 +98,14 @@ catch(e){}
       <div class="search-bar">
         <form method="get" target="_blank">
           <input type="hidden" name="act" value="search">
-          <input type="text" nctype="search_text" name="keyword" placeholder="商城商品搜索" class="search-input-text">
+          <input type="text" nctype="search_text" name="keyword" placeholder="doctor research" class="search-input-text">
           <input type="submit" nctype="search_submit" class="search-input-btn pngFix" value="">
         </form>
       </div>
     </div>
     <nav class="ncsc-nav">
       <dl class="<?php echo $output['current_menu']['model'] == 'index'?'current':'';?>">
-        <dt><a href="index.php?act=seller_center&op=index">首页</a></dt>
+        <dt><a href="index.php?act=seller_center&op=index">home</a></dt>
         <dd class="arrow"></dd>
       </dl>
       <?php if(!empty($output['menu']) && is_array($output['menu'])) {?>
@@ -144,13 +144,13 @@ catch(e){}
           <?php } else { ?>
           <?php if ($_GET['act'] == 'seller_center') { ?>
           <?php } ?>
-          <?php } ?><div class="add-quickmenu"><a href="javascript:void(0);"><i class="icon-plus"></i>添加常用功能菜单</a></div>
+          <?php } ?><div class="add-quickmenu"><a href="javascript:void(0);"><i class="icon-plus"></i>Add menu of common functions</a></div>
         </ul>
       </div>
     </div>
   </div>
   <div id="layoutRight" class="ncsc-layout-right">
-    <div class="ncsc-path"><i class="icon-desktop"></i>商家管理中心<i class="icon-angle-right"></i><?php echo $output['current_menu']['model_name'];?><i class="icon-angle-right"></i><?php echo $output['current_menu']['name'];?></div>
+    <div class="ncsc-path"><i class="icon-desktop"></i>clinic manage center<i class="icon-angle-right"></i><?php echo $output['current_menu']['model_name'];?><i class="icon-angle-right"></i><?php echo $output['current_menu']['name'];?></div>
     <div class="main-content" id="mainContent">
       <?php
         require_once($tpl_file);
@@ -174,7 +174,7 @@ $(document).ready(function(){
         } else {
             var count = $('#quicklink_list').find('dd.selected').length;
             if(count >= 8) {
-                showError('快捷操作最多添加8个');
+                showError('Add up to 8 shortcuts');
             } else {
                 $.post("<?php echo urlShop('seller_center', 'quicklink_add');?>", { item: item }, function(data) {
                     $quicklink_item.addClass('selected');

@@ -1,24 +1,24 @@
 $(function (){
-    var memberHtml = '<a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/member.html?act=member">个人中心</a>';
+    var memberHtml = '<a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/member.html?act=member">user center</a>';
     var act = GetQueryString("act");
     if(act && act == "member"){
-        memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">注销账号</a>';
+        memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">logout账号</a>';
     }
     var tmpl = '<div class="footer">'
         +'<div class="footer-top">'
             +'<div class="footer-tleft">'+ memberHtml +'</div>'
             +'<a href="javascript:void(0);"class="gotop">'
                 +'<span class="gotop-icon"></span>'
-                +'<p>回顶部</p>'
+                +'<p>back top</p>'
             +'</a>'
         +'</div>'
         +'<div class="footer-content">'
             +'<p class="link">'
-                +'<a href="'+SiteUrl+'" class="standard">标准版</a>'
-                +'<a href="'+AndroidSiteUrl+'">下载Android客户端</a>'
+                +'<a href="'+SiteUrl+'" class="standard">standard version</a>'
+                +'<a href="'+AndroidSiteUrl+'">Will have Android</a>'
             +'</p>'
             +'<p class="copyright">'
-                +'版权所有 2007-2014 © 天津市网城天创科技有限责任公司'
+                +'Power BY Group 10 Liam'
             +'</p>'
         +'</div>'
     +'</div>';

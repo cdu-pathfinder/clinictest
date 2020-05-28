@@ -4,18 +4,18 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * model简体语言包
  */
-$lang['month_jan'] = '一月';
-$lang['month_feb'] = '二月';
-$lang['month_mar'] = '三月';
-$lang['month_apr'] = '四月';
-$lang['month_may'] = '五月';
-$lang['month_jun'] = '六月';
-$lang['month_jul'] = '七月';
-$lang['month_aug'] = '八月';
-$lang['month_sep'] = '九月';
-$lang['month_oct'] = '十月';
-$lang['month_nov'] = '十一月';
-$lang['month_dec'] = '十二月';
+$lang['month_jan'] = 'January';
+$lang['month_feb'] = 'February';
+$lang['month_mar'] = 'March';
+$lang['month_apr'] = 'April';
+$lang['month_may'] = 'May';
+$lang['month_jun'] = 'June';
+$lang['month_jul'] = 'July';
+$lang['month_aug'] = 'August';
+$lang['month_sep'] = 'September';
+$lang['month_oct'] = 'October';
+$lang['month_nov'] = 'November';
+$lang['month_dec'] = 'December';
 
 // $lang['order_state_submitted'] = '已提交';
 // $lang['order_state_pending_payment'] = '待付款';

@@ -1,28 +1,28 @@
 <?php
 defined('InShopNC') or exit('Access Invalid!');
-$lang['error']				= '在处理您的请求时出现了问题:<br />';
-$lang['homepage']			= '首页';
-$lang['cur_location']		= '当前位置';
+$lang['error']				= 'Request Error :<br />';
+$lang['homepage']			= 'Homepage';
+$lang['cur_location']		= 'Current location';
 $lang['miss_argument']		= '缺少参数';
-$lang['invalid_request']	= '非法访问';
+$lang['invalid_request']	= 'Invalid request';
 $lang['wrong_argument']		= '参数错误';
-$lang['nc_checkcode']		= '验证码';
-$lang['wrong_null']			= '请填写验证码';
-$lang['wrong_checkcode']	= '验证码错误';
-$lang['wrong_checkcode_change']	= '点击更换验证码';
+$lang['nc_checkcode']		= 'Code';
+$lang['wrong_null']			= 'Please fill in the code';
+$lang['wrong_checkcode']	= 'Code error';
+$lang['wrong_checkcode_change']	= 'Click to change other code';
 $lang['wrong_seccode']	= '您的操作过度频繁，请输入验证码后继续。';
-$lang['no_record']			= '暂无符合条件的数据记录';
+$lang['no_record']			= 'No related record';
 $lang['no_login']			= '您还没有登录';
-$lang['nc_status']			= '状态';
-$lang['nc_please_choose']	= '请选择...';
+$lang['nc_status']			= 'Status';
+$lang['nc_please_choose']	= 'Select...';
 
-$lang['currency']			= '&yen;';
-$lang['currency_zh']		= '元';
+$lang['currency']			= '$';
+$lang['currency_zh']		= 'Dollar';
 $lang['ten_thousand']       = '万';
 $lang['piece']				= '件';
 $lang['welcome_to_site']	= 'Welcome to';
-$lang['site_search_goods']	= "商品";
-$lang['site_search_store']	= "店铺";
+$lang['site_search_goods']	= "Doctor";
+$lang['site_search_store']	= "Clinic";
 $lang['site_search_groupbuy']	= "团购";
 $lang['hot_search']			= 'Most searched';
 $lang['nc_colon']			= '：';
@@ -34,37 +34,37 @@ $lang['nc_pointprod']		= "积分中心";
  * nav中的文字
  */
 $lang['nc_all_goods_class']	= 'All doctors';
-$lang['nc_check_more_class'] = '查看更多分类';
+$lang['nc_check_more_class'] = 'View more type';
 
-$lang['nc_common_op_confirm'] 	= '您确定要删除该信息吗？';
-$lang['nc_common_op_succ'] 	= '操作成功';
-$lang['nc_common_op_fail'] 	= '操作失败';
-$lang['nc_common_del_succ'] = '删除成功';
-$lang['nc_common_del_fail'] = '删除失败';
-$lang['nc_common_save_succ'] = '保存成功';
-$lang['nc_common_save_fail'] = '保存失败';
+$lang['nc_common_op_confirm'] 	= 'Are you sure you want to delete this information?';
+$lang['nc_common_op_succ'] 	= 'Success';
+$lang['nc_common_op_fail'] 	= 'Fail';
+$lang['nc_common_del_succ'] = 'Delete Successful';
+$lang['nc_common_del_fail'] = 'delete Failed';
+$lang['nc_common_save_succ'] = 'Save Sucessful';
+$lang['nc_common_save_fail'] = 'Save Failed';
 $lang['nc_common_op_repeat'] = '您的操作过于频繁，请稍后再试';
-$lang['nc_common_search']	 = '搜索';
-$lang['nc_common_from']	 = '来自';
+$lang['nc_common_search']	 = 'Search';
+$lang['nc_common_from']	 = 'From';
 
 $lang['nc_common_rate_null']	 = '暂无评价';
 $lang['nc_common_credit_null']	 = '暂无信用';
-$lang['nc_common_goods_null']	 = '暂无商品';
+$lang['nc_common_goods_null']	 = 'No appointments';
 $lang['nc_common_sell_null']	 = '暂无销量';
 $lang['nc_common_result_null']	 = '暂无符合条件的数据记录';
 
-$lang['nc_common_loading']	 = '加载中...';
+$lang['nc_common_loading']	 = 'Loading...';
 
 $lang['nc_common_button_operate']	= '操作';
-$lang['nc_common_button_submit']	= '提交';
-$lang['nc_common_button_save']	 	= '保存';
-$lang['nc_common_button_confirm']	= '确认';
-$lang['nc_common_button_select']	= '选择';
-$lang['nc_common_button_upload']	= '上传';
+$lang['nc_common_button_submit']	= 'Submit';
+$lang['nc_common_button_save']	 	= 'Save';
+$lang['nc_common_button_confirm']	= 'Confrim';
+$lang['nc_common_button_select']	= 'Select';
+$lang['nc_common_button_upload']	= 'Upload';
 
 $lang['nc_common_shipping_free']	= '（免运费）';
 
-$lang['pointslogindesc']			=	'会员登录';
+$lang['pointslogindesc']			=	'Member login';
 $lang['pointsappdesc']				=	'兑换到其它应用';
 $lang['pointsregistdesc']			=	'注册会员';
 $lang['pointscommentsdesc']			=	'评论商品';
@@ -84,7 +84,7 @@ $lang['nc_selling_goods']			= "销售中的商品";
 $lang['nc_mystroe']					= "我的店铺";
 $lang['nc_favorites_goods']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
-$lang['nc_cart_no_goods']			= "您的购物车中暂无商品，赶快选择心爱的商品吧！";
+$lang['nc_cart_no_goods']			= "You haven't made an appointment yet";
 $lang['nc_check_cart']				= "查看购物车";
 $lang['nc_accounts_goods']			= "结算商品";
 $lang['nc_delete']					= "删除";
@@ -127,8 +127,8 @@ $lang['nc_circle']	= '圈子';
  * 店铺地图
  */
 $lang['member_map_city']		= '市';
-$lang['member_map_store_name']		= '店铺名称';
-$lang['member_map_address']			= '详细地址';
+$lang['member_map_store_name']		= 'Clinic Name';
+$lang['member_map_address']			= 'Clinic Address';
 $lang['member_map_submit']			= '确认保存';
 $lang['member_map_success']			= '保存成功';
 $lang['member_map_loading']			= '地图加载中...';

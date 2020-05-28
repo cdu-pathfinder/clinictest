@@ -157,7 +157,7 @@ KindEditor.lang({
 	'filemanager.viewType' : '顯示方式：',
 	'filemanager.viewImage' : '縮略圖',
 	'filemanager.listImage' : '詳細信息',
-	'filemanager.orderType' : '排序方式：',
+	'filemanager.orderType' : 'Sorting method：',
 	'filemanager.fileName' : '名稱',
 	'filemanager.fileSize' : '大小',
 	'filemanager.fileType' : '類型',

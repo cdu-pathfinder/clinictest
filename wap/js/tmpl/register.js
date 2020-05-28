@@ -1,7 +1,7 @@
 $(function(){
 	
 	
-	$.sValid.init({//注册验证
+	$.sValid.init({//register验证
         rules:{
         	username:"required",
             userpwd:"required",            
@@ -12,12 +12,12 @@ $(function(){
             }
         },
         messages:{
-            username:"用户名必须填写！",
-            userpwd:"密码必填!", 
-            password_confirm:"确认密码必填!",
+            username:"user name is required！",
+            userpwd:"password is required!", 
+            password_confirm:"confirm password!",
             email:{
-            	required:"邮件必填!",
-            	email:"邮件格式不正确"           	
+            	required:"email is required!",
+            	email:"The email format is incorrect"           	
             }
         },
         callback:function (eId,eMsg,eRules){

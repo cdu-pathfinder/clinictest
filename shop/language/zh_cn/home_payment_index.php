@@ -7,11 +7,11 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * index
  */
-$lang['payment_index_order']					= '订单';
-$lang['payment_index_not_exists']				= '不存在';
-$lang['payment_index_pay_finish']				= '已经支付完毕';
+$lang['payment_index_order']					= 'Order';
+$lang['payment_index_not_exists']				= 'Does not exist';
+$lang['payment_index_pay_finish']				= 'Finsihed payment';
 $lang['payment_index_add_info_fail']			= '为订单添加支付方式信息失败';
-$lang['payment_index_refresh_fail']				= '刷新失败';
+$lang['payment_index_refresh_fail']				= 'Fail to refresh';
 $lang['payment_index_sys_not_support']			= '系统不支持选定的支付方式:';
 $lang['payment_index_lose_file']				= '指定的支付接口不存在';
 $lang['payment_index_spec_order_not_exists1']	= '支付编号为';

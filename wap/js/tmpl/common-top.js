@@ -11,15 +11,15 @@ $(function (){
 		    		+'<div class="main-op-table main-op-warp">'
 		    			+'<a href="'+WapSiteUrl+'/index.html" class="quarter">'
 		    				+'<span class="i-home"></span>'
-		    				+'<p>首页</p>'
+		    				+'<p>home</p>'
 		    			+'</a>'
 		    			+'<a href="'+WapSiteUrl+'/tmpl/product_first_categroy.html" class="quarter">'
 		    				+'<span class="i-categroy"></span>'
-		    				+'<p>分类</p>'
+		    				+'<p>categories</p>'
 		    			+'</a>'
 		    			+'<a href="'+WapSiteUrl+'/tmpl/cart_list.html" class="quarter">'
 		    				+'<span class="i-cart"></span>'
-		    				+'<p>购物车</p>'
+		    				+'<p>chart</p>'
 		    			+'</a>'
 		    			+'<a href="'+WapSiteUrl+'/tmpl/member/member.html?act=member" class="quarter">'
 		    				+'<span class="i-mine"></span>'
@@ -34,9 +34,9 @@ $(function (){
 		$(".main-opera-pannel").toggle();
 	});
 	//当前页面
-	if(headTitle == "商品分类"){
+	if(headTitle == "商品categories"){
 		$(".i-categroy").parent().addClass("current");
-	}else if(headTitle == "购物车列表"){
+	}else if(headTitle == "chart列表"){
 		$(".i-cart").parent().addClass("current");
 	}else if(headTitle == "Personl Center"){
 		$(".i-mine").parent().addClass("current");

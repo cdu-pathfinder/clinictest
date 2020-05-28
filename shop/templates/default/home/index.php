@@ -32,14 +32,14 @@
     <?php } ?>
     <div class="proclamation">
       <ul class="tabs-nav">
-        <li class="tabs-selected">
+        <!-- <li class="tabs-selected">
           <h3><?php echo $output['show_article']['notice']['ac_name'];?></h3>
-        </li>
+        </li> -->
         <li>
-          <h3>招商入驻</h3>
+          <h3>clinic entry</h3>
         </li>
       </ul>
-      <div class="tabs-panel">
+      <!-- <div class="tabs-panel tabs-hide">
         <ul class="mall-news">
           <?php if(!empty($output['show_article']['notice']['list']) && is_array($output['show_article']['notice']['list'])) { ?>
           <?php foreach($output['show_article']['notice']['list'] as $val) { ?>
@@ -48,8 +48,8 @@
           <?php } ?>
           <?php } ?>
         </ul>
-      </div>
-      <div class="tabs-panel tabs-hide">
+      </div> -->
+      <div class="tabs-panel">
         <a href="<?php echo urlShop('store_joinin', 'index');?>" title="Apply for clinic admission; The application has been submitted, you can check the current audit status" class="store-join-btn" target="_blank">&nbsp;</a>
         <a href="<?php echo urlShop('document', 'index', array('code' => 'open_store'));?>" target="_blank" class="store-join-help"><i class="icon-question-sign"></i>View clinic opening agreement</a>
 

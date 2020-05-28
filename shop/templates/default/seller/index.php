@@ -6,11 +6,11 @@
       <dl class="ncsc-seller-info">
         <dt class="seller-name">
           <h3><?php echo $_SESSION['seller_name']; ?></h3>
-          <h5>(用户名：<?php echo $_SESSION['member_name']; ?>)</h5>
+          <h5>(username：<?php echo $_SESSION['member_name']; ?>)</h5>
         </dt>
-        <dd class="store-logo"><p><img src="<?php echo getStoreLogo($output['store_info']['store_label']);?>"/></p><a href="<?php echo urlShop('store_setting', 'store_setting');?>"><i class="icon-edit"></i>编辑店铺设置</a> </dd>
-        <dd class="seller-permission">管理权限：<strong><?php echo $_SESSION['seller_group_name'];?></strong></dd>
-        <dd class="seller-last-login">最后登录：<strong><?php echo $_SESSION['seller_last_login_time'];?></strong>
+        <dd class="store-logo"><p><img src="<?php echo getStoreLogo($output['store_info']['store_label']);?>"/></p><a href="<?php echo urlShop('store_setting', 'store_setting');?>"><i class="icon-edit"></i>Edit clinic Settings</a> </dd>
+        <dd class="seller-permission">Authority management:<strong><?php echo $_SESSION['seller_group_name'];?></strong></dd>
+        <dd class="seller-last-login">Last login:<strong><?php echo $_SESSION['seller_last_login_time'];?></strong>
         </dd>
         <dd class="store-name"><?php echo $lang['store_name'].$lang['nc_colon'];?><a href="<?php echo urlShop('show_store', 'index', array('store_id' => $_SESSION['store_id']), $output['store_info']['store_domain']);?>" target="_blank"><?php echo $output['store_info']['store_name'];?></a></dd>
         <dd class="store-grade"><?php echo $lang['store_store_grade'].$lang['nc_colon'];?><strong><?php echo $output['store_info']['grade_name']; ?></strong></dd>
@@ -19,12 +19,12 @@
       <div class="detail-rate">
       <h5>
 <strong><?php echo $lang['store_dynamic_evaluation'].$lang['nc_colon'];?></strong>
-与行业相比
+Compared with the industry
 </h5>
         <ul>
             <?php  foreach ($output['store_info']['store_credit'] as $value) {?>
             <li>
-            <?php echo $value['text'];?><span class="credit"><?php echo $value['credit'];?> 分</span>
+            <?php echo $value['text'];?><span class="credit"><?php echo $value['credit'];?> points</span>
             <span class="<?php echo $value['percent_class'];?>"><i></i><?php echo $value['percent_text'];?><em><?php echo $value['percent'];?></em></span>
             </li>
             <?php } ?>
@@ -40,13 +40,13 @@
       </div>
       <div class="content">
         <dl class="focus">
-          <dt>店铺商品发布情况：</dt><dd title="已发布/<?php echo $lang['store_publish_goods'];?>"><em id="nc_goodscount">0</em>&nbsp;/&nbsp;<?php if ($output['store_info']['grade_goodslimit'] != 0){ echo $output['store_info']['grade_goodslimit'];} else { echo '不限';} ?></dd><dt><?php echo $lang['store_publish_album'].$lang['nc_colon'];?></dt><dd><em id="nc_imagecount">0</em>&nbsp;/&nbsp;<?php echo $output['store_info']['grade_albumlimit']; ?></dd>
+          <dt>Clinic doctors release:</dt><dd title="published/<?php echo $lang['store_publish_goods'];?>"><em id="nc_goodscount">0</em>&nbsp;/&nbsp;<?php if ($output['store_info']['grade_goodslimit'] != 0){ echo $output['store_info']['grade_goodslimit'];} else { echo 'unlimited';} ?></dd><dt><?php echo $lang['store_publish_album'].$lang['nc_colon'];?></dt><dd><em id="nc_imagecount">0</em>&nbsp;/&nbsp;<?php echo $output['store_info']['grade_albumlimit']; ?></dd>
         </dl>
         <ul>
           <li><a href="index.php?act=store_goods_online&op=index"><?php echo $lang['store_goods_selling'];?> <strong id="nc_online"></strong></a></li>
           <?php if (C('goods_verify')) {?>
-          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=10" title="<?php echo $lang['store_inform30'];?>">发布待平台审核 <strong id="nc_waitverify"></strong></a></li>
-          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=0" title="<?php echo $lang['store_inform30'];?>">平台审核失败 <strong id="nc_verifyfail"></strong></a></li>
+          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=10" title="<?php echo $lang['store_inform30'];?>">released, wait for reviewing <strong id="nc_waitverify"></strong></a></li>
+          <li><a href="index.php?act=store_goods_offline&op=index&type=wait_verify&verify=0" title="<?php echo $lang['store_inform30'];?>">Platform view failed <strong id="nc_verifyfail"></strong></a></li>
           <?php }?>
           <li><a href="index.php?act=store_goods_offline&op=index"><?php echo $lang['store_goods_storage'];?> <strong id="nc_offline"></strong></a></li>
           <li><a href="index.php?act=store_goods_offline&op=index&type=lock_up"><?php echo $lang['store_goods_show0'];?> <strong id="nc_lockup"></strong></a></li>
@@ -101,36 +101,36 @@
         <ul>
           <li><a href="index.php?act=store_order&op=index&state_type=state_new"><?php echo $lang['store_order_pay'];?> <strong id="nc_payment"></strong></a></li>
           <li><a href="index.php?act=store_order&op=index&state_type=state_pay"><?php echo $lang['store_shipped'];?> <strong id="nc_delivery"></strong></a></li>
-          <li><a href="index.php?act=store_refund&lock=2"> <?php echo '售前退款';?> <strong id="nc_refund_lock"></strong></a></li>
-          <li><a href="index.php?act=store_refund&lock=1"> <?php echo '售后退款';?> <strong id="nc_refund"></strong></a></li>
-          <li><a href="index.php?act=store_return&lock=2"> <?php echo '售前退货';?> <strong id="nc_return_lock"></strong></a></li>
-          <li><a href="index.php?act=store_return&lock=1"> <?php echo '售后退货';?> <strong id="nc_return"></strong></a></li>
-          <li><a href="index.php?act=store_bill&op=index&bill_state=1"> <?php echo '待确认账单';?> <strong id="nc_bill_confirm"></strong></a></li>
+          <li><a href="index.php?act=store_refund&lock=2"> <?php echo 'Pre-sale refund';?> <strong id="nc_refund_lock"></strong></a></li>
+          <li><a href="index.php?act=store_refund&lock=1"> <?php echo 'After-sales refund';?> <strong id="nc_refund"></strong></a></li>
+          <li><a href="index.php?act=store_return&lock=2"> <?php echo 'Pre-sale cancel';?> <strong id="nc_return_lock"></strong></a></li>
+          <li><a href="index.php?act=store_return&lock=1"> <?php echo 'After-sale cancel';?> <strong id="nc_return"></strong></a></li>
+          <li><a href="index.php?act=store_bill&op=index&bill_state=1"> <?php echo 'Bill to be confirmed';?> <strong id="nc_bill_confirm"></strong></a></li>
         </ul>
       </div>
     </div>
     <div class="container type-c">
       <div class="hd">
-        <h3>销售情况统计</h3>
-        <h5>按周期统计商家店铺的订单量和订单金额</h5>
+        <h3>Booking statistics</h3>
+        <h5>Statistics of clinic order quantity and order amount by cycle</h5>
       </div>
       <div class="content">
         <table class="ncsc-table-style">
           <thead>
             <tr>
-              <th class="w50">项目</th>
-              <th>订单量</th>
-              <th class="w100">订单金额</th>
+              <th class="w50">items</th>
+              <th>appointments</th>
+              <th class="w100">order amount</th>
             </tr>
           </thead>
           <tbody>
             <tr class="bd-line">
-              <td>日销量</td>
+              <td>Daily appointments</td>
               <td><?php echo empty($output['daily_sales']['count']) ? '--' : $output['daily_sales']['count'];?></td>
               <td><?php echo empty($output['daily_sales']['sum']) ? '--' : $lang['currency'].$output['daily_sales']['sum'];?></td>
             </tr>
             <tr class="bd-line">
-              <td>月销量</td>
+              <td>monthly appointments</td>
               <td><?php echo empty($output['monthly_sales']['count']) ? '--' : $output['monthly_sales']['count'];?></td>
               <td><?php echo empty($output['monthly_sales']['sum']) ? '--' : $lang['currency'].$output['monthly_sales']['sum'];?></td>
             </tr>
@@ -140,17 +140,17 @@
     </div>
     <div class="container type-c h500">
       <div class="hd">
-        <h3>单品销售排名</h3>
-        <h5>掌握最热销的商品及时补充货源</h5>
+        <h3>Doctor's appointments rank</h3>
+        <h5>Master the hottest doctors</h5>
       </div>
       <div class="content">
         <table class="ncsc-table-style">
           <thead>
             <tr>
-              <th class="w50">排名</th>
+              <th class="w50">rank</th>
               <th class="w70"></th>
-              <th class="tl">商品信息</th>
-              <th class="w60">销量</th>
+              <th class="tl">doctor information</th>
+              <th class="w60">appointments</th>
             </tr>
           </thead>
           <tbody>
@@ -170,7 +170,7 @@
         </table>
       </div>
     </div>
-    <div class="container type-d h500">
+    <!-- <div class="container type-d h500">
       <div class="hd">
         <h3><?php echo $lang['store_market_info'];?></h3>
         <h5>合理参加促销活动可以有效提升商品销量</h5>
@@ -273,7 +273,7 @@
         </dl>
         <?php }?>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <script>

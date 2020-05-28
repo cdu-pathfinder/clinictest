@@ -3,37 +3,37 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  *  公共语言	
  */
-$lang['home_message_no_record']	 		= '没有符合条件的记录';
-$lang['home_message_received_message']	= '收到消息';
-$lang['home_message_private_message']	= '已发送消息';
-$lang['home_message_system_message']	= '系统消息';
-$lang['home_message_seller_message']	= '商家消息';
-$lang['home_message_send_message']		= '发送站内信';
-$lang['home_message_view_message']		= '查看站内信';
-$lang['home_message_select_all']		= '全选';
-$lang['home_message_delete_confirm']	= '您确实要删除该站内信吗';
-$lang['home_message_delete']			= '删除';
-$lang['home_message_username']			= '用户名';
-$lang['home_message_content']			= '内容';
-$lang['home_message_last_update']		= '最后更新';
+$lang['home_message_no_record']	 		= 'No record';
+$lang['home_message_received_message']	= 'New massage';
+$lang['home_message_private_message']	= 'Sent message';
+$lang['home_message_system_message']	= 'System message';
+$lang['home_message_seller_message']	= 'Clinic message';
+$lang['home_message_send_message']		= 'Send message';
+$lang['home_message_view_message']		= 'View message';
+$lang['home_message_select_all']		= 'Select all';
+$lang['home_message_delete_confirm']	= 'Comfrim to delete ?';
+$lang['home_message_delete']			= 'Delete';
+$lang['home_message_username']			= 'User name';
+$lang['home_message_content']			= 'Content';
+$lang['home_message_last_update']		= 'latest update';
 $lang['home_message_command']			= '操作';
-$lang['home_message_view_detail']		= '查看详情';
-$lang['home_message_no_message']		= '目前没有未读信息';
-$lang['home_message_receiver_null']		= '收件人不能为空';
-$lang['home_message_content_null']		= '内容不能为空';
-$lang['home_message_reply']				= '回复';
-$lang['home_message_submit']			= '提交';
-$lang['home_message_storename'] = '店铺名称';
-$lang['home_message_sender'] = '发信人';
-$lang['home_message_recipient'] = '收信人';
-$lang['home_message_speak'] = '说';
+$lang['home_message_view_detail']		= 'View Detail';
+$lang['home_message_no_message']		= 'Unread message';
+$lang['home_message_receiver_null']		= 'Please specify at least one recipient';
+$lang['home_message_content_null']		= 'Content can not be blank';
+$lang['home_message_reply']				= 'Reply';
+$lang['home_message_submit']			= 'Sumbit';
+$lang['home_message_storename'] = 'Clinic Name';
+$lang['home_message_sender'] = 'Sender';
+$lang['home_message_recipient'] = 'Recipients';
+$lang['home_message_speak'] = 'Speak';
 $lang['home_message_noallowsend'] = '您没有权限发送站内信';
 /**
  * 发送站内信
  */
-$lang['home_message_reveiver']			= '收件人';
+$lang['home_message_reveiver']			= 'Recipients';
 $lang['home_message_separate']			= '多个收件人请用逗号分隔';
-$lang['home_message_ensure_send']		= '确认发送';
+$lang['home_message_ensure_send']		= 'Message sent';
 $lang['home_message_friend']			= '我的好友';
 $lang['home_message_no_friends']		= '您还没有好友';
 /**

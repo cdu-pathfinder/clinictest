@@ -4,9 +4,9 @@
  *
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net
- * @link       http://www.shopnc.net
+ * @copyright  gourp10 
+ * liam
+ * @license    cdu
  * @since      File available since Release v1.1
  */
 defined('InShopNC') or exit('Access Invalid!');
@@ -33,7 +33,7 @@ class goodsControl extends mobileHomeControl{
         //所需字段
         $fieldstr = "goods_id,goods_commonid,store_id,goods_name,goods_price,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
 
-        //排序方式
+        //Sorting method
         $order = $this->_goods_list_order($_GET['key'], $_GET['order']);
 
         $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fieldstr, $order, $this->page);
@@ -46,7 +46,7 @@ class goodsControl extends mobileHomeControl{
     }
 
     /**
-     * 商品列表排序方式
+     * 商品列表Sorting method
      */
     private function _goods_list_order($key, $order) {
         $result = 'goods_id desc';

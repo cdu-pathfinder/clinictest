@@ -3,42 +3,42 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 共有语言
  */
-$lang['index_no_record']			= '没有找到符合条件的商品';
+$lang['index_no_record']			= 'No qualified doctor was found';
 
 /**
  * index
  */
-$lang['goods_class_index_nav_not_exists']	= '您所选导航不存在';
-$lang['goods_class_index_sold']				= '销量';
-$lang['goods_class_index_sold_asc']			= '点击按销量从低到高排序';
-$lang['goods_class_index_sold_desc']		= '点击按销量从高到低排序';
+$lang['goods_class_index_nav_not_exists']	= 'The navigation you selected does not exist';
+$lang['goods_class_index_sold']				= 'Num';
+$lang['goods_class_index_sold_asc']			= 'Click to sort by booking volume from low to high';
+$lang['goods_class_index_sold_desc']		= 'Click to sort by booking volume from high to low';
 $lang['goods_class_index_credit']			= '信用';
 $lang['goods_class_index_credit_asc']		= '点击按信用从低到高排序';
 $lang['goods_class_index_credit_desc']		= '点击按信用从高到低排序';
-$lang['goods_class_index_price']			= '价格';
-$lang['goods_class_index_price_asc']		= '点击按价格从低到高排序';
-$lang['goods_class_index_price_desc']		= '点击按价格从高到低排序';
+$lang['goods_class_index_price']			= 'price';
+$lang['goods_class_index_price_asc']		= 'Click to sort by price from low to high';
+$lang['goods_class_index_price_desc']		= 'Click to sort by price from high to low';
 $lang['goods_class_index_click']			= '人气';
 $lang['goods_class_index_click_asc']		= '点击按人气从低到高排序';
 $lang['goods_class_index_click_desc']		= '点击按人气从高到低排序';
 $lang['goods_class_index_brand']			= '品牌';
 $lang['goods_class_index_location']			= '所在地区';
-$lang['goods_class_index_price']			= '价格';
-$lang['goods_class_index_keyword']			= '关键字';
-$lang['goods_class_index_goods_class']		= '商品分类';
-$lang['goods_class_index_search_results']		= '搜索结果';
-$lang['goods_class_index_selected']				= '已选';
-$lang['goods_class_index_submit']				= '提交';
-$lang['goods_class_index_custom_price_section']	= '自定义价格区间';
-$lang['goods_class_index_please_choose']		= '请选择';
-$lang['goods_class_index_display']				= '显示';
-$lang['goods_class_index_list']					= '列表';
-$lang['goods_class_index_pane']					= '大图';
-$lang['goods_class_index_by_list']				= '以列表显示';
-$lang['goods_class_index_by_pane']				= '以方格显示';
-$lang['goods_class_index_default']				= '默认';
-$lang['goods_class_index_default_sort']			= '默认排序';
-$lang['goods_class_index_store_name']			= '店铺名称';
+$lang['goods_class_index_price']			= 'price';
+$lang['goods_class_index_keyword']			= 'keyword';
+$lang['goods_class_index_goods_class']		= 'doctor class';
+$lang['goods_class_index_search_results']		= 'search result';
+$lang['goods_class_index_selected']				= 'selected';
+$lang['goods_class_index_submit']				= 'submit';
+$lang['goods_class_index_custom_price_section']	= 'Custom price range';
+$lang['goods_class_index_please_choose']		= 'please choose';
+$lang['goods_class_index_display']				= 'display';
+$lang['goods_class_index_list']					= 'list';
+$lang['goods_class_index_pane']					= 'pane';
+$lang['goods_class_index_by_list']				= 'by list';
+$lang['goods_class_index_by_pane']				= 'by pane';
+$lang['goods_class_index_default']				= 'default';
+$lang['goods_class_index_default_sort']			= 'default sort';
+$lang['goods_class_index_store_name']			= 'clinic name';
 $lang['goods_class_index_goods_price']			= '市场价';
 $lang['goods_class_index_store_goods_price']	= 'Platform Price';
 $lang['goods_class_index_normal_goods_price']	= '原价';
@@ -48,8 +48,8 @@ $lang['goods_class_index_through']				= '直通车';
 $lang['goods_class_index_jian']					= '笔';
 $lang['goods_class_index_comment']				= '评论';
 $lang['goods_class_index_number_of_consult']	= '条';
-$lang['index_no_record']			= '没有找到符合条件的商品';
-$lang['goods_class_viewed_goods']				= '最近浏览';
+$lang['index_no_record']			= 'No qualified doctor was found';
+$lang['goods_class_viewed_goods']				= 'Recent browse';
 $lang['goods_class_search']						= '商品高级搜索';
 $lang['goods_class_index_store_area']			= '提示:店铺所在地区,选到最后一级条件可用';
 $lang['goods_class_index_goods_name']	 		= '商品名称';

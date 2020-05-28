@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>商品详情</title>
+	<title>doctor detil infor</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -46,7 +46,7 @@
 				<div class="pddc-gray-warp">
 	                <a href="product_info.html?goods_id=<%=goods_info.goods_id%>"  class="pddetail-go-title clearfix">
 	                    <span class="pgt-title fleft">
-	                        图文详情
+	                        pic-word infor
 	                    </span>
 	                    <span class="pgt-go fright">
 	                        <span class="i-go-right"></span>
@@ -58,15 +58,15 @@
 						<div class="pddcp-one-top">
 							<ul>
 								<li class="clearfix">
-									<span class="key">价格：</span>
-									<div class="price value">￥<%=goods_info.goods_price%></div>
+									<span class="key">price：</span>
+									<div class="price value">$<%=goods_info.goods_price%></div>
 								</li>
 								<li class="clearfix">
 									<span class="key">原价：</span>
-									<div class="value"><del>￥<%=goods_info.goods_marketprice%></del></div>
+									<div class="value"><del>$<%=goods_info.goods_marketprice%></del></div>
 								</li>
 								<li class="clearfix">
-									<span class="key">销量：</span>
+									<span class="key">appointments：</span>
 									<div class="value"><%=goods_info.goods_salenum%>件</div>
 								</li>
 							</ul>
@@ -162,7 +162,7 @@
 							<div class="opera-product-wp">
 								<div class="opera-pd-item buy-now">立即购买</div>
 								<%if(goods_info.promotion_type!='groupbuy'){%>
-								<div class="opera-pd-item add-to-cart">加入购物车</div>
+								<div class="opera-pd-item add-to-cart">加入chart</div>
 								<%}%>
 							</div>
 						</li>
@@ -178,7 +178,7 @@
 									<span class="pddc-commendw-t" title="<%=goods_commend_list[i].goods_name%>">
 										<%=goods_commend_list[i].goods_name%>
 									</span>
-									<span class="pddc-commendw-price" title="￥<%=goods_commend_list[i].goods_price%>">￥<%=goods_commend_list[i].goods_price%></span>
+									<span class="pddc-commendw-price" title="$<%=goods_commend_list[i].goods_price%>">$<%=goods_commend_list[i].goods_price%></span>
 								</a>
 							<%}%>
 						</div>

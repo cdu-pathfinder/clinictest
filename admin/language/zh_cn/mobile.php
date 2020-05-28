@@ -6,97 +6,97 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * index
  */
-$lang['link_index_del_succ']	= '删除成功。';
-$lang['link_index_choose_del']	= '请选择要删除的内容!';
-$lang['link_index_mb_ad']		= '广告管理';
-$lang['link_index_title']		= '标题';
-$lang['link_index_category']	= '分类';
-$lang['link_index_pic_sign']	= '展示图片';
-$lang['link_all']               = '全部';
-$lang['link_help1']				= '设置的广告信息将显示在手机端首页';
+$lang['link_index_del_succ']	= 'Successfully deleted.';
+$lang['link_index_choose_del']	= 'Please select content to delete!';
+$lang['link_index_mb_ad']		= 'Advertising management';
+$lang['link_index_title']		= 'Title';
+$lang['link_index_category']	= 'Category';
+$lang['link_index_pic_sign']	= 'Image display';
+$lang['link_all']               = 'All';
+$lang['link_help1']				= 'The set adv information will be displayed on the homepage of the mobile phone';
 /**
  * 添加
  */
-$lang['link_add_count_limit']	= '最多只可同时发布4条有效广告';
-$lang['link_add_title_null']	= '标题不能为空';
-$lang['link_add_sort_int']		= '排序仅能为数字';
-$lang['link_add_back_to_list']	= '返回列表';
-$lang['link_add_again']			= '继续新增';
-$lang['link_add_succ']			= '添加成功';
-$lang['link_add_fail']			= '添加失败';
-$lang['link_add_select']		= '请选择...';
-$lang['link_add_name']			= '商品列表显示的标题';
-$lang['link_add_href']			= '点击广告后查找该分类下的商品';
-$lang['link_add_sign']			= '广告图片，建议大小 620px * 160px';
-$lang['link_add_sort_tip']		= '数字越小越靠前';
-$lang['link_add_category_null']	= '请选择分类';
-$lang['link_add_pic_null']		= '请选择广告图片';
-$lang['link_add_pic_sign_error']	= '只接受图片文件gif, jpg, jpeg, png';
+$lang['link_add_count_limit']	= 'You can only publish up to 4 active ads at the same time';
+$lang['link_add_title_null']	= 'Title is required';
+$lang['link_add_sort_int']		= 'Sorting can only be numeric';
+$lang['link_add_back_to_list']	= 'Back to list';
+$lang['link_add_again']			= 'Continue to add';
+$lang['link_add_succ']			= 'Added successfully';
+$lang['link_add_fail']			= 'add failed';
+$lang['link_add_select']		= 'Please select...';
+$lang['link_add_name']			= 'The title of the doctor list';
+$lang['link_add_href']			= 'Click on the ad to find the doctors under this category';
+$lang['link_add_sign']			= 'adv image, recommended size 620px * 160px';
+$lang['link_add_sort_tip']		= 'The smaller the number, the higher';
+$lang['link_add_category_null']	= 'Please select a category';
+$lang['link_add_pic_null']		= 'Please select an advertising image';
+$lang['link_add_pic_sign_error']	= 'Image foramt only gif, jpg, jpeg, png';
 
 /**
  * index
  */
-$lang['link_index_mb_category']	= '分类图片设置';
-$lang['link_index_category']	= '分类';
-$lang['link_help1']				= '设置的广告信息将显示在手机端首页';
+$lang['link_index_mb_category']	= 'Category picture setting';
+$lang['link_index_category']	= 'Category';
+$lang['link_help1']				= 'The set advertisement information will be displayed on the homepage of the mobile phone';
 /**
  * 添加
  */
-$lang['link_add_category_exist']= '该分类已添加，请编辑或删除该分类信息';
-$lang['link_add_category_null']	= '请选择分类';
+$lang['link_add_category_exist']= 'The category has been added, please edit or delete the category information';
+$lang['link_add_category_null']	= 'Please select a category';
 
 /**
  * index
  */
-$lang['home_index_del_succ']	= '删除成功。';
-$lang['home_index_choose_del']	= '请选择要删除的内容!';
-$lang['home_index_mb_ad']		= '广告管理';
-$lang['home_index_title']		= '标题';
-$lang['home_index_desc']		= '描述';
-$lang['home_index_keyword']		= '关键词';
-$lang['home_index_category']	= '分类';
-$lang['home_index_pic_sign']	= '展示图片';
-$lang['home_all']               = '全部';
-$lang['home_help1']				= '设置手机端首页内容';
+$lang['home_index_del_succ']	= 'Successfully deleted';
+$lang['home_index_choose_del']	= 'Please select content to delete!';
+$lang['home_index_mb_ad']		= 'Advertising management';
+$lang['home_index_title']		= 'Title';
+$lang['home_index_desc']		= 'Description';
+$lang['home_index_keyword']		= 'Keyword';
+$lang['home_index_category']	= 'Category';
+$lang['home_index_pic_sign']	= 'Display image';
+$lang['home_all']               = 'All';
+$lang['home_help1']				= 'Set mobile homepage content';
 /**
  * 添加
  */
-$lang['home_add_count_limit']	= '最多只可同时发布6条有效广告';
-$lang['home_add_null']			= '请填写内容';
-$lang['home_add_maxlength']		= '不能超过6个字符';
-$lang['home_add_sort_int']		= '排序仅能为数字';
-$lang['home_add_back_to_list']	= '返回列表';
-$lang['home_add_again']			= '继续新增';
-$lang['home_add_succ']			= '添加成功';
-$lang['home_add_fail']			= '添加失败';
-$lang['home_add_select']		= '请选择...';
-$lang['home_add_name']			= '商品列表显示的标题';
-$lang['home_add_desc']			= '商品列表显示的描述';
-$lang['home_add_keyword']		= '商品列表显示的关键字';
-$lang['home_add_href']			= '点击广告后查找该分类下的商品';
-$lang['home_add_sign']			= '广告图片，建议大小 80px * 90px';
-$lang['home_add_sort_tip']		= '数字越小越靠前';
-$lang['home_add_category_null']	= '请选择分类';
-$lang['home_add_pic_null']		= '请选择广告图片';
-$lang['home_add_pic_sign_error']	= '只接受图片文件gif, jpg, jpeg, png';
-$lang['home_edit_again']	= '重新编辑';
-$lang['home_edit_succ']		= '保存成功';
-$lang['home_edit_fail']		= '保存失败';
+$lang['home_add_count_limit']	= 'Only 6 effective advertisements can be posted at the same time';
+$lang['home_add_null']			= 'Please fill in the content';
+$lang['home_add_maxlength']		= 'Cannot exceed 6 characters';
+$lang['home_add_sort_int']		= 'Sorting can only be numeric';
+$lang['home_add_back_to_list']	= 'Back to list';
+$lang['home_add_again']			= 'Continue to add';
+$lang['home_add_succ']			= 'Added successfully';
+$lang['home_add_fail']			= 'add failed';
+$lang['home_add_select']		= 'Please select...';
+$lang['home_add_name']			= 'The title of the doctor list';
+$lang['home_add_desc']			= 'Description of doctor list display';
+$lang['home_add_keyword']		= 'Keywords displayed in the doctor list';
+$lang['home_add_href']			= 'Click on the ad to find the doctor under this category';
+$lang['home_add_sign']			= 'Advertising image, recommended size 80px * 90px';
+$lang['home_add_sort_tip']		= 'The smaller the number, the higher';
+$lang['home_add_category_null']	= 'Please select category';
+$lang['home_add_pic_null']		= 'Please select an advertising image';
+$lang['home_add_pic_sign_error']	= 'image format only gif, jpg, jpeg, png';
+$lang['home_edit_again']	= 'Edit again';
+$lang['home_edit_succ']		= 'Save success';
+$lang['home_edit_fail']		= 'Save failed';
 /**
  * 编辑
  */
-$lang['link_edit_again']	= '重新编辑';
-$lang['link_edit_succ']		= '保存成功';
-$lang['link_edit_fail']		= '保存失败';
+$lang['link_edit_again']	= 'Re-edit';
+$lang['link_edit_succ']		= 'Saved successfully';
+$lang['link_edit_fail']		= 'Save failed';
 
 /**
  * 意见反馈
  */
-$lang['feedback_mange_title'] 	= '意见反馈';
-$lang['feedback_del_succ'] 		= '删除成功';
-$lang['feedback_del_fiald'] 	= '删除失败';
-$lang['feedback_index_content'] = '反馈内容';
-$lang['feedback_index_time'] 	= '时间';
-$lang['feedback_index_from'] 	= '来自';
+$lang['feedback_mange_title'] 	= 'Feedback';
+$lang['feedback_del_succ'] 		= 'Successfully deleted';
+$lang['feedback_del_fiald'] 	= 'failed to delete';
+$lang['feedback_index_content'] = 'Feedback content'; 
+$lang['feedback_index_time'] 	= 'Time';
+$lang['feedback_index_from'] 	= 'From';
 
 ?>

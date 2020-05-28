@@ -81,8 +81,8 @@
     <ol>
       <li class="ico05"><i></i><?php echo $lang['login_register_buy_info'];?></li>
       <li class="ico01"><i></i><?php echo $lang['login_register_openstore_info'];?></li>
-      <li class="ico03"><i></i><?php echo $lang['login_register_sns_info'];?></li>
-      <li class="ico02"><i></i><?php echo $lang['login_register_collect_info'];?></li>
+      <!-- <li class="ico03"><i></i><?php echo $lang['login_register_sns_info'];?></li>
+      <li class="ico02"><i></i><?php echo $lang['login_register_collect_info'];?></li> -->
       <li class="ico06"><i></i><?php echo $lang['login_register_talk_info'];?></li>
       <li class="ico04"><i></i><?php echo $lang['login_register_honest_info'];?></li>
       <div class="clear"></div>

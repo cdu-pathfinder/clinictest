@@ -1,24 +1,24 @@
 $(function(){
-    var memberHtml = '<a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/member.html?act=member">个人中心</a><a class="btn mr5" href="'+WapSiteUrl+'//tmpl/member/register.html">注册</a>';
+    var memberHtml = '<a class="btn mr5" href="'+WapSiteUrl+'/tmpl/member/member.html?act=member">user center</a><a class="btn mr5" href="'+WapSiteUrl+'//tmpl/member/register.html">register</a>';
     var act = GetQueryString("act");
     if(act && act == "member"){
-        memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">注销账号</a>';
+        memberHtml = '<a class="btn mr5" id="logoutbtn" href="javascript:void(0);">logout账号</a>';
     }
     var tmpl = '<div class="footer">'
         +'<div class="footer-top">'
             +'<div class="footer-tleft">'+ memberHtml +'</div>'
             +'<a href="javascript:void(0);"class="gotop">'
                 +'<span class="gotop-icon"></span>'
-                +'<p>回顶部</p>'
+                +'<p>back top</p>'
             +'</a>'
         +'</div>'
         +'<div class="footer-content">'
             +'<p class="link">'
-                +'<a href="javascript:void(0);" class="standard">标准版</a>'
-                +'<a href="javascript:void(0);">下载Android客户端</a>'
+                +'<a href="javascript:void(0);" class="standard">standard version</a>'
+                +'<a href="javascript:void(0);">Will have Android</a>'
             +'</p>'
             +'<p class="copyright">'
-                +'版权所有 2007-2014 © 天津市网城天创科技有限责任公司'
+                +'Power BY Group 10 Liam'
             +'</p>'
         +'</div>'
     +'</div>';
@@ -56,8 +56,8 @@ $(function(){
             userpwd:"required"
         },
         messages:{
-            username:"用户名必须填写！",
-            userpwd:"密码必填!"
+            username:"user name is required！",
+            userpwd:"password is required!"
         },
         callback:function (eId,eMsg,eRules){
             if(eId.length >0){

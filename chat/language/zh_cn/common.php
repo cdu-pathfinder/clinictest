@@ -39,7 +39,7 @@ $lang['nc_common_from']	 = '来自';
 
 $lang['nc_common_rate_null']	 = '暂无评价';
 $lang['nc_common_credit_null']	 = '暂无信用';
-$lang['nc_common_goods_null']	 = '暂无商品';
+$lang['nc_common_goods_null']	 = 'No appointments';
 $lang['nc_common_sell_null']	 = '暂无销量';
 $lang['nc_common_result_null']	 = '暂无符合条件的数据记录';
 
@@ -74,7 +74,7 @@ $lang['nc_selling_goods']			= "销售中的商品";
 $lang['nc_mystroe']					= "我的店铺";
 $lang['nc_favorites_goods']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
-$lang['nc_cart_no_goods']			= "您的购物车中暂无商品，赶快选择心爱的商品吧！";
+$lang['nc_cart_no_goods']			= "You haven't made an appointment yet";
 $lang['nc_check_cart']				= "查看购物车";
 $lang['nc_accounts_goods']			= "结算商品";
 $lang['nc_delete']					= "删除";

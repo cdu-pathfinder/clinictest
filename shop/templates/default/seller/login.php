@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>商家管理中心登录</title>
+<title>clinic management system login</title>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.validation.min.js"></script>
 <link href="<?php echo SHOP_TEMPLATES_URL?>/css/base.css" rel="stylesheet" type="text/css">
@@ -103,22 +103,22 @@ $(document).ready(function() {
   <div class="ncsc-login-title">
     <h2>clinic management center</h2>
     <span>Please enter the name of the clinic you applied for when registering your clinic</br>
-    登录密码为商城用户通用密码</span></div>
+    </span></div>
   <form id="form_login" action="index.php?act=seller_login&op=login" method="post" >
     <?php Security::getToken();?>
     <input name="nchash" type="hidden" value="<?php echo $output['nchash'];?>" />
     <div class="input">
-      <label>用户名</label>
+      <label>username</label>
       <span class="repuired"></span>
       <input name="seller_name" type="text" autocomplete="off" class="text" autofocus>
       <span class="ico"><i class="icon-user"></i></span> </div>
     <div class="input">
-      <label>密码</label>
+      <label>password</label>
       <span class="repuired"></span>
       <input name="password" type="password" autocomplete="off" class="text">
       <span class="ico"><i class="icon-key"></i></span> </div>
     <div class="input">
-      <label>验证码</label>
+      <label>Verification code</label>
       <span class="repuired"></span>
       <input type="text" name="captcha" id="captcha" autocomplete="off" class="text" style="width: 80px;" maxlength="4" size="10" />
       <div class="code">
@@ -126,10 +126,10 @@ $(document).ready(function() {
         <div class="code-img"><a href="javascript:void(0)" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&nchash=<?php echo $output['nchash'];?>&t=' + Math.random();"><img src="index.php?act=seccode&op=makecode&nchash=<?php echo $output['nchash'];?>" name="codeimage" border="0" id="codeimage"></a></div>
         <a href="JavaScript:void(0);" id="hide" class="close" title="<?php echo $lang['login_index_close_checkcode'];?>"><i></i></a> <a href="JavaScript:void(0);" onclick="javascript:document.getElementById('codeimage').src='index.php?act=seccode&op=makecode&nchash=<?php echo $output['nchash'];?>&t=' + Math.random();" class="change" title="<?php echo $lang['login_index_change_checkcode'];?>"><i></i></a> </div>
       <span class="ico"><i class="icon-qrcode"></i></span>
-      <input type="submit" class="login-submit" value="商家登录">
+      <input type="submit" class="login-submit" value="clinic login">
     </div>
   </form>
-  <div class="copyright">Powered by ShopNC2014 © 2007-2014 <a href="http://www.shopnc.net/" target="_blank">shopnc.net</a> </div>
+  <div class="copyright">Powered by CDU IT/581/Group10 </div>
 </div>
 </body>
 </html>

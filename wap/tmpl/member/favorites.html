@@ -26,7 +26,7 @@
                     </span>
                     <div class="mf-infor">
                         <p class="mf-pd-name"><%=favorites_list[i].goods_name %></p>
-                        <p class="mf-pd-price">￥<%=favorites_list[i].goods_price %></p>
+                        <p class="mf-pd-price">$<%=favorites_list[i].goods_price %></p>
                         <p class="mf-pd-comment">收藏编号：<%=favorites_list[i].fav_id %></p>
                         <span class="i-del" goods_id="<%=favorites_list[i].fav_id %>"></span>
                     </div>
@@ -36,7 +36,7 @@
         </ul>
         <%}else{%>
         <div class="no-record">
-            暂无记录
+            No record
         </div>
        <%}%>
 	</script>

@@ -30,7 +30,7 @@
       </dt>
       <dd>
         <ul>
-          <li class="w33pre none"><a href="index.php?act=store&op=store_joinin">开店审核<sub><em id="statistics_store_joinin">0</em></sub></a></li>
+          <li class="w33pre none"><a href="index.php?act=store&op=store_joinin">clinic view<sub><em id="statistics_store_joinin">0</em></sub></a></li>
           <li class="w33pre none"><a href="index.php?act=store&op=store&store_type=expired"><?php echo $lang['dashboard_wel_expired'];?><sub><em id="statistics_store_expired">0</em></sub></a></li>
           <li class="w34pre none"><a href="index.php?act=store&op=store&store_type=expire"><?php echo $lang['dashboard_wel_expire'];?><sub><em id="statistics_store_expire">0</em></sub></a></li>
         </ul>
@@ -44,10 +44,10 @@
       </dt>
       <dd>
         <ul>
-          <li class="w25pre normal"><a href="index.php?act=goods&op=goods"><?php echo $lang['dashboard_wel_new_add'];?><sub title="<?php echo $lang['dashboard_wel_count_goods'];?>"><em id="statistics_week_add_product"></em></sub></a></li>
-          <li class="w25pre none"><a href="<?php echo urlAdmin('goods','goods',array('type'=>'waitverify', 'search_verify' => 10));?>">商品审核<sub><em id="statistics_product_verify">0</em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=inform&op=inform_list"><?php echo $lang['dashboard_wel_inform'];?><sub><em id="statistics_inform_list">0</em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=brand&op=brand_apply"><?php echo $lang['dashboard_wel_brnad_applay'];?><sub><em id="statistics_brand_apply">0</em></sub></a></li>
+          <li class="w33pre normal"><a href="index.php?act=goods&op=goods"><?php echo $lang['dashboard_wel_new_add'];?><sub title="<?php echo $lang['dashboard_wel_count_goods'];?>"><em id="statistics_week_add_product"></em></sub></a></li>
+          <li class="w33pre none"><a href="<?php echo urlAdmin('goods','goods',array('type'=>'waitverify', 'search_verify' => 10));?>">doctor view<sub><em id="statistics_product_verify">0</em></sub></a></li>
+          <li class="w33pre none"><a href="index.php?act=inform&op=inform_list"><?php echo $lang['dashboard_wel_inform'];?><sub><em id="statistics_inform_list">0</em></sub></a></li>
+          <!-- <li class="w25pre none"><a href="index.php?act=brand&op=brand_apply"><?php echo $lang['dashboard_wel_brnad_applay'];?><sub><em id="statistics_brand_apply">0</em></sub></a></li> -->
         </ul>
       </dd>
     </dl>
@@ -59,14 +59,14 @@
       </dt>
       <dd>
         <ul>
-          <li class="w25pre none"><a href="index.php?act=refund&op=refund_manage">退款<sub><em id="statistics_refund"></em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=return&op=return_manage">退货<sub><em id="statistics_return"></em></sub></a></li>
+          <li class="w25pre none"><a href="index.php?act=refund&op=refund_manage">refund<sub><em id="statistics_refund"></em></sub></a></li>
+          <li class="w25pre none"><a href="index.php?act=return&op=return_manage">reback<sub><em id="statistics_return"></em></sub></a></li>
           <li class="w25pre none"><a href="index.php?act=complain&op=complain_new_list"><?php echo $lang['dashboard_wel_complain'];?><sub><em id="statistics_complain_new_list">0</em></sub></a></li>
           <li class="w25pre none"><a href="index.php?act=complain&op=complain_handle_list"><?php echo $lang['dashboard_wel_complain_handle'];?><sub><em id="statistics_complain_handle_list">0</em></sub></a></li>
         </ul>
       </dd>
     </dl>
-    <dl class="operation">
+    <!-- <dl class="operation">
       <dt>
         <div class="ico"><i></i></div>
         <h3><?php echo $lang['nc_operation'];?></h3>
@@ -80,24 +80,24 @@
           <li class="w25pre none"><a href="index.php?act=bill&op=show_statis&os_month=&query_store=&bill_state=3"><?php echo $lang['dashboard_wel_pay_billno'];?><sub><em id="statistics_pay_billno">0</em></sub></a></li>
         </ul>
       </dd>
-    </dl>
+    </dl> -->
     <?php if (C('cms_isuse') != null) {?>
     <dl class="cms">
       <dt>
         <div class="ico"><i></i></div>
         <h3>CMS</h3>
-        <h5>资讯文章/图片画报/会员评论</h5>
+        <h5>Information articles/pictorials/member reviews</h5>
       </dt>
       <dd>
         <ul>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_article', 'cms_article_list_verify');?>">文章审核<sub><em id="statistics_cms_article_verify">0</em></sub></a></li>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_picture', 'cms_picture_list_verify');?>">画报审核<sub><em id="statistics_cms_picture_verify">0</em></sub></a></li>
-          <li class="w34pre none"><a href="<?php echo urlAdmin('cms_comment', 'comment_manage');?>">评论<sub></sub></a></li>
+          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_article', 'cms_article_list_verify');?>">art-review<sub><em id="statistics_cms_article_verify">0</em></sub></a></li>
+          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_picture', 'cms_picture_list_verify');?>">Pic-review<sub><em id="statistics_cms_picture_verify">0</em></sub></a></li>
+          <li class="w34pre none"><a href="<?php echo urlAdmin('cms_comment', 'comment_manage');?>">comments<sub></sub></a></li>
         </ul>
       </dd>
     </dl>
     <?php }?>
-    <?php if (C('circle_isuse') != null) {?>
+    <!-- <?php if (C('circle_isuse') != null) {?>
     <dl class="circle">
       <dt>
         <div class="ico"><i></i></div>
@@ -112,8 +112,8 @@
         </ul>
       </dd>
     </dl>
-    <?php }?>
-    <?php if (C('microshop_isuse') != null){?>
+    <?php }?> -->
+    <!-- <?php if (C('microshop_isuse') != null){?>
     <dl class="microshop">
       <dt>
         <div class="ico"><i></i></div>
@@ -128,28 +128,28 @@
         </ul>
       </dd>
     </dl>
-    <?php }?>
+    <?php }?> -->
     <dl class="system">
       <dt>
         <div class="ico"><i></i><a id="UPDATE" style="visibility:hidden;" title="" target="_blank" href="javascript:void(0);"><sub><span>new</em></span></sub></a></div>
         <h3><?php echo $lang['dashboard_welcome_sys_info'];?></h3>
         <div id="system-info">
           <ul>
-            <li>ShopNC <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['shop_version'];?></span></li>
-            <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
+            <li>ClinicSys <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['shop_version'];?></span></li>
+            <!-- <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_server_os'];?><span><?php echo $output['statistics']['os'];?></span></li>
-            <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li>
+            <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li> -->
             <li>PHP <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['php_version'];?></span></li>
             <li>MYSQL <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['sql_version'];?></span></li>
           </ul>
         </div>
       </dt>
-      <dd>
+      <!-- <dd>
         <ul>
           <li class="w50pre none"><a href="http://www.shopnc.net" target="_blank">官方网站<sub></sub></a></li>
           <li class="w50pre none"><a href="http://bbs.shopnc.net" target="_blank">官方论坛<sub></sub></a></li>
         </ul>
-      </dd>
+      </dd> -->
     </dl>
     <div class=" clear"></div>
   </div>

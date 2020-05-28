@@ -33,6 +33,6 @@ title="<?php echo $lang['login_index_password_pattern'];?>">
   </div>
 </div>
 <div class="bottom">
-  <h5>Powered by ShopNC</h5>
-  <h6 title="<?php echo $lang['login_index_shopnc'];?>">© 2007-2014 <a href="http://www.shopnc.net/" target="_blank">Tianjin Netcity Networking Inc.</a></h6>
+  <h5>Powered by 581 GROUP10</h5>
+  <h6 title="<?php echo $lang['login_index_shopnc'];?>">© 2020 <a href="http://www.shopnc.net/" target="_blank">liam.</a></h6>
 </div>

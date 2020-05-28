@@ -6,9 +6,9 @@ defined('InShopNC') or exit('Access Invalid!');
  */
 $lang['store_class_index_all_class']	= '所有分类';
 $lang['store_class_index_default']		= '默认';
-$lang['store_class_index_sold']			= '销量';
-$lang['store_class_index_sold_asc']		= '点击按销量从低到高排序';
-$lang['store_class_index_sold_desc']	= '点击按销量从高到低排序';
+$lang['store_class_index_sold']			= 'Num';
+$lang['store_class_index_sold_asc']		= 'Click to sort by booking volume from low to high';
+$lang['store_class_index_sold_desc']	= 'Click to sort by booking volume from high to low';
 $lang['store_class_index_credit']		= '信用';
 $lang['store_class_index_credit_asc']	= '点击按信用从低到高排序';
 $lang['store_class_index_credit_desc']	= '点击按信用从高到低排序';

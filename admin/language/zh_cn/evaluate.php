@@ -3,45 +3,45 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 公用
  */
-$lang['admin_evaluate'] 				= '评价';
-$lang['admin_evaluate_list'] 			= '来自买家的评价';
-$lang['admin_evalseller_list'] 			= '来自卖家的评价';
-$lang['admin_evaluate_addtime'] 		= '评价时间';
-$lang['admin_evaluate_storename'] 		= '店铺名称';
-$lang['admin_evaluate_ordersn'] 		= '订单编号';
-$lang['admin_evaluate_frommembername'] 	= '评价人';
-$lang['admin_evaluate_tomembername'] 	= '被评价人';
-$lang['admin_evalstore_list'] 			= '店铺动态评价';
-$lang['admin_evaluate_recorderror'] 	= '评价信息错误';
+$lang['admin_evaluate'] 				= 'Comment';
+$lang['admin_evaluate_list'] 			= 'From patient Comment';
+$lang['admin_evalseller_list'] 			= 'From Clinic Comment';
+$lang['admin_evaluate_addtime'] 		= 'Comment time';
+$lang['admin_evaluate_storename'] 		= 'Clinic name';
+$lang['admin_evaluate_ordersn'] 		= 'Order number';
+$lang['admin_evaluate_frommembername'] 	= 'Appraiser';
+$lang['admin_evaluate_tomembername'] 	= 'Rateee';
+$lang['admin_evalstore_list'] 			= 'Clinic comment list';
+$lang['admin_evaluate_recorderror'] 	= 'Comment information error';
 /**
  * 商品评价
  */
-$lang['admin_evaluate_state_common'] 		= '正常';
-$lang['admin_evaluate_state_hidden'] 		= '禁止显示';
-$lang['admin_evaluate_grade_good'] 			= '好评';
-$lang['admin_evaluate_grade_normal'] 		= '中评';
-$lang['admin_evaluate_grade_bad'] 			= '差评';
-$lang['admin_evaluate_edit'] 				= '评价编辑';
-$lang['admin_evaluate_goodsname'] 			= '商品名称';
-$lang['admin_evaluate_goods_specinfo'] 		= '商品规格';
-$lang['admin_evaluate_grade'] 				= '评价等级';
-$lang['admin_evaluate_state'] 				= '评价状态';
-$lang['admin_evaluate_buyerdesc'] 			= '评价描述';
-$lang['admin_evaluate_adminremark']			= '管理员备注';
-$lang['admin_evaluate_help1']				= '买家可在订单完成后对订单商品进行评价操作';
-$lang['admin_evaluate_help2']				= '评价信息将显示在对应的商品页面';
-$lang['admin_evaluate_notice']				= '禁止显示，评价生效但禁止显示其评价内容';
-$lang['admin_evaluate_explain'] 			= '解释';
-$lang['admin_evaluate_defaultcontent_good'] 	= '好评！';
-$lang['admin_evaluate_defaultcontent_normal'] 	= '中评！';
-$lang['admin_evaluate_defaultcontent_bad'] 		= '差评！';
-$lang['admin_evaluate_delexplain'] 			= '删除解释';
+$lang['admin_evaluate_state_common'] 		= 'Normal';
+$lang['admin_evaluate_state_hidden'] 		= 'Disable display';
+$lang['admin_evaluate_grade_good'] 			= 'Good';
+$lang['admin_evaluate_grade_normal'] 		= 'nrmal';
+$lang['admin_evaluate_grade_bad'] 			= 'Bad';
+$lang['admin_evaluate_edit'] 				= 'Evaluation Editor';
+$lang['admin_evaluate_goodsname'] 			= 'Doctor name';
+$lang['admin_evaluate_goods_specinfo'] 		= 'Doctor type';
+$lang['admin_evaluate_grade'] 				= 'Evaluation level';
+$lang['admin_evaluate_state'] 				= 'Evaluation status';
+$lang['admin_evaluate_buyerdesc'] 			= 'Evaluation description';
+$lang['admin_evaluate_adminremark']			= 'Administrator notes';
+$lang['admin_evaluate_help1']				= 'Patient can comment after  meet the doctor ';
+$lang['admin_evaluate_help2']				= 'Comment message display on relevant doctor page';
+$lang['admin_evaluate_notice']				= 'Prohibit display, evaluate the effectiveness but prohibit the display of its evaluation content';
+$lang['admin_evaluate_explain'] 			= 'Explain';
+$lang['admin_evaluate_defaultcontent_good'] 	= 'Good ';
+$lang['admin_evaluate_defaultcontent_normal'] 	= 'Normal';
+$lang['admin_evaluate_defaultcontent_bad'] 		= 'Bad';
+$lang['admin_evaluate_delexplain'] 			= 'Delete explain';
 /**
  * 店铺动态评价
  */
 $lang['admin_evalstore_help1']				= '买家可在订单完成后对店铺进行动态评价操作';
 $lang['admin_evalstore_help2']				= '评价统计信息将显示在对应的店铺相应页面';
-$lang['admin_evalstore_type']				= '评价类型';
+$lang['admin_evalstore_type']				= 'Comment type';
 $lang['admin_evalstore_type_1']				= '宝贝与描述相符';
 $lang['admin_evalstore_type_2']				= '卖家的服务态度';
 $lang['admin_evalstore_type_3']				= '卖家的发货速度';

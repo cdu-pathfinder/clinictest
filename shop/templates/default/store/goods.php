@@ -29,10 +29,10 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         <strong><?php echo $output['goods']['goods_jingle'];?></strong> </div>
       <div class="ncs-meta"> 
         <!-- S 商品参考价格 -->
-        <dl>
+        <!-- <dl>
           <dt><?php echo $lang['goods_index_goods_cost_price'];?><?php echo $lang['nc_colon'];?></dt>
           <dd class="cost-price"><strong><?php echo $lang['currency'].$output['goods']['goods_marketprice'];?></strong></dd>
-        </dl>
+        </dl> -->
         <!-- S 商品发布价格 -->
         <dl>
           <dt><?php echo $lang['goods_index_goods_price'];?><?php echo $lang['nc_colon'];?></dt>
@@ -48,7 +48,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         </dl>
         <!-- E 商品发布价格 -->
         <!-- S 限时优惠 -->
-        <?php if ($output['goods']['promotion_type'] == 'xianshi') {?>
+        <!-- <?php if ($output['goods']['promotion_type'] == 'xianshi') {?>
         <dl>
           <dt>促销信息：</dt>
           <dd class="promotion-info">直降：<?php echo $lang['currency'].$output['goods']['down_price'];?>
@@ -59,10 +59,10 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           </em>
           <span><?php echo $output['xianshi_info']['xianshi_explain'];?></span> </dd>
         </dl>
-        <?php }?>
+        <?php }?> -->
         <!-- E 限时优惠  -->
         <!-- S 团购-->
-        <?php if ($output['goods']['promotion_type'] == 'groupbuy') {?>
+        <!-- <?php if ($output['goods']['promotion_type'] == 'groupbuy') {?>
         <dl>
           <dt>促销信息：</dt>
           <dd class="promotion-info">
@@ -73,7 +73,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           </em>
           <span><?php echo $output['goods']['remark'];?></span> </dd>
         </dl>
-        <?php }?>
+        <?php }?> -->
         <!-- E 团购 -->
         <!-- S 描述相符评分及评价数量 -->
         <dl>
@@ -83,13 +83,13 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         <!-- E 描述相符评分及评价数量 --> 
         <!-- S 物流运费 -->
         <dl class="ncs-freight">
-          <dt>
+          <!-- <dt>
             <?php if ($output['goods']['goods_transfee_charge'] == 1){?>
             <?php echo $lang['goods_index_freight'].$lang['nc_colon'];?>
-            <?php }else{?>
+            <?php }else{?> -->
             <!-- 如果买家承担运费 --> 
             <!-- 如果使用了运费模板 -->
-            <?php if ($output['goods']['transport_id'] != '0'){?>
+            <!-- <?php if ($output['goods']['transport_id'] != '0'){?>
             <?php echo $lang['goods_index_trans_to'];?><a href="javascript:void(0)" id="ncrecive"><?php echo $lang['goods_index_trans_country'];?></a><?php echo $lang['nc_colon'];?>
             <div class="ncs-freight-box" id="transport_pannel">
               <?php if (is_array($output['area_list'])){?>
@@ -102,19 +102,19 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
             <?php echo $lang['goods_index_trans_zcountry'];?><?php echo $lang['nc_colon'];?>
             <?php }?>
             <?php }?>
-          </dt>
-          <dd id="transport_price">
+          </dt> -->
+         <!--  <dd id="transport_price">
             <?php if($output['group']) { ?>
             <span><?php echo $lang['goods_index_groupbuy_no_shipping_fee'];?></span>
             <?php } else { ?>
             <?php if ($output['goods']['goods_freight'] == 0){?>
             <?php echo $lang['goods_index_trans_for_seller'];?>
-            <?php }else{?>
+            <?php }else{?> -->
             <!-- 如果买家承担运费 --> 
-            <span>运费<?php echo $lang['nc_colon'];?><em id="nc_kd"><?php echo $output['goods']['goods_freight'];?></em><?php echo $lang['goods_index_yuan'];?></span>
+            <!-- <span>运费<?php echo $lang['nc_colon'];?><em id="nc_kd"><?php echo $output['goods']['goods_freight'];?></em><?php echo $lang['goods_index_yuan'];?></span>
             <?php }?>
             <?php }?>
-          </dd>
+          </dd> -->
           <dd style="color:red;display:none" id="loading_price">loading.....</dd>
         </dl>
         <!-- E 物流运费 ---> 
@@ -139,7 +139,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
               <?php foreach($output['goods']['spec_value'][$key] as $k => $v) {?>
               <?php if( $key == 1 ){?>
               <!-- 图片类型规格-->
-              <li class="sp-img"><a href="javascript:void(0);" class="<?php if (isset($output['goods']['goods_spec'][$k])) {echo 'hovered';}?>" data-param="{valid:<?php echo $k;?>}" title="<?php echo $v;?>"><img src="<?php echo $output['spec_image'][$k];?>"/><i></i></a></li>
+              <li class="sp-txt"><a href="javascript:void(0);" class="<?php if (isset($output['goods']['goods_spec'][$k])) {echo 'hovered';}?>" data-param="{valid:<?php echo $k;?>}" title="<?php echo $v;?>"><i></i></a></li>
               <?php }else{?>
               <!-- 文字类型规格-->
               <li class="sp-txt"><a href="javascript:void(0)" class="<?php if (isset($output['goods']['goods_spec'][$k])) { echo 'hovered';} ?>" data-param="{valid:<?php echo $k;?>}"><?php echo $v;?><i></i></a></li>
@@ -156,8 +156,8 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         <dl>
           <dt><?php echo $lang['goods_index_buy_amount'];?><?php echo $lang['nc_colon'];?></dt>
           <dd class="ncs-figure-input">
-            <input type="text" name="" id="quantity" value="1" size="3" maxlength="6" class="text w30">
-            <a href="javascript:void(0)" class="increase">+</a><a href="javascript:void(0)" class="decrease">-</a> <em>(<?php echo $lang['goods_index_stock'];?><strong nctype="goods_stock"><?php echo $output['goods']['goods_storage']; ?></strong><?php echo $lang['nc_jian'];?>)</em> </dd>
+            <input type="text" name="" id="quantity" value="10" size="3" maxlength="6" class="text w30">
+            <a href="javascript:void(0)" class="increase">+</a><a href="javascript:void(0)" class="decrease">-</a><em>(<?php echo $lang['goods_index_stock'];?><strong nctype="goods_stock"><?php echo $output['goods']['goods_storage']; ?></strong>)</em> </dd>
         </dl>
         <!-- E 购买数量及库存 --> 
         
@@ -191,7 +191,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
 
         </div>
         <!-- E 购买按钮 -->
-        <div class="ncs_share"> <a href="javascript:void(0);" nc_type="sharegoods" data-param='{"gid":"<?php echo $output['goods']['goods_id'];?>"}'><i class="icon-share"></i><?php echo $lang['goods_index_snsshare_goods'];?><em nc_type="sharecount_<?php echo $output['goods']['goods_id'];?>"><?php echo intval($output['goods']['sharenum'])>0?intval($output['goods']['sharenum']):0;?></em></a><a href="javascript:collect_goods('<?php echo $output['goods']['goods_id']; ?>','count','goods_collect');"><i class="icon-star-empty"></i><?php echo $lang['goods_index_favorite_goods'];?><em nctype="goods_collect"><?php echo $output['goods']['goods_collect']?></em></a></div>
+        <!-- <div class="ncs_share"> <a href="javascript:void(0);" nc_type="sharegoods" data-param='{"gid":"<?php echo $output['goods']['goods_id'];?>"}'><i class="icon-share"></i><?php echo $lang['goods_index_snsshare_goods'];?><em nc_type="sharecount_<?php echo $output['goods']['goods_id'];?>"><?php echo intval($output['goods']['sharenum'])>0?intval($output['goods']['sharenum']):0;?></em></a><a href="javascript:collect_goods('<?php echo $output['goods']['goods_id']; ?>','count','goods_collect');"><i class="icon-star-empty"></i><?php echo $lang['goods_index_favorite_goods'];?><em nctype="goods_collect"><?php echo $output['goods']['goods_collect']?></em></a></div> -->
       </div>
       <?php }else{?>
       <div class="ncs-saleout">
@@ -228,7 +228,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           <ul id="categorymenu">
             <li class="current"><a id="tabGoodsIntro" href="#content"><?php echo $lang['goods_index_goods_info'];?></a></li>
             <li><a id="tabGoodsRate" href="#content"><?php echo $lang['goods_index_evaluation'];?></a></li>
-            <li><a id="tabGoodsTraded" href="#content"><?php echo $lang['goods_index_sold_record'];?></a></li>
+            <!-- <li><a id="tabGoodsTraded" href="#content"><?php echo $lang['goods_index_sold_record'];?></a></li> -->
             <li><a id="tabGuestbook" href="#content"><?php echo $lang['goods_index_goods_consult'];?></a></li>
           </ul>
           <div class="switch-bar"><a href="javascript:void(0)" id="fold">&nbsp;</a></div>
@@ -264,7 +264,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           <!--E 满就送 -->
           <?php if(is_array($output['goods']['goods_attr']) || isset($output['goods']['brand_name'])){?>
           <ul class="nc-goods-sort">
-            <li>商家货号：<?php echo $output['goods']['goods_serial'];?></li>
+            <li>ID-Clinic：<?php echo $output['goods']['goods_serial'];?></li>
             <?php if(isset($output['goods']['brand_name'])){echo '<li>'.$lang['goods_index_brand'].$lang['nc_colon'].$output['goods']['brand_name'].'</li>';}?>
             <?php if(is_array($output['goods']['goods_attr']) && !empty($output['goods']['goods_attr'])){?>
             <?php foreach ($output['goods']['goods_attr'] as $val){ $val= array_values($val);echo '<li>'.$val[0].$lang['nc_colon'].$val[1].'</li>'; }?>
@@ -290,38 +290,38 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         <div class="ncs-goods-info-content bd" id="ncGoodsRate">
             <div class="top">
                 <div class="rate">
-                    <p><strong><?php echo $output['goods_evaluate_info']['good_percent'];?></strong><sub>%</sub>好评</p>
-              <span>共有<?php echo $output['goods_evaluate_info']['all'];?>人参与评分</span></div>
+                    <p><strong><?php echo $output['goods_evaluate_info']['good_percent'];?></strong><sub>%</sub>satisfied</p>
+              <span>total<?php echo $output['goods_evaluate_info']['all'];?>people evaluated</span></div>
             <div class="percent">
               <dl>
-                <dt>好评<em>(<?php echo $output['goods_evaluate_info']['good_percent'];?>%)</em></dt>
+                <dt>satisfied<em>(<?php echo $output['goods_evaluate_info']['good_percent'];?>%)</em></dt>
                 <dd><i style="width: <?php echo $output['goods_evaluate_info']['good_percent'];?>%"></i></dd>
               </dl>
               <dl>
-                <dt>中评<em>(<?php echo $output['goods_evaluate_info']['normal_percent'];?>%)</em></dt>
+                <dt>average<em>(<?php echo $output['goods_evaluate_info']['normal_percent'];?>%)</em></dt>
                 <dd><i style="width: <?php echo $output['goods_evaluate_info']['normal_percent'];?>%"></i></dd>
               </dl>
               <dl>
-                <dt>差评<em>(<?php echo $output['goods_evaluate_info']['bad_percent'];?>%)</em></dt>
+                <dt>unsatisfied<em>(<?php echo $output['goods_evaluate_info']['bad_percent'];?>%)</em></dt>
                 <dd><i style="width: <?php echo $output['goods_evaluate_info']['bad_percent'];?>%"></i></dd>
               </dl>
             </div>
-            <div class="btns"><span>您可对已购商品进行评价</span>
-              <p><a href="<?php echo urlShop('member_order', 'index');?>" class="ncs-btn ncs-btn-red" target="_blank"><i class="icon-comment-alt"></i>评价商品</a></p>
+            <div class="btns"><span>evaluate dotor booked</span>
+              <p><a href="<?php echo urlShop('member_order', 'index');?>" class="ncs-btn ncs-btn-red" target="_blank"><i class="icon-comment-alt"></i>evaluate</a></p>
             </div>
           </div>
-          <div class="ncs-goods-title-nav">
+          <!-- <div class="ncs-goods-title-nav">
         <ul id="comment_tab">
             <li data-type="all" class="current"><a href="javascript:void(0);"><?php echo $lang['goods_index_evaluation'];?>(<?php echo $output['goods_evaluate_info']['all'];?>)</a></li>
-            <li data-type="1"><a href="javascript:void(0);">好评(<?php echo $output['goods_evaluate_info']['good'];?>)</a></li>
-            <li data-type="2"><a href="javascript:void(0);">中评(<?php echo $output['goods_evaluate_info']['normal'];?>)</a></li> 
-            <li data-type="3"><a href="javascript:void(0);">差评(<?php echo $output['goods_evaluate_info']['bad'];?>)</a></li>
-        </ul></div>
+            <li data-type="1"><a href="javascript:void(0);">satisfied(<?php echo $output['goods_evaluate_info']['good'];?>)</a></li>
+            <li data-type="2"><a href="javascript:void(0);">average(<?php echo $output['goods_evaluate_info']['normal'];?>)</a></li> 
+            <li data-type="3"><a href="javascript:void(0);">unsatisfied(<?php echo $output['goods_evaluate_info']['bad'];?>)</a></li>
+        </ul></div> -->
           <!-- 商品评价内容部分 -->
           <div id="goodseval" class="ncs-commend-main"></div>
         </div>
       </div>
-      <div class="ncg-salelog">
+      <!-- <div class="ncg-salelog">
         <div class="ncs-goods-title-bar hd">
          <h4><a href="javascript:void(0);"><?php echo $lang['goods_index_sold_record'];?></a></h4>
         </div>
@@ -329,10 +329,10 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           <div class="top">
             <div class="price"><?php echo $lang['goods_index_goods_price'];?><strong><?php echo $output['goods']['goods_price'];?></strong><?php echo $lang['goods_index_yuan'];?><span><?php echo $lang['goods_index_price_note'];?></span></div>
           </div>
-          <!-- 成交记录内容部分 -->
+          <!-- 成交记录内容部分 
           <div id="salelog_demo" class="ncs-loading"> </div>
         </div>
-      </div>
+      </div> -->
       <div class="ncs-consult">
         <div class="ncs-goods-title-bar hd">
           <h4><a href="javascript:void(0);"><?php echo $lang['goods_index_goods_consult'];?></a></h4>
@@ -345,7 +345,7 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
         </div>
       </div>
       <?php if(!empty($output['goods_commend']) && is_array($output['goods_commend']) && count($output['goods_commend'])>1){?>
-      <div class="ncs-recommend">
+      <!-- <div class="ncs-recommend">
         <div class="title">
           <h4><?php echo $lang['goods_index_goods_commend'];?></h4>
         </div>
@@ -365,18 +365,18 @@ cursor: url(<?php echo SHOP_TEMPLATES_URL;
           </ul>
           <div class="clear"></div>
         </div>
-      </div>
+      </div> -->
       <?php }?>
     </div>
     <div class="ncs-sidebar">
-      <div class="nc-s-c-s1">
+      <!-- <div class="nc-s-c-s1">
         <div class="title">
           <h4>商品二维码</h4>
         </div>
         <div class="content">
           <div class="ncs-goods-code"><p><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_STORE.DS.$output['goods']['store_id'].DS.$output['goods']['goods_id'].'.png';?>" onerror="this.src='<?php echo UPLOAD_SITE_URL.DS.ATTACH_STORE.DS.'default_qrcode.png';?>'" title="商品原始地址：<?php echo urlShop('goods', 'index', array('goods_id'=>$output['goods']['goods_id']));?>"></p> <span class="ncs-goods-code-note"><i></i>扫描二维码，手机查看分享</span> </div>
          </div>
-      </div>
+      </div> -->
       <?php include template('store/callcenter');?>
       <?php include template('store/left');?>
     </div>

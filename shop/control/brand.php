@@ -5,9 +5,9 @@
  * 
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net
- * @link       http://www.shopnc.net
+ * @copyright  gourp10 
+ * liam
+ * @license    cdu
  * @since      File available since Release v1.1
  */
 defined('InShopNC') or exit('Access Invalid!');
@@ -118,7 +118,7 @@ class brandControl extends BaseHomeControl {
 		));
 		Tpl::output('brand_r',$brand_r_list);
 
-        // 得到排序方式
+        // 得到Sorting method
         $order = 'goods_id desc';
         if (!empty($_GET['key'])) {
             $order_tmp = trim($_GET['key']);

@@ -3,9 +3,9 @@
  * 前台control父类,店铺control父类,会员control父类
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net
- * @link       http://www.shopnc.net
+ * @copyright  gourp10 
+ * liam
+ * @license    cdu
  * @since      File available since Release v1.1
  */
 defined('InShopNC') or exit('Access Invalid!');
@@ -890,15 +890,15 @@ class BaseSellerControl extends Control {
         $menu_list = array(
             'goods' => array('name' => 'doctor', 'child' => array(
                 array('name' => 'Doctors released', 'act'=>'store_goods_add', 'op'=>'index'),
-				array('name' => 'import CSV', 'act'=>'taobao_import', 'op'=>'index'),
-                array('name' => 'Doctors who are available', 'act'=>'store_goods_online', 'op'=>'index'),
+				array('name' => 'Import CSV', 'act'=>'taobao_import', 'op'=>'index'),
+                array('name' => 'Available doctors', 'act'=>'store_goods_online', 'op'=>'index'),
                 array('name' => 'Doctors in storage', 'act'=>'store_goods_offline', 'op'=>'index'),
-                array('name' => 'storage warning', 'act'=>'store_storage_alarm', 'op' => 'index'),
+                array('name' => 'Timetable warning', 'act'=>'store_storage_alarm', 'op' => 'index'),
                 array('name' => 'Connection plate', 'act'=>'store_plate', 'op'=>'index'),
                 array('name' => 'specification setting', 'act' => 'store_spec', 'op' => 'index'),
                 array('name' => 'picture space', 'act'=>'store_album', 'op'=>'album_cate'),
             )),
-            'order' => array('name' => 'booking order', 'child' => array(
+            'order' => array('name' => 'order', 'child' => array(
                 array('name' => 'order management', 'act'=>'store_order', 'op'=>'index'),
                 array('name' => 'arrange', 'act'=>'store_deliver', 'op'=>'index'),
                 array('name' => 'arrange setting', 'act'=>'store_deliver_set', 'op'=>'daddress_list'),
@@ -927,21 +927,21 @@ class BaseSellerControl extends Control {
             //     array('name' => '物流工具', 'act'=>'store_transport', 'op'=>'index'),
             //     array('name' => '免运费额度', 'act'=>'store_free_freight', 'op'=>'index'),
             // )),
-            'consult' => array('name' => 'Customer service', 'child' => array(
+            'consult' => array('name' => 'patient', 'child' => array(
                 array('name' => 'Customer service setting', 'act'=>'store_callcenter', 'op'=>'index'),
                 array('name' => 'consulting management', 'act'=>'store_consult', 'op'=>'consult_list'),
                 array('name' => 'Complaint management', 'act'=>'store_complain', 'op'=>'list'),
             )),
-            'service' => array('name' => 'After-sales service', 'child' => array(
+            'service' => array('name' => 'serve', 'child' => array(
                 array('name' => 'refund record', 'act'=>'store_refund', 'op'=>'index'),
                 array('name' => 'cancellation record', 'act'=>'store_return', 'op'=>'index'),
             )),
-            'settle' => array('name' => 'settlement', 'child' => array(
+            'settle' => array('name' => 'settle', 'child' => array(
                     array('name' => 'settlement management', 'act'=>'store_bill', 'op'=>'index'),
             )),
-            'statistics' => array('name' => '统计', 'child' => array(
+            'statistics' => array('name' => 'statist', 'child' => array(
                 array('name' => 'Traffic statistics', 'act'=>'statistics_flow', 'op'=>'flow_statistics'),
-                array('name' => 'Sales statistics', 'act'=>'statistics_sale', 'op'=>'sale_statistics'),
+                array('name' => 'booking statistics', 'act'=>'statistics_sale', 'op'=>'sale_statistics'),
                 array('name' => 'Reservation rate statistics', 'act'=>'statistics_probability', 'op'=>'probability_statistics'),
             )),
             'account' => array('name' => 'account', 'child' => array(

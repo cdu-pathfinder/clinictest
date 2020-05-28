@@ -7,17 +7,17 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 列表
  */
-$lang['store_consult_reply']	= '咨询/回复';
-$lang['store_consult_list_goods']			= '商品';
+$lang['store_consult_reply']	= 'Reply';
+$lang['store_consult_list_goods']			= 'Doctor';
 $lang['store_consult_list_group']			= '团购';
 $lang['store_consult_list_consule']			= '咨询';
 $lang['store_consult_list_reply_consult']	= '回复咨询';
-$lang['store_consult_list_reply']			= '回复';
+$lang['store_consult_list_reply']			= 'Reply';
 $lang['store_consult_list_edit_reply']		= '编辑回复';
 $lang['store_consult_list_consult_content']	= '咨询内容';
 $lang['store_consult_list_consult_member']	= '咨询用户';
 $lang['store_consult_list_consult_time']	= '咨询时间';
-$lang['store_consult_list_reply_time']  	= '回复时间';
+$lang['store_consult_list_reply_time']  	= 'Reply time';
 $lang['store_consult_list_my_reply']		= '客服回复';
 $lang['store_consult_drop_success']			= '咨询信息删除成功';
 $lang['store_consult_drop_fail']			= '咨询信息删除失败';

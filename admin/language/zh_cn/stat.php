@@ -1,16 +1,16 @@
 <?php
 defined('InShopNC') or exit('Access Invalid!');
 
-$lang['stat_newmember']				= '新增会员';
-$lang['stat_memberanalyze']			= '会员分析';
-$lang['stat_scaleanalyze']			= '会员规模分析';
-$lang['stat_memberlist']			= '会员详细';
-$lang['stat_areaanalyze']			= '区域分析';
+$lang['stat_newmember']				= 'New member';
+$lang['stat_memberanalyze']			= 'Member analysis';
+$lang['stat_scaleanalyze']			= 'Membership size analysis';
+$lang['stat_memberlist']			= 'Member list';
+$lang['stat_areaanalyze']			= 'Regional Analysis';
 
-$lang['stat_newstore']				= '新增店铺';
-$lang['stat_storesale']			    = '店铺销量';
-$lang['stat_storedegree']			= '店铺等级';
-$lang['stat_storelist']			    = '店铺详细';
+$lang['stat_newstore']				= 'New Clinic';
+$lang['stat_storesale']			    = 'Clinic number';
+$lang['stat_storedegree']			= 'Clinic level';
+$lang['stat_storelist']			    = 'Clinic list';
 
 $lang['stat_goods_ranking']			= '商品统计排行';
 $lang['stat_sale_income']			= '销售收入统计';

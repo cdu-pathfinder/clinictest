@@ -5,9 +5,9 @@
  * 
  *
  *
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net
- * @link       http://www.shopnc.net
+ * @copyright  gourp10 
+ * liam
+ * @license    cdu
  * @since      File available since Release v1.1
  */
 defined('InShopNC') or exit('Access Invalid!');
@@ -41,24 +41,24 @@ class store_joininControl extends BaseHomeControl {
             $this->joinin_detail = $joinin_detail;
             switch (intval($joinin_detail['joinin_state'])) {
                 case STORE_JOIN_STATE_NEW:
-                    $this->show_join_message('入驻申请已经提交，请等待管理员审核');
+                    $this->show_join_message('The entry application has been submitted, please wait for the administrator to review');
                     break;
                 case STORE_JOIN_STATE_PAY:
-                    $this->show_join_message('已经提交，请等待管理员核对后为您开通店铺', FALSE, 'step4');
+                    $this->show_join_message('It has been submitted. Please wait for the administrator to check and open the clinic for you', FALSE, 'step4');
                     break;
                 case STORE_JOIN_STATE_VERIFY_SUCCESS:
                     if(!in_array($_GET['op'], array('pay', 'pay_save'))) {
-                        $this->show_join_message('审核成功，请完成付款，付款后点击下一步提交付款凭证', SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=pay');
+                        $this->show_join_message('The audit is successful, please complete the payment, and click the next step to submit the payment voucher', SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=pay');
                     }
                     break;
                 case STORE_JOIN_STATE_VERIFY_FAIL:
                     if(!in_array($_GET['op'], array('step1', 'step2', 'step3', 'step4'))) {
-                        $this->show_join_message('审核失败:'.$joinin_detail['joinin_message'], SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=step1');
+                        $this->show_join_message('Audit failure:'.$joinin_detail['joinin_message'], SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=step1');
                     }
                     break;
                 case STORE_JOIN_STATE_PAY_FAIL:
                     if(!in_array($_GET['op'], array('pay', 'pay_save'))) {
-                        $this->show_join_message('付款审核失败:'.$joinin_detail['joinin_message'], SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=pay');
+                        $this->show_join_message('Payment review failed:'.$joinin_detail['joinin_message'], SHOP_SITE_URL.DS.'index.php?act=store_joinin&op=pay');
                     }
                     break;
                 case STORE_JOIN_STATE_FINAL:
@@ -128,23 +128,23 @@ class store_joininControl extends BaseHomeControl {
     private function step2_save_valid($param) {
         $obj_validate = new Validate();
         $obj_validate->validateparam = array(
-            array("input"=>$param['company_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"公司名称不能为空且必须小于50个字"),
-            array("input"=>$param['company_address'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"公司地址不能为空且必须小于50个字"),
-            array("input"=>$param['company_address_detail'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"公司详细地址不能为空且必须小于50个字"),
-            array("input"=>$param['company_phone'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"公司电话不能为空"),
-            array("input"=>$input['company_employee_count'], "require"=>"true","validator"=>"Number","员工总数不能为空且必须是数字"),
-            array("input"=>$input['company_registered_capital'], "require"=>"true","validator"=>"Number","注册资金不能为空且必须是数字"),
-            array("input"=>$param['contacts_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"联系人姓名不能为空且必须小于20个字"),
-            array("input"=>$param['contacts_phone'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"联系人电话不能为空"),
-            array("input"=>$param['contacts_email'], "require"=>"true","validator"=>"email","message"=>"电子邮箱不能为空"),
-            array("input"=>$param['business_licence_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"营业执照号不能为空且必须小于20个字"),
-            array("input"=>$param['business_licence_address'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"营业执照所在地不能为空且必须小于50个字"),
-            array("input"=>$param['business_licence_start'], "require"=>"true","message"=>"营业执照有效期不能为空"),
-            array("input"=>$param['business_licence_end'], "require"=>"true","message"=>"营业执照有效期不能为空"),
-            array("input"=>$param['business_sphere'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"500","message"=>"法定经营范围不能为空且必须小于50个字"),
-            array("input"=>$param['business_licence_number_electronic'], "require"=>"true","message"=>"营业执照电子版不能为空"),
-            array("input"=>$param['organization_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"组织机构代码不能为空且必须小于20个字"),
-            array("input"=>$param['organization_code_electronic'], "require"=>"true","message"=>"组织机构代码电子版不能为空"),
+            array("input"=>$param['company_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The company name cannot be empty and must be less than 50 words"),
+            array("input"=>$param['company_address'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The company address cannot be empty and must be less than 50 words"),
+            array("input"=>$param['company_address_detail'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The company detailed address can't be empty and must be less than 50 words"),
+            array("input"=>$param['company_phone'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The company phone can't be empty"),
+            array("input"=>$input['company_employee_count'], "require"=>"true","validator"=>"Number","Headcount cannot be empty and must be a number"),
+            array("input"=>$input['company_registered_capital'], "require"=>"true","validator"=>"Number","Registered capital cannot be empty and must be a number"),
+            array("input"=>$param['contacts_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The contact name cannot be empty and must be less than 20 words"),
+            array("input"=>$param['contacts_phone'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"Contact phone cannot be empty"),
+            array("input"=>$param['contacts_email'], "require"=>"true","validator"=>"email","message"=>"email address cannot be empty"),
+            array("input"=>$param['business_licence_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The business license number cannot be empty and must be less than 20 words"),
+            array("input"=>$param['business_licence_address'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The location of the business license cannot be empty and must be less than 50 words"),
+            array("input"=>$param['business_licence_start'], "require"=>"true","message"=>"The validity of the business license shall not be null"),
+            array("input"=>$param['business_licence_end'], "require"=>"true","message"=>"The validity of the business license shall not be null"),
+            array("input"=>$param['business_sphere'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"500","message"=>"Legal business scope can not be empty and must be less than 50 words"),
+            array("input"=>$param['business_licence_number_electronic'], "require"=>"true","message"=>"The electronic version of the business license cannot be empty"),
+            array("input"=>$param['organization_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The organization code cannot be empty and must be less than 20 words"),
+            array("input"=>$param['organization_code_electronic'], "require"=>"true","message"=>"Organization code electronic version cannot be empty"),
         );
         $error = $obj_validate->validate();
         if ($error != ''){
@@ -201,11 +201,11 @@ class store_joininControl extends BaseHomeControl {
 				if (!empty($sg_function[0]) && is_array($sg_function)){
 					foreach ($sg_function as $key1=>$value){
 						if ($value == 'editor_multimedia'){
-							$grade_list[$key]['function_str'] .= '富文本编辑器';
+							$grade_list[$key]['function_str'] .= 'text editor';
 						}
 					}
 				}else {
-					$grade_list[$key]['function_str'] = '无';
+					$grade_list[$key]['function_str'] = 'null';
 				}
 			}
 		}
@@ -229,20 +229,20 @@ class store_joininControl extends BaseHomeControl {
     private function step3_save_valid($param) {
         $obj_validate = new Validate();
         $obj_validate->validateparam = array(
-            array("input"=>$param['bank_account_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"银行开户名不能为空且必须小于50个字"),
-            array("input"=>$param['bank_account_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"银行账号不能为空且必须小于20个字"),
-            array("input"=>$param['bank_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"开户银行支行名称不能为空且必须小于50个字"),
-            array("input"=>$param['bank_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"支行联行号不能为空且必须小于20个字"),
-            array("input"=>$input['bank_address'], "require"=>"true","开户行所在地不能为空"),
-            array("input"=>$input['bank_licence_electronic'], "require"=>"true","开户银行许可证电子版不能为空"),
-            array("input"=>$param['settlement_bank_account_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"银行开户名不能为空且必须小于50个字"),
-            array("input"=>$param['settlement_bank_account_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"银行账号不能为空且必须小于20个字"),
-            array("input"=>$param['settlement_bank_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"开户银行支行名称不能为空且必须小于50个字"),
-            array("input"=>$param['settlement_bank_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"支行联行号不能为空且必须小于20个字"),
-            array("input"=>$input['settlement_bank_address'], "require"=>"true","开户行所在地不能为空"),
-            array("input"=>$param['tax_registration_certificate'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"税务登记证号不能为空且必须小于20个字"),
-            array("input"=>$param['taxpayer_id'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"纳税人识别号"),
-            array("input"=>$param['tax_registration_certificate_electronic'], "require"=>"true","message"=>"税务登记证号电子版不能为空"),
+            array("input"=>$param['bank_account_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The bank account name cannot be empty and must be less than 50 words"),
+            array("input"=>$param['bank_account_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"Bank account cannot be empty and must be less than 20 words"),
+            array("input"=>$param['bank_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The name of the bank branch cannot be empty and must be less than 50 words"),
+            array("input"=>$param['bank_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The branch affiliate number cannot be empty and must be less than 20 words"),
+            array("input"=>$input['bank_address'], "require"=>"true","The location of the opening bank cannot be empty"),
+            array("input"=>$input['bank_licence_electronic'], "require"=>"true","The electronic version of bank license cannot be empty"),
+            array("input"=>$param['settlement_bank_account_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The bank account name cannot be empty and must be less than 50 words"),
+            array("input"=>$param['settlement_bank_account_number'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"Bank account cannot be empty and must be less than 20 words"),
+            array("input"=>$param['settlement_bank_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The name of the bank branch cannot be empty and must be less than 50 words"),
+            array("input"=>$param['settlement_bank_code'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The branch affiliate number cannot be empty and must be less than 20 words"),
+            array("input"=>$input['settlement_bank_address'], "require"=>"true","The location of the opening bank cannot be empty"),
+            array("input"=>$param['tax_registration_certificate'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"The number of tax registration certificate cannot be empty and must be less than 20 words"),
+            array("input"=>$param['taxpayer_id'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"20","message"=>"Taxpayer identification number"),
+            array("input"=>$param['tax_registration_certificate_electronic'], "require"=>"true","message"=>"The electronic version of the tax registration certificate number cannot be empty"),
         );
         $error = $obj_validate->validate();
         if ($error != ''){
@@ -301,9 +301,9 @@ class store_joininControl extends BaseHomeControl {
     private function step4_save_valid($param) {
         $obj_validate = new Validate();
         $obj_validate->validateparam = array(
-            array("input"=>$param['store_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"店铺名称不能为空且必须小于50个字"),
-            array("input"=>$param['sg_id'], "require"=>"true","message"=>"店铺等级不能为空"),
-            array("input"=>$param['sc_id'], "require"=>"true","message"=>"店铺分类不能为空"),
+            array("input"=>$param['store_name'], "require"=>"true","validator"=>"Length","min"=>"1","max"=>"50","message"=>"The clinic name cannot be empty and must be less than 50 words"),
+            array("input"=>$param['sg_id'], "require"=>"true","message"=>"clnic level cannot be empty"),
+            array("input"=>$param['sc_id'], "require"=>"true","message"=>"The clinic category cannot be empty"),
         );
         $error = $obj_validate->validate();
         if ($error != ''){
@@ -324,7 +324,7 @@ class store_joininControl extends BaseHomeControl {
         $param['joinin_state'] = STORE_JOIN_STATE_PAY;
 
         if(empty($param['paying_money_certificate'])) {
-            showMessage('请上传付款凭证','','','error');
+            showMessage('Please upload the payment voucher','','','error');
         }
 
         $model_store_joinin = Model('store_joinin');

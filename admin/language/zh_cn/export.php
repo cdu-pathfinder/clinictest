@@ -5,22 +5,22 @@ defined('InShopNC') or exit('Access Invalid!');
  */
 
 //品牌
-$lang['exp_brandid']		= '品牌ID';
-$lang['exp_brand']			= '品牌';
-$lang['exp_brand_cate']		= '类别';
-$lang['exp_brand_img']		= '标识图';
+$lang['exp_brandid']		= 'Brand Id';
+$lang['exp_brand']			= 'Brand';
+$lang['exp_brand_cate']		= 'Type';
+$lang['exp_brand_img']		= 'Brand image';
 
 //商品
-$lang['exp_product']		= '商品';
-$lang['exp_pr_cate']		= '分类';
-$lang['exp_pr_brand']		= '品牌';
-$lang['exp_pr_price']		= '价格';
-$lang['exp_pr_serial']		= '货号';
-$lang['exp_pr_state']		= '状态';
-$lang['exp_pr_type']		= '类型';
-$lang['exp_pr_addtime']		= '发布时间';
-$lang['exp_pr_store']		= '店铺';
-$lang['exp_pr_storeid']		= '店铺ID';
+$lang['exp_product']		= 'Doctor';
+$lang['exp_pr_cate']		= 'Type';
+$lang['exp_pr_brand']		= 'Brand';
+$lang['exp_pr_price']		= 'Time';
+$lang['exp_pr_serial']		= 'Date';
+$lang['exp_pr_state']		= 'Status';
+$lang['exp_pr_type']		= 'Type';
+$lang['exp_pr_addtime']		= 'Available time';
+$lang['exp_pr_store']		= 'Clinic';
+$lang['exp_pr_storeid']		= 'Clinic id';
 $lang['exp_pr_wgxj']		= '违规下架';
 $lang['exp_pr_sj']			= '上架';
 $lang['exp_pr_xj']			= '下架';
@@ -28,41 +28,41 @@ $lang['exp_pr_new']			= '全新';
 $lang['exp_pr_old']			= '二手';
 
 //类型
-$lang['exp_type_name']		= '类型';
+$lang['exp_type_name']		= 'Type';
 
 //规格
-$lang['exp_spec']			= '规格';
-$lang['exp_sp_content']		= '规格内容';
+$lang['exp_spec']			= 'Standard';
+$lang['exp_sp_content']		= 'Standard content';
 
 //店铺
-$lang['exp_store']			= '店铺';
-$lang['exp_st_name']		= '店主账号';
-$lang['exp_st_sarea']		= '所在地';
-$lang['exp_st_grade']		= '等级';
-$lang['exp_st_adtime']		= '创店时间';
+$lang['exp_store']			= 'Clinic';
+$lang['exp_st_name']		= 'Clinic Account';
+$lang['exp_st_sarea']		= 'Address';
+$lang['exp_st_grade']		= 'Level';
+$lang['exp_st_adtime']		= 'Trading time';
 $lang['exp_st_yxq']			= '有效期';
-$lang['exp_st_state']		= '状态';
-$lang['exp_st_xarea']		= '详细地址';
-$lang['exp_st_post']		= '邮编';
-$lang['exp_st_tel']			= '联系电话';
-$lang['exp_st_kq']			= '开启';
-$lang['exp_st_shz']			= '审核中';
-$lang['exp_st_close']		= '关闭';
+$lang['exp_st_state']		= 'Status';
+$lang['exp_st_xarea']		= 'Address';
+$lang['exp_st_post']		= 'Postcode';
+$lang['exp_st_tel']			= 'Contact number';
+$lang['exp_st_kq']			= 'Open';
+$lang['exp_st_shz']			= 'Pending';
+$lang['exp_st_close']		= 'Close';
 
 //会员
-$lang['exp_member']			= '会员';
-$lang['exp_mb_name']		= '真实姓名';
-$lang['exp_mb_jf']			= '积分';
+$lang['exp_member']			= 'Member';
+$lang['exp_mb_name']		= 'Name';
+$lang['exp_mb_jf']			= 'Point';
 $lang['exp_mb_yck']			= '预存款';
 $lang['exp_mb_jbs']			= '金币数';
-$lang['exp_mb_sex']			= '性别';
+$lang['exp_mb_sex']			= 'gender';
 $lang['exp_mb_ww']			= '旺旺';
-$lang['exp_mb_dcs']			= '登录次数';
-$lang['exp_mb_rtime']		= '注册时间';
-$lang['exp_mb_ltime']		= '上次登录';
-$lang['exp_mb_storeid']		= '店铺ID';
-$lang['exp_mb_nan']			= '男';
-$lang['exp_mb_nv']			= '女';
+$lang['exp_mb_dcs']			= 'Logintimes';
+$lang['exp_mb_rtime']		= 'Registration time';
+$lang['exp_mb_ltime']		= 'Last login';
+$lang['exp_mb_storeid']		= 'Clinic Id';
+$lang['exp_mb_nan']			= 'Male';
+$lang['exp_mb_nv']			= 'Female';
 
 //积分明细
 $lang['exp_pi_member']		= '会员';

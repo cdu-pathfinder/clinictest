@@ -15,18 +15,18 @@
     <header id="header"></header>
     <div class="buy_step1">
        <div class="buys1-cnt buys1-address-cnt">
-           <h3 class="clearfix">收货人信息 <span class="btn-s btn-prink-s fright buys1-edit-address buys1-edit-btn">修改</span></h3>
+           <h3 class="clearfix">patient infor <span class="btn-s btn-prink-s fright buys1-edit-address buys1-edit-btn">modify</span></h3>
            <ul class="buys-ycnt buys1-hide-detail">
                 <li class="clearfix">
-                    <span class="key fleft">姓名：</span>
+                    <span class="key fleft">name：</span>
                     <div class="value fleft" id="true_name"></div>
                 </li>
                 <li class="clearfix">
-                    <span class="key fleft">详细地址：</span>
+                    <span class="key fleft">Detailed address：</span>
                     <div class="value fleft" id="address"></div>
                 </li>
                 <li class="clearfix">
-                    <span class="key fleft">联系电话：</span>
+                    <span class="key fleft">phone number：</span>
                     <div class="value fleft" id="mob_phone"></div>
                 </li>
            </ul>
@@ -34,47 +34,47 @@
                 <li id="addresslist">
                     <label class="new-address clr-d94">
                         <input type="radio" name="address" value="0" class="address-radio"/>
-                        使用新的地址信息
+                        use new address
                     </label>
                     <div class="invoice-addcnt">
                         <div class="iadd-title">
-                            收货人信息：
+                            patient infor：
                         </div>
                         <div>
-                            <p class="iadd-ip">姓名：<span class="opera-tips">(*必填)</span></p>
+                            <p class="iadd-ip">name：<span class="opera-tips">(*mandatory)</span></p>
                             <p class="iadd-ip">
                                 <input type="text" class="n-input h22 wp100" name="true_name" id="vtrue_name"/>
                             </p>
-                            <p class="iadd-ip"> 手机号码:<span class="opera-tips">(*必填)</span></p>
+                            <p class="iadd-ip"> phone number:<span class="opera-tips">(*mandatory)</span></p>
                             <p class="iadd-ip">
                                 <input type="text" class="n-input h22 wp100" name="mob_phone" id="vmob_phone"/>
                             </p>
-                            <p class="iadd-ip"> 电话号码:</p>
+                            <p class="iadd-ip"> contact number:</p>
                             <p class="iadd-ip">
                                 <input type="text" class="n-input h22 wp100" name="tel_phone" id="vtel_phone"/>
                             </p>
                         </div>
-                        <div class="iadd-title"> 地址信息：</div>                        
+                        <div class="iadd-title"> address infor</div>                        
                         <div>         
-                        	<p class="iadd-ip">省份：<span class="opera-tips">(*必填)</span></p>              	
+                        	<p class="iadd-ip">state：<span class="opera-tips">(*mandatory)</span></p>              	
                             <p class="iadd-ip">
 						        <select class="select-30" name="prov" id="vprov">
-									<option value="">请选择...</option>
+									<option value="">please choose...</option>
 						        </select>
                             </p>
-                            <p class="iadd-ip">城市：<span class="opera-tips">(*必填)</span></p>
+                            <p class="iadd-ip">city：<span class="opera-tips">(*mandatory)</span></p>
                             <p class="iadd-ip">
 						 		<select class="select-30" name="city" id="vcity">
-									<option value="">请选择...</option>
+									<option value="">please choose...</option>
 						        </select>   
                             </p>
-                            <p class="iadd-ip"> 区县：<span class="opera-tips">(*必填)</span></p>
+                            <p class="iadd-ip"> area：<span class="opera-tips">(*mandatory)</span></p>
                             <p class="iadd-ip">
 						       	<select class="select-30" name="region" id="vregion">
-									<option value="">请选择...</option>
+									<option value="">please choose...</option>
 						        </select>
                             </p>
-                            <p class="iadd-ip"> 街道：<span class="opera-tips">(*必填)</span></p>
+                            <p class="iadd-ip"> street：<span class="opera-tips">(*mandatory)</span></p>
                             <p class="iadd-ip">
                                 <textarea class="wp100 h40 normal-textarea" name="address" id="vaddress"></textarea>
                             </p>
@@ -83,25 +83,25 @@
                     <div class="error-tips"></div>
                 </li>
                 <li class="invoice_opeara">
-                    <a href="javascript:void(0);" class="btn-prink save-address">保存地址信息</a>
+                    <a href="javascript:void(0);" class="btn-prink save-address">save address</a>
                 </li>
             </ul>
         </div>
         <div class="buys1-cnt">
-           <h3 class="clearfix">支付方式</h3>
+           <h3 class="clearfix">pay method</h3>
            <ul class="buys-ycnt">
                 <li class="clearfix buys-yc-type">
                     <label id="online"/>
-                        <input type="radio" name="buy-type" class="mr5" checked value="online">在线支付
+                        <input type="radio" name="buy-type" class="mr5" checked value="online">pay online
                     </label>
                     <label class="mt5" id="offline">
-                        <input type="radio" name="buy-type" class="mr5" value="offline"/>货到付款
+                        <input type="radio" name="buy-type" class="mr5" value="offline"/>cash
                     </label>
                 </li>
            </ul>
         </div>
        <div class="buys1-cnt buys1-invoice-cnt">
-           <h3 class="clearfix">发票信息 <span class="btn-s btn-prink-s buys1-edit-invoice buys1-edit-btn fright">修改</span></h3>
+           <h3 class="clearfix">invoice <span class="btn-s btn-prink-s buys1-edit-invoice buys1-edit-btn fright">modify</span></h3>
            <ul class="buys-ycnt buys1-hide-detail">
                  <li class="clearfix">
                     <div class="value fleft" id="inv_content"></div>
@@ -111,22 +111,22 @@
                 <li id="invoice_add">
                     <label class="new-invoice clr-d94">
                         <input type="radio" name="invoice" value="0" class="inv-radio"/>
-                        使用新的发票信息
+                        use new invoice
                     </label>
                     <div class="invoice-addcnt">
-                        <div class="iadd-title">发票抬头：</div>
+                        <div class="iadd-title">invoice infor：</div>
                         <div class="iadd-item">
                             <label>
                                 <input type="radio" checked="checked" name="inv_title_select" class="mr5" value="person" >个人
                             </label>
-                            <label class="mt5">
+<!--                             <label class="mt5">
                                 <input type="radio" name="inv_title_select" class="mr5 inv-tlt-sle" value="company">
                                 <span class="mr5">企业</span>
                                 <input type="text" class="input-30 head-invoice" name="inv_title">
-                            </label>
+                            </label> -->
                         </div>
                         <div class="iadd-title">
-                          	发票内容：
+                          	invoice content：
                         </div>
                         <p class="iadd-cnt">
                             <select class="select-30" id="inc_content" name='inv_content'>
@@ -135,13 +135,13 @@
                     </div>
                 </li>
                 <li class="invoice_opeara">
-                    <a href="javascript:void(0);" class="btn-prink save-invoice">保存发票信息</a>
-                    <a href="javascript:void(0);" class="btn-white no-invoice">不需要发票</a>                    
+                    <a href="javascript:void(0);" class="btn-prink save-invoice">save invoice</a>
+                    <a href="javascript:void(0);" class="btn-white no-invoice">No invoice</a>                    
                 </li>
             </ul>
        </div>
        <div class="buys1-cnt">
-           <h3 class="clearfix">商品清单<!--  <span class="btn-s btn-prink-s fright" onclick="javascript:history.go(-1);">去购物车</span> --> </h3>
+           <h3 class="clearfix">商品清单<!--  <span class="btn-s btn-prink-s fright" onclick="javascript:history.go(-1);">去chart</span> --> </h3>
            <ul class="buys-ytable mt10" id="goodslist_before">
                <li id="deposit">
                   <div class="pre-deposit-wp hide">
@@ -151,11 +151,11 @@
                         </label>
                       </p>
                       <p>
-                          (可用金额为<span class="pre-doposit-money clr-d94">￥<span id="available_predeposit"></span></span>)
+                          (可用金额为<span class="pre-doposit-money clr-d94">$<span id="available_predeposit"></span></span>)
                       </p>
                       <div id="pd">
 	                      <p class="clearfix">
-	                         	 登录密码：<input type="password" class="mr5 h22" name="loginpassword" id="loginpassword" />
+	                         	 loginpassword：<input type="password" class="mr5 h22" name="loginpassword" id="loginpassword" />
 	                      </p>
 	                      <p class="password_error_tip" style="display:none;color:red;"></p>
 	                      <p>
@@ -166,11 +166,11 @@
                </li>
                <li class="bd-t-cc">
                    <div class="buys-order-total">
-                       	订单总金额：￥<span id="total_price"></span>
+                       	total：$<span id="total_price"></span>
                    </div>
                </li>
                <li>
-                   <a href="javascript:void(0);" class="post-order" id="buy_step2">提交订单</a>
+                   <a href="javascript:void(0);" class="post-order" id="buy_step2">submit appointment</a>
                </li>
            </ul>
        </div>

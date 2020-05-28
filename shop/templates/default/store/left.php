@@ -5,13 +5,13 @@
     <h4><?php echo $lang['nc_goods_class'];?></h4>
   </div>
   <div class="content">
-    <p><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '1', 'order' => '2'));?>"><?php echo $lang['nc_by_new'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '2', 'order' => '2'));?>"><?php echo $lang['nc_by_price'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '3', 'order' => '2'));?>"><?php echo $lang['nc_by_sale'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '5', 'order' => '2'));?>"><?php echo $lang['nc_by_click'];?></a></span></p>
+    <!-- <p><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '1', 'order' => '2'));?>"><?php echo $lang['nc_by_new'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '2', 'order' => '2'));?>"><?php echo $lang['nc_by_price'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '3', 'order' => '2'));?>"><?php echo $lang['nc_by_sale'];?></a></span><span><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id'], 'key' => '5', 'order' => '2'));?>"><?php echo $lang['nc_by_click'];?></a></span></p> -->
     <div class="ncs-search">
       <form id="" name="searchShop" method="get" action="index.php" >
         <input type="hidden" name="act" value="show_store" />
         <input type="hidden" name="op" value="goods_all" />
         <input type="hidden" name="store_id" value="<?php echo $output['store_info']['store_id'];?>" />
-        <input type="text" class="text w120" name="keyword" placeholder="搜索店内商品">
+        <input type="text" class="text w120" name="keyword" placeholder="search from clinic">
         <a href="javascript:document.searchShop.submit();" class="ncs-btn"><?php echo $lang['nc_search'];?></a>
       </form>
     </div>
@@ -36,7 +36,7 @@
     <div class="clear mb10"></div>
   </div>
 </div>
-<div class="nc-s-c-s1 ncs-top-bar">
+<!-- <div class="nc-s-c-s1 ncs-top-bar">
   <div class="title">
     <h4><?php echo $lang['nc_goods_rankings'];?></h4>
   </div>
@@ -83,7 +83,7 @@
     </div>
     <p><a href="<?php echo urlShop('show_store', 'goods_all', array('store_id' => $output['store_info']['store_id']));?>"><?php echo $lang['nc_look_more_store_goods'];?></a></p>
   </div>
-</div>
+</div> -->
 <script type="text/javascript">
     $(document).ready(function(){
         //热销排行切换

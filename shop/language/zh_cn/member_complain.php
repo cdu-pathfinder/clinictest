@@ -4,10 +4,10 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 导航菜单
  */
-$lang['complain_manage_title'] = '投诉管理';
-$lang['complain_submit'] = '投诉处理';
+$lang['complain_manage_title'] = 'Complaint management';
+$lang['complain_submit'] = 'Complain submit';
 
-$lang['complain_state_new'] = '新投诉';
+$lang['complain_state_new'] = 'New';
 $lang['complain_state_handle'] = '待仲裁';
 $lang['complain_state_appeal'] = '待申诉';
 $lang['complain_state_talk'] = '对话中';

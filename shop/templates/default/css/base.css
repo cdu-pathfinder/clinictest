@@ -94,7 +94,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .w96 {width: 96px;}
 .w100 { width:100px;}
 .w110 { width:110px;}
-.w120 { width:120px !important;}
+.w120 { width:100px !important;}
 .w130 { width:130px;}
 .w150 { width:150px !important;}
 .w160 { width:160px;}
@@ -261,7 +261,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 
 .public-top-layout .quick-menu { font-size: 0; *word-spacing:-1px/*IE6、7*/; text-align: right; width: 400px; height: 30px; float: right;}
 .public-top-layout .quick-menu a { color: #777 !important;}
-.public-top-layout .quick-menu dl { text-align: left; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display:inline/*IE6、7*/; width: 80px; height: 30px; position: relative; z-index: 999; *zoom:1/*IE6、7*/;}
+.public-top-layout .quick-menu dl { text-align: left; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display:inline/*IE6、7*/; width: 90px; height: 30px; position: relative; z-index: 999; *zoom:1/*IE6、7*/;}
 .public-top-layout .quick-menu dl dt { font-size: 12px; line-height: 20px; height: 20px; padding: 5px 0; position: absolute; z-index: 2; top: 0px; left: 12px;}
 .public-top-layout .quick-menu dl dt a:hover { text-decoration: none; color: #F30;}
 .public-top-layout .quick-menu dl dt i { background: url(../images/top_bg.png) no-repeat 0 0; vertical-align: middle; display: inline-block; width: 6px; height: 3px; margin-left: 6px;-webkit-transition: .2s ease-in; -moz-transition: -webkit-transform .2s ease-in; -o-transition: -webkit-transform .2s ease-in; transition: .2s ease-in;}

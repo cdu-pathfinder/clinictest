@@ -3,9 +3,9 @@
  * 压缩框架
  *
  * @package
- * @copyright  Copyright (c) 2007-2013 ShopNC Inc. (http://www.shopnc.net)
- * @license    http://www.shopnc.net/
- * @link       http://www.shopnc.net/
+
+
+* @liam      s328995
  * @author	   ShopNC Team
  * @since      File available since Release v1.1
  */

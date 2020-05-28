@@ -3,76 +3,76 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * 预存款功能公用
  */
-$lang['predeposit_no_record']	 			= '没有符合条件的记录';
-$lang['predeposit_unavailable']	 			= '系统未开启预存款功能';
-$lang['predeposit_parameter_error']			= '参数错误';
-$lang['predeposit_record_error']			= '记录信息错误';
-$lang['predeposit_userrecord_error']		= '会员信息错误';
-$lang['predeposit_payment']					= '支付方式';
-$lang['predeposit_addtime']					= '创建时间';
-$lang['predeposit_apptime']					= '申请时间';
-$lang['predeposit_checktime']					= '审核时间';
-$lang['predeposit_paytime']					= '付款时间';
-$lang['predeposit_addtime_to']				= '至';
-$lang['predeposit_trade_no']				= '交易号';
-$lang['predeposit_adminremark']				= '管理员备注';
-$lang['predeposit_recordstate']				= '记录状态';
-$lang['predeposit_paystate']				= '状态';
-$lang['predeposit_backlist']				= '返回列表';
-$lang['predeposit_pricetype']				= '预存款类型';
-$lang['predeposit_pricetype_available']		= '可用金额';
-$lang['predeposit_pricetype_freeze']		= '冻结金额';
-$lang['predeposit_price']					= '金额';
-$lang['predeposit_payment_error']			= '支付方式错误';
+$lang['predeposit_no_record']	 			= 'No record of eligibility';
+$lang['predeposit_unavailable']	 			= 'The pre-deposit function is not enabled in the system';
+$lang['predeposit_parameter_error']			= 'Parameter error';
+$lang['predeposit_record_error']			= 'Recording error';
+$lang['predeposit_userrecord_error']		= 'Member information error';
+$lang['predeposit_payment']					= 'Method of payment';
+$lang['predeposit_addtime']					= 'predeposit_addtime';
+$lang['predeposit_apptime']					= 'apply time';
+$lang['predeposit_checktime']					= 'checktime';
+$lang['predeposit_paytime']					= 'paytime';
+$lang['predeposit_addtime_to']				= 'to';
+$lang['predeposit_trade_no']				= 'trade No.';
+$lang['predeposit_adminremark']				= 'adminremark';
+$lang['predeposit_recordstate']				= 'recordstate';
+$lang['predeposit_paystate']				= 'paystate';
+$lang['predeposit_backlist']				= 'backlist';
+$lang['predeposit_pricetype']				= 'predeposit type';
+$lang['predeposit_pricetype_available']		= 'predeposit available';
+$lang['predeposit_pricetype_freeze']		= 'pricet freeze';
+$lang['predeposit_price']					= 'predeposit';
+$lang['predeposit_payment_error']			= 'payment error';
 /**
  * 充值功能公用
  */
-$lang['predeposit_rechargesn']					= '充值单号';
-$lang['predeposit_rechargewaitpaying']			= '未支付';
-$lang['predeposit_rechargepaysuccess']			= '已支付';
-$lang['predeposit_rechargestate_auditing']		= '审核中';
-$lang['predeposit_rechargestate_completed']		= '已完成';
-$lang['predeposit_rechargestate_closed']		= '已关闭';
-$lang['predeposit_recharge_price']				= '充值金额';
-$lang['predeposit_recharge_huikuanname']		= '汇款人姓名';
-$lang['predeposit_recharge_huikuanbank']		= '汇款银行';
-$lang['predeposit_recharge_huikuandate']		= '汇款日期';
-$lang['predeposit_recharge_memberremark']		= '会员备注';
-$lang['predeposit_recharge_success']			= '充值成功';
-$lang['predeposit_recharge_fail']				= '充值失败';
-$lang['predeposit_recharge_pay']				= '支&nbsp;付';
-$lang['predeposit_recharge_view']				= '查看详单';
-$lang['predeposit_recharge_paydesc']			= '预存款充值订单';
-$lang['predeposit_recharge_pay_offline']		= '待确认';
+$lang['predeposit_rechargesn']					= 'recharge No.';
+$lang['predeposit_rechargewaitpaying']			= 'wait to pay';
+$lang['predeposit_rechargepaysuccess']			= 'paied';
+$lang['predeposit_rechargestate_auditing']		= 'auditing';
+$lang['predeposit_rechargestate_completed']		= 'completed';
+$lang['predeposit_rechargestate_closed']		= 'closed';
+$lang['predeposit_recharge_price']				= 'recharge price';
+$lang['predeposit_recharge_huikuanname']		= 'name';
+$lang['predeposit_recharge_huikuanbank']		= 'bank';
+$lang['predeposit_recharge_huikuandate']		= 'date';
+$lang['predeposit_recharge_memberremark']		= 'remark';
+$lang['predeposit_recharge_success']			= 'successful';
+$lang['predeposit_recharge_fail']				= 'faild';
+$lang['predeposit_recharge_pay']				= 'pay';
+$lang['predeposit_recharge_view']				= 'view details';
+$lang['predeposit_recharge_paydesc']			= 'predeposit recharge No.';
+$lang['predeposit_recharge_pay_offline']		= 'to confirm';
 /**
  * 充值添加
  */
-$lang['predeposit_recharge_add_pricenull_error']			= '请添加充值金额';
-$lang['predeposit_recharge_add_pricemin_error']				= '充值金额为大于或者等于0.01的数字';
+$lang['predeposit_recharge_add_pricenull_error']			= 'Please add the recharge amount';
+$lang['predeposit_recharge_add_pricemin_error']				= 'The number of recharged amount is greater than or equal to 0.01';
 /**
  * 充值信息删除
  */
-$lang['predeposit_recharge_del_success']		= '充值信息删除成功';
-$lang['predeposit_recharge_del_fail']		= '充值信息删除失败';
+$lang['predeposit_recharge_del_success']		= 'The recharge information was deleted successfully';
+$lang['predeposit_recharge_del_fail']		= 'Failed to delete the recharge information';
 /**
  * 提现功能公用
  */
-$lang['predeposit_cashsn']				= '申请单号';
-$lang['predeposit_cashmanage']			= '提现管理';
-$lang['predeposit_cashwaitpaying']		= '等待支付';
-$lang['predeposit_cashpaysuccess']		= '支付成功';
-$lang['predeposit_cashstate_auditing']	= '审核中';
-$lang['predeposit_cashstate_completed']	= '已完成';
-$lang['predeposit_cashstate_closed']		= '已关闭';
-$lang['predeposit_cash_price']				= '提现金额';
-$lang['predeposit_cash_shoukuanname']			= '开户人姓名';
-$lang['predeposit_cash_shoukuanbank']			= '收款银行';
-$lang['predeposit_cash_shoukuanaccount']		= '收款账号';
-$lang['predeposit_cash_shoukuanname_tip']	= '强烈建议优先填写国有4大银行(中国银行、中国建设银行、中国工商银行和中国农业银行)<br/>请填写详细的开户银行分行名称，虚拟账户如支付宝、财付通填写“支付宝”、“财付通”即可';
-$lang['predeposit_cash_shoukuanaccount_tip']	= '银行帐号或虚拟账号(支付宝、财付通等账号)';
-$lang['predeposit_cash_shoukuanauser_tip']	= '收款账号的开户人姓名';
-$lang['predeposit_cash_shortprice_error']		= '预存款金额不足';
-$lang['predeposit_cash_price_tip']				= '当前可用金额';
+$lang['predeposit_cashsn']				= 'cash No.';
+$lang['predeposit_cashmanage']			= 'cash manage';
+$lang['predeposit_cashwaitpaying']		= 'wait to pay';
+$lang['predeposit_cashpaysuccess']		= 'successfully';
+$lang['predeposit_cashstate_auditing']	= 'aduiting';
+$lang['predeposit_cashstate_completed']	= 'completed';
+$lang['predeposit_cashstate_closed']		= 'closed';
+$lang['predeposit_cash_price']				= 'cash price';
+$lang['predeposit_cash_shoukuanname']			= 'name';
+$lang['predeposit_cash_shoukuanbank']			= 'bank';
+$lang['predeposit_cash_shoukuanaccount']		= 'account';
+$lang['predeposit_cash_shoukuanname_tip']	= 'It is strongly recommended to give priority to large Banks';
+$lang['predeposit_cash_shoukuanaccount_tip']	= 'Bank account';
+$lang['predeposit_cash_shoukuanauser_tip']	= 'The name of the person who opened the account';
+$lang['predeposit_cash_shortprice_error']		= 'The amount of predeposit is insufficient';
+$lang['predeposit_cash_price_tip']				= 'Currently available amount';
 
 $lang['predeposit_cash_availablereducedesc']	=  '会员申请提现减少预存款金额';
 $lang['predeposit_cash_freezeadddesc']	=  '会员申请提现增加冻结预存款金额';
@@ -82,34 +82,34 @@ $lang['predeposit_cash_freezereducedesc']	=  '会员删除提现减少冻结预�
 /**
  * 提现添加
  */
-$lang['predeposit_cash_add_shoukuannamenull_error']		= '请填写收款人姓名';
-$lang['predeposit_cash_add_shoukuanbanknull_error']		= '请填写收款银行';
-$lang['predeposit_cash_add_pricemin_error']				= '提现金额为大于或者等于0.01的数字';
-$lang['predeposit_cash_add_enough_error']				= '账户余额不足';
-$lang['predeposit_cash_add_pricenull_error']			= '请填写提现金额';
-$lang['predeposit_cash_add_shoukuanaccountnull_error']	= '请填写收款账号';
-$lang['predeposit_cash_add_success']					= '您的提现申请已成功提交，请等待系统处理';
-$lang['predeposit_cash_add_fail']						= '提现信息添加失败';
+$lang['predeposit_cash_add_shoukuannamenull_error']		= 'Please fill in the name of the payee';
+$lang['predeposit_cash_add_shoukuanbanknull_error']		= 'Please fill in the receiving bank';
+$lang['predeposit_cash_add_pricemin_error']				= 'The number of cash amount is greater than or equal to 0.01';
+$lang['predeposit_cash_add_enough_error']				= 'Insufficient account balance';
+$lang['predeposit_cash_add_pricenull_error']			= 'Please fill in the cash amount';
+$lang['predeposit_cash_add_shoukuanaccountnull_error']	= 'Please fill in the account number';
+$lang['predeposit_cash_add_success']					= 'Your cash application has been successfully submitted, please wait for the system to process';
+$lang['predeposit_cash_add_fail']						= 'Failed to add cash information';
 /**
  * 提现信息删除
  */
-$lang['predeposit_cash_del_success']	= '提现信息删除成功';
-$lang['predeposit_cash_del_fail']		= '提现信息删除失败';
+$lang['predeposit_cash_del_success']	= 'The cash information was deleted successfully';
+$lang['predeposit_cash_del_fail']		= 'cash information deletion failed';
 /**
  * 支付接口
  */
-$lang['predeposit_payment_pay_fail']		= '充值失败';
-$lang['predeposit_payment_pay_success']		= '充值成功，正在前往我的订单';
-$lang['predepositrechargedesc']	=  '充值';
+$lang['predeposit_payment_pay_fail']		= 'recharge failure';
+$lang['predeposit_payment_pay_success']		= 'recharge is successful, is heading to my order';
+$lang['predepositrechargedesc']	=  'recharge';
 /**
  * 出入明细 
  */
-$lang['predeposit_log_stage'] 			= '类型';
-$lang['predeposit_log_stage_recharge']	= '充值';
-$lang['predeposit_log_stage_cash']		= '提现';
-$lang['predeposit_log_stage_order']		= '消费';
-$lang['predeposit_log_stage_artificial']= '手动修改';
-$lang['predeposit_log_stage_system']	= '系统';
-$lang['predeposit_log_stage_income']	= '收入';
-$lang['predeposit_log_desc']			= '变更说明';
+$lang['predeposit_log_stage'] 			= 'type';
+$lang['predeposit_log_stage_recharge']	= 'recharge';
+$lang['predeposit_log_stage_cash']		= 'cash';
+$lang['predeposit_log_stage_order']		= 'order';
+$lang['predeposit_log_stage_artificial']= 'Manually modify';
+$lang['predeposit_log_stage_system']	= 'system';
+$lang['predeposit_log_stage_income']	= 'income';
+$lang['predeposit_log_desc']			= 'Change description';
 ?>

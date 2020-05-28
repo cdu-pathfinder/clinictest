@@ -3,27 +3,27 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * index
  */
-$lang['document_index_document']		= '系统文章';
-$lang['document_index_title']			= '标题';
-$lang['document_index_content']			= '文章内容';
-$lang['document_index_pic_upload']		= '图片上传';
-$lang['document_index_batch_upload']	= '批量上传';
-$lang['document_index_normal_upload']	= '普通上传';
-$lang['document_index_uploaded_pic']	= '已传图片';
-$lang['document_index_insert']			= '插入编辑器';
-$lang['document_index_title_null']		= '文章标题不能为空';
-$lang['document_index_content_null']	= '文章内容不能为空';
-$lang['document_index_del_fail']		= '删除失败';
-$lang['document_index_help1']			= '在相关操作处可查看具体内容，例：在注册会员时须查看用户服务协议';
+$lang['document_index_document']		= 'System articles';
+$lang['document_index_title']			= 'Title';
+$lang['document_index_content']			= 'Article content';
+$lang['document_index_pic_upload']		= 'Image upload ';
+$lang['document_index_batch_upload']	= 'Bach upload';
+$lang['document_index_normal_upload']	= 'Normal upload';
+$lang['document_index_uploaded_pic']	= 'Uploaded';
+$lang['document_index_insert']			= 'Insert editor';
+$lang['document_index_title_null']		= 'Article title is required';
+$lang['document_index_content_null']	= 'Article content is required';
+$lang['document_index_del_fail']		= 'Delete failed';
+$lang['document_index_help1']			= 'You can check the specific content in the relevant operation place, for example: you should check the user service agreement when registering a member';
 /**
  * 编辑系统文章
  */
-$lang['document_edit_back_to_list']		= '返回文章列表';
-$lang['document_edit_again']			= '重新编辑该文章';
-$lang['document_edit_time']				= '时间';
-$lang['article_add_img_wrong']      = '图片限于png,gif,jpeg,jpg格式';
+$lang['document_edit_back_to_list']		= 'Back to article list';
+$lang['document_edit_again']			= 'Re-edit the article';
+$lang['document_edit_time']				= 'Time';
+$lang['article_add_img_wrong']      = 'Image format only png,gif,jpeg';
 /**
  * iframe上传
  */
-$lang['document_iframe_upload_fail']	= '上传失败';
-$lang['document_iframe_upload']         = '上传';
+$lang['document_iframe_upload_fail']	= 'Upload failed';
+$lang['document_iframe_upload']         = 'Uploaded';

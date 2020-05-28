@@ -23,7 +23,7 @@ $lang['album_replace_same_type']		= "替换图片的扩展名要与被替换图�
  * 用户中心页面
  */
 $lang['album_batch_upload']				= "批量上传";
-$lang['album_sort']						= "排序方式";
+$lang['album_sort']						= "Sorting method";
 $lang['album_batch_upload_description'] = "支持Jpg、Gif、Png格式，大小不超过";
 $lang['album_batch_upload_description_1'] = "的图片上传；浏览文件时可以按住ctrl或shift键多选。";
 $lang['album_class_list_img_upload']		= "上传图片";
