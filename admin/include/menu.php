@@ -35,9 +35,9 @@ $arr = array(
 			6 => array(
 				'args'	=> 'website',
 				'text' 	=> $lang['nc_website']),
-			7 => array(
-				'args'	=> 'operation',
-				'text'	=> $lang['nc_operation']),
+			// 7 => array(
+			// 	'args'	=> 'operation',
+			// 	'text'	=> $lang['nc_operation']),
 			8 => array(
 				'args'	=> 'stat',
 				'text'	=> $lang['nc_stat'])
@@ -61,13 +61,13 @@ $arr = array(
 				'text' => $lang['nc_config'],
 				'list' => array(
 					array('args'=>'base,setting,setting',			'text'=>$lang['nc_web_set']),
-					array('args'=>'qq,account,setting',		        'text'=>$lang['nc_web_account_syn']),
+					// array('args'=>'qq,account,setting',		        'text'=>$lang['nc_web_account_syn']),
 					array('args'=>'param,upload,setting',			'text'=>$lang['nc_upload_set']),
 					array('args'=>'seo,setting,setting',			'text'=>$lang['nc_seo_set']),
 					array('args'=>'email,message,setting',			'text'=>$lang['nc_message_set']),
 					array('args'=>'system,payment,setting',			'text'=>$lang['nc_pay_method']),
 					array('args'=>'admin,admin,setting',			'text'=>$lang['nc_limit_manage']),
-					array('args'=>'index,express,setting',			'text'=>$lang['nc_admin_express_set']),
+					// array('args'=>'index,express,setting',			'text'=>$lang['nc_admin_express_set']),
 					array('args'=>'index,offpay_area,setting',		'text'=>$lang['nc_admin_offpay_area_set']),
 					array('args'=>'clear,cache,setting',			'text'=>$lang['nc_admin_clear_cache']),
 					array('args'=>'perform,perform,setting',		'text'=>$lang['nc_admin_perform_opt']),
@@ -107,9 +107,9 @@ $arr = array(
 					array('args'=>'addpoints,points,member',				'text'=>$lang['nc_member_pointsmanage']),
 					array('args'=>'predeposit,predeposit,member',			'text'=>$lang['nc_member_predepositmanage']),
 					array('args'=>'sharesetting,sns_sharesetting,member',	'text'=>$lang['nc_binding_manage']),
-					array('args'=>'class_list,sns_malbum,member',			'text'=>$lang['nc_member_album_manage']),
-					array('args'=>'tracelist,snstrace,member',				'text'=>$lang['nc_snstrace']),
-					array('args'=>'member_tag,sns_member,member',			'text'=>$lang['nc_member_tag'])
+					// array('args'=>'class_list,sns_malbum,member',			'text'=>$lang['nc_member_album_manage']),
+					// array('args'=>'tracelist,snstrace,member',				'text'=>$lang['nc_snstrace']),
+					// array('args'=>'member_tag,sns_member,member',			'text'=>$lang['nc_member_tag'])
 				)
 			),
 			5 => array(
@@ -138,22 +138,22 @@ $arr = array(
 					array('args'=>'rec_list,rec_position,website',			'text'=>$lang['nc_admin_res_position']),
 				)
 			),
-			7 => array(
-				'nav' => 'operation',
-				'text' => $lang['nc_operation'],
-				'list' => array(
-					array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
-					array('args'=>'groupbuy_template_list,groupbuy,operation',	'text'=>$lang['nc_groupbuy_manage']),
-					array('args'=>'xianshi_apply,promotion_xianshi,operation',	'text'=>$lang['nc_promotion_xianshi']),
-					array('args'=>'mansong_apply,promotion_mansong,operation',	'text'=>$lang['nc_promotion_mansong']),
-					array('args'=>'bundling_list,promotion_bundling,operation',	'text'=>$lang['nc_promotion_bundling']),
-					array('args'=>'goods_list,promotion_booth,operation',		'text'=>$lang['nc_promotion_booth']),
-					array('args'=>'voucher_apply,voucher,operation',            'text'=>$lang['nc_voucher_price_manage']),
-					array('args'=>'index,bill,operation',					    'text'=>$lang['nc_bill_manage']),
-					array('args'=>'activity,activity,operation',				'text'=>$lang['nc_activity_manage']),
-					array('args'=>'pointprod,pointprod,operation',				'text'=>$lang['nc_pointprod']),
-				)
-			),
+			// 7 => array(
+			// 	'nav' => 'operation',
+			// 	'text' => $lang['nc_operation'],
+			// 	'list' => array(
+			// 		array('args'=>'setting,operation,operation',			    'text'=>$lang['nc_operation_set']),
+			// 		array('args'=>'groupbuy_template_list,groupbuy,operation',	'text'=>$lang['nc_groupbuy_manage']),
+			// 		array('args'=>'xianshi_apply,promotion_xianshi,operation',	'text'=>$lang['nc_promotion_xianshi']),
+			// 		array('args'=>'mansong_apply,promotion_mansong,operation',	'text'=>$lang['nc_promotion_mansong']),
+			// 		array('args'=>'bundling_list,promotion_bundling,operation',	'text'=>$lang['nc_promotion_bundling']),
+			// 		array('args'=>'goods_list,promotion_booth,operation',		'text'=>$lang['nc_promotion_booth']),
+			// 		array('args'=>'voucher_apply,voucher,operation',            'text'=>$lang['nc_voucher_price_manage']),
+			// 		array('args'=>'index,bill,operation',					    'text'=>$lang['nc_bill_manage']),
+			// 		array('args'=>'activity,activity,operation',				'text'=>$lang['nc_activity_manage']),
+			// 		array('args'=>'pointprod,pointprod,operation',				'text'=>$lang['nc_pointprod']),
+			// 	)
+			// ),
 			8 => array(
 				'nav' => 'stat',
 				'text' => $lang['nc_stat'],
@@ -161,7 +161,7 @@ $arr = array(
 					array('args'=>'newmember,stat_member,stat',			'text'=>$lang['nc_statmember']),
 					array('args'=>'newstore,stat_store,stat',			'text'=>$lang['nc_statstore']),
 					array('args'=>'goods,stat_trade,stat',				'text'=>$lang['nc_stattrade']),
-					array('args'=>'promotion,stat_marketing,stat',		'text'=>$lang['nc_statmarketing']),
+					// array('args'=>'promotion,stat_marketing,stat',		'text'=>$lang['nc_statmarketing']),
 					array('args'=>'refund,stat_aftersale,stat',	'text'=>$lang['nc_stataftersale']),
 				)
 			)
@@ -183,25 +183,25 @@ if(C('mobile_isuse')){
 				)
 			);
 }
-if(C('microshop_isuse') !== null){
-	$arr['top'][] = array(
-				'args'	=> 'microshop',
-				'text'	=> $lang['nc_microshop']);
-	$arr['left'][] = array(
-				'nav' => 'microshop',
-				'text' => $lang['nc_microshop'],
-				'list' => array(
-					0 => array('args'=>'manage,microshop,microshop','text'=>$lang['nc_microshop_manage']),
-					1 => array('args'=>'goods_manage,microshop,microshop','text'=>$lang['nc_microshop_goods_manage']),
-					2 => array('args'=>'goodsclass_list,microshop,microshop','text'=>$lang['nc_microshop_goods_class']),
-					3 => array('args'=>'personal_manage,microshop,microshop','text'=>$lang['nc_microshop_personal_manage']),
-					4 => array('args'=>'personalclass_list,microshop,microshop','text'=>$lang['nc_microshop_personal_class']),
-					5 => array('args'=>'store_manage,microshop,microshop','text'=>$lang['nc_microshop_store_manage']),
-					6 => array('args'=>'comment_manage,microshop,microshop','text'=>$lang['nc_microshop_comment_manage']),
-					7 => array('args'=>'adv_manage,microshop,microshop','text'=>$lang['nc_microshop_adv_manage']),
-				)
-			);
-}
+// if(C('microshop_isuse') !== null){
+// 	$arr['top'][] = array(
+// 				'args'	=> 'microshop',
+// 				'text'	=> $lang['nc_microshop']);
+// 	$arr['left'][] = array(
+// 				'nav' => 'microshop',
+// 				'text' => $lang['nc_microshop'],
+// 				'list' => array(
+// 					0 => array('args'=>'manage,microshop,microshop','text'=>$lang['nc_microshop_manage']),
+// 					1 => array('args'=>'goods_manage,microshop,microshop','text'=>$lang['nc_microshop_goods_manage']),
+// 					2 => array('args'=>'goodsclass_list,microshop,microshop','text'=>$lang['nc_microshop_goods_class']),
+// 					3 => array('args'=>'personal_manage,microshop,microshop','text'=>$lang['nc_microshop_personal_manage']),
+// 					4 => array('args'=>'personalclass_list,microshop,microshop','text'=>$lang['nc_microshop_personal_class']),
+// 					5 => array('args'=>'store_manage,microshop,microshop','text'=>$lang['nc_microshop_store_manage']),
+// 					6 => array('args'=>'comment_manage,microshop,microshop','text'=>$lang['nc_microshop_comment_manage']),
+// 					7 => array('args'=>'adv_manage,microshop,microshop','text'=>$lang['nc_microshop_adv_manage']),
+// 				)
+// 			);
+// }
 if(C('cms_isuse') !== null){
 	$arr['top'][] = array(
 				'args'	=> 'cms',
@@ -224,25 +224,25 @@ if(C('cms_isuse') !== null){
 			);
 }
 	
- if(C('circle_isuse') !== null){
-	$arr['top'][] = array(
-			'args'	=> 'circle',
-			'text'	=> $lang['nc_circle']);
-	$arr['left'][] = array(
-			'nav'	=> 'circle',
-			'text'	=> $lang['nc_circle'],
-			'list'	=> array(
-					0 => array('args'=>'index,circle_setting,circle','text'=>$lang['nc_circle_setting']),
-					1 => array('args'=>'index,circle_memberlevel,circle','text'=>$lang['nc_circle_memberlevel']),
-					2 => array('args'=>'class_list,circle_class,circle','text'=>$lang['nc_circle_classmanage']),
-					3 => array('args'=>'circle_list,circle_manage,circle','text'=>$lang['nc_circle_manage']),
-					4 => array('args'=>'theme_list,circle_theme,circle','text'=>$lang['nc_circle_thememanage']),
-					5 => array('args'=>'member_list,circle_member,circle','text'=>$lang['nc_circle_membermanage']),
-					6 => array('args'=>'inform_list,circle_inform,circle','text'=>$lang['nc_circle_informnamage']),
-					7 => array('args'=>'adv_manage,circle_setting,circle','text'=>$lang['nc_circle_advmanage']),
-					8 => array('args'=>'index,circle_cache,circle','text'=>$lang['nc_circle_cache'])
-			)
-	);
- }
+ // if(C('circle_isuse') !== null){
+	// $arr['top'][] = array(
+	// 		'args'	=> 'circle',
+	// 		'text'	=> $lang['nc_circle']);
+	// $arr['left'][] = array(
+	// 		'nav'	=> 'circle',
+	// 		'text'	=> $lang['nc_circle'],
+	// 		'list'	=> array(
+	// 				0 => array('args'=>'index,circle_setting,circle','text'=>$lang['nc_circle_setting']),
+	// 				1 => array('args'=>'index,circle_memberlevel,circle','text'=>$lang['nc_circle_memberlevel']),
+	// 				2 => array('args'=>'class_list,circle_class,circle','text'=>$lang['nc_circle_classmanage']),
+	// 				3 => array('args'=>'circle_list,circle_manage,circle','text'=>$lang['nc_circle_manage']),
+	// 				4 => array('args'=>'theme_list,circle_theme,circle','text'=>$lang['nc_circle_thememanage']),
+	// 				5 => array('args'=>'member_list,circle_member,circle','text'=>$lang['nc_circle_membermanage']),
+	// 				6 => array('args'=>'inform_list,circle_inform,circle','text'=>$lang['nc_circle_informnamage']),
+	// 				7 => array('args'=>'adv_manage,circle_setting,circle','text'=>$lang['nc_circle_advmanage']),
+	// 				8 => array('args'=>'index,circle_cache,circle','text'=>$lang['nc_circle_cache'])
+	// 		)
+	// );
+ // }
 return $arr;
 ?>

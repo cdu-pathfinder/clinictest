@@ -1,8 +1,8 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 
 <div class="ncc-receipt-info"><div class="ncc-receipt-info-title">
-  <h3>发票信息</h3>
-  <a href="javascript:void(0)" nc_type="buy_edit" id="edit_invoice">[修改]</a></div>
+  <h3>invoice information</h3>
+  <a href="javascript:void(0)" nc_type="buy_edit" id="edit_invoice">[change]</a></div>
   <div id="invoice_list" class="ncc-candidate-items">
     <ul>
       <li><?php echo $output['inv_info']['content'];?></li>
@@ -22,7 +22,7 @@ function hideInvList(content) {
 //加载发票列表
 $('#edit_invoice').on('click',function(){
     $(this).hide();
-    disableOtherEdit('如需修改，请先保存发票信息');
+    disableOtherEdit('If you need to modify, please save the invoice information first');
     $(this).parent().parent().addClass('current_box');
     $('#invoice_list').load(SITEURL+'/index.php?act=buy&op=load_inv&vat_hash=<?php echo $output['vat_hash'];?>');
 });

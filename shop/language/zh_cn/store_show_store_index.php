@@ -13,8 +13,8 @@ $lang['show_store_index_include']			= '含有“';
 $lang['show_store_index_goods']				= '”的商品';
 $lang['show_store_index_recommend']			= 'Recommended Clinic';
 $lang['show_store_index_no_record']			= 'Sorry! No related Clinic found';
-$lang['show_store_index_new_goods']			= '新品';
-$lang['show_store_index_be_sold']			= '已销售：';
+$lang['show_store_index_new_goods']			= 'new';
+$lang['show_store_index_be_sold']			= 'booked：';
 
 /**
  * map

@@ -99,15 +99,15 @@ $lang['icp_number_notice']                  = '前台页面底部可以显示 IC
 $lang['site_phone']                         = 'Platform customer service contact number
  
 ';
-$lang['site_phone_notice']                  = '前台卖家中心页面右下侧可以显示，方便卖家遇到问题时咨询，多个请用半角逗号 "," 隔开';
+$lang['site_phone_notice']                  = 'The lower right side of the clinic can be displayed to facilitate consultation when encountering problems， Please use "," separate';
 $lang['site_bank_account']                  = '平台汇款帐号';
 $lang['site_bank_account_notice']           = '用半角逗号","分隔项目，用半角冒号":"分隔标题和内容，例："银行:中国银行,币种:人民币,账号:xxxxxxxxxxx,姓名:ShopNC,开户行:中国银行天津分行"';
 $lang['site_email']                         = 'Email';
-$lang['site_email_notice']                  = '前台卖家中心页面右下侧可以显示，方便卖家遇到问题时咨询';
-$lang['site_state']                         = '站点状态';
-$lang['site_state_notice']                  = '可暂时将站点关闭，其他人无法访问，但不影响管理员访问后台';
-$lang['closed_reason']                      = '关闭原因';
-$lang['closed_reason_notice']               = '当网站处于关闭状态时，关闭原因将显示在前台';
+$lang['site_email_notice']                  = 'The lower right side of the clinic can be displayed to facilitate consultation when encountering problems';
+$lang['site_state']                         = 'Site status';
+$lang['site_state_notice']                  = 'Can temporarily shut down the site, others can not access';
+$lang['closed_reason']                      = 'Close reason';
+$lang['closed_reason_notice']               = 'When the site is closed, the reason for the shutdown is displayed in the foreground';
 $lang['hot_search']                         = 'Most searched';
 $lang['field_notice']                       = 'Most searched，将显示在前台搜索框下面，前台点击时直接作为关键词进行搜索，多个关键词间请用半角逗号 "," 隔开';
 $lang['email_type_open']                    = 'Email function is open';

@@ -9,15 +9,15 @@
     <input type="hidden" name="op" value="index" />
     <tr>
       <td></td>
-      <th>账单状态</th>
+      <th> billing state</th>
       <td class="w160"><select name="bill_state">
           <option><?php echo L('nc_please_choose');?></option>
-          <option <?php if ($_GET['bill_state'] == BILL_STATE_CREATE) {?>selected<?php } ?> value="<?php echo BILL_STATE_CREATE;?>">已出账</option>
-          <option <?php if ($_GET['bill_state'] == BILL_STATE_STORE_COFIRM) {?>selected<?php } ?> value="<?php echo BILL_STATE_STORE_COFIRM;?>">商家已确认</option>
-          <option <?php if ($_GET['bill_state'] == BILL_STATE_SYSTEM_CHECK) {?>selected<?php } ?> value="<?php echo BILL_STATE_SYSTEM_CHECK?>">平台已审核</option>
-          <option <?php if ($_GET['bill_state'] == BILL_STATE_SUCCESS) {?>selected<?php } ?> value="<?php echo BILL_STATE_SUCCESS?>">结算完成</option>
+          <option <?php if ($_GET['bill_state'] == BILL_STATE_CREATE) {?>selected<?php } ?> value="<?php echo BILL_STATE_CREATE;?>">posted</option>
+          <option <?php if ($_GET['bill_state'] == BILL_STATE_STORE_COFIRM) {?>selected<?php } ?> value="<?php echo BILL_STATE_STORE_COFIRM;?>">confirmed</option>
+          <option <?php if ($_GET['bill_state'] == BILL_STATE_SYSTEM_CHECK) {?>selected<?php } ?> value="<?php echo BILL_STATE_SYSTEM_CHECK?>">reviewed</option>
+          <option <?php if ($_GET['bill_state'] == BILL_STATE_SUCCESS) {?>selected<?php } ?> value="<?php echo BILL_STATE_SUCCESS?>">completed</option>
         </select></td>
-      <th>结算单号</th>
+      <th>Statement no.</th>
       <td class="w160"><input type="text" class="text w150" name="ob_no" value="<?php echo $_GET['ob_no']; ?>" /></td>
       <td class="w70 tc"><label class="submit-border">
           <input type="submit" class="submit" value="<?php echo $lang['nc_common_search'];?>" />
@@ -29,11 +29,11 @@
   <thead>
     <tr>
       <th class="w10"></th>
-      <th>结算单号</th>
-      <th>起止时间</th>
-      <th>本期应收</th>
-      <th>结算状态</th>
-      <th>付款日期</th>
+      <th>Statement no.</th>
+      <th>Start-stop time</th>
+      <th>account receivable</th>
+      <th>Settlement status</th>
+      <th>Payment date</th>
       <th class="w120"><?php echo $lang['nc_handle'];?></th>
     </tr>
   </thead>

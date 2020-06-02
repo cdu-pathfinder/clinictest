@@ -10,7 +10,7 @@
       <ul class="tab-base">
         <li><a href="JavaScript:void(0);" class="current"><span><?php echo $lang['goods_index_all_goods'];?></span></a></li>
         <li><a href="<?php echo urlAdmin('goods', 'goods', array('type' => 'lockup'));?>" ><span><?php echo $lang['goods_index_lock_goods'];?></span></a></li>
-        <li><a href="<?php echo urlAdmin('goods', 'goods', array('type' => 'waitverify'));?>"><span>等待审核</span></a></li>
+        <li><a href="<?php echo urlAdmin('goods', 'goods', array('type' => 'waitverify'));?>"><span>Waiting for audit</span></a></li>
         <li><a href="<?php echo urlAdmin('goods', 'goods_set');?>"><span><?php echo $lang['nc_goods_set'];?></span></a></li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
         <tr>
           <th><label for="search_goods_name"> <?php echo $lang['goods_index_name'];?></label></th>
           <td><input type="text" value="<?php echo $output['search']['search_goods_name'];?>" name="search_goods_name" id="search_goods_name" class="txt"></td>
-          <th><label for="search_commonid">平台货号</label></th>
+          <th><label for="search_commonid">Platform  ID</label></th>
           <td><input type="text" value="<?php echo $output['search']['search_commonid']?>" name="search_commonid" id="search_commonid" class="txt" /></td>
           <th><label><?php echo $lang['goods_index_class_name'];?></label></th>
           <td id="gcategory" colspan="8"><input type="hidden" id="cate_id" name="cate_id" value="" class="mls_id" />
@@ -58,7 +58,7 @@
               <option value="<?php echo $key;?>" <?php if($output['search']['search_state'] != '' && $output['search']['search_state'] == $key){?>selected<?php }?>><?php echo $val;?></option>
               <?php }?>
             </select></td>
-         <th><label>等待审核</label></th>
+         <th><label>Waiting for audit</label></th>
           <td><select name="search_verify">
               <option value=""  ><?php echo $lang['nc_please_choose'];?>...</option>
               <?php foreach ($output['verify'] as $key => $val){?>
@@ -92,13 +92,13 @@
         <tr class="thead">
           <th class="w24"></th>
           <th class="w24"></th>
-          <th class="align-center">平台货号</th>
+          <th class="align-center">Platform ID</th>
           <th colspan="2"><?php echo $lang['goods_index_name'];?></th>
           <th><?php echo $lang['goods_index_brand'];?>&<?php echo $lang['goods_index_class_name'];?></th>
-          <th class="align-center">价格</th>
-          <th class="align-center">库存</th>
-          <th class="align-center">商品状态</th>
-          <th class="align-center">审核状态</th>
+          <th class="align-center">price</th>
+          <!-- <th class="align-center">库存</th> -->
+          <th class="align-center">Doctor state</th>
+          <th class="align-center">Review state</th>
           <th class="w48 align-center"><?php echo $lang['nc_handle'];?> </th>
         </tr>
       </thead>
@@ -115,11 +115,11 @@
           <td><p><?php echo $v['brand_name'];?></p>
             <p><?php echo $v['gc_name'];?></p></td>
           <td class="align-center"><?php echo $lang['currency'].$v['goods_price']?></td>
-          <td class="align-center"><?php echo $output['storage_array'][$v['goods_commonid']]['sum']?></td>
+          <!-- <td class="align-center"><?php echo $output['storage_array'][$v['goods_commonid']]['sum']?></td> -->
           <td class="align-center"><?php echo $output['state'][$v['goods_state']];?></td>
           <td class="align-center"><?php echo $output['verify'][$v['goods_verify']];?></td>
           <td class="align-center"><p><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $output['storage_array'][$v['goods_commonid']]['goods_id']));?>" target="_blank"><?php echo $lang['nc_view'];?></a></p>
-            <p><a href="javascript:void(0);" onclick="goods_lockup(<?php echo $v['goods_commonid'];?>);">违规下架</a></p></td>
+            <p><a href="javascript:void(0);" onclick="goods_lockup(<?php echo $v['goods_commonid'];?>);">illegal removal</a></p></td>
         </tr>
         <tr style="display:none;">
           <td colspan="20"><div class="ncsc-goods-sku ps-container"></div></td>
@@ -135,7 +135,7 @@
         <tr class="tfoot">
           <td><input type="checkbox" class="checkall" id="checkallBottom"></td>
           <td colspan="16"><label for="checkallBottom"><?php echo $lang['nc_select_all']; ?></label>
-            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" nctype="lockup_batch"><span>违规下架</span></a> <a href="JavaScript:void(0);" class="btn" nctype="del_batch"><span><?php echo $lang['nc_del'];?></span></a>
+            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" nctype="lockup_batch"><span>illegal removal</span></a> <a href="JavaScript:void(0);" class="btn" nctype="del_batch"><span><?php echo $lang['nc_del'];?></span></a>
             <div class="pagination"> <?php echo $output['page'];?> </div></td>
         </tr>
       </tfoot>
@@ -182,7 +182,7 @@ $(function(){
                     if (date != 'false') {
                         var _ul = $('<ul class="ncsc-goods-sku-list"></ul>');
                         $.each(date, function(i, o){
-                            $('<li><div class="goods-thumb" title="商家货号：' + o.goods_serial + '"><a href="' + o.url + '" target="_blank"><image src="' + o.goods_image + '" ></a></div>' + o.goods_spec + '<div class="goods-price">价格：<em title="￥' + o.goods_price + '">￥' + o.goods_price + '</em></div><div class="goods-storage">库存：<em title="' + o.goods_storage + '">' + o.goods_storage + '</em></div><a href="' + o.url + '" target="_blank" class="ncsc-btn-mini">查看商品详情</a></li>').appendTo(_ul);
+                            $('<li><div class="goods-thumb" title="Platform ID：' + o.goods_serial + '"><a href="' + o.url + '" target="_blank"><image src="' + o.goods_image + '" ></a></div>' + o.goods_spec + '<div class="goods-price">price：<em title="￥' + o.goods_price + '">$' + o.goods_price + '</em></div><a href="' + o.url + '" target="_blank" class="ncsc-btn-mini">Check details</a></li>').appendTo(_ul);
                             });
                         _ul.appendTo(_div);
                         _parenttr.next().show();
@@ -221,6 +221,6 @@ function getId() {
 // 商品下架
 function goods_lockup(ids) {
     _uri = "<?php echo ADMIN_SITE_URL;?>/index.php?act=goods&op=goods_lockup&id=" + ids;
-    CUR_DIALOG = ajax_form('goods_lockup', '违规下架理由', _uri, 350);
+    CUR_DIALOG = ajax_form('goods_lockup', 'Reasons for illegal removal', _uri, 350);
 }
 </script> 

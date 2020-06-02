@@ -198,7 +198,7 @@ function orderState($order_info) {
 function orderPaymentName($payment_code) {
     return str_replace(
             array('offline','online','alipay','tenpay','chinabank','predeposit'), 
-            array('货到付款','在线付款','支付宝','财付通','网银在线','预存款'), 
+            array('cash','在线付款','支付宝','财付通','网银在线','预存款'), 
             $payment_code);    
 }
 

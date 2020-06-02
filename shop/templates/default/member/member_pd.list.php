@@ -4,7 +4,7 @@
 <div class="wrap">
   <div class="tabmenu">
     <?php include template('layout/submenu');?>
-    <a class="ncu-btn3" href="index.php?act=predeposit&op=recharge_add">马上充值</a>
+    <a class="ncu-btn3" href="index.php?act=predeposit&op=recharge_add">recharge now</a>
   </div>
   <form method="get" action="index.php">
     <table class="search-form">

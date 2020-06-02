@@ -7,13 +7,13 @@
   <form id="add_form" action="<?php echo urlShop('store_account', 'account_edit_save');?>" method="post">
     <input name="seller_id" value="<?php echo $output['seller_info']['seller_id'];?>" type="hidden" />
     <dl>
-      <dt><i class="required">*</i>卖家帐号名<?php echo $lang['nc_colon'];?></dt>
+      <dt><i class="required">*</i>Manager account name<?php echo $lang['nc_colon'];?></dt>
       <dd> <?php echo $output['seller_info']['seller_name'];?> <span></span>
         <p class="hint"></p>
       </dd>
     </dl>
     <dl>
-      <dt><i class="required">*</i>帐号组<?php echo $lang['nc_colon'];?></dt>
+      <dt><i class="required">*</i>account group<?php echo $lang['nc_colon'];?></dt>
       <dd><select name="group_id">
           <?php foreach($output['seller_group_list'] as $value) { ?>
           <option value="<?php echo $value['group_id'];?>" <?php echo $output['seller_info']['seller_group_id'] == $value['group_id']?'selected':'';?>><?php echo $value['group_name'];?></option>

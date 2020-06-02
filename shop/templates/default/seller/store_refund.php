@@ -12,9 +12,9 @@
       <td>&nbsp;</td>
       <th><?php echo $lang['refund_order_add_time'];?></th>
       <td class="w240"><input name="add_time_from" id="add_time_from" type="text" class="text w70" value="<?php echo $_GET['add_time_from']; ?>" /><label class="add-on"><i class="icon-calendar"></i></label> &#8211; <input name="add_time_to" id="add_time_to" type="text" class="text w70" value="<?php echo $_GET['add_time_to']; ?>" /><label class="add-on"><i class="icon-calendar"></i></label></td>
-      <th class="w60">处理状态</th>
+      <th class="w60">state</th>
       <td class="w80"><select name="state">
-          <option value="" <?php if($_GET['state'] == ''){?>selected<?php }?>>全部</option>
+          <option value="" <?php if($_GET['state'] == ''){?>selected<?php }?>>all</option>
           <option value="1" <?php if($_GET['state'] == '1'){?>selected<?php }?>><?php echo $lang['refund_state_confirm']; ?></option>
           <option value="2" <?php if($_GET['state'] == '2'){?>selected<?php }?>><?php echo $lang['refund_state_yes']; ?></option>
           <option value="3" <?php if($_GET['state'] == '3'){?>selected<?php }?>><?php echo $lang['refund_state_no']; ?></option>
@@ -34,12 +34,12 @@
   <thead>
     <tr>
       <th class="w10"></th>
-      <th colspan="2">商品/订单号/退货号</th>
+      <th colspan="2">Doctor order number/return number</th>
       <th class="w70"><?php echo $lang['refund_order_refund'];?></th>
       <th class="w90"><?php echo $lang['refund_order_buyer'];?></th>
       <th class="w120"><?php echo $lang['refund_order_add_time'];?></th>
-      <th class="w80">处理状态</th>
-      <th class="w80">平台确认</th>
+      <th class="w80">state</th>
+      <th class="w80">confirm</th>
       <th class="w90"><?php echo $lang['nc_handle'];?></th>
     </tr>
   </thead>

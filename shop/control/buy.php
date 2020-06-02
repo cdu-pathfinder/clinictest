@@ -107,7 +107,7 @@ class buyControl extends BaseBuyControl {
         $condition['order_state'] = array('in',array(ORDER_STATE_NEW,ORDER_STATE_PAY));
         $order_list = $model_order->getOrderList($condition,'','order_id,order_state,payment_code,order_amount,pd_amount,order_sn');
         if (empty($order_list)) {
-            showMessage('未找到需要支付的订单','index.php?act=member_order','html','error');
+            showMessage('No order to be paid was found','index.php?act=member_order','html','error');
         }
 
         //重新计算在线支付金额
@@ -130,14 +130,14 @@ class buyControl extends BaseBuyControl {
 
             //显示支付方式与支付结果
             if ($order_info['payment_code'] == 'offline') {
-                $order_list[$key]['payment_state'] = '货到付款';
+                $order_list[$key]['payment_state'] = 'Spot pay';
             } else {
-                $order_list[$key]['payment_state'] = '在线支付';
+                $order_list[$key]['payment_state'] = 'pay online';
                 if (floatval($order_info['pd_amount']) > 0) {
                     if ($order_info['order_state'] == ORDER_STATE_PAY) {
-                    $order_list[$key]['payment_state'] .= " ( 已使用预存款完全支付，支付金额 ￥ {$order_info['pd_amount']} )";
+                    $order_list[$key]['payment_state'] .= " ( Full payment has been made using the pre-deposit amount $ {$order_info['pd_amount']} )";
                     } else {
-                    $order_list[$key]['payment_state'] .= " ( 已使用预存款部分支付，支付金额 ￥ {$order_info['pd_amount']} )";
+                    $order_list[$key]['payment_state'] .= " ( Part of the payment has been made in advance deposit, and the amount paid $ {$order_info['pd_amount']} )";
                     }
                 }
             }
@@ -151,11 +151,11 @@ class buyControl extends BaseBuyControl {
 
         //输入订单描述
         if (empty($pay_amount_online)) {
-            $order_remind = '下单成功，我们会尽快为您发货，请保持电话畅通！';
+            $order_remind = 'Reservation is successful, we will serve as soon as possible, please keep the phone open!';
         } elseif (empty($pay_amount_offline)) {
-            $order_remind = '请您及时付款，以便订单尽快处理！';
+            $order_remind = 'Please pay in time so that the order can be processed as soon as possible!';
         } else {
-            $order_remind = '部分商品需要在线支付，请尽快付款！';
+            $order_remind = 'Some orders need to be paid online, please pay as soon as possible!';
         }
         Tpl::output('order_remind',$order_remind);
         Tpl::output('pay_amount_online',ncPriceFormat($pay_amount_online));
@@ -171,7 +171,7 @@ class buyControl extends BaseBuyControl {
                 unset($payment_list['offline']);
             }
             if (empty($payment_list)) {
-                showMessage('暂未找到合适的支付方式','index.php?act=member_order','html','error');
+                showMessage('No suitable payment method has been found yet','index.php?act=member_order','html','error');
             }
             Tpl::output('payment_list',$payment_list);
         }
@@ -197,7 +197,7 @@ class buyControl extends BaseBuyControl {
             showMessage(Language::get('para_error'),'','html','error');
         }
         if (intval($pd_info['pdr_payment_state'])) {
-            showMessage('您的订单已经支付，请勿重复支付','index.php?act=predeposit','html','error');
+            showMessage('Your order has been paid, please do not pay again','index.php?act=predeposit','html','error');
         }
         Tpl::output('pdr_info',$pd_info);
 
@@ -333,9 +333,9 @@ class buyControl extends BaseBuyControl {
 	    if (!empty($list)) {
 	        foreach ($list as $key => $value) {
 	           if ($value['inv_state'] == 1) {
-	               $list[$key]['content'] = '普通发票'.' '.$value['inv_title'].' '.$value['inv_content'];
+	               $list[$key]['content'] = 'Commercial invoice'.' '.$value['inv_title'].' '.$value['inv_content'];
 	           } else {
-	               $list[$key]['content'] = '增值税发票'.' '.$value['inv_company'].' '.$value['inv_code'].' '.$value['inv_reg_addr'];
+	               $list[$key]['content'] = 'VAT invoice'.' '.$value['inv_company'].' '.$value['inv_code'].' '.$value['inv_reg_addr'];
 	           }
 	        }
 	    }
@@ -359,7 +359,7 @@ class buyControl extends BaseBuyControl {
 			$data = array();
             if ($_POST['invoice_type'] == 1) {
                 $data['inv_state'] = 1;
-                $data['inv_title'] = $_POST['inv_title_select'] == 'person' ? '个人' : $_POST['inv_title'];
+                $data['inv_title'] = $_POST['inv_title_select'] == 'person' ? 'person' : $_POST['inv_title'];
                 $data['inv_content'] = $_POST['inv_content'];
             } else {
                 $data['inv_state'] = 2;

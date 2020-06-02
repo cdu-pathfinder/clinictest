@@ -2,12 +2,12 @@
 
 <div class="tabmenu">
   <?php include template('layout/submenu');?>
-  <a href="javascript:void(0)" class="ncsc-btn ncsc-btn-green" onclick="go('index.php?act=store_account_group&op=group_add');" title="添加帐号">添加组</a> </div>
+  <a href="javascript:void(0)" class="ncsc-btn ncsc-btn-green" onclick="go('index.php?act=store_account_group&op=group_add');" title="添加帐号">group add</a> </div>
 <table class="ncsc-table-style">
   <thead>
     <tr>
       <th class="w30"></th>
-      <th class="tl">组名</th>
+      <th class="tl">group name</th>
       <th class="w100"><?php echo $lang['nc_handle'];?></th>
     </tr>
   </thead>
@@ -43,7 +43,7 @@
     $(document).ready(function(){
         $('[nctype="btn_del_group"]').on('click', function() {
             var group_id = $(this).attr('data-group-id');
-            if(confirm('确认删除？')) {
+            if(confirm('Confirm deletion?')) {
                 $('#del_group_id').val(group_id);
                 ajaxpost('del_form', '', '', 'onerror');
             }

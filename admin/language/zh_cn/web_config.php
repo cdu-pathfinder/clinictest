@@ -9,39 +9,39 @@ $lang['index_index_store_goods_price']		= 'Platform Price';
 /**
  * 列表页和编辑页
  */
-$lang['web_config_index']			= '首页配置';
-$lang['web_config_index_help1']			= '排序越小越靠前，可以控制板块显示先后。';
-$lang['web_config_index_help2']			= '色彩风格和前台的样式一致，在基本设置中选择更换。';
-$lang['web_config_index_help3']			= '色彩风格是css样式中已经有的，如果需要修改名称则相关程序也要同时改变才会有效果。';
-$lang['web_config_update_time']	= '更新时间';
-$lang['web_config_web_name']				= '板块名称';
-$lang['web_config_style_name']				= '色彩风格';
-$lang['web_config_web_edit']				= '基本设置';
-$lang['web_config_code_edit']				= '板块编辑';
-$lang['web_config_web_name_tips']				= '板块名称只在后台首页模板设置中作为板块标识出现，在前台首页不显示。';
-$lang['web_config_style_name_tips']				= '选择板块色彩风格将影响商城首页模板该区域的边框、背景色、字体色彩，但不会影响板块的内容布局。';
-$lang['web_config_style_red']				= '红色';
-$lang['web_config_style_pink']				= '粉色';
-$lang['web_config_style_orange']				= '橘色';
-$lang['web_config_style_green']				= '绿色';
-$lang['web_config_style_blue']				= '蓝色';
-$lang['web_config_style_purple']				= '紫色';
-$lang['web_config_style_brown']				= '褐色';
-$lang['web_config_style_gray']				= '灰色';
-$lang['web_config_add_name_null']				= '板块名称不能为空';
-$lang['web_config_sort_int']		= '排序仅可以为数字';
-$lang['web_config_sort_tips']	= '数字范围为0~255，数字越小越靠前';
+$lang['web_config_index']			= 'Home configuration';
+$lang['web_config_index_help1']			= 'The smaller the order, the closer to the front, you can control the plate display.';
+$lang['web_config_index_help2']			= 'The color style is the same as that of the foreground. Choose to change in the basic Settings.';
+$lang['web_config_index_help3']			= 'The color style is already in the CSS style, if you need to change the name of the relevant program will also have to change at the same time to have an effect.';
+$lang['web_config_update_time']	= 'Update time';
+$lang['web_config_web_name']				= 'Plate name';
+$lang['web_config_style_name']				= 'Color style';
+$lang['web_config_web_edit']				= 'setting';
+$lang['web_config_code_edit']				= 'edit';
+$lang['web_config_web_name_tips']				= 'The plate name only appears as the plate logo in the background home page template setting, and is not displayed on the front page.';
+$lang['web_config_style_name_tips']				= 'Choosing the color style of the plate will affect the border, background color and font color of the page template, but will not affect the content layout of the plate.';
+$lang['web_config_style_red']				= 'red';
+$lang['web_config_style_pink']				= 'pink';
+$lang['web_config_style_orange']				= 'orange';
+$lang['web_config_style_green']				= 'green';
+$lang['web_config_style_blue']				= 'blue';
+$lang['web_config_style_purple']				= 'purple';
+$lang['web_config_style_brown']				= 'brown';
+$lang['web_config_style_gray']				= 'gray';
+$lang['web_config_add_name_null']				= 'The plate name cannot be empty';
+$lang['web_config_sort_int']		= 'The sort can be numeric only';
+$lang['web_config_sort_tips']	= 'The Numbers range from 0 to 255, with the smaller Numbers getting closer to the front';
 
 /**
  * 板块编辑页
  */
-$lang['web_config_save']			= '保存';
-$lang['web_config_web_html']			= '更新板块内容';
-$lang['web_config_edit_help1']			= '所有相关设置完成，使用底部的“更新板块内容”前台展示页面才会变化。';
-$lang['web_config_edit_help2']			= '左侧的“推荐分类”没有个数限制，但是如果太多会不显示(已选择的子分类可以拖动进行排序，单击选中，双击删除)。';
-$lang['web_config_edit_help3']			= '中部的“商品推荐模块”由于页面宽度只能加4个，商品数为8个；右侧的品牌最多为12个(已选择的可以拖动进行排序，单击选中，双击删除)。';
-$lang['web_config_edit_html']			= '板块内容设置';
-$lang['web_config_picture_tit']			= '标题图片';
+$lang['web_config_save']			= 'save';
+$lang['web_config_web_html']			= 'update the content of the plate';
+$lang['web_config_edit_help1']			= 'All the relevant Settings are completed, and the front display page will change only when "update the content of the plate" is used at the bottom.';
+$lang['web_config_edit_help2']			= 'There is no limit to the number of "recommended categories" on the left, but too many will not be displayed (you can drag the selected subcategories to sort, click select, and double-click delete).';
+$lang['web_config_edit_help3']			= 'The "recommendation module" in the middle of the page can only be increased by 4, and the number of doctors is 8. Up to 12 on the right (the selected ones can be dragged to sort, clicked to select, and double-clicked to delete).';
+$lang['web_config_edit_html']			= 'plate content setting';
+$lang['web_config_picture_tit']			= 'title picture';
 $lang['web_config_edit_category']			= '推荐分类';
 $lang['web_config_category_name']			= '分类名称';
 $lang['web_config_gc_name']			= '子分类';
@@ -66,9 +66,9 @@ $lang['web_config_category_tips']			= '小提示：双击分类名称可删除�
 $lang['web_config_upload_act']			= '活动图片上传';
 $lang['web_config_prompt_act']			= '请按照操作注释要求，上传设置板块区域左侧的活动图片。';
 $lang['web_config_upload_type']			= '选择类型';
-$lang['web_config_upload_pic']			= '图片上传';
+$lang['web_config_upload_pic']			= 'upload picture';
 $lang['web_config_upload_adv']			= '广告调用';
-$lang['web_config_upload_act_tips']			= '建议上传210*212像素GIF\JPG\PNG格式图片，超出规定范围的图片部分将被自动隐藏。';
+$lang['web_config_upload_act_tips']			= 'It is recommended to upload 210-212-pixel GIF/JPG/PNG images. Those out of the specified range will be automatically hidden.';
 $lang['web_config_upload_act_url']			= '输入点击该图片后所要跳转的链接地址。';
 
 $lang['web_config_recommend_goods']			= '推荐商品';
@@ -99,6 +99,6 @@ $lang['web_config_brand_list']			= '候选推荐品牌列表';
 
 $lang['web_config_upload_adv_tips']			= '请按照操作注释要求，上传设置板块区域右下角的广告图片。';
 $lang['web_config_upload_adv_pic']			= '广告图片上传';
-$lang['web_config_upload_pic_tips']			= '建议上传224*212像素GIF\JPG\PNG格式图片，超出规定范围的图片部分将被自动隐藏。';
+$lang['web_config_upload_pic_tips']			= 'It is recommended to upload pictures in GIF, JPG, PNG format with 224*212 pixels. Those out of the specified range will be automatically hidden.';
 $lang['web_config_upload_adv_url']			= '广告跳转链接';
 $lang['web_config_upload_pic_url_tips']			= '输入点击该图片后所要跳转的链接地址';

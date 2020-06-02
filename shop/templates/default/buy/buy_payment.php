@@ -2,33 +2,33 @@
 
 <div class="ncc-receipt-info" id="paymentCon">
   <div class="ncc-receipt-info-title">
-    <h3>支付方式</h3>
+    <h3>payment method</h3>
     <?php if (!$output['deny_edit_payment']) {?>
-    <a href="javascript:void(0)" nc_type="buy_edit" id="edit_payment">[修改]</a>
+    <a href="javascript:void(0)" nc_type="buy_edit" id="edit_payment">[change]</a>
     <?php }?>
   </div>
   <div class="ncc-candidate-items">
     <ul>
-      <li>在线支付</li>
+      <li>pay online</li>
     </ul>
   </div>
   <div id="payment_list" class="ncc-candidate-items" style="display:none">
     <ul>
       <li>
         <input type="radio" value="online" name="payment_type" id="payment_type_online">
-        <label for="payment_type_online">在线支付</label>
+        <label for="payment_type_online">pay online</label>
       </li>
       <li>
         <?php if ($output['ifshow_offpay'] === true) {?>
         <input type="radio" value="offline" name="payment_type" id="payment_type_offline">
-        <label for="payment_type_offline">货到付款</label>
+        <label for="payment_type_offline">cash</label>
         <?php if (count($output['pay_goods_list']['online']) > 0) {?>
-        <a id="show_goods_list" style="display: none" class="ncc-payment-showgoods" href="javascript:void(0);"><i class="icon-truck"></i>货到付款 (<?php echo count($output['pay_goods_list']['offline']);?>样商品) + <i class="icon-credit-card"></i>在线支付 (<?php echo count($output['pay_goods_list']['online']);?>样商品)</a>
+        <a id="show_goods_list" style="display: none" class="ncc-payment-showgoods" href="javascript:void(0);"><i class="icon-truck"></i>cash (<?php echo count($output['pay_goods_list']['offline']);?>doctors) + <i class="icon-credit-card"></i>pay online (<?php echo count($output['pay_goods_list']['online']);?>doctors)</a>
         <?php } ?>
         <?php } ?>
       </li>
     </ul>
-    <div class="hr16"> <a href="javascript:void(0);" class="ncc-btn ncc-btn-red" id="hide_payment_list">保存支付方式</a></div>
+    <div class="hr16"> <a href="javascript:void(0);" class="ncc-btn ncc-btn-red" id="hide_payment_list">Save payment method</a></div>
   </div>
   <?php if ($output['ifshow_offpay']) {?>
   <div id="ncc-payment-showgoods-list" class="ncc-payment-showgoods-list">
@@ -36,7 +36,7 @@
       <?php foreach ($output['pay_goods_list'] as $type => $data) {?>
       <!-- 如果没有在线支付的商品，都是货到付款的，则就不再显示两种支付方式的商品数量了 -->
       <?php if (count($output['pay_goods_list']['online']) > 0 && !empty($data) && is_array($data)) {?>
-      <dt><?php echo $type == 'offline' ? '货到付款' : '在线支付';?></dt>
+      <dt><?php echo $type == 'offline' ? 'cash' : 'pay online';?></dt>
       <dd>
         <?php foreach($data as $value) {?>
         <div class="goods-thumb"><span><img src="<?php echo thumb($value,60);?>"></span></div>
@@ -55,7 +55,7 @@
   <?php foreach ($output['pay_goods_list'] as $type => $data) {?>
   <?php if (!empty($data) && is_array($data)) {?>
   <dl class="ncc-offpay-list">
-    <dt>以下商品支持<strong><?php echo $type == 'offline' ? '货到付款' : '在线支付';?></strong></dt>
+    <dt>appointment support<strong><?php echo $type == 'offline' ? 'cash' : 'pay online';?></strong></dt>
     <dd>
       <ul>
         <?php foreach($data as $value) {?>
@@ -64,12 +64,12 @@
       </ul>
       <label>
         <input type="radio" value="" checked="checked">
-        <?php echo $type == 'offline' ? '货到付款' : '在线支付';?></label>
+        <?php echo $type == 'offline' ? 'cash' : 'pay online';?></label>
     </dd>
   </dl>
   <?php } ?>
   <?php } ?>
-  <div class="tc mt10 mb10"><a href="javascript:void(0);" class="ncc-btn ncc-btn-orange" id="close_confirm_button">确认支付方式</a></div>
+  <div class="tc mt10 mb10"><a href="javascript:void(0);" class="ncc-btn ncc-btn-orange" id="close_confirm_button">confirm pay method</a></div>
 </div>
 <?php } ?>
 <script type="text/javascript">
@@ -80,7 +80,7 @@ $(function(){
         $(this).hide();
         $('#paymentCon').addClass('current_box');
         $('#payment_list').show();
-        disableOtherEdit('如需要修改，请先保存支付方式');
+        disableOtherEdit('If you need to modify, please save the payment method first');
     });
     //保存支付方式
     $('#hide_payment_list').on('click',function(){

@@ -5,7 +5,7 @@ defined('InShopNC') or exit('Access Invalid!');
  * index
  */
 
-$lang['show_store_index_store_due']			= '您要查看的店铺已到期';
+$lang['show_store_index_store_due']			= 'The clinic you want to see has expired';
 /**
  * header中的文字
  */
@@ -31,7 +31,7 @@ $lang['nc_message_service']		= "serve number：";
 $lang['nc_message_working']		= "working time：";
 $lang['nc_goods_class']			= "doctor class";
 $lang['nc_store_class']			= "clinic class";
-$lang['nc_cart']				= "购物车";
+$lang['nc_cart']				= "booking chart";
 $lang['nc_kindof_goods']		= "doctors";
 $lang['nc_favorites']			= "我的收藏";
 $lang['nc_more']				= 'more';
@@ -43,11 +43,11 @@ $lang['nc_around_shop']			= '逛逛店铺';
 $lang['nc_message_me']			= '点击这里给我发消息';
 $lang['nc_good_rate']			= '好评率：';
 $lang['nc_dynamic_evaluation']	= '店铺动态评分';
-$lang['nc_store_information']	= '店铺信息';
+$lang['nc_store_information']	= 'clinic info';
 $lang['nc_store_owner']			= 'manager：';
 $lang['nc_store_addtime']		= 'create clinic time：';
 $lang['nc_srore_location']		= 'location：';
-$lang['nc_goods_amount']		= '商品数量：';
+$lang['nc_goods_amount']		= 'doctor number：';
 $lang['nc_store_collect']		= '店铺收藏：';
 $lang['nc_contact']				= 'contact：';
 $lang['nc_contact_way']			= 'contact';
@@ -63,13 +63,13 @@ $lang['nc_store_map']			= '店铺地图';
 $lang['nc_store_qrcode']		= '店铺二维码';
 $lang['nc_send_message']		= '发站内信';
 $lang['nc_identify']			= '认证信息：';
-$lang['nc_store_grade']			= '店铺等级';
+$lang['nc_store_grade']			= 'clinic level';
 $lang['nc_credit_degree']		= '卖家信用：';
 $lang['nc_map_loading']			= '地图加载中...';
 $lang['nc_whole_goods']			= 'all doctors';
 $lang['nc_blogroll']			= '友情链接';
-$lang['nc_store_index']			= '店铺首页';
-$lang['nc_goods_info']			= '商品详情';
+$lang['nc_store_index']			= 'clinic index';
+$lang['nc_goods_info']			= 'doctor info';
 $lang['nc_coupon']				= "优惠券";
 $lang['nc_bundling']				= "优惠套装";
 $lang['nc_credit']				= '信用评价';

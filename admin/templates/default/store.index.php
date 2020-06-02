@@ -66,7 +66,7 @@
         <tr class="thead">
           <th><?php echo $lang['store_name'];?></th>
           <th><?php echo $lang['store_user_name'];?></th>
-          <th>店主卖家帐号</th>
+          <th>clinic owner account</th>
           <th class="align-center"><?php echo $lang['belongs_level'];?></th>
           <th class="align-center"><?php echo $lang['period_to'];?></th>
           <th class="align-center"><?php echo $lang['state'];?></th>
@@ -88,9 +88,9 @@
           <td class="nowarp align-center"><?php echo $v['store_end_time']?date('Y-m-d', $v['store_end_time']):$lang['no_limit'];?></td>
           <td class="align-center w72"><?php echo $v['store_state']?$lang['open']:$lang['close'];?></td>
         <td class="align-center w120">
-            <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">查看</a>&nbsp;&nbsp;<a href="index.php?act=store&op=store_edit&store_id=<?php echo $v['store_id']?>"><?php echo $lang['nc_edit'];?></a>&nbsp;&nbsp;
+            <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">view</a>&nbsp;&nbsp;<a href="index.php?act=store&op=store_edit&store_id=<?php echo $v['store_id']?>"><?php echo $lang['nc_edit'];?></a>&nbsp;&nbsp;
                 <?php if($v['store_id'] != DEFAULT_PLATFORM_STORE_ID) {?>
-                <a href="index.php?act=store&op=store_bind_class&store_id=<?php echo $v['store_id']?>">经营类目</a>
+                <a href="index.php?act=store&op=store_bind_class&store_id=<?php echo $v['store_id']?>">category</a>
                 <?php } ?>
             </td>
         </tr>

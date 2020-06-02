@@ -49,19 +49,19 @@ class store_accountControl extends BaseSellerControl {
     public function account_editOp() {
         $seller_id = intval($_GET['seller_id']);
         if ($seller_id <= 0) {
-            showMessage('参数错误', '', '', 'error');
+            showMessage('Parameter error', '', '', 'error');
         }
         $model_seller = Model('seller');
         $seller_info = $model_seller->getSellerInfo(array('seller_id' => $seller_id));
         if (empty($seller_info) || intval($seller_info['store_id']) !== intval($_SESSION['store_id'])) {
-            showMessage('帐号不存在', '', '', 'error');
+            showMessage('Account does not exist', '', '', 'error');
         }
         Tpl::output('seller_info', $seller_info);
 
         $model_seller_group = Model('seller_group');
         $seller_group_list = $model_seller_group->getSellerGroupList(array('store_id' => $_SESSION['store_id']));
         if (empty($seller_group_list)) {
-            showMessage('请先建立帐号组', urlShop('store_account_group', 'group_add'), '', 'error');
+            showMessage('Please create an account group first', urlShop('store_account_group', 'group_add'), '', 'error');
         }
         Tpl::output('seller_group_list', $seller_group_list);
 
@@ -95,10 +95,10 @@ class store_accountControl extends BaseSellerControl {
         $result = $model_seller->addSeller($seller_info);
 
         if($result) {
-            $this->recordSellerLog('添加帐号成功，帐号编号'.$result);
+            $this->recordSellerLog('Add account successfully, account No.'.$result);
             showDialog(Language::get('nc_common_op_succ'), urlShop('store_account', 'account_list'), 'succ');
         } else {
-            $this->recordSellerLog('添加帐号失败');
+            $this->recordSellerLog('Add account failed');
             showDialog(Language::get('nc_common_save_fail'), urlShop('store_account', 'account_list'), 'error');
         }
     }
@@ -112,10 +112,10 @@ class store_accountControl extends BaseSellerControl {
         $model_seller = Model('seller');
         $result = $model_seller->editSeller($param, $condition);
         if($result) {
-            $this->recordSellerLog('编辑帐号成功，帐号编号：'.$_POST['seller_id']);
+            $this->recordSellerLog('Edit account successfully, account No.：'.$_POST['seller_id']);
             showDialog(Language::get('nc_common_op_succ'), urlShop('store_account', 'account_list'), 'succ');
         } else {
-            $this->recordSellerLog('编辑帐号失败，帐号编号：'.$_POST['seller_id'], 0);
+            $this->recordSellerLog('Edit account failed, account No.：'.$_POST['seller_id'], 0);
             showDialog(Language::get('nc_common_save_fail'), urlShop('store_account', 'account_list'), 'error');
         }
     }
@@ -129,10 +129,10 @@ class store_accountControl extends BaseSellerControl {
             $model_seller = Model('seller');
             $result = $model_seller->delSeller($condition);
             if($result) {
-                $this->recordSellerLog('删除帐号成功，帐号编号'.$seller_id);
+                $this->recordSellerLog('Delete account successfully, account No.'.$seller_id);
                 showDialog(Language::get('nc_common_op_succ'),'reload','succ');
             } else {
-                $this->recordSellerLog('删除帐号失败，帐号编号'.$seller_id);
+                $this->recordSellerLog('Delete account failed, account No.'.$seller_id);
                 showDialog(Language::get('nc_common_save_fail'),'reload','error');
             }
         } else {
@@ -203,20 +203,20 @@ class store_accountControl extends BaseSellerControl {
         $menu_array = array();
         $menu_array[] = array(
             'menu_key' => 'account_list', 
-            'menu_name' => '帐号列表', 
+            'menu_name' => 'account list', 
             'menu_url' => urlShop('store_account', 'account_list')
         );
         if($menu_key === 'account_add') {
             $menu_array[] = array(
                 'menu_key'=>'account_add', 
-                'menu_name' => '添加帐号', 
+                'menu_name' => 'account add', 
                 'menu_url' => urlShop('store_account', 'account_add')
             );
         }
         if($menu_key === 'account_edit') {
             $menu_array[] = array(
                 'menu_key'=>'account_edit', 
-                'menu_name' => '编辑帐号', 
+                'menu_name' => 'account edit', 
                 'menu_url' => urlShop('store_account', 'account_edit')
             );
         }

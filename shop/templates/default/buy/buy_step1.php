@@ -4,7 +4,7 @@
 <div class="ncc-main">
   <div class="ncc-title">
     <h3><?php echo $lang['cart_index_ensure_info'];?></h3>
-    <h5>请仔细核对填写收货、发票等信息，以确保物流快递及时准确投递。</h5>
+    <h5>Please check and fill in the reservation, invoice and other information carefully.</h5>
   </div>
     <?php include template('buy/buy_address');?>
     <?php include template('buy/buy_payment');?>
@@ -88,7 +88,7 @@ $(function(){
     });
     $('#pd_pay_submit').on('click',function(){
         if ($('#password').val() == '') {
-        	showDialog('请输入登录密码', 'error','','','','','','','','',2);return false;
+        	showDialog('Please enter your login password', 'error','','','','','','','','',2);return false;
         }
         $('#password_callback').val('');
 		$.get("index.php?act=buy&op=check_pd_pwd", {'password':$('#password').val()}, function(data){
@@ -97,7 +97,7 @@ $(function(){
             	$('#pd_password').hide();
             } else {
             	$('#password').val('');
-            	showDialog('密码错误', 'error','','','','','','','','',2);
+            	showDialog('password error', 'error','','','','','','','','',2);
             }
         });
     });

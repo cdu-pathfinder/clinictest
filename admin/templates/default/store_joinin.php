@@ -86,9 +86,9 @@
           <td class="align-center"><?php echo $output['joinin_state_array'][$v['joinin_state']];?></td>
           <td class="w72 align-center">
               <?php if(in_array(intval($v['joinin_state']), array(STORE_JOIN_STATE_NEW, STORE_JOIN_STATE_PAY))) { ?>
-              <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">审核</a>
+              <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">review</a>
               <?php } else { ?>
-              <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">查看</a>
+              <a href="index.php?act=store&op=store_joinin_detail&member_id=<?php echo $v['member_id'];?>">view</a>
               <?php } ?>
           </td>
         </tr>

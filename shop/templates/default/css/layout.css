@@ -153,7 +153,7 @@ body { background-color: #FEFEFE; min-width: 1200px;}
 .squares .goods-name em { color: #F30;}
 .squares .sell-stat { width: 212px; margin: 0 auto; border-top: solid 1px #EEE; overflow: hidden;}
 .squares .sell-stat ul { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 213px; margin-left: -1px;}
-.squares .sell-stat ul li { vertical-align: middle; letter-spacing: normal; word-spacing: normal; text-align: center; display: inline-block; *display: inline/*IE6,7*/; width: 60px; height: 40px; padding: 5px; margin: 0; border-left: solid 1px #EEE; overflow: hidden; *zoom:1;}
+.squares .sell-stat ul li { vertical-align: middle; letter-spacing: normal; word-spacing: normal; text-align: center; display: inline-block; *display: inline/*IE6,7*/; width: 44%; height: 40px; padding: 5px; margin: 0; border-left: solid 1px #EEE; overflow: hidden; *zoom:1;}
 .squares .sell-stat ul li a { font: 600 12px/20px Tahoma; color: #B57C5B;}
 .squares .sell-stat ul li a.status { color: #3388BB;}
 .squares .sell-stat ul li p { line-height: 20px; color: #999; height: 20px;}

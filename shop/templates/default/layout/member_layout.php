@@ -67,7 +67,7 @@ catch(e){}
     <nav>
       <ul>
         <li class="frist"><a <?php if($output['header_menu_sign'] == 'snsindex'){ echo "class='active'";}else{ echo "class='normal'";}?> href="index.php?act=member_snsindex" title="<?php echo $lang['nc_member_path_buyerindex'];?>"><?php echo $lang['nc_member_path_buyerindex'];?></a></li>
-        <li><a <?php if($output['header_menu_sign'] == 'snshome'){ echo "class='active'";}else{ echo "class='normal'";}?> href="index.php?act=member_snshome" title="<?php echo $lang['nc_member_path_myspace'];?>"><?php echo $lang['nc_member_path_myspace'];?></a></li>
+        <!-- <li><a <?php if($output['header_menu_sign'] == 'snshome'){ echo "class='active'";}else{ echo "class='normal'";}?> href="index.php?act=member_snshome" title="<?php echo $lang['nc_member_path_myspace'];?>"><?php echo $lang['nc_member_path_myspace'];?></a></li> -->
         <li><a <?php if($output['header_menu_sign'] == 'friend'){ echo "class='active'";}else{ echo "class='normal'";}?> href="index.php?act=member_snsfriend&op=find" title="<?php echo $lang['nc_member_path_friend'];?>"><?php echo $lang['nc_member_path_friend'];?></a></li>
         <li><a <?php if($output['header_menu_sign'] == 'message'){ echo "class='active'";}else{ echo "class='normal'";}?> href="index.php?act=home&op=message" title="<?php echo $lang['nc_member_path_message'];?>"><?php echo $lang['nc_member_path_message'];?>
           <?php if (intval($output['message_num']) > 0){ ?>
@@ -125,13 +125,13 @@ catch(e){}
 	</script>
       <div class="business-handle" id="my_menu">
         <h3><?php echo $lang['nc_member_order_manage'];?></h3>
-        <div class="normal"><em class="i1"></em><a href="<?php echo urlShop('cart', 'index');?>">我的购物车</a></div>
+        <div class="normal"><em class="i1"></em><a href="<?php echo urlShop('cart', 'index');?>">My booking chart</a></div>
         <div <?php if($output['menu_sign'] == 'myorder'){ echo "class='active'";}else{ echo "class='normal'";}?>><em class="i2"></em><a href="index.php?act=member_order"><?php echo $lang['nc_member_myorder'];?></a></div>
-        <dl class="collapsed">
+        <!-- <dl class="collapsed">
           <dt><em class="i4"></em><a href="javascript:void(0)"><?php echo $lang['nc_member_path_favorites'];?></a><i></i></dt>
           <dd <?php if($output['menu_sign'] == 'collect_list'){ echo "class='active'";}else{ echo "class='normal'";}?>><a href="index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_member_path_collect_list'];?></a></dd>
           <dd <?php if($output['menu_sign'] == 'collect_store'){ echo "class='active'";}else{ echo "class='normal'";}?>><a href="index.php?act=member_favorites&op=fslist"><?php echo $lang['nc_member_path_collect_store'];?></a></dd>
-        </dl>
+        </dl> -->
         <?php if (C('points_isuse') == 1){ ?>
         <dl class="collapsed">
           <dt><em class="i5"></em><a href="javascript:void(0)"><?php echo $lang['nc_member_points_manage'];?></a><i></i></dt>
@@ -146,7 +146,7 @@ catch(e){}
         <div <?php if($output['menu_sign'] == 'myvoucher'){ echo "class='active'";}else{ echo "class='normal'";}?>><em class="i6"></em><a href="index.php?act=member_voucher"><?php echo $lang['nc_member_path_myvoucher'];?></a>
         </div>
         <?php } ?>
-        <div <?php if($output['menu_sign'] == 'evaluatemanage'){ echo "class='active'";}else{ echo "class='normal'";}?>><em class="i7"></em><a href="index.php?act=member_evaluate&op=list"><?php echo $lang['nc_member_path_evalmanage'];?></a></div>
+        <!-- <div <?php if($output['menu_sign'] == 'evaluatemanage'){ echo "class='active'";}else{ echo "class='normal'";}?>><em class="i7"></em><a href="index.php?act=member_evaluate&op=list"><?php echo $lang['nc_member_path_evalmanage'];?></a></div> -->
         <dl class="collapsed">
           <dt><em class="i8"></em><a href="javascript:void(0)"><?php echo $lang['nc_member_consult_complain'];?></a><i></i></dt>
           <dd <?php if($output['menu_sign'] == 'myinform'){ echo "class='active'";}else{ echo "class='normal'";}?>><a href="index.php?act=member_inform"><?php echo $lang['nc_member_path_myinform'];?></a></dd>

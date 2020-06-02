@@ -2,8 +2,8 @@
 
 <div class="ncc-receipt-info">
   <div class="ncc-receipt-info-title">
-    <h3>收货人信息</h3>
-    <a href="javascript:void(0)" nc_type="buy_edit" id="edit_reciver">[修改]</a></div>
+    <h3>patient info</h3>
+    <a href="javascript:void(0)" nc_type="buy_edit" id="edit_reciver">[change]</a></div>
   <div id="addr_list" class="ncc-candidate-items">
     <ul>
       <li><span class="true-name"><?php echo $output['address_info']['true_name'];?></span><span class="address"><?php echo $output['address_info']['area_info'],$output['address_info']['address'];?></span><span class="phone"><i class="icon-mobile-phone"></i><?php echo $output['address_info']['mob_phone'] ? $output['address_info']['mob_phone'] : $output['address_info']['tel_phone'];?></span></li>
@@ -23,7 +23,7 @@ function hideAddrList(addr_id,true_name,address,phone) {
 //加载收货地址列表
 $('#edit_reciver').on('click',function(){
     $(this).hide();
-    disableOtherEdit('如需修改，请先保存收货人信息 ');
+    disableOtherEdit('If you need to modify, please save the information first ');
     $(this).parent().parent().addClass('current_box');
     $('#addr_list').load(SITEURL+'/index.php?act=buy&op=load_addr');
 });

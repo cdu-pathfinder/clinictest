@@ -19,9 +19,9 @@
                 <option value="trade_amount" <?php echo $_REQUEST['rank_type']=='trade_amount'?'selected':''; ?>>按销售额排名</option>
               </select></td>
             <td><select name="search_type" id="search_type" class="querySelect">
-                <option value="day" <?php echo $_REQUEST['search_type']=='day'?'selected':''; ?>>按照天统计</option>
-                <option value="week" <?php echo $_REQUEST['search_type']=='week'?'selected':''; ?>>按照周统计</option>
-                <option value="month" <?php echo $_REQUEST['search_type']=='month'?'selected':''; ?>>按照月统计</option>
+                <option value="day" <?php echo $_REQUEST['search_type']=='day'?'selected':''; ?>>According to the days</option>
+                <option value="week" <?php echo $_REQUEST['search_type']=='week'?'selected':''; ?>>According to the weeks</option>
+                <option value="month" <?php echo $_REQUEST['search_type']=='month'?'selected':''; ?>>According to the months</option>
               </select></td>
             <td id="searchtype_day" style="display:none;"><input class="txt date" type="text" value="<?php echo $output['search_time'];?>" id="search_time" name="search_time"></td>
             <td id="searchtype_week" style="display:none;"><select name="search_time_year" class="querySelect">

@@ -27,13 +27,13 @@ $lang['please_sel_edit_store'] = 'Please select the clinic to edit';
 $lang['please_sel_edit_store'] = 'Please select what you want to edit!';
 
 $lang['store']           = 'Clinic';
-$lang['store_help1']     = '如果当前时间超过店铺有效期或店铺处于关闭状态，前台将不能继续浏览该店铺，但是店主仍然可以编辑该店铺';
-$lang['store_help2']     = '被推荐店铺，将在前台的店铺推荐等相关位置展示，处于关闭中的店铺，不可推荐';
-$lang['store_audit_help1']= '开店申请可批量通过审核';
+$lang['store_help1']     = 'If the current time is past the clinics expiration date or the clinic is closed, the front desk will no longer be able to view the store, but the manager can still edit the clinic';
+$lang['store_help2']     = 'The recommended clinic will be displayed in the clinic recommendation and other relevant positions at the front desk. The closed clinic cannot be recommended';
+$lang['store_audit_help1']= 'Open clinic application can be approved in batches';
 $lang['store_grade_help1']=	'当管理员删除升级申请后，店主可继续申请店铺升级';
 $lang['store_grade_help2']=	'审核申请请点击编辑选项';
 $lang['manage']          = 'Manage';
-$lang['pending']         = 'Pending Clinic';
+$lang['pending']         = 'review Clinic';
 $lang['grade_apply']	 	 = 'Upgrade apply';
 $lang['store_user_name'] = 'Clinic owner account';
 $lang['store_user_id']   = 'Identity number';

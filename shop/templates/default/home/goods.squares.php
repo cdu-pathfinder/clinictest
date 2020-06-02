@@ -32,14 +32,14 @@
 
           <div class="goods-price">
           <em class="sale-price" title="<?php echo $lang['goods_class_index_store_goods_price'].$lang['nc_colon'].$lang['currency'].$value['goods_price'];?>"><?php echo ncPriceFormatForList($value['goods_price']);?></em>
-          <em class="market-price" title="市场价：<?php echo $lang['currency'].$value['goods_marketprice'];?>"><?php echo ncPriceFormatForList($value['goods_marketprice']);?></em>
+          <!-- <em class="market-price" title="市场价：<?php echo $lang['currency'].$value['goods_marketprice'];?>"><?php echo ncPriceFormatForList($value['goods_marketprice']);?></em> -->
           <span class="raty" data-score="<?php echo $value['evaluation_good_star'];?>"></span>
       </div>
           <div class="sell-stat">
             <ul>
-              <li><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $value['goods_id']));?>#ncGoodsRate" target="_blank" class="status"><?php echo $value['goods_salenum'];?></a><p>商品销量</p></li>
-              <li><a href="<?php echo urlShop('goods', 'comments_list', array('goods_id' => $value['goods_id']));?>" target="_blank"><?php echo $value['evaluation_count'];?></a><p>用户评论</p></li>
-              <li><em member_id="<?php echo $value['member_id'];?>">&nbsp;</em></li>
+              <li><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $value['goods_id']));?>#ncGoodsRate" target="_blank" class="status"><?php echo $value['goods_salenum'];?></a><p>appointments</p></li>
+              <li><a href="<?php echo urlShop('goods', 'comments_list', array('goods_id' => $value['goods_id']));?>" target="_blank"><?php echo $value['evaluation_count'];?></a><p>comments</p></li>
+              <!-- <li><em member_id="<?php echo $value['member_id'];?>">&nbsp;</em></li> -->
             </ul>
           </div>
           <div class="store"><a href="<?php echo urlShop('show_store','index',array('store_id'=>$value['store_id']), $value['store_domain']);?>" title="<?php echo $value['store_name'];?>" class="name"><?php echo $value['store_name'];?></a></div>

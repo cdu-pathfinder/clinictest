@@ -77,10 +77,10 @@ class storeControl extends SystemControl{
 
     private function _get_store_type_array() {
         return array(
-            'open' => '开启',
-            'close' => '关闭',
-            'expire' => '即将到期',
-            'expired' => '已到期'
+            'open' => 'open',
+            'close' => 'close',
+            'expire' => 'expire',
+            'expired' => 'expired'
         );
     }
 	/**
@@ -227,7 +227,7 @@ class storeControl extends SystemControl{
         $result = $model_store_bind_class->addStoreBindClass($param);
 
         if($result) {
-            $this->log('删除店铺经营类目，类目编号:'.$result.',店铺编号:'.$store_id);
+            $this->log('删除店铺经营类目，类目编号:'.$result.',clinic ID:'.$store_id);
             showMessage(L('nc_common_save_succ'), '');
         } else {
             showMessage(L('nc_common_save_fail'), '');
@@ -268,7 +268,7 @@ class storeControl extends SystemControl{
             $data['result'] = false;
             $data['message'] = '经营类目删除失败';
         }
-        $this->log('删除店铺经营类目，类目编号:'.$bid.',店铺编号:'.$store_bind_class_info['store_id']);
+        $this->log('删除店铺经营类目，类目编号:'.$bid.',Clinic ID:'.$store_bind_class_info['store_id']);
         echo json_encode($data);die;
     }
 
@@ -334,12 +334,12 @@ class storeControl extends SystemControl{
 
     private function get_store_joinin_state() {
         $joinin_state_array = array(
-            STORE_JOIN_STATE_NEW => '新申请',
-            STORE_JOIN_STATE_PAY => '已付款',
-            STORE_JOIN_STATE_VERIFY_SUCCESS => '待付款',
-            STORE_JOIN_STATE_VERIFY_FAIL => '审核失败',
-            STORE_JOIN_STATE_PAY_FAIL => '付款审核失败',
-            STORE_JOIN_STATE_FINAL => '开店成功',
+            STORE_JOIN_STATE_NEW => 'new',
+            STORE_JOIN_STATE_PAY => 'paied',
+            STORE_JOIN_STATE_VERIFY_SUCCESS => 'to pay',
+            STORE_JOIN_STATE_VERIFY_FAIL => 'review failed',
+            STORE_JOIN_STATE_PAY_FAIL => 'Payment review failed',
+            STORE_JOIN_STATE_FINAL => 'open successful',
         );
         return $joinin_state_array;
     }
@@ -350,9 +350,9 @@ class storeControl extends SystemControl{
 	public function store_joinin_detailOp(){
 		$model_store_joinin = Model('store_joinin');
         $joinin_detail = $model_store_joinin->getOne(array('member_id'=>$_GET['member_id']));
-        $joinin_detail_title = '查看';
+        $joinin_detail_title = 'view';
         if(in_array(intval($joinin_detail['joinin_state']), array(STORE_JOIN_STATE_NEW, STORE_JOIN_STATE_PAY))) {
-            $joinin_detail_title = '审核';
+            $joinin_detail_title = 'review';
         }
         Tpl::output('joinin_detail_title', $joinin_detail_title);
 		Tpl::output('joinin_detail', $joinin_detail);
@@ -374,7 +374,7 @@ class storeControl extends SystemControl{
                 $this->store_joinin_verify_open($joinin_detail);
                 break;
             default:
-                showMessage('参数错误','');
+                showMessage('Parameter error','');
                 break;
         }
 	}
@@ -386,7 +386,7 @@ class storeControl extends SystemControl{
         $param['store_class_commis_rates'] = implode(',', $_POST['commis_rate']);
         $model_store_joinin = Model('store_joinin');
         $model_store_joinin->modify($param, array('member_id'=>$_POST['member_id']));
-        showMessage('店铺入驻申请审核完成','index.php?act=store&op=store_joinin');
+        showMessage('The application for clinic entry has been approved','index.php?act=store&op=store_joinin');
     }
 
     private function store_joinin_verify_open($joinin_detail) {
@@ -396,7 +396,7 @@ class storeControl extends SystemControl{
 
         //验证卖家用户名是否已经存在
         if($model_seller->isSellerExist(array('seller_name' => $joinin_detail['seller_name']))) {
-            showMessage('卖家用户名已存在','');
+            showMessage('The clinic administrator username already exists','');
         }
 
         $param = array();
@@ -469,12 +469,12 @@ class storeControl extends SystemControl{
                 }
                 $model_store_bind_class = Model('store_bind_class');
                 $model_store_bind_class->addStoreBindClassAll($store_bind_class_array);
-                showMessage('店铺开店成功','index.php?act=store&op=store_joinin');
+                showMessage('Clinic opens successfully','index.php?act=store&op=store_joinin');
             } else {
-                showMessage('店铺开店失败','index.php?act=store&op=store_joinin');
+                showMessage('Clinic opens failed','index.php?act=store&op=store_joinin');
             }
         } else {
-            showMessage('店铺开店拒绝','index.php?act=store&op=store_joinin');
+            showMessage('Clinic opens refused','index.php?act=store&op=store_joinin');
         }
     }
 

@@ -9,7 +9,7 @@
 </style>
 <div class="ncc-receipt-info">
   <div class="ncc-receipt-info-title">
-    <h3>商品清单</h3>
+    <h3>Appointment list</h3>
     <?php if(!empty($output['ifcart'])){?>
     <a href="index.php?act=cart"><?php echo $lang['cart_step1_back_to_cart'];?></a>
     <?php }?>
@@ -119,13 +119,13 @@
       </tr>
       <tr>
         <td class="tr" colspan="20"><div class="ncc-store-account">
-            <dl class="freight">
+            <!-- <dl class="freight">
               <dt>运费：</dt>
               <dd>￥<em id="eachStoreFreight_<?php echo $store_id;?>">0.00</em></dd>
-            </dl>
+            </dl> -->
             <dl>
-              <dt>商品金额：</dt>
-              <dd>￥<em id="eachStoreGoodsTotal_<?php echo $store_id;?>"><?php echo $output['store_goods_total'][$store_id];?></em></dd>
+              <dt>appointmnet price：</dt>
+              <dd>$<em id="eachStoreGoodsTotal_<?php echo $store_id;?>"><?php echo $output['store_goods_total'][$store_id];?></em></dd>
             </dl>
             <?php if (!empty($output['store_mansong_rule_list'][$store_id]['discount'])) {?>
             <dl class="mansong">
@@ -152,8 +152,8 @@
             <!-- E voucher list -->
 
             <dl class="total">
-              <dt>本店合计：</dt>
-              <dd>￥<em store_id="<?php echo $store_id;?>" nc_type="eachStoreTotal"></em></dd>
+              <dt>Total of this clinic:</dt>
+              <dd>$<em store_id="<?php echo $store_id;?>" nc_type="eachStoreTotal"></em></dd>
             </dl>
           </div></td>
       </tr>
@@ -163,10 +163,10 @@
      <?php if (!empty($output['available_pd_amount'])) { ?>
      <tr>
         <td class="pd-account" colspan="20"><div class="ncc-pd-account">
-            <div class="mt5 mb5"><label><input type="checkbox" checked class="vm mr5" value="1" name="pd_pay">使用预存款支付（当前可用余额：<em>￥<?php echo $output['available_pd_amount'];?></em>）</label></div>
-            <div id="pd_password">登录密码：<input type="password" class="text w120" value="" name="password" id="password" maxlength="35">
+            <div class="mt5 mb5"><label><input type="checkbox" checked class="vm mr5" value="1" name="pd_pay">Pay by deposit（Currently available balance：<em>$<?php echo $output['available_pd_amount'];?></em>）</label></div>
+            <div id="pd_password">login password：<input type="password" class="text w120" value="" name="password" id="password" maxlength="35">
             <input type="hidden" value="" name="password_callback" id="password_callback">
-              <a class="ncc-btn-mini ncc-btn-orange" id="pd_pay_submit" href="javascript:void(0)">使用</a>
+              <a class="ncc-btn-mini ncc-btn-orange" id="pd_pay_submit" href="javascript:void(0)">pay</a>
              </div>
           </div></td>
       </tr>
@@ -176,7 +176,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="20"><div class="ncc-all-account">订单总金额：￥<em id="orderTotal"></em>元</div></td>
+        <td colspan="20"><div class="ncc-all-account">Total order amount：$<em id="orderTotal"></em></div></td>
       </tr>
     </tfoot>
   </table>

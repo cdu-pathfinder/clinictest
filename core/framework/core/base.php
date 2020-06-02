@@ -67,7 +67,7 @@ final class Base{
 		$nc_config['db']['master'] = $nc_config['db'][1];
 		$setting_config = $nc_config;
 		$setting = ($setting = H('setting')) ? $setting : H('setting',true);
-		$setting['shopnc_version'] = '<span class="vol"><font class="b">Shop</font><font class="o">xuexuekeji</font></span>';
+		$setting['shopnc_version'] = '<span class="vol"><font class="b">GROUP10-</font><font class="o">liam</font></span>';
 		$setting_config = array_merge_recursive($setting,$nc_config);
 	}
 

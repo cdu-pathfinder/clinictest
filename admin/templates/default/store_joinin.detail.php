@@ -80,9 +80,9 @@
         <th>Company telephone:</th>
         <td><?php echo $output['joinin_detail']['company_phone'];?></td>
         <th>number of employees:</th>
-        <td><?php echo $output['joinin_detail']['company_employee_count'];?>&nbsp;人</td>
+        <td><?php echo $output['joinin_detail']['company_employee_count'];?>&nbsp;people</td>
         <th>Registered capital:</th>
-        <td><?php echo $output['joinin_detail']['company_registered_capital'];?>&nbsp;万元 </td>
+        <td><?php echo $output['joinin_detail']['company_registered_capital'];?>&nbsp;billion </td>
       </tr>
       <tr>
         <th>Contact name:</th>

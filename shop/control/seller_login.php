@@ -76,7 +76,7 @@ class seller_loginControl extends BaseSellerControl {
                 $_SESSION['store_name']	= $store_info['store_name'];
                 $_SESSION['seller_limits'] = explode(',', $seller_group_info['limits']);
                 if($seller_info['is_admin']) {
-                    $_SESSION['seller_group_name'] = '管理员';
+                    $_SESSION['seller_group_name'] = 'administer';
                 } else {
                     $_SESSION['seller_group_name'] = $seller_group_info['group_name'];
                 }
@@ -93,13 +93,13 @@ class seller_loginControl extends BaseSellerControl {
                         $_SESSION['seller_quicklink'][$value] = $value ;
                     }
                 }
-                $this->recordSellerLog('登录成功');
-                showMessage('登录成功', 'index.php?act=seller_center');
+                $this->recordSellerLog('login success');
+                showMessage('login success', 'index.php?act=seller_center');
             } else {
-                showMessage('用户名密码错误', '', '', 'error');
+                showMessage('Username and password error', '', '', 'error');
             }
         } else {
-            showMessage('用户名密码错误', '', '', 'error');
+            showMessage('Username and password error', '', '', 'error');
         }
     }
 }

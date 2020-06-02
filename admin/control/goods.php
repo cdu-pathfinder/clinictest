@@ -102,9 +102,9 @@ class goodsControl extends SystemControl{
         Tpl::output('goods_class', $goods_class);
         Tpl::output('brand_list', $brand_list);
         
-        Tpl::output('state', array('1' => '出售中', '0' => '仓库中', '10' => '违规下架'));
+        Tpl::output('state', array('1' => 'release', '0' => 'servicing', '10' => 'Illegal removal'));
         
-        Tpl::output('verify', array('1' => '通过', '0' => '未通过', '10' => '等待审核'));
+        Tpl::output('verify', array('1' => 'pass', '0' => 'failed', '10' => 'Waiting for audit'));
         
         switch ($_GET['type']) {
             // 禁售

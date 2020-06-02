@@ -3,27 +3,27 @@ defined('InShopNC') or exit('Access Invalid!');
 /**
  * index
  */
-$lang['goods_is_verify']                = '商品是否需要审核';
-$lang['goods_index_choose_recommend']	= '请选择要推荐的内容';
-$lang['goods_index_choose_edit']		= '请选择要编辑的内容';
-$lang['goods_index_goods_vialotion']	= '商品违规';
-$lang['nc_common_del_succ']				= '删除商品成功';
-$lang['nc_common_del_fail']				= '请选择要删除的内容';
-$lang['goods_index_argument_invalid']	= '状态参数非法';
+$lang['goods_is_verify']                = 'Whether the doctor needs a review';
+$lang['goods_index_choose_recommend']	= 'Please select the content you want to recommend';
+$lang['goods_index_choose_edit']		= 'Please select what you want to edit';
+$lang['goods_index_goods_vialotion']	= 'The doctor violations';
+$lang['nc_common_del_succ']				= 'Delete doctor successfully';
+$lang['nc_common_del_fail']				= 'Please select what you want to delete';
+$lang['goods_index_argument_invalid']	= 'Illegal state parameter';
 $lang['goods_index_goods']				= 'Doctor';
 $lang['goods_index_all_goods']			= 'All doctor';
-$lang['goods_index_lock_goods']			= '违规下架商品';
+$lang['goods_index_lock_goods']			= 'Illegal removal';
 $lang['goods_index_name']				= 'Doctor name';
 $lang['goods_index_store_name']			= 'Belong Clinic';
 $lang['goods_index_brand']				= 'Brand';
 $lang['goods_index_class_name']			= 'Type';
-$lang['goods_index_show']				= '上架';
-$lang['goods_index_lock']				= '违规下架';
-$lang['goods_index_unchanged']			= '保持不变';
+$lang['goods_index_show']				= 'release';
+$lang['goods_index_lock']				= 'Illegal removal';
+$lang['goods_index_unchanged']			= 'Remain the same';
 $lang['goods_index_click']				= 'view';
-$lang['goods_index_ensure_handle']		= '您确定进行该操作吗';
-$lang['goods_index_help1']				= '上架，当商品处于非上架状态时，前台将不能浏览该商品，店主和管理员都可控制商品上架状态';
-$lang['goods_index_help2']				= '违规下架，当商品处于违规下架状态时，前台将不能浏览该商品，只有管理员可控制商品违规下架状态，并且商品不能上架';
+$lang['goods_index_ensure_handle']		= 'Are you sure to do this';
+$lang['goods_index_help1']				= 'Release,';
+$lang['goods_index_help2']				= 'Illegal removal,';
 /**
  * 商品推荐
  */
@@ -36,10 +36,10 @@ $lang['goods_recommend_to']				= '推荐到';
  * 商品编辑
  */
 $lang['goods_edit_goods_null']			= '选择编辑的商品信息不能为空';
-$lang['goods_edit_batch_succ']			= '批量编辑成功';
+$lang['goods_edit_batch_succ']			= 'Batch editing successful';
 $lang['goods_edit_not_choose']			= '不修改请不要选择';
 $lang['goods_edit_keep_blank']			= '不修改请留空';
-$lang['goods_edit_lock_state']			= '违规下架状态';
-$lang['goods_edit_keep']				= '保持不变';
+$lang['goods_edit_lock_state']			= 'Illegal removal state';
+$lang['goods_edit_keep']				= 'Remain the same';
 $lang['goods_edit_allow_sell']			= '可售';
 $lang['goods_edit_lock_reason']			= '违规下架原因';

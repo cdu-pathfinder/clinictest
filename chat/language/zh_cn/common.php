@@ -111,7 +111,7 @@ $lang['nc_shareset_sinaweibo'] 	= '新浪微博';
 $lang['nc_shareset_renren'] 		= '人人网';
 
 //功能模块
-$lang['nc_modules_microshop'] = '微商城';
+$lang['nc_modules_microshop'] = 'microshop';
 $lang['nc_circle']	= '圈子';
 /**
  * 店铺地图

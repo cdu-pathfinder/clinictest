@@ -23,9 +23,9 @@ class seller_logoutControl extends BaseSellerControl {
     }
 
     public function logoutOp() {
-        $this->recordSellerLog('注销成功');
+        $this->recordSellerLog('logout successful');
         session_destroy();
-        showMessage('注销成功', 'index.php?act=seller_login');
+        showMessage('logout successful', 'index.php?act=seller_login');
     }
 
 }

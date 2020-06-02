@@ -928,16 +928,16 @@ class BaseSellerControl extends Control {
             //     array('name' => '免运费额度', 'act'=>'store_free_freight', 'op'=>'index'),
             // )),
             'consult' => array('name' => 'patient', 'child' => array(
-                array('name' => 'Customer service setting', 'act'=>'store_callcenter', 'op'=>'index'),
-                array('name' => 'consulting management', 'act'=>'store_consult', 'op'=>'consult_list'),
-                array('name' => 'Complaint management', 'act'=>'store_complain', 'op'=>'list'),
+                array('name' => 'Customer service', 'act'=>'store_callcenter', 'op'=>'index'),
+                array('name' => 'consulting ', 'act'=>'store_consult', 'op'=>'consult_list'),
+                array('name' => 'Complaint ', 'act'=>'store_complain', 'op'=>'list'),
             )),
             'service' => array('name' => 'serve', 'child' => array(
                 array('name' => 'refund record', 'act'=>'store_refund', 'op'=>'index'),
                 array('name' => 'cancellation record', 'act'=>'store_return', 'op'=>'index'),
             )),
             'settle' => array('name' => 'settle', 'child' => array(
-                    array('name' => 'settlement management', 'act'=>'store_bill', 'op'=>'index'),
+                    array('name' => 'settlement', 'act'=>'store_bill', 'op'=>'index'),
             )),
             'statistics' => array('name' => 'statist', 'child' => array(
                 array('name' => 'Traffic statistics', 'act'=>'statistics_flow', 'op'=>'flow_statistics'),

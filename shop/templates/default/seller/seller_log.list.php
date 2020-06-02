@@ -15,11 +15,11 @@ $(document).ready(function(){
   <input type="hidden" name="op" value="log_list" />
   <table class="search-form">
     <tr>
-      <td>&nbsp;</td><th>帐号</th>
+      <td>&nbsp;</td><th>account</th>
       <td class="w100"><input type="text" class="text w80" name="seller_name" value="<?php echo trim($_GET['seller_name']); ?>" /></td>
-      <th>日志内容</th>
+      <th>Log contents</th>
       <td class="w160"><input type="text" class="text w150" name="log_content" value="<?php echo trim($_GET['log_content']); ?>" /></td>
-      <th>时间</th>
+      <th>date</th>
       <td class="w240"><input name="add_time_from" id="add_time_from" type="text" class="text w70" value="<?php echo $_GET['add_time_from']; ?>" /><label class="add-on"><i class="icon-calendar"></i></label>&nbsp;&#8211;&nbsp;<input name="add_time_to" id="add_time_to" type="text" class="text w70" value="<?php echo $_GET['add_time_to']; ?>" /><label class="add-on"><i class="icon-calendar"></i></label></td>     
       <td class="w70 tc"><label class="submit-border"><input type="submit" class="submit" value="<?php echo $lang['nc_search'];?>" /></label></td>
     </tr>
@@ -28,11 +28,11 @@ $(document).ready(function(){
 <table class="ncsc-table-style">
   <thead>
     <tr>
-      <th class="w100">帐号</th>
-      <th class="tl">日志内容</th>
-      <th class="w80">状态</th>
+      <th class="w100">account</th>
+      <th class="tl">Log contents</th>
+      <th class="w80">state</th>
       <th class="w110">ip</th>
-      <th class="w130">时间</th>
+      <th class="w130">date</th>
     </tr>
   </thead>
   <tbody>

@@ -4,7 +4,7 @@
   <div class="nch-all-menu">
     <ul class="tab-bar">
       <li><a href="<?php echo urlShop('category', 'index');?>">全部商品分类</a></li>
-      <li class="current"><a href="javascript:void(0);">全部品牌</a></li>
+      <li class="current"><a href="javascript:void(0);">全部brand</a></li>
       <li><a href="<?php echo urlShop('search', 'index');?>">全部商品</a></li>
     </ul>
   </div>

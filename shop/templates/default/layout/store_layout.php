@@ -72,7 +72,7 @@ catch(e){}
           <?php include template('store/callcenter');?>
         </div>
       </div>
-      <div class="favorites"><i></i><?php echo $lang['nc_collect'];?><em></em>
+      <!-- <div class="favorites"><i></i><?php echo $lang['nc_collect'];?><em></em>
         <div class="arrow"></div>
         <div class="sub">
           <div class="title-bar">
@@ -85,7 +85,7 @@ catch(e){}
             <li><a href="javascript:void(0);" class="share" nctype="share_store"></a><span><?php echo $lang['nc_share'];?></span></li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </header>

@@ -20,8 +20,8 @@ $lang['goods_class_index_recommended']			= 'Type';
 $lang['goods_class_index_ensure_del']			= 'Delete all class will delete all sub class. Are you sure?';
 $lang['goods_class_index_display_tip']			= 'The first page is only displayed to the second class';
 $lang['goods_class_index_help1']				= 'The Clinic owner can select the doctor category when adding the doctor, and the patient can query the doctor list according to the category';
-$lang['goods_class_index_help2']				= '点击分类名前“+”符号，显示当前分类的下级分类';
-$lang['goods_class_index_help3'] 				= '<a>对分类作任何更改后，都需要到 设置 -> 清理缓存 清理商品分类，新的设置才会生效</a>';
+$lang['goods_class_index_help2']				= 'Click the "+" symbol before the category name to display the subcategories of the current category';
+$lang['goods_class_index_help3'] 				= '<a>After making any changes to the classification, you need to go to Settings -> to clean up the cache to clean up the classification before the new Settings take effect</a>';
 /**
  * 批量编辑
  */
@@ -32,37 +32,37 @@ $lang['goods_class_batch_edit_keep']	= 'Constant';
 $lang['goods_class_batch_edit_again']	= 'Re-edit this subclass';
 $lang['goods_class_batch_edit_ok']	= 'Edit class success';
 $lang['goods_class_batch_edit_fail']	= 'Edit class failed';
-$lang['goods_class_batch_edit_paramerror']	= '参数非法';
-$lang['goods_class_batch_order_empty_tip']	= '，留空则保持不变';
+$lang['goods_class_batch_edit_paramerror']	= 'Parameter illegal';
+$lang['goods_class_batch_order_empty_tip']	= ', blank is unchanged';
 /**
  * 添加分类
  */
-$lang['goods_class_add_name_null']		= '分类名称不能为空';
-$lang['goods_class_add_sort_int']		= '分类排序仅能为数字';
-$lang['goods_class_add_back_to_list']	= '返回分类列表';
-$lang['goods_class_add_again']			= '继续新增分类';
-$lang['goods_class_add_name_exists']	= '该分类名称已经存在了，请您换一个';
-$lang['goods_class_add_sup_class']		= '上级分类';
-$lang['goods_class_add_sup_class_notice']	= '如果选择上级分类，那么新增的分类则为被选择上级分类的子分类';
-$lang['goods_class_add_update_sort']	= '数字范围为0~255，数字越小越靠前';
-$lang['goods_class_add_display_tip']	= '分类名称是否显示';
-$lang['goods_class_add_type']			= '类型';
-$lang['goods_class_null_type']			= '无类型';
-$lang['goods_class_add_type_desc_one']	= '如果当前下拉选项中没有适合的类型，可以去';
-$lang['goods_class_add_type_desc_two']	= '功能中添加新的类型';
-$lang['goods_class_edit_prompts_one']	= '"类型"关系到商品发布时商品规格的添加，没有类型的商品分类的将不能添加规格。';
-$lang['goods_class_edit_prompts_two']	= '默认勾选"关联到子分类"将商品类型附加到子分类，如子分类不同于上级分类的类型，可以取消勾选并单独对子分类的特定类型进行编辑选择。';
-$lang['goods_class_edit_prompts_three']	= '在编辑"类型"和勾选"关联到子分类"时，涉及分类下的商品将会被进行"违规下架"处理，商品在重新编辑后才能正常使用，<span style="color:#F30">请慎重操作</span>。';
-$lang['goods_class_edit_related_to_subclass']	= '关联到子分类';
+$lang['goods_class_add_name_null']		= 'The category name cannot be empty';
+$lang['goods_class_add_sort_int']		= 'Sorting can only be done by Numbers';
+$lang['goods_class_add_back_to_list']	= 'Return the list of categories';
+$lang['goods_class_add_again']			= 'Continue to add new categories';
+$lang['goods_class_add_name_exists']	= 'This category name already exists, please change it';
+$lang['goods_class_add_sup_class']		= 'Category parent';
+$lang['goods_class_add_sup_class_notice']	= 'If a superior category is selected, the new category is a subcategory of the selected superior category';
+$lang['goods_class_add_update_sort']	= 'The Numbers range from 0 to 255, with the smaller Numbers getting closer to the front';
+$lang['goods_class_add_display_tip']	= 'Whether the category name is displayed';
+$lang['goods_class_add_type']			= 'type';
+$lang['goods_class_null_type']			= 'no type';
+$lang['goods_class_add_type_desc_one']	= 'If there is no suitable type in the current drop-down option, go';
+$lang['goods_class_add_type_desc_two']	= 'add a new type';
+$lang['goods_class_edit_prompts_one']	= '"type"Related to the addition of time when doctors publish, no type of doctors classified will not be able to add time.';
+$lang['goods_class_edit_prompts_two']	= 'By default, check "association to subcategory" to attach the doctor type to the subcategory. If the subcategory is different from the superior category, you can uncheck the subcategory and edit the specific subcategory separately.';
+$lang['goods_class_edit_prompts_three']	= 'When "type" is edited and "related to sub-category" is checked, the doctors under the category will be "illegally removed", and the doctors can only use it normally after re-editing.<span style="color:#F30">Please operate carefully.</span>。';
+$lang['goods_class_edit_related_to_subclass']	= 'Related to subcategories';
 /**
  * 分类导入
  */
 $lang['goods_class_import_csv_null']	= 'Imported csv file cannot be empty';
 $lang['goods_class_import_data']		= 'Import data';
 $lang['goods_class_import_choose_file']	= 'Please select a file';
-$lang['goods_class_import_file_tip']	= '如果导入速度较慢，建议您把文件拆分为几个小文件，然后分别导入';
-$lang['goods_class_import_choose_code']	= '请选择文件编码';
-$lang['goods_class_import_code_tip']	= '如果文件较大，建议您先把文件转换为 utf-8 编码，这样可以避免转换编码时耗费时间';
+$lang['goods_class_import_file_tip']	= 'If the import is slow, it is recommended that you split the file into several small files and import them separately';
+$lang['goods_class_import_choose_code']	= 'Please select the file encoding';
+$lang['goods_class_import_code_tip']	= 'If the file is large, it is recommended that you convert the file to utf-8 first to avoid the time consuming conversion';
 $lang['goods_class_import_file_type']	= 'File type';
 $lang['goods_class_import_first_class']	= 'First class';
 $lang['goods_class_import_second_class']		= 'Second class';

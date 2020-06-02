@@ -45,7 +45,7 @@ class seller_logControl extends BaseSellerControl {
         $menu_array = array();
         $menu_array[] = array(
             'menu_key' => 'log_list', 
-            'menu_name' => '日志列表', 
+            'menu_name' => 'log list', 
             'menu_url' => urlShop('seller_log', 'log_list')
         );
         Tpl::output('member_menu', $menu_array);

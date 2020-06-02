@@ -3,7 +3,7 @@
 <div class="ncc-main">
   <div class="ncc-title">
     <h3><?php echo $lang['cart_index_payment'];?></h3>
-    <h5>订单详情内容可通过查看<a href="index.php?act=member_order" target="_blank">我的订单</a>进行核对处理。</h5>
+    <h5>Order details can be viewed by<a href="index.php?act=member_order" target="_blank">my order</a>Check and process.</h5>
   </div>
   <form action="index.php?act=payment" method="POST" id="buy_form">
     <input type="hidden" name="pay_sn" value="<?php echo $output['pay_info']['pay_sn'];?>">
@@ -13,7 +13,7 @@
       <div class="ncc-receipt-info-title">
         <h3><?php echo $output['order_remind'];?>
           <?php if ($output['pay_amount_online'] > 0) {?>
-          在线支付金额：<strong>￥<?php echo $output['pay_amount_online'];?></strong>
+          Online payment amount:<strong>￥<?php echo $output['pay_amount_online'];?></strong>
           <?php } ?>
           </h3>
       </div>
@@ -21,10 +21,10 @@
         <thead>
           <tr>
             <th class="w50"></th>
-            <th class="w250 tl">订单号</th>
-            <th class="tl">支付方式</th>
-            <th class="w150">金额</th>
-            <th class="w150">物流</th>
+            <th class="w250 tl">order No.</th>
+            <th class="tl">payment method</th>
+            <th class="w150">price</th>
+            <!-- <th class="w150">物流</th> -->
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
             <td class="tl"><?php echo $order['order_sn']; ?></td>
             <td class="tl"><?php echo $order['payment_state'];?></td>
             <td>￥<?php echo $order['order_amount'];?></td>
-            <td>快递</td>
+            <!-- <td>快递</td> -->
           </tr>
           <?php  }?>
         </tbody>
@@ -51,7 +51,7 @@
       <div class="nopay"><?php echo $lang['cart_step2_paymentnull_1']; ?> <a href="index.php?act=home&op=sendmsg&member_id=<?php echo $output['order']['seller_id'];?>"><?php echo $lang['cart_step2_paymentnull_2'];?></a> <?php echo $lang['cart_step2_paymentnull_3'];?></div>
       <?php } else {?>
       <div class="ncc-receipt-info-title">
-        <h3>支付选择</h3>
+        <h3>Payment options</h3>
       </div>
       <ul class="ncc-payment-list">
         <?php foreach($output['payment_list'] as $val) { ?>
@@ -62,10 +62,10 @@
           <div class="predeposit" nc_type="predeposit" style="display:none">
             <?php if ($val['payment_code'] == 'predeposit') {?>
                 <?php if ($output['available_predeposit']) {?>
-                <p>当前预存款余额<br/>￥<?php echo $output['available_predeposit'];?><br/>不足以支付该订单<br/><a href="<?php echo SHOP_SITE_URL.'/index.php?act=predeposit';?>">马上充值</a></p>
+                <p>Current pre-deposit balance<br/>￥<?php echo $output['available_predeposit'];?><br/>Not enough to pay for the order<br/><a href="<?php echo SHOP_SITE_URL.'/index.php?act=predeposit';?>">Recharge now</a></p>
                 <?php } else {?>
                 <input type="password" class="text w120" name="password" maxlength="40" id="password" value="">
-                <p>使用站内预存款进行支付时，需输入您的登录密码进行安全验证。</p>
+                <p>Please enter your login password for security verification when using the pre-deposit in the station for payment.</p>
                 <?php } ?>
             <?php } ?>
           </div>
@@ -76,7 +76,7 @@
       <?php } ?>
     </div>
     <?php if ($output['pay_amount_online'] > 0) {?>
-    <div class="ncc-bottom tc mb50"><a href="javascript:void(0);" id="next_button" class="ncc-btn ncc-btn-green"><i class="icon-shield"></i>确认提交支付</a></div>
+    <div class="ncc-bottom tc mb50"><a href="javascript:void(0);" id="next_button" class="ncc-btn ncc-btn-green"><i class="icon-shield"></i>Confirm and submit</a></div>
     <?php }?>
   </form>
 </div>
@@ -89,7 +89,7 @@ $(function(){
     });
     $('#next_button').on('click',function(){
         if ($('#payment_code').val() == '') {
-        	showDialog('请选择支付方式', 'error','','','','','','','','',2);return false;
+        	showDialog('Please select payment method', 'error','','','','','','','','',2);return false;
         }
         $('#buy_form').submit();
     });

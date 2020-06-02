@@ -100,13 +100,13 @@ class stat_storeControl extends SystemControl{
 					}
 				}
 			}
-			$stat_arr['series'][0]['name'] = '昨天';
+			$stat_arr['series'][0]['name'] = 'yesterday';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '今天';
+			$stat_arr['series'][1]['name'] = 'today';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			
 			//统计数据标题
-			$statlist['headertitle'] = array('小时','昨天','今天','同比');
+			$statlist['headertitle'] = array('hour','yesterday','today','day on day');
 			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=day&search_time='.date('Y-m-d',$search_time));
 		}
 		
@@ -149,12 +149,12 @@ class stat_storeControl extends SystemControl{
 					}
 				}
 			}
-			$stat_arr['series'][0]['name'] = '上周';
+			$stat_arr['series'][0]['name'] = 'last week';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '本周';
+			$stat_arr['series'][1]['name'] = 'this week';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
-			$statlist['headertitle'] = array('星期','上周','本周','同比');
+			$statlist['headertitle'] = array('week','last week','this week','week on week');
 			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
 		}
 		
@@ -200,12 +200,12 @@ class stat_storeControl extends SystemControl{
 					}
 				}
 			}
-			$stat_arr['series'][0]['name'] = '上月';
+			$stat_arr['series'][0]['name'] = 'last month';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '本月';
+			$stat_arr['series'][1]['name'] = 'this month';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
-			$statlist['headertitle'] = array('日期','上月','本月','同比');
+			$statlist['headertitle'] = array('date','last month','this month','month on month');
 			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
 		}
 		
@@ -241,13 +241,13 @@ class stat_storeControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('新增店铺统计',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('新增店铺统计',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('new clinic stat',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('new clinic stat',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		} else {
 			//得到统计图数据
-    		$stat_arr['title'] = '新增店铺统计';
-            $stat_arr['yAxis'] = '新增店铺数';
+    		$stat_arr['title'] = 'new clinic stat';
+            $stat_arr['yAxis'] = 'new clinics';
     		$stat_json = getStatData_LineLabels($stat_arr);
     		Tpl::output('stat_json',$stat_json);
     		Tpl::output('statlist',$statlist);
@@ -323,16 +323,16 @@ class stat_storeControl extends SystemControl{
 		//得到统计图数据
 		if(trim($_GET['stat_type']) == 'sale'){
 			$store_list = $model->getStoreSaleRank($where,'sale_amount');
-			$statlist['headertitle'] = array('排名','店铺名称','销售额');
-			$stat_arr['title'] = '店铺销售额排行Top15';
-            $stat_arr['yAxis'] = '销售额';
-			$stat_arr['series'][0]['name'] = '销售额';
+			$statlist['headertitle'] = array('ranking','clinic name','turnover');
+			$stat_arr['title'] = 'turnover Top15';
+            $stat_arr['yAxis'] = 'turnover';
+			$stat_arr['series'][0]['name'] = 'turnover';
 		}else{
 			$store_list = $model->getStoreSaleRank($where,'sale_num');
-			$statlist['headertitle'] = array('排名','店铺名称','订单量');
-			$stat_arr['title'] = '店铺订单量排行Top15';
-            $stat_arr['yAxis'] = '订单量';
-            $stat_arr['series'][0]['name'] = '订单量';
+			$statlist['headertitle'] = array('ranking','clinic name','orders');
+			$stat_arr['title'] = 'order Top15';
+            $stat_arr['yAxis'] = 'orders';
+            $stat_arr['series'][0]['name'] = 'orders';
 		}
 		//导出Excel
         if ($_GET['exporttype'] == 'excel'){
@@ -355,11 +355,11 @@ class stat_storeControl extends SystemControl{
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
 	        if(trim($_GET['stat_type']) == 'sale'){
-	        	$excel_obj->addWorksheet($excel_obj->charset('店铺销售额排行Top15',CHARSET));
-		    	$excel_obj->generateXML($excel_obj->charset('店铺销售额排行Top15',CHARSET).date('Y-m-d-H',time()));
+	        	$excel_obj->addWorksheet($excel_obj->charset('clinic turnover Top15',CHARSET));
+		    	$excel_obj->generateXML($excel_obj->charset('clinic turnover Top15',CHARSET).date('Y-m-d-H',time()));
 			}else{
-				$excel_obj->addWorksheet($excel_obj->charset('店铺订单量排行Top15',CHARSET));
-		    	$excel_obj->generateXML($excel_obj->charset('店铺订单量排行Top15',CHARSET).date('Y-m-d-H',time()));
+				$excel_obj->addWorksheet($excel_obj->charset('clinic order Top15',CHARSET));
+		    	$excel_obj->generateXML($excel_obj->charset('clinic order Top15',CHARSET).date('Y-m-d-H',time()));
 			}
 			exit();
 		} else {
@@ -423,14 +423,14 @@ class stat_storeControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-			$excel_obj->addWorksheet($excel_obj->charset('店铺等级统计',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('店铺等级统计',CHARSET).date('Y-m-d-H',time()));
+			$excel_obj->addWorksheet($excel_obj->charset('clinic level stat',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('clinic level stat',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		}else{
 			Tpl::output('actionurl','index.php?act=stat_store&op=degree');
 			$data = array(
-				'title'=>'店铺等级统计',
-				'name'=>'店铺个数',
+				'title'=>'clinic level stat',
+				'name'=>'clinics',
 				'label_show'=>true,
 				'series'=>$memberlist
 			);
@@ -473,25 +473,25 @@ class stat_storeControl extends SystemControl{
 		    //设置样式
 		    $excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
 			//header
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'店铺名称');
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'店主账号');
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'店主卖家账号');
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'所属等级');
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'有效期至');
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'开店时间');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'clinic name');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'account');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'manager account');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'level');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'valid until');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'open date');
 			//data
 			foreach ($store_list as $k=>$v){
 				$excel_data[$k+1][] = array('data'=>$v['store_name']);
 				$excel_data[$k+1][] = array('data'=>$v['member_name']);
 				$excel_data[$k+1][] = array('data'=>$v['seller_name']);
 				$excel_data[$k+1][] = array('data'=>$search_grade_list[$v['grade_id']]);
-				$excel_data[$k+1][] = array('data'=>$v['store_end_time']?date('Y-m-d', $v['store_end_time']):'无限制');
+				$excel_data[$k+1][] = array('data'=>$v['store_end_time']?date('Y-m-d', $v['store_end_time']):'no limit');
 				$excel_data[$k+1][] = array('data'=>date('Y-m-d', $v['store_time']));
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('新增店铺',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('新增店铺',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('add clinic',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('add clinic',CHARSET).date('Y-m-d-H',time()));
 			exit();
         }
         Tpl::output('search_grade_list', $search_grade_list);

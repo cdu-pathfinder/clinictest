@@ -96,13 +96,13 @@ class stat_memberControl extends SystemControl{
 					}
 				}
 			}
-			$stat_arr['series'][0]['name'] = '昨天';
+			$stat_arr['series'][0]['name'] = 'yesterday';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '今天';
+			$stat_arr['series'][1]['name'] = 'today';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			
 			//统计数据标题
-			$statlist['headertitle'] = array('小时','昨天','今天','同比');
+			$statlist['headertitle'] = array('hour','yesterday','today','day on day');
 			Tpl::output('actionurl','index.php?act=stat_member&op=newmember&search_type=day&search_time='.date('Y-m-d',$this->search_arr['day']['search_time']));
 		}
 		
@@ -153,12 +153,12 @@ class stat_memberControl extends SystemControl{
 				}
 			}
 			
-			$stat_arr['series'][0]['name'] = '上周';
+			$stat_arr['series'][0]['name'] = 'last week';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '本周';
+			$stat_arr['series'][1]['name'] = 'this week';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
-			$statlist['headertitle'] = array('星期','上周','本周','同比');
+			$statlist['headertitle'] = array('week','last week','this week','week on week');
 			Tpl::output('actionurl','index.php?act=stat_member&op=newmember&search_type=week&searchweek_year='.$this->search_arr['week']['current_year'].'&searchweek_month='.$this->search_arr['week']['current_month'].'&searchweek_week='.$this->search_arr['week']['current_week']);
 		}
 		
@@ -209,12 +209,12 @@ class stat_memberControl extends SystemControl{
 					}
 				}
 			}
-			$stat_arr['series'][0]['name'] = '上月';
+			$stat_arr['series'][0]['name'] = 'last month';
 			$stat_arr['series'][0]['data'] = array_values($up_arr);
-			$stat_arr['series'][1]['name'] = '本月';
+			$stat_arr['series'][1]['name'] = 'this month';
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
-			$statlist['headertitle'] = array('日期','上月','本月','同比');
+			$statlist['headertitle'] = array('date','last month','this month','month on month');
 			Tpl::output('actionurl','index.php?act=stat_member&op=newmember&search_type=month&searchmonth_year='.$this->search_arr['month']['current_year'].'&searchmonth_month='.$this->search_arr['month']['current_month']);
 		}
 		
@@ -257,13 +257,13 @@ class stat_memberControl extends SystemControl{
 				
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('新增会员统计',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('新增会员统计',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('new member statistics',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('new member statistics',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		} else {
 			//得到统计图数据
-    		$stat_arr['title'] = '新增会员统计';
-            $stat_arr['yAxis'] = '新增会员数';
+    		$stat_arr['title'] = 'new member statistics';
+            $stat_arr['yAxis'] = 'new members';
     		$stat_json = getStatData_LineLabels($stat_arr);
     		Tpl::output('stat_json',$stat_json);
     		Tpl::output('statlist',$statlist);
@@ -285,7 +285,7 @@ class stat_memberControl extends SystemControl{
 			//横轴
 			$stat_arr['xAxis']['categories'][] = $i;
 		}
-		$stat_arr['title'] = '买家排行Top15';
+		$stat_arr['title'] = 'patient Top15';
 		$stat_arr['legend']['enabled'] = false;
 		
 		//获得搜索的开始时间和结束时间
@@ -298,12 +298,12 @@ class stat_memberControl extends SystemControl{
 		$field = ' statm_memberid, statm_membername, sum(statm_ordernum) as ordernum ';
 		$ordernum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'ordernum desc,statm_memberid desc', 'statm_memberid');
 		$stat_ordernum_arr = $stat_arr;
-		$stat_ordernum_arr['series'][0]['name'] = '下单量';
+		$stat_ordernum_arr['series'][0]['name'] = 'appointments';
 		$stat_ordernum_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
 		    $stat_ordernum_arr['series'][0]['data'][] = array('name'=>strval($ordernum_listtop15[$i]['statm_membername']),'y'=>intval($ordernum_listtop15[$i]['ordernum']));
 		}
-        $stat_ordernum_arr['yAxis'] = '下单量';
+        $stat_ordernum_arr['yAxis'] = 'appointments';
 		$statordernum_json = getStatData_Column2D($stat_ordernum_arr);
 		unset($stat_ordernum_arr);
 		Tpl::output('statordernum_json',$statordernum_json);
@@ -314,12 +314,12 @@ class stat_memberControl extends SystemControl{
 		$field = ' statm_memberid, statm_membername, sum(statm_goodsnum) as goodsnum ';
 		$goodsnum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'goodsnum desc,statm_memberid desc', 'statm_memberid');
 		$stat_goodsnum_arr = $stat_arr;
-		$stat_goodsnum_arr['series'][0]['name'] = '下单商品件数';
+		$stat_goodsnum_arr['series'][0]['name'] = 'doctors booked';
 		$stat_goodsnum_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
 		    $stat_goodsnum_arr['series'][0]['data'][] = array('name'=>strval($goodsnum_listtop15[$i]['statm_membername']),'y'=>intval($goodsnum_listtop15[$i]['goodsnum']));
 		}
-        $stat_goodsnum_arr['yAxis'] = '下单商品件数';
+        $stat_goodsnum_arr['yAxis'] = 'doctors booked';
 		$statgoodsnum_json = getStatData_Column2D($stat_goodsnum_arr);
 		unset($stat_goodsnum_arr);
 		Tpl::output('statgoodsnum_json',$statgoodsnum_json);
@@ -330,12 +330,12 @@ class stat_memberControl extends SystemControl{
 		$field = ' statm_memberid, statm_membername, sum(statm_orderamount) as orderamount ';
 		$orderamount_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'orderamount desc,statm_memberid desc', 'statm_memberid');
 		$stat_orderamount_arr = $stat_arr;
-		$stat_orderamount_arr['series'][0]['name'] = '下单金额';
+		$stat_orderamount_arr['series'][0]['name'] = 'booked price';
 		$stat_orderamount_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
 		    $stat_orderamount_arr['series'][0]['data'][] = array('name'=>strval($orderamount_listtop15[$i]['statm_membername']),'y'=>floatval($orderamount_listtop15[$i]['orderamount']));
 		}
-        $stat_orderamount_arr['yAxis'] = '下单金额';
+        $stat_orderamount_arr['yAxis'] = 'booked price';
 		$statorderamount_json = getStatData_Column2D($stat_orderamount_arr);
 		unset($stat_orderamount_arr);
 		Tpl::output('statorderamount_json',$statorderamount_json);
@@ -360,18 +360,18 @@ class stat_memberControl extends SystemControl{
 		   case 'orderamount':
 		       $where['statm_orderamount'] = array('gt',0);
 		       $field .= ' ,sum(statm_orderamount) as orderamount ';
-		       $caption = '下单金额';
+		       $caption = 'booked price';
 		       break;
 		   case 'goodsnum':
 		       $where['statm_goodsnum'] = array('gt',0);
 		       $field .= ' ,sum(statm_goodsnum) as goodsnum ';
-		       $caption = '商品件数';
+		       $caption = 'doctors';
 		       break;
 		   default:
 		       $_GET['type'] = 'ordernum';
 		       $where['statm_ordernum'] = array('gt',0);
 		       $field .= ' ,sum(statm_ordernum) as ordernum ';
-		       $caption = '下单量';
+		       $caption = 'doctors booked';
 		       break;
 		}
 		//查询记录总条数
@@ -396,8 +396,8 @@ class stat_memberControl extends SystemControl{
 		    //设置样式
 		    $excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
 			//header		
-			$excel_data[0][] = array('styleid'=>'s_title','data'=>'序号');
-			$excel_data[0][] = array('styleid'=>'s_title','data'=>'会员名称');
+			$excel_data[0][] = array('styleid'=>'s_title','data'=>'number');
+			$excel_data[0][] = array('styleid'=>'s_title','data'=>'membername');
 			$excel_data[0][] = array('styleid'=>'s_title','data'=>$caption);
 			//data
 			foreach ($memberlist as $k=>$v){
@@ -407,8 +407,8 @@ class stat_memberControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('会员'.$caption.'统计',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('会员'.$caption.'统计',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('member'.$caption.'statistics',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('member'.$caption.'statistics',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		} else {
 		    Tpl::output('caption',$caption);
@@ -452,7 +452,7 @@ class stat_memberControl extends SystemControl{
 		    $excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
 			//header
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_name'));
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'注册时间');
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'register time');
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_login_time'));
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_last_login'));
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_points'));
@@ -468,8 +468,8 @@ class stat_memberControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('新增会员',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('新增会员',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('new member',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('new member',CHARSET).date('Y-m-d-H',time()));
 			exit();
         }
         Tpl::output('actionurl',$actionurl);
@@ -537,8 +537,8 @@ class stat_memberControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('会员规模分析',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('会员规模分析',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('Membership size analysis',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('Membership size analysis',CHARSET).date('Y-m-d-H',time()));
 			exit();
         }
 		Tpl::output('statlist',$statlist);
@@ -590,10 +590,10 @@ class stat_memberControl extends SystemControl{
 		// 地区
         require_once(BASE_DATA_PATH.'/area/area.php');
         $statheader = array();
-        $statheader[] = array('text'=>'省份','key'=>'provincename');
-        $statheader[] = array('text'=>'下单会员数','key'=>'membernum','isorder'=>1);
-        $statheader[] = array('text'=>'下单金额','key'=>'orderamount','isorder'=>1);
-        $statheader[] = array('text'=>'下单量','key'=>'ordernum','isorder'=>1);
+        $statheader[] = array('text'=>'state','key'=>'provincename');
+        $statheader[] = array('text'=>'memeber num','key'=>'membernum','isorder'=>1);
+        $statheader[] = array('text'=>'price booked','key'=>'orderamount','isorder'=>1);
+        $statheader[] = array('text'=>'num booked','key'=>'ordernum','isorder'=>1);
         $statlist = array();
 		foreach ((array)$statlist_tmp as $k=>$v){
 		    $province_id = intval($v['reciver_province_id']);
@@ -624,8 +624,8 @@ class stat_memberControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset('区域分析',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset('区域分析',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset('Regional analysis',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset('Regional analysis',CHARSET).date('Y-m-d-H',time()));
 			exit();
         }
 		Tpl::output('statlist',$statlist);
@@ -688,18 +688,18 @@ class stat_memberControl extends SystemControl{
 		    if ($statlist[$k]){
     		    switch ($_GET['type']){
         		   case 'orderamount':
-        		       $des = "，下单金额：{$statlist[$k]['orderamount']}";
+        		       $des = "，orderamount：{$statlist[$k]['orderamount']}";
         		       break;
         		   case 'ordernum':
-        		       $des = "，下单量：{$statlist[$k]['ordernum']}";
+        		       $des = "，ordernum：{$statlist[$k]['ordernum']}";
         		       break;
         		   default:
-        		       $des = "，下单客户数：{$statlist[$k]['membernum']}";
+        		       $des = "，membernum：{$statlist[$k]['membernum']}";
         		       break;
         		}
 		        $stat_arr[] = array('cha'=>$k,'name'=>$v['area_name'],'des'=>$des,'level'=>$statlist[$k]['level']);
 		    } else {
-		        $des = "，无订单数据";
+		        $des = "，No order data";
 		        $stat_arr[] = array('cha'=>$k,'name'=>$v['area_name'],'des'=>$des,'level'=>4);
 		    }
 		}

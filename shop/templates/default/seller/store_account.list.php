@@ -1,12 +1,12 @@
 <?php defined('InShopNC') or exit('Access Invalid!');?>
 <div class="tabmenu">
   <?php include template('layout/submenu');?>
-  <a href="javascript:void(0)" class="ncsc-btn ncsc-btn-green" onclick="go('index.php?act=store_account&op=account_add');" title="添加帐号">添加帐号</a> </div>
+  <a href="javascript:void(0)" class="ncsc-btn ncsc-btn-green" onclick="go('index.php?act=store_account&op=account_add');" title="添加帐号">add account</a> </div>
 <table class="ncsc-table-style">
   <thead>
     <tr><th class="w60"></th>
-      <th class="tl">帐号名</th>
-      <th class="w200">帐号组</th>
+      <th class="tl">account name</th>
+      <th class="w200">account group</th>
       <th class="w100"><?php echo $lang['nc_handle'];?></th>
     </tr>
   </thead>
@@ -44,7 +44,7 @@
     $(document).ready(function(){
         $('[nctype="btn_del_account"]').on('click', function() {
             var seller_id = $(this).attr('data-seller-id');
-            if(confirm('确认删除？')) {
+            if(confirm('Confirm deletion?')) {
                 $('#del_seller_id').val(seller_id);
                 ajaxpost('del_form', '', '', 'onerror');
             }
