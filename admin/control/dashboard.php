@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class dashboardControl extends SystemControl{
 	public function __construct(){
@@ -38,7 +38,7 @@ class dashboardControl extends SystemControl{
 		$statistics['web_server'] = $_SERVER['SERVER_SOFTWARE'];
 		$statistics['php_version'] = PHP_VERSION;
 		$statistics['sql_version'] = Db::getServerInfo();
-		$statistics['shop_version'] = $version;
+		$statistics['clinic_version'] = $version;
 		$statistics['setup_date'] = substr($setup_date,0,10);
 		Tpl::output('statistics',$statistics);
 		Tpl::output('admin_info',$admin_info);
@@ -74,26 +74,26 @@ class dashboardControl extends SystemControl{
         /**
          * 店铺
          */
-        $model_store = Model('store');
+        $model_clic = Model('clic');
         // 店铺总数
-        $statistics['store'] = Model('store')->getStoreCount(array());
+        $statistics['clic'] = Model('clic')->getclicCount(array());
         // 店铺申请数
-        $statistics['store_joinin'] = Model('store_joinin')->getStoreJoininCount(array('joinin_state' => array('in', array(10, 11))));
+        $statistics['clic_joinin'] = Model('clic_joinin')->getclicJoininCount(array('joinin_state' => array('in', array(10, 11))));
         // 即将到期
-        $statistics['store_expire'] = $model_store->getStoreCount(array('store_state'=>1, 'store_end_time'=>array('between', array(TIMESTAMP, TIMESTAMP + 864000))));
+        $statistics['clic_expire'] = $model_clic->getclicCount(array('clic_state'=>1, 'clic_end_time'=>array('between', array(TIMESTAMP, TIMESTAMP + 864000))));
         // 已经到期
-        $statistics['store_expired'] = $model_store->getStoreCount(array('store_state'=>1, 'store_end_time'=>array('between', array(1, TIMESTAMP))));
+        $statistics['clic_expired'] = $model_clic->getclicCount(array('clic_state'=>1, 'clic_end_time'=>array('between', array(1, TIMESTAMP))));
         
         /**
          * 商品
          */
-        $model_goods = Model('goods');
+        $model_doctors = Model('doctors');
         // 商品总数
-        $statistics['goods'] = $model_goods->getGoodsCommonCount(array());
+        $statistics['doctors'] = $model_doctors->getdoctorsCommonCount(array());
         // 新增商品数
-        $statistics['week_add_product'] = $model_goods->getGoodsCommonCount(array('goods_addtime' => array('egt', $tmp_time)));
+        $statistics['week_add_doc'] = $model_doctors->getdoctorsCommonCount(array('doctors_addtime' => array('egt', $tmp_time)));
         // 等待审核
-        $statistics['product_verify'] = $model_goods->getGoodsCommonWaitVerifyCount(array());
+        $statistics['doc_verify'] = $model_doctors->getdoctorsCommonWaitVerifyCount(array());
         // 举报
         $statistics['inform_list'] = Model('inform')->getInformCount(array('inform_state'=>1));
         // 品牌申请
@@ -102,11 +102,11 @@ class dashboardControl extends SystemControl{
         /**
          * 交易
          */
-        $model_order = Model('order');
+        $model_appointment = Model('appointment');
         $model_refund_return = Model('refund_return');
         $model_complain = Model('complain');
         // 订单总数
-        $statistics['order'] = $model_order->getOrderCount(array());
+        $statistics['appointment'] = $model_appointment->getappointmentCount(array());
         // 退款
         $statistics['refund'] = $model_refund_return->getRefundReturn(array('refund_type' => 1, 'refund_state' => 2));
         // 退货
@@ -122,16 +122,16 @@ class dashboardControl extends SystemControl{
 		// 团购数量
 		$statistics['groupbuy_verify_list'] = Model('groupbuy')->getGroupbuyCount(array('state'=>10));
 		// 积分订单
-		$statistics['points_order'] = Model()->cls()->table('points_order')->where(array('point_orderstate'=>array('in',array(11,20))))->count();
+		$statistics['points_appointment'] = Model()->cls()->table('points_appointment')->where(array('point_appointmentstate'=>array('in',array(11,20))))->count();
 		//待审核账单
 		$model_bill = Model('bill');
 		$condition = array();
-		$condition['ob_state'] = BILL_STATE_STORE_COFIRM;
-		$statistics['check_billno'] = $model_bill->getOrderBillCount($condition);
+		$condition['ob_state'] = BILL_STATE_clic_COFIRM;
+		$statistics['check_billno'] = $model_bill->getappointmentBillCount($condition);
 		//待支付账单
 		$condition = array();
 		$condition['ob_state'] = BILL_STATE_SYSTEM_CHECK;
-		$statistics['pay_billno'] = $model_bill->getOrderBillCount($condition);		
+		$statistics['pay_billno'] = $model_bill->getappointmentBillCount($condition);		
         /**
          * CMS
          */

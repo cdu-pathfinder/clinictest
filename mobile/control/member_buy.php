@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class member_buyControl extends mobileMemberControl {
 
@@ -26,34 +26,34 @@ class member_buyControl extends mobileMemberControl {
 
         $model_buy = Model('buy');
 
-        $result = $model_buy->buyStep1($cart_id, $_POST['ifcart'], $_POST['invalid_cart'], $this->member_info['member_id'], $this->member_info['store_id']);
+        $result = $model_buy->buyStep1($cart_id, $_POST['ifcart'], $_POST['invalid_cart'], $this->member_info['member_id'], $this->member_info['clic_id']);
         if(isset($result['error'])) {
             output_error($result['error']);
         }
 
         //整理数据
-        $store_cart_list = array();
-        foreach ($result['store_cart_list'] as $key => $value) {
-            $store_cart_list[$key]['goods_list'] = $value;
-            $store_cart_list[$key]['store_goods_total'] = $result['store_goods_total'][$key];
-            if(!empty($result['store_premiums_list'][$key])) {
-                $result['store_premiums_list'][$key][0]['premiums'] = true;
-                $result['store_premiums_list'][$key][0]['goods_total'] = 0.00;
-                $store_cart_list[$key]['goods_list'][] = $result['store_premiums_list'][$key][0];
+        $clic_cart_list = array();
+        foreach ($result['clic_cart_list'] as $key => $value) {
+            $clic_cart_list[$key]['doctors_list'] = $value;
+            $clic_cart_list[$key]['clic_doctors_total'] = $result['clic_doctors_total'][$key];
+            if(!empty($result['clic_premiums_list'][$key])) {
+                $result['clic_premiums_list'][$key][0]['premiums'] = true;
+                $result['clic_premiums_list'][$key][0]['doctors_total'] = 0.00;
+                $clic_cart_list[$key]['doctors_list'][] = $result['clic_premiums_list'][$key][0];
             }
-            $store_cart_list[$key]['store_mansong_rule_list'] = $result['store_mansong_rule_list'][$key];
-            $store_cart_list[$key]['store_voucher_list'] = $result['store_voucher_list'][$key];
+            $clic_cart_list[$key]['clic_mansong_rule_list'] = $result['clic_mansong_rule_list'][$key];
+            $clic_cart_list[$key]['clic_voucher_list'] = $result['clic_voucher_list'][$key];
             if(!empty($result['cancel_calc_sid_list'][$key])) {
-                $store_cart_list[$key]['freight'] = '0';
-                $store_cart_list[$key]['freight_message'] = $result['cancel_calc_sid_list'][$key]['desc'];
+                $clic_cart_list[$key]['freight'] = '0';
+                $clic_cart_list[$key]['freight_message'] = $result['cancel_calc_sid_list'][$key]['desc'];
             } else {
-                $store_cart_list[$key]['freight'] = '1';
+                $clic_cart_list[$key]['freight'] = '1';
             }
-            $store_cart_list[$key]['store_name'] = $value[0]['store_name'];
+            $clic_cart_list[$key]['clic_name'] = $value[0]['clic_name'];
         }
 
         $buy_list = array();
-        $buy_list['store_cart_list'] = $store_cart_list;
+        $buy_list['clic_cart_list'] = $clic_cart_list;
         $buy_list['freight_hash'] = $result['freight_list'];
         $buy_list['address_info'] = $result['address_info'];
         $buy_list['ifshow_offpay'] = $result['ifshow_offpay'];

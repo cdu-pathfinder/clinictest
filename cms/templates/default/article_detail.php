@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo CMS_RESOURCE_SITE_URL;?>/js/waypoints.js"></script>
 <script type="text/javascript">
  $(document).ready(function(){
@@ -47,16 +47,16 @@ function fontZoomB(){
       <p class="article-preface"><?php echo $output['article_detail']['article_abstract'];?></p>
       <!-- 正文 -->
       <section class="article-body" id="text"><?php echo $output['article_detail']['article_content'];?>
-        <?php if(!empty($output['article_goods_list'])) { ?>
-        <div class="article-related-goods"> 
+        <?php if(!empty($output['article_doctors_list'])) { ?>
+        <div class="article-related-doctors"> 
           <!-- 相关商品 -->
-          <h3><?php echo $lang['cms_article_goods'];?></h3>
-          <?php foreach($output['article_goods_list'] as $value) { ?>
+          <h3><?php echo $lang['cms_article_doctors'];?></h3>
+          <?php foreach($output['article_doctors_list'] as $value) { ?>
           <dl>
-            <dt class="goods-name"><a target="_blank" href="<?php echo $value['url']?>"> <?php echo $value['title'];?> </a> </dt>
-            <dd class="goods-pic"><a target="_blank" href="<?php echo $value['url']?>"><img src="<?php echo $value['image'];?>" title="<?php echo $value['title'];?>"> </a></dd>
-            <dd class="goods-price"><?php echo $lang['cms_price'];?><?php echo $lang['nc_colon'];?><em><?php echo $value['price'];?></em></dd>
-            <dd class="goods-handle"><a target="_blank" href="<?php echo $value['url']?>"><?php echo $lang['cms_goods_detail'];?></a></dd>
+            <dt class="doctors-name"><a target="_blank" href="<?php echo $value['url']?>"> <?php echo $value['title'];?> </a> </dt>
+            <dd class="doctors-pic"><a target="_blank" href="<?php echo $value['url']?>"><img src="<?php echo $value['image'];?>" title="<?php echo $value['title'];?>"> </a></dd>
+            <dd class="doctors-price"><?php echo $lang['cms_price'];?><?php echo $lang['nc_colon'];?><em><?php echo $value['price'];?></em></dd>
+            <dd class="doctors-handle"><a target="_blank" href="<?php echo $value['url']?>"><?php echo $lang['cms_doctors_detail'];?></a></dd>
           </dl>
           <?php } ?>
         </div>

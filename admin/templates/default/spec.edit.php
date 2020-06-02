@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,17 +17,17 @@
     <input type="hidden" name="s_id" value="<?php echo $output['sp_list']['sp_id']?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="required" colspan="2"><label class="validation" for="s_name"><?php echo $lang['spec_index_spec_name'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" name="s_name" id="s_name" value="<?php echo $output['sp_list']['sp_name'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['spec_index_spec_name_desc'];?></td>
         </tr>
         <tr>
           <td class="required" colspan="2"><label class="" for="s_sort"><?php echo $lang['spec_common_belong_class'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform" id="gcategory">
           <input type="hidden" value="<?php echo $output['sp_list']['class_id'];?>" class="mls_id" name="class_id" />
             <input type="hidden" value="<?php echo $output['sp_list']['class_name'];?>" class="mls_name" name="class_name" />
@@ -50,7 +50,7 @@
         <tr>
           <td class="required" colspan="2"><label class="validation" for="s_sort"><?php echo $lang['nc_sort'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php if ($output['sp_list']['sp_id'] != 1) {?><input type="text" class="txt" name="s_sort" id="s_sort" value="<?php echo $output['sp_list']['sp_sort'];?>" /><?php } else {echo $output['sp_list']['sp_sort'];}?></td>
           <td class="vatop tips"><?php echo $lang['spec_index_spec_sort_desc'];?></td>
         </tr>

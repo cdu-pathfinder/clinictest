@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(this).attr('status','none');
 			//ajax
 			$.ajax({
-				url: 'index.php?act=store_class&op=store_class&ajax=1&sc_parent_id='+id,
+				url: 'index.php?act=clic_class&op=clic_class&ajax=1&sc_parent_id='+id,
 				dataType: 'json',
 				success: function(data){
 					var src='';
@@ -25,7 +25,7 @@ $(document).ready(function(){
 						//图片
 						src += "</td><td class='w48 sort'>";
 						//排序
-						src += "<span title='可编辑' ajax_branch='store_class_sort' datatype='number' fieldid='"+data[i].sc_id+"' fieldname='sc_sort' nc_type='inline_edit' class='editable'>"+data[i].sc_sort+"</span>";
+						src += "<span title='可编辑' ajax_branch='clic_class_sort' datatype='number' fieldid='"+data[i].sc_id+"' fieldname='sc_sort' nc_type='inline_edit' class='editable'>"+data[i].sc_sort+"</span>";
 						//名称
 						src += "<td class='name'>";
 						for(var tmp_i=1; tmp_i < (data[i].deep-1); tmp_i++){
@@ -36,17 +36,17 @@ $(document).ready(function(){
 						}else{
 							src += " <img fieldid='"+data[i].sc_id+"' status='none' nc_type='flex' src='"+ADMIN_TEMPLATES_URL+"/images/tv-expandable1.gif' />";
 						}
-						src += "<span title='可编辑' required='1' fieldid='"+data[i].sc_id+"' ajax_branch='store_class_name' fieldname='sc_name' nc_type='inline_edit' class='node_name editable'>"+data[i].sc_name+"</span>";
+						src += "<span title='可编辑' required='1' fieldid='"+data[i].sc_id+"' ajax_branch='clic_class_name' fieldname='sc_name' nc_type='inline_edit' class='node_name editable'>"+data[i].sc_name+"</span>";
 						//新增下级
 						if(data[i].deep < 2){
-							src += "<a  class='btn-add-nofloat marginleft' href='index.php?act=store_class&op=store_class_add&sc_parent_id="+data[i].sc_id+"'><span>新增下级<span></a></span>";
+							src += "<a  class='btn-add-nofloat marginleft' href='index.php?act=clic_class&op=clic_class_add&sc_parent_id="+data[i].sc_id+"'><span>新增下级<span></a></span>";
 						}
 						src += "</td>";
 						
 						//操作
 						src += "<td class='w84'>";
-						src += "<span><a href='index.php?act=store_class&op=store_class_edit&sc_id="+data[i].sc_id+"'>编辑</a>";
-						src += " | <a href=\"javascript:if(confirm('删除该分类将会同时删除该分类的所有下级分类，您确定要删除吗'))window.location = 'index.php?act=store_class&op=store_class_del&sc_id="+data[i].sc_id+"';\">删除</a>";
+						src += "<span><a href='index.php?act=clic_class&op=clic_class_edit&sc_id="+data[i].sc_id+"'>编辑</a>";
+						src += " | <a href=\"javascript:if(confirm('删除该分类将会同时删除该分类的所有下级分类，您确定要删除吗'))window.location = 'index.php?act=clic_class&op=clic_class_del&sc_id="+data[i].sc_id+"';\">删除</a>";
 						src += "</td>";
 						src += "</tr>";
 					}
@@ -58,7 +58,7 @@ $(document).ready(function(){
 					$('span[nc_type="inline_edit"]').unbind('click');
 					//重现初始化页面
                     $.getScript(RESOURCE_SITE_URL+"/js/jquery.edit.js");
-					$.getScript(RESOURCE_SITE_URL+"/js/jquery.store_class.js");
+					$.getScript(RESOURCE_SITE_URL+"/js/jquery.clic_class.js");
 					$.getScript(RESOURCE_SITE_URL+"/js/admincp.js");
 				},
 				error: function(){

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class p_mansong_ruleModel extends Model{
 
     public function __construct(){
@@ -21,7 +21,7 @@ class p_mansong_ruleModel extends Model{
      * 读取满即送规则列表
 	 * @param array $mansong_id 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 所需字段
      * @return array 满即送套餐列表
 	 *
@@ -29,23 +29,23 @@ class p_mansong_ruleModel extends Model{
 	public function getMansongRuleListByID($mansong_id) {
         $condition = array();
         $condition['mansong_id'] = $mansong_id;
-        $mansong_rule_list = $this->where($condition)->order('price desc')->select();
+        $mansong_rule_list = $this->where($condition)->appointment('price desc')->select();
         if(!empty($mansong_rule_list)) {
-            $model_goods = Model('goods');
+            $model_doctors = Model('doctors');
 
             for($i =0, $j = count($mansong_rule_list); $i < $j; $i++) {
-                $goods_id = intval($mansong_rule_list[$i]['goods_id']);
-                if(!empty($goods_id)) {
-                    $goods_info = $model_goods->getGoodsOnlineInfo(array('goods_id'=>$goods_id));
-                    if(!empty($goods_info)) {
-                        if(empty($mansong_rule_list[$i]['mansong_goods_name'])) {
-                            $mansong_rule_list[$i]['mansong_goods_name'] = $goods_info['goods_name'];
+                $doctors_id = intval($mansong_rule_list[$i]['doctors_id']);
+                if(!empty($doctors_id)) {
+                    $doctors_info = $model_doctors->getdoctorsOnlineInfo(array('doctors_id'=>$doctors_id));
+                    if(!empty($doctors_info)) {
+                        if(empty($mansong_rule_list[$i]['mansong_doctors_name'])) {
+                            $mansong_rule_list[$i]['mansong_doctors_name'] = $doctors_info['doctors_name'];
                         }
-                        $mansong_rule_list[$i]['goods_image'] = $goods_info['goods_image'];
-                        $mansong_rule_list[$i]['goods_image_url'] = cthumb($goods_info['goods_image'], $goods_info['store_id']);
-                        $mansong_rule_list[$i]['goods_storage'] = $goods_info['goods_storage'];
-                        $mansong_rule_list[$i]['goods_id'] = $goods_id;
-                        $mansong_rule_list[$i]['goods_url'] = urlShop('goods', 'index', array('goods_id' => $goods_id));
+                        $mansong_rule_list[$i]['doctors_image'] = $doctors_info['doctors_image'];
+                        $mansong_rule_list[$i]['doctors_image_url'] = cthumb($doctors_info['doctors_image'], $doctors_info['clic_id']);
+                        $mansong_rule_list[$i]['doctors_storage'] = $doctors_info['doctors_storage'];
+                        $mansong_rule_list[$i]['doctors_id'] = $doctors_id;
+                        $mansong_rule_list[$i]['doctors_url'] = urlclinic('doctors', 'index', array('doctors_id' => $doctors_id));
                     }
                 }
             }

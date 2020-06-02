@@ -10,30 +10,30 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
-class store_gradeControl extends SystemControl{
+class clic_gradeControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
-		Language::read('store_grade,store');
+		Language::read('clic_grade,clic');
 	}
 	/**
 	 * 店铺等级
 	 */
-	public function store_gradeOp(){
+	public function clic_gradeOp(){
 		/**
 		 * 读取语言包
 		 */
 		$lang	= Language::getLangContent();
 
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		/**
 		 * 删除
 		 */
 		if (chksubmit()){
 			if (!empty($_POST['check_sg_id'])){
 				if (is_array($_POST['check_sg_id'])){
-					$model_store = Model('store');
+					$model_clic = Model('clic');
 					foreach ($_POST['check_sg_id'] as $k => $v){
 						/**
 						 * 该店铺等级下的所有店铺会自动改为默认等级
@@ -41,8 +41,8 @@ class store_gradeControl extends SystemControl{
 						$v = intval($v);
 						//判断是否默认等级，默认等级不能删除
 						if ($v == 1){
-							//showMessage('默认等级不能删除 ','index.php?act=store_grade&op=store_grade');
-							showMessage($lang['default_store_grade_no_del'],'index.php?act=store_grade&op=store_grade');
+							//showMessage('默认等级不能删除 ','index.php?act=clic_grade&op=clic_grade');
+							showMessage($lang['default_clic_grade_no_del'],'index.php?act=clic_grade&op=clic_grade');
 						}
 						//判断该等级下是否存在店铺，存在的话不能删除
 						if ($this->isable_delGrade($v)){
@@ -50,37 +50,37 @@ class store_gradeControl extends SystemControl{
 						}
 					}
 				}
-				H('store_grade',true);
-				$this->log(L('nc_del,store_grade').'[ID:'.implode(',',$_POST['check_sg_id']).']',1);
+				H('clic_grade',true);
+				$this->log(L('nc_del,clic_grade').'[ID:'.implode(',',$_POST['check_sg_id']).']',1);
 				showMessage($lang['nc_common_del_succ']);
 			}else {
 				showMessage($lang['nc_common_del_fail']);
 			}
 		}
 		$condition['like_sg_name'] = trim($_POST['like_sg_name']);
-		$condition['order'] = 'sg_sort';
+		$condition['appointment'] = 'sg_sort';
 		
 		$grade_list = $model_grade->getGradeList($condition);
 		
 		Tpl::output('like_sg_name',trim($_POST['like_sg_name']));
 		Tpl::output('grade_list',$grade_list);
-		Tpl::showpage('store_grade.index');
+		Tpl::showpage('clic_grade.index');
 	}
 
 	/**
 	 * 新增等级
 	 */
-	public function store_grade_addOp(){
+	public function clic_grade_addOp(){
 		$lang	= Language::getLangContent();
 
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		if (chksubmit()){
 
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-				array("input"=>$_POST["sg_name"], "require"=>"true", "message"=>$lang['store_grade_name_no_null']),
+				array("input"=>$_POST["sg_name"], "require"=>"true", "message"=>$lang['clic_grade_name_no_null']),
 				array("input"=>$_POST["sg_price"], "require"=>"true", "message"=>$lang['charges_standard_no_null']),
-				array("input"=>$_POST["sg_goods_limit"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['allow_pubilsh_product_num_only_lnteger']),
+				array("input"=>$_POST["sg_doctors_limit"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['allow_pubilsh_doc_num_only_lnteger']),
 				array("input"=>$_POST["sg_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['sort_only_lnteger']),
 			);
 			$error = $obj_validate->validate();
@@ -89,7 +89,7 @@ class store_gradeControl extends SystemControl{
 			}else {
 				//验证等级名称
 				if (!$this->checkGradeName(array('sg_name'=>trim($_POST['sg_name'])))){
-					showMessage($lang['now_store_grade_name_is_there']);
+					showMessage($lang['now_clic_grade_name_is_there']);
 				}
 				//验证级别是否存在
 				if (!$this->checkGradeSort(array('sg_sort'=>trim($_POST['sg_sort'])))){
@@ -97,7 +97,7 @@ class store_gradeControl extends SystemControl{
 				}
 				$insert_array = array();
 				$insert_array['sg_name'] = trim($_POST['sg_name']);
-				$insert_array['sg_goods_limit'] = trim($_POST['sg_goods_limit']);
+				$insert_array['sg_doctors_limit'] = trim($_POST['sg_doctors_limit']);
 				$insert_array['sg_space_limit'] = '100';
 				$insert_array['sg_album_limit'] = empty($_POST['sg_album_limit']) ? 1000 : intval($_POST['sg_album_limit']);
 				$insert_array['sg_function'] = $_POST['sg_function']?implode('|',$_POST['sg_function']):'';
@@ -109,36 +109,36 @@ class store_gradeControl extends SystemControl{
 				
 				$result = $model_grade->add($insert_array);
 				if ($result){
-					H('store_grade',true);
-					$this->log(L('nc_add,store_grade').'['.$_POST['sg_name'].']',1);
-					showMessage($lang['nc_common_save_succ'],'index.php?act=store_grade&op=store_grade');
+					H('clic_grade',true);
+					$this->log(L('nc_add,clic_grade').'['.$_POST['sg_name'].']',1);
+					showMessage($lang['nc_common_save_succ'],'index.php?act=clic_grade&op=clic_grade');
 				}else {
 					showMessage($lang['nc_common_save_fail']);
 				}
 			}
 		}
-		Tpl::showpage('store_grade.add');
+		Tpl::showpage('clic_grade.add');
 	}
 	
 	/**
 	 * 等级编辑
 	 */
-	public function store_grade_editOp(){
+	public function clic_grade_editOp(){
 		$lang	= Language::getLangContent();
 
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		if (chksubmit()){
 			if (!$_POST['sg_id']){
-				showMessage($lang['grade_parameter_error'],'index.php?act=store_grade&op=store_grade');
+				showMessage($lang['grade_parameter_error'],'index.php?act=clic_grade&op=clic_grade');
 			}
 			/**
 			 * 验证
 			 */
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-				array("input"=>$_POST["sg_name"], "require"=>"true", "message"=>$lang['store_grade_name_no_null']),
+				array("input"=>$_POST["sg_name"], "require"=>"true", "message"=>$lang['clic_grade_name_no_null']),
 				array("input"=>$_POST["sg_price"], "require"=>"true", "message"=>$lang['charges_standard_no_null']),
-				array("input"=>$_POST["sg_goods_limit"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['allow_pubilsh_product_num_only_lnteger']),
+				array("input"=>$_POST["sg_doctors_limit"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['allow_pubilsh_doc_num_only_lnteger']),
 				array("input"=>$_POST["sg_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['sort_only_lnteger']),
 			);
 			$error = $obj_validate->validate();
@@ -151,16 +151,16 @@ class store_gradeControl extends SystemControl{
 				}
 				//验证等级名称
 				if (!$this->checkGradeName(array('sg_name'=>trim($_POST['sg_name']),'sg_id'=>intval($_POST['sg_id'])))){
-					showMessage($lang['now_store_grade_name_is_there'],'index.php?act=store_grade&op=store_grade_edit&sg_id='.intval($_POST['sg_id']));
+					showMessage($lang['now_clic_grade_name_is_there'],'index.php?act=clic_grade&op=clic_grade_edit&sg_id='.intval($_POST['sg_id']));
 				}
 				//验证级别是否存在
 				if (!$this->checkGradeSort(array('sg_sort'=>trim($_POST['sg_sort']),'sg_id'=>intval($_POST['sg_id'])))){
-					showMessage($lang['add_gradesortexist'],'index.php?act=store_grade&op=store_grade_edit&sg_id='.intval($_POST['sg_id']));
+					showMessage($lang['add_gradesortexist'],'index.php?act=clic_grade&op=clic_grade_edit&sg_id='.intval($_POST['sg_id']));
 				}
 				$update_array = array();
 				$update_array['sg_id'] = intval($_POST['sg_id']);
 				$update_array['sg_name'] = trim($_POST['sg_name']);
-				$update_array['sg_goods_limit'] = trim($_POST['sg_goods_limit']);
+				$update_array['sg_doctors_limit'] = trim($_POST['sg_doctors_limit']);
 				$update_array['sg_album_limit'] = trim($_POST['sg_album_limit']);
 				$update_array['sg_function'] = $_POST['sg_function']?implode('|',$_POST['sg_function']):'';
 				$update_array['sg_price'] = trim($_POST['sg_price']);
@@ -170,8 +170,8 @@ class store_gradeControl extends SystemControl{
 				
 				$result = $model_grade->update($update_array);
 				if ($result){
-					H('store_grade',true,'file');
-					$this->log(L('nc_edit,store_grade').'['.$_POST['sg_name'].']',1);
+					H('clic_grade',true,'file');
+					$this->log(L('nc_edit,clic_grade').'['.$_POST['sg_name'].']',1);
 					showMessage($lang['nc_common_save_succ']);
 				}else {
 					showMessage($lang['nc_common_save_fail']);
@@ -187,50 +187,50 @@ class store_gradeControl extends SystemControl{
 		$grade_array['sg_function'] = explode('|',$grade_array['sg_function']);
 		
 		Tpl::output('grade_array',$grade_array);
-		Tpl::showpage('store_grade.edit');
+		Tpl::showpage('clic_grade.edit');
 	}
 	
 	/**
 	 * 删除等级
 	 */
-	public function store_grade_delOp(){
+	public function clic_grade_delOp(){
 		/**
 		 * 读取语言包
 		 */
 		$lang	= Language::getLangContent();
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		if (intval($_GET['sg_id']) > 0){
 			//判断是否默认等级，默认等级不能删除
 			if ($_GET['sg_id'] == 1){
-				//showMessage('默认等级不能删除 ','index.php?act=store_grade&op=store_grade');
-				showMessage($lang['default_store_grade_no_del'],'index.php?act=store_grade&op=store_grade');
+				//showMessage('默认等级不能删除 ','index.php?act=clic_grade&op=clic_grade');
+				showMessage($lang['default_clic_grade_no_del'],'index.php?act=clic_grade&op=clic_grade');
 			}
 			//判断该等级下是否存在店铺，存在的话不能删除
 			if (!$this->isable_delGrade(intval($_GET['sg_id']))){
-				showMessage($lang['del_gradehavestore'],'index.php?act=store_grade&op=store_grade');
+				showMessage($lang['del_gradehaveclic'],'index.php?act=clic_grade&op=clic_grade');
 			}
 			/**
 			 * 删除分类
 			 */
 			$model_grade->del(intval($_GET['sg_id']));
-			H('store_grade',true);
-			$this->log(L('nc_del,store_grade').'[ID:'.intval($_GET['sg_id']).']',1);
-			showMessage($lang['nc_common_del_succ'],'index.php?act=store_grade&op=store_grade');
+			H('clic_grade',true);
+			$this->log(L('nc_del,clic_grade').'[ID:'.intval($_GET['sg_id']).']',1);
+			showMessage($lang['nc_common_del_succ'],'index.php?act=clic_grade&op=clic_grade');
 		}else {
-			showMessage($lang['nc_common_del_fail'],'index.php?act=store_grade&op=store_grade');
+			showMessage($lang['nc_common_del_fail'],'index.php?act=clic_grade&op=clic_grade');
 		}
 	}
 	
 	/**
 	 * 等级：设置可选模板
 	 */
-	public function store_grade_templatesOp(){
+	public function clic_grade_templatesOp(){
 		/**
 		 * 读取语言包
 		 */
 		$lang	= Language::getLangContent();
 
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		
 		if (chksubmit()){
 			$update_array = array();
@@ -243,15 +243,15 @@ class store_gradeControl extends SystemControl{
 			
 			$result = $model_grade->update($update_array);
 			if ($result){
-				$this->log(L('nc_edit,store_grade_tpl'),1);
-				showMessage($lang['nc_common_save_succ'],'index.php?act=store_grade&op=store_grade');
+				$this->log(L('nc_edit,clic_grade_tpl'),1);
+				showMessage($lang['nc_common_save_succ'],'index.php?act=clic_grade&op=clic_grade');
 			}else {
 				showMessage($lang['nc_common_save_fail']);
 			}
 		}
 		//主题配置信息
 		$style_data = array();
-		$style_configurl = BASE_ROOT_PATH.DS.DIR_SHOP.'/templates/'.TPL_SHOP_NAME.DS.'store'.DS.'style'.DS."styleconfig.php";
+		$style_configurl = BASE_ROOT_PATH.DS.DIR_clinic.'/templates/'.TPL_clinic_NAME.DS.'clic'.DS.'style'.DS."styleconfig.php";
 		if (file_exists($style_configurl)){
 			include_once($style_configurl);
 			if (strtoupper(CHARSET) == 'GBK'){
@@ -270,7 +270,7 @@ class store_gradeControl extends SystemControl{
 		
 		Tpl::output('dir_list',$dir_list);
 		Tpl::output('grade_array',$grade_array);
-		Tpl::showpage('store_grade_template.edit');
+		Tpl::showpage('clic_grade_template.edit');
 	}
 	/**
 	 * ajax操作
@@ -300,7 +300,7 @@ class store_gradeControl extends SystemControl{
 	 * 查询店铺等级名称是否存在
 	 */
 	private function checkGradeName($param){
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		$condition['sg_name'] = $param['sg_name'];
 		$condition['no_sg_id'] = $param['sg_id'];
 		$list = $model_grade->getGradeList($condition);
@@ -314,7 +314,7 @@ class store_gradeControl extends SystemControl{
 	 * 查询店铺等级是否存在
 	 */
 	private function checkGradeSort($param){
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		$condition = array();
 		$condition['sg_sort'] = "{$param['sg_sort']}";
 		$condition['no_sg_id'] = '';
@@ -334,9 +334,9 @@ class store_gradeControl extends SystemControl{
 	 */
 	public function isable_delGrade($sg_id){
 		//判断该等级下是否存在店铺，存在的话不能删除
-		$model_store = Model('store');
-		$store_list = $model_store->getStoreList(array('grade_id'=>$sg_id));
-		if (count($store_list) > 0){
+		$model_clic = Model('clic');
+		$clic_list = $model_clic->getclicList(array('grade_id'=>$sg_id));
+		if (count($clic_list) > 0){
 			return false;
 		}
 		return true; 

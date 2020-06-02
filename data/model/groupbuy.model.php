@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class groupbuyModel extends Model{
 
     const GROUPBUY_STATE_REVIEW = 10;
@@ -36,13 +36,13 @@ class groupbuyModel extends Model{
      * 读取团购列表
 	 * @param array $condition 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 所需字段
      * @return array 团购列表
 	 *
 	 */
-	public function getGroupbuyList($condition, $page = null, $order = 'state asc', $field = '*', $limit = 0) {
-        $groupbuy_list = $this->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
+	public function getGroupbuyList($condition, $page = null, $appointment = 'state asc', $field = '*', $limit = 0) {
+        $groupbuy_list = $this->field($field)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         if(!empty($groupbuy_list)) {
             for($i =0, $j = count($groupbuy_list); $i < $j; $i++) {
                 $groupbuy_list[$i] = $this->getGroupbuyExtendInfo($groupbuy_list[$i]);
@@ -72,45 +72,45 @@ class groupbuyModel extends Model{
      * 读取当前可用的团购列表
      * @param array $condition 查询条件
      * @param int $page 分页数
-     * @param string $order 排序
+     * @param string $appointment 排序
      * @param string $field 所需字段
      * @return array 团购列表
      *
      */
-    public function getGroupbuyOnlineList($condition, $page = null, $order = 'state asc', $field = '*') {
+    public function getGroupbuyOnlineList($condition, $page = null, $appointment = 'state asc', $field = '*') {
         $condition['state'] = self::GROUPBUY_STATE_NORMAL;
         $condition['start_time'] = array('lt', TIMESTAMP); 
         $condition['end_time'] = array('gt', TIMESTAMP); 
-        return $this->getGroupbuyList($condition, $page, $order, $field);
+        return $this->getGroupbuyList($condition, $page, $appointment, $field);
     }
 
     /**
      * 读取即将开始的团购列表
      * @param array $condition 查询条件
      * @param int $page 分页数
-     * @param string $order 排序
+     * @param string $appointment 排序
      * @param string $field 所需字段
      * @return array 团购列表
      *
      */
-    public function getGroupbuySoonList($condition, $page = null, $order = 'state asc', $field = '*') {
+    public function getGroupbuySoonList($condition, $page = null, $appointment = 'state asc', $field = '*') {
         $condition['state'] = self::GROUPBUY_STATE_NORMAL;
         $condition['start_time'] = array('gt', TIMESTAMP); 
-        return $this->getGroupbuyList($condition, $page, $order, $field);
+        return $this->getGroupbuyList($condition, $page, $appointment, $field);
     }
 
     /**
      * 读取已经结束的团购列表
      * @param array $condition 查询条件
      * @param int $page 分页数
-     * @param string $order 排序
+     * @param string $appointment 排序
      * @param string $field 所需字段
      * @return array 团购列表
      *
      */
-    public function getGroupbuyHistoryList($condition, $page = null, $order = 'state asc', $field = '*') {
+    public function getGroupbuyHistoryList($condition, $page = null, $appointment = 'state asc', $field = '*') {
         $condition['state'] = self::GROUPBUY_STATE_CLOSE;
-        return $this->getGroupbuyList($condition, $page, $order, $field);
+        return $this->getGroupbuyList($condition, $page, $appointment, $field);
     }
 
     /**
@@ -140,11 +140,11 @@ class groupbuyModel extends Model{
     /**
 	 * 根据团购编号读取团购信息
 	 * @param array $groupbuy_id 团购活动编号
-	 * @param int $store_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
+	 * @param int $clic_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
      * @return array 团购信息
 	 *
 	 */
-    public function getGroupbuyInfoByID($groupbuy_id, $store_id = 0) {
+    public function getGroupbuyInfoByID($groupbuy_id, $clic_id = 0) {
         if(intval($groupbuy_id) <= 0) {
             return null;
         }
@@ -153,7 +153,7 @@ class groupbuyModel extends Model{
         $condition['groupbuy_id'] = $groupbuy_id;
         $groupbuy_info = $this->getGroupbuyInfo($condition);
 
-        if($store_id > 0 && $groupbuy_info['store_id'] != $store_id) {
+        if($clic_id > 0 && $groupbuy_info['clic_id'] != $clic_id) {
             return null;
         } else {
             return $groupbuy_info;
@@ -162,41 +162,41 @@ class groupbuyModel extends Model{
 
     /**
      * 根据商品编号查询是否有可用团购活动，如果有返回团购信息，没有返回null
-     * @param int $goods_id
+     * @param int $doctors_id
      * @return array $groupbuy_info
      *
      */
-    public function getGroupbuyInfoByGoodsCommonID($goods_commonid) {
-        $groupbuy_list = $this->_getGroupbuyListByGoodsCommon($goods_commonid);
+    public function getGroupbuyInfoBydoctorsCommonID($doctors_commonid) {
+        $groupbuy_list = $this->_getGroupbuyListBydoctorsCommon($doctors_commonid);
         return $groupbuy_list[0];
     }
 
     /**
      * 根据商品编号查询是否有可用团购活动，如果有返回团购活动，没有返回null
-     * @param string $goods_string 商品编号字符串，例：'1,22,33'
+     * @param string $doctors_string 商品编号字符串，例：'1,22,33'
      * @return array $groupbuy_list
      *
      */
-    public function getGroupbuyListByGoodsCommonIDString($goods_commonid_string) {
-        $groupbuy_list = $this->_getGroupbuyListByGoodsCommon($goods_commonid_string);
-        $groupbuy_list = array_under_reset($groupbuy_list, 'goods_commonid');
+    public function getGroupbuyListBydoctorsCommonIDString($doctors_commonid_string) {
+        $groupbuy_list = $this->_getGroupbuyListBydoctorsCommon($doctors_commonid_string);
+        $groupbuy_list = array_under_reset($groupbuy_list, 'doctors_commonid');
         return $groupbuy_list;
     }
 
     /**
      * 根据商品编号查询是否有可用团购活动，如果有返回团购活动，没有返回null
-     * @param string $goods_id_string
+     * @param string $doctors_id_string
      * @return array $groupbuy_list
      *
      */
-    private function _getGroupbuyListByGoodsCommon($goods_commonid_string) {
+    private function _getGroupbuyListBydoctorsCommon($doctors_commonid_string) {
         $condition = array();
         $condition['state'] = self::GROUPBUY_STATE_NORMAL;
         $condition['start_time'] = array('lt', TIMESTAMP);
         $condition['end_time'] = array('gt', TIMESTAMP);
-        $condition['goods_commonid'] = array('in', $goods_commonid_string);
-        $xianshi_goods_list = $this->getGroupbuyList($condition, null, 'groupbuy_id desc', '*');
-        return $xianshi_goods_list;
+        $condition['doctors_commonid'] = array('in', $doctors_commonid_string);
+        $xianshi_doctors_list = $this->getGroupbuyList($condition, null, 'groupbuy_id desc', '*');
+        return $xianshi_doctors_list;
     }
 
     /**
@@ -215,7 +215,7 @@ class groupbuyModel extends Model{
 	 */
     public function addGroupbuy($param){
         // 发布团购锁定商品
-        $this->_lockGoods($param['goods_commonid']);
+        $this->_lockdoctors($param['doctors_commonid']);
 
         $param['state'] = self::GROUPBUY_STATE_REVIEW;
         $param['recommended'] = 0;
@@ -225,27 +225,27 @@ class groupbuyModel extends Model{
     /**
      * 锁定商品
      */
-    private function _lockGoods($goods_commonid) {
+    private function _lockdoctors($doctors_commonid) {
         $condition = array();
-        $condition['goods_commonid'] = $goods_commonid;
+        $condition['doctors_commonid'] = $doctors_commonid;
 
-        $model_goods = Model('goods');
-        $model_goods->editGoodsCommonLock($condition);
+        $model_doctors = Model('doctors');
+        $model_doctors->editdoctorsCommonLock($condition);
     }
 
     /**
      * 解锁商品
      */
-    private function _unlockGoods($goods_commonid) {
+    private function _unlockdoctors($doctors_commonid) {
         $condition = array();
-        $condition['goods_commonid'] = $goods_commonid;
+        $condition['doctors_commonid'] = $doctors_commonid;
         $condition['end_time'] = array('gt', TIMESTAMP);
         $condition['state'] = array('in', array(self::GROUPBUY_STATE_REVIEW, self::GROUPBUY_STATE_NORMAL));
         $groupbuy_list = $this->getGroupbuyList($condition);
 
         if(!empty($groupbuy_list)) {
-            $model_goods = Model('goods');
-            $model_goods->editGoodsCommonUnlock(array('goods_commonid' => $goods_commonid));
+            $model_doctors = Model('doctors');
+            $model_doctors->editdoctorsCommonUnlock(array('doctors_commonid' => $doctors_commonid));
         }
     }
 
@@ -285,7 +285,7 @@ class groupbuyModel extends Model{
     public function reviewFailGroupbuy($groupbuy_id) {
         // 商品解锁
         $groupbuy_info = $this->getGroupbuyInfoByID($groupbuy_id);
-        $this->_unlockGoods($groupbuy_info['goods_commonid']);
+        $this->_unlockdoctors($groupbuy_info['doctors_commonid']);
 
         $condition = array();
         $condition['groupbuy_id'] = $groupbuy_id;
@@ -305,7 +305,7 @@ class groupbuyModel extends Model{
     public function cancelGroupbuy($groupbuy_id) {
         // 商品解锁
         $groupbuy_info = $this->getGroupbuyInfoByID($groupbuy_id);
-        $this->_unlockGoods($groupbuy_info['goods_commonid']);
+        $this->_unlockdoctors($groupbuy_info['doctors_commonid']);
 
         $condition = array();
         $condition['groupbuy_id'] = $groupbuy_id;
@@ -329,7 +329,7 @@ class groupbuyModel extends Model{
         if(!empty($expire_groupbuy_list)) {
             foreach ($expire_groupbuy_list as $value) {
                 $groupbuy_id_string .= $value['groupbuy_id'].',';
-                $this->_unlockGoods($value['goods_commonid']);
+                $this->_unlockdoctors($value['doctors_commonid']);
             }
         }
 
@@ -354,11 +354,11 @@ class groupbuyModel extends Model{
         if(!empty($groupbuy_list)) {
             foreach ($groupbuy_list as $value) {
                 // 商品解锁
-                $this->_unlockGoods($value['goods_commonid']);
+                $this->_unlockdoctors($value['doctors_commonid']);
 
                 list($base_name, $ext) = explode('.', $value['groupbuy_image']);
-                list($store_id) = explode('_', $base_name);
-                $path = BASE_UPLOAD_PATH.DS.ATTACH_GROUPBUY.DS.$store_id.DS;
+                list($clic_id) = explode('_', $base_name);
+                $path = BASE_UPLOAD_PATH.DS.ATTACH_GROUPBUY.DS.$clic_id.DS;
                 @unlink($path.$base_name.'.'.$ext);
                 @unlink($path.$base_name.'_small.'.$ext);
                 @unlink($path.$base_name.'_mid.'.$ext);
@@ -380,8 +380,8 @@ class groupbuyModel extends Model{
      * 获取团购扩展信息
      */
     public function getGroupbuyExtendInfo($groupbuy_info) {
-        $groupbuy_info['groupbuy_url'] = urlShop('show_groupbuy', 'groupbuy_detail', array('group_id' => $groupbuy_info['groupbuy_id']));
-        $groupbuy_info['goods_url'] = urlShop('goods', 'index', array('goods_id' => $groupbuy_info['goods_id']));
+        $groupbuy_info['groupbuy_url'] = urlclinic('show_groupbuy', 'groupbuy_detail', array('group_id' => $groupbuy_info['groupbuy_id']));
+        $groupbuy_info['doctors_url'] = urlclinic('doctors', 'index', array('doctors_id' => $groupbuy_info['doctors_id']));
         $groupbuy_info['start_time_text'] = date('Y-m-d H:i', $groupbuy_info['start_time']);
         $groupbuy_info['end_time_text'] = date('Y-m-d H:i', $groupbuy_info['end_time']);
         if(empty($groupbuy_info['groupbuy_image1'])) {

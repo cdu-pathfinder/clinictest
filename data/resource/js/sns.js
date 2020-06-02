@@ -12,8 +12,8 @@ $(function(){
 	    eval( "data_str = "+data_str);
 	    var op = "editprivacy";
 	    switch(data_str.op){
-	    	case 'store':
-	    		op = "storeprivacy";
+	    	case 'clic':
+	    		op = "clicprivacy";
 	    		break;
 	    	default:
 	    		op = "editprivacy";
@@ -42,15 +42,15 @@ $(function(){
 	    $("#"+hiddenid).val(data_str.v);
 	});
 	//分享单个商品
-	$("[nc_type='sharegoods']").bind('click',function(){
+	$("[nc_type='sharedoctors']").bind('click',function(){
 		var data_str = $(this).attr('data-param');
 	    eval( "data_str = "+data_str);
-	    ajaxget('index.php?act=member_snsindex&op=sharegoods_one&dialog=1&gid='+data_str.gid);
+	    ajaxget('index.php?act=member_snsindex&op=sharedoctors_one&dialog=1&gid='+data_str.gid);
 	    
 	});
 	//提交分享商品表单
-	$("#weibobtn_goods").die('click').live("click",function(){
-		if($("#sharegoods_form").valid()){
+	$("#weibobtn_doctors").die('click').live("click",function(){
+		if($("#sharedoctors_form").valid()){
 			var cookienum = $.cookie(COOKIE_PRE+'weibonum');
 			cookienum = parseInt(cookienum);
 			if(cookienum >= max_recordnum && $("#sg_seccode").css('display') == 'none'){
@@ -61,7 +61,7 @@ $(function(){
 			}else if(cookienum >= max_recordnum && $("#sg_seccode").find("[name='captcha']").val() == ''){
 				showDialog('请填写验证码');
 			}else{
-				ajaxpost('sharegoods_form', '', '', 'onerror');
+				ajaxpost('sharedoctors_form', '', '', 'onerror');
 				//隐藏验证码
 				$("#sg_seccode").hide();
 				$("#sg_seccode").find("[name='codeimage']").attr('src','');
@@ -71,17 +71,17 @@ $(function(){
 		return false;
 	});
 	//分享单个店铺
-	$("[nc_type='sharestore']").bind('click',function(){
+	$("[nc_type='shareclic']").bind('click',function(){
 		var data_str = $(this).attr('data-param');
 	    eval( "data_str = "+data_str);	    
-	    ajaxget('index.php?act=member_snsindex&op=sharestore_one&dialog=1&sid='+data_str.sid);
+	    ajaxget('index.php?act=member_snsindex&op=shareclic_one&dialog=1&sid='+data_str.sid);
 	});
 	//删除分享和喜欢的商品
 	$("[nc_type='delbtn']").die('click').live('click',function(){
 		var data_str = $(this).attr('data-param');
         eval( "data_str = "+data_str);
         showDialog('您确定要删除该信息吗？','confirm', '', function(){
-        	ajaxget('index.php?act=member_snsindex&op=delgoods&id='+data_str.sid+'&type='+data_str.tabtype);
+        	ajaxget('index.php?act=member_snsindex&op=deldoctors&id='+data_str.sid+'&type='+data_str.tabtype);
 			return false;
 		});
 	});
@@ -200,7 +200,7 @@ function ajaxload_page(objname){
 	$('#'+objname).find('.demo').ajaxContent({
 		event:'click',
 		loaderType:"img",
-		loadingMsg:SHOP_TEMPLATES_URL+"/images/transparent.gif",
+		loadingMsg:clinic_TEMPLATES_URL+"/images/transparent.gif",
 		target:'#'+objname
 	});
 }

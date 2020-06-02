@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="theme-editor" style="display:none">
   <form method="post" id="theme_form" action="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=save_theme&c_id=<?php echo $output['c_id'];?>">

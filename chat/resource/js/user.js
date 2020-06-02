@@ -21,7 +21,7 @@
 		if(user['u_id'] != '') {
 			msg_dialog = '<div id="new_msg_dialog" class="msg-windows"><div class="user-tab-bar"><ul class="user-list" id="user_list"></ul></div><div class="msg-dialog">'+
 									'<div class="dialog-body">'+
-									'<div class="msg-top"><dl class="user-info"><dt class="user-name"></dt><dd class="user-avatar avatar-0"><img src="" alt=""></dd><dd class="store-name"></dd></dl>'+
+									'<div class="msg-top"><dl class="user-info"><dt class="user-name"></dt><dd class="user-avatar avatar-0"><img src="" alt=""></dd><dd class="clic-name"></dd></dl>'+
 									'<span class="dialog-close" onclick="msg_dialog_close(\'new_msg_dialog\');">&nbsp;</span></div>'+
 									'<div id="msg_list" class="msg-contnet"><div id="user_msg_list"></div></div>'+
 									'<div class="msg-input-box"><div class="msg-input-title"><a id="chat_show_smilies" href="javascript:void(0)" class="chat_smiles">表情</a>'+
@@ -99,7 +99,7 @@
 	function send_state(){//向服务器请求页面中的相关会员的在线状态
 		var u_list = connect_list;
 		var n = connect_n;
-		if(layout == 'layout/store_layout.php') {
+		if(layout == 'layout/clic_layout.php') {
 			$("[member_id]").each(function(){
 				n++;
 				var u_id = $(this).attr("member_id");
@@ -155,7 +155,7 @@
 	function get_state(list){//返回会员的状态并在页面显示
 		var u_list = list['u_state'];
 		set_user_list(list['user']);
-		if(layout == 'layout/store_layout.php') {//店铺页面
+		if(layout == 'layout/clic_layout.php') {//店铺页面
 			$("[member_id]").each(function(){
 				var u_id = $(this).attr("member_id");
 				if($(this).find(".chat").size()==0) {
@@ -285,8 +285,8 @@
 					async: false,
 				  success: function(member){
 				  	var u_name = member['member_name'];
-						set_user_info(u_id,"s_id",member['store_id']);
-						set_user_info(u_id,"s_name",member['store_name']);
+						set_user_info(u_id,"s_id",member['clic_id']);
+						set_user_info(u_id,"s_name",member['clic_name']);
 						set_user_info(u_id,"avatar",member['member_avatar']);
 				  }
 					});
@@ -402,8 +402,8 @@
 			  	var u_name = member['member_name'];
 					if( typeof u_name === "undefined" || u_name == '') return false;
 					set_user_info(u_id,"u_name",u_name);
-					set_user_info(u_id,"s_id",member['store_id']);
-					set_user_info(u_id,"s_name",member['store_name']);
+					set_user_info(u_id,"s_id",member['clic_id']);
+					set_user_info(u_id,"s_name",member['clic_name']);
 					set_user_info(u_id,"avatar",member['member_avatar']);
 			  }
 				});
@@ -458,7 +458,7 @@
 		if(user_show != u_id) {
 			close_chat_log(user_show);
 			var add_html = '';
-			if (typeof user_info['s_name'] !== "undefined") add_html = '<dd class="store-name">'+user_info['s_name']+'</dd>';
+			if (typeof user_info['s_name'] !== "undefined") add_html = '<dd class="clic-name">'+user_info['s_name']+'</dd>';
 			obj.find(".user-info").html('<dt class="user-name">'+u_name+'</dt><dd class="user-avatar avatar-'+user_info['online']+'"><img src="'+
 					user_info['avatar']+'" alt="'+u_name+'"></dd>'+add_html);
 			obj.find('#msg_list').perfectScrollbar('destroy');

@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 导航及全局
  */
@@ -38,7 +38,7 @@ $lang['adv_max']	         = 'Maximum';
 $lang['adv_byte']	         = 'Byte';
 $lang['adv_slide_upload']	 = 'Slide upload';
 $lang['adv_slide_sort']	     = 'Slide sort ';
-$lang['adv_slide_sort_role'] = 'The smaller the number, the higher the order';
+$lang['adv_slide_sort_role'] = 'The smaller the number, the higher the appointment';
 $lang['adv_ap_select']       = 'select ad position';
 $lang['adv_search_from']     = 'Release time';
 $lang['adv_search_to']	     = 'To';
@@ -144,7 +144,7 @@ $lang['check_adv_no']      = 'Fail';
 $lang['check_adv_no2']     = 'Pending';
 $lang['check_adv_type']    = 'Type';
 $lang['check_adv_buy']     = 'Purchase';
-$lang['check_adv_order']   = 'Pre order';
+$lang['check_adv_appointment']   = 'Pre appointment';
 $lang['check_adv_change']  = 'Edit';
 $lang['check_adv_view']    = 'View';
 $lang['check_adv_nothing'] = 'Currently no pending ads';

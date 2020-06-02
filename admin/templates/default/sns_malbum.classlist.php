@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="sns_malbum">
     <input type="hidden" name="op" value="class_list">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           
@@ -27,7 +27,7 @@
       </tbody>
     </table>
   </form>
-  <form method='post' id="form_goods">
+  <form method='post' id="form_doctors">
     <input type="hidden" name="form_submit" value="ok" />
     <input type="hidden" name="type" id="type" value="" />
     <table class="table tb-type2">

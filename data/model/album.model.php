@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class albumModel extends Model{
     public function __construct(){
         parent::__construct();
@@ -62,7 +62,7 @@ class albumModel extends Model{
 		$param['join_type']		= 'left join';
 		$param['join_on']		= array('album_class.aclass_id = album_pic.aclass_id');
 		$param['where']			= $this->getCondition($condition);
-		$param['order']			= $condition['order'] ? $condition['order'] : 'album_class.aclass_sort desc';
+		$param['appointment']			= $condition['appointment'] ? $condition['appointment'] : 'album_class.aclass_sort desc';
 		$param['group']			= 'album_class.aclass_id';
 		return Db::select($param,$page);
 	}
@@ -76,7 +76,7 @@ class albumModel extends Model{
 		$param	= array();
 		$param['table']			= 'album_class';
 		$param['field']			= 'count(*) as count';
-		$param['where']			= " and store_id = '$id'";
+		$param['where']			= " and clic_id = '$id'";
 		$return = Db::select($param);
 		return $return['0'];
 	}
@@ -109,7 +109,7 @@ class albumModel extends Model{
 		$param	= array();
 		$param['table']			= 'album_pic';
 		$param['where']			= $this->getCondition($condition);
-		$param['order']			= $condition['order'] ? $condition['order'] : 'apic_id desc';
+		$param['appointment']			= $condition['appointment'] ? $condition['appointment'] : 'apic_id desc';
 		$param['field']			= $field;
 		return Db::select($param,$page);
 	}
@@ -185,39 +185,39 @@ class albumModel extends Model{
 	 */
 	public function delAlbum($id){
 		$id	= intval($id);
-		Db::delete('album_class'," store_id= ".$id);
-		$pic_list = $this->getPicList(array(" store_id= ".$id),'','apic_cover');
+		Db::delete('album_class'," clic_id= ".$id);
+		$pic_list = $this->getPicList(array(" clic_id= ".$id),'','apic_cover');
 		if(!empty($pic_list) && is_array($pic_list)){
-		    $image_ext = explode(',', GOODS_IMAGES_EXT);
+		    $image_ext = explode(',', doctorS_IMAGES_EXT);
 			foreach($pic_list as $v){
 			    foreach ($image_ext as $ext) {
 			        $file = str_ireplace('.', $ext . '.', $v['apic_cover']);
-			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_GOODS.DS.$id.DS.$file);
+			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_doctorS.DS.$id.DS.$file);
 			    }
 			}
 		}
-		Db::delete('album_pic'," store_id= ".$id);
+		Db::delete('album_pic'," clic_id= ".$id);
 	}
 	/**
 	 * 删除图片
 	 *
 	 * @param string $id
-	 * @param int $store_id
+	 * @param int $clic_id
 	 * @return bool
 	 */
-	public function delPic($id, $store_id){
+	public function delPic($id, $clic_id){
 		$pic_list = $this->getPicList(array('in_apic_id'=>$id),'','apic_cover');
 		
 		/**
 		 * 删除图片
 		 */
         if(!empty($pic_list) && is_array($pic_list)){
-		    $image_ext = explode(',', GOODS_IMAGES_EXT);
+		    $image_ext = explode(',', doctorS_IMAGES_EXT);
 			foreach($pic_list as $v){
-			    @unlink(BASE_UPLOAD_PATH.DS.ATTACH_GOODS.DS.$store_id.DS.$v['apic_cover']);
+			    @unlink(BASE_UPLOAD_PATH.DS.ATTACH_doctorS.DS.$clic_id.DS.$v['apic_cover']);
 			    foreach ($image_ext as $ext) {
 			        $file = str_ireplace('.', $ext . '.', $v['apic_cover']);
-			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_GOODS.DS.$store_id.DS.$file);
+			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_doctorS.DS.$clic_id.DS.$file);
 			    }
 			}
 		}
@@ -273,20 +273,20 @@ class albumModel extends Model{
 		if($condition['aclass_id'] != '') {
 			$condition_sql .= " and aclass_id= '{$condition['aclass_id']}'";
 		}
-		if($condition['album_aclass.store_id'] != '') {
-			$condition_sql .= " and `album_class`.store_id = '{$condition['album_aclass.store_id']}'";
+		if($condition['album_aclass.clic_id'] != '') {
+			$condition_sql .= " and `album_class`.clic_id = '{$condition['album_aclass.clic_id']}'";
 		}
 		if($condition['album_aclass.aclass_id'] != '') {
 			$condition_sql .= " and `album_class`.aclass_id= '{$condition['album_aclass.aclass_id']}'";
 		}
-		if($condition['album_pic.store_id'] != '') {
-			$condition_sql .= " and `album_pic`.store_id= '{$condition['album_pic.store_id']}'";
+		if($condition['album_pic.clic_id'] != '') {
+			$condition_sql .= " and `album_pic`.clic_id= '{$condition['album_pic.clic_id']}'";
 		}
 		if($condition['album_pic.apic_id'] != '') {
 			$condition_sql .= " and `album_pic`.apic_id= '{$condition['album_pic.apic_id']}'";
 		}
-		if($condition['store_id'] != '') {
-			$condition_sql .= " and store_id= '{$condition['store_id']}'";
+		if($condition['clic_id'] != '') {
+			$condition_sql .= " and clic_id= '{$condition['clic_id']}'";
 		}
 		if($condition['aclass_name'] != '') {
 			$condition_sql .= " and aclass_name='".$condition['aclass_name']."'";

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="warp-all picture-layout-a">
   <div class="sitenav-bar">
@@ -31,15 +31,15 @@
               <div class="thumb"><img src="" data-src="<?php echo getCMSArticleImageUrl(empty($value['image_path'])?$output['picture_detail']['picture_attachment_path']:$value['image_path'], $value['image_name']);?>" <?php echo getMiddleImgStyleString($value['image_width'], $value['image_height'], 60 ,60);?> /></div>
               <div nctype="picture_image_info" style="display:none;">
                 <div class="picture-image-info-abstract"><?php echo empty($value['image_abstract'])?$output['picture_detail']['picture_abstract']:$value['image_abstract'];?></div>
-                <div class="picture-image-info-goods">
-                  <?php if(!empty($value['image_goods'])) { ?>
-                  <?php $image_goods_array = unserialize($value['image_goods']);?>
-                  <?php foreach ($image_goods_array as $image_value) { ?>
+                <div class="picture-image-info-doctors">
+                  <?php if(!empty($value['image_doctors'])) { ?>
+                  <?php $image_doctors_array = unserialize($value['image_doctors']);?>
+                  <?php foreach ($image_doctors_array as $image_value) { ?>
                   <dl class="taobao-item">
                     <dt class="taobao-item-title"><a href="<?php echo $image_value['url'];?>" target="_blank"><?php echo $image_value['title'];?></a></dt>
                     <dd class="taobao-item-img" style="background-image: url(<?php echo $image_value['image'];?>) ;" title="<?php echo $image_value['title'];?>"></dd>
                     <dd class="taobao-item-price"><?php echo $lang['cms_price'];?><?php echo $lang['nc_colon'];?><?php echo $lang['currency'];?><?php echo $image_value['price'];?></dd>
-                    <dd  class="taobao-item-go"><a href="<?php echo $image_value['url'];?>" target="_blank"><?php echo $lang['cms_goods_detail'];?></a></dd>
+                    <dd  class="taobao-item-go"><a href="<?php echo $image_value['url'];?>" target="_blank"><?php echo $lang['cms_doctors_detail'];?></a></dd>
                   </dl>
                   <?php } ?>
                   <?php } ?>
@@ -98,8 +98,8 @@
         <div class="progress" id="picture_image_index"><span id="current_picture_index" class="numerator"><?php echo empty($_GET['count'])?1:intval($_GET['count'])+1;?></span><span class="denominator"><?php echo $output['picture_detail']['picture_image_count'];?></span></div>
         <?php echo $lang['cms_article_abstract'];?><?php echo $lang['nc_colon'];?><?php echo $output['picture_detail']['picture_abstract'];?></div>
       <div class="picture-sub"> <span class="author"><?php echo $lang['cms_commit'];?><?php echo $lang['nc_colon'];?><?php echo empty($output['picture_detail']['picture_author'])?$lang['cms_text_guest']:$output['picture_detail']['picture_author'];?>(<?php echo date('Y-m-d',$output['picture_detail']['picture_publish_time']);?>)</span><span class="source"><?php echo $lang['cms_text_origin'];?><?php echo $lang['nc_colon'];?> <a href="<?php echo empty($output['picture_detail']['picture_origin_address'])?CMS_SITE_URL:$output['picture_detail']['picture_origin_address'];?>" target="_blank"> <?php echo empty($output['picture_detail']['picture_origin'])?C('site_name'):$output['picture_detail']['picture_origin'];?> </a></span> </div>
-      <div class="picture-buy-goods">
-        <h3><?php echo $lang['cms_article_goods'];?><?php echo $lang['nc_colon'];?></h3>
+      <div class="picture-buy-doctors">
+        <h3><?php echo $lang['cms_article_doctors'];?><?php echo $lang['nc_colon'];?></h3>
         <div id="current_picture_image_info"></div>
       </div>
     </div>

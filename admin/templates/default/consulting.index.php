@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -13,7 +13,7 @@
     <input type="hidden" name="form_submit" value="ok" />
     <input type="hidden" name="act" value="consulting" />
     <input type="hidden" name="op" value="consulting" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="member_name"><?php echo $lang['consulting_index_sender'];?></label></th>
@@ -50,9 +50,9 @@
           <th class="w24"><input type="checkbox" class="checkitem" name="consult_id[]" value="<?php echo $consult['consult_id'];?>" /></th>
           <th>
           	<strong><?php echo $lang['consulting_index_object'];?>:&nbsp;</strong>
-          	<span><a target="_blank" href="<?php echo SHOP_SITE_URL."/index.php?act=goods&goods_id=".$consult['goods_id'].'&id='.$consult['store_id'];?>"><?php echo $consult['cgoods_name'];?></a></span>
+          	<span><a target="_blank" href="<?php echo clinic_SITE_URL."/index.php?act=doctors&doctors_id=".$consult['doctors_id'].'&id='.$consult['clic_id'];?>"><?php echo $consult['cdoctors_name'];?></a></span>
           </th>
-          <th><strong><?php echo $lang['consulting_index_store_name'];?>:</strong>&nbsp;<a href="<?php echo urlShop('show_store','index', array('store_id'=>$consult['store_id']));?>;?>" target="_blank" class="normal" ><?php echo $consult['store_name'];?></a></th>
+          <th><strong><?php echo $lang['consulting_index_clic_name'];?>:</strong>&nbsp;<a href="<?php echo urlclinic('show_clic','index', array('clic_id'=>$consult['clic_id']));?>;?>" target="_blank" class="normal" ><?php echo $consult['clic_name'];?></a></th>
           <th><strong><?php echo $lang['nc_handle'];?>:</strong>&nbsp;<a href="javascript:if(confirm('<?php echo $lang['nc_ensure_del'];?>')){location.href='<?php echo urlencode('index.php?act=consulting&op=delete&consult_id='.$consult['consult_id']);?>';}" class="normal" ><?php echo $lang['nc_del'];?></a></th>
         </tr>
         <tr>

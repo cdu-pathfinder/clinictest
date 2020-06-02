@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="group warp-all">
 <?php require_once circle_template('group.top');?>
 <div class="base-layout mt20">
@@ -7,7 +7,7 @@
       <ul class="base-tabs-nav">
         <li><a href="index.php?act=group&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['circle_theme'];?></a></li>
         <li class="selected"><a href="index.php?act=group&op=group_member&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['circle_firend'];?></a></li>
-        <li><a href="index.php?act=group&op=group_goods&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['nc_goods'];?></a></li>
+        <li><a href="index.php?act=group&op=group_doctors&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['nc_doctors'];?></a></li>
       </ul>
     </div>
     <div class="group-member">
@@ -16,7 +16,7 @@
       <h3><?php echo $lang['circle_my_cart'];?></h3>
         <li>
           <dl class="member-info">
-            <dt class="member-name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['cm_info']['member_id'];?>"><?php echo $output['cm_info']['member_name'];?></a></dt>
+            <dt class="member-name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['cm_info']['member_id'];?>"><?php echo $output['cm_info']['member_name'];?></a></dt>
             <dd class="member-avatar-m"><img src="<?php echo getMemberAvatarForID($output['cm_info']['member_id']);?>" /></dd>
             <dd class="time"><em><?php echo @date('Y-m-d', $output['cm_info']['cm_jointime']);?></em><?php echo $lang['circle_join'];?></dd>
             <dd><?php echo memberIdentity($output['cm_info']['is_identity']);?>&nbsp;<?php echo memberLevelHtml($output['cm_info']);?></dd>
@@ -33,7 +33,7 @@
       <?php foreach ($output['cm_list'] as $val){?>
         <li>
           <dl class="member-info">
-            <dt class="member-name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
+            <dt class="member-name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
             <dd class="member-avatar-m"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /></dd>
             <dd class="time"><em><?php echo @date('Y-m-d', $val['cm_jointime']);?></em><?php echo $lang['circle_join'];?></dd>
             <dd><?php echo memberIdentity($val['is_identity']);?>&nbsp;<?php echo memberLevelHtml($val);?></dd>

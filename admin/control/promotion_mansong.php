@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class promotion_mansongControl extends SystemControl{
 
     public function __construct(){
@@ -61,8 +61,8 @@ class promotion_mansongControl extends SystemControl{
         if(!empty($_GET['mansong_name'])) {
             $param['mansong_name'] = array('like', '%'.$_GET['mansong_name'].'%');
         }
-        if(!empty($_GET['store_name'])) {
-            $param['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        if(!empty($_GET['clic_name'])) {
+            $param['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         }
         if(!empty($_GET['state'])) {
             $param['state'] = $_GET['state'];
@@ -139,8 +139,8 @@ class promotion_mansongControl extends SystemControl{
         $model_mansong_quota = Model('p_mansong_quota');
 
         $param = array();
-        if(!empty($_GET['store_name'])) {
-            $param['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        if(!empty($_GET['clic_name'])) {
+            $param['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         }
         $list = $model_mansong_quota->getMansongQuotaList($param, 10, 'quota_id desc');
         Tpl::output('list',$list);

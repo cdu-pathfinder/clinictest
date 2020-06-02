@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,10 +18,10 @@
     <input type="hidden" name="old_c_logo" value="<?php echo $output['list_setting']['circle_logo'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="c_seotitle">SEO title:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <input type="text" name="c_seotitle" id="c_seotitle" class="txt" value="<?php echo $output['list_setting']['circle_seotitle'];?>" />
           </td>
@@ -30,7 +30,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_seokeywords">SEO keywords:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="c_seokeywords" id="c_seokeywords"><?php echo $output['list_setting']['circle_seokeywords'];?></textarea>
           </td>
@@ -39,7 +39,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_seodescription">SEO description:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="c_seodescription" id="c_seodescription"><?php echo $output['list_setting']['circle_seodescription'];?></textarea>
           </td>

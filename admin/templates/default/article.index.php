@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" value="article" name="act">
     <input type="hidden" value="article" name="op">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_title"><?php echo $lang['article_index_title'];?></label></th>

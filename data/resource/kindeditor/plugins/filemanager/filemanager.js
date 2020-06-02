@@ -34,7 +34,7 @@ KindEditor.plugin('filemanager', function(K) {
 			'<div class="ke-plugin-filemanager-header">',
 			// left start
 			'<div class="ke-left">',
-			'<img class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" border="0" alt="" /> ',
+			'<img class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" bappointment="0" alt="" /> ',
 			'<a class="ke-inline-block" name="moveupLink" href="javascript:;">' + lang.moveup + '</a>',
 			'</div>',
 			// right start
@@ -43,7 +43,7 @@ KindEditor.plugin('filemanager', function(K) {
 			'<option value="VIEW">' + lang.viewImage + '</option>',
 			'<option value="LIST">' + lang.listImage + '</option>',
 			'</select> ',
-			lang.orderType + ' <select class="ke-inline-block" name="orderType">',
+			lang.appointmentType + ' <select class="ke-inline-block" name="appointmentType">',
 			'<option value="NAME">' + lang.fileName + '</option>',
 			'<option value="SIZE">' + lang.fileSize + '</option>',
 			'<option value="TYPE">' + lang.fileType + '</option>',
@@ -68,9 +68,9 @@ KindEditor.plugin('filemanager', function(K) {
 		moveupLink = K('[name="moveupLink"]', div),
 		viewServerBtn = K('[name="viewServer"]', div),
 		viewTypeBox = K('[name="viewType"]', div),
-		orderTypeBox = K('[name="orderType"]', div);
-		function reloadPage(path, order, func) {
-			var param = 'path=' + path + '&order=' + order + '&dir=' + dirName;
+		appointmentTypeBox = K('[name="appointmentType"]', div);
+		function reloadPage(path, appointment, func) {
+			var param = 'path=' + path + '&appointment=' + appointment + '&dir=' + dirName;
 			dialog.showLoading(self.lang('ajaxLoading'));
 			K.ajax(K.addParam(fileManagerJson, param + '&' + new Date().getTime()), function(data) {
 				dialog.hideLoading();
@@ -83,7 +83,7 @@ KindEditor.plugin('filemanager', function(K) {
 				dirPath = encodeURIComponent(result.current_dir_path + data.filename + '/');
 			if (data.is_dir) {
 				el.click(function(e) {
-					reloadPage(dirPath, orderTypeBox.val(), createFunc);
+					reloadPage(dirPath, appointmentTypeBox.val(), createFunc);
 				});
 			} else if (data.is_photo) {
 				el.click(function(e) {
@@ -103,22 +103,22 @@ KindEditor.plugin('filemanager', function(K) {
 			});
 			moveupLink.unbind();
 			viewTypeBox.unbind();
-			orderTypeBox.unbind();
+			appointmentTypeBox.unbind();
 			// add events
 			if (result.current_dir_path) {
 				moveupLink.click(function(e) {
-					reloadPage(result.moveup_dir_path, orderTypeBox.val(), createFunc);
+					reloadPage(result.moveup_dir_path, appointmentTypeBox.val(), createFunc);
 				});
 			}
 			function changeFunc() {
 				if (viewTypeBox.val() == 'VIEW') {
-					reloadPage(result.current_dir_path, orderTypeBox.val(), createView);
+					reloadPage(result.current_dir_path, appointmentTypeBox.val(), createView);
 				} else {
-					reloadPage(result.current_dir_path, orderTypeBox.val(), createList);
+					reloadPage(result.current_dir_path, appointmentTypeBox.val(), createList);
 				}
 			}
 			viewTypeBox.change(changeFunc);
-			orderTypeBox.change(changeFunc);
+			appointmentTypeBox.change(changeFunc);
 			bodyDiv.html('');
 		}
 		function createList(result) {
@@ -127,7 +127,7 @@ KindEditor.plugin('filemanager', function(K) {
 			table.className = 'ke-table';
 			table.cellPadding = 0;
 			table.cellSpacing = 0;
-			table.border = 0;
+			table.bappointment = 0;
 			bodyDiv.append(table);
 			var fileList = result.file_list;
 			for (var i = 0, len = fileList.length; i < len; i++) {
@@ -182,7 +182,7 @@ KindEditor.plugin('filemanager', function(K) {
 			}
 		}
 		viewTypeBox.val(viewType);
-		reloadPage('', orderTypeBox.val(), viewType == 'VIEW' ? createView : createList);
+		reloadPage('', appointmentTypeBox.val(), viewType == 'VIEW' ? createView : createList);
 		return dialog;
 	}
 

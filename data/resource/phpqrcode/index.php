@@ -33,7 +33,7 @@ class PhpQRCode{
 	private $matrixPointSize = 3;				// 1 2 3 4 5 6 7 8 9 10
 	
 	
-	private $date = 'shopnc';
+	private $date = 'clinicnc';
 	
 	
 	private $pngTempDir		= '';
@@ -56,7 +56,7 @@ class PhpQRCode{
 	    if (!file_exists($this->pngTempDir))
 	        mkdir($this->pngTempDir);
 	
-	    if ($this->date != 'shopnc') { 
+	    if ($this->date != 'clinicnc') { 
 	            
 	        // user data
 	        if ($this->pngTempName != '') {
@@ -69,7 +69,7 @@ class PhpQRCode{
 	    } else {    
 	    
 	        //default data
-	        QRcode::png('http://www.shopnc.net', $filename, $this->errorCorrectionLevel, $this->matrixPointSize, 2);    
+	        QRcode::png('http://www.clinicnc.net', $filename, $this->errorCorrectionLevel, $this->matrixPointSize, 2);    
 	        
 	    }    
 	        

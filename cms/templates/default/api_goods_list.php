@@ -1,23 +1,23 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
-<?php if(!empty($output['goods_list']) && is_array($output['goods_list'])){ ?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
+<?php if(!empty($output['doctors_list']) && is_array($output['doctors_list'])){ ?>
 
-<div class="goods-select-box">
+<div class="doctors-select-box">
   <div class="arrow"></div>
-  <ul id="goods_search_list" class="goods-search-list">
-    <?php foreach($output['goods_list'] as $value){ ?>
-    <?php $goods_info = array();?>
-    <?php $goods_info['url'] = getGoodsUrl($value['goods_id']);?>
-    <?php $goods_info['title'] = $value['goods_name'];?>
-    <?php $goods_info['image'] = thumb($value, 240);?>
-    <?php $goods_info['price'] = $value['goods_store_price'];?>
-    <?php $goods_info['type'] = 'store';?>
-    <li nctype="btn_goods_select" goods_url="<?php echo $goods_info['url'];?>" goods_title="<?php echo $goods_info['title'];?>" goods_image="<?php echo $goods_info['image'];?>" goods_price="<?php echo $goods_info['price'];?>" goods_type="<?php echo $goods_info['type'];?>">
+  <ul id="doctors_search_list" class="doctors-search-list">
+    <?php foreach($output['doctors_list'] as $value){ ?>
+    <?php $doctors_info = array();?>
+    <?php $doctors_info['url'] = getdoctorsUrl($value['doctors_id']);?>
+    <?php $doctors_info['title'] = $value['doctors_name'];?>
+    <?php $doctors_info['image'] = thumb($value, 240);?>
+    <?php $doctors_info['price'] = $value['doctors_clic_price'];?>
+    <?php $doctors_info['type'] = 'clic';?>
+    <li nctype="btn_doctors_select" doctors_url="<?php echo $doctors_info['url'];?>" doctors_title="<?php echo $doctors_info['title'];?>" doctors_image="<?php echo $doctors_info['image'];?>" doctors_price="<?php echo $doctors_info['price'];?>" doctors_type="<?php echo $doctors_info['type'];?>">
       <dl>
-        <dt class="name"><a href="<?php echo $goods_info['url'];?>" target="_blank"> <?php echo $goods_info['title'];?> </a></dt>
-        <dd class="image"><img title="<?php echo $goods_info['title'];?>" src="<?php echo $goods_info['image'];?>" /></dd>
-        <dd class="price"><?php echo $lang['nc_common_price'];?><?php echo $lang['nc_colon'];?><em><?php echo $goods_info['price'];?></em></dd>
+        <dt class="name"><a href="<?php echo $doctors_info['url'];?>" target="_blank"> <?php echo $doctors_info['title'];?> </a></dt>
+        <dd class="image"><img title="<?php echo $doctors_info['title'];?>" src="<?php echo $doctors_info['image'];?>" /></dd>
+        <dd class="price"><?php echo $lang['nc_common_price'];?><?php echo $lang['nc_colon'];?><em><?php echo $doctors_info['price'];?></em></dd>
       </dl>
-      <i><?php echo $lang['api_goods_add'];?></i></li>
+      <i><?php echo $lang['api_doctors_add'];?></i></li>
     <?php } ?>
   </ul>
   <div class="pagination"><?php echo $output['show_page'];?></div>

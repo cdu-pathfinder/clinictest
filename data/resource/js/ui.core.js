@@ -176,7 +176,7 @@
 			var self = this;
 			this.initialized = false;
 			var initialize = function() {
-				self._MP = { left: e.pageX, top: e.pageY }; // Store the click mouse position
+				self._MP = { left: e.pageX, top: e.pageY }; // clic the click mouse position
 				$(document).bind('mouseup.mouse', function() { return self.stop.apply(self, arguments); });
 				$(document).bind('mousemove.mouse', function() { return self.drag.apply(self, arguments); });
 		

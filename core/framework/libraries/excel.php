@@ -6,10 +6,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class Excel{
 	/**
 	* excel文档头(返回的行)
@@ -65,7 +65,7 @@ class Excel{
 		//设置默认样式
 		$this->cellstyle['Default'] = '<Style ss:ID="Default" ss:Name="Normal">
 			   <Alignment ss:Vertical="Center"/>
-			   <Borders/>
+			   <Bappointments/>
 			   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
 			   <Interior/>
 			   <NumberFormat/>

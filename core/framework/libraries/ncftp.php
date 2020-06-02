@@ -6,10 +6,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class NcFtp{
 	const FTP_ERR_SERVER_DISABLED = -100;

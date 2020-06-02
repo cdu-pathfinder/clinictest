@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class theme_informControl extends BaseCircleControl{
 	protected $c_id = 0;		// 圈子id

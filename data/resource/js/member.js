@@ -69,10 +69,10 @@ $(function(){
         var name = $(this).attr('gs_name');
         var callback = $(this).attr('gs_callback');
         var op = $(this).attr('gs_op');
-        var store_id = $(this).attr('gs_store_id');
+        var clic_id = $(this).attr('gs_clic_id');
         var title = $(this).attr('gs_title') ? $(this).attr('gs_title') : '';
         var width = $(this).attr('gs_width');
-        ajax_form(id, title, SITEURL + '/index.php?act=store_groupbuy&op=' + op + '&dialog=1&title=' + title + '&store_id=' + store_id+ '&id=' + id + '&name=' + name + '&callback=' + callback, width);
+        ajax_form(id, title, SITEURL + '/index.php?act=clic_groupbuy&op=' + op + '&dialog=1&title=' + title + '&clic_id=' + clic_id+ '&id=' + id + '&name=' + name + '&callback=' + callback, width);
         return false;
     });
 
@@ -81,7 +81,7 @@ $(function(){
     var act = '';
     //找出排序的列和排序的方式及app控制器
     var sort  = '';
-    var order = '';
+    var appointment = '';
     for(var j=0; j < params.length; j++)
     {
         var param = params[j];
@@ -94,27 +94,27 @@ $(function(){
         {
             sort = arr[1];
         }
-        if(arr[0] == 'order')
+        if(arr[0] == 'appointment')
         {
-            order = arr[1];
+            appointment = arr[1];
         }
     }
-    $('span[nc_type="order_by"]').each(function(){
+    $('span[nc_type="appointment_by"]').each(function(){
         if($(this).parent().attr('column') == sort)
         {
-            if(order == 'asc')
+            if(appointment == 'asc')
             {
             $(this).removeClass();
             $(this).addClass("sort_asc");
             }
-        else if (order == 'desc')
+        else if (appointment == 'desc')
             {
             $(this).removeClass();
             $(this).addClass("sort_desc");
             }
         }
     });
-    $('span[nc_type="order_by"]').click(function(){
+    $('span[nc_type="appointment_by"]').click(function(){
         var s_name = $(this).parent().attr('column');
         var found   = false;
         for(var i = 0;i < params.length;i++)
@@ -130,15 +130,15 @@ $(function(){
                 params[i] = 'sort'+'='+ s_name;
                 found = true;
             }
-            else if('order' == arr[0])
+            else if('appointment' == arr[0])
             {
-                params[i] = 'order'+'='+(arr[1] =='asc' ? 'desc' : 'asc');
+                params[i] = 'appointment'+'='+(arr[1] =='asc' ? 'desc' : 'asc');
             }
         }
         if(!found)
         {
                 params.push('sort'+'='+ s_name);
-                params.push('order=asc');
+                params.push('appointment=asc');
         }
         if(location.pathname.indexOf('/admin/')>-1)
         {

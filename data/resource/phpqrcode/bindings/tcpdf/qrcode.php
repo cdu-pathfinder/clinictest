@@ -108,22 +108,22 @@ if (!defined('QRCODEDEFS')) {
 	define('QR_MODE_NL', -1);
 
 	/**
-	 * Encoding mode numeric (0-9). 3 characters are encoded to 10bit length. In theory, 7089 characters or less can be stored in a QRcode.
+	 * Encoding mode numeric (0-9). 3 characters are encoded to 10bit length. In theory, 7089 characters or less can be clicd in a QRcode.
 	 */
 	define('QR_MODE_NM', 0);
 
 	/**
-	 * Encoding mode alphanumeric (0-9A-Z $%*+-./:) 45characters. 2 characters are encoded to 11bit length. In theory, 4296 characters or less can be stored in a QRcode.
+	 * Encoding mode alphanumeric (0-9A-Z $%*+-./:) 45characters. 2 characters are encoded to 11bit length. In theory, 4296 characters or less can be clicd in a QRcode.
 	 */
 	define('QR_MODE_AN', 1);
 
 	/**
-	 * Encoding mode 8bit byte data. In theory, 2953 characters or less can be stored in a QRcode.
+	 * Encoding mode 8bit byte data. In theory, 2953 characters or less can be clicd in a QRcode.
 	 */
 	define('QR_MODE_8B', 2);
 
 	/**
-	 * Encoding mode KANJI. A KANJI character (multibyte character) is encoded to 13bit length. In theory, 1817 characters or less can be stored in a QRcode.
+	 * Encoding mode KANJI. A KANJI character (multibyte character) is encoded to 13bit length. In theory, 1817 characters or less can be clicd in a QRcode.
 	 */
 	define('QR_MODE_KJ', 3);
 

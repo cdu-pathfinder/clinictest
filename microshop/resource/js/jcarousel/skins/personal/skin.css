@@ -8,9 +8,9 @@
  { width: 220px; height: 330px;}
 .jcarousel-skin-personal .jcarousel-next-horizontal,
 .jcarousel-skin-personal .jcarousel-prev-horizontal
-{ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#72000000', endColorstr='#72000000'); display:block; width: 40px; height: 80px; margin-top: -40px; border: solid #FFF; position: absolute; z-index: 99; top: 50%; cursor: pointer;}
-.jcarousel-skin-personal .jcarousel-next-horizontal { background-color:rgba(0,0,0,0.45); background-image: url(next-horizontal.gif); background-repeat: no-repeat; background-position:50% 50%; border-width: 1px 0 1px 1px; border-radius: 4px 0 0 4px; right: -19px;}
-.jcarousel-skin-personal .jcarousel-prev-horizontal { background-color:rgba(0,0,0,0.45); background-image: url(prev-horizontal.gif); background-repeat:  no-repeat; background-position:50% 50%; border-width: 1px 1px 1px 0; border-radius: 0 4px 4px 0; left: -9px;}
+{ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#72000000', endColorstr='#72000000'); display:block; width: 40px; height: 80px; margin-top: -40px; bappointment: solid #FFF; position: absolute; z-index: 99; top: 50%; cursor: pointer;}
+.jcarousel-skin-personal .jcarousel-next-horizontal { background-color:rgba(0,0,0,0.45); background-image: url(next-horizontal.gif); background-repeat: no-repeat; background-position:50% 50%; bappointment-width: 1px 0 1px 1px; bappointment-radius: 4px 0 0 4px; right: -19px;}
+.jcarousel-skin-personal .jcarousel-prev-horizontal { background-color:rgba(0,0,0,0.45); background-image: url(prev-horizontal.gif); background-repeat:  no-repeat; background-position:50% 50%; bappointment-width: 1px 1px 1px 0; bappointment-radius: 0 4px 4px 0; left: -9px;}
 .jcarousel-skin-personal .jcarousel-next-disabled-horizontal,
 .jcarousel-skin-personal .jcarousel-next-disabled-horizontal:hover,
 .jcarousel-skin-personal .jcarousel-next-disabled-horizontal:focus,

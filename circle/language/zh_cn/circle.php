@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * control
  */
@@ -57,15 +57,15 @@ $lang['nc_video']					= '视频';
 $lang['nc_video_address']			= '视频的flash地址';
 $lang['nc_image']					= '图片';
 $lang['nc_insert_network_image']	= '插入网络图片';
-$lang['nc_goods']					= '商品';
-$lang['nc_insert_relevance_goods']	= '插入相关商品';
+$lang['nc_doctors']					= '商品';
+$lang['nc_insert_relevance_doctors']	= '插入相关商品';
 $lang['nc_insert_smilier']			= '插入表情';
 $lang['nc_smilier']					= '表情';
 $lang['nc_relevance_adjunct']		= '相关附件';
 $lang['nc_relevance_adjunct_help_one']	= '附件上传支持jpg、jpeg、gif、png格式图片，建议上传尺寸1000像素以内不超过1M大小的图片。';
 $lang['nc_relevance_adjunct_help_two']	= '上传图片后可选择插入主题帖子中，没有插入帖子的附件，将作为候选附件保留至下次发帖使用或可手动删除。';
 $lang['nc_insert']					= '插入';
-$lang['nc_select_insert_goods']		= '选择插入帖中的商品';
+$lang['nc_select_insert_doctors']		= '选择插入帖中的商品';
 $lang['nc_edit_theme']				= '编辑话题';
 $lang['nc_edit_reply']				= '编辑回复';
 $lang['nc_release_new_theme']		= '发布新话题';
@@ -141,7 +141,7 @@ $lang['circle_apply_join']			= '申请加入';
 $lang['circle_member_list']			= '成员列表';
 $lang['circle_member_no_join']		= '您不是该圈子的成员';
 $lang['nc_deit_op_succ']			= '编辑成功';
-$lang['circle_member_like_and_show_goods']	= '成员分享和喜欢的商品';
+$lang['circle_member_like_and_show_doctors']	= '成员分享和喜欢的商品';
 $lang['circle_apply_to_be_a_management']	= '申请成为管理';
 
 // 创建圈子
@@ -188,7 +188,7 @@ $lang['nc_show']					= '显示';
 $lang['nc_like']					= '喜欢';
 $lang['nc_share_default_content']	= '赞！我很喜欢这件商品。';
 $lang['nc_comment']					= '评论';
-$lang['nc_share_goods_null']		= '很遗憾，尚无圈友分享过商品。';
+$lang['nc_share_doctors_null']		= '很遗憾，尚无圈友分享过商品。';
 
 // 圈友
 $lang['circle_introduction_desc']	= '在这里写下你的个性介绍，是让别的圈友了解并熟悉你的最佳方法。';
@@ -266,7 +266,7 @@ $lang['circle_star_firend']			= '明星圈友';
 $lang['circle_jion_new']			= '最新加入';
 $lang['circle_no_firend']			= '暂无圈友';
 $lang['circle_theme_count']			= '话题数';
-$lang['ztc_hotsell_goods_recommend']= '热销商品推荐';
+$lang['ztc_hotsell_doctors_recommend']= '热销商品推荐';
 $lang['ztc_have_sales']				= '已销售';
 $lang['ztc_bi']						= '笔';
 $lang['ztc_go_and_see']				= '去看看';
@@ -309,8 +309,8 @@ $lang['circle_group_member']		= '组员';
 $lang['circle_new_member']			= '新成员';
 $lang['circle_recommend_group']		= '推荐圈子';
 $lang['circle_recommend_theme']		= '推荐话题';
-$lang['circle_friend_show_order']	= '圈友晒单';
-$lang['circle_excellent_goods']		= '优秀圈成员';
+$lang['circle_friend_show_appointment']	= '圈友晒单';
+$lang['circle_excellent_doctors']		= '优秀圈成员';
 
 $lang['circle_new_theme_two']		= '最新话题';
 $lang['circle_hot_theme']			= '热门话题';
@@ -349,12 +349,12 @@ $lang['nc_deit_op_fail']			= '编辑失败';
 $lang['circle_no_join_ban_reply']	= '没有加入圈子用户不能回复';
 $lang['circle_reply_not_null']		= '请填写回复内容';
 
-$lang['circle_bought_goods']		= '已购的商品';
-$lang['circle_favorite_goods']		= '收藏的商品';
+$lang['circle_bought_doctors']		= '已购的商品';
+$lang['circle_favorite_doctors']		= '收藏的商品';
 $lang['circle_selected']			= '已选择';
-$lang['circle_bought_goods_null']	= '您还没有购买过商品。';
-$lang['circle_favorite_goods_null']	= '您还没有收藏过商品。';
-$lang['circle_selected_goods']		= '已选商品';
+$lang['circle_bought_doctors_null']	= '您还没有购买过商品。';
+$lang['circle_favorite_doctors_null']	= '您还没有收藏过商品。';
+$lang['circle_selected_doctors']		= '已选商品';
 $lang['circle_insert_theme']		= '插入到话题';
 $lang['circle_network_image']		= '网络图片';
 $lang['circle_album_image']			= '相册图片';
@@ -363,20 +363,20 @@ $lang['circle_select_image_from_album']	= '从我的相册中选择图片';
 $lang['circle_upload_image_null']	= '您还没有上传过图片';
 $lang['circle_select_image']		= '选择图片';
 
-$lang['circle_goods_link']			= '商品链接';
-$lang['circle_goods_link_tips1']	= '可添加本商城';
-$lang['circle_goods_link_tips2']	= '、淘宝或者天猫';
-$lang['circle_goods_link_tips3']	= '的商品链接';
-$lang['circle_goods_error1']		= '对多只能选自10个商品！';
-$lang['circle_goods_error2']		= '你添加的链接不正确';
+$lang['circle_doctors_link']			= '商品链接';
+$lang['circle_doctors_link_tips1']	= '可添加本商城';
+$lang['circle_doctors_link_tips2']	= '、淘宝或者天猫';
+$lang['circle_doctors_link_tips3']	= '的商品链接';
+$lang['circle_doctors_error1']		= '对多只能选自10个商品！';
+$lang['circle_doctors_error2']		= '你添加的链接不正确';
 $lang['circle_Insufficient_permissions']	= '权限不足，不能查看话题';
 // 详细页
 $lang['circle_landlord']			= '楼主';
 $lang['circle_posted_in']			= '发表于';
 $lang['circle_return']				= '返回';
 $lang['circle_last_edit']			= '最后编辑';
-$lang['circle_relevance_goods']		= '相关商品';
-$lang['circle_goods_detail']		= '商品详情';
+$lang['circle_relevance_doctors']		= '相关商品';
+$lang['circle_doctors_detail']		= '商品详情';
 $lang['circle_affix_image_title_one']	= '话题“';
 $lang['circle_affix_image_title_two']	= '”中的附件';
 $lang['circle_theme_manage']		= '话题管理';

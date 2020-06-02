@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class typeModel extends Model {
 
@@ -22,8 +22,8 @@ class typeModel extends Model {
         return $this->table('type_brand')->field($field)->where($condition)->select();
     }
 
-    public function getGoodsAttrIndexList($conditoin,$page = 0, $fields = '', $order = '', $limit = '') {
-        return $this->table('goods_attr_index')->where($conditoin)->order($order)->limit($limit)->page($page)->select();
+    public function getdoctorsAttrIndexList($conditoin,$page = 0, $fields = '', $appointment = '', $limit = '') {
+        return $this->table('doctors_attr_index')->where($conditoin)->appointment($appointment)->limit($limit)->page($page)->select();
     }
 
     /**
@@ -31,11 +31,11 @@ class typeModel extends Model {
      * 
      * @param   array   $where  条件
      * @param   string  $field  字段
-     * @param   string  $order  排序
+     * @param   string  $appointment  排序
      * @return  array   返回二位数组
      */
-    public function getSpecByType($where, $field, $order = 'spec.sp_sort asc, spec.sp_id asc') {
-        $result = $this->table('type_spec,spec')->field($field)->where($where)->join('inner')->on('type_spec.sp_id = spec.sp_id')->order($order)->select();
+    public function getSpecByType($where, $field, $appointment = 'spec.sp_sort asc, spec.sp_id asc') {
+        $result = $this->table('type_spec,spec')->field($field)->where($where)->join('inner')->on('type_spec.sp_id = spec.sp_id')->appointment($appointment)->select();
         return $result;
     }
 
@@ -43,10 +43,10 @@ class typeModel extends Model {
      * 根据类型获得规格、类型、属性信息
      * 
      * @param int $type_id 类型id
-     * @param int $store_id 店铺id
+     * @param int $clic_id 店铺id
      * @return array 二位数组
      */
-    public function getAttr($type_id, $store_id, $gc_id) {
+    public function getAttr($type_id, $clic_id, $gc_id) {
         $spec_list = $this->typeRelatedJoinList(array('type_id' => $type_id), 'spec', 'spec.sp_id as sp_id, spec.sp_name as sp_name');
         $attr_list = $this->typeRelatedJoinList(array('attribute.type_id' => $type_id), 'attr', 'attribute.attr_id as attr_id, attribute.attr_name as attr_name, attribute_value.attr_value_id as attr_value_id, attribute_value.attr_value_name as attr_value_name');
         $brand_list = $this->typeRelatedJoinList(array('type_id' => $type_id, 'brand_apply' => 1), 'brand', 'brand.brand_id as brand_id,brand.brand_name as brand_name');
@@ -56,7 +56,7 @@ class typeModel extends Model {
         if (is_array($spec_list) && !empty($spec_list)) {
             $array = array();
             foreach ($spec_list as $val) {
-                $spec_value_list = Model('spec')->getSpecValueList(array('sp_id'=>$val['sp_id'], 'gc_id'=>$gc_id, 'store_id' => $store_id));
+                $spec_value_list = Model('spec')->getSpecValueList(array('sp_id'=>$val['sp_id'], 'gc_id'=>$gc_id, 'clic_id' => $clic_id));
                 $a = array();
                 foreach ($spec_value_list as $v) {
                     $b = array();
@@ -96,29 +96,29 @@ class typeModel extends Model {
     /**
      * 新增商品商品与属性对应
      * 
-     * @param int $goods_id
+     * @param int $doctors_id
      * @param int $commonid
      * @param array $param
      * @return boolean
      */
-    public function addGoodsType($goods_id, $commonid, $param) {
+    public function adddoctorsType($doctors_id, $commonid, $param) {
         // 商品与属性对应
         $sa_array = array();
-        $sa_array['goods_id']       = $goods_id;
-        $sa_array['goods_commonid'] = $commonid;
+        $sa_array['doctors_id']       = $doctors_id;
+        $sa_array['doctors_commonid'] = $commonid;
         $sa_array['gc_id']          = $param['cate_id'];
         $sa_array['type_id']        = $param['type_id'];
         if (is_array($param['attr'])) {
             $sa_array['value'] = $param['attr'];
-            $this->typeGoodsRelatedAdd($sa_array, 'goods_attr_index');
+            $this->typedoctorsRelatedAdd($sa_array, 'doctors_attr_index');
             return true;
         } else {
             return false;
         }
     }
     
-    public function delGoodsAttr($conditoin) {
-        return $this->table('goods_attr_index')->where($conditoin)->delete();
+    public function deldoctorsAttr($conditoin) {
+        return $this->table('doctors_attr_index')->where($conditoin)->delete();
     }
 	/**
 	 * 类型列表
@@ -132,7 +132,7 @@ class typeModel extends Model {
 		$array['table']		= 'type';
 		$array['where']		= $condition_str;
 		$array['field']		= $field;
-		$array['order']		= $param['order'];
+		$array['appointment']		= $param['appointment'];
 		$list_type		= Db::select($array,$page);
 		return $list_type;
 	}
@@ -174,7 +174,7 @@ class typeModel extends Model {
      *            表名
      * @return bool
      */
-    public function typeGoodsRelatedAdd($param, $table, $type = "") {
+    public function typedoctorsRelatedAdd($param, $table, $type = "") {
         if (is_array ( $param ['value'] ) && ! empty ( $param ['value'] )) {
             $insert_array = array ();
             foreach ( $param ['value'] as $key => $val ) {
@@ -182,8 +182,8 @@ class typeModel extends Model {
                     foreach ( $val as $k => $v ) {
                         if (intval ( $k ) > 0 && $k != 'name') {
                             $insert = array ();
-                            $insert ['goods_id'] = $param ['goods_id'];
-                            $insert ['goods_commonid'] = $param ['goods_commonid'];
+                            $insert ['doctors_id'] = $param ['doctors_id'];
+                            $insert ['doctors_commonid'] = $param ['doctors_commonid'];
                             $insert ['gc_id'] = $param ['gc_id'];
                             $insert ['type_id'] = $param ['type_id'];
                             $insert ['attr_id'] = $key;
@@ -210,7 +210,7 @@ class typeModel extends Model {
 		$array['table']		= $table;
 		$array['where']		= $condition_str;
 		$array['field']		= $field;
-		$array['order']		= $param['order'];
+		$array['appointment']		= $param['appointment'];
 		$list_type		= Db::select($array);
 		return $list_type;
 	}
@@ -243,32 +243,32 @@ class typeModel extends Model {
      * @param array $param 条件
      * @param int $type 参数
      * @param string $field 字段
-     * @param string $order 排序
+     * @param string $appointment 排序
      * @return boolean
      */
-    public function typeRelatedJoinList($param, $type = '', $field = '*', $order = '') {
+    public function typeRelatedJoinList($param, $type = '', $field = '*', $appointment = '') {
         $array = array();
         switch ($type) {
             case 'spec':
                 $table = 'type_spec,spec';
                 $join = 'inner';
                 $on = 'type_spec.sp_id=spec.sp_id';
-                $order = !empty($order) ? $order : 'spec.sp_id asc, spec.sp_sort asc';
+                $appointment = !empty($appointment) ? $appointment : 'spec.sp_id asc, spec.sp_sort asc';
                 break;
             case 'attr':
                 $table = 'attribute,attribute_value';
                 $join = 'inner';
                 $on = 'attribute.attr_id=attribute_value.attr_id';
-                $order = !empty($order) ? $order : 'attribute.attr_sort asc, attribute_value.attr_value_sort asc, attribute_value.attr_value_id asc';
+                $appointment = !empty($appointment) ? $appointment : 'attribute.attr_sort asc, attribute_value.attr_value_sort asc, attribute_value.attr_value_id asc';
                 break;
             case 'brand':
                 $table = 'type_brand,brand';
                 $join = 'inner';
                 $on = 'type_brand.brand_id=brand.brand_id';
-                $order = !empty($order) ? $order : 'brand.brand_sort asc';
+                $appointment = !empty($appointment) ? $appointment : 'brand.brand_sort asc';
                 break;
         }
-        $result = $this->table($table)->field($field)->join($join)->on($on)->where($param)->order($order)->select();
+        $result = $this->table($table)->field($field)->join($join)->on($on)->where($param)->appointment($appointment)->select();
         return $result;
     }
 	/**
@@ -286,32 +286,32 @@ class typeModel extends Model {
 		$array	= array();
 		switch ($type){
 			case 'spec':
-				$array['table']		= 'type_spec, spec, spec_value, goods_class';
+				$array['table']		= 'type_spec, spec, spec_value, doctors_class';
 				$array['join_type']	= 'INNER JOIN';
 				$array['join_on']	= array(
 					'type_spec.sp_id=spec.sp_id',
 					'type_spec.sp_id=spec_value.sp_id',
-					'type_spec.type_id=goods_class.type_id'
+					'type_spec.type_id=doctors_class.type_id'
 				);
-				$array['order'] = $param['order'] ? $param['order'] : 'spec.sp_sort asc, spec_value.sp_value_sort asc';
+				$array['appointment'] = $param['appointment'] ? $param['appointment'] : 'spec.sp_sort asc, spec_value.sp_value_sort asc';
 				break;
 			case 'attr':
-				$array['table']		= 'attribute, attribute_value, goods_class';
+				$array['table']		= 'attribute, attribute_value, doctors_class';
 				$array['join_type']	= 'INNER JOIN';
 				$array['join_on']	= array(
 					'attribute.attr_id=attribute_value.attr_id',
-					'attribute.type_id=goods_class.type_id'
+					'attribute.type_id=doctors_class.type_id'
 				);
-				$array['order'] = $param['order'] ? $param['order'] : 'attribute.attr_sort asc, attribute_value.attr_value_sort asc, attribute_value.attr_value_id asc';
+				$array['appointment'] = $param['appointment'] ? $param['appointment'] : 'attribute.attr_sort asc, attribute_value.attr_value_sort asc, attribute_value.attr_value_id asc';
 				break;
 			case 'brand':
-				$array['table']		= 'type_brand, brand, goods_class';
+				$array['table']		= 'type_brand, brand, doctors_class';
 				$array['join_type']	= 'INNER JOIN';
 				$array['join_on']	= array(
 					'type_brand.brand_id=brand.brand_id',
-					'type_brand.type_id=goods_class.type_id'
+					'type_brand.type_id=doctors_class.type_id'
 				);
-				$array['order'] = $param['order'] ? $param['order'] : 'brand.brand_sort asc';
+				$array['appointment'] = $param['appointment'] ? $param['appointment'] : 'brand.brand_sort asc';
 				break;
 		}
 		$array['where'] = $condition_str;
@@ -334,19 +334,19 @@ class typeModel extends Model {
 		$array	= array();
 		switch ($type){
 			case 'spec':
-				$array['table']		= 'goods_spec_index';
-				$array['field'] 	= 'goods_id, sp_value_id';
+				$array['table']		= 'doctors_spec_index';
+				$array['field'] 	= 'doctors_id, sp_value_id';
 				if (isset($param['limit'])){
 					$array['limit'] 	= $param['limit'];
 				}
 				break;
 			case 'attr':
-				$array['table']		= 'goods_attr_index';
-				$array['field']		= 'goods_id, attr_value_id';
+				$array['table']		= 'doctors_attr_index';
+				$array['field']		= 'doctors_id, attr_value_id';
 				break;
 			case 'brand':
-				$array['table']		= 'goods';
-				$array['field'] 	= 'goods_id, brand_id';
+				$array['table']		= 'doctors';
+				$array['field'] 	= 'doctors_id, brand_id';
 				if (isset($param['limit'])){
 					$array['limit'] 	= $param['limit'];
 				}				
@@ -375,11 +375,11 @@ class typeModel extends Model {
 	 */
 	private function getCondition($condition_array) {
 		$condition_str = '';
-		if($condition_array['goods_id'] != ''){
-			$condition_str .= " and goods_id ='".$condition_array['goods_id']."'";
+		if($condition_array['doctors_id'] != ''){
+			$condition_str .= " and doctors_id ='".$condition_array['doctors_id']."'";
 		}
-		if($condition_array['in_goods_id'] != ''){
-			$condition_str .= " and goods_id in (".$condition_array['in_goods_id'].")";
+		if($condition_array['in_doctors_id'] != ''){
+			$condition_str .= " and doctors_id in (".$condition_array['in_doctors_id'].")";
 		}
 		if($condition_array['gc_id'] != ''){
 			$condition_str .= " and gc_id ='".$condition_array['gc_id']."'";
@@ -390,8 +390,8 @@ class typeModel extends Model {
 		if($condition_array['type_id'] != ''){
 			$condition_str .= ' and type_id = "'.$condition_array['type_id'].'"';
 		}
-		if($condition_array['goods_class.type_id'] != ''){
-			$condition_str .= ' and goods_class.type_id = "'.$condition_array['goods_class.type_id'].'"';
+		if($condition_array['doctors_class.type_id'] != ''){
+			$condition_str .= ' and doctors_class.type_id = "'.$condition_array['doctors_class.type_id'].'"';
 		}
 		if($condition_array['in_type_id'] != ''){
 			$condition_str .= ' and type_id in ('.$condition_array['in_type_id'].')';

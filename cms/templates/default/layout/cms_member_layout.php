@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php require CMS_BASE_TPL_PATH.'/layout/top.php';?>
 <style type="text/css">
 .search-cms { display: none !important;}

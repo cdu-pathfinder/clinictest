@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -19,38 +19,38 @@
     <input type="hidden" name="member_name" value="<?php echo $output['member_array']['member_name'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label><?php echo $lang['member_index_name']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['member_array']['member_name'];?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="member_passwd"><?php echo $lang['member_edit_password']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="member_passwd" name="member_passwd" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['member_edit_password_keep']?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="member_email"><?php echo $lang['member_index_email']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['member_array']['member_email'];?>" id="member_email" name="member_email" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['member_index_email']?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="member_truename"><?php echo $lang['member_index_true_name']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['member_array']['member_truename'];?>" id="member_truename" name="member_truename" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_edit_sex']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul>
               <li>
                 <input type="radio" <?php if($output['member_array']['member_sex'] == 0){ ?>checked="checked"<?php } ?> value="0" name="member_sex" id="member_sex0">
@@ -70,21 +70,21 @@
         <tr>
           <td colspan="2" class="required"><label class="member_qq">QQ:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['member_array']['member_qq'];?>" id="member_qq" name="member_qq" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="member_ww"><?php echo $lang['member_edit_wangwang']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['member_array']['member_ww'];?>" id="member_ww" name="member_ww" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_edit_pic']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
 			<span class="type-file-show">
 			<img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
@@ -101,7 +101,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_index_inform'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="inform_allow1" class="cb-enable <?php if($output['member_array']['inform_allow'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_allow'];?></span></label>
             <label for="inform_allow2" class="cb-disable <?php if($output['member_array']['inform_allow'] == '2'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_deny'];?></span></label>
             <input id="inform_allow1" name="inform_allow" <?php if($output['member_array']['inform_allow'] == '1'){ ?>checked="checked"<?php } ?>  value="1" type="radio">
@@ -111,7 +111,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_edit_allowbuy']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="isbuy_1" class="cb-enable <?php if($output['member_array']['is_buy'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_allow'];?></span></label>
             <label for="isbuy_2" class="cb-disable <?php if($output['member_array']['is_buy'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_deny'];?></span></label>
@@ -122,7 +122,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_edit_allowtalk']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="allowtalk_1" class="cb-enable <?php if($output['member_array']['is_allowtalk'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_allow'];?></span></label>
             <label for="allowtalk_2" class="cb-disable <?php if($output['member_array']['is_allowtalk'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_deny'];?></span></label>
@@ -133,7 +133,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_edit_allowlogin']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="memberstate_1" class="cb-enable <?php if($output['member_array']['member_state'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_allow'];?></span></label>
             <label for="memberstate_2" class="cb-disable <?php if($output['member_array']['member_state'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['member_edit_deny'];?></span></label>
@@ -144,21 +144,21 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['member_index_points']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['member_index_points']?>&nbsp;<strong class="red"><?php echo $output['member_array']['member_points']; ?></strong>&nbsp;<?php echo $lang['points_unit']; ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><label><?php echo $lang['member_index_available'];?><?php echo $lang['member_index_prestore'];?>:</label></td>
+          <td colspan="2" class="required"><label><?php echo $lang['member_index_available'];?><?php echo $lang['member_index_preclic'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['member_index_available'];?>&nbsp;<strong class="red"><?php echo $output['member_array']['available_predeposit']; ?></strong>&nbsp;<?php echo $lang['currency_zh']; ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><label><?php echo $lang['member_index_frozen'];?><?php echo $lang['member_index_prestore'];?>:</label></td>
+          <td colspan="2" class="required"><label><?php echo $lang['member_index_frozen'];?><?php echo $lang['member_index_preclic'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['member_index_frozen'];?>&nbsp;<strong class="red"><?php echo $output['member_array']['freeze_predeposit']; ?></strong>&nbsp;<?php echo $lang['currency_zh']; ?></td>
           <td class="vatop tips"></td>
         </tr>

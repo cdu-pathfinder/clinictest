@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -13,10 +13,10 @@
   <form method="get" action="index.php" target="" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="bill" />
     <input type="hidden" name="op" value="index" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
-          <th><?php echo $lang['order_time_from'];?>按年份搜索</th>
+          <th><?php echo $lang['appointment_time_from'];?>按年份搜索</th>
           <td>
 			<select name="query_year" class="querySelect">
 			<option value=""><?php echo $lang['nc_please_choose'];?></option>
@@ -48,7 +48,7 @@
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
-        <th><?php echo $lang['order_number'];?>账单（月）</th>
+        <th><?php echo $lang['appointment_number'];?>账单（月）</th>
         <th class="align-center">开始日期</th>
         <th class="align-center">结束日期</th>
         <th class="align-center">订单金额</th>
@@ -70,12 +70,12 @@
         </td>
         <td class="nowrap align-center"><?php echo date('Y-m-d',$bill['os_start_date']);?></td>
         <td class="nowrap align-center"><?php echo date('Y-m-d',$bill['os_end_date']);?></td>
-        <td class="align-center"><?php echo $bill['os_order_totals'];?></td>
+        <td class="align-center"><?php echo $bill['os_appointment_totals'];?></td>
         <td class="align-center"><?php echo $bill['os_shipping_totals'];?></td>
         <td class="align-center"><?php echo $bill['os_commis_totals'];?></td>
-        <td class="align-center"><?php echo $bill['os_order_return_totals'];?></td>
+        <td class="align-center"><?php echo $bill['os_appointment_return_totals'];?></td>
         <td class="align-center"><?php echo $bill['os_commis_return_totals'];?></td>
-        <td class="align-center"><?php echo $bill['os_store_cost_totals'];?></td>
+        <td class="align-center"><?php echo $bill['os_clic_cost_totals'];?></td>
         <td class="align-center"><?php echo $bill['os_result_totals'];?></td>
         <td class="align-center">
         <a href="index.php?act=bill&op=show_statis&os_month=<?php echo $bill['os_month'];?>"><?php echo $lang['nc_view'];?></a>

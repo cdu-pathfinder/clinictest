@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#submit").click(function(){
@@ -54,17 +54,17 @@ $(document).ready(function(){
   <form id="add_form" method="post" action="index.php?act=cms_article_class&op=cms_article_class_save">
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="class_name"><?php echo $lang['class_name'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="class_name" id="class_name" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['class_name_error'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="class_sort" class="validation"><?php echo $lang['nc_sort'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="class_sort" name="class_sort" type="text" class="txt" value="255" /></td>
           <td class="vatop tips"><?php echo $lang['class_sort_explain'];?></td>
         </tr>

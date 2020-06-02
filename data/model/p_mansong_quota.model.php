@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class p_mansong_quotaModel extends Model{
 
     public function __construct(){
@@ -21,13 +21,13 @@ class p_mansong_quotaModel extends Model{
      * 读取满即送套餐列表
 	 * @param array $condition 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 所需字段
      * @return array 满即送套餐列表
 	 *
 	 */
-	public function getMansongQuotaList($condition, $page=null, $order='', $field='*') {
-        $result = $this->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getMansongQuotaList($condition, $page=null, $appointment='', $field='*') {
+        $result = $this->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         return $result;
 	}
 
@@ -43,13 +43,13 @@ class p_mansong_quotaModel extends Model{
 
     /**
      * 获取当前可用套餐
-	 * @param int $store_id
+	 * @param int $clic_id
      * @return array
      *
      */
-    public function getMansongQuotaCurrent($store_id) {
+    public function getMansongQuotaCurrent($clic_id) {
         $condition = array();
-        $condition['store_id'] = $store_id;
+        $condition['clic_id'] = $clic_id;
         $condition['end_time'] = array('gt', TIMESTAMP);
         $mansong_quota_list = $this->getMansongQuotaList($condition, null, 'end_time desc');
         $mansong_quota_info = $mansong_quota_list[0];

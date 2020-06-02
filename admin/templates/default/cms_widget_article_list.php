@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if(!empty($output['article_list']) && is_array($output['article_list'])){ ?>
 <div class="article-select-box">
     <div class="arrow"></div>

@@ -63,7 +63,7 @@ $.Jcrop = function(obj,opt)
 		// Styling Options
 		bgColor:			'black',
 		bgOpacity:			.6,
-		borderOpacity:		.4,
+		bappointmentOpacity:		.4,
 		handleOpacity:		.5,
 
 		handlePad:			5,
@@ -75,7 +75,7 @@ $.Jcrop = function(obj,opt)
 		keySupport:			true,
 		cornerHandles:		true,
 		sideHandles:		true,
-		drawBorders:		true,
+		drawBappointments:		true,
 		dragEdges:			true,
 
 		boxWidth:			0,
@@ -405,21 +405,21 @@ $.Jcrop = function(obj,opt)
 	var Selection = function()/*{{{*/
 	{
 		var start, end, dragmode, awake, hdep = 370;
-		var borders = { };
+		var bappointments = { };
 		var handle = { };
 		var seehandles = false;
 		var hhs = options.handleOffset;
 
 		/* Insert draggable elements {{{*/
 
-		// Insert border divs for outline
-		if (options.drawBorders) {
-			borders = {
-					top: insertBorder('hline')
+		// Insert bappointment divs for outline
+		if (options.drawBappointments) {
+			bappointments = {
+					top: insertBappointment('hline')
 						.css('top',$.browser.msie?px(-1):px(0)),
-					bottom: insertBorder('hline'),
-					left: insertBorder('vline'),
-					right: insertBorder('vline')
+					bottom: insertBappointment('hline'),
+					left: insertBappointment('vline'),
+					right: insertBappointment('vline')
 			};
 		}
 
@@ -441,10 +441,10 @@ $.Jcrop = function(obj,opt)
 
 		/*}}}*/
 		// Private Methods
-		function insertBorder(type)/*{{{*/
+		function insertBappointment(type)/*{{{*/
 		{
 			var jq = $('<div />')
-				.css({position: 'absolute', opacity: options.borderOpacity })
+				.css({position: 'absolute', opacity: options.bappointmentOpacity })
 				.addClass(cssClass(type));
 			$img_holder.append(jq);
 			return jq;
@@ -551,9 +551,9 @@ $.Jcrop = function(obj,opt)
 			resize(c.w,c.h);
 			moveto(c.x,c.y);
 
-			options.drawBorders &&
-				borders['right'].css({ left: px(c.w-1) }) &&
-					borders['bottom'].css({ top: px(c.h-1) });
+			options.drawBappointments &&
+				bappointments['right'].css({ left: px(c.w-1) }) &&
+					bappointments['bottom'].css({ top: px(c.h-1) });
 
 			seehandles && moveHandles(c);
 			awake || show();

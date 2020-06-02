@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -13,7 +13,7 @@
   <form method="post" name="formSearch">
     <input type="hidden" name="act" value="sns_strace">
     <input type="hidden" name="op" value="scomm_list">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_uname"><?php echo $lang['admin_snstrace_membername'];?></label></th>

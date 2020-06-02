@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class web_chatControl extends BaseControl {
 	public function __construct(){
@@ -131,7 +131,7 @@ class web_chatControl extends BaseControl {
 		$val = '';
 		$member = array();
 		$model_chat	= Model('web_chat');
-		$types = array('member_id','member_name','store_id','member');
+		$types = array('member_id','member_name','clic_id','member');
 		$key = $_GET['t'];
 		$member_id = intval($_GET['u_id']);
 		if(trim($key) != '' && in_array($key,$types)){

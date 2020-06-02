@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['promotion_unavailable'] = '商品促销功能尚未开启';
 
@@ -18,7 +18,7 @@ $lang['mansong_price'] = '满即送价格';
 $lang['mansong_price_explain'] = '购买单位为月(30天)，购买后卖家可以在所购买周期内发布满即送活动';
 $lang['mansong_price_error'] = '不能为空，且必须为大于0的正整数';
 
-$lang['store_name'] = '店铺名称';
+$lang['clic_name'] = '店铺名称';
 $lang['mansong_name'] = '活动名称';
 $lang['mansong_detail'] = '活动详情';
 $lang['start_time'] = '开始时间';

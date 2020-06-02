@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,17 +15,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="link_title"> <?php echo $lang['link_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="link_title" id="link_title" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['link_add_name'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="link_catetory"> 关键词:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <input type="text" name="link_keyword" id="link_keyword" class="txt" >
           </td>
@@ -34,7 +34,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="link_pic"><?php echo $lang['link_index_pic_sign'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
           <span class="type-file-box">
             <input type="file" name="link_pic" id="link_pic" class="type-file-file" size="30" >
@@ -45,7 +45,7 @@
         <tr>
           <td colspan="2" class="required"><label for="link_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="255" name="link_sort" id="link_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['link_add_sort_tip'];?></td>
         </tr>

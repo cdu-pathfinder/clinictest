@@ -3,7 +3,7 @@
  * 支付接口
  *
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 require_once("lib/alipay_submit.class.php");
 class alipay {
@@ -65,9 +65,9 @@ class alipay {
 		$this->notify_url		= MOBILE_SITE_URL.'/api/payment/alipay/notify_url.php';
 		$this->call_back_url	= MOBILE_SITE_URL.'/api/payment/alipay/call_back_url.php';
 		$this->seller_email		= $param['alipay_account'];
-		$this->out_trade_no		= $param['order_sn'];
-		$this->subject			= $param['order_sn'];
-		$this->total_fee		= $param['order_amount'];
+		$this->out_trade_no		= $param['appointment_sn'];
+		$this->subject			= $param['appointment_sn'];
+		$this->total_fee		= $param['appointment_amount'];
 		$this->alipay_config 	= array(
 			'partner' => $param['alipay_partner'],
 			'key' => $param['alipay_key'],

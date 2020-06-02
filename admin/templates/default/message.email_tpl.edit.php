@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -13,24 +13,24 @@
     <input type="hidden" name="code" value="<?php echo $output['templates_array']['code'];?>" />
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label> <?php echo $lang['nc_current_edit'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['templates_array']['name'];?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"> <?php echo $lang['mailtemplates_edit_title']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['templates_array']['title'];?>" name="title" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="link"><?php echo $lang['mailtemplates_edit_content']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2"><?php showEditor('content', $output['templates_array']['content']); ?></td>
         </tr>
       </tbody>

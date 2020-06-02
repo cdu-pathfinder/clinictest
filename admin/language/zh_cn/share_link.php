@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 分享链接 语言包
  */

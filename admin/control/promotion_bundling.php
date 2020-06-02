@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class promotion_bundlingControl extends SystemControl{
 
     public function __construct(){
@@ -57,8 +57,8 @@ class promotion_bundlingControl extends SystemControl{
         
         // 查询添加
         $where = array();
-        if ($_GET['store_name'] != '') {
-            $where['store_name'] = array('like', '%'. trim($_GET['store_name']) .'%');
+        if ($_GET['clic_name'] != '') {
+            $where['clic_name'] = array('like', '%'. trim($_GET['clic_name']) .'%');
         }
         if (is_numeric($_GET['state'])) {
             $where['bl_state'] = intval($_GET['state']);
@@ -88,8 +88,8 @@ class promotion_bundlingControl extends SystemControl{
         if ($_GET['bundling_name'] != '') {
             $where['bl_name'] = array('like', '%' . trim($_GET['bundling_name']) . '%');
         }
-        if ($_GET['store_name'] != '') {
-            $where['store_name'] = array('like', '%'. trim($_GET['store_name']) .'%');
+        if ($_GET['clic_name'] != '') {
+            $where['clic_name'] = array('like', '%'. trim($_GET['clic_name']) .'%');
         }
         if (is_numeric($_GET['state'])) {
             $where['bl_state'] = $_GET['state'];
@@ -99,11 +99,11 @@ class promotion_bundlingControl extends SystemControl{
         Tpl::output('show_page',$model_bundling->showpage(2));
         if (!empty($bundling_list)) {
             $blid_array = array_keys($bundling_list);
-            $bgoods_array = $model_bundling->getBundlingGoodsList(array('bl_id' => array('in', $blid_array)), 'bl_id,goods_id,count(*) as count', 'bl_appoint desc', 'bl_id');
-            $bgoods_array = array_under_reset($bgoods_array, 'bl_id');
+            $bdoctors_array = $model_bundling->getBundlingdoctorsList(array('bl_id' => array('in', $blid_array)), 'bl_id,doctors_id,count(*) as count', 'bl_appoint desc', 'bl_id');
+            $bdoctors_array = array_under_reset($bdoctors_array, 'bl_id');
             foreach ($bundling_list as $key => $val) {
-                $bundling_list[$key]['goods_id'] = $bgoods_array[$val['bl_id']]['goods_id'];
-                $bundling_list[$key]['count'] = $bgoods_array[$val['bl_id']]['count'];
+                $bundling_list[$key]['doctors_id'] = $bdoctors_array[$val['bl_id']]['doctors_id'];
+                $bundling_list[$key]['count'] = $bdoctors_array[$val['bl_id']]['count'];
             }
         }
         Tpl::output('list', $bundling_list);
@@ -128,7 +128,7 @@ class promotion_bundlingControl extends SystemControl{
 			$obj_validate->validateparam = array(
 				array("input"=>$_POST["promotion_bundling_price"], "require"=>"true", 'validator'=>'Number', "message"=>Language::get('bundling_price_error')),
 				array("input"=>$_POST["promotion_bundling_sum"], "require"=>"true", 'validator'=>'Number', "message"=>Language::get('bundling_sum_error')),
-				array("input"=>$_POST["promotion_bundling_goods_sum"], "require"=>"true", 'validator'=>'Number', "message"=>Language::get('bundling_goods_sum_error')),
+				array("input"=>$_POST["promotion_bundling_doctors_sum"], "require"=>"true", 'validator'=>'Number', "message"=>Language::get('bundling_doctors_sum_error')),
 			);
 			$error = $obj_validate->validate();
 			if ($error != ''){
@@ -137,7 +137,7 @@ class promotion_bundlingControl extends SystemControl{
 
 			$data['promotion_bundling_price']		= intval($_POST['promotion_bundling_price']);
 			$data['promotion_bundling_sum']			= intval($_POST['promotion_bundling_sum']);
-			$data['promotion_bundling_goods_sum']	= intval($_POST['promotion_bundling_goods_sum']);
+			$data['promotion_bundling_doctors_sum']	= intval($_POST['promotion_bundling_doctors_sum']);
 
 			$return = $model_setting->updateSetting($data);
 			if($return){

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class navigationModel {
 	/**
@@ -25,7 +25,7 @@ class navigationModel {
 		$param = array();
 		$param['table'] = 'navigation';
 		$param['where'] = $condition_str;
-		$param['order']	= $condition['order'] ? $condition['order'] : 'nav_id';
+		$param['appointment']	= $condition['appointment'] ? $condition['appointment'] : 'nav_id';
 		$result = Db::select($param,$page);
 		return $result;
 	}

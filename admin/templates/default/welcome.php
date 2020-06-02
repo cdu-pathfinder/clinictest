@@ -22,30 +22,30 @@
         </ul>
       </dd>
     </dl>
-    <dl class="shop">
+    <dl class="clinic">
       <dt>
-        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_count_store_add'];?>"><span><em id="statistics_store"></em></span></sub></div>
-        <h3><?php echo $lang['nc_store'];?></h3>
-        <h5><?php echo $lang['dashboard_wel_store_des'];?></h5>
+        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_count_clic_add'];?>"><span><em id="statistics_clic"></em></span></sub></div>
+        <h3><?php echo $lang['nc_clic'];?></h3>
+        <h5><?php echo $lang['dashboard_wel_clic_des'];?></h5>
       </dt>
       <dd>
         <ul>
-          <li class="w33pre none"><a href="index.php?act=store&op=store_joinin">clinic view<sub><em id="statistics_store_joinin">0</em></sub></a></li>
-          <li class="w33pre none"><a href="index.php?act=store&op=store&store_type=expired"><?php echo $lang['dashboard_wel_expired'];?><sub><em id="statistics_store_expired">0</em></sub></a></li>
-          <li class="w34pre none"><a href="index.php?act=store&op=store&store_type=expire"><?php echo $lang['dashboard_wel_expire'];?><sub><em id="statistics_store_expire">0</em></sub></a></li>
+          <li class="w33pre none"><a href="index.php?act=clic&op=clic_joinin">clinic view<sub><em id="statistics_clic_joinin">0</em></sub></a></li>
+          <li class="w33pre none"><a href="index.php?act=clic&op=clic&clic_type=expired"><?php echo $lang['dashboard_wel_expired'];?><sub><em id="statistics_clic_expired">0</em></sub></a></li>
+          <li class="w34pre none"><a href="index.php?act=clic&op=clic&clic_type=expire"><?php echo $lang['dashboard_wel_expire'];?><sub><em id="statistics_clic_expire">0</em></sub></a></li>
         </ul>
       </dd>
     </dl>
-    <dl class="goods">
+    <dl class="doctors">
       <dt>
-        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_total_goods'];?>"><span><em id="statistics_goods"></em></span></sub></div>
-        <h3><?php echo $lang['nc_goods'];?></h3>
-        <h5><?php echo $lang['dashboard_wel_goods_des'];?></h5>
+        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_total_doctors'];?>"><span><em id="statistics_doctors"></em></span></sub></div>
+        <h3><?php echo $lang['nc_doctors'];?></h3>
+        <h5><?php echo $lang['dashboard_wel_doctors_des'];?></h5>
       </dt>
       <dd>
         <ul>
-          <li class="w33pre normal"><a href="index.php?act=goods&op=goods"><?php echo $lang['dashboard_wel_new_add'];?><sub title="<?php echo $lang['dashboard_wel_count_goods'];?>"><em id="statistics_week_add_product"></em></sub></a></li>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('goods','goods',array('type'=>'waitverify', 'search_verify' => 10));?>">doctor view<sub><em id="statistics_product_verify">0</em></sub></a></li>
+          <li class="w33pre normal"><a href="index.php?act=doctors&op=doctors"><?php echo $lang['dashboard_wel_new_add'];?><sub title="<?php echo $lang['dashboard_wel_count_doctors'];?>"><em id="statistics_week_add_doc"></em></sub></a></li>
+          <li class="w33pre none"><a href="<?php echo urlAdmin('doctors','doctors',array('type'=>'waitverify', 'search_verify' => 10));?>">doctor view<sub><em id="statistics_doc_verify">0</em></sub></a></li>
           <li class="w33pre none"><a href="index.php?act=inform&op=inform_list"><?php echo $lang['dashboard_wel_inform'];?><sub><em id="statistics_inform_list">0</em></sub></a></li>
           <!-- <li class="w25pre none"><a href="index.php?act=brand&op=brand_apply"><?php echo $lang['dashboard_wel_brnad_applay'];?><sub><em id="statistics_brand_apply">0</em></sub></a></li> -->
         </ul>
@@ -53,7 +53,7 @@
     </dl>
     <dl class="trade">
       <dt>
-        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_total_order'];?>"><span><em id="statistics_order"></em></span></sub></div>
+        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_total_appointment'];?>"><span><em id="statistics_appointment"></em></span></sub></div>
         <h3><?php echo $lang['nc_trade'];?></h3>
         <h5><?php echo $lang['dashboard_wel_trade_des'];?></h5>
       </dt>
@@ -75,9 +75,9 @@
       <dd>
         <ul>
           <li class="w25pre none"><a href="index.php?act=groupbuy&op=groupbuy_verify_list"><?php echo $lang['dashboard_wel_groupbuy'];?><sub><em id="statistics_groupbuy_verify_list">0</em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=pointorder&op=pointorder_list"><?php echo $lang['dashboard_wel_point_order'];?><sub><em id="statistics_points_order">0</em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=bill&op=show_statis&os_month=&query_store=&bill_state=2"><?php echo $lang['dashboard_wel_check_billno'];?><sub><em id="statistics_check_billno">0</em></sub></a></li>
-          <li class="w25pre none"><a href="index.php?act=bill&op=show_statis&os_month=&query_store=&bill_state=3"><?php echo $lang['dashboard_wel_pay_billno'];?><sub><em id="statistics_pay_billno">0</em></sub></a></li>
+          <li class="w25pre none"><a href="index.php?act=pointappointment&op=pointappointment_list"><?php echo $lang['dashboard_wel_point_appointment'];?><sub><em id="statistics_points_appointment">0</em></sub></a></li>
+          <li class="w25pre none"><a href="index.php?act=bill&op=show_statis&os_month=&query_clic=&bill_state=2"><?php echo $lang['dashboard_wel_check_billno'];?><sub><em id="statistics_check_billno">0</em></sub></a></li>
+          <li class="w25pre none"><a href="index.php?act=bill&op=show_statis&os_month=&query_clic=&bill_state=3"><?php echo $lang['dashboard_wel_pay_billno'];?><sub><em id="statistics_pay_billno">0</em></sub></a></li>
         </ul>
       </dd>
     </dl> -->
@@ -113,8 +113,8 @@
       </dd>
     </dl>
     <?php }?> -->
-    <!-- <?php if (C('microshop_isuse') != null){?>
-    <dl class="microshop">
+    <!-- <?php if (C('microclinic_isuse') != null){?>
+    <dl class="microclinic">
       <dt>
         <div class="ico"><i></i></div>
         <h3>微商城</h3>
@@ -122,7 +122,7 @@
       </dt>
       <dd>
         <ul>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('microshop', 'goods_manage');?>">随心看</a></li>
+          <li class="w33pre none"><a href="<?php echo urlAdmin('microclinic', 'doctors_manage');?>">随心看</a></li>
           <li class="w33pre none"><a href="<?php echo urlAdmin('circle_theme', 'theme_list');?>">个人秀</a></li>
           <li class="w34pre none"><a href="<?php echo urlAdmin('circle_inform', 'inform_list');?>">店铺街</a></li>
         </ul>
@@ -135,7 +135,7 @@
         <h3><?php echo $lang['dashboard_welcome_sys_info'];?></h3>
         <div id="system-info">
           <ul>
-            <li>ClinicSys <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['shop_version'];?></span></li>
+            <li>ClinicSys <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['clinic_version'];?></span></li>
             <!-- <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_server_os'];?><span><?php echo $output['statistics']['os'];?></span></li>
             <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li> -->
@@ -146,8 +146,8 @@
       </dt>
       <!-- <dd>
         <ul>
-          <li class="w50pre none"><a href="http://www.shopnc.net" target="_blank">官方网站<sub></sub></a></li>
-          <li class="w50pre none"><a href="http://bbs.shopnc.net" target="_blank">官方论坛<sub></sub></a></li>
+          <li class="w50pre none"><a href="http://www.clinicnc.net" target="_blank">官方网站<sub></sub></a></li>
+          <li class="w50pre none"><a href="http://bbs.clinicnc.net" target="_blank">官方论坛<sub></sub></a></li>
         </ul>
       </dd> -->
     </dl>
@@ -155,8 +155,8 @@
   </div>
 </div>
 <script type="text/javascript">
-var normal = ['week_add_member','week_add_product'];
-var work = ['store_joinin','store_expired','store_expire','brand_apply','cashlist','groupbuy_verify_list','points_order','complain_new_list','complain_handle_list', 'product_verify','inform_list','refund','return','cms_article_verify','cms_picture_verify','circle_verify','check_billno','pay_billno'];
+var normal = ['week_add_member','week_add_doc'];
+var work = ['clic_joinin','clic_expired','clic_expire','brand_apply','cashlist','groupbuy_verify_list','points_appointment','complain_new_list','complain_handle_list', 'doc_verify','inform_list','refund','return','cms_article_verify','cms_picture_verify','circle_verify','check_billno','pay_billno'];
 $(document).ready(function(){
 	$.getJSON("index.php?act=dashboard&op=statistics", function(data){
 	  $.each(data, function(k,v){
@@ -172,4 +172,4 @@ $(document).ready(function(){
 	$('#system-info').perfectScrollbar();
 });
 </script>
-<script type="text/javascript" charset="utf-8" src="http://www.shopnc.net/update/update2014.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://www.clinicnc.net/update/update2014.js"></script>

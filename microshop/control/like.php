@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class likeControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class likeControl extends MircroclinicControl{
 
 	public function __construct() {
         parent::__construct();
@@ -23,7 +23,7 @@ class likeControl extends MircroShopControl{
 
         $data = array();
         $data['result'] = 'true';
-        $data['message'] = Language::get('microshop_like_success');
+        $data['message'] = Language::get('microclinic_like_success');
         $like_id = intval($_GET['like_id']);
         $like_type = self::get_channel_type($_GET['type']);
         if($like_id <= 0 || empty($like_type)) {
@@ -60,7 +60,7 @@ class likeControl extends MircroShopControl{
                 }
             } else {
                 $data['result'] = 'false';
-                $data['message'] = Language::get('microshop_like_fail');
+                $data['message'] = Language::get('microclinic_like_fail');
             }
         } else {
             $data['result'] = 'false';

@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class indexControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class indexControl extends MircroclinicControl{
 
 	public function __construct() {
 		parent::__construct();
@@ -19,7 +19,7 @@ class indexControl extends MircroShopControl{
 	public function indexOp(){
 
         //首页幻灯
-        self::get_microshop_adv('index');
+        self::get_microclinic_adv('index');
 
         //用户信息
         $model_member = Model('member');
@@ -31,10 +31,10 @@ class indexControl extends MircroShopControl{
         $micro_member_info = $model_micro_member_info->getOneById($_SESSION['member_id']);
         if(empty($micro_member_info)) {
             $member_info['personal_count'] = 0;
-            $member_info['goods_count'] = 0;
+            $member_info['doctors_count'] = 0;
         } else {
             $member_info['personal_count'] = $micro_member_info['personal_count'];
-            $member_info['goods_count'] = $micro_member_info['goods_count'];
+            $member_info['doctors_count'] = $micro_member_info['doctors_count'];
         }
         Tpl::output('member_info',$member_info);
 
@@ -61,48 +61,48 @@ class indexControl extends MircroShopControl{
 
         //首页推荐个人秀
         $condition_personal = array();
-        $condition_personal['microshop_commend'] = 1;
+        $condition_personal['microclinic_commend'] = 1;
         $model_micro_personal = Model('micro_personal');
         $personal_list = $model_micro_personal->getListWithUserInfo($condition_personal,null,'','*',8);
         Tpl::output('personal_list',$personal_list);
 
         //首页推荐随心看
-        $model_micro_goods = Model('micro_goods');
-        $model_goods_class = Model('micro_goods_class');
+        $model_micro_doctors = Model('micro_doctors');
+        $model_doctors_class = Model('micro_doctors_class');
         //取分类
-        $goods_class_list = $model_goods_class->getList(TRUE,NULL,'class_sort asc');
-        $goods_class_root = array();
-        $goods_class_menu = array();
-        $goods_class_root_children = array();
-        $goods_list = array();
-        if(!empty($goods_class_list)) {
-            foreach($goods_class_list as $val) {
+        $doctors_class_list = $model_doctors_class->getList(TRUE,NULL,'class_sort asc');
+        $doctors_class_root = array();
+        $doctors_class_menu = array();
+        $doctors_class_root_children = array();
+        $doctors_list = array();
+        if(!empty($doctors_class_list)) {
+            foreach($doctors_class_list as $val) {
                 if($val['class_parent_id'] == 0 && $val['class_commend'] == 1) {
-                    $goods_class_root[] = $val;
+                    $doctors_class_root[] = $val;
                 } else {
-                    $goods_class_menu[$val['class_parent_id']][] = $val;
-                    $goods_class_root_children[$val['class_parent_id']] .= $val['class_id'].',';
+                    $doctors_class_menu[$val['class_parent_id']][] = $val;
+                    $doctors_class_root_children[$val['class_parent_id']] .= $val['class_id'].',';
                 }
             }
         }
         //取分类下推荐商品
-        foreach ($goods_class_root as $value) {
-            $condition_goods = array();
-            $condition_goods['microshop_commend'] = 1;
-            $condition_goods['class_id'] = array('in',rtrim($goods_class_root_children[$value['class_id']],','));
-            $goods_list[$value['class_id']] = $model_micro_goods->getListWithUserInfo($condition_goods,null,'','*',6);
+        foreach ($doctors_class_root as $value) {
+            $condition_doctors = array();
+            $condition_doctors['microclinic_commend'] = 1;
+            $condition_doctors['class_id'] = array('in',rtrim($doctors_class_root_children[$value['class_id']],','));
+            $doctors_list[$value['class_id']] = $model_micro_doctors->getListWithUserInfo($condition_doctors,null,'','*',6);
         }
-        Tpl::output('goods_class_root',$goods_class_root);
-        Tpl::output('goods_class_menu',$goods_class_menu);
-        Tpl::output('goods_list',$goods_list);
+        Tpl::output('doctors_class_root',$doctors_class_root);
+        Tpl::output('doctors_class_menu',$doctors_class_menu);
+        Tpl::output('doctors_list',$doctors_list);
 
         //首页推荐店铺
-        $condition_store = array();
-        $condition_store['microshop_commend'] = 1;
-        $model_micro_store = Model('micro_store');
-        $model_store = Model('store');
-        $store_list = $model_micro_store->getListWithStoreInfo($condition_personal,null,'like_count desc,click_count desc','*',15);
-        Tpl::output('store_list',$store_list);
+        $condition_clic = array();
+        $condition_clic['microclinic_commend'] = 1;
+        $model_micro_clic = Model('micro_clic');
+        $model_clic = Model('clic');
+        $clic_list = $model_micro_clic->getListWithclicInfo($condition_personal,null,'like_count desc,click_count desc','*',15);
+        Tpl::output('clic_list',$clic_list);
 
 		Tpl::showpage('index');
 	}

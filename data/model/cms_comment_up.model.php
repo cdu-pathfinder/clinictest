@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_comment_upModel extends Model{
 
     public function __construct(){
@@ -22,8 +22,8 @@ class cms_comment_upModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-	public function getList($condition,$page='',$order='',$field='*'){
-        $result = $this->table('cms_comment_up')->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getList($condition,$page='',$appointment='',$field='*'){
+        $result = $this->table('cms_comment_up')->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         return $result;
 	}
 

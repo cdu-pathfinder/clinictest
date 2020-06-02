@@ -241,7 +241,7 @@ $(document).ready(function(){
     //给每个可编辑的小图片的父元素添加可编辑标题 $('img[nc_type="inline_edit"]').parent().attr('title','可编辑');
    
     //给列表有排序行为的列添加鼠标手型效果
-    $('span[nc_type="order_by"]').hover(function(){$(this).css({cursor:'pointer'});},function(){});
+    $('span[nc_type="appointment_by"]').hover(function(){$(this).css({cursor:'pointer'});},function(){});
 	
 });
 //检查提交内容的必须项
@@ -331,7 +331,7 @@ function check_max(str,s_value,max,jqobj)
 
 //新的inline_edit调用方法
 //javacript
-//$('span[nc_type="class_sort"]').inline_edit({act: 'microshop',op: 'update_class_sort'});
+//$('span[nc_type="class_sort"]').inline_edit({act: 'microclinic',op: 'update_class_sort'});
 //html
 //<span nc_type="class_sort" column_id="<?php echo $val['class_id'];?>" title="<?php echo $lang['nc_editable'];?>" class="editable tooltip"><?php echo $val['class_sort'];?></span>
 //php 

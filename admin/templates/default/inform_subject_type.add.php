@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,17 +17,17 @@
   <form id="add_form" method="post" enctype="multipart/form-data" action="index.php?act=inform&op=inform_subject_type_save" name="form1">
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['inform_type'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="inform_type_name" name="inform_type_name" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['inform_type_desc'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="inform_type_desc" rows="6" id="inform_type_desc" class="tarea"></textarea></td>
           <td class="vatop tips"></td>
         </tr>
@@ -42,8 +42,8 @@
 <script type="text/javascript">
 //按钮先执行验证再提交表单
 $(function(){$("#submitBtn").click(function(){
-    if($("#goods_class_form").valid()){
-     $("#goods_class_form").submit();
+    if($("#doctors_class_form").valid()){
+     $("#doctors_class_form").submit();
 	}
 	});
 });

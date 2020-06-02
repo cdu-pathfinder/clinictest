@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class promotion_boothControl extends SystemControl{
     public function __construct(){
         parent::__construct();
@@ -41,31 +41,31 @@ class promotion_boothControl extends SystemControl{
             $update_array['promotion_allow'] = 1;
             $model_setting->updateSetting($update_array);
         }
-        $this->goods_listOp();
+        $this->doctors_listOp();
     }
     
-    public function goods_listOp() {
+    public function doctors_listOp() {
         // 商品分类
-        $goods_class = Model('goods_class')->getTreeClassList(1);
-        Tpl::output('goods_class', $goods_class);
+        $doctors_class = Model('doctors_class')->getTreeClassList(1);
+        Tpl::output('doctors_class', $doctors_class);
         
         $model_booth = Model('p_booth');
         $where = array();
         if (intval($_GET['cate_id']) > 0) {
             $where['gc_id'] = intval($_GET['cate_id']);
         }
-        $goods_list = $model_booth->getBoothGoodsList($where, 'goods_id', 10);
-        if (!empty($goods_list)) {
-            $goodsid_array = array();
-            foreach ($goods_list as $val) {
-                $goodsid_array[] = $val['goods_id'];
+        $doctors_list = $model_booth->getBoothdoctorsList($where, 'doctors_id', 10);
+        if (!empty($doctors_list)) {
+            $doctorsid_array = array();
+            foreach ($doctors_list as $val) {
+                $doctorsid_array[] = $val['doctors_id'];
             }
-            $goods_list = Model('goods')->getGoodsList(array('goods_id' => array('in', $goodsid_array)));
+            $doctors_list = Model('doctors')->getdoctorsList(array('doctors_id' => array('in', $doctorsid_array)));
         }
-        Tpl::output('gc_list', H('goods_class') ? H('goods_class') : H('goods_class', true));
-        Tpl::output('goods_list', $goods_list);
+        Tpl::output('gc_list', H('doctors_class') ? H('doctors_class') : H('doctors_class', true));
+        Tpl::output('doctors_list', $doctors_list);
         Tpl::output('show_page', $model_booth->showpage(2));
-        Tpl::showpage('promotion_booth_goods.list');
+        Tpl::showpage('promotion_booth_doctors.list');
     }
     
     /**
@@ -74,8 +74,8 @@ class promotion_boothControl extends SystemControl{
     public function booth_quota_listOp() {
         $model_booth = Model('p_booth');
         $where = array();
-        if ($_GET['store_name'] != '') {
-            $where['store_name'] = array('like', '%'.trim($_GET['store_name']).'%');
+        if ($_GET['clic_name'] != '') {
+            $where['clic_name'] = array('like', '%'.trim($_GET['clic_name']).'%');
         }
         $booth_list = $model_booth->getBoothQuotaList($where, '*', 10);
 
@@ -91,23 +91,23 @@ class promotion_boothControl extends SystemControl{
     /**
      * 删除推荐商品
      */
-    public function del_goodsOp() {
+    public function del_doctorsOp() {
         $where = array();
         // 验证id是否正确
-        if (is_array($_POST['goods_id'])) {
-            foreach ($_POST['goods_id'] as $val) {
+        if (is_array($_POST['doctors_id'])) {
+            foreach ($_POST['doctors_id'] as $val) {
                 if (!is_numeric($val)) {
                     showDialog(L('nc_common_del_fail'));
                 }
             }
-            $where['goods_id'] = array('in', $_POST['goods_id']);
-        } elseif(intval($_GET['goods_id']) >= 0) {
-            $where['goods_id'] = intval($_GET['goods_id']);
+            $where['doctors_id'] = array('in', $_POST['doctors_id']);
+        } elseif(intval($_GET['doctors_id']) >= 0) {
+            $where['doctors_id'] = intval($_GET['doctors_id']);
         } else {
             showDialog(L('nc_common_del_fail'));
         }
         
-        $rs = Model('p_booth')->delBoothGoods($where);
+        $rs = Model('p_booth')->delBoothdoctors($where);
         if ($rs) {
             showDialog(L('nc_common_del_succ'), 'reload', 'succ');
         } else {
@@ -127,7 +127,7 @@ class promotion_boothControl extends SystemControl{
             $obj_validate = new Validate();
             $obj_validate->validateparam = array(
                 array("input"=>$_POST["promotion_booth_price"], "require"=>"true", 'validator'=>'Number', "message"=>'请填写展位价格'),
-                array("input"=>$_POST["promotion_booth_goods_sum"], "require"=>"true", 'validator'=>'Number', "message"=>'不能为空，且不小于1的整数'),
+                array("input"=>$_POST["promotion_booth_doctors_sum"], "require"=>"true", 'validator'=>'Number', "message"=>'不能为空，且不小于1的整数'),
             );
             $error = $obj_validate->validate();
             if ($error != ''){
@@ -135,7 +135,7 @@ class promotion_boothControl extends SystemControl{
             }
         
             $data['promotion_booth_price'] = intval($_POST['promotion_booth_price']);
-            $data['promotion_booth_goods_sum'] = intval($_POST['promotion_booth_goods_sum']);
+            $data['promotion_booth_doctors_sum'] = intval($_POST['promotion_booth_doctors_sum']);
         
             $return = $model_setting->updateSetting($data);
             if($return){

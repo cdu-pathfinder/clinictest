@@ -104,71 +104,71 @@
     });
 
     //添加商品按钮文字
-    $("[name='goods_search_type']").click(function(){
-        var search_type = $("[name='goods_search_type']:checked").val();
-        if(search_type == 'goods_url') {
-            $("#btn_goods_search").val("添加");
+    $("[name='doctors_search_type']").click(function(){
+        var search_type = $("[name='doctors_search_type']:checked").val();
+        if(search_type == 'doctors_url') {
+            $("#btn_doctors_search").val("添加");
         } else {
-            $("#btn_goods_search").val("搜索");
+            $("#btn_doctors_search").val("搜索");
         }
     });
 
     //商品搜索
-    $("#btn_goods_search").click(function(){
-        if($("#article_goods_list li").length < 3) { 
-            var search_type = $("[name='goods_search_type']:checked").val();
-            var search_keyword = $("#goods_search_keyword").val();
-            $("#goods_search_keyword").val("");
+    $("#btn_doctors_search").click(function(){
+        if($("#article_doctors_list li").length < 3) { 
+            var search_type = $("[name='doctors_search_type']:checked").val();
+            var search_keyword = $("#doctors_search_keyword").val();
+            $("#doctors_search_keyword").val("");
             if(search_keyword != "") {
-                if(search_type == "goods_url") {
+                if(search_type == "doctors_url") {
                     var url = encodeURIComponent(search_keyword);
-                    $.getJSON("index.php?act=api&op=goods_info_by_url", { url: url}, function(data){
+                    $.getJSON("index.php?act=api&op=doctors_info_by_url", { url: url}, function(data){
                         if(data.result == "true") {
-                            var temp = '<li nctype="btn_goods_select"><dl>'; 
+                            var temp = '<li nctype="btn_doctors_select"><dl>'; 
                             temp += '<dt class="name"><a href="'+data.url+'" target="_blank">'+data.title+'</a></dt>';
                             temp += '<dd class="image"><img title="'+data.title+'" src="'+data.image+'" /></dd>';
                             temp += '<dd class="price">价格：<em>'+data.price+'</em></dd>';
                             temp += '</dl><i>选择删除相关商品</i>';
-                            temp += '<input name="article_goods_url[]" value="'+data.url+'" type="hidden" />';
-                            temp += '<input name="article_goods_title[]" value="'+data.title+'" type="hidden" />';
-                            temp += '<input name="article_goods_image[]" value="'+data.image+'" type="hidden" />';
-                            temp += '<input name="article_goods_price[]" value="'+data.price+'" type="hidden" />';
-                            temp += '<input name="article_goods_type[]" value="'+data.type+'" type="hidden" />';
+                            temp += '<input name="article_doctors_url[]" value="'+data.url+'" type="hidden" />';
+                            temp += '<input name="article_doctors_title[]" value="'+data.title+'" type="hidden" />';
+                            temp += '<input name="article_doctors_image[]" value="'+data.image+'" type="hidden" />';
+                            temp += '<input name="article_doctors_price[]" value="'+data.price+'" type="hidden" />';
+                            temp += '<input name="article_doctors_type[]" value="'+data.type+'" type="hidden" />';
                             temp += '</li>';
-                            $("#article_goods_list").append(temp);
+                            $("#article_doctors_list").append(temp);
                         } else {
                             alert(data.message);
                         }
                     });
                 } else {
-                    $("#div_goods_select").load("index.php?act=api&op=goods_list&search_type="+search_type+"&search_keyword="+search_keyword);
+                    $("#div_doctors_select").load("index.php?act=api&op=doctors_list&search_type="+search_type+"&search_keyword="+search_keyword);
                 }
             }
         }
     });
 
     //商品选择翻页
-    $("#div_goods_select .demo").live('click',function(e){
-        $("#div_goods_select").load($(this).attr('href'));
+    $("#div_doctors_select .demo").live('click',function(e){
+        $("#div_doctors_select").load($(this).attr('href'));
         return false;
     });
 
     //商品添加
-    $("#goods_search_list [nctype='btn_goods_select']").live("click",function(){
-        if($("#article_goods_list li").length < 3) { 
-            var temp = '<li nctype="btn_goods_select">'+$(this).html();
-            temp += '<input name="article_goods_url[]" value="'+$(this).attr("goods_url")+'" type="hidden" />';
-            temp += '<input name="article_goods_title[]" value="'+$(this).attr("goods_title")+'" type="hidden" />';
-            temp += '<input name="article_goods_image[]" value="'+$(this).attr("goods_image")+'" type="hidden" />';
-            temp += '<input name="article_goods_price[]" value="'+$(this).attr("goods_price")+'" type="hidden" />';
-            temp += '<input name="article_goods_type[]" value="'+$(this).attr("goods_type")+'" type="hidden" />';
+    $("#doctors_search_list [nctype='btn_doctors_select']").live("click",function(){
+        if($("#article_doctors_list li").length < 3) { 
+            var temp = '<li nctype="btn_doctors_select">'+$(this).html();
+            temp += '<input name="article_doctors_url[]" value="'+$(this).attr("doctors_url")+'" type="hidden" />';
+            temp += '<input name="article_doctors_title[]" value="'+$(this).attr("doctors_title")+'" type="hidden" />';
+            temp += '<input name="article_doctors_image[]" value="'+$(this).attr("doctors_image")+'" type="hidden" />';
+            temp += '<input name="article_doctors_price[]" value="'+$(this).attr("doctors_price")+'" type="hidden" />';
+            temp += '<input name="article_doctors_type[]" value="'+$(this).attr("doctors_type")+'" type="hidden" />';
             temp += '</li>';
-            $("#article_goods_list").append(temp);
+            $("#article_doctors_list").append(temp);
         }
     });
 
     //商品删除
-    $("#article_goods_list [nctype='btn_goods_select']").live("click",function(){
+    $("#article_doctors_list [nctype='btn_doctors_select']").live("click",function(){
         $(this).remove();
     });
 

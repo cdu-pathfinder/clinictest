@@ -5,7 +5,7 @@
 .header-wrap h2{height: 50px;line-height: 50px;font-size: 16px;color: #fff;text-align: center;}
 .i-main-opera{position: absolute;top: 8px;right: 7px;width: 37px;height: 37px;}
 .i-main-opera span{width: 36px;height: 36px;background-position: 0px 0px;}
-.main-opera-pannel{border-bottom:1px solid #d0cece;background-color: #fff;display:none;}
+.main-opera-pannel{bappointment-bottom:1px solid #d0cece;background-color: #fff;display:none;}
 .main-op-table{display: table;width: 100%;}
 .main-op-table .quarter{width: 25%;padding: 9px 0px;display: table-cell;font-size: 12px;text-align: center;}
 .main-op-warp .quarter span{width: 40px;height: 40px;}
@@ -20,12 +20,12 @@
 .main-op-warp .quarter p{color: #666666;font-size: 14px;}
 .main-op-warp .quarter.current p{color: #D9434E;}
 
-.input-30,.input-40{vertical-align: middle;font-size: 12px;-webkit-appearance:none;text-indent: 10px;width:100%;border:1px solid #9f9f9f;}
+.input-30,.input-40{vertical-align: middle;font-size: 12px;-webkit-appearance:none;text-indent: 10px;width:100%;bappointment:1px solid #9f9f9f;}
 .input-30{height: 30px;line-height: 30px\9;}
 .input-40{height: 40px;line-height: 40px\9;}
-.select-30{text-indent: 10px;width:100%;border:1px solid #9f9f9f;}
+.select-30{text-indent: 10px;width:100%;bappointment:1px solid #9f9f9f;}
 .select-30{height: 30px;}
-.normal-textarea{border:1px solid #9f9f9f;}
+.normal-textarea{bappointment:1px solid #9f9f9f;}
 /*login*/
 .login-form{padding: 10px;}
 .login-form span{display: block;margin-top: 15px;}
@@ -34,78 +34,78 @@
 
 .member-body .header-back{display: none;}
 .m-top,.m-center{padding: 10px;background: #f5f5f5;}
-.m-avatar{width: 100px;height: 100px;overflow: hidden;text-align: center;border:1px solid #999;background: #fff;}
+.m-avatar{width: 100px;height: 100px;overflow: hidden;text-align: center;bappointment:1px solid #999;background: #fff;}
 .m-avatar img{width: 100px;height: 100px;}
 .m-infor{margin-left: 10px;}
 .m-jifen,.m-yue{display:inline-block;padding: 5px 15px;background:#fff;float: left;text-align: center;}
 .m-jifen span,.m-yue span{display:block;}
 
 .mc-cnt{background: #fff;padding: 10px;}
-.mc-cnt li{border-bottom: 1px solid #ded6c9;}
+.mc-cnt li{bappointment-bottom: 1px solid #ded6c9;}
 .mc-cnt a{color: #6d6d6d;padding:8px;display: block;position: relative;}
 .mc-cnt li a .grayrightarrow{position: absolute;z-index: 2;top: 18px;right: 0px;}
 
-.favorites-list,.address-list,.order-list,.order-detail,.views-list{padding: 10px;}
-.favorites-list li,.views-list li{border-bottom: 1px solid #e8e5e5;padding: 5px 0px;}
+.favorites-list,.address-list,.appointment-list,.appointment-detail,.views-list{padding: 10px;}
+.favorites-list li,.views-list li{bappointment-bottom: 1px solid #e8e5e5;padding: 5px 0px;}
 .mf-item{color: #6d6d6d;display: block;}
-.mf-pic,.order-pdpic{float: left;width: 100px;height: 100px;overflow: hidden;display: block;}
-.mf-pic img,.order-pdpic img{width: 100px;height: 100px;}
-.mf-infor,.order-pdinfor{margin-left: 110px;position: relative;}
+.mf-pic,.appointment-pdpic{float: left;width: 100px;height: 100px;overflow: hidden;display: block;}
+.mf-pic img,.appointment-pdpic img{width: 100px;height: 100px;}
+.mf-infor,.appointment-pdinfor{margin-left: 110px;position: relative;}
 .mf-pd-price{color: #D9434E;padding: 8px 0px;}
 .mf-pd-comment{color: #909090;}
 .mf-infor .i-del{position: absolute;bottom: 0px;right: 0px;}
 
-.order-ldetail{display: block;color: #6d6d6d;}
+.appointment-ldetail{display: block;color: #6d6d6d;}
 
-.address-list li,.order-detail li{border:1px solid #999;margin-top: 10px;}
+.address-list li,.appointment-detail li{bappointment:1px solid #999;margin-top: 10px;}
 .madrt-phone,.madrt-type{color: #D9434E;}
-.madr-tlt,.madr-cnt,.order-ltlt,.order-dtlt,.order-dcnt{padding: 10px;}
-.madr-cnt,.order-dcnt{border-top:1px solid #999;}
+.madr-tlt,.madr-cnt,.appointment-ltlt,.appointment-dtlt,.appointment-dcnt{padding: 10px;}
+.madr-cnt,.appointment-dcnt{bappointment-top:1px solid #999;}
 .madrc-opera{text-align: right;}
 .madrc-opera a{color: #000;}
 .add_address{display: block;height: 40px;line-height: 40px;color: #fff;text-align: center;width: 100%;background:#D9434E;}
-.address-opera{margin: 10px;padding:10px;border:1px solid #999;}
+.address-opera{margin: 10px;padding:10px;bappointment:1px solid #999;}
 .address-ocnt p,.address-ocnt div.new-select-wp{padding: 5px 0px 5px 30px;}
-.address-ocnt .address-octlt{padding-left:10px;margin:10px 0px;border-left: 3px solid #D9434E; }
+.address-ocnt .address-octlt{padding-left:10px;margin:10px 0px;bappointment-left: 3px solid #D9434E; }
 
-/*order*/
-.order-ldetail{display: block;color: #6d6d6d;margin:0px 10px;padding:10px 0px;}
+/*appointment*/
+.appointment-ldetail{display: block;color: #6d6d6d;margin:0px 10px;padding:10px 0px;}
 
-.order-lcnt{font-size:14px;}
-.order-ltlt,.order-lcnt-shop{padding:8px 10px;}
-.order-lcnt-shop p{padding:3px 0px;}
+.appointment-lcnt{font-size:14px;}
+.appointment-ltlt,.appointment-lcnt-clinic{padding:8px 10px;}
+.appointment-lcnt-clinic p{padding:3px 0px;}
 
-.order-list li.green-order-skin{border:solid 1px #D6E9C6;}
-.green-order-skin .order-ltlt{background:#6cb248;color:#fff;}
-.green-order-skin .order-lcnt{border-top:solid 1px #D6E9C6;}
-.green-order-skin .order-lcnt-shop{border-bottom:solid 1px #D6E9C6;/*background:#D6E9C6;*/}
+.appointment-list li.green-appointment-skin{bappointment:solid 1px #D6E9C6;}
+.green-appointment-skin .appointment-ltlt{background:#6cb248;color:#fff;}
+.green-appointment-skin .appointment-lcnt{bappointment-top:solid 1px #D6E9C6;}
+.green-appointment-skin .appointment-lcnt-clinic{bappointment-bottom:solid 1px #D6E9C6;/*background:#D6E9C6;*/}
 
-.order-list li.gray-order-skin{border:solid 1px #ccc;}
-.gray-order-skin .order-ltlt{background:#999;color:#fff;}
-.gray-order-skin .order-lcnt{border-top:solid 1px #ccc;}
-.gray-order-skin .order-lcnt-shop{border-bottom:solid 1px #ccc;/*background:#ccc;*/}
+.appointment-list li.gray-appointment-skin{bappointment:solid 1px #ccc;}
+.gray-appointment-skin .appointment-ltlt{background:#999;color:#fff;}
+.gray-appointment-skin .appointment-lcnt{bappointment-top:solid 1px #ccc;}
+.gray-appointment-skin .appointment-lcnt-clinic{bappointment-bottom:solid 1px #ccc;/*background:#ccc;*/}
 
 .ot-finish,.ot-nofinish,.ot-cancel{padding: 5px 10px;color: #fff;}
 .ot-finish{background: #D9434E;}
 .ot-nofinish{background:#6cb248;}
 .ot-cancel{background:#999;}
 
-.order-pdinfor{position: relative;margin-left:70px;}
-.order-d-pdinfor p,.order-pay-type p{padding: 3px 0px;font-size: 14px;}
-.order-pdinfor .grayrightarrow{position: absolute;right: 10px;top: 50%;}
-.order-pdpic{float:left;width:60px;height:60px;overflow:hidden;}
-.order-pdpic,.order-pdpic img{width:60px;height:60px;}
-.order-pdinfor p{font-size:14px;}
-.order-shop-total{background:#fffdf7;padding:10px;border-top:1px solid #dedede;text-align:right;}
-.order-shop-total p,.order-ltlt p{padding:2px 0px;}
-.sure-order,.cancel-order{padding:5px 20px;color:#fff;}
-.cancel-order{background:#D9434E;}
-.sure-order{background:#6cb248;}
+.appointment-pdinfor{position: relative;margin-left:70px;}
+.appointment-d-pdinfor p,.appointment-pay-type p{padding: 3px 0px;font-size: 14px;}
+.appointment-pdinfor .grayrightarrow{position: absolute;right: 10px;top: 50%;}
+.appointment-pdpic{float:left;width:60px;height:60px;overflow:hidden;}
+.appointment-pdpic,.appointment-pdpic img{width:60px;height:60px;}
+.appointment-pdinfor p{font-size:14px;}
+.appointment-clinic-total{background:#fffdf7;padding:10px;bappointment-top:1px solid #dedede;text-align:right;}
+.appointment-clinic-total p,.appointment-ltlt p{padding:2px 0px;}
+.sure-appointment,.cancel-appointment{padding:5px 20px;color:#fff;}
+.cancel-appointment{background:#D9434E;}
+.sure-appointment{background:#6cb248;}
 
-.order-pay-type{padding-right: 50px;}
-.opt-pay-total{border-top: 1px solid #ddd;}
+.appointment-pay-type{padding-right: 50px;}
+.opt-pay-total{bappointment-top: 1px solid #ddd;}
 
-.order-pd-pdinfor .opdinfor-wp{padding: 10px 0px;font-size: 14px;display: block;color: #6d6d6d;}
+.appointment-pd-pdinfor .opdinfor-wp{padding: 10px 0px;font-size: 14px;display: block;color: #6d6d6d;}
 .opdinfor-pic{width: 50px;height: 50px;overflow: hidden;float: left;}
 .opdinfor-pic img{width: 50px;height: 50px;}
 .opdinforw-infor{margin-left: 60px;position: relative;}

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/ubb.css" rel="stylesheet" type="text/css">
 <div class="group warp-all">
   <?php require_once circle_template('group.top');?>
@@ -12,7 +12,7 @@
               <?php if(!empty($output['answer'])){echo $lang['circle_reply'].'&nbsp;'.$output['answer']['reply_id'].'&nbsp;'.$lang['circle_floor'].'&nbsp;'.$output['answer']['member_name'].'&nbsp;'.$lang['circle_of_reply'];}else{echo $output['theme_info']['theme_name'];}?>
               </span></label>
           </div>
-          <?php echo showMiniEditor('replycontent', $output['reply_info']['reply_content'], 'all', $output['affix_list'], 'goods', $output['goods_list']);?>
+          <?php echo showMiniEditor('replycontent', $output['reply_info']['reply_content'], 'all', $output['affix_list'], 'doctors', $output['doctors_list']);?>
           <div class="bottom"> <a class="submit-btn" nctype="reply_submit" href="Javascript: void(0)"><?php echo $lang['nc_edit_reply'];?></a> <a class="cancel-btn" href="Javascript:history.go(-1);" nctype="theme_cancle"><?php echo $lang['nc_cancel'];?></a>
             <div id="warning"></div>
           </div>

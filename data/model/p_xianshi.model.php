@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class p_xianshiModel extends Model{
 
     const XIANSHI_STATE_NORMAL = 1;
@@ -32,13 +32,13 @@ class p_xianshiModel extends Model{
      * 读取限时折扣列表
 	 * @param array $condition 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 所需字段
      * @return array 限时折扣列表
 	 *
 	 */
-	public function getXianshiList($condition, $page=null, $order='', $field='*') {
-        $xianshi_list = $this->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getXianshiList($condition, $page=null, $appointment='', $field='*') {
+        $xianshi_list = $this->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         if(!empty($xianshi_list)) {
             for($i =0, $j = count($xianshi_list); $i < $j; $i++) {
                 $xianshi_list[$i] = $this->getXianshiExtendInfo($xianshi_list[$i]);
@@ -62,11 +62,11 @@ class p_xianshiModel extends Model{
     /**
 	 * 根据限时折扣编号读取限制折扣信息
 	 * @param array $xianshi_id 限制折扣活动编号
-	 * @param int $store_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
+	 * @param int $clic_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
      * @return array 限时折扣信息
 	 *
 	 */
-    public function getXianshiInfoByID($xianshi_id, $store_id = 0) {
+    public function getXianshiInfoByID($xianshi_id, $clic_id = 0) {
         if(intval($xianshi_id) <= 0) {
             return null;
         }
@@ -74,7 +74,7 @@ class p_xianshiModel extends Model{
         $condition = array();
         $condition['xianshi_id'] = $xianshi_id;
         $xianshi_info = $this->getXianshiInfo($condition);
-        if($store_id > 0 && $xianshi_info['store_id'] != $store_id) {
+        if($clic_id > 0 && $xianshi_info['clic_id'] != $clic_id) {
             return null;
         } else {
             return $xianshi_info;
@@ -128,8 +128,8 @@ class p_xianshiModel extends Model{
 
         //删除限时折扣商品
         if($xianshi_id_string !== '') {
-            $model_xianshi_goods = Model('p_xianshi_goods');
-            $model_xianshi_goods->delXianshiGoods(array('xianshi_id'=>array('in', $xianshi_id_string)));
+            $model_xianshi_doctors = Model('p_xianshi_doctors');
+            $model_xianshi_doctors->delXianshidoctors(array('xianshi_id'=>array('in', $xianshi_id_string)));
         }
 
         return $this->where($condition)->delete();
@@ -155,8 +155,8 @@ class p_xianshiModel extends Model{
 
         //删除限时折扣商品
         if($xianshi_id_string !== '') {
-            $model_xianshi_goods = Model('p_xianshi_goods');
-            $model_xianshi_goods->editXianshiGoods($update, array('xianshi_id'=>array('in', $xianshi_id_string)));
+            $model_xianshi_doctors = Model('p_xianshi_doctors');
+            $model_xianshi_doctors->editXianshidoctors($update, array('xianshi_id'=>array('in', $xianshi_id_string)));
         }
 
         return $this->editXianshi($update, $condition);

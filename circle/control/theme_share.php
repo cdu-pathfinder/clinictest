@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class theme_shareControl extends BaseCircleControl{
 	protected $c_id = 0;		// 圈子id
@@ -109,9 +109,9 @@ class theme_shareControl extends BaseCircleControl{
 		$content = "<div class='fd-media'>";
 		$url = CIRCLE_SITE_URL."/index.php?act=theme&op=theme_detail&c_id=".$this->c_id."&t_id=".$theme_info['theme_id'];
 		if(!empty($affix_list[0])){
-			$content .= "<div class='goodsimg'><a target='_blank' href='".$url."'><img src='".themeImageUrl($affix_list[0]['affix_filethumb'])."' onload='javascript:DrawImage(this,120,120);'></a></div>";
+			$content .= "<div class='doctorsimg'><a target='_blank' href='".$url."'><img src='".themeImageUrl($affix_list[0]['affix_filethumb'])."' onload='javascript:DrawImage(this,120,120);'></a></div>";
 		}
-		$content .= "<div class=\"goodsinfo\"><p>".$_SESSION['member_name'].L('circle_at,nc_quote1').$theme_info['circle_name'].L('nc_quote2').L('circle_share,sharebind_theme').L('nc_colon').'</p><p>'.L('nc_quote1').$theme_info['theme_name'].L('nc_quote2')."&nbsp;&nbsp;<a href='".$url."'>".L('sharebind_go_and_see')."</a></p></div></div>";
+		$content .= "<div class=\"doctorsinfo\"><p>".$_SESSION['member_name'].L('circle_at,nc_quote1').$theme_info['circle_name'].L('nc_quote2').L('circle_share,sharebind_theme').L('nc_colon').'</p><p>'.L('nc_quote1').$theme_info['theme_name'].L('nc_quote2')."&nbsp;&nbsp;<a href='".$url."'>".L('sharebind_go_and_see')."</a></p></div></div>";
 		return $content;
 	}
 }

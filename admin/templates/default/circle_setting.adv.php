@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -35,7 +35,7 @@
         <tr>
           <td class="required"><label><?php echo $lang['circle_setting_adv'];?>-01:</label></td><td><?php echo $lang['circle_setting_adv_url_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_CIRCLE.'/'.$output['list'][1]['pic']);?>"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="adv_pic1" type="file" class="type-file-file" id="adv_pic1" size="30" hidefocus="true">
@@ -48,7 +48,7 @@
         <tr>
           <td class="required"><label><?php echo $lang['circle_setting_adv'];?>-02:</label></td><td><?php echo $lang['circle_setting_adv_url_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_CIRCLE.'/'.$output['list'][2]['pic']);?>"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="adv_pic2" type="file" class="type-file-file" id="adv_pic2" size="30" hidefocus="true">
@@ -61,7 +61,7 @@
         <tr>
           <td class="required"><label><?php echo $lang['circle_setting_adv'];?>-03:</label></td><td><?php echo $lang['circle_setting_adv_url_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_CIRCLE.'/'.$output['list'][3]['pic']);?>"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="adv_pic3" type="file" class="type-file-file" id="adv_pic3" size="30" hidefocus="true">
@@ -75,7 +75,7 @@
         <tr>
           <td class="required"><label><?php echo $lang['circle_setting_adv'];?>-04:</label></td><td><?php echo $lang['circle_setting_adv_url_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_CIRCLE.'/'.$output['list'][4]['pic']);?>"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="adv_pic4" type="file" class="type-file-file" id="adv_pic4" size="30" hidefocus="true">

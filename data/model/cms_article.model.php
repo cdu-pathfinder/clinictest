@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_articleModel extends Model{
 
     public function __construct(){
@@ -22,8 +22,8 @@ class cms_articleModel extends Model{
      * @param array $condition
      *
      */
-    public function getList($condition, $page=null, $order='', $field='*', $limit=''){
-        $result = $this->table('cms_article')->field($field)->where($condition)->page($page)->order($order)->select();
+    public function getList($condition, $page=null, $appointment='', $field='*', $limit=''){
+        $result = $this->table('cms_article')->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         return $result;
     }
     
@@ -40,9 +40,9 @@ class cms_articleModel extends Model{
      * 读取列表和分类名称
      *
      */
-    public function getListWithClassName($condition, $page=null, $order='', $field='*', $limit=''){
+    public function getListWithClassName($condition, $page=null, $appointment='', $field='*', $limit=''){
         $on = 'cms_article.article_class_id = cms_article_class.class_id';
-        $result = $this->table('cms_article,cms_article_class')->field($field)->join('left')->on($on)->where($condition)->page($page)->order($order)->limit($limit)->select();
+        $result = $this->table('cms_article,cms_article_class')->field($field)->join('left')->on($on)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         $this->cls();
         return $result;
     }
@@ -50,10 +50,10 @@ class cms_articleModel extends Model{
     /**
      * 根据tag编号查询
      */
-    public function getListByTagID($condition, $page=null, $order='', $field='*', $limit=''){
+    public function getListByTagID($condition, $page=null, $appointment='', $field='*', $limit=''){
         $condition['relation_type'] = 1;
         $on = 'cms_article.article_id = cms_tag_relation.relation_object_id';
-        $result = $this->table('cms_article,cms_tag_relation')->field($field)->join('left')->on($on)->where($condition)->page($page)->order($order)->limit($limit)->select();
+        $result = $this->table('cms_article,cms_tag_relation')->field($field)->join('left')->on($on)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         $this->cls();
         return $result;
     }
@@ -63,8 +63,8 @@ class cms_articleModel extends Model{
      * @param array $condition
      *
      */
-    public function getOne($condition,$order=''){
-        $result = $this->table('cms_article')->where($condition)->order($order)->find();
+    public function getOne($condition,$appointment=''){
+        $result = $this->table('cms_article')->where($condition)->appointment($appointment)->find();
         return $result;
     }
 

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,13 +17,13 @@
   	<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
     <input type="hidden" name="act" value="activity">
     <input type="hidden" name="op" value="detail">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
-          <th><label for="searchtitle"><?php echo $lang['activity_detail_index_store']; ?></label></th>
-          <td><input type="text" name="searchstore" id="searchstore" class="txt" value='<?php echo $_GET['searchstore'];?>'></td>
-          <th><label for="searchtitle"><?php echo $lang['activity_detail_index_goods_name']; ?></label></th>
-          <td><input type="text" name="searchgoods" id="searchgoods" class="txt" value='<?php echo $_GET['searchgoods'];?>'></td>
+          <th><label for="searchtitle"><?php echo $lang['activity_detail_index_clic']; ?></label></th>
+          <td><input type="text" name="searchclic" id="searchclic" class="txt" value='<?php echo $_GET['searchclic'];?>'></td>
+          <th><label for="searchtitle"><?php echo $lang['activity_detail_index_doctors_name']; ?></label></th>
+          <td><input type="text" name="searchdoctors" id="searchdoctors" class="txt" value='<?php echo $_GET['searchdoctors'];?>'></td>
           <td><select name="searchstate">
               <option value="0" <?php if (!$_GET['searchstate']){echo 'selected=selected';}?>><?php echo $lang['activity_detail_index_auditstate']; ?></option>
               <option value="1" <?php if ($_GET['searchstate'] == 1){echo 'selected=selected';}?>><?php echo $lang['activity_detail_index_to_audit']; ?></option>
@@ -60,8 +60,8 @@
         <tr class="thead">
           <th></th>
           <th><?php echo $lang['nc_sort'];?></th>
-          <th><?php echo $lang['activity_detail_index_goods_name']; ?></th>
-          <th><?php echo $lang['activity_detail_index_store'];?></th>
+          <th><?php echo $lang['activity_detail_index_doctors_name']; ?></th>
+          <th><?php echo $lang['activity_detail_index_clic'];?></th>
           <th class="align-center"><?php echo $lang['nc_status'];?></th>
           <th class="align-center"><?php echo $lang['nc_handle'];?></th>
         </tr>
@@ -72,8 +72,8 @@
         <tr class="hover">
           <td class="w24"><input type="checkbox" name='activity_detail_id[]' value="<?php echo $v['activity_detail_id'];?>" class="checkitem"></td>
           <td class="w48 sort"><span class=" editable" title="<?php echo $lang['nc_editable'];?>" style="cursor:pointer;"  required="1" fieldid="<?php echo $v['activity_detail_id'];?>" ajax_branch='activity_detail_sort' fieldname="activity_detail_sort" nc_type="inline_edit"><?php echo $v['activity_detail_sort'];?></span></td>
-          <td><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=goods&goods_id=<?php echo $v['item_id']?>"><?php echo $v['item_name'];?></a></td>
-          <td><a target="_blank" href="<?php echo urlShop('show_store','index', array('store_id'=>$v['store_id']));?>"><?php echo $v['store_name'];?></a></td>
+          <td><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=doctors&doctors_id=<?php echo $v['item_id']?>"><?php echo $v['item_name'];?></a></td>
+          <td><a target="_blank" href="<?php echo urlclinic('show_clic','index', array('clic_id'=>$v['clic_id']));?>"><?php echo $v['clic_name'];?></a></td>
           <td class="align-center">
           	<?php switch($v['activity_detail_state']){
 					case '0':echo $lang['activity_detail_index_to_audit'];break;
@@ -121,7 +121,7 @@
   </form>
 </div>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script> 
-<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.goods_class.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.doctors_class.js" charset="utf-8"></script>
 <script type="text/javascript">
 function submit_form(op){
 	if(op=='del'){

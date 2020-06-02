@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * top 数组是顶部菜单 ，left数组是左侧菜单
  * left数组中'args'=>'welcome,dashboard,dashboard',三个分别为op,act,nav，权限依据act来判断
@@ -21,11 +21,11 @@ $arr = array(
 				'args' 	=> 'setting',
 				'text' 	=> $lang['nc_config']),
 			2 => array(
-				'args' 	=> 'goods',
-				'text' 	=> $lang['nc_goods']),
+				'args' 	=> 'doctors',
+				'text' 	=> $lang['nc_doctors']),
 			3 => array(
-				'args' 	=> 'store',
-				'text' 	=> $lang['nc_store']),
+				'args' 	=> 'clic',
+				'text' 	=> $lang['nc_clic']),
 			4 => array(
 				'args'	=> 'member',
 				'text'	=> $lang['nc_member']),
@@ -51,9 +51,9 @@ $arr = array(
 					array('args'=>'aboutus,dashboard,dashboard',			'text'=>$lang['nc_aboutus']),
 					array('args'=>'base,setting,dashboard',	'text'=>$lang['nc_web_set']),
 					array('args'=>'member,member,dashboard',				'text'=>$lang['nc_member_manage']),
-					array('args'=>'store,store,dashboard',					'text'=>$lang['nc_store_manage']),
-					array('args'=>'goods,goods,dashboard',					'text'=>$lang['nc_goods_manage']),
-					array('args'=>'index,order,dashboard',			        'text'=>$lang['nc_order_manage']),
+					array('args'=>'clic,clic,dashboard',					'text'=>$lang['nc_clic_manage']),
+					array('args'=>'doctors,doctors,dashboard',					'text'=>$lang['nc_doctors_manage']),
+					array('args'=>'index,appointment,dashboard',			        'text'=>$lang['nc_appointment_manage']),
 				)
 			),
 			1 => array(
@@ -76,26 +76,26 @@ $arr = array(
 				)
 			),
 			2 => array(
-				'nav' => 'goods',
-				'text' => $lang['nc_goods'],
+				'nav' => 'doctors',
+				'text' => $lang['nc_doctors'],
 				'list' => array(
-					array('args'=>'goods_class,goods_class,goods',			'text'=>$lang['nc_class_manage']),
-					array('args'=>'brand,brand,goods',						'text'=>$lang['nc_brand_manage']),
-					array('args'=>'goods,goods,goods',						'text'=>$lang['nc_goods_manage']),
-					array('args'=>'type,type,goods',						'text'=>$lang['nc_type_manage']),
-					array('args'=>'spec,spec,goods',						'text'=>$lang['nc_spec_manage']),
-					array('args'=>'list,goods_album,goods',					'text'=>$lang['nc_album_manage']),
+					array('args'=>'doctors_class,doctors_class,doctors',			'text'=>$lang['nc_class_manage']),
+					array('args'=>'brand,brand,doctors',						'text'=>$lang['nc_brand_manage']),
+					array('args'=>'doctors,doctors,doctors',						'text'=>$lang['nc_doctors_manage']),
+					array('args'=>'type,type,doctors',						'text'=>$lang['nc_type_manage']),
+					array('args'=>'spec,spec,doctors',						'text'=>$lang['nc_spec_manage']),
+					array('args'=>'list,doctors_album,doctors',					'text'=>$lang['nc_album_manage']),
 				)
 			),
 			3 => array(
-				'nav' => 'store',
-				'text' => $lang['nc_store'],
+				'nav' => 'clic',
+				'text' => $lang['nc_clic'],
 				'list' => array(
-					array('args'=>'store,store,store',						'text'=>$lang['nc_store_manage']),
-					array('args'=>'store_grade,store_grade,store',			'text'=>$lang['nc_store_grade']),
-					array('args'=>'store_class,store_class,store',			'text'=>$lang['nc_store_class']),
-					array('args'=>'store_domain_setting,domain,store',		'text'=>$lang['nc_domain_manage']),
-					array('args'=>'stracelist,sns_strace,store',			'text'=>$lang['nc_s_snstrace']),
+					array('args'=>'clic,clic,clic',						'text'=>$lang['nc_clic_manage']),
+					array('args'=>'clic_grade,clic_grade,clic',			'text'=>$lang['nc_clic_grade']),
+					array('args'=>'clic_class,clic_class,clic',			'text'=>$lang['nc_clic_class']),
+					array('args'=>'clic_domain_setting,domain,clic',		'text'=>$lang['nc_domain_manage']),
+					array('args'=>'stracelist,sns_strace,clic',			'text'=>$lang['nc_s_snstrace']),
 				)
 			),
 			4 => array(
@@ -116,12 +116,12 @@ $arr = array(
 				'nav' => 'trade',
 				'text' => $lang['nc_trade'],
 				'list' => array(
-					array('args'=>'index,order,trade',				'text'=>$lang['nc_order_manage']),
+					array('args'=>'index,appointment,trade',				'text'=>$lang['nc_appointment_manage']),
 					array('args'=>'refund_manage,refund,trade',				'text'=>'退款管理'),
 					array('args'=>'return_manage,return,trade',				'text'=>'退货管理'),
 					array('args'=>'consulting,consulting,trade',			'text'=>$lang['nc_consult_manage']),
 					array('args'=>'inform_list,inform,trade',				'text'=>$lang['nc_inform_config']),
-					array('args'=>'evalgoods_list,evaluate,trade',			'text'=>$lang['nc_goods_evaluate']),
+					array('args'=>'evaldoctors_list,evaluate,trade',			'text'=>$lang['nc_doctors_evaluate']),
 					array('args'=>'complain_new_list,complain,trade',		'text'=>$lang['nc_complain_config']),					
 				)
 			),
@@ -147,7 +147,7 @@ $arr = array(
 			// 		array('args'=>'xianshi_apply,promotion_xianshi,operation',	'text'=>$lang['nc_promotion_xianshi']),
 			// 		array('args'=>'mansong_apply,promotion_mansong,operation',	'text'=>$lang['nc_promotion_mansong']),
 			// 		array('args'=>'bundling_list,promotion_bundling,operation',	'text'=>$lang['nc_promotion_bundling']),
-			// 		array('args'=>'goods_list,promotion_booth,operation',		'text'=>$lang['nc_promotion_booth']),
+			// 		array('args'=>'doctors_list,promotion_booth,operation',		'text'=>$lang['nc_promotion_booth']),
 			// 		array('args'=>'voucher_apply,voucher,operation',            'text'=>$lang['nc_voucher_price_manage']),
 			// 		array('args'=>'index,bill,operation',					    'text'=>$lang['nc_bill_manage']),
 			// 		array('args'=>'activity,activity,operation',				'text'=>$lang['nc_activity_manage']),
@@ -159,8 +159,8 @@ $arr = array(
 				'text' => $lang['nc_stat'],
 				'list' => array(
 					array('args'=>'newmember,stat_member,stat',			'text'=>$lang['nc_statmember']),
-					array('args'=>'newstore,stat_store,stat',			'text'=>$lang['nc_statstore']),
-					array('args'=>'goods,stat_trade,stat',				'text'=>$lang['nc_stattrade']),
+					array('args'=>'newclic,stat_clic,stat',			'text'=>$lang['nc_statclic']),
+					array('args'=>'doctors,stat_trade,stat',				'text'=>$lang['nc_stattrade']),
 					// array('args'=>'promotion,stat_marketing,stat',		'text'=>$lang['nc_statmarketing']),
 					array('args'=>'refund,stat_aftersale,stat',	'text'=>$lang['nc_stataftersale']),
 				)
@@ -183,22 +183,22 @@ if(C('mobile_isuse')){
 				)
 			);
 }
-// if(C('microshop_isuse') !== null){
+// if(C('microclinic_isuse') !== null){
 // 	$arr['top'][] = array(
-// 				'args'	=> 'microshop',
-// 				'text'	=> $lang['nc_microshop']);
+// 				'args'	=> 'microclinic',
+// 				'text'	=> $lang['nc_microclinic']);
 // 	$arr['left'][] = array(
-// 				'nav' => 'microshop',
-// 				'text' => $lang['nc_microshop'],
+// 				'nav' => 'microclinic',
+// 				'text' => $lang['nc_microclinic'],
 // 				'list' => array(
-// 					0 => array('args'=>'manage,microshop,microshop','text'=>$lang['nc_microshop_manage']),
-// 					1 => array('args'=>'goods_manage,microshop,microshop','text'=>$lang['nc_microshop_goods_manage']),
-// 					2 => array('args'=>'goodsclass_list,microshop,microshop','text'=>$lang['nc_microshop_goods_class']),
-// 					3 => array('args'=>'personal_manage,microshop,microshop','text'=>$lang['nc_microshop_personal_manage']),
-// 					4 => array('args'=>'personalclass_list,microshop,microshop','text'=>$lang['nc_microshop_personal_class']),
-// 					5 => array('args'=>'store_manage,microshop,microshop','text'=>$lang['nc_microshop_store_manage']),
-// 					6 => array('args'=>'comment_manage,microshop,microshop','text'=>$lang['nc_microshop_comment_manage']),
-// 					7 => array('args'=>'adv_manage,microshop,microshop','text'=>$lang['nc_microshop_adv_manage']),
+// 					0 => array('args'=>'manage,microclinic,microclinic','text'=>$lang['nc_microclinic_manage']),
+// 					1 => array('args'=>'doctors_manage,microclinic,microclinic','text'=>$lang['nc_microclinic_doctors_manage']),
+// 					2 => array('args'=>'doctorsclass_list,microclinic,microclinic','text'=>$lang['nc_microclinic_doctors_class']),
+// 					3 => array('args'=>'personal_manage,microclinic,microclinic','text'=>$lang['nc_microclinic_personal_manage']),
+// 					4 => array('args'=>'personalclass_list,microclinic,microclinic','text'=>$lang['nc_microclinic_personal_class']),
+// 					5 => array('args'=>'clic_manage,microclinic,microclinic','text'=>$lang['nc_microclinic_clic_manage']),
+// 					6 => array('args'=>'comment_manage,microclinic,microclinic','text'=>$lang['nc_microclinic_comment_manage']),
+// 					7 => array('args'=>'adv_manage,microclinic,microclinic','text'=>$lang['nc_microclinic_adv_manage']),
 // 				)
 // 			);
 // }

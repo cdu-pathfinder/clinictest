@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="group-top">
   <dl class="circle-info">
     <dt class="name">
@@ -38,12 +38,12 @@
     <dd class="intro"><?php if($output['circle_info']['circle_desc'] != ''){ echo $output['circle_info']['circle_desc'];}else{ echo $lang['circle_desc_null_default'];}?></dd>
     <dd class="manage">
       <span class="master">
-        <?php echo $lang['circle_manager'].$lang['nc_colon'];?><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&op=theme&mid=<?php echo $output['creator']['member_id'];?>" nctype="mcard" data-param="{'id':<?php echo $output['creator']['member_id'];?>}"><i></i><?php echo $output['creator']['member_name'];?></a>
+        <?php echo $lang['circle_manager'].$lang['nc_colon'];?><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&op=theme&mid=<?php echo $output['creator']['member_id'];?>" nctype="mcard" data-param="{'id':<?php echo $output['creator']['member_id'];?>}"><i></i><?php echo $output['creator']['member_name'];?></a>
       </span>
       <span class="moderator">
         <?php echo $lang['circle_administrate'].$lang['nc_colon'];?>
         <?php if(!empty($output['manager_list'])){foreach($output['manager_list'] as $val){?>
-        <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"  nctype="mcard" data-param="{'id':<?php echo $val['member_id'];?>}"><i></i><?php echo $val['member_name'];?></a>
+        <a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"  nctype="mcard" data-param="{'id':<?php echo $val['member_id'];?>}"><i></i><?php echo $val['member_name'];?></a>
         <?php }}else{echo $lang['circle_no_administrate'];}?>
         <?php if($output['circle_info']['mapply_open'] == 1 && $output['identity'] == 3 && $output['cm_info']['cm_level'] >= $output['circle_info']['mapply_ml']){?>
         <a href="javascript:void(0);" nctype="manageApply"><?php echo $lang['circle_apply_to_be_a_management'];?></a>

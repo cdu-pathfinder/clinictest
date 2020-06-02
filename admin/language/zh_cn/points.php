@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 积分功能公用
  */
@@ -34,9 +34,9 @@ $lang['admin_points_stage']					= '操作阶段';
 $lang['admin_points_stage_regist']				= '注册';
 $lang['admin_points_stage_login']				= '登录';
 $lang['admin_points_stage_comments']				= '商品评论';
-$lang['admin_points_stage_order']				= '订单消费';
+$lang['admin_points_stage_appointment']				= '订单消费';
 $lang['admin_points_stage_system']				= '积分管理';
-$lang['admin_points_stage_pointorder']		= '礼品兑换';
+$lang['admin_points_stage_pointappointment']		= '礼品兑换';
 $lang['admin_points_stage_app']		= '积分兑换';
 $lang['admin_points_addtime']				= '添加时间';
 $lang['admin_points_addtime_to']				= '至';

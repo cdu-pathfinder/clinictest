@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class sns_straceControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -21,7 +21,7 @@ class sns_straceControl extends SystemControl{
 		// where条件
 		$where = array();
 		if($_POST['search_sname'] != ''){
-			$where['strace_storename']	= array('like','%'.trim($_POST['search_sname']).'%');
+			$where['strace_clicname']	= array('like','%'.trim($_POST['search_sname']).'%');
 		}
 		if($_POST['search_scontent'] != ''){
 			$where['strace_content']	= array('like','%'.trim($_POST['strace_content']).'%');
@@ -36,19 +36,19 @@ class sns_straceControl extends SystemControl{
 			$where['strace_time']		= array('elt',strtotime($_POST['search_etime']));
 		}
 		// 实例化模型
-		$model_stracelog = Model('store_sns_tracelog');
-		$strace_list = Model('store_sns_tracelog')->getStoreSnsTracelogList($where, '*', 'strace_id desc', 0, 10);
+		$model_stracelog = Model('clic_sns_tracelog');
+		$strace_list = Model('clic_sns_tracelog')->getclicSnsTracelogList($where, '*', 'strace_id desc', 0, 10);
 		if(!empty($strace_list) && is_array($strace_list)){
 			foreach ($strace_list as $key=>$val){
 				if($val['strace_content'] == ''){
-					$data = json_decode($val['strace_goodsdata'],true);
+					$data = json_decode($val['strace_doctorsdata'],true);
 					if( CHARSET == 'GBK') {
 						foreach ((array)$data as $k=>$v){
 							$data[$k] = Language::getGBK($v);
 						}
 					}
 					$content = $model_stracelog->spellingStyle($val['strace_type'], $data);
-					$strace_list[$key]['strace_content'] = str_replace("%siteurl%", SHOP_SITE_URL.DS, $content);
+					$strace_list[$key]['strace_content'] = str_replace("%siteurl%", clinic_SITE_URL.DS, $content);
 				}
 			}
 		}
@@ -69,10 +69,10 @@ class sns_straceControl extends SystemControl{
 		// 实例化模型
 		$model = Model();
 		// 删除动态
-		$rs = Model('store_sns_tracelog')->delStoreSnsTracelog(array('strace_id'=>array('in',$st_id)));
+		$rs = Model('clic_sns_tracelog')->delclicSnsTracelog(array('strace_id'=>array('in',$st_id)));
 		if($rs){
 			// 删除评论
-			Model('store_sns_comment')->delStoreSnsComment(array('strace_id'=>array('in',$st_id)));
+			Model('clic_sns_comment')->delclicSnsComment(array('strace_id'=>array('in',$st_id)));
 			$this->log(L('nc_del,admin_snstrace_comment'),1);
 			showMessage(Language::get('nc_common_del_succ'));
 		}else{
@@ -98,7 +98,7 @@ class sns_straceControl extends SystemControl{
 			$update['strace_state'] = 0;
 		}
 		// 实例化模型
-		$rs = Model('store_sns_comment')->editStoreSnsTracelog($update, $where);
+		$rs = Model('clic_sns_comment')->editclicSnsTracelog($update, $where);
 		if($rs){
 			$this->log(L('nc_edit,admin_snstrace_comment'),1);
 			showMessage(Language::get('nc_common_op_succ'));
@@ -132,9 +132,9 @@ class sns_straceControl extends SystemControl{
 		if($_POST['search_etime'] != ''){
 			$where['scomm_time']		= array('elt',strtotime($_POST['search_etime']));
 		}
-		$model_storesnscomment = Model('store_sns_comment');
-		$scomm_list = $model_storesnscomment->getStoreSnsCommentList($where, '*', 'scomm_id desc', 0, 20);
-		Tpl::output('show_page', $model_storesnscomment->showpage(2));
+		$model_clicsnscomment = Model('clic_sns_comment');
+		$scomm_list = $model_clicsnscomment->getclicSnsCommentList($where, '*', 'scomm_id desc', 0, 20);
+		Tpl::output('show_page', $model_clicsnscomment->showpage(2));
 		Tpl::output('scomm_list', $scomm_list);
 		Tpl::showpage('sns_scomment.index');
 	}
@@ -153,7 +153,7 @@ class sns_straceControl extends SystemControl{
 		}
 		
 		// 实例化模型
-		$rs = Model('store_sns_comment')->delStoreSnsComment(array('scomm_id'=>array('in',$sc_id)));
+		$rs = Model('clic_sns_comment')->delclicSnsComment(array('scomm_id'=>array('in',$sc_id)));
 		if($rs){
 			$this->log(L('nc_del,admin_snstrace_pl'),1);
 			showMessage(Language::get('nc_common_op_succ'));
@@ -177,7 +177,7 @@ class sns_straceControl extends SystemControl{
 			$scomm_state = 0;
 		}
 		// 实例化模型
-		$rs = Model('store_sns_comment')->editStoreSnsComment(array('scomm_state'=>$scomm_state), array('scomm_id'=>array('in',$sc_id)));
+		$rs = Model('clic_sns_comment')->editclicSnsComment(array('scomm_state'=>$scomm_state), array('scomm_id'=>array('in',$sc_id)));
 		if($rs){
 			$this->log(L('nc_edit,admin_snstrace_pl'),1);
 			showMessage(Language::get('nc_common_op_succ'));

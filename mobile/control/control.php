@@ -8,7 +8,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /********************************** 前台control父类 **********************************************/
 
@@ -61,7 +61,7 @@ class mobileMemberControl extends mobileControl{
         } else {
             //读取卖家信息
             $seller_info = Model('seller')->getSellerInfo(array('member_id'=>$this->member_info['member_id']));
-            $this->member_info['store_id'] = $seller_info['store_id'];
+            $this->member_info['clic_id'] = $seller_info['clic_id'];
         }
     }
 } 

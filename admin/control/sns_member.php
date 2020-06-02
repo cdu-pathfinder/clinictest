@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class sns_memberControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -35,7 +35,7 @@ class sns_memberControl extends SystemControl{
 					break;
 			}
 		}
-		$tag_list = $model->table('sns_membertag')->order('mtag_sort asc')->page(10)->select();
+		$tag_list = $model->table('sns_membertag')->appointment('mtag_sort asc')->page(10)->select();
 		Tpl::output('showpage', $model->showpage(2));
 		Tpl::output('tag_list', $tag_list);
 		Tpl::showpage('sns_membertag.index');
@@ -203,7 +203,7 @@ class sns_memberControl extends SystemControl{
 								->field('sns_mtagmember.*,member.member_avatar,member.member_name')
 								->join('left')->on('sns_mtagmember.member_id=member.member_id')
 								->where(array('sns_mtagmember.mtag_id'=>$mtag_id))->page(10, $count)
-								->order('sns_mtagmember.recommend desc, sns_mtagmember.member_id asc')
+								->appointment('sns_mtagmember.recommend desc, sns_mtagmember.member_id asc')
 								->select();
 		Tpl::output('tagmember_list', $tagmember_list);
 		Tpl::output('showpage',$model->showpage(2));

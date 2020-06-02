@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,7 +12,7 @@
     <input type="hidden" name="op" value="income" />
     <input type="hidden" name="" value="" />
     <div class="w100pre" style="width: 100%;">
-      <table class="tb-type1 noborder search left">
+      <table class="tb-type1 nobappointment search left">
         <tbody>
           <tr>
             <th>年份</th>
@@ -62,18 +62,18 @@
       </tr>
     </thead>
     <tbody id="datatable">
-      <?php if(!empty($output['store_list'])){ ?>
-      <?php foreach ($output['store_list'] as $k=>$v){?>
+      <?php if(!empty($output['clic_list'])){ ?>
+      <?php foreach ($output['clic_list'] as $k=>$v){?>
       <tr class="hover">
-        <td class="align-center"><a href="<?php echo SHOP_SITE_URL; ?>/index.php?act=show_store&store_id=<?php echo $v['ob_store_id']; ?>" target="_blank"><?php echo $v['ob_store_name']; ?></a></td>
+        <td class="align-center"><a href="<?php echo clinic_SITE_URL; ?>/index.php?act=show_clic&clic_id=<?php echo $v['ob_clic_id']; ?>" target="_blank"><?php echo $v['ob_clic_name']; ?></a></td>
         <td class="align-center"><?php echo $v['member_name']; ?></td>
-        <td class="align-center"><?php echo $v['ob_order_totals']; ?></td>
+        <td class="align-center"><?php echo $v['ob_appointment_totals']; ?></td>
         <td class="align-center"><?php echo $v['ob_commis_totals']; ?></td>
-        <td class="align-center"><?php echo $v['ob_order_return_totals']; ?></td>
+        <td class="align-center"><?php echo $v['ob_appointment_return_totals']; ?></td>
         <td class="align-center"><?php echo $v['ob_commis_return_totals']; ?></td>
-        <td class="align-center"><?php echo $v['ob_store_cost_totals']; ?></td>
+        <td class="align-center"><?php echo $v['ob_clic_cost_totals']; ?></td>
         <td class="align-center"><?php echo $v['ob_result_totals']; ?></td>
-        <td class="align-center"><a href="index.php?act=stat_trade&op=sale&search_type=month&search_time_month=<?php echo intval($_GET['search_month']); ?>&search_time_year=<?php echo intval($_GET['search_year']); ?>&store_name=<?php echo $v['ob_store_name']; ?>">详细</a></td>
+        <td class="align-center"><a href="index.php?act=stat_trade&op=sale&search_type=month&search_time_month=<?php echo intval($_GET['search_month']); ?>&search_time_year=<?php echo intval($_GET['search_year']); ?>&clic_name=<?php echo $v['ob_clic_name']; ?>">详细</a></td>
       </tr>
       <?php } ?>
       <?php }else { ?>

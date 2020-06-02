@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class stat_marketingControl extends SystemControl{
     private $links = array(
@@ -50,46 +50,46 @@ class stat_marketingControl extends SystemControl{
 		$searchtime_arr = $model->getStarttimeAndEndtime($this->search_arr);
 		$where = array();
 		$where['add_time'] = array('between',$searchtime_arr);
-		//$where['order_state'] = array(array('neq',ORDER_STATE_CANCEL),array('neq',ORDER_STATE_NEW),'and');
-		$where['order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$where['payment_code'] = array('exp',"!(order.payment_code='offline' and order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
-		$where['goods_type'] = array('in',array(2,3,4));
+		//$where['appointment_state'] = array(array('neq',appointment_STATE_CANCEL),array('neq',appointment_STATE_NEW),'and');
+		$where['appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$where['payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		$where['doctors_type'] = array('in',array(2,3,4));
 		//下单量
-		$field = ' goods_type,count(DISTINCT order.order_id) as ordernum,SUM(goods_num) as goodsnum,SUM(goods_pay_price) as orderamount';
-		$statlist_tmp = $model->statByOrderGoods($where, $field, 0, 0, 'goods_type', 'goods_type');
+		$field = ' doctors_type,count(DISTINCT appointment.appointment_id) as appointmentnum,SUM(doctors_num) as doctorsnum,SUM(doctors_pay_price) as appointmentamount';
+		$statlist_tmp = $model->statByappointmentdoctors($where, $field, 0, 0, 'doctors_type', 'doctors_type');
 		//优惠类型数组
-		$goodstype_arr = array(2=>'团购',3=>'限时折扣',4=>'优惠套装');
+		$doctorstype_arr = array(2=>'团购',3=>'限时折扣',4=>'优惠套装');
 		$statlist = array();
-		$statcount = array('ordernum'=>0,'goodsnum'=>0,'orderamount'=>0.00);
+		$statcount = array('appointmentnum'=>0,'doctorsnum'=>0,'appointmentamount'=>0.00);
 		$stat_arr = array();
-		$stat_json = array('ordernum'=>'','goodsnum'=>'','orderamount'=>'');
+		$stat_json = array('appointmentnum'=>'','doctorsnum'=>'','appointmentamount'=>'');
 		if ($statlist_tmp){
 		    foreach((array)$statlist_tmp as $k=>$v){
-    		    $statcount['ordernum'] += intval($v['ordernum']);
-    		    $statcount['goodsnum'] += intval($v['goodsnum']);
-    		    $statcount['orderamount'] += floatval($v['orderamount']);
+    		    $statcount['appointmentnum'] += intval($v['appointmentnum']);
+    		    $statcount['doctorsnum'] += intval($v['doctorsnum']);
+    		    $statcount['appointmentamount'] += floatval($v['appointmentamount']);
     		}
     	    foreach((array)$statlist_tmp as $k=>$v){
-    	        $v['ordernumratio'] = round($v['ordernum']/$statcount['ordernum'],4)*100;
-    	        $v['goodsnumratio'] = round($v['goodsnum']/$statcount['goodsnum'],4)*100;
-    	        $v['orderamountratio'] = round($v['orderamount']/$statcount['orderamount'],4)*100;
-    	        $statlist_tmp2[$v['goods_type']] = $v;
-    	        $stat_arr['ordernum'][] = array('p_name'=>$goodstype_arr[$v['goods_type']],'allnum'=>$v['ordernumratio']);
-    	        $stat_arr['goodsnum'][] = array('p_name'=>$goodstype_arr[$v['goods_type']],'allnum'=>$v['goodsnumratio']);
-    	        $stat_arr['orderamount'][] = array('p_name'=>$goodstype_arr[$v['goods_type']],'allnum'=>$v['orderamountratio']);
+    	        $v['appointmentnumratio'] = round($v['appointmentnum']/$statcount['appointmentnum'],4)*100;
+    	        $v['doctorsnumratio'] = round($v['doctorsnum']/$statcount['doctorsnum'],4)*100;
+    	        $v['appointmentamountratio'] = round($v['appointmentamount']/$statcount['appointmentamount'],4)*100;
+    	        $statlist_tmp2[$v['doctors_type']] = $v;
+    	        $stat_arr['appointmentnum'][] = array('p_name'=>$doctorstype_arr[$v['doctors_type']],'allnum'=>$v['appointmentnumratio']);
+    	        $stat_arr['doctorsnum'][] = array('p_name'=>$doctorstype_arr[$v['doctors_type']],'allnum'=>$v['doctorsnumratio']);
+    	        $stat_arr['appointmentamount'][] = array('p_name'=>$doctorstype_arr[$v['doctors_type']],'allnum'=>$v['appointmentamountratio']);
     		}
-    		foreach ($goodstype_arr as $k=>$v){
+    		foreach ($doctorstype_arr as $k=>$v){
     		    if ($statlist_tmp2[$k]){
-    		        $statlist_tmp2[$k]['goodstype_text'] = $v;
+    		        $statlist_tmp2[$k]['doctorstype_text'] = $v;
     		        $statlist[] = $statlist_tmp2[$k];    		        
     		    } else {
-    		        $statlist[] = array('goodstype_text'=>$k,'goodstype_text'=>$v,'ordernum'=>0,'goodsnum'=>0,'orderamount'=>0.00);
+    		        $statlist[] = array('doctorstype_text'=>$k,'doctorstype_text'=>$v,'appointmentnum'=>0,'doctorsnum'=>0,'appointmentamount'=>0.00);
     		    }
     		}
-    		$stat_json['ordernum'] = getStatData_Pie(array('title'=>'下单量','name'=>'下单量(%)','label_show'=>false,'series'=>$stat_arr['ordernum']));
-    		$stat_json['goodsnum'] = getStatData_Pie(array('title'=>'下单商品数','name'=>'下商品数(%)','label_show'=>false,'series'=>$stat_arr['goodsnum']));
-    		$stat_json['orderamount'] = getStatData_Pie(array('title'=>'下单金额','name'=>'下单金额(%)','label_show'=>false,'series'=>$stat_arr['orderamount']));
+    		$stat_json['appointmentnum'] = getStatData_Pie(array('title'=>'下单量','name'=>'下单量(%)','label_show'=>false,'series'=>$stat_arr['appointmentnum']));
+    		$stat_json['doctorsnum'] = getStatData_Pie(array('title'=>'下单商品数','name'=>'下商品数(%)','label_show'=>false,'series'=>$stat_arr['doctorsnum']));
+    		$stat_json['appointmentamount'] = getStatData_Pie(array('title'=>'下单金额','name'=>'下单金额(%)','label_show'=>false,'series'=>$stat_arr['appointmentamount']));
 		}
 		Tpl::output('statcount',$statcount);
 		Tpl::output('statlist',$statlist);
@@ -103,29 +103,29 @@ class stat_marketingControl extends SystemControl{
 	 */
 	public function promotiontrendOp(){
 	    //优惠类型数组
-		$goodstype_arr = array(2=>'团购',3=>'限时折扣',4=>'优惠套装');
+		$doctorstype_arr = array(2=>'团购',3=>'限时折扣',4=>'优惠套装');
 		
 	    $model = Model('stat');
 		$where = array();
 		$searchtime_arr = explode('|',$_GET['t']);
 		$where['add_time'] = array('between',$searchtime_arr);
-		//$where['order_state'] = array(array('neq',ORDER_STATE_CANCEL),array('neq',ORDER_STATE_NEW),'and');
-		$where['order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$where['payment_code'] = array('exp',"!(order.payment_code='offline' and order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
-		$where['goods_type'] = array('in',array(2,3,4));
-		$field = ' goods_type';
+		//$where['appointment_state'] = array(array('neq',appointment_STATE_CANCEL),array('neq',appointment_STATE_NEW),'and');
+		$where['appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$where['payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		$where['doctors_type'] = array('in',array(2,3,4));
+		$field = ' doctors_type';
 		switch ($this->search_arr['stattype']){
-		    case 'orderamount':
-		        $field .= " ,SUM(goods_pay_price) as orderamount";
+		    case 'appointmentamount':
+		        $field .= " ,SUM(doctors_pay_price) as appointmentamount";
 		        $caption = '下单金额';
 		        break;
-		    case 'goodsnum':
-		        $field .= " ,SUM(goods_num) as goodsnum";
+		    case 'doctorsnum':
+		        $field .= " ,SUM(doctors_num) as doctorsnum";
 		        $caption = '下单商品数';
 		        break;
 		    default:
-		        $field .= " ,count(DISTINCT order.order_id) as ordernum";
+		        $field .= " ,count(DISTINCT appointment.appointment_id) as appointmentnum";
 		        $caption = '下单量';
 		        break;
 		}
@@ -134,7 +134,7 @@ class stat_marketingControl extends SystemControl{
 			for($i=0; $i<24; $i++){
 				//横轴
 				$stat_arr['xAxis']['categories'][] = "$i";
-				foreach ($goodstype_arr as $k=>$v){
+				foreach ($doctorstype_arr as $k=>$v){
 				    $statlist[$k][$i] = 0;
 				}
 			}
@@ -147,7 +147,7 @@ class stat_marketingControl extends SystemControl{
 				//横轴
 				$stat_arr['xAxis']['categories'][] = $tmp_weekarr[$i];
 				unset($tmp_weekarr);
-				foreach ($goodstype_arr as $k=>$v){
+				foreach ($doctorstype_arr as $k=>$v){
 				    $statlist[$k][$i] = 0;
 				}
 			}
@@ -160,25 +160,25 @@ class stat_marketingControl extends SystemControl{
 			for($i=1; $i<=$dayofmonth; $i++){
 				//横轴
 				$stat_arr['xAxis']['categories'][] = $i;
-				foreach ($goodstype_arr as $k=>$v){
+				foreach ($doctorstype_arr as $k=>$v){
 				    $statlist[$k][$i] = 0;
 				}
 			}
 			$field .= ' ,day(FROM_UNIXTIME(add_time)) as timeval ';
 		}
 		//查询数据
-		$statlist_tmp = $model->statByOrderGoods($where, $field, 0, '', 'timeval','goods_type,timeval');
+		$statlist_tmp = $model->statByappointmentdoctors($where, $field, 0, '', 'timeval','doctors_type,timeval');
 		//整理统计数组
 	    if($statlist_tmp){
 			foreach($statlist_tmp as $k => $v){
 			    //将数据按照不同的促销方式分组
-			    foreach ($goodstype_arr as $t_k=>$t_v){
-			        if ($t_k == $v['goods_type']){
+			    foreach ($doctorstype_arr as $t_k=>$t_v){
+			        if ($t_k == $v['doctors_type']){
 				        switch ($this->search_arr['stattype']){
-                		    case 'orderamount':
+                		    case 'appointmentamount':
                 		        $statlist[$t_k][$v['timeval']] = round($v[$this->search_arr['stattype']],2);
                 		        break;
-                		    case 'goodsnum':
+                		    case 'doctorsnum':
                 		        $statlist[$t_k][$v['timeval']] = intval($v[$this->search_arr['stattype']]);
                 		        break;
                 		    default:
@@ -189,7 +189,7 @@ class stat_marketingControl extends SystemControl{
 			    }
 			}
 		}
-	    foreach ($goodstype_arr as $k=>$v){
+	    foreach ($doctorstype_arr as $k=>$v){
 		    $tmp = array();
 		    $tmp['name'] = $v;
 		    $tmp['data'] = array_values($statlist[$k]);
@@ -242,49 +242,49 @@ class stat_marketingControl extends SystemControl{
 	/**
 	 * 团购商品统计
 	 */
-	public function groupgoodsOp(){
+	public function groupdoctorsOp(){
 	    $model = Model('stat');
 		$where = array();
 		$searchtime_arr = explode('|',$_GET['t']);
 		$where['add_time'] = array('between',$searchtime_arr);
-		$where['goods_type'] = 2;
-		$goodsname = trim($_GET['goodsname']);
-		if ($goodsname){
-		    $where['goods_name'] = array('like',"%{$goodsname}%");
+		$where['doctors_type'] = 2;
+		$doctorsname = trim($_GET['doctorsname']);
+		if ($doctorsname){
+		    $where['doctors_name'] = array('like',"%{$doctorsname}%");
 		}
-		$field = " goods_id,goods_name";
-		$field .= " ,SUM(order_goods.goods_num) as goodsnum";
-		$field .= " ,SUM(order_goods.goods_pay_price) as goodsamount";
-		$field .= " ,SUM(IF(order.order_state='".ORDER_STATE_CANCEL."',goods_num,0)) as cancelgoodsnum";
-		$field .= " ,SUM(IF(order.order_state='".ORDER_STATE_CANCEL."',goods_pay_price,0)) as cancelgoodsamount";
-		$field .= " ,SUM(IF(order.order_state<>'".ORDER_STATE_CANCEL."' and order.order_state<>'".ORDER_STATE_NEW."',goods_num,0)) as finishgoodsnum";
-		$field .= " ,SUM(IF(order.order_state<>'".ORDER_STATE_CANCEL."' and order.order_state<>'".ORDER_STATE_NEW."',goods_pay_price,0)) as finishgoodsamount";
-	    if (!trim($this->search_arr['orderby'])){
-		    $this->search_arr['orderby'] = 'goodsnum desc';
+		$field = " doctors_id,doctors_name";
+		$field .= " ,SUM(appointment_doctors.doctors_num) as doctorsnum";
+		$field .= " ,SUM(appointment_doctors.doctors_pay_price) as doctorsamount";
+		$field .= " ,SUM(IF(appointment.appointment_state='".appointment_STATE_CANCEL."',doctors_num,0)) as canceldoctorsnum";
+		$field .= " ,SUM(IF(appointment.appointment_state='".appointment_STATE_CANCEL."',doctors_pay_price,0)) as canceldoctorsamount";
+		$field .= " ,SUM(IF(appointment.appointment_state<>'".appointment_STATE_CANCEL."' and appointment.appointment_state<>'".appointment_STATE_NEW."',doctors_num,0)) as finishdoctorsnum";
+		$field .= " ,SUM(IF(appointment.appointment_state<>'".appointment_STATE_CANCEL."' and appointment.appointment_state<>'".appointment_STATE_NEW."',doctors_pay_price,0)) as finishdoctorsamount";
+	    if (!trim($this->search_arr['appointmentby'])){
+		    $this->search_arr['appointmentby'] = 'doctorsnum desc';
 		}
-		$orderby = trim($this->search_arr['orderby']).',goods_id desc';
+		$appointmentby = trim($this->search_arr['appointmentby']).',doctors_id desc';
 		//统计记录总条数
-		$count_arr = $model->statByOrderGoods($where, 'count(DISTINCT goods_id) as countnum');
+		$count_arr = $model->statByappointmentdoctors($where, 'count(DISTINCT doctors_id) as countnum');
 		$countnum = intval($count_arr[0]['countnum']);
 		if ($this->search_arr['exporttype'] == 'excel'){
-		    $statlist_tmp = $model->statByOrderGoods($where, $field, 0, 0, $orderby, 'goods_id');
+		    $statlist_tmp = $model->statByappointmentdoctors($where, $field, 0, 0, $appointmentby, 'doctors_id');
 		} else {
-		    $statlist_tmp = $model->statByOrderGoods($where, $field, array(10,$countnum), 0, $orderby, 'goods_id');
+		    $statlist_tmp = $model->statByappointmentdoctors($where, $field, array(10,$countnum), 0, $appointmentby, 'doctors_id');
 		}
 		$statheader = array();
-        $statheader[] = array('text'=>'商品名称','key'=>'goods_name','class'=>'alignleft');
-        $statheader[] = array('text'=>'下单商品数','key'=>'goodsnum','isorder'=>1);
-        $statheader[] = array('text'=>'下单金额','key'=>'goodsamount','isorder'=>1);
-        $statheader[] = array('text'=>'取消商品数','key'=>'cancelgoodsnum','isorder'=>1);
-        $statheader[] = array('text'=>'取消金额','key'=>'cancelgoodsamount','isorder'=>1);
-        $statheader[] = array('text'=>'完成商品数','key'=>'finishgoodsnum','isorder'=>1);
-        $statheader[] = array('text'=>'完成金额','key'=>'finishgoodsamount','isorder'=>1);
+        $statheader[] = array('text'=>'商品名称','key'=>'doctors_name','class'=>'alignleft');
+        $statheader[] = array('text'=>'下单商品数','key'=>'doctorsnum','isappointment'=>1);
+        $statheader[] = array('text'=>'下单金额','key'=>'doctorsamount','isappointment'=>1);
+        $statheader[] = array('text'=>'取消商品数','key'=>'canceldoctorsnum','isappointment'=>1);
+        $statheader[] = array('text'=>'取消金额','key'=>'canceldoctorsamount','isappointment'=>1);
+        $statheader[] = array('text'=>'完成商品数','key'=>'finishdoctorsnum','isappointment'=>1);
+        $statheader[] = array('text'=>'完成金额','key'=>'finishdoctorsamount','isappointment'=>1);
         foreach ((array)$statlist_tmp as $k=>$v){
             $tmp = $v;
             foreach ($statheader as $h_k=>$h_v){
                 $tmp[$h_v['key']] = $v[$h_v['key']];
-                if ($h_v['key'] == 'goods_name'){
-                    $tmp[$h_v['key']] = '<a href="'.urlShop('goods', 'index', array('goods_id' => $v['goods_id'])).'" target="_blank">'.$v['goods_name'].'</a>';
+                if ($h_v['key'] == 'doctors_name'){
+                    $tmp[$h_v['key']] = '<a href="'.urlclinic('doctors', 'index', array('doctors_id' => $v['doctors_id'])).'" target="_blank">'.$v['doctors_name'].'</a>';
                 }
             }
             $statlist[] = $tmp;
@@ -316,9 +316,9 @@ class stat_marketingControl extends SystemControl{
     		Tpl::output('statlist',$statlist);
     		Tpl::output('show_page',$model->showpage(2));
     		Tpl::output('searchtime',$_GET['t']);
-    		Tpl::output('orderby',$this->search_arr['orderby']);
+    		Tpl::output('appointmentby',$this->search_arr['appointmentby']);
     		Tpl::output('actionurl',"index.php?act={$this->search_arr['act']}&op={$this->search_arr['op']}&t={$this->search_arr['t']}");
-        	Tpl::showpage('stat.listandorder','null_layout');
+        	Tpl::showpage('stat.listandappointment','null_layout');
         }
 	}
 }

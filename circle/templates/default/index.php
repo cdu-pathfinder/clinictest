@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="homepage warp-all">
   <div class="layout-l">
@@ -18,12 +18,12 @@
       <dd class="avatar"><img src="<?php  echo UPLOAD_SITE_URL.'/'.ATTACH_COMMON.DS.C('default_user_portrait');?>" /> </dd>
       <dd class="welcomes"><?php echo $lang['circle_welcome_to']?><strong><?php echo C('circle_name');?></strong></dd>
       <dd class="quick-link"> <?php echo $lang['circle_login_prompt_one'];?><a href="javascript:void(0);" nctype="login" class="url">[<?php echo $lang['nc_login'];?>]</a><?php echo $lang['circle_login_prompt_two'];?><br/>
-        <?php echo $lang['circle_register_prompt_one'];?><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=login&op=register" class="url">[<?php echo $lang['nc_register'];?>]</a><?php echo $lang['circle_register_prompt_two'];?></dd>
+        <?php echo $lang['circle_register_prompt_one'];?><a href="<?php echo clinic_SITE_URL;?>/index.php?act=login&op=register" class="url">[<?php echo $lang['nc_register'];?>]</a><?php echo $lang['circle_register_prompt_two'];?></dd>
     </dl>
     <?php }else{?>
     <dl class="member-me-info">
       <dt class="member-name"><?php echo $_SESSION['member_name'];?></dt>
-      <dd class="avatar"><img src="<?php  echo getMemberAvatarForID($_SESSION['member_id']);?>" /><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></dd>
+      <dd class="avatar"><img src="<?php  echo getMemberAvatarForID($_SESSION['member_id']);?>" /><a href="<?php echo clinic_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></dd>
       <dd class="welcomes"> <?php echo $lang['circle_welcome_back_to'].C('circle_name');?></dd>
       <dd class="go-btn"><a target="_blank" href="index.php?act=p_center"><?php echo $lang['circle_into_user_centre'];?></a></dd>
       <dd class="quick-link"> <a target="_blank" href="index.php?act=p_center" class="url"><?php echo $lang['my_circle'];?></a> <a href="index.php?act=p_center&op=my_group" class="url"><?php echo $lang['my_theme'];?></a> <a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=login&op=loginout" class="url"><?php echo $lang['nc_logout'];?></a> </dd>
@@ -66,7 +66,7 @@
               <dl>
                 <dt class="theme-title"><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $v['circle_id'];?>&t_id=<?php echo $v['theme_id'];?>" title="<?php echo $v['theme_name'];?>"><?php echo $v['theme_name'];?></a></dt>
                 <dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($v['member_id']);?>"/></dd>
-                <dd class="theme-intro"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $v['member_id'];?>" class="member-name" title="<?php echo $v['member_name'];?>"><?php echo $v['member_name'];?></a><span class="date"><?php echo @date('Y-m-d H:i', $v['theme_addtime']);?></span></dd>
+                <dd class="theme-intro"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $v['member_id'];?>" class="member-name" title="<?php echo $v['member_name'];?>"><?php echo $v['member_name'];?></a><span class="date"><?php echo @date('Y-m-d H:i', $v['theme_addtime']);?></span></dd>
               </dl>
             </li>
             <?php }?>
@@ -124,17 +124,17 @@
           <div class="clear"></div>
         </div>
         <div class="title">
-          <h3><?php echo $lang['circle_friend_show_order'];?></h3>
+          <h3><?php echo $lang['circle_friend_show_appointment'];?></h3>
         </div>
-        <div class="content show-goods">
+        <div class="content show-doctors">
           <?php if(!empty($output['gtheme_list'])){?>
           <?php foreach ($output['gtheme_list'] as $val){?>
           <dl>
             <dt class="theme-title" title="<?php echo $val['theme_name'];?>"><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $val['circle_id'];?>&t_id=<?php echo $val['theme_id'];?>"><?php echo $val['theme_name'];?></a></dt>
-            <dd class="theme-info"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" class="member-name" title="<?php echo $val['member_name'];?>"><?php echo $val['member_name'];?></a><span class="group-name"><?php echo $lang['circle_come_from'];?><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=group&c_id=<?php echo $val['circle_id'];?>" title="<?php echo $val['circle_name'];?>"><?php echo $val['circle_name'];?></a></span>
+            <dd class="theme-info"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" class="member-name" title="<?php echo $val['member_name'];?>"><?php echo $val['member_name'];?></a><span class="group-name"><?php echo $lang['circle_come_from'];?><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=group&c_id=<?php echo $val['circle_id'];?>" title="<?php echo $val['circle_name'];?>"><?php echo $val['circle_name'];?></a></span>
             <dd class="member-avatar"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>"/></dd>
             <?php if(!empty($output['thg_list'][$val['theme_id']])){?>
-            <dd class="goods-list">
+            <dd class="doctors-list">
               <ul>
                 <?php foreach($output['thg_list'][$val['theme_id']] as $val){?>
                 <li class="thumb"><a href="<?php echo $val['thg_url'];?>"><img src="<?php echo $val['image'];?>" class="t-img" /></a></li>
@@ -149,15 +149,15 @@
       </div>
     </div>
     <div class="layout-r">
-      <div class="good-member clearfix">
+      <div class="doctor-member clearfix">
         <div class="title">
-          <h3><?php echo $lang['circle_excellent_goods'];?>...</h3>
+          <h3><?php echo $lang['circle_excellent_doctors'];?>...</h3>
         </div>
         <?php if(!empty($output['one_member'])){?>
         <div class="contnet special">
           <dl class="member-info">
-            <dt class="name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['one_member']['member_id'];?>"><?php echo $output['one_member']['member_name'];?></a></dt>
-            <dd class="avatar thumb"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['one_member']['member_id'];?>"><img src="<?php echo getMemberAvatarForID($output['one_member']['member_id']);?>"  class="t-img"/></a></dd>
+            <dt class="name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['one_member']['member_id'];?>"><?php echo $output['one_member']['member_name'];?></a></dt>
+            <dd class="avatar thumb"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['one_member']['member_id'];?>"><img src="<?php echo getMemberAvatarForID($output['one_member']['member_id']);?>"  class="t-img"/></a></dd>
             <dd class="group"><?php echo $lang['circle_come_from'];?><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=group&c_id=<?php echo $output['one_member']['circle_id'];?>"><?php echo $output['one_member']['circle_name'];?></a></dd>
             <dd class="intro"><?php echo $output['one_member']['cm_intro'];?></dd>
             <?php if(!empty($output['one_membertheme'])){?>
@@ -176,8 +176,8 @@
         <div class="contnet normal">
           <?php foreach ($output['more_membertheme'] as $val){?>
           <dl class="member-info">
-            <dt class="member-name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
-            <dd class="avatar"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>"/></a></dd>
+            <dt class="member-name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
+            <dd class="avatar"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>"/></a></dd>
             <dd class="theme"><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $val['circle_id'];?>&t_id=<?php echo $val['theme_id'];?>"><span>[<?php echo ($val['thclass_name'] != ''?$val['thclass_name']:$lang['nc_default']);?>]</span><?php echo $val['theme_name'];?></a></dd>
           </dl>
           <?php }?>
@@ -201,8 +201,8 @@ $(function(){
 	//横高局中比例缩放隐藏显示图片
 	$(window).load(function () {
 		$(".recommend-theme-list .t-img").VMiddleImg({"width":145,"height":96});
-		$(".good-member .t-img").VMiddleImg({"width":140,"height":96});
-		$(".show-goods .t-img").VMiddleImg({"width":30,"height":30});
+		$(".doctor-member .t-img").VMiddleImg({"width":140,"height":96});
+		$(".show-doctors .t-img").VMiddleImg({"width":30,"height":30});
 	});
 });
 $(function() {

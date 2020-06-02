@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['promotion_unavailable'] = '商品促销功能尚未开启';
 $lang['gold_unavailable'] = '金币功能尚未开启，正在跳转到金币设置 。。。';
@@ -26,12 +26,12 @@ $lang['xianshi_quota_end_time'] = '结束时间';
 $lang['xianshi_quota_times_limit'] = '活动次数限制';
 $lang['xianshi_quota_times_published'] = '已发布活动次数';
 $lang['xianshi_quota_times_publish'] = '剩余活动次数';
-$lang['xianshi_quota_goods_limit'] = '活动商品数限制';
+$lang['xianshi_quota_doctors_limit'] = '活动商品数限制';
 
 
-$lang['goods_name'] = '商品名称';
-$lang['goods_store_price'] = '商品价格';
-$lang['store_name'] = '店铺名称';
+$lang['doctors_name'] = '商品名称';
+$lang['doctors_clic_price'] = '商品价格';
+$lang['clic_name'] = '店铺名称';
 $lang['xianshi_name'] = '活动名称';
 $lang['xianshi_detail'] = '活动详情';
 $lang['start_time'] = '开始时间';
@@ -45,9 +45,9 @@ $lang['xianshi_price_error'] = '不能为空，且必须为大于0的正整数';
 $lang['xianshi_times_limit'] = '每月活动数限制';
 $lang['xianshi_times_limit_explain'] = '每月最多可以发布的限时折扣活动数量';
 $lang['xianshi_times_limit_error'] = '活动数量必须为大于0的整数';
-$lang['xianshi_goods_limit'] = '每次活动的商品数限制';
-$lang['xianshi_goods_limit_explain'] = '每次限时折扣活动的商品数限制';
-$lang['xianshi_goods_limit_error'] = '商品数必须为大于0的整数';
+$lang['xianshi_doctors_limit'] = '每次活动的商品数限制';
+$lang['xianshi_doctors_limit_explain'] = '每次限时折扣活动的商品数限制';
+$lang['xianshi_doctors_limit_error'] = '商品数必须为大于0的整数';
 $lang['xianshi_apply_drop_notification'] = '您的限时折扣套餐购买申请被管理员删除';
 $lang['xianshi_apply_verify_notification'] = '您的限时折扣套餐购买申请被管理员审核通过';
 $lang['xianshi_apply_cancel_notification'] = '您的限时折扣套餐购买申请被管理员取消';

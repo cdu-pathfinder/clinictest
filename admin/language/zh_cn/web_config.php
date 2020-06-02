@@ -1,16 +1,16 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 模板页
  */
-$lang['index_index_store_goods_price']		= 'Platform Price';
+$lang['index_index_clic_doctors_price']		= 'Platform Price';
 
 /**
  * 列表页和编辑页
  */
 $lang['web_config_index']			= 'Home configuration';
-$lang['web_config_index_help1']			= 'The smaller the order, the closer to the front, you can control the plate display.';
+$lang['web_config_index_help1']			= 'The smaller the appointment, the closer to the front, you can control the plate display.';
 $lang['web_config_index_help2']			= 'The color style is the same as that of the foreground. Choose to change in the basic Settings.';
 $lang['web_config_index_help3']			= 'The color style is already in the CSS style, if you need to change the name of the relevant program will also have to change at the same time to have an effect.';
 $lang['web_config_update_time']	= 'Update time';
@@ -19,7 +19,7 @@ $lang['web_config_style_name']				= 'Color style';
 $lang['web_config_web_edit']				= 'setting';
 $lang['web_config_code_edit']				= 'edit';
 $lang['web_config_web_name_tips']				= 'The plate name only appears as the plate logo in the background home page template setting, and is not displayed on the front page.';
-$lang['web_config_style_name_tips']				= 'Choosing the color style of the plate will affect the border, background color and font color of the page template, but will not affect the content layout of the plate.';
+$lang['web_config_style_name_tips']				= 'Choosing the color style of the plate will affect the bappointment, background color and font color of the page template, but will not affect the content layout of the plate.';
 $lang['web_config_style_red']				= 'red';
 $lang['web_config_style_pink']				= 'pink';
 $lang['web_config_style_orange']				= 'orange';
@@ -48,9 +48,9 @@ $lang['web_config_gc_name']			= '子分类';
 $lang['web_config_picture_act']			= '活动图片';
 $lang['web_config_add_recommend']			= '新增商品推荐模块';
 $lang['web_config_recommend_max']			= '(最多4个)';
-$lang['web_config_goods_order']			= '商品排行';
-$lang['web_config_goods_name']			= '排行榜商品名称';
-$lang['web_config_goods_price']			= '价格';
+$lang['web_config_doctors_appointment']			= '商品排行';
+$lang['web_config_doctors_name']			= '排行榜商品名称';
+$lang['web_config_doctors_price']			= '价格';
 $lang['web_config_picture_adv']			= '广告图片';
 $lang['web_config_brand_list']			= '品牌推荐';
 
@@ -71,27 +71,27 @@ $lang['web_config_upload_adv']			= '广告调用';
 $lang['web_config_upload_act_tips']			= 'It is recommended to upload 210-212-pixel GIF/JPG/PNG images. Those out of the specified range will be automatically hidden.';
 $lang['web_config_upload_act_url']			= '输入点击该图片后所要跳转的链接地址。';
 
-$lang['web_config_recommend_goods']			= '推荐商品';
+$lang['web_config_recommend_doctors']			= '推荐商品';
 $lang['web_config_recommend_title']			= '商品推荐模块标题名称';
 $lang['web_config_recommend_tips']			= '修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏';
-$lang['web_config_recommend_goods_tips']			= '小提示：单击查询出的商品选中，双击已选择的可以删除，最多8个，保存后生效。';
-$lang['web_config_recommend_add_goods']			= '选择要展示的推荐商品';
+$lang['web_config_recommend_doctors_tips']			= '小提示：单击查询出的商品选中，双击已选择的可以删除，最多8个，保存后生效。';
+$lang['web_config_recommend_add_doctors']			= '选择要展示的推荐商品';
 $lang['web_config_recommend_gcategory']			= '选择分类';
-$lang['web_config_recommend_goods_name']			= '商品名称';
+$lang['web_config_recommend_doctors_name']			= '商品名称';
 
-$lang['web_config_goods_order']			= '商品排行';
-$lang['web_config_goods_order_title']			= '商品排行模块标题名称';
-$lang['web_config_goods_order_tips']			= '修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏';
-$lang['web_config_goods_list']			= '排行商品';
-$lang['web_config_goods_list_tips']			= '小提示：单击查询出的商品选中，双击已选择的可以删除，最多5个，保存后生效。';
-$lang['web_config_goods_order_add']			= '选择要展示的排行商品';
-$lang['web_config_goods_order_gcategory']			= '选择分类';
-$lang['web_config_goods_order_type']			= 'Sorting method';
-$lang['web_config_goods_order_sale']			= '出售数量';
-$lang['web_config_goods_order_click']			= '浏览数量';
-$lang['web_config_goods_order_comment']			= '评论数量';
-$lang['web_config_goods_order_collect']			= '收藏数量';
-$lang['web_config_goods_order_name']			= '商品名称';
+$lang['web_config_doctors_appointment']			= '商品排行';
+$lang['web_config_doctors_appointment_title']			= '商品排行模块标题名称';
+$lang['web_config_doctors_appointment_tips']			= '修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏';
+$lang['web_config_doctors_list']			= '排行商品';
+$lang['web_config_doctors_list_tips']			= '小提示：单击查询出的商品选中，双击已选择的可以删除，最多5个，保存后生效。';
+$lang['web_config_doctors_appointment_add']			= '选择要展示的排行商品';
+$lang['web_config_doctors_appointment_gcategory']			= '选择分类';
+$lang['web_config_doctors_appointment_type']			= 'Sorting method';
+$lang['web_config_doctors_appointment_sale']			= '出售数量';
+$lang['web_config_doctors_appointment_click']			= '浏览数量';
+$lang['web_config_doctors_appointment_comment']			= '评论数量';
+$lang['web_config_doctors_appointment_collect']			= '收藏数量';
+$lang['web_config_doctors_appointment_name']			= '商品名称';
 
 $lang['web_config_brand_title']			= '推荐品牌';
 $lang['web_config_brand_tips']			= '小提示：单击候选品牌选中，双击已选择的可以删除，最多12个，保存后生效。';

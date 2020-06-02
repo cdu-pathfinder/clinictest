@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,10 +18,10 @@
     <table class="table tb-type2">
       <tbody>
         <?php foreach($output['adv_list'] as $k => $v){ ?>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="adv_name"><?php echo $lang['adv_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="adv_name" id="adv_name" class="txt" value="<?php echo $v['adv_title']; ?>"></td>
           <td class="vatop tips"></td>
         </tr>
@@ -29,28 +29,28 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['adv_ap_id'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $ap_v['ap_name'];?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['adv_class'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php switch ($ap_v['ap_class']){ case '0': echo $lang['adv_pic']; break; case '1': echo $lang['adv_word']; break; case '2': echo $lang['adv_slide']; break; case '3': echo "Flash"; break;} ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="adv_start_date"><?php echo $lang['adv_start_time'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="adv_start_date" id="adv_start_date" class="txt date" value="<?php echo date('Y-m-d',$v['adv_start_date']); ?>"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="adv_end_date"><?php echo $lang['adv_end_time'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="adv_end_date" id="adv_end_date" class="txt date" value="<?php echo date('Y-m-d',$v['adv_end_date']); ?>"></td>
           <td class="vatop tips"></td>
         </tr>
@@ -59,7 +59,7 @@
           <input type="hidden" name="mark" value="0">
           <td colspan="2" class="required"><label for="file_adv_pic"><?php echo $lang['adv_img_upload'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL."/".ATTACH_ADV."/".$pic;?>" onload="javascript:DrawImage(this,500,500);"></div>
             </span><span class="type-file-box">
@@ -71,7 +71,7 @@
         <tr id="adv_pic_url">
           <td colspan="2" class="required"><label for="adv_pic_url"><?php echo $lang['adv_url'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="adv_pic_url" name="adv_pic_url" value="<?php echo $url; ?>" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['adv_url_donotadd'];?></td>
         </tr>
@@ -80,14 +80,14 @@
           <input type="hidden" name="mark" value="1">
           <td colspan="2" class="required"><label for="adv_word"><?php echo $lang['adv_word_content'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="adv_word" id="adv_word" class="txt" value="<?php echo $word; ?>"></td>
           <td class="vatop tips"><?php echo $lang['adv_max'];?><?php echo $ap_v['ap_width'];?><?php echo $lang['adv_byte'];?>
             <input type="hidden" name="adv_word_len" value="<?php echo $ap_v['ap_width'];?>" ></td>
         </tr>
         <tr id="adv_word_url">
           <td colspan="2" class="required"><label for="adv_word_url"><?php echo $lang['adv_url'];?>:</label></td>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="adv_word_url" class="txt"  id="adv_word_url" value="<?php echo $url; ?>"></td>
           <td class="vatop tips"><?php echo $lang['adv_url_donotadd'];?>
             </label></td>
@@ -97,7 +97,7 @@
           <input type="hidden" name="mark" value="3">
           <td colspan="2" class="required"><label class="file_flash_swf"><?php echo $lang['adv_flash_upload'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-box">
             <input type="file" name="flash_swf" class="type-file-file" id="file_flash_swf" size="30"/>
             </span></td>
@@ -105,7 +105,7 @@
         </tr>
         <tr>
           <td><a href="http://<?php echo $url; ?>" target='_blank'>
-            <button style="width:<?php echo $ap_v['ap_width']; ?>px; height:<?php echo $ap_v['ap_height']; ?>px; border:none; padding:0; background:none;" disabled >
+            <button style="width:<?php echo $ap_v['ap_width']; ?>px; height:<?php echo $ap_v['ap_height']; ?>px; bappointment:none; padding:0; background:none;" disabled >
             <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="<?php echo $ap_v['ap_width']; ?>" height="<?php echo $ap_v['ap_height']; ?>">
               <param name="movie" value="<?php echo UPLOAD_SITE_URL."/".ATTACH_ADV."/".$flash;?>" />
               <param name="quality" value="high" />
@@ -136,7 +136,7 @@ swfobject.registerObject("FlashID");
         <tr id="adv_flash_url">
           <td colspan="2" class="required"><label for="flash_url"><?php echo $lang['adv_url'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="flash_url" id="flash_url" class="txt" value="<?php echo $url; ?>"></td>
           <td class="vatop tips"><?php echo $lang['adv_url_donotadd'];?></td>
         </tr>

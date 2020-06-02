@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,7 +12,7 @@
     <input type="hidden" name="act" value="stat_member" />
     <input type="hidden" name="op" value="area" />
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
               <td>
@@ -68,16 +68,16 @@
       <div class="close_float tabmenu">
       	<ul class="tab pngFix">
       		<li><a href="#membernum_div" nc_type="showmap" data-param='{"type":"membernum"}'>下单客户数</a></li>
-        	<li><a href="#ordernum_div" nc_type="showmap" data-param='{"type":"ordernum"}'>下单量</a></li>
-        	<li><a href="#orderamount_div" nc_type="showmap" data-param='{"type":"orderamount"}'>下单金额</a></li>
+        	<li><a href="#appointmentnum_div" nc_type="showmap" data-param='{"type":"appointmentnum"}'>下单量</a></li>
+        	<li><a href="#appointmentamount_div" nc_type="showmap" data-param='{"type":"appointmentamount"}'>下单金额</a></li>
         </ul>
       </div>
       <!-- 下单客户数 -->
       <div id="membernum_div" class="close_float" style="text-align:center;"></div>
       <!-- 下单量 -->
-      <div id="ordernum_div" class="close_float" style="text-align:center;"></div>
+      <div id="appointmentnum_div" class="close_float" style="text-align:center;"></div>
       <!-- 下单金额 -->
-      <div id="orderamount_div" class="close_float" style="text-align:center;"></div>
+      <div id="appointmentamount_div" class="close_float" style="text-align:center;"></div>
    </div>
    <!-- 统计列表 -->
   <div id="statlist" class="w100pre close_float" style="text-align:right;"></div>

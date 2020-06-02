@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -38,10 +38,10 @@
     <input type="hidden" name="old_c_logo" value="<?php echo $output['list_setting']['circle_logo'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="c_isuse"><?php echo $lang['circle_setting_isuse'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="c_isuse1" class="cb-enable <?php if($output['list_setting']['circle_isuse'] == 1) echo 'selected';?>" ><span><?php echo $lang['open'];?></span></label>
             <label for="c_isuse0" class="cb-disable <?php if($output['list_setting']['circle_isuse'] == 0) echo 'selected';?>" ><span><?php echo $lang['close'];?></span></label>
@@ -52,14 +52,14 @@
         <tr>
           <td colspan="2" class="required"><label for="c_name"><?php echo $lang['circle_setting_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_name" id="c_name" class="txt" value="<?php echo $output['list_setting']['circle_name'];?>"></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_name_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['circle_setting_logo'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.ATTACH_CIRCLE.DS.$output['list_setting']['circle_logo'];?>"></div>
             </span><span class="type-file-box">
@@ -73,7 +73,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_iscreate"><?php echo $lang['circle_setting_iscreate'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="c_iscreate1" class="cb-enable <?php if($output['list_setting']['circle_iscreate'] == 1) echo 'selected';?>"><span><?php echo $lang['open'];?></span></label>
             <label for="c_iscreate0" class="cb-disable <?php if($output['list_setting']['circle_iscreate'] == 0) echo 'selected';?>"><span><?php echo $lang['close'];?></span></label>
@@ -85,7 +85,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_istalk"><?php echo $lang['circle_setting_istalk'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="c_istalk1" class="cb-enable <?php if($output['list_setting']['circle_istalk'] == 1) echo 'selected';?>"><span><?php echo $lang['open'];?></span></label>
             <label for="c_istalk0" class="cb-disable <?php if($output['list_setting']['circle_istalk'] == 0) echo 'selected';?>"><span><?php echo $lang['close'];?></span></label>
@@ -97,28 +97,28 @@
         <tr>
           <td colspan="2" class="required"><label for="c_createsum"><?php echo $lang['circle_setting_create_sum'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_createsum" id="c_createsum" class="txt" value="<?php echo $output['list_setting']['circle_createsum'];?>"></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_create_sum_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_joinsum"><?php echo $lang['circle_setting_join_sum'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_joinsum" id="c_joinsum" class="txt" value="<?php echo $output['list_setting']['circle_joinsum'];?>"></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_join_sum_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['circle_setting_manage_sum'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_managesum" id="c_managesum" class="txt" value="<?php echo $output['list_setting']['circle_managesum'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_manage_sum_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_wordfilter"><?php echo $lang['circle_setting_wordfilter'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="c_wordfilter" id="c_wordfilter"><?php echo $output['list_setting']['circle_wordfilter'];?></textarea>
           </td>
@@ -128,7 +128,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['taobao_api_isuse'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="taobao_isuse_1" class="cb-enable <?php if($output['list_setting']['taobao_api_isuse'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="taobao_isuse_0" class="cb-disable <?php if($output['list_setting']['taobao_api_isuse'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -139,14 +139,14 @@
         <tr>
           <td colspan="2" class="required"><label for="taobao_app_key"><?php echo $lang['taobao_app_key'].'(APP KEY)'.$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['taobao_app_key'];?>" name="taobao_app_key" class="txt"></td>
           <td class="vatop tips"><a style="color:#ffffff; font-weight:bold;" target="_blank" href="http://open.taobao.com"><?php echo $lang['taobao_app_key_explain'];?></a></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="taobao_secret_key"><?php echo $lang['taobao_secret_key'].'(APP SECRET)'.$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['taobao_secret_key'];?>" name="taobao_secret_key" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>

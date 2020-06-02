@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class messageControl extends SystemControl{
 	private $links = array(
 		array('url'=>'act=message&op=email','lang'=>'email_set'),
@@ -149,7 +149,7 @@ class messageControl extends SystemControl{
 
 		$email_test = trim($_POST['email_test']);
 		$subject	= $lang['test_email'];
-		$site_url	= SHOP_SITE_URL;
+		$site_url	= clinic_SITE_URL;
 
         $site_title = $GLOBALS['setting_config']['site_name'];
         $message = '<p>'.$lang['this_is_to']."<a href='".$site_url."' target='_blank'>".$site_title.'</a>'.$lang['test_email_send_ok'].'</p>';

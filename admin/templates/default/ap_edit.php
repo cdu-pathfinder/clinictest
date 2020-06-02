@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,17 +18,17 @@
       <?php foreach($output['ap_list'] as $k => $v){ ?>
       <input type="hidden" name="ap_class" value="<?php echo $v['ap_class']; ?>" />
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="ap_name"><?php echo $lang['ap_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="ap_name" id="ap_name" class="txt" value="<?php echo $v['ap_name'];?>"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="sg_description"><?php echo $lang['ap_intro'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea class="tarea" id="sg_description" name="ap_intro" ><?php echo $v['ap_intro'];?></textarea></td>
           <td class="vatop tips"></td>
         </tr>
@@ -46,7 +46,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_class'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>".$lang['adv_pic']."</td>
 							<td class='vatop tips'></td>
 						</tr>";
@@ -54,7 +54,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label class='validation' for='ap_width_input'>".$lang['ap_width_l'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'><input type='text' value='".$v['ap_width']."' name='ap_width' class='txt' id='ap_width_input'></td>
 							<td class='vatop tips'>".$lang['adv_pix']."</td>
 						</tr>";
@@ -62,7 +62,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label class='validation' for='ap_height_input'>".$lang['ap_height_l'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'><input type='text' value='".$v['ap_height']."' name='ap_height' id='ap_height_input' class='txt'></td>
 							<td class='vatop tips'>".$lang['adv_pix']."</td>
 						</tr>";
@@ -70,7 +70,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_show_style'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>
 								<ul class='nofloat'>
 									<li><input type='radio' name='ap_display' id='ap_display_1' value='1' ".$display_state1."><label for='ap_display_1'>".$lang['ap_allow_mul_adv']."</label></li>
@@ -84,7 +84,7 @@
 							<tr>
 								<td colspan='2' class='required'><label>".$lang['ap_default_pic_upload']."</label></td>
 							</tr>
-							<tr class='noborder'>
+							<tr class='nobappointment'>
 								<td class='vatop rowform'><span class='type-file-show'><img class='show_image' src='".ADMIN_TEMPLATES_URL."/images/preview.png'>
 								<div class='type-file-preview'><img src='".UPLOAD_SITE_URL."/".ATTACH_ADV."/".$v['default_content']."'>
 								</div></span><span class='type-file-box'><input name='default_pic' type='file' class='type-file-file' id='change_default_pic' size='30'></span></td>
@@ -105,14 +105,14 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_class'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>".$lang['adv_word']."</td><td class='vatop tips'></td>
 						</tr>";
 				 		echo
 						"<tr>
 							<td colspan='2' class='required'><label class='validation' for='ap_width_input'>".$lang['ap_word_num'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'><input type='text' value='".$v['ap_width']."' name='ap_width' id='ap_width_input' class='txt'></td>
 							<td class='vatop tips'>".$lang['adv_byte']."</td>
 						</tr>";
@@ -120,7 +120,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_show_style'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>
 								<ul class='nofloat'>
 									<li><input type='radio' name='ap_display' value='1' id='ap_display_1' ".$display_state1."><label for='ap_display_1'>".$lang['ap_allow_mul_adv']."</label></li>
@@ -130,7 +130,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label class='validation' for='default_word'>".$lang['ap_default_word']."</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'><input type='text' value='".$v['default_content']."' name='default_word' class='txt' id='default_word'></td>
 							<td class='vatop tips'></td>
 						</tr>";
@@ -147,7 +147,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_class'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>Flash</td>
 							<td class='vatop tips'></td>
 						</tr>";
@@ -155,7 +155,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label for='ap_width' class='validation'>".$lang['ap_width_l'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>
 								<input type='text' value='".$v['ap_width']."' name='ap_width' class='txt' id='ap_width'>
 							</td>
@@ -165,7 +165,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label for='ap_height_input' class='validation'>".$lang['ap_height_l'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'><input type='text' value='".$v['ap_height']."' name='ap_height' id='ap_height_input' class='txt'></td>
 							<td class='vatop tips'>".$lang['adv_pix']."</td>
 						</tr>";
@@ -173,7 +173,7 @@
 						"<tr>
 							<td colspan='2' class='required'><label>".$lang['ap_show_style'].":</label></td>
 						</tr>
-						<tr class='noborder'>
+						<tr class='nobappointment'>
 							<td class='vatop rowform'>
 								<ul class='nofloat'>
 									<li><input type='radio' id='ap_display_1' name='ap_display' value='1' ".$display_state1."><label for='ap_display_1'>".$lang['ap_allow_mul_adv']."</label></li>
@@ -187,7 +187,7 @@
 							<tr id='adv_pic'>
 								<td colspan='2' class='required'><label>".$lang['ap_default_pic_upload']."</label></td>
 							</tr>
-							<tr class='noborder'>
+							<tr class='nobappointment'>
 								<td class='vatop rowform'>
 								<span class='type-file-show'><img class='show_image' src='".ADMIN_TEMPLATES_URL."/images/preview.png'>
 									<div class='type-file-preview'><img src='".UPLOAD_SITE_URL."/".ATTACH_ADV."/".$v['default_content']."' /></div></span><span class='type-file-box'><input name='default_pic' type='file' class='type-file-file' id='change_default_pic' size='30'></span></td><td class='vatop tips'>".$lang['ap_show_defaultpic_when_nothing'].",".$lang['adv_edit_support']."gif,jpg,jpeg,png</td></tbody></tr>";
@@ -197,7 +197,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['ap_is_use'];?>:</label></td>
         </tr>
-         <tr class="noborder">
+         <tr class="nobappointment">
           <td class="vatop rowform"><ul>
               <li>
                 <input type="radio" id="is_use_1" name="is_use" value="1" <?php if($v['is_use'] == '1'){echo "checked";}?>>

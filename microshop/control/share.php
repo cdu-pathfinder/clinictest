@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class shareControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class shareControl extends MircroclinicControl{
 
     public function __construct() {
         parent::__construct();
@@ -35,17 +35,17 @@ class shareControl extends MircroShopControl{
             if(isset($_POST['share_app_items'])) {
                 $condition = array();
                 $condition[$share_type['type_key']] = $_POST['share_id'];
-                if($_GET['type'] == 'store') {
-                    $info = $model->getOneWithStoreInfo($condition);
+                if($_GET['type'] == 'clic') {
+                    $info = $model->getOneWithclicInfo($condition);
                 } else {
                     $info = $model->getOne($condition);
                 }
                 $info['commend_message'] = $_POST['commend_message'];
                 if(empty($info['commend_message'])) { 
-                    $info['commend_message'] = Language::get('microshop_share_default_message');
+                    $info['commend_message'] = Language::get('microclinic_share_default_message');
                 }
                 $info['type'] = $_GET['type'];
-                $info['url'] = MICROSHOP_SITE_URL.DS."index.php?act={$_GET['type']}&op=detail&{$_GET['type']}_id=".$_POST['share_id'];
+                $info['url'] = MICROclinic_SITE_URL.DS."index.php?act={$_GET['type']}&op=detail&{$_GET['type']}_id=".$_POST['share_id'];
                 self::share_app_publish('share',$info);
             }
             showDialog(Language::get('nc_common_save_succ'),'','succ','');

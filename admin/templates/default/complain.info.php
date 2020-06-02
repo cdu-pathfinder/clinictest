@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -55,7 +55,7 @@ $(document).ready(function(){
 </div>
 <div class="fixed-empty"></div>
 <?php
-        include template('complain_order.info');
+        include template('complain_appointment.info');
         include template('complain_complain.info');
         if(!empty($output['complain_info']['appeal_message'])) {
             include template('complain_appeal.info');
@@ -68,7 +68,7 @@ $(document).ready(function(){
         }
     ?>
 <?php if(intval($output['complain_info']['complain_state']) !== 99) { ?>
-<table class="table tb-type2 order mtw">
+<table class="table tb-type2 appointment mtw">
   <thead class="thead">
     <tr class="space">
       <th><?php echo $lang['complain_handle'];?></th>
@@ -90,40 +90,40 @@ $(document).ready(function(){
       </td>
   </tr>
   <form method='post' id="close_form" action="index.php?act=complain&op=complain_close">
-  	<?php if(!empty($output['refund_goods']) && is_array($output['refund_goods'])) { ?>
+  	<?php if(!empty($output['refund_doctors']) && is_array($output['refund_doctors'])) { ?>
     <tr class="complain_dialog">
       <th>可退款商品</th>
     </tr>
     <tr class="complain_dialog">
       <td>
         <p> 注：选中下表中订单商品可退款，可退款金额为0的商品不能进行操作。</p>
-        <table class="table tb-type2 goods ">
+        <table class="table tb-type2 doctors ">
           <tr>
             <th width="30">&nbsp;</th>
-            <th colspan="2"><?php echo $lang['complain_goods_name'];?></th>
+            <th colspan="2"><?php echo $lang['complain_doctors_name'];?></th>
             <th>可退款金额</th>
             <th>实际支付额</th>
             <th>购买数量</th>
             <th><?php echo $lang['complain_text_price'];?></th>
           </tr>
-        <?php foreach ($output['refund_goods'] as $key => $val) { ?>
+        <?php foreach ($output['refund_doctors'] as $key => $val) { ?>
           <tr>
             <td width="30">
-                <?php if($val['goods_refund'] > 0) { ?>
-                <input class="checkitem" name="checked_goods[<?php echo $val['rec_id'];?>]" type="checkbox" value="<?php echo $val['rec_id'];?>" />
+                <?php if($val['doctors_refund'] > 0) { ?>
+                <input class="checkitem" name="checked_doctors[<?php echo $val['rec_id'];?>]" type="checkbox" value="<?php echo $val['rec_id'];?>" />
                 <?php } ?>
                 </td>
-            <td width="65" align="center" valign="middle"><a style="text-decoration:none;" href="<?php echo urlShop('goods','index',array('goods_id'=> $val['goods_id']));?>" target="_blank">
+            <td width="65" align="center" valign="middle"><a style="text-decoration:none;" href="<?php echo urlclinic('doctors','index',array('doctors_id'=> $val['doctors_id']));?>" target="_blank">
               <img width="50" src="<?php echo thumb($val,60);?>" />
               </a></td>
             <td class="intro">
-                <p><a href="<?php echo urlShop('goods','index',array('goods_id'=> $val['goods_id']));?>" target="_blank"><?php echo $val['goods_name'];?> </a></p>
-                <p><?php echo orderGoodsType($val['goods_type']); ?></p>
+                <p><a href="<?php echo urlclinic('doctors','index',array('doctors_id'=> $val['doctors_id']));?>" target="_blank"><?php echo $val['doctors_name'];?> </a></p>
+                <p><?php echo appointmentdoctorsType($val['doctors_type']); ?></p>
               </td>
-            <td width="10%"><?php echo $lang['currency'].$val['goods_refund'];?></td>
-            <td width="10%"><?php echo $lang['currency'].$val['goods_pay_price'];?></td>
-            <td width="10%"><?php echo $val['goods_num'];?></td>
-            <td width="10%"><?php echo $lang['currency'].$val['goods_price'];?></td>
+            <td width="10%"><?php echo $lang['currency'].$val['doctors_refund'];?></td>
+            <td width="10%"><?php echo $lang['currency'].$val['doctors_pay_price'];?></td>
+            <td width="10%"><?php echo $val['doctors_num'];?></td>
+            <td width="10%"><?php echo $lang['currency'].$val['doctors_price'];?></td>
           </tr>
         <?php } ?>
         </table></td>
@@ -133,7 +133,7 @@ $(document).ready(function(){
       <th><?php echo $lang['final_handle_message'];?>:</th>
     </tr>
     <input name="complain_id" type="hidden" value="<?php echo $output['complain_info']['complain_id'];?>" />
-    <tr class="noborder complain_dialog">
+    <tr class="nobappointment complain_dialog">
       <td><textarea id="final_handle_message" name="final_handle_message" class="tarea"></textarea></td>
     </tr>
     <tr class="complain_dialog">

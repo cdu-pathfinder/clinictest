@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,17 +18,17 @@
     <input type="hidden" name="mlref_id" value="<?php echo $output['mlref_info']['mlref_id']?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="mlref_name"><?php echo $lang['circle_memberlevelgroup'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="mlref_name" name="mlref_name" class="txt" type="text" value="<?php echo $output['mlref_info']['mlref_name'];?>"></td>
           <td class="vatop tips"><span class="vatop rowform"></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['circle_is_use'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="mlref_status1" class="cb-enable <?php if($output['mlref_info']['mlref_status'] == 1){?>selected<?php }?>" ><span><?php echo $lang['open'];?></span></label>
             <label for="mlref_status0" class="cb-disable <?php if($output['mlref_info']['mlref_status'] == 0){?>selected<?php }?>" ><span><?php echo $lang['close'];?></span></label>

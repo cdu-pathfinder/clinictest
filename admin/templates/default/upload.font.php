@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -24,12 +24,12 @@
   </table>
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2"><label><?php echo $lang['font_info'];?>:</label></td>
         </tr>
     		<?php if(!empty($output['file_list']) && is_array($output['file_list'])){?>
         <?php foreach($output['file_list'] as $key => $value){?>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $key;?><?php echo $lang['nc_colon'];?><?php echo $value;?></td>
           <td class="vatop tips"></td>
         </tr>

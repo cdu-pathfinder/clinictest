@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class web_apiControl extends SystemControl {
 	public function __construct() {
 		parent::__construct();
@@ -64,9 +64,9 @@ class web_apiControl extends SystemControl {
 	    $web_id = '121';
 	    $code_list = $model_web_config->getCodeList(array('web_id'=> $web_id));
 	    if(is_array($code_list) && !empty($code_list)) {
-	        $model_class = Model('goods_class');
-			$goods_class = $model_class->getTreeClassList(1);//第一级商品分类
-			Tpl::output('goods_class',$goods_class);
+	        $model_class = Model('doctors_class');
+			$doctors_class = $model_class->getTreeClassList(1);//第一级商品分类
+			Tpl::output('doctors_class',$doctors_class);
 			foreach ($code_list as $key => $val) {//将变量输出到页面
 				$var_name = $val['var_name'];
 				$code_info = $val['code_info'];
@@ -82,11 +82,11 @@ class web_apiControl extends SystemControl {
 	 * 商品分类
 	 */
 	public function category_listOp() {
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		$gc_parent_id = intval($_GET['id']);
-		$goods_class = $model_class->getClassList(array('gc_parent_id'=> $gc_parent_id));
-		Tpl::output('goods_class',$goods_class);
-		Tpl::showpage('web_goods_class','null_layout');
+		$doctors_class = $model_class->getClassList(array('gc_parent_id'=> $gc_parent_id));
+		Tpl::output('doctors_class',$doctors_class);
+		Tpl::showpage('web_doctors_class','null_layout');
 	}
 
 	/**
@@ -99,39 +99,39 @@ class web_apiControl extends SystemControl {
 		if ($gc_id > 0) {
 			$condition['gc_id'] = $gc_id;
 		}
-		$goods_name = trim($_GET['goods_name']);
-		if (!empty($goods_name)) {
-			$condition['goods_name'] = array('like','%'.$goods_name.'%');
+		$doctors_name = trim($_GET['doctors_name']);
+		if (!empty($doctors_name)) {
+			$condition['doctors_name'] = array('like','%'.$doctors_name.'%');
 		}
-		$goods_list = $model_web_config->getGoodsList($condition,'goods_id desc',6);
+		$doctors_list = $model_web_config->getdoctorsList($condition,'doctors_id desc',6);
 		Tpl::output('show_page',$model_web_config->showpage(2));
-		Tpl::output('goods_list',$goods_list);
-		Tpl::showpage('web_goods.list','null_layout');
+		Tpl::output('doctors_list',$doctors_list);
+		Tpl::showpage('web_doctors.list','null_layout');
 	}
 
 	/**
 	 * 商品排序查询
 	 */
-	public function goods_listOp() {
+	public function doctors_listOp() {
 		$model_web_config = Model('web_config');
 		$condition = array();
-		$order = 'goods_salenum desc,goods_id desc';//销售数量
-		$goods_order = trim($_GET['goods_order']);
-		if (!empty($goods_order)) {
-			$order = $goods_order.' desc,goods_id desc';
+		$appointment = 'doctors_salenum desc,doctors_id desc';//销售数量
+		$doctors_appointment = trim($_GET['doctors_appointment']);
+		if (!empty($doctors_appointment)) {
+			$appointment = $doctors_appointment.' desc,doctors_id desc';
 		}
 		$gc_id = intval($_GET['id']);
 		if ($gc_id > 0) {
 			$condition['gc_id'] = $gc_id;
 		}
-		$goods_name = trim($_GET['goods_name']);
-		if (!empty($goods_name)) {
-			$condition['goods_name'] = array('like','%'.$goods_name.'%');
+		$doctors_name = trim($_GET['doctors_name']);
+		if (!empty($doctors_name)) {
+			$condition['doctors_name'] = array('like','%'.$doctors_name.'%');
 		}
-		$goods_list = $model_web_config->getGoodsList($condition,$order,6);
+		$doctors_list = $model_web_config->getdoctorsList($condition,$appointment,6);
 		Tpl::output('show_page',$model_web_config->showpage(2));
-		Tpl::output('goods_list',$goods_list);
-		Tpl::showpage('web_goods_order','null_layout');
+		Tpl::output('doctors_list',$doctors_list);
+		Tpl::showpage('web_doctors_appointment','null_layout');
 	}
 
 	/**
@@ -144,7 +144,7 @@ class web_apiControl extends SystemControl {
 		 */
 		$condition = array();
 		$condition['brand_apply']	= '1';
-		$condition['order']	= ' brand_sort,brand_id desc ';
+		$condition['appointment']	= ' brand_sort,brand_id desc ';
 		$condition['like_brand_name'] = trim($_GET['brand_name']);
 		/**
 		 * 分页

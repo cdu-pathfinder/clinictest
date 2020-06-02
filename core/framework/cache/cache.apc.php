@@ -5,10 +5,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class CacheApc extends Cache{
 
@@ -30,7 +30,7 @@ class CacheApc extends Cache{
 
  	public function set($key, $value, $type='', $ttl = SESSION_EXPIRE){
 		$this->type = $type;
-        if(apc_store($this->_key($key), $value, $ttl)) {
+        if(apc_clic($this->_key($key), $value, $ttl)) {
             return true;
         }
         return false;

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,7 +17,7 @@
   <form id="search_form" method="get" name="formSearch">
     <input type="hidden" id="act" name="act" value="inform" />
     <input type="hidden" id="op" name="op" value="inform_subject_list" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th> <label for=""> <?php echo $lang['inform_type']?></label></th>
@@ -89,7 +89,7 @@
   </form>
 </div>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script> 
-<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.goods_class.js" charset="utf-8"></script> 
+<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.doctors_class.js" charset="utf-8"></script> 
 <script type="text/javascript">
 
 

@@ -1,7 +1,7 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="my-info">
-  <div class="avatar"><img src="<?php echo getMemberAvatarForID($_SESSION['member_id']);?>" /><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></div>
+  <div class="avatar"><img src="<?php echo getMemberAvatarForID($_SESSION['member_id']);?>" /><a href="<?php echo clinic_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></div>
   <dl>
     <dt>
       <h2><a href="index.php?act=p_center" target="_blank"><?php echo $_SESSION['member_name'];?></a></h2>

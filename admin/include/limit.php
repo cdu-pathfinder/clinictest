@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 $_limit =  array(
 	array('name'=>$lang['nc_config'], 'child'=>array(
 		array('name'=>$lang['nc_web_set'], 'op'=>null, 'act'=>'setting'),
@@ -23,18 +23,18 @@ $_limit =  array(
 	    array('name'=>$lang['nc_admin_search_set'], 'op'=>null, 'act'=>'search'),
 	    array('name'=>$lang['nc_admin_log'], 'op'=>null, 'act'=>'admin_log'),
 		)),
-	array('name'=>$lang['nc_goods'], 'child'=>array(
-		array('name'=>$lang['nc_goods_manage'], 'op'=>null, 'act'=>'goods'),
-		array('name'=>$lang['nc_class_manage'], 'op'=>null, 'act'=>'goods_class'),
+	array('name'=>$lang['nc_doctors'], 'child'=>array(
+		array('name'=>$lang['nc_doctors_manage'], 'op'=>null, 'act'=>'doctors'),
+		array('name'=>$lang['nc_class_manage'], 'op'=>null, 'act'=>'doctors_class'),
 		array('name'=>$lang['nc_brand_manage'], 'op'=>null, 'act'=>'brand'),
 		array('name'=>$lang['nc_type_manage'], 'op'=>null, 'act'=>'type'),
 		array('name'=>$lang['nc_spec_manage'], 'op'=>null, 'act'=>'spec'),
-		array('name'=>$lang['nc_album_manage'], 'op'=>null, 'act'=>'goods_album'),
+		array('name'=>$lang['nc_album_manage'], 'op'=>null, 'act'=>'doctors_album'),
 		)),
-	array('name'=>$lang['nc_store'], 'child'=>array(
-		array('name'=>$lang['nc_store_manage'], 'op'=>null, 'act'=>'store'),
-		array('name'=>$lang['nc_store_grade'], 'op'=>null, 'act'=>'store_grade'),
-		array('name'=>$lang['nc_store_class'], 'op'=>null, 'act'=>'store_class'),
+	array('name'=>$lang['nc_clic'], 'child'=>array(
+		array('name'=>$lang['nc_clic_manage'], 'op'=>null, 'act'=>'clic'),
+		array('name'=>$lang['nc_clic_grade'], 'op'=>null, 'act'=>'clic_grade'),
+		array('name'=>$lang['nc_clic_class'], 'op'=>null, 'act'=>'clic_class'),
 		array('name'=>$lang['nc_domain_manage'], 'op'=>null, 'act'=>'domain'),
 		array('name'=>$lang['nc_s_snstrace'], 'op'=>null, 'act'=>'sns_strace'),
 		)),
@@ -49,12 +49,12 @@ $_limit =  array(
 		array('name'=>$lang['nc_member_predepositmanage'], 'op'=>null, 'act'=>'predeposit'),
 		)),
 	array('name'=>$lang['nc_trade'], 'child'=>array(
-		array('name'=>$lang['nc_order_manage'], 'op'=>null, 'act'=>'order'),
+		array('name'=>$lang['nc_appointment_manage'], 'op'=>null, 'act'=>'appointment'),
 		array('name'=>'退款管理', 'op'=>null, 'act'=>'refund'),
 		array('name'=>'退货管理', 'op'=>null, 'act'=>'return'),
 		array('name'=>$lang['nc_consult_manage'], 'op'=>null, 'act'=>'consulting'),
 		array('name'=>$lang['nc_inform_config'], 'op'=>null, 'act'=>'inform'),
-		array('name'=>$lang['nc_goods_evaluate'], 'op'=>null, 'act'=>'evaluate'),
+		array('name'=>$lang['nc_doctors_evaluate'], 'op'=>null, 'act'=>'evaluate'),
 		array('name'=>$lang['nc_complain_config'], 'op'=>null, 'act'=>'complain'),
 		)),
 	array('name'=>$lang['nc_website'], 'child'=>array(
@@ -74,13 +74,13 @@ $_limit =  array(
 		array('name'=>$lang['nc_promotion_mansong'], 	'op'=>null, 'act'=>'promotion_mansong'),
 		array('name'=>$lang['nc_promotion_bundling'], 'op'=>null, 'act'=>'promotion_bundling'),
 		array('name'=>'推荐展位', 'op'=>null, 'act'=>'promotion_bundling'),
-		array('name'=>$lang['nc_pointprod'], 'op'=>null, 'act'=>'pointprod|pointorder'),
+		array('name'=>$lang['nc_pointprod'], 'op'=>null, 'act'=>'pointprod|pointappointment'),
 		array('name'=>$lang['nc_voucher_price_manage'], 	'op'=>null, 'act'=>'voucher'),
 	    array('name'=>$lang['nc_bill_manage'], 'op'=>null, 'act'=>'bill'),
 		)),
 	array('name'=>$lang['nc_stat'], 'child'=>array(
 		array('name'=>$lang['nc_statmember'], 'op'=>null, 'act'=>'stat_member'),
-		array('name'=>$lang['nc_statstore'], 'op'=>null, 'act'=>'stat_store'),
+		array('name'=>$lang['nc_statclic'], 'op'=>null, 'act'=>'stat_clic'),
 		array('name'=>$lang['nc_stattrade'], 'op'=>null, 'act'=>'stat_trade'),
 		array('name'=>$lang['nc_statmarketing'], 'op'=>null, 'act'=>'stat_marketing'),
 		array('name'=>$lang['nc_stataftersale'], 	'op'=>null, 'act'=>'stat_aftersale'),
@@ -96,16 +96,16 @@ if (C('mobile_isuse') !== NULL){
 		));
 }
 
-if (C('microshop_isuse') !== NULL){
-	$_limit[] = array('name'=>$lang['nc_microshop'], 'child'=>array(
-		array('name'=>$lang['nc_microshop_manage'], 'op'=>'manage', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_goods_manage'], 'op'=>'goods|goods_manage', 'act'=>'microshop'),//op值重复(goods_manage,goodsclass_list,personal_manage...)是为了无权时，隐藏该菜单
-		array('name'=>$lang['nc_microshop_goods_class'], 'op'=>'goodsclass|goodsclass_list', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_personal_manage'], 'op'=>'personal|personal_manage', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_personal_class'], 'op'=>'personalclass|personalclass_list', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_store_manage'], 'op'=>'store|store_manage', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_comment_manage'], 'op'=>'comment|comment_manage', 'act'=>'microshop'),
-		array('name'=>$lang['nc_microshop_adv_manage'], 'op'=>'adv|adv_manage', 'act'=>'microshop')
+if (C('microclinic_isuse') !== NULL){
+	$_limit[] = array('name'=>$lang['nc_microclinic'], 'child'=>array(
+		array('name'=>$lang['nc_microclinic_manage'], 'op'=>'manage', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_doctors_manage'], 'op'=>'doctors|doctors_manage', 'act'=>'microclinic'),//op值重复(doctors_manage,doctorsclass_list,personal_manage...)是为了无权时，隐藏该菜单
+		array('name'=>$lang['nc_microclinic_doctors_class'], 'op'=>'doctorsclass|doctorsclass_list', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_personal_manage'], 'op'=>'personal|personal_manage', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_personal_class'], 'op'=>'personalclass|personalclass_list', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_clic_manage'], 'op'=>'clic|clic_manage', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_comment_manage'], 'op'=>'comment|comment_manage', 'act'=>'microclinic'),
+		array('name'=>$lang['nc_microclinic_adv_manage'], 'op'=>'adv|adv_manage', 'act'=>'microclinic')
 		));
 }
 

@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class groupControl extends BaseCircleThemeControl{
 	public function __construct(){
@@ -43,7 +43,7 @@ class groupControl extends BaseCircleThemeControl{
 		if(intval($_GET['cream']) == 1){
 			$where['is_digest'] = 1;
 		}
-		$theme_list = $model->table('circle_theme')->where($where)->order('is_stick desc,lastspeak_time desc')->page(20)->select();
+		$theme_list = $model->table('circle_theme')->where($where)->appointment('is_stick desc,lastspeak_time desc')->page(20)->select();
 		$theme_list = array_under_reset($theme_list, 'theme_id');
 		Tpl::output('show_page', $model->showpage('2'));
 		Tpl::output('theme_list', $theme_list);
@@ -76,7 +76,7 @@ class groupControl extends BaseCircleThemeControl{
 		$where = array();
 		$where['circle_id']		= $this->c_id;
 		$where['thclass_status']= 1;
-		$thclass_list = $model->table('circle_thclass')->where($where)->order('thclass_sort asc')->select();
+		$thclass_list = $model->table('circle_thclass')->where($where)->appointment('thclass_sort asc')->select();
 		$thclass_list = array_under_reset($thclass_list, 'thclass_id');
 		Tpl::output('thclass_list', $thclass_list);
 		
@@ -206,7 +206,7 @@ class groupControl extends BaseCircleThemeControl{
 		$where['circle_id']	= $this->c_id;
 		$where['cm_state']	= 1;
 		if($_SESSION['is_login']) $where['member_id']	= array('neq', $_SESSION['member_id']);
-		$cm_list = $model->table('circle_member')->where($where)->order('is_identity asc,cm_jointime desc')->page(15)->select();
+		$cm_list = $model->table('circle_member')->where($where)->appointment('is_identity asc,cm_jointime desc')->page(15)->select();
 		Tpl::output('show_page', $model->showpage(2));
 		Tpl::output('cm_list', $cm_list);
 		
@@ -253,7 +253,7 @@ class groupControl extends BaseCircleThemeControl{
 	/**
 	 * 圈子商品列表
 	 */
-	public function group_goodsOp(){
+	public function group_doctorsOp(){
 		// 圈子信息
 		$this->circleInfo();
 		
@@ -270,32 +270,32 @@ class groupControl extends BaseCircleThemeControl{
 		$model = Model();
 		$cmid_list	= $model->table('circle_member')->field('member_id')->where(array('circle_id'=>$this->c_id, 'cm_state'=>1))->select();
 		$cmid_list	= array_under_reset($cmid_list, 'member_id'); $cmid_array = array_keys($cmid_list);
-		$count		= $model->table('sns_sharegoods')->where(array('share_memberid'=>array('in', $cmid_array)))->count();
-		$goods_list = $model->table('sns_sharegoods,sns_goods')->join('left')->on('sns_sharegoods.share_goodsid=sns_goods.snsgoods_goodsid')
-						->where(array('sns_sharegoods.share_memberid'=>array('in', $cmid_array), 'share_isshare|share_islike'=>1))->order('share_id desc')->page(20, $count)->select();
-		if(!empty($goods_list)){
+		$count		= $model->table('sns_sharedoctors')->where(array('share_memberid'=>array('in', $cmid_array)))->count();
+		$doctors_list = $model->table('sns_sharedoctors,sns_doctors')->join('left')->on('sns_sharedoctors.share_doctorsid=sns_doctors.snsdoctors_doctorsid')
+						->where(array('sns_sharedoctors.share_memberid'=>array('in', $cmid_array), 'share_isshare|share_islike'=>1))->appointment('share_id desc')->page(20, $count)->select();
+		if(!empty($doctors_list)){
 			if($_SESSION['is_login'] == '1'){
-				foreach ($goods_list as $k=>$v){
-					if (!empty($v['snsgoods_likemember'])){
-						$v['snsgoods_likemember_arr'] = explode(',',$v['snsgoods_likemember']);
-						$v['snsgoods_havelike'] = in_array($_SESSION['member_id'],$v['snsgoods_likemember_arr'])?1:0;
+				foreach ($doctors_list as $k=>$v){
+					if (!empty($v['snsdoctors_likemember'])){
+						$v['snsdoctors_likemember_arr'] = explode(',',$v['snsdoctors_likemember']);
+						$v['snsdoctors_havelike'] = in_array($_SESSION['member_id'],$v['snsdoctors_likemember_arr'])?1:0;
 					}
-					$goods_list[$k] = $v;
+					$doctors_list[$k] = $v;
 				}
 			}
-			$goods_list	= array_under_reset($goods_list, 'share_id'); $shareid_array = array_keys($goods_list);
+			$doctors_list	= array_under_reset($doctors_list, 'share_id'); $shareid_array = array_keys($doctors_list);
 			Tpl::output('show_page', $model->showpage('2'));
-			Tpl::output('goods_list', $goods_list);
+			Tpl::output('doctors_list', $doctors_list);
 			$pic_list	= $model->cls()->table('sns_albumpic')->where(array('item_id'=>array('in', $shareid_array)))->select();
 			$pic_list	= array_under_reset($pic_list, 'item_id', 2);
 			Tpl::output('pic_list', $pic_list);
 		}
 		
-		$this->circleSEO(L('circle_member_like_and_show_goods').$this->circle_info['circle_name']);
+		$this->circleSEO(L('circle_member_like_and_show_doctors').$this->circle_info['circle_name']);
 
 		// breadcrumb navigation
-		$this->breadcrumd(L('site_search_goods'));
-		Tpl::showpage('group.goods');
+		$this->breadcrumd(L('site_search_doctors'));
+		Tpl::showpage('group.doctors');
 	}
 	/**
 	 * Applied to be an administrator

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/ubb.css" rel="stylesheet" type="text/css">
 <div class="group warp-all">
   <?php require_once circle_template('group.top');?>
@@ -26,7 +26,7 @@
               <input name="name" type="text" class="text" value="<?php echo $output['theme_info']['theme_name'];?>" />
               </span></label>
           </div>
-          <?php echo showMiniEditor('themecontent', $output['theme_info']['theme_content'], 'all', $output['affix_list'], 'goods', $output['goods_list'], $output['readperm'], $output['theme_info']['theme_readperm']);?>
+          <?php echo showMiniEditor('themecontent', $output['theme_info']['theme_content'], 'all', $output['affix_list'], 'doctors', $output['doctors_list'], $output['readperm'], $output['theme_info']['theme_readperm']);?>
           <div class="bottom"> <a class="submit-btn" nctype="theme_submit" href="Javascript: void(0)"><?php echo $lang['nc_edit_theme'];?></a> <a class="cancel-btn" nctype="theme_cancle" href="Javascript:history.go(-1);"><?php echo $lang['nc_cancel'];?></a>
             <div id="warning"></div>
           </div>

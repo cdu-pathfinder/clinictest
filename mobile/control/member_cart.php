@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class member_cartControl extends mobileMemberControl {
 
@@ -28,9 +28,9 @@ class member_cartControl extends mobileMemberControl {
         $cart_list	= $model_cart->listCart('db', $condition);
         $sum = 0;
         foreach ($cart_list as $key => $value) {
-            $cart_list[$key]['goods_image_url'] = cthumb($value['goods_image'], $value['store_id']);
-            $cart_list[$key]['goods_sum'] = ncPriceFormat($value['goods_price'] * $value['goods_num']);
-            $sum += $cart_list[$key]['goods_sum'];
+            $cart_list[$key]['doctors_image_url'] = cthumb($value['doctors_image'], $value['clic_id']);
+            $cart_list[$key]['doctors_sum'] = ncPriceFormat($value['doctors_price'] * $value['doctors_num']);
+            $sum += $cart_list[$key]['doctors_sum'];
         }
 
         output_data(array('cart_list' => $cart_list, 'sum' => ncPriceFormat($sum)));
@@ -40,41 +40,41 @@ class member_cartControl extends mobileMemberControl {
      * 购物车添加
      */
     public function cart_addOp() {
-        $goods_id = intval($_POST['goods_id']);
+        $doctors_id = intval($_POST['doctors_id']);
         $quantity = intval($_POST['quantity']);
-        if($goods_id <= 0 || $quantity <= 0) {
+        if($doctors_id <= 0 || $quantity <= 0) {
             output_error('参数错误');
         }
 
-        $model_goods = Model('goods');
+        $model_doctors = Model('doctors');
         $model_cart	= Model('cart');
 
-        $goods_info = $model_goods->getGoodsOnlineInfo(array('goods_id' => $goods_id));
+        $doctors_info = $model_doctors->getdoctorsOnlineInfo(array('doctors_id' => $doctors_id));
         //判断是不是在限时折扣中，如果是返回折扣信息
-        $xianshi_info = $model_cart->getXianshiInfo($goods_info, $quantity);
+        $xianshi_info = $model_cart->getXianshiInfo($doctors_info, $quantity);
         if (!empty($xianshi_info)) {
-            $goods_info = $xianshi_info;
+            $doctors_info = $xianshi_info;
         }
 
         //验证是否可以购买
-		if(empty($goods_info)) {
+		if(empty($doctors_info)) {
             output_error('商品不存在');
 		}
-        if ($goods_info['store_id'] == $this->member_info['store_id']) {
+        if ($doctors_info['clic_id'] == $this->member_info['clic_id']) {
             output_error('不能购买自己发布的商品');
 		}
-		if(intval($goods_info['goods_storage']) < 1 || intval($goods_info['goods_storage']) < $quantity) {
+		if(intval($doctors_info['doctors_storage']) < 1 || intval($doctors_info['doctors_storage']) < $quantity) {
             output_error('库存不足');
 		}
 
         $param = array();
         $param['buyer_id']	= $this->member_info['member_id'];
-        $param['store_id']	= $goods_info['store_id'];
-        $param['goods_id']	= $goods_info['goods_id'];
-        $param['goods_name'] = $goods_info['goods_name'];
-        $param['goods_price'] = $goods_info['goods_price'];
-        $param['goods_image'] = $goods_info['goods_image'];
-        $param['store_name'] = $goods_info['store_name'];
+        $param['clic_id']	= $doctors_info['clic_id'];
+        $param['doctors_id']	= $doctors_info['doctors_id'];
+        $param['doctors_name'] = $doctors_info['doctors_name'];
+        $param['doctors_price'] = $doctors_info['doctors_price'];
+        $param['doctors_image'] = $doctors_info['doctors_image'];
+        $param['clic_name'] = $doctors_info['clic_name'];
 
         $result = $model_cart->addCart($param, 'db', $quantity);
         if($result) {
@@ -123,18 +123,18 @@ class member_cartControl extends mobileMemberControl {
         }
 
         //检查库存是否充足
-        if(!$this->_check_goods_storage($cart_info, $quantity, $this->member_info['member_id'])) {
+        if(!$this->_check_doctors_storage($cart_info, $quantity, $this->member_info['member_id'])) {
             output_error('库存不足');
         }
 
 		$data = array();
-        $data['goods_num'] = $quantity;
+        $data['doctors_num'] = $quantity;
         $update = $model_cart->editCart($data, array('cart_id'=>$cart_id));
 		if ($update) {
 		    $return = array();
             $return['quantity'] = $quantity;
-			$return['goods_price'] = ncPriceFormat($cart_info['goods_price']);
-			$return['total_price'] = ncPriceFormat($cart_info['goods_price'] * $quantity);
+			$return['doctors_price'] = ncPriceFormat($cart_info['doctors_price']);
+			$return['total_price'] = ncPriceFormat($cart_info['doctors_price'] * $quantity);
             output_data($return);
 		} else {
             output_error('修改失败');
@@ -144,29 +144,29 @@ class member_cartControl extends mobileMemberControl {
     /**
      * 检查库存是否充足 
      */
-    private function _check_goods_storage($cart_info, $quantity, $member_id) {
-		$model_goods= Model('goods');
+    private function _check_doctors_storage($cart_info, $quantity, $member_id) {
+		$model_doctors= Model('doctors');
         $model_bl = Model('p_bundling');
 
 		if ($cart_info['bl_id'] == '0') {
             //普通商品
-		    $goods_info	= $model_goods->getGoodsOnlineInfo(array('goods_id' => $cart_info['goods_id']));
+		    $doctors_info	= $model_doctors->getdoctorsOnlineInfo(array('doctors_id' => $cart_info['doctors_id']));
 
-		    if(intval($goods_info['goods_storage']) < $quantity) {
+		    if(intval($doctors_info['doctors_storage']) < $quantity) {
                 return false;
 		    }
 		} else {
 		    //优惠套装商品
-		    $bl_goods_list = $model_bl->getBundlingGoodsList(array('bl_id' => $cart_info['bl_id']));
-		    $goods_id_array = array();
-		    foreach ($bl_goods_list as $goods) {
-		        $goods_id_array[] = $goods['goods_id'];
+		    $bl_doctors_list = $model_bl->getBundlingdoctorsList(array('bl_id' => $cart_info['bl_id']));
+		    $doctors_id_array = array();
+		    foreach ($bl_doctors_list as $doctors) {
+		        $doctors_id_array[] = $doctors['doctors_id'];
 		    }
-		    $bl_goods_list = $model_goods->getGoodsOnlineList(array('goods_id' => array('in', $goods_id_array)));
+		    $bl_doctors_list = $model_doctors->getdoctorsOnlineList(array('doctors_id' => array('in', $doctors_id_array)));
 
 		    //如果有商品库存不足，更新购买数量到目前最大库存
-		    foreach ($bl_goods_list as $goods_info) {
-		        if (intval($goods_info['goods_storage']) < $quantity) {
+		    foreach ($bl_doctors_list as $doctors_info) {
+		        if (intval($doctors_info['doctors_storage']) < $quantity) {
                     return false;
 		        }
 		    }

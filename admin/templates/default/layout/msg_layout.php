@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,12 +10,12 @@
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3><?php echo $lang['nc_shopnc_message'];?></h3>
+      <h3><?php echo $lang['nc_clinicnc_message'];?></h3>
     </div>
   </div>
   <div class="fixed-empty"></div>
   <table class="table tb-type2 msg">
-    <tbody class="noborder">
+    <tbody class="nobappointment">
       <tr>
         <td rowspan="5" class="msgbg"></td>
         <td class="tip"><?php require_once($tpl_file); ?></td>

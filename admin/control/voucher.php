@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class voucherControl extends SystemControl{    
     const SECONDS_OF_30DAY = 2592000;
     private $applystate_arr;
@@ -44,7 +44,7 @@ class voucherControl extends SystemControl{
     	if (chksubmit()){
     		$obj_validate = new Validate();
 			$validate_arr[] = array('input'=>$_POST['promotion_voucher_price'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_voucher_setting_price_error'));
-			$validate_arr[] = array('input'=>$_POST['promotion_voucher_storetimes_limit'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_voucher_setting_storetimes_error'));
+			$validate_arr[] = array('input'=>$_POST['promotion_voucher_clictimes_limit'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_voucher_setting_clictimes_error'));
 			$validate_arr[] = array('input'=>$_POST['promotion_voucher_buyertimes_limit'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_voucher_setting_buyertimes_error'));
 			
 			$obj_validate->validateparam = $validate_arr;
@@ -58,9 +58,9 @@ class voucherControl extends SystemControl{
 	            $promotion_voucher_price = 20;
 	        }
 	        //每月店铺可以发布的代金劵数量
-	        $promotion_voucher_storetimes_limit = intval($_POST['promotion_voucher_storetimes_limit']);
-	        if($promotion_voucher_storetimes_limit <= 0) {
-	            $promotion_voucher_storetimes_limit = 20;
+	        $promotion_voucher_clictimes_limit = intval($_POST['promotion_voucher_clictimes_limit']);
+	        if($promotion_voucher_clictimes_limit <= 0) {
+	            $promotion_voucher_clictimes_limit = 20;
 	        }
 	        //买家可以领取的代金劵总数
 	        $promotion_voucher_buyertimes_limit = intval($_POST['promotion_voucher_buyertimes_limit']);
@@ -69,7 +69,7 @@ class voucherControl extends SystemControl{
 	        }
 	        $update_array = array();
 	        $update_array['promotion_voucher_price'] = $promotion_voucher_price;
-	        $update_array['promotion_voucher_storetimes_limit'] = $promotion_voucher_storetimes_limit;
+	        $update_array['promotion_voucher_clictimes_limit'] = $promotion_voucher_clictimes_limit;
 	        $update_array['promotion_voucher_buyertimes_limit'] = $promotion_voucher_buyertimes_limit;	        
 	        $result = $setting_model->updateSetting($update_array);
 	        if ($result){
@@ -92,7 +92,7 @@ class voucherControl extends SystemControl{
 	public function pricelistOp(){
 		//获得代金券金额列表 
 		$model = Model();
-		$voucherprice_list = $model->table('voucher_price')->order('voucher_price asc')->page(10)->select();
+		$voucherprice_list = $model->table('voucher_price')->appointment('voucher_price asc')->page(10)->select();
 		Tpl::output('list', $voucherprice_list) ;
 		Tpl::output('show_page',$model->showpage(2));
 		$this->show_menu('voucher','pricelist');
@@ -222,14 +222,14 @@ class voucherControl extends SystemControl{
         $model->table('voucher_quota')->where(array('quota_endtime'=>array('lt',$time),'quota_state'=>"{$this->quotastate_arr['activity'][0]}"))->update(array('quota_state'=>$this->quotastate_arr['expire'][0]));
         
         $param = array();
-        if(trim($_GET['store_name'])){
-        	$param['quota_storename'] = array('like',"%{$_GET['store_name']}%");
+        if(trim($_GET['clic_name'])){
+        	$param['quota_clicname'] = array('like',"%{$_GET['clic_name']}%");
         }
         $state = intval($_GET['state']);
     	if($state){
         	$param['quota_state'] = $state;
         }
-        $list = $model->table('voucher_quota')->where($param)->order('quota_id desc')->page(10)->select();
+        $list = $model->table('voucher_quota')->where($param)->appointment('quota_id desc')->page(10)->select();
         Tpl::output('show_page',$model->showpage(2));
         $this->show_menu('voucher','quotalist');
         Tpl::output('list',$list);
@@ -242,8 +242,8 @@ class voucherControl extends SystemControl{
     public function templatelistOp(){
         $model = Model();
         $param = array();
-        if(trim($_GET['store_name'])){
-        	$param['voucher_t_storename'] = array('like',"%{$_GET['store_name']}%");
+        if(trim($_GET['clic_name'])){
+        	$param['voucher_t_clicname'] = array('like',"%{$_GET['clic_name']}%");
         }
     	if(trim($_GET['sdate']) && trim($_GET['edate'])){
     		$sdate = strtotime($_GET['sdate']);
@@ -260,7 +260,7 @@ class voucherControl extends SystemControl{
     	if($state){
         	$param['voucher_t_state'] = $state;
         }
-        $list = $model->table('voucher_template')->where($param)->order('voucher_t_state asc,voucher_t_id desc')->page(10)->select();
+        $list = $model->table('voucher_template')->where($param)->appointment('voucher_t_state asc,voucher_t_id desc')->page(10)->select();
         Tpl::output('show_page',$model->showpage(2));
         $this->show_menu('voucher','templatelist');
         Tpl::output('list',$list);
@@ -302,10 +302,10 @@ class voucherControl extends SystemControl{
 	       		showMessage(Language::get('nc_common_save_fail'),'index.php?act=voucher&op=templatelist','error'); 
 	       	}
         }else{
-	        if (!$t_info['voucher_t_customimg'] || !file_exists(BASE_UPLOAD_PATH.DS.ATTACH_VOUCHER.DS.$t_info['voucher_t_store_id'].DS.$t_info['voucher_t_customimg'])){
+	        if (!$t_info['voucher_t_customimg'] || !file_exists(BASE_UPLOAD_PATH.DS.ATTACH_VOUCHER.DS.$t_info['voucher_t_clic_id'].DS.$t_info['voucher_t_customimg'])){
 	        	$t_info['voucher_t_customimg'] = '';
 	        }else{
-	        	$t_info['voucher_t_customimg'] = UPLOAD_SITE_URL.DS.ATTACH_VOUCHER.DS.$t_info['voucher_t_store_id'].DS.$t_info['voucher_t_customimg'];
+	        	$t_info['voucher_t_customimg'] = UPLOAD_SITE_URL.DS.ATTACH_VOUCHER.DS.$t_info['voucher_t_clic_id'].DS.$t_info['voucher_t_customimg'];
 	        }
 	        TPL::output('t_info',$t_info);
 	        $this->show_menu('templateedit','templateedit');

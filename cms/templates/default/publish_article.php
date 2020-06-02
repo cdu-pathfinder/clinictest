@@ -99,37 +99,37 @@
             <div class="hint"><?php echo $lang['cms_article_orgin_explain'];?></div></td>
         </tr>
         <tr>
-          <th><?php echo $lang['cms_article_goods'];?><?php echo $lang['nc_colon'];?></th>
+          <th><?php echo $lang['cms_article_doctors'];?><?php echo $lang['nc_colon'];?></th>
           <td colspan="2">
-            <ul id="article_goods_list" class="article-goods-list">
-              <?php if(!empty($output['article_goods_list'])) { ?>
-              <?php foreach($output['article_goods_list'] as $value) { ?>
-              <li nctype="btn_goods_select">
+            <ul id="article_doctors_list" class="article-doctors-list">
+              <?php if(!empty($output['article_doctors_list'])) { ?>
+              <?php foreach($output['article_doctors_list'] as $value) { ?>
+              <li nctype="btn_doctors_select">
                 <dl>
                   <dt class="name"> <a target="_blank" href="<?php echo $value['url'];?>"><?php echo $value['title'];?></a> </dt>
-                  <dd nctype="btn_goods_select" class="image"> <img src="<?php echo $value['image'];?>" title="<?php echo $value['title'];?>"> </dd>
+                  <dd nctype="btn_doctors_select" class="image"> <img src="<?php echo $value['image'];?>" title="<?php echo $value['title'];?>"> </dd>
                   <dd class="price"><?php echo $lang['cms_price'];?><?php echo $lang['nc_colon'];?><em><?php echo $value['price'];?></em></dd>
                 </dl>
-                <i><?php echo $lang['cms_article_goods_delete_explain'];?></i>
-                <input type="hidden" value="<?php echo $value['url'];?>" name="article_goods_url[]">
-                <input type="hidden" value="<?php echo $value['title'];?>" name="article_goods_title[]">
-                <input type="hidden" value="<?php echo $value['image'];?>" name="article_goods_image[]">
-                <input type="hidden" value="<?php echo $value['price'];?>" name="article_goods_price[]">
-                <input type="hidden" value="<?php echo $value['type'];?>" name="article_goods_type[]">
+                <i><?php echo $lang['cms_article_doctors_delete_explain'];?></i>
+                <input type="hidden" value="<?php echo $value['url'];?>" name="article_doctors_url[]">
+                <input type="hidden" value="<?php echo $value['title'];?>" name="article_doctors_title[]">
+                <input type="hidden" value="<?php echo $value['image'];?>" name="article_doctors_image[]">
+                <input type="hidden" value="<?php echo $value['price'];?>" name="article_doctors_price[]">
+                <input type="hidden" value="<?php echo $value['type'];?>" name="article_doctors_type[]">
                  </li>
               <?php } ?>
               <?php } ?>
             </ul>
             <p>
-              <input id="goods_search_type_url" value="goods_url" name="goods_search_type" type="radio" checked />
-              <label for="goods_search_type_url"><?php echo $lang['cms_goods_link'];?></label>
-              <input id="goods_search_type_title" value="goods_name" name="goods_search_type" type="radio" />
-              <label for="goods_search_type_title"><?php echo $lang['cms_goods_name'];?></label>
+              <input id="doctors_search_type_url" value="doctors_url" name="doctors_search_type" type="radio" checked />
+              <label for="doctors_search_type_url"><?php echo $lang['cms_doctors_link'];?></label>
+              <input id="doctors_search_type_title" value="doctors_name" name="doctors_search_type" type="radio" />
+              <label for="doctors_search_type_title"><?php echo $lang['cms_doctors_name'];?></label>
             </p>
-            <input id="goods_search_keyword" class="text w380" name="goods_search_keyword" type="text" />
-            <input id="btn_goods_search" class="btn-type-s" type="button" value="<?php echo $lang['cms_text_add'];?>" />
-            <div id="div_goods_select"> </div>
-            <div class="hint"><?php echo $lang['cms_goods_explain'];?></div></td>
+            <input id="doctors_search_keyword" class="text w380" name="doctors_search_keyword" type="text" />
+            <input id="btn_doctors_search" class="btn-type-s" type="button" value="<?php echo $lang['cms_text_add'];?>" />
+            <div id="div_doctors_select"> </div>
+            <div class="hint"><?php echo $lang['cms_doctors_explain'];?></div></td>
         </tr>
         <tr>
           <th><?php echo $lang['cms_tag'];?><?php echo $lang['nc_colon'];?></th>

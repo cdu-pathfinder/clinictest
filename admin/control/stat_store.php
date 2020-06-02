@@ -7,12 +7,12 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class stat_storeControl extends SystemControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class stat_clicControl extends SystemControl{
 	private $links = array(
-        array('url'=>'act=stat_store&op=newstore','lang'=>'stat_newstore'),
-        array('url'=>'act=stat_store&op=rank','lang'=>'stat_storerank'),
-        array('url'=>'act=stat_store&op=degree','lang'=>'stat_storedegree'),
+        array('url'=>'act=stat_clic&op=newclic','lang'=>'stat_newclic'),
+        array('url'=>'act=stat_clic&op=rank','lang'=>'stat_clicrank'),
+        array('url'=>'act=stat_clic&op=degree','lang'=>'stat_clicdegree'),
     );
 	public function __construct(){
         parent::__construct();
@@ -23,7 +23,7 @@ class stat_storeControl extends SystemControl{
     /**
 	 * 新增店铺
 	 */
-    public function newstoreOp(){
+    public function newclicOp(){
     	$where = array();
 		$field = ' count(*) as allnum ';
 		if(!$_REQUEST['search_type']){
@@ -85,9 +85,9 @@ class stat_storeControl extends SystemControl{
 			$today_day = @date('d', $search_time);//今天日期
 			$yesterday_day = @date('d', $stime);//昨天日期
 			
-			$where['store_time'] = array('between',array($stime,$etime));
-			$field .= ' ,DAY(FROM_UNIXTIME(store_time)) as dayval,HOUR(FROM_UNIXTIME(store_time)) as hourval ';
-			$memberlist = $model->getNewStoreStatList($where, $field, 0, '', 0, 'dayval,hourval');
+			$where['clic_time'] = array('between',array($stime,$etime));
+			$field .= ' ,DAY(FROM_UNIXTIME(clic_time)) as dayval,HOUR(FROM_UNIXTIME(clic_time)) as hourval ';
+			$memberlist = $model->getNewclicStatList($where, $field, 0, '', 0, 'dayval,hourval');
 			if($memberlist){
 				foreach($memberlist as $k => $v){
 					if($today_day == $v['dayval']){
@@ -107,7 +107,7 @@ class stat_storeControl extends SystemControl{
 			
 			//统计数据标题
 			$statlist['headertitle'] = array('hour','yesterday','today','day on day');
-			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=day&search_time='.date('Y-m-d',$search_time));
+			Tpl::output('actionurl','index.php?act=stat_clic&op=newclic&search_type=day&search_time='.date('Y-m-d',$search_time));
 		}
 		
 		if($_REQUEST['search_type'] == 'week'){
@@ -134,9 +134,9 @@ class stat_storeControl extends SystemControl{
 				$stat_arr['xAxis']['categories'][] = $tmp_weekarr[$i];
 				unset($tmp_weekarr);
 			}
-			$where['store_time'] = array('between', array($stime,$etime));
-			$field .= ',WEEKOFYEAR(FROM_UNIXTIME(store_time)) as weekval,DAYOFWEEK(FROM_UNIXTIME(store_time)) as dayofweekval ';
-			$memberlist = $model->getNewStoreStatList($where, $field, 0, '', 0, 'weekval,dayofweekval');
+			$where['clic_time'] = array('between', array($stime,$etime));
+			$field .= ',WEEKOFYEAR(FROM_UNIXTIME(clic_time)) as weekval,DAYOFWEEK(FROM_UNIXTIME(clic_time)) as dayofweekval ';
+			$memberlist = $model->getNewclicStatList($where, $field, 0, '', 0, 'weekval,dayofweekval');
 			if($memberlist){
 				foreach($memberlist as $k=>$v){
 					if ($up_week == $v['weekval']){
@@ -155,7 +155,7 @@ class stat_storeControl extends SystemControl{
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
 			$statlist['headertitle'] = array('week','last week','this week','week on week');
-			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
+			Tpl::output('actionurl','index.php?act=stat_clic&op=newclic&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
 		}
 		
 		if($_REQUEST['search_type'] == 'month'){
@@ -185,9 +185,9 @@ class stat_storeControl extends SystemControl{
 				//横轴
 				$stat_arr['xAxis']['categories'][] = $i;
 			}
-			$where['store_time'] = array('between', array($stime,$etime));
-			$field .= ',MONTH(FROM_UNIXTIME(store_time)) as monthval,day(FROM_UNIXTIME(store_time)) as dayval ';
-			$memberlist = $model->getNewStoreStatList($where, $field, 0, '', 0, 'monthval,dayval');
+			$where['clic_time'] = array('between', array($stime,$etime));
+			$field .= ',MONTH(FROM_UNIXTIME(clic_time)) as monthval,day(FROM_UNIXTIME(clic_time)) as dayval ';
+			$memberlist = $model->getNewclicStatList($where, $field, 0, '', 0, 'monthval,dayval');
 		    if($memberlist){
 				foreach($memberlist as $k=>$v){
 					if ($up_month == $v['monthval']){
@@ -206,7 +206,7 @@ class stat_storeControl extends SystemControl{
 			$stat_arr['series'][1]['data'] = array_values($curr_arr);
 			//统计数据标题
 			$statlist['headertitle'] = array('date','last month','this month','month on month');
-			Tpl::output('actionurl','index.php?act=stat_store&op=newstore&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
+			Tpl::output('actionurl','index.php?act=stat_clic&op=newclic&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
 		}
 		
 		//计算同比
@@ -251,8 +251,8 @@ class stat_storeControl extends SystemControl{
     		$stat_json = getStatData_LineLabels($stat_arr);
     		Tpl::output('stat_json',$stat_json);
     		Tpl::output('statlist',$statlist);
-    		Tpl::output('top_link',$this->sublink($this->links, 'newstore'));
-			Tpl::showpage('stat.newstore');
+    		Tpl::output('top_link',$this->sublink($this->links, 'newclic'));
+			Tpl::showpage('stat.newclic');
 		}
     }
 	/**
@@ -260,14 +260,14 @@ class stat_storeControl extends SystemControl{
 	 */
     public function rankOp(){
     	$where = array();
-    	if(trim($_GET['order_type']) != ''){
-    		$where['order_state'] = trim($_GET['order_type']);
+    	if(trim($_GET['appointment_type']) != ''){
+    		$where['appointment_state'] = trim($_GET['appointment_type']);
     	}
 		if(!$_REQUEST['search_type']){
 			$_REQUEST['search_type'] = 'day';
 		}
-		if(trim($_GET['store_name']) != ''){
-			$where['store_name'] = trim($_GET['store_name']);
+		if(trim($_GET['clic_name']) != ''){
+			$where['clic_name'] = trim($_GET['clic_name']);
 		}
 		//初始化时间
 		//天
@@ -303,36 +303,36 @@ class stat_storeControl extends SystemControl{
     	if($_REQUEST['search_type'] == 'day'){
 			$stime = $search_time;//昨天0点
 			$etime = $search_time + 86400 - 1;//今天24点
-			Tpl::output('actionurl','index.php?act=stat_store&op=rank&search_type=day&search_time='.date('Y-m-d',$search_time));
+			Tpl::output('actionurl','index.php?act=stat_clic&op=rank&search_type=day&search_time='.date('Y-m-d',$search_time));
 		}
 		if($_REQUEST['search_type'] == 'week'){
 			$current_weekarr = explode('|', $current_week);
 			$stime = strtotime($current_weekarr[0])-86400*7;
 			$etime = strtotime($current_weekarr[1])+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_store&op=rank&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
+			Tpl::output('actionurl','index.php?act=stat_clic&op=rank&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
 		}
 		if($_REQUEST['search_type'] == 'month'){
 			$stime = strtotime($current_year.'-'.$current_month."-01 0 month");
 			$etime = getMonthLastDay($current_year,$current_month)+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_store&op=rank&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
+			Tpl::output('actionurl','index.php?act=stat_clic&op=rank&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
 		}
 		$where['add_time'] = array('between',array($stime,$etime));
-		$where['order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-    	$where['payment_code'] = array('exp',"!(payment_code='offline' and order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		$where['appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+    	$where['payment_code'] = array('exp',"!(payment_code='offline' and appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
 		//得到统计图数据
 		if(trim($_GET['stat_type']) == 'sale'){
-			$store_list = $model->getStoreSaleRank($where,'sale_amount');
+			$clic_list = $model->getclicSaleRank($where,'sale_amount');
 			$statlist['headertitle'] = array('ranking','clinic name','turnover');
 			$stat_arr['title'] = 'turnover Top15';
             $stat_arr['yAxis'] = 'turnover';
 			$stat_arr['series'][0]['name'] = 'turnover';
 		}else{
-			$store_list = $model->getStoreSaleRank($where,'sale_num');
-			$statlist['headertitle'] = array('ranking','clinic name','orders');
-			$stat_arr['title'] = 'order Top15';
-            $stat_arr['yAxis'] = 'orders';
-            $stat_arr['series'][0]['name'] = 'orders';
+			$clic_list = $model->getclicSaleRank($where,'sale_num');
+			$statlist['headertitle'] = array('ranking','clinic name','appointments');
+			$stat_arr['title'] = 'appointment Top15';
+            $stat_arr['yAxis'] = 'appointments';
+            $stat_arr['series'][0]['name'] = 'appointments';
 		}
 		//导出Excel
         if ($_GET['exporttype'] == 'excel'){
@@ -347,9 +347,9 @@ class stat_storeControl extends SystemControl{
 			    $excel_data[0][] = array('styleid'=>'s_title','data'=>$v);
 			}
 			//data
-			foreach ($store_list as $k=>$v){
+			foreach ($clic_list as $k=>$v){
 				$excel_data[$k+1][] = array('data'=>$k+1);
-				$excel_data[$k+1][] = array('data'=>$v['store_name']);
+				$excel_data[$k+1][] = array('data'=>$v['clic_name']);
 				$excel_data[$k+1][] = array('data'=>$v['allnum']);
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
@@ -358,14 +358,14 @@ class stat_storeControl extends SystemControl{
 	        	$excel_obj->addWorksheet($excel_obj->charset('clinic turnover Top15',CHARSET));
 		    	$excel_obj->generateXML($excel_obj->charset('clinic turnover Top15',CHARSET).date('Y-m-d-H',time()));
 			}else{
-				$excel_obj->addWorksheet($excel_obj->charset('clinic order Top15',CHARSET));
-		    	$excel_obj->generateXML($excel_obj->charset('clinic order Top15',CHARSET).date('Y-m-d-H',time()));
+				$excel_obj->addWorksheet($excel_obj->charset('clinic appointment Top15',CHARSET));
+		    	$excel_obj->generateXML($excel_obj->charset('clinic appointment Top15',CHARSET).date('Y-m-d-H',time()));
 			}
 			exit();
 		} else {
 			$stat_arr['series'][0]['data'] = array();
 			for ($i = 0; $i < 15; $i++){
-			    $stat_arr['series'][0]['data'][] = array('name'=>strval($store_list[$i]['store_name']),'y'=>floatval($store_list[$i]['allnum']));
+			    $stat_arr['series'][0]['data'][] = array('name'=>strval($clic_list[$i]['clic_name']),'y'=>floatval($clic_list[$i]['allnum']));
 			}
 			//构造横轴数据
 			for($i=1; $i<=15; $i++){
@@ -375,14 +375,14 @@ class stat_storeControl extends SystemControl{
 			$stat_arr['legend']['enabled'] = false;
     		$stat_json = getStatData_Column2D($stat_arr);
     		//总数统计
-    		$amount = $model->getStoreSaleStatList($where,' count(*) as allnum ');
-    		$sale = $model->getStoreSaleStatList($where,' sum(order_amount) as allnum ');
+    		$amount = $model->getclicSaleStatList($where,' count(*) as allnum ');
+    		$sale = $model->getclicSaleStatList($where,' sum(appointment_amount) as allnum ');
     		Tpl::output('sum_data',array($amount[0]['allnum'],$sale[0]['allnum']));
     		Tpl::output('stat_json',$stat_json);
     		Tpl::output('statlist',$statlist);
-    		Tpl::output('store_list',$store_list);
+    		Tpl::output('clic_list',$clic_list);
     		Tpl::output('top_link',$this->sublink($this->links, 'rank'));
-			Tpl::showpage('stat.storerank');
+			Tpl::showpage('stat.clicrank');
 		}
     }
     /**
@@ -392,8 +392,8 @@ class stat_storeControl extends SystemControl{
     	$where = array();
     	$field = ' count(*) as allnum,grade_id ';
     	$model = Model('stat');
-    	$memberlist = $model->getNewStoreStatList($where, $field, 0, '', 0, 'grade_id');
-    	$sd_list = $model->getStoreDegree();
+    	$memberlist = $model->getNewclicStatList($where, $field, 0, '', 0, 'grade_id');
+    	$sd_list = $model->getclicDegree();
     	$statlist['headertitle'] = array();
     	$statlist['data'] = array();
     	//处理数组数据
@@ -427,7 +427,7 @@ class stat_storeControl extends SystemControl{
 		    $excel_obj->generateXML($excel_obj->charset('clinic level stat',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		}else{
-			Tpl::output('actionurl','index.php?act=stat_store&op=degree');
+			Tpl::output('actionurl','index.php?act=stat_clic&op=degree');
 			$data = array(
 				'title'=>'clinic level stat',
 				'name'=>'clinics',
@@ -436,27 +436,27 @@ class stat_storeControl extends SystemControl{
 			);
 			Tpl::output('stat_json',getStatData_Pie($data));
     		Tpl::output('top_link',$this->sublink($this->links, 'degree'));
-    		Tpl::showpage('stat.storedegree');
+    		Tpl::showpage('stat.clicdegree');
 		}
     }
 	/**
 	 * 查看店铺列表
 	 */
-	public function showstoreOp(){
+	public function showclicOp(){
 		$model = Model('stat');
 		$where = array();
 		if (in_array($_GET['type'],array('newbyday','newbyweek','newbymonth'))){
-		    $actionurl = 'index.php?act=stat_store&op=showstore&type=newbyday&t='.$_GET['t'];
+		    $actionurl = 'index.php?act=stat_clic&op=showclic&type=newbyday&t='.$_GET['t'];
 		    $searchtime_arr = explode('|',$_GET['t']);
-		    $where['store_time'] = array('between',$searchtime_arr);
+		    $where['clic_time'] = array('between',$searchtime_arr);
 		}
 		if ($_GET['exporttype'] == 'excel'){
-		    $store_list = $model->getNewStoreStatList($where);
+		    $clic_list = $model->getNewclicStatList($where);
 		} else {
-		    $store_list = $model->getNewStoreStatList($where, '', 10);
+		    $clic_list = $model->getNewclicStatList($where, '', 10);
 		}
 		//店铺等级
-		$model_grade = Model('store_grade');
+		$model_grade = Model('clic_grade');
 		$grade_list = $model_grade->getGradeList();
 		if (!empty($grade_list)){
 			$search_grade_list = array();
@@ -480,13 +480,13 @@ class stat_storeControl extends SystemControl{
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'valid until');
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'open date');
 			//data
-			foreach ($store_list as $k=>$v){
-				$excel_data[$k+1][] = array('data'=>$v['store_name']);
+			foreach ($clic_list as $k=>$v){
+				$excel_data[$k+1][] = array('data'=>$v['clic_name']);
 				$excel_data[$k+1][] = array('data'=>$v['member_name']);
-				$excel_data[$k+1][] = array('data'=>$v['seller_name']);
+				$excel_data[$k+1][] = array('data'=>$v['clinicer_name']);
 				$excel_data[$k+1][] = array('data'=>$search_grade_list[$v['grade_id']]);
-				$excel_data[$k+1][] = array('data'=>$v['store_end_time']?date('Y-m-d', $v['store_end_time']):'no limit');
-				$excel_data[$k+1][] = array('data'=>date('Y-m-d', $v['store_time']));
+				$excel_data[$k+1][] = array('data'=>$v['clic_end_time']?date('Y-m-d', $v['clic_end_time']):'no limit');
+				$excel_data[$k+1][] = array('data'=>date('Y-m-d', $v['clic_time']));
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
@@ -496,10 +496,10 @@ class stat_storeControl extends SystemControl{
         }
         Tpl::output('search_grade_list', $search_grade_list);
         Tpl::output('actionurl',$actionurl);
-		Tpl::output('store_list',$store_list);
+		Tpl::output('clic_list',$clic_list);
 		Tpl::output('show_page',$model->showpage(2));
-		$this->links[] = array('url'=>'act=stat_store&op=showstore','lang'=>'stat_storelist');
-		Tpl::output('top_link',$this->sublink($this->links, 'showstore'));
-	    Tpl::showpage('stat.info.storelist');
+		$this->links[] = array('url'=>'act=stat_clic&op=showclic','lang'=>'stat_cliclist');
+		Tpl::output('top_link',$this->sublink($this->links, 'showclic'));
+	    Tpl::showpage('stat.info.cliclist');
 	}
 }

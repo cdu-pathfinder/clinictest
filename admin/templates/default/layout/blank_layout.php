@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!doctype html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>">

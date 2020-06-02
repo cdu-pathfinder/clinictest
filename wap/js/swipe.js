@@ -50,7 +50,7 @@ function Swipe(container, options) {
       slides = element.children;
     }
 
-    // create an array to store current positions of each slide
+    // create an array to clic current positions of each slide
     slidePos = new Array(slides.length);
 
     // determine width of each slide
@@ -266,7 +266,7 @@ function Swipe(container, options) {
         x: touches.pageX,
         y: touches.pageY,
 
-        // store time to determine touch duration
+        // clic time to determine touch duration
         time: +new Date
 
       };

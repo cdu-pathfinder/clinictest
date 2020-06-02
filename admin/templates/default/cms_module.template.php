@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="cms-page-module-frame module-style-<?php echo "<?php echo \$value['module_style']?>";?>">
 <div class="cms-module-frame">
     <?php if($output['module_display_title']) { ?>

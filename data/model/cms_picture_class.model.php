@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_picture_classModel extends Model{
 
     public function __construct(){
@@ -22,8 +22,8 @@ class cms_picture_classModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-	public function getList($condition,$page=null,$order='',$field='*'){
-        $result = $this->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getList($condition,$page=null,$appointment='',$field='*'){
+        $result = $this->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         return $result;
 	}
 
@@ -32,8 +32,8 @@ class cms_picture_classModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-    public function getOne($condition,$order=''){
-        $result = $this->where($condition)->order($order)->find();
+    public function getOne($condition,$appointment=''){
+        $result = $this->where($condition)->appointment($appointment)->find();
         return $result;
     }
 

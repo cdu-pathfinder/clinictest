@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,19 +15,19 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2"><label class="validation" for="activity_title"><?php echo $lang['activity_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="activity_title" name="activity_title" class="txt"></td>
           <td class="vatop tips"><?php //echo $lang['activity_new_title_tip'];?></td>
         </tr>
         <tr style="display:none;">
           <td colspan="2" class="required"><label class="validation" ><?php echo $lang['activity_index_type'];?>:</label></td>
         </tr>
-        <tr class="noborder" style="display:none;">
+        <tr class="nobappointment" style="display:none;">
           <td class="vatop rowform"><select name="activity_type">
-              <option value="1"><?php echo $lang['activity_index_goods'];?></option>
+              <option value="1"><?php echo $lang['activity_index_doctors'];?></option>
               <option value="2"><?php echo $lang['activity_index_group'];?></option>
               </optgroup>
             </select></td>
@@ -36,21 +36,21 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" ><?php echo $lang['activity_index_start'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="activity_start_date" name="activity_start_date" class="txt date"/></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" ><?php echo $lang['activity_index_end'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="activity_end_date" name="activity_end_date" class="txt date"/></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" ><?php echo $lang['activity_index_banner'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform type-file-box">
               <input type="file" class="type-file-file" id="activity_banner" name="activity_banner" size="30" hidefocus="true"  nc_type="upload_activity_banner" title="<?php echo $lang['activity_index_banner'];?>">
           </td>
@@ -59,7 +59,7 @@
         <tr style="display:none;">
           <td colspan="2" class="required"><label><?php echo $lang['activity_new_style'];?>:</label></td>
         </tr>
-        <tr class="noborder" style="display:none;">
+        <tr class="nobappointment" style="display:none;">
           <td class="vatop rowform"><select id="activity_style" name="activity_style">
               <option value="default_style"><?php echo $lang['activity_index_default'];?></option>
             </select></td>
@@ -68,21 +68,21 @@
         <tr>
           <td colspan="2" class="required"><label for="activity_desc"><?php echo $lang['activity_new_desc'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="activity_desc" id="activity_desc" rows="6" class="tarea"></textarea></td>
           <td class="vatop tips">&nbsp;</td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"  for="activity_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="activity_sort" name="activity_sort" class="txt" value="0"></td>
           <td class="vatop tips"><?php echo $lang['activity_new_sort_tip1'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="activity_sort"><?php echo $lang['activity_openstate'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="activity_state1" class="cb-enable selected" ><span><?php echo $lang['activity_openstate_open'];?></span></label>
             <label for="activity_state0" class="cb-disable"><span><?php echo $lang['activity_openstate_close'];?></span></label>

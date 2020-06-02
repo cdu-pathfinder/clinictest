@@ -1,28 +1,28 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <form id="admin_form" method="post" action='index.php?act=index&op=modifypw' name="adminForm">
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="old_pw"><?php echo $lang['index_modifypw_oldpw']; ?><!-- 原密码 -->:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="old_pw" name="old_pw" class="infoTableInput" type="password"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="new_pw"><?php echo $lang['index_modifypw_newpw']; ?><!-- 新密码 -->:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="new_pw" name="new_pw" class="infoTableInput" type="password"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="new_pw2"><?php echo $lang['index_modifypw_newpw2']; ?><!-- 确认密码-->:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="new_pw2" name="new_pw2" class="infoTableInput" type="password"></td>
           <td class="vatop tips"></td>
         </tr>

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class accountControl extends SystemControl{
 	private $links = array(
 		array('url'=>'act=account&op=qq','lang'=>'qqSettings'),

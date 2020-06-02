@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,17 +15,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="class_name"><?php echo $lang['circle_class_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="class_name" id="class_name" class="txt" /></td>
           <td class="vatop tips"><?php echo $lang['circle_class_name_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['circle_class_is_recommend']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="recommend1" class="cb-enable selected" ><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="recommend0" class="cb-disable" ><span><?php echo $lang['nc_no'];?></span></label>
@@ -36,7 +36,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['circle_class_status'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="site_status1" class="cb-enable selected" ><span><?php echo $lang['open'];?></span></label>
             <label for="site_status0" class="cb-disable" ><span><?php echo $lang['close'];?></span></label>
@@ -47,7 +47,7 @@
         <tr>
           <td colspan="2" class="required"><label for="class_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="0" name="class_sort" id="class_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['circle_class_sort_tips'];?></td>
         </tr>

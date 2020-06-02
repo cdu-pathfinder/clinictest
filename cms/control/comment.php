@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class commentControl extends CMSHomeControl{
 
     public function __construct() {
@@ -118,10 +118,10 @@ class commentControl extends CMSHomeControl{
      **/
     public function comment_listOp() {
         $page_count = 5;
-        $order = 'comment_id desc';
+        $appointment = 'comment_id desc';
         if($_GET['comment_all'] === 'all') {
             $page_count = 10;
-            $order = 'comment_up desc, comment_id desc';
+            $appointment = 'comment_up desc, comment_id desc';
         }
         $comment_object_id = intval($_GET['comment_object_id']);
         $comment_type = 0;
@@ -139,7 +139,7 @@ class commentControl extends CMSHomeControl{
             $condition["comment_object_id"] = $comment_object_id;
             $condition["comment_type"] = $comment_type; 
             $model_cms_comment = Model('cms_comment');
-            $comment_list = $model_cms_comment->getListWithUserInfo($condition, $page_count, $order);
+            $comment_list = $model_cms_comment->getListWithUserInfo($condition, $page_count, $appointment);
             Tpl::output('comment_list', $comment_list);
             if($_GET['comment_all'] === 'all') {
                 Tpl::output('show_page', $model_cms_comment->showpage(2));	

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,38 +15,38 @@
     <input type="hidden" name="form_submit" value="ok"/>
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_sn']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['info']['pdr_sn']; ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_recharge_price'];?>(<?php echo $lang['currency_zh']; ?>):</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['info']['pdr_amount']; ?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_membername']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['info']['pdr_member_name']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name"><?php echo $lang['admin_predeposit_paytime'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input readonly id="payment_time" class="" name="payment_time" value="" type="text" /></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name"><?php echo $lang['admin_predeposit_payment'];?> : </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <select name="payment_code" class="querySelect">
             <option value=""><?php echo $lang['nc_please_choose'];?></option>
@@ -60,7 +60,7 @@
         <tr>
           <td colspan="2" class="required"><label for="closed_reason">第三方支付平台交易号 : </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt2" name="trade_no" id="trade_no" maxlength="40"></td>
           <td class="vatop tips"><span class="vatop rowform">支付宝等第三方支付平台交易号</span></td>
         </tr>

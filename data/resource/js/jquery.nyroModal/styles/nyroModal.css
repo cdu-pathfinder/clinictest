@@ -35,7 +35,7 @@
 	padding: 4px;
 	position: absolute;
 	z-index:998;
-	border: 1px solid #000;
+	bappointment: 1px solid #000;
 	margin: 25px;
 	background: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,0.9);
@@ -45,7 +45,7 @@
 	height: 400px;
 }
 .nyroModalError {
-	border: 4px solid red;
+	bappointment: 4px solid red;
 	color: red;
 	width: 250px;
 	height: 250px;

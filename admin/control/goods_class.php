@@ -10,40 +10,40 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class goods_classControl extends SystemControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class doctors_classControl extends SystemControl{
 	private $links = array(
-		array('url'=>'act=goods_class&op=goods_class','lang'=>'nc_manage'),
-		array('url'=>'act=goods_class&op=goods_class_add','lang'=>'nc_new'),
-		array('url'=>'act=goods_class&op=goods_class_export','lang'=>'goods_class_index_export'),
-		array('url'=>'act=goods_class&op=goods_class_import','lang'=>'goods_class_index_import'),
-		array('url'=>'act=goods_class&op=tag','lang'=>'goods_class_index_tag'),
+		array('url'=>'act=doctors_class&op=doctors_class','lang'=>'nc_manage'),
+		array('url'=>'act=doctors_class&op=doctors_class_add','lang'=>'nc_new'),
+		array('url'=>'act=doctors_class&op=doctors_class_export','lang'=>'doctors_class_index_export'),
+		array('url'=>'act=doctors_class&op=doctors_class_import','lang'=>'doctors_class_index_import'),
+		array('url'=>'act=doctors_class&op=tag','lang'=>'doctors_class_index_tag'),
 	);
 	public function __construct(){
 		parent::__construct();
-		Language::read('goods_class');
+		Language::read('doctors_class');
 	}
 
 	/**
 	 * 分类管理
 	 */
-	public function goods_classOp(){
+	public function doctors_classOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		if (chksubmit()){
 			//删除
 			if ($_POST['submit_type'] == 'del'){
 			    $gcids = implode(',', $_POST['check_gc_id']);
 				if (!empty($_POST['check_gc_id'])){
 					if (!is_array($_POST['check_gc_id'])){
-    					$this->log(L('nc_delete,goods_class_index_class').'[ID:'.$gcids.']',0);
+    					$this->log(L('nc_delete,doctors_class_index_class').'[ID:'.$gcids.']',0);
     					showMessage($lang['nc_common_del_fail']);
 					}
-					$del_array = $model_class->delGoodsClassByGcIdString($gcids);
-					$this->log(L('nc_delete,goods_class_index_class').'[ID:'.$gcids.']',1);
+					$del_array = $model_class->deldoctorsClassByGcIdString($gcids);
+					$this->log(L('nc_delete,doctors_class_index_class').'[ID:'.$gcids.']',1);
 					showMessage($lang['nc_common_del_succ']);
 				}else {
-					$this->log(L('nc_delete,goods_class_index_class').'[ID:'.$gcids.']',0);
+					$this->log(L('nc_delete,doctors_class_index_class').'[ID:'.$gcids.']',0);
 					showMessage($lang['nc_common_del_fail']);
 				}
 			}
@@ -75,22 +75,22 @@ class goods_classControl extends SystemControl{
 			exit;
 		}else {
 			Tpl::output('class_list',$class_list);
-			Tpl::output('top_link',$this->sublink($this->links,'goods_class'));
-			Tpl::showpage('goods_class.index');
+			Tpl::output('top_link',$this->sublink($this->links,'doctors_class'));
+			Tpl::showpage('doctors_class.index');
 		}
 	}
 
 	/**
 	 * 商品分类添加
 	 */
-	public function goods_class_addOp(){
+	public function doctors_class_addOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		if (chksubmit()){
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-				array("input"=>$_POST["gc_name"], "require"=>"true", "message"=>$lang['goods_class_add_name_null']),
-				array("input"=>$_POST["gc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['goods_class_add_sort_int']),
+				array("input"=>$_POST["gc_name"], "require"=>"true", "message"=>$lang['doctors_class_add_name_null']),
+				array("input"=>$_POST["gc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['doctors_class_add_sort_int']),
 			);
 			$error = $obj_validate->validate();
 			if ($error != ''){
@@ -116,18 +116,18 @@ class goods_classControl extends SystemControl{
     				}
 					$url = array(
 						array(
-							'url'=>'index.php?act=goods_class&op=goods_class_add&gc_parent_id='.$_POST['gc_parent_id'],
-							'msg'=>$lang['goods_class_add_again'],
+							'url'=>'index.php?act=doctors_class&op=doctors_class_add&gc_parent_id='.$_POST['gc_parent_id'],
+							'msg'=>$lang['doctors_class_add_again'],
 						),
 						array(
-							'url'=>'index.php?act=goods_class&op=goods_class',
-							'msg'=>$lang['goods_class_add_back_to_list'],
+							'url'=>'index.php?act=doctors_class&op=doctors_class',
+							'msg'=>$lang['doctors_class_add_back_to_list'],
 						)
 					);
-					$this->log(L('nc_add,goods_class_index_class').'['.$_POST['gc_name'].']',1);
+					$this->log(L('nc_add,doctors_class_index_class').'['.$_POST['gc_name'].']',1);
 					showMessage($lang['nc_common_save_succ'],$url);
 				}else {
-					$this->log(L('nc_add,goods_class_index_class').'['.$_POST['gc_name'].']',0);
+					$this->log(L('nc_add,doctors_class_index_class').'['.$_POST['gc_name'].']',0);
 					showMessage($lang['nc_common_save_fail']);
 				}
 			}
@@ -145,7 +145,7 @@ class goods_classControl extends SystemControl{
 		Tpl::output('gc_list', $gc_list);
 		//类型列表
 		$model_type	= Model('type');
-		$type_list	= $model_type->typeList(array('order'=>'type_sort asc'), '', 'type_id,type_name,class_id,class_name');
+		$type_list	= $model_type->typeList(array('appointment'=>'type_sort asc'), '', 'type_id,type_name,class_id,class_name');
 		$t_list = array();
 		if(is_array($type_list) && !empty($type_list)){
 			foreach($type_list as $k=>$val){
@@ -158,22 +158,22 @@ class goods_classControl extends SystemControl{
 		Tpl::output('type_list',$t_list);
 		Tpl::output('gc_parent_id',$_GET['gc_parent_id']);
 		Tpl::output('parent_list',$parent_list);
-		Tpl::output('top_link',$this->sublink($this->links,'goods_class_add'));
-		Tpl::showpage('goods_class.add');
+		Tpl::output('top_link',$this->sublink($this->links,'doctors_class_add'));
+		Tpl::showpage('doctors_class.add');
 	}
 	
 	/**
 	 * 编辑
 	 */
-	public function goods_class_editOp(){
+	public function doctors_class_editOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		
 		if (chksubmit()){
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-				array("input"=>$_POST["gc_name"], "require"=>"true", "message"=>$lang['goods_class_add_name_null']),
-				array("input"=>$_POST["gc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['goods_class_add_sort_int']),
+				array("input"=>$_POST["gc_name"], "require"=>"true", "message"=>$lang['doctors_class_add_name_null']),
+				array("input"=>$_POST["gc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['doctors_class_add_sort_int']),
 			);
 			$error = $obj_validate->validate();
 			if ($error != ''){
@@ -190,10 +190,10 @@ class goods_classControl extends SystemControl{
 			$update_array['gc_keywords']	= $_POST['gc_keywords'];
 			$update_array['gc_description']	= $_POST['gc_description'];
 
-			$result = $model_class->goodsClassUpdate($update_array);
+			$result = $model_class->doctorsClassUpdate($update_array);
 			if (!$result){
-				$this->log(L('nc_edit,goods_class_index_class').'['.$_POST['gc_name'].']',0);
-				showMessage($lang['goods_class_batch_edit_fail']);
+				$this->log(L('nc_edit,doctors_class_index_class').'['.$_POST['gc_name'].']',0);
+				showMessage($lang['doctors_class_batch_edit_fail']);
 			}
 			
 			if (!empty($_FILES['pic']['name'])) {//上传图片
@@ -222,26 +222,26 @@ class goods_classControl extends SystemControl{
 			
 			$url = array(
 				array(
-					'url'=>'index.php?act=goods_class&op=goods_class_edit&gc_id='.intval($_POST['gc_id']),
-					'msg'=>$lang['goods_class_batch_edit_again'],
+					'url'=>'index.php?act=doctors_class&op=doctors_class_edit&gc_id='.intval($_POST['gc_id']),
+					'msg'=>$lang['doctors_class_batch_edit_again'],
 				),
 				array(
-					'url'=>'index.php?act=goods_class&op=goods_class',
-					'msg'=>$lang['goods_class_add_back_to_list'],
+					'url'=>'index.php?act=doctors_class&op=doctors_class',
+					'msg'=>$lang['doctors_class_add_back_to_list'],
 				)
 			);
-			$this->log(L('nc_edit,goods_class_index_class').'['.$_POST['gc_name'].']',1);
-			showMessage($lang['goods_class_batch_edit_ok'],$url,'html','succ',1,5000);
+			$this->log(L('nc_edit,doctors_class_index_class').'['.$_POST['gc_name'].']',1);
+			showMessage($lang['doctors_class_batch_edit_ok'],$url,'html','succ',1,5000);
 		}
 				
-		$class_array = $model_class->getOneGoodsClass(intval($_GET['gc_id']));
+		$class_array = $model_class->getOnedoctorsClass(intval($_GET['gc_id']));
 		if (empty($class_array)){
-			showMessage($lang['goods_class_batch_edit_paramerror']);
+			showMessage($lang['doctors_class_batch_edit_paramerror']);
 		}
 
 		//类型列表
 		$model_type	= Model('type');
-		$type_list	= $model_type->typeList(array('order'=>'type_sort asc'), '', 'type_id,type_name,class_id,class_name');
+		$type_list	= $model_type->typeList(array('appointment'=>'type_sort asc'), '', 'type_id,type_name,class_id,class_name');
 		$t_list = array();
 		if(is_array($type_list) && !empty($type_list)){
 			foreach($type_list as $k=>$val){
@@ -259,7 +259,7 @@ class goods_classControl extends SystemControl{
 		}
 		Tpl::output('parent_list',$parent_list);
 		// 一级分类列表
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 	    $pic_name = BASE_UPLOAD_PATH.'/'.ATTACH_COMMON.'/category-pic-'.$class_array['gc_id'].'.jpg';
 	    if (file_exists($pic_name)) {
@@ -268,16 +268,16 @@ class goods_classControl extends SystemControl{
 		
 		Tpl::output('type_list',$t_list);
 		Tpl::output('class_array',$class_array);
-		Tpl::output('top_link',$this->sublink($this->links,'goods_class'));
-		Tpl::showpage('goods_class.edit');
+		Tpl::output('top_link',$this->sublink($this->links,'doctors_class'));
+		Tpl::showpage('doctors_class.edit');
 	}
 
 	/**
 	 * 分类导入
 	 */
-	public function goods_class_importOp(){
+	public function doctors_class_importOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		//导入
 		if (chksubmit()){
 			//得到导入文件后缀名
@@ -308,7 +308,7 @@ class goods_classControl extends SystemControl{
 						//逗号去除
 						$tmp_array = array();
 						$tmp_array = explode(',',$data);
-						if($tmp_array[0] == 'sort_order')continue;
+						if($tmp_array[0] == 'sort_appointment')continue;
 						//第一位是序号，后面的是内容，最后一位名称
 						$tmp_deep = 'parent_id_'.(count($tmp_array)-1);
 						
@@ -322,27 +322,27 @@ class goods_classControl extends SystemControl{
 						$$tmp = $gc_id;
 					}
 				}
-				$this->log(L('goods_class_index_import,goods_class_index_class'),1);
-				showMessage($lang['nc_common_op_succ'],'index.php?act=goods_class&op=goods_class');
+				$this->log(L('doctors_class_index_import,doctors_class_index_class'),1);
+				showMessage($lang['nc_common_op_succ'],'index.php?act=doctors_class&op=doctors_class');
 			}else {
-				$this->log(L('goods_class_index_import,goods_class_index_class'),0);
-				showMessage($lang['goods_class_import_csv_null']);
+				$this->log(L('doctors_class_index_import,doctors_class_index_class'),0);
+				showMessage($lang['doctors_class_import_csv_null']);
 			}
 		}
-		Tpl::output('top_link',$this->sublink($this->links,'goods_class_import'));
-		Tpl::showpage('goods_class.import');
+		Tpl::output('top_link',$this->sublink($this->links,'doctors_class_import'));
+		Tpl::showpage('doctors_class.import');
 	}
 	
 	/**
 	 * 分类导出
 	 */
-	public function goods_class_exportOp(){
+	public function doctors_class_exportOp(){
 		if (chksubmit()){
-			$model_class = Model('goods_class');
+			$model_class = Model('doctors_class');
 			$class_list = $model_class->getTreeClassList();
 			
 			@header("Content-type: application/unknown");
-        	@header("Content-Disposition: attachment; filename=goods_class.csv");
+        	@header("Content-Disposition: attachment; filename=doctors_class.csv");
 			if (is_array($class_list)){
 				foreach ($class_list as $k => $v){
 					$tmp = array();
@@ -371,27 +371,27 @@ class goods_classControl extends SystemControl{
 					echo $tmp_line."\r\n";
 				}
 			}
-			$this->log(L('goods_class_index_export,goods_class_index_class'),1);
+			$this->log(L('doctors_class_index_export,doctors_class_index_class'),1);
 			exit;
 		}
-		Tpl::output('top_link',$this->sublink($this->links,'goods_class_export'));
-		Tpl::showpage('goods_class.export');
+		Tpl::output('top_link',$this->sublink($this->links,'doctors_class_export'));
+		Tpl::showpage('doctors_class.export');
 	}
 	
 	/**
 	 * 删除分类
 	 */
-	public function goods_class_delOp(){
+	public function doctors_class_delOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
+		$model_class = Model('doctors_class');
 		if (intval($_GET['gc_id']) > 0){
 			//删除分类
-			$model_class->delGoodsClassByGcIdString(intval($_GET['gc_id']));
-			$this->log(L('nc_delete,goods_class_index_class') . '[ID:' . intval($_GET['gc_id']) . ']',1);
-			showMessage($lang['nc_common_del_succ'],'index.php?act=goods_class&op=goods_class');
+			$model_class->deldoctorsClassByGcIdString(intval($_GET['gc_id']));
+			$this->log(L('nc_delete,doctors_class_index_class') . '[ID:' . intval($_GET['gc_id']) . ']',1);
+			showMessage($lang['nc_common_del_succ'],'index.php?act=doctors_class&op=doctors_class');
 		}else {
-			$this->log(L('nc_delete,goods_class_index_class') . '[ID:' . intval($_GET['gc_id']) . ']',0);
-			showMessage($lang['nc_common_del_fail'],'index.php?act=goods_class&op=goods_class');
+			$this->log(L('nc_delete,doctors_class_index_class') . '[ID:' . intval($_GET['gc_id']) . ']',0);
+			showMessage($lang['nc_common_del_fail'],'index.php?act=doctors_class&op=doctors_class');
 		}
 	}
 
@@ -400,7 +400,7 @@ class goods_classControl extends SystemControl{
 	 */
 	public function tagOp(){
 		$lang	= Language::getLangContent();
-		$model_class_tag = Model('goods_class_tag');
+		$model_class_tag = Model('doctors_class_tag');
 
 		if (chksubmit()){
 			//删除
@@ -425,7 +425,7 @@ class goods_classControl extends SystemControl{
 		Tpl::output('tag_list', $tag_list);
 		Tpl::output('page',$page->show());
 		Tpl::output('top_link',$this->sublink($this->links,'tag'));
-		Tpl::showpage('goods_class_tag.index');
+		Tpl::showpage('doctors_class_tag.index');
 	}
 	
 	/**
@@ -434,58 +434,58 @@ class goods_classControl extends SystemControl{
 	public function tag_resetOp(){
 		$lang	= Language::getLangContent();
 		//实例化模型
-		$model_class = Model('goods_class');
-		$model_class_tag = Model('goods_class_tag');
+		$model_class = Model('doctors_class');
+		$model_class_tag = Model('doctors_class_tag');
 		
 		//清空TAG
 		$return = $model_class_tag->clearTag();
 		if(!$return){
-			showMessage($lang['goods_class_reset_tag_fail'], 'index.php?act=goods_class&op=tag');
+			showMessage($lang['doctors_class_reset_tag_fail'], 'index.php?act=doctors_class&op=tag');
 		}
 		
 		//商品分类
-		$goods_class		= $model_class->getTreeClassList(3,array('order'=>'gc_parent_id asc,gc_sort asc,gc_id asc'));
+		$doctors_class		= $model_class->getTreeClassList(3,array('appointment'=>'gc_parent_id asc,gc_sort asc,gc_id asc'));
 		//格式化分类。组成三维数组
-		if(is_array($goods_class) and !empty($goods_class)) {
-			$goods_class_array = array();
-			foreach ($goods_class as $val) {
+		if(is_array($doctors_class) and !empty($doctors_class)) {
+			$doctors_class_array = array();
+			foreach ($doctors_class as $val) {
 				//一级分类
 				if($val['gc_parent_id'] == 0) {
-					$goods_class_array[$val['gc_id']]['gc_name']	= $val['gc_name'];
-					$goods_class_array[$val['gc_id']]['gc_id']		= $val['gc_id'];
-					$goods_class_array[$val['gc_id']]['type_id']	= $val['type_id'];
+					$doctors_class_array[$val['gc_id']]['gc_name']	= $val['gc_name'];
+					$doctors_class_array[$val['gc_id']]['gc_id']		= $val['gc_id'];
+					$doctors_class_array[$val['gc_id']]['type_id']	= $val['type_id'];
 				}else {
 					//二级分类
-					if(isset($goods_class_array[$val['gc_parent_id']])){
-						$goods_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_name']			= $val['gc_name'];
-						$goods_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_id']			= $val['gc_id'];
-						$goods_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_parent_id']	= $val['gc_parent_id'];
-						$goods_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['type_id']			= $val['type_id'];
+					if(isset($doctors_class_array[$val['gc_parent_id']])){
+						$doctors_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_name']			= $val['gc_name'];
+						$doctors_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_id']			= $val['gc_id'];
+						$doctors_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_parent_id']	= $val['gc_parent_id'];
+						$doctors_class_array[$val['gc_parent_id']]['sub_class'][$val['gc_id']]['type_id']			= $val['type_id'];
 					}else{
-						foreach ($goods_class_array as $v){
+						foreach ($doctors_class_array as $v){
 							//三级分类
 							if(isset($v['sub_class'][$val['gc_parent_id']])){
-								$goods_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_name']	= $val['gc_name'];
-								$goods_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_id']	= $val['gc_id'];
-								$goods_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['type_id']	= $val['type_id'];
+								$doctors_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_name']	= $val['gc_name'];
+								$doctors_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['gc_id']	= $val['gc_id'];
+								$doctors_class_array[$v['sub_class'][$val['gc_parent_id']]['gc_parent_id']]['sub_class'][$val['gc_parent_id']]['sub_class'][$val['gc_id']]['type_id']	= $val['type_id'];
 							}
 						}
 					}
 				}
 			}
 
-			$return = $model_class_tag->tagAdd($goods_class_array);
+			$return = $model_class_tag->tagAdd($doctors_class_array);
 
 			if($return){
 				$this->log(L('nc_reset').'tag',1);
-				showMessage($lang['nc_common_op_succ'], 'index.php?act=goods_class&op=tag');
+				showMessage($lang['nc_common_op_succ'], 'index.php?act=doctors_class&op=tag');
 			}else{
 				$this->log(L('nc_reset').'tag',0);
-				showMessage($lang['nc_common_op_fail'], 'index.php?act=goods_class&op=tag');
+				showMessage($lang['nc_common_op_fail'], 'index.php?act=doctors_class&op=tag');
 			}
 		}else{
 			$this->log(L('nc_reset').'tag',0);
-			showMessage($lang['goods_class_reset_tag_fail_no_class'], 'index.php?act=goods_class&op=tag');
+			showMessage($lang['doctors_class_reset_tag_fail_no_class'], 'index.php?act=doctors_class&op=tag');
 		}
 	}
 	
@@ -494,8 +494,8 @@ class goods_classControl extends SystemControl{
 	 */
 	public function tag_updateOp(){
 		$lang	= Language::getLangContent();
-		$model_class = Model('goods_class');
-		$model_class_tag = Model('goods_class_tag');
+		$model_class = Model('doctors_class');
+		$model_class_tag = Model('doctors_class_tag');
 		
 		//需要更新的TAG列表
 		$tag_list = $model_class_tag->getTagList(array(), '', 'gc_tag_id,gc_id_1,gc_id_2,gc_id_3');
@@ -534,14 +534,14 @@ class goods_classControl extends SystemControl{
 				$return = $model_class_tag->updateTag($update_tag);
 				if(!$return){
 					$this->log(L('nc_update').'tag',0);
-					showMessage($lang['nc_common_op_fail'], 'index.php?act=goods_class&op=tag');
+					showMessage($lang['nc_common_op_fail'], 'index.php?act=doctors_class&op=tag');
 				}
 			}
 			$this->log(L('nc_update').'tag',1);
-			showMessage($lang['nc_common_op_succ'], 'index.php?act=goods_class&op=tag');
+			showMessage($lang['nc_common_op_succ'], 'index.php?act=doctors_class&op=tag');
 		}else{
 			$this->log(L('nc_update').'tag',0);
-			showMessage($lang['goods_class_update_tag_fail_no_class'], 'index.php?act=goods_class&op=tag');
+			showMessage($lang['doctors_class_update_tag_fail_no_class'], 'index.php?act=doctors_class&op=tag');
 		}
 		
 	}
@@ -552,7 +552,7 @@ class goods_classControl extends SystemControl{
 	public function tag_delOp(){
 		$id = intval($_GET['tag_id']);
 		$lang	= Language::getLangContent();
-		$model_class_tag = Model('goods_class_tag');
+		$model_class_tag = Model('doctors_class_tag');
 		if ($id > 0){
 			/**
 			 * 删除TAG
@@ -574,9 +574,9 @@ class goods_classControl extends SystemControl{
 			/**
 			 * 更新分类
 			 */
-			case 'goods_class_name':
-				$model_class = Model('goods_class');
-				$class_array = $model_class->getOneGoodsClass(intval($_GET['id']));
+			case 'doctors_class_name':
+				$model_class = Model('doctors_class');
+				$class_array = $model_class->getOnedoctorsClass(intval($_GET['id']));
 				
 				$condition['gc_name'] = trim($_GET['value']);
 				$condition['gc_parent_id'] = $class_array['gc_parent_id'];
@@ -586,7 +586,7 @@ class goods_classControl extends SystemControl{
 					$update_array = array();
 					$update_array['gc_id'] = intval($_GET['id']);
 					$update_array['gc_name'] = trim($_GET['value']);
-					$model_class->goodsClassUpdate($update_array);
+					$model_class->doctorsClassUpdate($update_array);
 					echo 'true';exit;
 				}else {
 					echo 'false';exit;
@@ -595,21 +595,21 @@ class goods_classControl extends SystemControl{
 			/**
 			 * 分类 排序 显示 设置
 			 */
-			case 'goods_class_sort':
-			case 'goods_class_show':
-			case 'goods_class_index_show':
-				$model_class = Model('goods_class');
+			case 'doctors_class_sort':
+			case 'doctors_class_show':
+			case 'doctors_class_index_show':
+				$model_class = Model('doctors_class');
 				$update_array = array();
 				$update_array['gc_id'] = $_GET['id'];
 				$update_array[$_GET['column']] = $_GET['value'];
-				$model_class->goodsClassUpdate($update_array);
+				$model_class->doctorsClassUpdate($update_array);
 				echo 'true';exit;
 				break;
 			/**
 			 * 添加、修改操作中 检测类别名称是否有重复
 			 */
 			case 'check_class_name':
-				$model_class = Model('goods_class');
+				$model_class = Model('doctors_class');
 				$condition['gc_name'] = trim($_GET['gc_name']);
 				$condition['gc_parent_id'] = intval($_GET['gc_parent_id']);
 				$condition['no_gc_id'] = intval($_GET['gc_id']);
@@ -623,8 +623,8 @@ class goods_classControl extends SystemControl{
 			/**
 			 * TAG值编辑
 			 */
-			case 'goods_class_tag_value':
-				$model_class_tag = Model('goods_class_tag');
+			case 'doctors_class_tag_value':
+				$model_class_tag = Model('doctors_class_tag');
 				$update_array = array();
 				$update_array['gc_tag_id'] = intval($_GET['id']);
 				/**

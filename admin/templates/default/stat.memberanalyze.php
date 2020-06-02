@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -13,7 +13,7 @@
     <input type="hidden" name="op" value="analyze" />
     <input type="hidden" name="" value="" />
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
               <td>
@@ -67,13 +67,13 @@
   <div id="stat_tabs" class="w100pre close_float ui-tabs" style="min-height:500px">
   <div class="close_float tabmenu">
   	<ul class="tab pngFix">
-    	<li><a href="#ordernum_div">下单量</a></li>
-    	<li><a href="#goodsnum_div">下单商品件数</a></li>
-    	<li><a href="#orderamount_div">下单金额</a></li>
+    	<li><a href="#appointmentnum_div">下单量</a></li>
+    	<li><a href="#doctorsnum_div">下单商品件数</a></li>
+    	<li><a href="#appointmentamount_div">下单金额</a></li>
     </ul>
   </div>
   <!-- 下单量 -->
-  <div id="ordernum_div" class="close_float">
+  <div id="appointmentnum_div" class="close_float">
   	<div class="w40pre floatleft">
   		<table class="table tb-type2 nobdb">
             <thead>
@@ -84,12 +84,12 @@
               </tr>
             </thead>
             <tbody id="datatable">
-            <?php if(!empty($output['ordernum_listtop15'])){?>
-            <?php foreach ($output['ordernum_listtop15'] as $k=>$v){?>
+            <?php if(!empty($output['appointmentnum_listtop15'])){?>
+            <?php foreach ($output['appointmentnum_listtop15'] as $k=>$v){?>
               <tr class="hover">
                 <td class="align-center"><?php echo $k+1;?></td>
                 <td class="align-center"><?php echo $v['statm_membername'];?></td>
-                <td class="align-center"><?php echo $v['ordernum'];?></td>
+                <td class="align-center"><?php echo $v['appointmentnum'];?></td>
               </tr>
             <?php } ?>
             <?php } else {?>
@@ -100,12 +100,12 @@
             </tbody>
        </table>
   	</div>
-  	<div id="container_ordernum" class="w50pre floatleft"></div>
-  	<div id="list_ordernum" class="close_float" style="padding-top:10px;"></div>
+  	<div id="container_appointmentnum" class="w50pre floatleft"></div>
+  	<div id="list_appointmentnum" class="close_float" style="padding-top:10px;"></div>
   </div>
   
   <!-- 下单商品件数 -->
-  <div id="goodsnum_div">
+  <div id="doctorsnum_div">
   	<div class="w40pre floatleft">
   		<table class="table tb-type2 nobdb">
             <thead>
@@ -116,12 +116,12 @@
               </tr>
             </thead>
             <tbody id="datatable">
-            <?php if(!empty($output['goodsnum_listtop15'])){?>
-            <?php foreach ($output['goodsnum_listtop15'] as $k=>$v){?>
+            <?php if(!empty($output['doctorsnum_listtop15'])){?>
+            <?php foreach ($output['doctorsnum_listtop15'] as $k=>$v){?>
               <tr class="hover">
                 <td class="align-center"><?php echo $k+1;?></td>
                 <td class="align-center"><?php echo $v['statm_membername'];?></td>
-                <td class="align-center"><?php echo $v['goodsnum'];?></td>
+                <td class="align-center"><?php echo $v['doctorsnum'];?></td>
               </tr>
             <?php } ?>
             <?php } else {?>
@@ -132,12 +132,12 @@
             </tbody>
        </table>
   	</div>
-  	<div id="container_goodsnum" class="w50pre floatleft"></div>
-  	<div id="list_goodsnum" class="close_float" style="padding-top:10px;" ></div>
+  	<div id="container_doctorsnum" class="w50pre floatleft"></div>
+  	<div id="list_doctorsnum" class="close_float" style="padding-top:10px;" ></div>
   </div>
   
   <!-- 下单金额 -->
-  <div id="orderamount_div">
+  <div id="appointmentamount_div">
   	<div class="w40pre floatleft">
   		<table class="table tb-type2 nobdb">
             <thead>
@@ -148,12 +148,12 @@
               </tr>
             </thead>
             <tbody id="datatable">
-            <?php if(!empty($output['orderamount_listtop15'])){?>
-                <?php foreach ($output['orderamount_listtop15'] as $k=>$v){?>
+            <?php if(!empty($output['appointmentamount_listtop15'])){?>
+                <?php foreach ($output['appointmentamount_listtop15'] as $k=>$v){?>
                   <tr class="hover">
                     <td class="align-center"><?php echo $k+1;?></td>
                     <td class="align-center"><?php echo $v['statm_membername'];?></td>
-                    <td class="align-center"><?php echo $v['orderamount'];?></td>
+                    <td class="align-center"><?php echo $v['appointmentamount'];?></td>
                   </tr>
                 <?php } ?>
             <?php } else {?>
@@ -164,8 +164,8 @@
             </tbody>
        </table>
   	</div>
-  	<div id="container_orderamount" class="w50pre floatleft"></div>
-  	<div id="list_orderamount" class="close_float" style="padding-top:10px;" ></div>
+  	<div id="container_appointmentamount" class="w50pre floatleft"></div>
+  	<div id="list_appointmentamount" class="close_float" style="padding-top:10px;" ></div>
   </div>
   </div>
 </div>
@@ -217,14 +217,14 @@ $(function () {
 	    });
 	});
 	
-	$('#container_ordernum').highcharts(<?php echo $output['statordernum_json'];?>);
-	$('#container_goodsnum').highcharts(<?php echo $output['statgoodsnum_json'];?>);
-	$('#container_orderamount').highcharts(<?php echo $output['statorderamount_json'];?>);
+	$('#container_appointmentnum').highcharts(<?php echo $output['statappointmentnum_json'];?>);
+	$('#container_doctorsnum').highcharts(<?php echo $output['statdoctorsnum_json'];?>);
+	$('#container_appointmentamount').highcharts(<?php echo $output['statappointmentamount_json'];?>);
 
 	//加载详细列表
-	$("#list_ordernum").load('index.php?act=stat_member&op=analyzeinfo&type=ordernum&t=<?php echo $output['searchtime'];?>');
-	$("#list_orderamount").load('index.php?act=stat_member&op=analyzeinfo&type=orderamount&t=<?php echo $output['searchtime'];?>');
-	$("#list_goodsnum").load('index.php?act=stat_member&op=analyzeinfo&type=goodsnum&t=<?php echo $output['searchtime'];?>');
+	$("#list_appointmentnum").load('index.php?act=stat_member&op=analyzeinfo&type=appointmentnum&t=<?php echo $output['searchtime'];?>');
+	$("#list_appointmentamount").load('index.php?act=stat_member&op=analyzeinfo&type=appointmentamount&t=<?php echo $output['searchtime'];?>');
+	$("#list_doctorsnum").load('index.php?act=stat_member&op=analyzeinfo&type=doctorsnum&t=<?php echo $output['searchtime'];?>');
 	
 	$('#ncsubmit').click(function(){
     	$('#formSearch').submit();

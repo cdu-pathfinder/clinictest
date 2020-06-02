@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -25,10 +25,10 @@
   <form id="add_form" method="post" enctype="multipart/form-data" action="index.php?act=complain&op=complain_setting_save">
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="complain_time_limit"><?php echo $lang['complain_time_limit'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input name="complain_time_limit" id="complain_time_limit" value="<?php echo intval($output['list_setting']['complain_time_limit'])/86400;?>" type="text" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['complain_time_limit_desc'];?></td>
         </tr>

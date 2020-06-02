@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class web_configModel extends Model{
 	/**
 	 * 读取模块内容记录
@@ -33,7 +33,7 @@ class web_configModel extends Model{
 	 * @return array 数组格式的返回结果
 	 */
 	public function getCodeList($condition = array()){
-		$result = $this->table('web_code')->where($condition)->order('web_id')->select();
+		$result = $this->table('web_code')->where($condition)->appointment('web_id')->select();
 		return $result;
 	}
 
@@ -62,7 +62,7 @@ class web_configModel extends Model{
 	 * @return array 数组格式的返回结果
 	 */
 	public function getWebList($condition = array('web_page' => 'index'),$page = ''){
-		$result = $this->table('web')->where($condition)->order('web_sort')->page($page)->select();
+		$result = $this->table('web')->where($condition)->appointment('web_sort')->page($page)->select();
 		return $result;
 	}
 
@@ -109,7 +109,7 @@ class web_configModel extends Model{
         	        $style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'focus.php';
         	    	break;
         	    case 121:
-        	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_goods.php';
+        	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'sale_doctors.php';
         	    	break;
         	    default:
         	    	$style_file = BASE_DATA_PATH.DS.'resource'.DS.'web_config'.DS.'default.php';
@@ -224,43 +224,43 @@ class web_configModel extends Model{
 	 * @param
 	 * @return array 数组格式的返回结果
 	 */
-	public function getGoodsList($condition = array(),$order = 'goods_id desc',$page = ''){
+	public function getdoctorsList($condition = array(),$appointment = 'doctors_id desc',$page = ''){
 	    $list = array();
-	    $model_goods = Model('goods');
-	    $field = 'goods_id,goods_commonid,goods_name,goods_image,goods_price,goods_marketprice';
-	    $goods_list = $model_goods->getGoodsListByColorDistinct($condition,$field,$order,$page);
-	    if (!empty($goods_list) && is_array($goods_list)) {
-	        $goods_commonlist = array();//商品公共ID关联商品ID数组
-	        foreach ($goods_list as $key => $value) {
-	            $goods_id = $value['goods_id'];
-	            $goods_commonid = $value['goods_commonid'];
-	            $goods_commonlist[$goods_commonid][] = $goods_id;
-	            $value['goods_type'] = 1;
-	            $list[$goods_id] = $value;
+	    $model_doctors = Model('doctors');
+	    $field = 'doctors_id,doctors_commonid,doctors_name,doctors_image,doctors_price,doctors_marketprice';
+	    $doctors_list = $model_doctors->getdoctorsListByColorDistinct($condition,$field,$appointment,$page);
+	    if (!empty($doctors_list) && is_array($doctors_list)) {
+	        $doctors_commonlist = array();//商品公共ID关联商品ID数组
+	        foreach ($doctors_list as $key => $value) {
+	            $doctors_id = $value['doctors_id'];
+	            $doctors_commonid = $value['doctors_commonid'];
+	            $doctors_commonlist[$doctors_commonid][] = $doctors_id;
+	            $value['doctors_type'] = 1;
+	            $list[$doctors_id] = $value;
 	        }
-	        $goods_ids = array_keys($list);//商品ID数组
+	        $doctors_ids = array_keys($list);//商品ID数组
 	        if (C('promotion_allow')) {//限时折扣
-	            $xianshi_list = Model('p_xianshi_goods')->getXianshiGoodsListByGoodsString(implode(',', $goods_ids));
+	            $xianshi_list = Model('p_xianshi_doctors')->getXianshidoctorsListBydoctorsString(implode(',', $doctors_ids));
     	        if (!empty($xianshi_list) && is_array($xianshi_list)) {
     	            foreach ($xianshi_list as $key => $value) {
-    	                $goods_id = $value['goods_id'];
-    	                $goods_price = $value['xianshi_price'];
-    	                $list[$goods_id]['goods_price'] = $goods_price;
-    	                $list[$goods_id]['goods_type'] = 3;
+    	                $doctors_id = $value['doctors_id'];
+    	                $doctors_price = $value['xianshi_price'];
+    	                $list[$doctors_id]['doctors_price'] = $doctors_price;
+    	                $list[$doctors_id]['doctors_type'] = 3;
     	            }
     	        }
 	        }
-	        $common_ids = array_keys($goods_commonlist);//商品公共ID数组
+	        $common_ids = array_keys($doctors_commonlist);//商品公共ID数组
 	        if (C('groupbuy_allow')) {//最终以团购价为准
-	            $groupbuy_list = Model('groupbuy')->getGroupbuyListByGoodsCommonIDString(implode(',', $common_ids));
+	            $groupbuy_list = Model('groupbuy')->getGroupbuyListBydoctorsCommonIDString(implode(',', $common_ids));
     	        if (!empty($groupbuy_list) && is_array($groupbuy_list)) {
     	            foreach ($groupbuy_list as $key => $value) {
-    	                $goods_commonid = $value['goods_commonid'];
-    	                $goods_price = $value['groupbuy_price'];
-    	                foreach ($goods_commonlist[$goods_commonid] as $k => $v) {
-    	                    $goods_id = $v;
-    	                    $list[$goods_id]['goods_price'] = $goods_price;
-    	                    $list[$goods_id]['goods_type'] = 2;
+    	                $doctors_commonid = $value['doctors_commonid'];
+    	                $doctors_price = $value['groupbuy_price'];
+    	                foreach ($doctors_commonlist[$doctors_commonid] as $k => $v) {
+    	                    $doctors_id = $v;
+    	                    $list[$doctors_id]['doctors_price'] = $doctors_price;
+    	                    $list[$doctors_id]['doctors_type'] = 2;
     	                }
     	            }
     	        }
@@ -273,7 +273,7 @@ class web_configModel extends Model{
 	 * 更新商品价格信息
 	 *
 	 */
-	public function updateWebGoods($condition = array('web_show' => '1')){
+	public function updateWebdoctors($condition = array('web_show' => '1')){
 		$web_style_array = array();
 		$web_list = $this->getWebList($condition);//板块列表
 		if(!empty($web_list) && is_array($web_list)) {
@@ -281,7 +281,7 @@ class web_configModel extends Model{
 			    $web_id = $v['web_id'];
 				$web_style_array[$web_id] = $v['style_name'];
 			}
-			$goods_ids = array();//商品ID数组
+			$doctors_ids = array();//商品ID数组
 	        $condition = array();
 	        $condition['web_id'] = array('in', array_keys($web_style_array));
 	        $condition['var_name'] = array('in', array('recommend_list','sale_list'));
@@ -296,28 +296,28 @@ class web_configModel extends Model{
         	        $recommend_list = $val['code_info'];
         	        if (!empty($recommend_list) && is_array($recommend_list)) {
         	            foreach ($recommend_list as $k => $v) {
-        	                if (!empty($v['goods_list']) && is_array($v['goods_list'])) {//商品列表
-        	                    $goods_id_array = array_keys($v['goods_list']);//商品ID
-        	                    $goods_ids = array_merge($goods_ids, $goods_id_array);
+        	                if (!empty($v['doctors_list']) && is_array($v['doctors_list'])) {//商品列表
+        	                    $doctors_id_array = array_keys($v['doctors_list']);//商品ID
+        	                    $doctors_ids = array_merge($doctors_ids, $doctors_id_array);
         	                    $update_list[$code_id] = $val;
         	                }
         	            }
         	        }
     			}
-    			if (!empty($goods_ids) && is_array($goods_ids)) {
+    			if (!empty($doctors_ids) && is_array($doctors_ids)) {
     			    $condition = array();
-    			    $condition['goods_id'] = array('in', $goods_ids);
-    			    $goods_list = $this->getGoodsList($condition);//最新商品
+    			    $condition['doctors_id'] = array('in', $doctors_ids);
+    			    $doctors_list = $this->getdoctorsList($condition);//最新商品
     			}
     			foreach ($update_list as $key => $val) {
     				$update = 0;//商品价格是否有变化
         	        foreach ($val['code_info'] as $k => $v) {
-        	            if (!empty($v['goods_list']) && is_array($v['goods_list'])) {
-            	            foreach ($v['goods_list'] as $k3 => $v3) {//单个商品
-            	                $goods_id = $v3['goods_id'];
-            	                $goods_price = $v3['goods_price'];
-            	                if (!empty($goods_list[$goods_id]) && ($goods_list[$goods_id]['goods_price'] != $goods_price)) {
-            	                    $val['code_info'][$k]['goods_list'][$goods_id]['goods_price'] = $goods_list[$goods_id]['goods_price'];
+        	            if (!empty($v['doctors_list']) && is_array($v['doctors_list'])) {
+            	            foreach ($v['doctors_list'] as $k3 => $v3) {//单个商品
+            	                $doctors_id = $v3['doctors_id'];
+            	                $doctors_price = $v3['doctors_price'];
+            	                if (!empty($doctors_list[$doctors_id]) && ($doctors_list[$doctors_id]['doctors_price'] != $doctors_price)) {
+            	                    $val['code_info'][$k]['doctors_list'][$doctors_id]['doctors_price'] = $doctors_list[$doctors_id]['doctors_price'];
             	                    $update++;
             	                }
             	            }

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!-- 店铺　-->
 <div class="cms-module-assembly-member">
     <div class="title-bar">

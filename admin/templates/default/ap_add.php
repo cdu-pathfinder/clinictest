@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,10 +15,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="ap_name"><?php echo $lang['ap_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="ap_name" id="ap_name" class="txt">
             </td>
           <td class="vatop tips"></td>
@@ -26,7 +26,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['ap_class'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><select name="ap_class" id="ap_class">
               <option value="0"><?php echo $lang['adv_pic'];?></option>
               <option value="1"><?php echo $lang['adv_word'];?></option>
@@ -38,7 +38,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['ap_is_use'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
 			<td class="vatop rowform"><ul>
               <li>
                 <input name="is_use" type="radio" value="1" checked="checked">
@@ -56,7 +56,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['ap_show_style'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
  		<td class="vatop rowform"><ul class="nofloat">
               <li>
                 <input type="radio" name="ap_display" value="1">
@@ -74,7 +74,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="ap_width_media_input"><?php echo $lang['ap_width_l'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="ap_width_media"  class="txt" id="ap_width_media_input"></td>
           <td class="vatop tips"><?php echo $lang['adv_pix'];?></td>
         </tr>
@@ -82,7 +82,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="ap_width_word_input"><?php echo $lang['ap_word_num'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="ap_width_word"  class="txt" id="ap_width_word_input"></td>
           <td class="vatop tips"><?php echo $lang['adv_byte'];?></td>
         </tr>
@@ -91,7 +91,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="ap_height_input"><?php echo $lang['ap_height_l'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="ap_height" class="txt" id="ap_height_input"></td>
           <td class="vatop tips"><?php echo $lang['adv_pix'];?></td>
         </tr>
@@ -100,7 +100,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="change_default_pic"><?php echo $lang['ap_default_pic']; ?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform type-file-box"><input type="file" name="default_pic" id="change_default_pic" size="30" hidefocus="true" nc_type="change_default_pic">
             </td>
           <td class="vatop tips"><?php echo $lang['ap_show_defaultpic_when_nothing']; ?>,<?php echo $lang['adv_edit_support'];?>gif,jpg,jpeg,png</td>
@@ -110,7 +110,7 @@
         <tr>
           <td colspan="2" class="required"><label for="default_word" class="validation"><?php echo $lang['ap_default_word']; ?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="default_word" value="" name="default_word" class="txt">
             </td>
           <td class="vatop tips"><?php echo $lang['ap_show_defaultword_when_nothing']; ?></td>

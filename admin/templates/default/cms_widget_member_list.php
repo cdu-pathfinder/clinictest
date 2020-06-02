@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if(!empty($output['member_list']) && is_array($output['member_list'])){ ?>
 <div class="member-select-box">
     <div class="arrow"></div>
@@ -7,12 +7,12 @@
         <li>
         <dl class="member-info">
             <dt class="member-name">
-            <a href="<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $value['member_id'];?>" target="_blank">
+            <a href="<?php echo clinic_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $value['member_id'];?>" target="_blank">
                 <?php echo $value['member_name'];?>
             </a>
             </dt>
             <dd class="member-avatar">
-            <a href="<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $value['member_id'];?>" target="_blank">
+            <a href="<?php echo clinic_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $value['member_id'];?>" target="_blank">
                 <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" />
             </a>
             </dd>

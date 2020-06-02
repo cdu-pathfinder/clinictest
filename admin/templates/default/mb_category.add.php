@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,13 +15,13 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="link_catetory"> <?php echo $lang['link_index_category'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
 			<select name="link_category" id="link_category">
-			<?php foreach($output['goods_class'] as $k=>$v){?>
+			<?php foreach($output['doctors_class'] as $k=>$v){?>
 			<?php if ($v['gc_parent_id'] != '0') break;?>
 				<option value="<?php echo $v['gc_id']?>"><?php echo $v['gc_name']?></option>
 			<?php }?>
@@ -32,7 +32,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="link_pic"><?php echo $lang['link_index_pic_sign'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
           <span class="type-file-box">
             <input type="file" name="link_pic" id="link_pic" class="type-file-file" size="30" >

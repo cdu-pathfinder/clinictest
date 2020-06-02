@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,17 +15,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="ac_name"><?php echo $lang['article_class_index_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="ac_name" id="ac_name" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="parent_id"><?php echo $lang['article_class_add_sup_class'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><select name="ac_parent_id" id="ac_parent_id">
               <option value="0"><?php echo $lang['nc_please_choose'];?>...</option>
               <?php if(!empty($output['parent_list']) && is_array($output['parent_list'])){ ?>
@@ -40,7 +40,7 @@
         <tr>
           <td colspan="2" class="required"><label for="ac_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="255" name="ac_sort" id="ac_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['article_class_add_update_sort'];?></td>
         </tr>

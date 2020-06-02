@@ -1,11 +1,11 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if($output['circle_info']['circle_status'] == 1){?>
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/ubb.css" rel="stylesheet" type="text/css">
 <div class="group warp-all">
   <?php require_once circle_template('group.top');?>
   <div class="group-post">
     <h3><?php echo $lang['nc_release_new_theme'];?>...</h3>
-    <div class="stat"><span class="noborder"><?php echo $lang['circle_today'].$lang['nc_colon'];?><em><?php echo $output['todaythcount'];?></em></span><span><?php echo $lang['circle_theme'].$lang['nc_colon'];?><em><?php echo $output['circle_info']['circle_thcount'];?></em></span><span><?php echo $lang['circle_firend'].$lang['nc_colon'];?><em><?php echo $output['circle_info']['circle_mcount'];?></em></span></div>
+    <div class="stat"><span class="nobappointment"><?php echo $lang['circle_today'].$lang['nc_colon'];?><em><?php echo $output['todaythcount'];?></em></span><span><?php echo $lang['circle_theme'].$lang['nc_colon'];?><em><?php echo $output['circle_info']['circle_thcount'];?></em></span><span><?php echo $lang['circle_firend'].$lang['nc_colon'];?><em><?php echo $output['circle_info']['circle_mcount'];?></em></span></div>
     <div class="clear">&nbsp;</div>
     <div class="thread-layer">
       <div class="input-style">
@@ -38,7 +38,7 @@
         <ul class="base-tabs-nav">
           <li class="selected"><a href="index.php?act=group&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['circle_theme'];?></a></li>
           <li><a href="index.php?act=group&op=group_member&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['circle_firend'];?></a></li>
-          <li><a href="index.php?act=group&op=group_goods&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['nc_goods'];?></a></li>
+          <li><a href="index.php?act=group&op=group_doctors&c_id=<?php echo $output['c_id'];?>"><?php echo $lang['nc_doctors'];?></a></li>
         </ul>
       </div>
       <div class="group-list-bar">
@@ -106,11 +106,11 @@
             <?php }else{?>
             <div class="theme-intro"><?php echo $lang['circle_be_nospeak_member'];?></div>
             <?php }?>
-            <div class="theme-writer"><i title="<?php echo $lang['circle_author'];?>"></i><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank" title="<?php echo $val['member_name'];?>"><?php echo $val['member_name'];?></a><?php echo memberIdentity($val['is_identity']);?></div>
+            <div class="theme-writer"><i title="<?php echo $lang['circle_author'];?>"></i><a href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank" title="<?php echo $val['member_name'];?>"><?php echo $val['member_name'];?></a><?php echo memberIdentity($val['is_identity']);?></div>
             <div class="theme-writer-time" title="<?php echo $lang['circle_publish_time'];?>"><?php echo @date('Y-m-d', $val['lastspeak_time']);?></div>
             <div class="theme-stat" title="<?php echo $lang['circle_browsecount_one'].$val['theme_browsecount'].$lang['circle_browsecount_two'].$val['theme_commentcount'].$lang['circle_commentcount_one'];;?>"><em><?php echo $val['theme_commentcount'];?></em>/<em><?php echo $val['theme_browsecount'];?></em></div>
             <?php if($val['lastspeak_name'] != ''){?>
-            <div class="theme-lastspeak-name"><i title="<?php echo $lang['circle_lastspeak_member'];?>"></i><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['lastspeak_id'];?>" target="_blank" title="<?php echo $val['lastspeak_name'];?>"><?php echo $val['lastspeak_name'];?></a></div>
+            <div class="theme-lastspeak-name"><i title="<?php echo $lang['circle_lastspeak_member'];?>"></i><a href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['lastspeak_id'];?>" target="_blank" title="<?php echo $val['lastspeak_name'];?>"><?php echo $val['lastspeak_name'];?></a></div>
             <div class="theme-lastspeak-time" title="<?php echo $lang['circle_lastspeak_time'];?>"><?php echo @date('Y-m-d', $val['lastspeak_time']);?></div>
             <?php }else{?>
             <div class="theme-noreply">-&nbsp;<?php echo $lang['circle_no_comment'];?>&nbsp;-</div>

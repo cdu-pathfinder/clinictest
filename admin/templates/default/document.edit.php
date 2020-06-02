@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,21 +18,21 @@
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['document_index_title'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['doc']['doc_title'];?>" name="doc_title" id="doc_title" class="infoTableInput"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['document_index_content'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php showEditor('doc_content',$output['doc']['doc_content']);?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['document_index_pic_upload'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3" id="divComUploadContainer"><input type="file" multiple="multiple" id="fileupload" name="fileupload" /></td>
         </tr>
         <tr>

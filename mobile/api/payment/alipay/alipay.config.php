@@ -9,7 +9,7 @@
 	
  * 提示：如何获取安全校验码和合作身份者id
  * 1.用您的签约支付宝账号登录支付宝网站(www.alipay.com)
- * 2.点击“商家服务”(https://b.alipay.com/order/myorder.htm)
+ * 2.点击“商家服务”(https://b.alipay.com/appointment/myappointment.htm)
  * 3.点击“查询合作者身份(pid)”、“查询安全校验码(key)”
 	
  * 安全校验码查看时，输入支付密码后，页面呈灰色的现象，怎么办？

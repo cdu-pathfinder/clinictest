@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class groupbuy_classModel{
 
     const TABLE_NAME = 'groupbuy_class';
@@ -48,7 +48,7 @@ class groupbuy_classModel{
         $param = array() ;
         $param['table'] = self::TABLE_NAME ;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' '.self::PK.' desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' '.self::PK.' desc ';
         return Db::select($param,$page);
     }
 

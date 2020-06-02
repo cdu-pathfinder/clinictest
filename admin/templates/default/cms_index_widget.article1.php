@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="cms-index-module-article1 module-style-<?php echo $value['module_style'];?>">
   <div class="cms-index-module-article-title"> 
     <!-- 标题 -->
@@ -85,7 +85,7 @@
         <?php echo html_entity_decode($module_content['article1_3_content']);?>
       </ul>
       <?php if($output['edit_flag']) { ?>
-      <div class="cms-index-module-handle"><a nctype="btn_module_goods_edit" limit_count="6" href="JavaScript:void(0);" class="tip-l" title="<?php echo $lang['cms_index_module_goods_edit'];?>"><?php echo $lang['cms_index_module_goods_edit'];?></a></div>
+      <div class="cms-index-module-handle"><a nctype="btn_module_doctors_edit" limit_count="6" href="JavaScript:void(0);" class="tip-l" title="<?php echo $lang['cms_index_module_doctors_edit'];?>"><?php echo $lang['cms_index_module_doctors_edit'];?></a></div>
       <?php } ?>
     </div>
   </div>

@@ -5,9 +5,9 @@ $(function() {
 		var cart_id = GetQueryString('cart_id');
 		var data = {key:key,ifcart:1,cart_id:cart_id};
 	}else{
-		var goods_id = GetQueryString("goods_id");
+		var doctors_id = GetQueryString("doctors_id");
 		var number = GetQueryString("buynum");
-		var cart_id = goods_id+'|'+number;
+		var cart_id = doctors_id+'|'+number;
 		var data = {key:key,cart_id:cart_id};
 	}
 
@@ -27,15 +27,15 @@ $(function() {
 			var total_price = '';
 			var i = 0;
 			var j = 0;
-			$.each(data.store_cart_list,function(k,v){//循环店铺
+			$.each(data.clic_cart_list,function(k,v){//循环店铺
 				if(i==0){
 					htmldata+=	'<li>';
 				}else{
 					htmldata+=	'<li class="bd-t-cc">';
 				}
 				i++;
-				htmldata+='<p class="buys-yt-tlt">店铺名称：'+v.store_name+'</p>';
-						$.each(v.goods_list,function(k1,v1){//循环doctor list
+				htmldata+='<p class="buys-yt-tlt">店铺名称：'+v.clic_name+'</p>';
+						$.each(v.doctors_list,function(k1,v1){//循环doctor list
 							if(j==0){
 								htmldata+=	'<div class="buys1-pdlist">';
 							}else{
@@ -44,34 +44,34 @@ $(function() {
 							j++;
 				
 							htmldata+='<div class="clearfix">'
-												+'<a class="img-wp" href="'+WapSiteUrl+'/tmpl/product_detail.html?goods_id='+v1.goods_id+'">'
-													+'<img src="'+v1.goods_image_url+'"/>'
+												+'<a class="img-wp" href="'+WapSiteUrl+'/tmpl/doc_detail.html?doctors_id='+v1.doctors_id+'">'
+													+'<img src="'+v1.doctors_image_url+'"/>'
 												+'</a>'
 												+'<div class="buys1-pdlcnt">'
-													+'<p><a class="buys1-pdlc-name" href="'+WapSiteUrl+'/tmpl/product_detail.html?goods_id='+v1.goods_id+'">'+v1.goods_name+'</a></p>'
-													+'<p>单价(元)：$'+v1.goods_price+'</p>'
-													+'<p>数量：'+v1.goods_num+'</p>'
+													+'<p><a class="buys1-pdlc-name" href="'+WapSiteUrl+'/tmpl/doc_detail.html?doctors_id='+v1.doctors_id+'">'+v1.doctors_name+'</a></p>'
+													+'<p>单价(元)：$'+v1.doctors_price+'</p>'
+													+'<p>数量：'+v1.doctors_num+'</p>'
 												+'</div>'
 											+'</div>'
 										+'</div>';
 						});
-						htmldata+= '<div class="shop-total"><p>运费：$<span id="store'+k+'"></span></p>';
-						if(v.store_mansong_rule_list != null){
-							htmldata+= '<p>满级送-'+v.store_mansong_rule_list.desc+':-'+v.store_mansong_rule_list.discount+'</p>';
+						htmldata+= '<div class="clinic-total"><p>运费：$<span id="clic'+k+'"></span></p>';
+						if(v.clic_mansong_rule_list != null){
+							htmldata+= '<p>满级送-'+v.clic_mansong_rule_list.desc+':-'+v.clic_mansong_rule_list.discount+'</p>';
 						}
 						
-						htmldata+='<p><select name="voucher" store_id="'+k+'">';
+						htmldata+='<p><select name="voucher" clic_id="'+k+'">';
 						htmldata+='<option value="0">please choose...</option>';
-						$.each(v.store_voucher_list,function(k2,v2){
+						$.each(v.clic_voucher_list,function(k2,v2){
 							htmldata+='<option value="'+v2.voucher_t_id+'|'+k+'|'+v2.voucher_price+'">'+v2.voucher_title+'</option>'
 						});
 						htmldata+='</select>:$-<span id="sv'+k+'">0.00</span></p>';
-						if(v.store_mansong_rule_list != null){
-							var sp_total = eval(v.store_goods_total-v.store_mansong_rule_list.discount);
-							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
+						if(v.clic_mansong_rule_list != null){
+							var sp_total = eval(v.clic_doctors_total-v.clic_mansong_rule_list.discount);
+							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" clic_price="'+sp_total+'" class="clic_total">'+sp_total+'</span></p>';	
 						}else{
-							var sp_total = v.store_goods_total;
-							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" store_price="'+sp_total+'" class="store_total">'+sp_total+'</span></p>';	
+							var sp_total = v.clic_doctors_total;
+							htmldata+='<p class="clr-c07">本店合计：$<span id="st'+k+'" clic_price="'+sp_total+'" class="clic_total">'+sp_total+'</span></p>';	
 						}
 						htmldata+='</div>';
 						htmldata+='</li>';
@@ -129,8 +129,8 @@ $(function() {
 					if(result.datas.state == 'success'){
 						var sp_s_total = 0;
 						$.each(result.datas.content,function(k,v){
-							$('#store'+k).html(v);
-	        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
+							$('#clic'+k).html(v);
+	        				var sp_toal = parseInt($('#st'+k).attr('clic_price'));//店铺商品price
 	        				sp_s_total = v+sp_s_total;
 	        				$('#st'+k).html(eval(sp_toal+v));
 						});	
@@ -146,21 +146,21 @@ $(function() {
 			});
 			
 			$('select[name=voucher]').change(function(){//选择代金券				
-				var store_id = $(this).attr('store_id');
+				var clic_id = $(this).attr('clic_id');
 				var varr = $(this).val();
 				if(varr == 0){
-					var store_price = 0;
+					var clic_price = 0;
 				}else{
-					var store_price = parseInt(varr.split('|')[2]);
+					var clic_price = parseInt(varr.split('|')[2]);
 				}
-				var store_total_price = parseInt($('#st'+store_id).attr('store_price'));
-				var store_tran = parseInt($('#store'+store_id).html());
-				store_total = eval(store_total_price - store_price + store_tran);
-				$("#sv"+store_id).html(store_price);
-				$("#st"+store_id).html(store_total);
+				var clic_total_price = parseInt($('#st'+clic_id).attr('clic_price'));
+				var clic_tran = parseInt($('#clic'+clic_id).html());
+				clic_total = eval(clic_total_price - clic_price + clic_tran);
+				$("#sv"+clic_id).html(clic_price);
+				$("#st"+clic_id).html(clic_total);
 				
 				var total_price = '';
-				$('.store_total').each(function(){
+				$('.clic_total').each(function(){
 					total_price=eval(parseInt($(this).html())+total_price);
 				});
 				$('#total_price').html(total_price);
@@ -385,8 +385,8 @@ $(function() {
         			var data = result.datas;
         			var sp_s_total = 0;
         			$.each(data.content,function(k,v){
-						$('#store'+k).html(v);
-        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
+						$('#clic'+k).html(v);
+        				var sp_toal = parseInt($('#st'+k).attr('clic_price'));//店铺商品price
         				sp_s_total = v+sp_s_total;
         				$('#st'+k).html(eval(sp_toal+v));
         			});
@@ -455,8 +455,8 @@ $(function() {
 											var data = result.datas;																						
 											var sp_s_total = 0;
 											$.each(result.datas.content,function(k,v){
-												$('#store'+k).html(v);
-						        				var sp_toal = parseInt($('#st'+k).attr('store_price'));//店铺商品price
+												$('#clic'+k).html(v);
+						        				var sp_toal = parseInt($('#st'+k).attr('clic_price'));//店铺商品price
 						        				sp_s_total = v+sp_s_total;
 						        				$('#st'+k).html(eval(sp_toal+v));
 											});	
@@ -629,8 +629,8 @@ $(function() {
         
         var voucher = new Array();
         $("select[name=voucher]").each(function(){
-        	var store_id = $(this).attr('store_id');
-        	voucher[store_id] = $(this).val();
+        	var clic_id = $(this).attr('clic_id');
+        	voucher[clic_id] = $(this).val();
         });
         data.voucher = voucher;
         
@@ -668,7 +668,7 @@ $(function() {
         			//return false;
         		//}
         		if(result.datas.pay_sn.pay_sn != ''){
-        			location.href = WapSiteUrl+'/tmpl/member/order_list.html'; 
+        			location.href = WapSiteUrl+'/tmpl/member/appointment_list.html'; 
         		}
         		return false;
         	}

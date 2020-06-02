@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -13,7 +13,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="circle_inform">
     <input type="hidden" name="op" value="inform_list">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="searchtitle"><?php echo $lang['circle_informer'];?></label></th>
@@ -70,7 +70,7 @@
         <?php }?>
         <?php }else{?>
         <tr>
-          <td colspan="20" class="noborder"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
+          <td colspan="20" class="nobappointment"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
         </tr>
         <?php }?>
       </tbody>

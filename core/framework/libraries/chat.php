@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class Chat {
 	public static function getChatHtml($layout){
@@ -22,7 +22,7 @@ class Chat {
 			$app_url = APP_SITE_URL;
 			$chat_url = CHAT_SITE_URL;
 			$node_url = NODE_SITE_URL;
-			$shop_url = SHOP_SITE_URL;
+			$clinic_url = clinic_SITE_URL;
 			
 			$web_html = <<<EOT
 					<link href="{$css_url}/css/chat.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@ class Chat {
 					<script type="text/javascript">
 					var APP_SITE_URL = '{$app_url}';
 					var CHAT_SITE_URL = '{$chat_url}';
-					var SHOP_SITE_URL = '{$shop_url}';
+					var clinic_SITE_URL = '{$clinic_url}';
 					var connect_url = "{$node_url}";
 					
 					var layout = "{$layout}";
@@ -43,8 +43,8 @@ class Chat {
 					
 					user['u_id'] = "{$_SESSION['member_id']}";
 					user['u_name'] = "{$_SESSION['member_name']}";
-					user['s_id'] = "{$_SESSION['store_id']}";
-					user['s_name'] = "{$_SESSION['store_name']}";
+					user['s_id'] = "{$_SESSION['clic_id']}";
+					user['s_name'] = "{$_SESSION['clic_name']}";
 					user['avatar'] = "{$avatar}";
 					
 					$("#chat_login").nc_login({
@@ -54,7 +54,7 @@ class Chat {
 					});
 					</script>
 EOT;
-			if (defined('APP_ID') && APP_ID != 'shop'){
+			if (defined('APP_ID') && APP_ID != 'clinic'){
 				$web_html .= '<script type="text/javascript" src="'.RESOURCE_SITE_URL.'/js/perfect-scrollbar.min.js"></script>';
 				$web_html .= '<script type="text/javascript" src="'.RESOURCE_SITE_URL.'/js/jquery.mousewheel.js"></script>';
 			}

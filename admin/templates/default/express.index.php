@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="fixed-empty"></div>
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_brand_name"><?php echo $lang['express_letter'];?></label></th>
@@ -41,7 +41,7 @@
           <th class="w270"><?php echo $lang['express_name'];?></th>
           <th ><?php echo $lang['express_letter'];?></th>
           <th class="w270"><?php echo $lang['express_url'];?></th>
-          <th class="align-center"><?php echo $lang['express_order'];?></th>
+          <th class="align-center"><?php echo $lang['express_appointment'];?></th>
           <th class="align-center"><?php echo $lang['express_state'];?></th>
         </tr>
       </thead>
@@ -53,10 +53,10 @@
           <td><?php echo $v['e_name']?></td>
           <td><?php echo $v['e_letter']?></td>
           <td><?php echo $v['e_url']?></td>
-          <td class="align-center yes-onoff"><?php if($v['e_order'] == '1'){ ?>
-            <a href="JavaScript:void(0);" class=" enabled" ajax_branch='order' nc_type="inline_edit" fieldname="e_order" fieldid="<?php echo $v['id']?>" fieldvalue="1" title="<?php echo $lang['nc_editable'];?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>
+          <td class="align-center yes-onoff"><?php if($v['e_appointment'] == '1'){ ?>
+            <a href="JavaScript:void(0);" class=" enabled" ajax_branch='appointment' nc_type="inline_edit" fieldname="e_appointment" fieldid="<?php echo $v['id']?>" fieldvalue="1" title="<?php echo $lang['nc_editable'];?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>
             <?php }else{ ?>
-            <a href="JavaScript:void(0);" class=" disabled" ajax_branch='order' nc_type="inline_edit" fieldname="e_order" fieldid="<?php echo $v['id']?>" fieldvalue="0"  title="<?php echo $lang['nc_editable'];?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>
+            <a href="JavaScript:void(0);" class=" disabled" ajax_branch='appointment' nc_type="inline_edit" fieldname="e_appointment" fieldid="<?php echo $v['id']?>" fieldvalue="0"  title="<?php echo $lang['nc_editable'];?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>
             <?php } ?></td>     
           <td class="align-center yes-onoff"><?php if($v['e_state'] == '0'){ ?>
             <a href="JavaScript:void(0);" class=" disabled" ajax_branch='state' nc_type="inline_edit" fieldname="e_state" fieldid="<?php echo $v['id']?>" fieldvalue="0" title="<?php echo $lang['nc_editable'];?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>

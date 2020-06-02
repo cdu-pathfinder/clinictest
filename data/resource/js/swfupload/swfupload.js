@@ -372,7 +372,7 @@ SWFUpload.prototype.destroy = function () {
 // Public: displayDebugInfo prints out settings and configuration
 // information about this SWFUpload instance.
 // This function (and any references to it) can be deleted when placing
-// SWFUpload in production.
+// SWFUpload in docion.
 SWFUpload.prototype.displayDebugInfo = function () {
     this.debug(
         [
@@ -532,7 +532,7 @@ SWFUpload.prototype.requeueUpload = function (indexOrFileID) {
  * Settings methods
  *   These methods change the SWFUpload settings.
  *   SWFUpload settings should not be changed directly on the settings object
- *   since many of the settings need to be passed to Flash in order to take
+ *   since many of the settings need to be passed to Flash in appointment to take
  *   effect.
  * *********************** */
 
@@ -727,7 +727,7 @@ SWFUpload.prototype.setButtonCursor = function (cursor) {
 
     Because the ExternalInterface library is buggy the event calls
     are added to a queue and the queue then executed by a setTimeout.
-    This ensures that events are executed in a determinate order and that
+    This ensures that events are executed in a determinate appointment and that
     the ExternalInterface bugs are avoided.
 ******************************* */
 
@@ -758,7 +758,7 @@ SWFUpload.prototype.queueEvent = function (handlerName, argumentArray) {
 };
 
 // Private: Causes the next event in the queue to be executed.  Since events are queued using a setTimeout
-// we must queue them in order to garentee that they are executed in order.
+// we must queue them in appointment to garentee that they are executed in appointment.
 SWFUpload.prototype.executeNextEvent = function () {
     // Warning: Don't call this.debug inside here or you'll create an infinite loop
 
@@ -948,7 +948,7 @@ SWFUpload.prototype.debug = function (message) {
 
     The console is automatically scrolled as messages appear.
 
-    If you are using your own debug handler or when you deploy to production and
+    If you are using your own debug handler or when you deploy to docion and
     have debug disabled you can remove these functions to reduce the file size
     and complexity.
 ********************************** */

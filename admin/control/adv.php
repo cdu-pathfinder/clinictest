@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class advControl extends SystemControl{
 	public function __construct(){
@@ -172,12 +172,12 @@ class advControl extends SystemControl{
 		 * 显示广告位管理界面
 		 */
 		$condition = array();
-		$orderby   = '';
+		$appointmentby   = '';
 		if($_GET['search_name'] != ''){
 			$condition['ap_name'] = trim($_GET['search_name']);
 		}
-		if($_GET['order'] == 'clicknum'){
-			$orderby = 'click_num desc';
+		if($_GET['appointment'] == 'clicknum'){
+			$appointmentby = 'click_num desc';
 		}
 		/**
 		 * 分页
@@ -186,7 +186,7 @@ class advControl extends SystemControl{
 		$page->setEachNum(25);
 		$page->setStyle('admin');
 
-		$ap_list  = $adv->getApList($condition,$page,$orderby);
+		$ap_list  = $adv->getApList($condition,$page,$appointmentby);
 		$adv_list = $adv->getList();
  		Tpl::output('ap_list',$ap_list);
  		Tpl::output('adv_list',$adv_list);
@@ -378,7 +378,7 @@ class advControl extends SystemControl{
 		$condition = array();
 		$condition['is_allow'] = '1';
 		$limit     = '';
-		$orderby   = '';
+		$appointmentby   = '';
 		if ($_GET['ap_id'] != ''){
 			$condition['ap_id'] = intval($_GET['ap_id']);
 		}
@@ -397,10 +397,10 @@ class advControl extends SystemControl{
 	    if($_GET['add_time_to'] != ''){
 			$condition['add_time_to'] = $this->getunixtime(trim($_GET['add_time_to']));
 		}
-		if($_GET['order'] == 'clicknum'){
-			$orderby = 'click_num desc';
+		if($_GET['appointment'] == 'clicknum'){
+			$appointmentby = 'click_num desc';
 		}
-		$adv_info = $adv->getList($condition,$page,$limit,$orderby);
+		$adv_info = $adv->getList($condition,$page,$limit,$appointmentby);
 		$ap_info  = $adv->getApList();
 		Tpl::output('adv_info',$adv_info);
 		Tpl::output('ap_info',$ap_info);

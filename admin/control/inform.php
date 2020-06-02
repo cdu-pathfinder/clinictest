@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class informControl extends SystemControl{
     public function __construct(){
         parent::__construct();
@@ -57,17 +57,17 @@ class informControl extends SystemControl{
 
         //搜索条件
         $condition = array();
-        $condition['inform_goods_name'] = trim($_GET['input_inform_goods_name']);
+        $condition['inform_doctors_name'] = trim($_GET['input_inform_doctors_name']);
         $condition['inform_member_name'] = trim($_GET['input_inform_member_name']);
         $condition['inform_type'] = trim($_GET['input_inform_type']);
         $condition['inform_subject'] = trim($_GET['input_inform_subject']);
         $condition['inform_datetime_start'] = strtotime($_GET['input_inform_datetime_start']);
         $condition['inform_datetime_end'] = strtotime($_GET['input_inform_datetime_end']);
         if($type === 1) {
-           $condition['order'] = 'inform_id asc';
+           $condition['appointment'] = 'inform_id asc';
         }
         else {
-           $condition['order'] = 'inform_id desc';
+           $condition['appointment'] = 'inform_id desc';
         }
         $condition['inform_state'] = $type;
         $inform_list = $model_inform->getInform($condition,$page) ;
@@ -116,7 +116,7 @@ class informControl extends SystemControl{
 
         //搜索条件
         $condition = array();
-        $condition['order'] = 'inform_subject_id asc';
+        $condition['appointment'] = 'inform_subject_id asc';
         $condition['inform_subject_type_id'] = trim($_GET['inform_subject_type_id']);
         $condition['inform_subject_state'] = 1;
         $inform_subject_list = $model_inform_subject->getInformSubject($condition,$page) ;
@@ -279,14 +279,14 @@ class informControl extends SystemControl{
     public function show_handle_pageOp() {
     	$this->show_menu('inform_list');
         $inform_id = intval($_GET['inform_id']);
-        $inform_goods_name = urldecode($_GET['inform_goods_name']);
+        $inform_doctors_name = urldecode($_GET['inform_doctors_name']);
 
         if(strtoupper(CHARSET) == 'GBK') {
-            $inform_goods_name = Language::getGBK($inform_goods_name);
+            $inform_doctors_name = Language::getGBK($inform_doctors_name);
         }
 
         TPL::output('inform_id',$inform_id);
-        TPL::output('inform_goods_name',$inform_goods_name);
+        TPL::output('inform_doctors_name',$inform_doctors_name);
         Tpl::showpage('inform.handle');
     }
     
@@ -337,7 +337,7 @@ class informControl extends SystemControl{
             case 3:
                 //有效举报，商品禁售
                 $where_array['inform_id'] = $inform_id;
-                $this->denyGoods($inform_info['inform_goods_id']);
+                $this->denydoctors($inform_info['inform_doctors_id']);
                 break;
             default:
                 showMessage(Language::get('param_error'));
@@ -375,14 +375,14 @@ class informControl extends SystemControl{
     /*
      * 禁止商品销售
      */
-    private function denyGoods($goods_id) {
+    private function denydoctors($doctors_id) {
         //修改商品状态
-        $model_goods = Model('goods');
-        $goods_info = $model_goods->getGoodsInfo(array('goods_id' => $goods_id), 'goods_commonid');
-        if (empty($goods_info)) {
+        $model_doctors = Model('doctors');
+        $doctors_info = $model_doctors->getdoctorsInfo(array('doctors_id' => $doctors_id), 'doctors_commonid');
+        if (empty($doctors_info)) {
             return true;
         }
-        return Model('goods')->editProducesLockUp(array('goods_stateremark' => '商品被举报，平台禁售'),array('goods_commonid' => $goods_info['goods_commonid']));
+        return Model('doctors')->editProducesLockUp(array('doctors_stateremark' => '商品被举报，平台禁售'),array('doctors_commonid' => $doctors_info['doctors_commonid']));
 
     }
 

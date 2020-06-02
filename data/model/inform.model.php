@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class informModel extends Model{
     public function __construct() {
         parent::__construct('inform');
@@ -32,8 +32,8 @@ class informModel extends Model{
         if(!empty($condition['inform_state'])) {
             $condition_str.= " and  inform_state = '{$condition['inform_state']}'";
         }
-        if(!empty($condition['inform_goods_id'])) {
-            $condition_str.= " and  inform_goods_id = '{$condition['inform_goods_id']}'";
+        if(!empty($condition['inform_doctors_id'])) {
+            $condition_str.= " and  inform_doctors_id = '{$condition['inform_doctors_id']}'";
         }
         if(!empty($condition['inform_id'])) {
             $condition_str.= " and  inform_id = '{$condition['inform_id']}'";
@@ -41,14 +41,14 @@ class informModel extends Model{
         if(!empty($condition['inform_member_id'])) {
             $condition_str.= " and  inform_member_id = '{$condition['inform_member_id']}'";
         }
-        if(!empty($condition['inform_store_id'])) {
-            $condition_str.= " and  inform_store_id = '{$condition['inform_store_id']}'";
+        if(!empty($condition['inform_clic_id'])) {
+            $condition_str.= " and  inform_clic_id = '{$condition['inform_clic_id']}'";
         }
         if(!empty($condition['inform_handle_type'])) {
             $condition_str.= " and  inform_handle_type = '{$condition['inform_handle_type']}'";
         }
-        if(!empty($condition['inform_goods_name'])) {
-            $condition_str.= " and  inform_goods_name like '%".$condition['inform_goods_name']."%'";
+        if(!empty($condition['inform_doctors_name'])) {
+            $condition_str.= " and  inform_doctors_name like '%".$condition['inform_doctors_name']."%'";
         }
         if(!empty($condition['inform_member_name'])) {
             $condition_str.= " and  inform_member_name like '%".$condition['inform_member_name']."%'";
@@ -118,7 +118,7 @@ class informModel extends Model{
         $param['join_type'] = 'LEFT JOIN';
         $param['join_on'] = array('inform.inform_subject_id = inform_subject.inform_subject_id');
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' inform_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' inform_id desc ';
         return Db::select($param,$page);
 	}
 
@@ -137,13 +137,13 @@ class informModel extends Model{
 
     /*
      *  判断该商品是否正在被举报
-     *  @param int $goods_id 商品id
+     *  @param int $doctors_id 商品id
      *  @return bool 
      */
-    public function isProcessOfInform($goods_id) {
+    public function isProcessOfInform($doctors_id) {
         
         $condition = array();
-        $condition['inform_goods_id'] = $goods_id;
+        $condition['inform_doctors_id'] = $doctors_id;
         $condition['inform_state'] = 1;
         $inform = $this->getInform($condition);
         if(count($inform) !== 0) {

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class activity_detailModel{
 	/**
 	 * 添加
@@ -70,7 +70,7 @@ class activity_detailModel{
 		$param	= array();
 		$param['table']	= 'activity_detail';
 		$param['where']	= $this->getCondition($condition);
-		$param['order']	= $condition['order'];
+		$param['appointment']	= $condition['appointment'];
 		return Db::select($param,$page);
 	}
 	/**
@@ -80,14 +80,14 @@ class activity_detailModel{
 	 * @param obj $page	分页对象
 	 * @return array 二维数组
 	 */
-	public function getGoodsJoinList($condition,$page=''){
+	public function getdoctorsJoinList($condition,$page=''){
 		$param	= array();
-		$param['table']	= 'activity_detail,goods';
+		$param['table']	= 'activity_detail,doctors';
 		$param['join_type']	= 'inner join';
-		$param['field']	= 'activity_detail.*,goods.*';
-		$param['join_on']	= array('activity_detail.item_id=goods.goods_id');
+		$param['field']	= 'activity_detail.*,doctors.*';
+		$param['join_on']	= array('activity_detail.item_id=doctors.doctors_id');
 		$param['where']	= $this->getCondition($condition);
-		$param['order']	= $condition['order'];
+		$param['appointment']	= $condition['appointment'];
 		return Db::select($param,$page);
 	}
 	/**
@@ -97,14 +97,14 @@ class activity_detailModel{
 	 * @param obj $page	分页对象
 	 * @return array 二维数组
 	 */
-	public function getGoodsList($condition,$page=''){
+	public function getdoctorsList($condition,$page=''){
 		$param	= array();
-		$param['table']	= 'activity_detail,goods';
+		$param['table']	= 'activity_detail,doctors';
 		$param['join_type']	= 'inner join';
-		$param['field']	= 'activity_detail.activity_detail_sort,goods.goods_id,goods.store_id,goods.goods_name,goods.goods_price,goods.goods_image';
-		$param['join_on']	= array('activity_detail.item_id=goods.goods_id');
+		$param['field']	= 'activity_detail.activity_detail_sort,doctors.doctors_id,doctors.clic_id,doctors.doctors_name,doctors.doctors_price,doctors.doctors_image';
+		$param['join_on']	= array('activity_detail.item_id=doctors.doctors_id');
 		$param['where']	= $this->getCondition($condition);
-		$param['order']	= $condition['order'];
+		$param['appointment']	= $condition['appointment'];
 		return Db::select($param,$page);
 	}
 	/**
@@ -136,13 +136,13 @@ class activity_detailModel{
 			$conditionStr	.= " and activity_detail.activity_detail_state='".$condition['activity_detail_state']."'";
 		}
 		if($condition['gc_id'] != ''){
-		$conditionStr	.= " and goods.gc_id='{$condition['gc_id']}'";
+		$conditionStr	.= " and doctors.gc_id='{$condition['gc_id']}'";
 		}
 		if($condition['brand_id'] != ''){
-			$conditionStr	.= " and goods.brand_id='{$condition['brand_id']}' ";
+			$conditionStr	.= " and doctors.brand_id='{$condition['brand_id']}' ";
 		}
 		if($condition['name'] != ''){
-			$conditionStr	.= " and goods.goods_name like '%{$condition['name']}%'";
+			$conditionStr	.= " and doctors.doctors_name like '%{$condition['name']}%'";
 		}
 		if(intval($condition['item_id'])>0){
 			$conditionStr	.= " and activity_detail.item_id='".intval($condition['item_id'])."'";
@@ -150,14 +150,14 @@ class activity_detailModel{
 		if($condition['item_name'] != ''){
 			$conditionStr	.= " and activity_detail.item_name like '%{$condition['item_name']}%'";
 		}
-		if(intval($condition['store_id'])>0){
-			$conditionStr	.= " and activity_detail.store_id='".intval($condition['store_id'])."'";
+		if(intval($condition['clic_id'])>0){
+			$conditionStr	.= " and activity_detail.clic_id='".intval($condition['clic_id'])."'";
 		}
-		if($condition['store_name'] != ''){
-			$conditionStr	.= " and activity_detail.store_name like '%{$condition['store_name']}%'";
+		if($condition['clic_name'] != ''){
+			$conditionStr	.= " and activity_detail.clic_name like '%{$condition['clic_name']}%'";
 		}
-		if ($condition_array['goods_show'] != '') {
-			$condition_sql	.= " and goods.goods_show= '{$condition_array['goods_show']}'";
+		if ($condition_array['doctors_show'] != '') {
+			$condition_sql	.= " and doctors.doctors_show= '{$condition_array['doctors_show']}'";
 		}
 		return $conditionStr;
 	}

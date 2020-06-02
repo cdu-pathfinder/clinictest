@@ -1,15 +1,15 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
   <form method="get" action="index.php" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="bill" />
     <input type="hidden" name="op" value="show_bill" />
     <input type="hidden" name="ob_no" value="<?php echo $_GET['ob_no'];?>" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
         <th><label for="add_time_from">订单类型</label></th>
           <td>
 			<select name="query_type" class="querySelect">
-			<option value="order" <?php if($_GET['query_type'] == 'order'){?>selected<?php }?>>订单列表</option>
+			<option value="appointment" <?php if($_GET['query_type'] == 'appointment'){?>selected<?php }?>>订单列表</option>
 			<option value="refund" <?php if($_GET['query_type'] == 'refund'){?>selected<?php }?>>退单列表</option>
 			<option value="cost" <?php if($_GET['query_type'] == 'cost'){?>selected<?php }?>>店铺费用</option>
 			</select>
@@ -19,7 +19,7 @@
             <label>~</label>
             <input class="txt date" type="text" value="<?php echo $_GET['query_end_date'];?>" id="query_end_date" name="query_end_date"/></td>       
           <td><a href="javascript:viod(0);" id="ncsubmit" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a></a>
-          <a class="btns" href="index.php?<?php echo $_SERVER['QUERY_STRING'];?>&op=export_order"><span><?php echo $lang['nc_exposrt'];?>导出订单明细</span></a>
+          <a class="btns" href="index.php?<?php echo $_SERVER['QUERY_STRING'];?>&op=export_appointment"><span><?php echo $lang['nc_exposrt'];?>导出订单明细</span></a>
             </td>
         </tr>
       </tbody>
@@ -39,18 +39,18 @@
       </tr>
     </thead>
     <tbody>
-      <?php if(is_array($output['order_list']) && !empty($output['order_list'])){?>
-      <?php foreach($output['order_list'] as $order_info){?>
+      <?php if(is_array($output['appointment_list']) && !empty($output['appointment_list'])){?>
+      <?php foreach($output['appointment_list'] as $appointment_info){?>
       <tr class="hover">
-        <td class="align-center"><?php echo $order_info['order_sn'];?></td>
-        <td class="align-center"><?php echo $order_info['order_amount'];?></td>
-        <td class="align-center"><?php echo $order_info['shipping_fee'];?></td>
-        <td class="align-center"><?php echo ncPriceFormat($output['commis_list'][$order_info['order_id']]['commis_amount']);?></td>
-        <td class="align-center"><?php echo date('Y-m-d',$order_info['add_time']);?></td>
-        <td class="align-center"><?php echo date('Y-m-d',$order_info['finnshed_time']);?></td>
-        <td class="align-center"><?php echo $order_info['buyer_name'];?></rd>
+        <td class="align-center"><?php echo $appointment_info['appointment_sn'];?></td>
+        <td class="align-center"><?php echo $appointment_info['appointment_amount'];?></td>
+        <td class="align-center"><?php echo $appointment_info['shipping_fee'];?></td>
+        <td class="align-center"><?php echo ncPriceFormat($output['commis_list'][$appointment_info['appointment_id']]['commis_amount']);?></td>
+        <td class="align-center"><?php echo date('Y-m-d',$appointment_info['add_time']);?></td>
+        <td class="align-center"><?php echo date('Y-m-d',$appointment_info['finnshed_time']);?></td>
+        <td class="align-center"><?php echo $appointment_info['buyer_name'];?></rd>
         <td>
-        <a href="index.php?act=order&op=show_order&order_id=<?php echo $order_info['order_id'];?>"><?php echo $lang['nc_view'];?></a>
+        <a href="index.php?act=appointment&op=show_appointment&appointment_id=<?php echo $appointment_info['appointment_id'];?>"><?php echo $lang['nc_view'];?></a>
         </td>
       </tr>
       <?php }?>

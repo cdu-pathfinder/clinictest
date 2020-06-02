@@ -13,43 +13,43 @@
 </head>
 <body>
     <header id="header"></header>
-    <div class="order-list-wp">
-        <div class="order-list" id="order_list"></div>
+    <div class="appointment-list-wp">
+        <div class="appointment-list" id="appointment_list"></div>
     </div>
     <div class="footer" id="footer"></div>
-    <script type="text/html" id="sorder_list">
-        <%if(order_list.length>0){%>
+    <script type="text/html" id="sappointment_list">
+        <%if(appointment_list.length>0){%>
             <ul>
-			<%for(var i=0;i<order_list.length;i++){%>
-                <li order_id="<%=order_list[i].order_id %>">
-                    <p class="order-ltlt">
-                      	order status：
-						<%if(order_list[i].order_state == 0){%>
-						<span class="order-type ot-nofinish">cancelled</span>
-						<%}else if(order_list[i].order_state == 10){%>
-						<span class="order-type ot-nofinish">need pay</span>
-						<%}else if(order_list[i].order_state == 20){%>
-						<span class="order-type ot-finish">paid</span>
-						<%}else if(order_list[i].order_state == 30){%>
-						<span class="order-type ot-finish">arranged</span>
-						<%}else if(order_list[i].order_state == 40){%>
-						<span class="order-type ot-finish">successfulsuccess</span>
+			<%for(var i=0;i<appointment_list.length;i++){%>
+                <li appointment_id="<%=appointment_list[i].appointment_id %>">
+                    <p class="appointment-ltlt">
+                      	appointment status：
+						<%if(appointment_list[i].appointment_state == 0){%>
+						<span class="appointment-type ot-nofinish">cancelled</span>
+						<%}else if(appointment_list[i].appointment_state == 10){%>
+						<span class="appointment-type ot-nofinish">need pay</span>
+						<%}else if(appointment_list[i].appointment_state == 20){%>
+						<span class="appointment-type ot-finish">paid</span>
+						<%}else if(appointment_list[i].appointment_state == 30){%>
+						<span class="appointment-type ot-finish">arranged</span>
+						<%}else if(appointment_list[i].appointment_state == 40){%>
+						<span class="appointment-type ot-finish">successfulsuccess</span>
 						<%}%>
                     </p>
-                    <div class="order-lcnt">
-                        <a class="order-ldetail clearfix" href="javascript:void(0);">
-                            <span class="order-pdpic">
-                                <img src="<%=order_list[i].extend_order_goods[0].goods_image_url %>"/>
+                    <div class="appointment-lcnt">
+                        <a class="appointment-ldetail clearfix" href="javascript:void(0);">
+                            <span class="appointment-pdpic">
+                                <img src="<%=appointment_list[i].extend_appointment_doctors[0].doctors_image_url %>"/>
                             </span>
-                            <div class="order-pdinfor">
+                            <div class="appointment-pdinfor">
                                 <p>
-                                    	order No.：<%=order_list[i].order_sn %>
+                                    	appointment No.：<%=appointment_list[i].appointment_sn %>
                                 </p>
                                 <p>
-                                    	total price：<%=order_list[i].extend_order_goods[0].goods_price %>
+                                    	total price：<%=appointment_list[i].extend_appointment_doctors[0].doctors_price %>
                                 </p>
                                 <p>
-                                    	appointments：<%=order_list[i].extend_order_goods[0].goods_num %>
+                                    	appointments：<%=appointment_list[i].extend_appointment_doctors[0].doctors_num %>
                                 </p>
                                 <span class="grayrightarrow"></span>
                             </div>
@@ -69,7 +69,7 @@
     <script type="text/javascript" src="../../js/template.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/order_list.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/appointment_list.js"></script>
     <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
 </body>
 </html>

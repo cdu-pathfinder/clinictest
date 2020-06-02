@@ -42,18 +42,18 @@ $(function (){
 			
 			$('.home1').click(function(){
 				var keyword = encodeURIComponent($(this).attr('keyword'));
-				location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+				location.href = WapSiteUrl+'/tmpl/doc_list.html?keyword='+keyword;
 			});
 			
 			$('.home2').click(function(){
 				var keyword = encodeURIComponent($(this).attr('keyword'));
-				location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+				location.href = WapSiteUrl+'/tmpl/doc_list.html?keyword='+keyword;
 			});
 		}
 	});
 	
 	$('.search-btn').click(function(){
 		var keyword = encodeURIComponent($('#keyword').val());
-		location.href = WapSiteUrl+'/tmpl/product_list.html?keyword='+keyword;
+		location.href = WapSiteUrl+'/tmpl/doc_list.html?keyword='+keyword;
 	});
 });

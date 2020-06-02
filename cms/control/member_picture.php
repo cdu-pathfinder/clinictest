@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class member_pictureControl extends CMSMemberControl{
 
     public function __construct() {
@@ -119,7 +119,7 @@ class member_pictureControl extends CMSMemberControl{
     /**
      * 发布
      */
-    public function picture_publishOp() {
+    public function picture_publiclinic() {
         $this->picture_state_change($this->publish_state);
     }
 

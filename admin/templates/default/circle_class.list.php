@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="circle_class">
     <input type="hidden" name="op" value="class_list">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="searchtitle"><?php echo $lang['circle_class_name'];?></label></th>

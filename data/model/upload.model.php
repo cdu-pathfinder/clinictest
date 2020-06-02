@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class uploadModel{
 	/**
@@ -25,7 +25,7 @@ class uploadModel{
 		$param['table'] = 'upload';
 		$param['field'] = $field;
 		$param['where'] = $condition_str;
-		$param['order']	= 'upload_id asc';
+		$param['appointment']	= 'upload_id asc';
 		$result = Db::select($param);
 		return $result;
 	}
@@ -69,8 +69,8 @@ class uploadModel{
 				$condition_str .= " and upload_id in({$condition['upload_id_in']})";
 			}
 		}
-		if ($condition['store_id'] != ''){
-			$condition_str .= " and store_id = '". $condition['store_id'] ."'";
+		if ($condition['clic_id'] != ''){
+			$condition_str .= " and clic_id = '". $condition['clic_id'] ."'";
 		}
 		if ($condition['upload_time_lt'] != ''){
 			$condition_str .= " and upload_time < '". $condition['upload_time_lt'] ."'";

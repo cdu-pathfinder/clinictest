@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch">
   <input type="hidden" value="rec_position" name="act">
   <input type="hidden" value="rec_list" name="op">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><?php echo $lang['rec_ps_type'];?></th>

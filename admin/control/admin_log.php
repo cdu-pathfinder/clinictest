@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class admin_logControl extends SystemControl{
 	const EXPORT_SIZE = 5000;
 	private $links = array(
@@ -46,7 +46,7 @@ class admin_logControl extends SystemControl{
 		}elseif($time2){
 			$condition['createtime'] = array('elt',$time2);
 		}
-		$list = $model->where($condition)->order('id desc')->page(20)->select();
+		$list = $model->where($condition)->appointment('id desc')->page(20)->select();
 
 //		$admin = Model()->table('admin,gadmin')->field('admin_id,admin_name,gid,gname')->join('left')->on('admin.admin_gid=gadmin.gid')->select();
 
@@ -114,13 +114,13 @@ class admin_logControl extends SystemControl{
 				Tpl::output('murl','index.php?act=admin_log&op=list');
 				Tpl::showpage('export.excel');
 			}else{	//如果数量小，直接下载
-				$data = $model->where($condition)->order('id desc')->limit(self::EXPORT_SIZE)->select();
+				$data = $model->where($condition)->appointment('id desc')->limit(self::EXPORT_SIZE)->select();
 				$this->createExcel($data);
 			}
 		}else{	//下载
 			$limit1 = ($_GET['curpage']-1) * self::EXPORT_SIZE;
 			$limit2 = self::EXPORT_SIZE;
-			$data = $model->where($condition)->order('id desc')->limit("{$limit1},{$limit2}")->select();
+			$data = $model->where($condition)->appointment('id desc')->limit("{$limit1},{$limit2}")->select();
 			$this->createExcel($data);
 		}
 	}

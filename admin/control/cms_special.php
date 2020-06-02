@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_specialControl extends SystemControl{
 
     const LINK_CMS_SPECIAL = 'index.php?act=cms_special&op=cms_special_list';
@@ -266,13 +266,13 @@ class cms_specialControl extends SystemControl{
     /**
      * 图片商品添加
      */
-    public function goods_info_by_urlOp() {
+    public function doctors_info_by_urlOp() {
         $url = urldecode($_GET['url']);
         if(empty($url)) {
             self::return_json(Language::get('param_error'),'false');
         }
-        $model_goods_info = Model('goods_info_by_url');
-        $result = $model_goods_info->get_goods_info_by_url($url);
+        $model_doctors_info = Model('doctors_info_by_url');
+        $result = $model_doctors_info->get_doctors_info_by_url($url);
         if($result) {
             self::echo_json($result);
         } else {

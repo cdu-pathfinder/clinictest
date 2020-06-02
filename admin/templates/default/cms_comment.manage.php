@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script> 
 <script type="text/javascript">
 function submit_batch(){
@@ -41,7 +41,7 @@ function submit_delete(id){
     <form method="get" name="formSearch">
         <input type="hidden" value="cms_comment" name="act">
         <input type="hidden" value="comment_manage" name="op">
-        <table class="tb-type1 noborder search">
+        <table class="tb-type1 nobappointment search">
             <tbody>
                 <tr>
                     <th><label for="comment_id"><?php echo $lang['cms_text_id'];?></label></th>

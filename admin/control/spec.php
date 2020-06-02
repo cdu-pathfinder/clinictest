@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class specControl extends SystemControl {
 	const EXPORT_SIZE = 5000;
 	public function __construct(){
@@ -29,7 +29,7 @@ class specControl extends SystemControl {
 		$page->setEachNum(10);
 		$page->setStyle('admin');
 
-		$spec_list	= $model_spec->specList(array('order'=>'sp_sort asc'), $page);
+		$spec_list	= $model_spec->specList(array('appointment'=>'sp_sort asc'), $page);
 		
 		Tpl::output('spec_list',$spec_list);
 		Tpl::output('page',$page->show());
@@ -78,7 +78,7 @@ class specControl extends SystemControl {
 			}
 		}
 		// 一级商品分类
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 		
 		Tpl::showpage('spec.add');
@@ -140,7 +140,7 @@ class specControl extends SystemControl {
 		}
 		
 		// 一级商品分类
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 		
 		Tpl::output('sp_list',$spec_list);
@@ -226,7 +226,7 @@ class specControl extends SystemControl {
 		$model_spec = Model('spec');
 		$page	= new Page();
 		$page->setEachNum(self::EXPORT_SIZE);
-		$spec_list	= $model_spec->specList(array('order'=>'sp_sort asc'), $page);
+		$spec_list	= $model_spec->specList(array('appointment'=>'sp_sort asc'), $page);
 		if (!is_numeric($_GET['curpage'])){
 			$count = $page->getTotalNum();
 			$array = array();

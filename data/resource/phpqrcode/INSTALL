@@ -57,7 +57,7 @@ Then use similar as example #50 from TCPDF examples:
 <?php
 
 $style = array(
-    'border' => true,
+    'bappointment' => true,
     'padding' => 4,
     'fgcolor' => array(0,0,0),
     'bgcolor' => false, //array(255,255,255)

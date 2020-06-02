@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery-ui/jquery.ui.js"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script>
@@ -84,7 +84,7 @@ function submit_callback(id){
   <form method="get" name="formSearch">
     <input type="hidden" value="cms_article" name="act">
     <input type="hidden" value="<?php echo $_GET['op'];?>" name="op">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="article_title"><?php echo $lang['cms_text_title'];?></label></th>
@@ -201,10 +201,10 @@ function submit_callback(id){
         <input id="verify_article_id" name="article_id" type="hidden" />
         <table class="table tb-type2 nobdb">
             <tbody>
-                <tr class="noborder">
+                <tr class="nobappointment">
                     <td class="required" colspan="2"><label>审核通过:</label></td>
                 </tr>
-                <tr class="noborder">
+                <tr class="nobappointment">
                     <td class="vatop rowform onoff">
                         <label title="是" class="cb-enable selected" for="rewrite_enabled"><span>是</span></label>
                         <label title="否" class="cb-disable" for="rewrite_disabled"><span>否</span></label>
@@ -216,7 +216,7 @@ function submit_callback(id){
                 <tr style="display: none;" nctype="reason">
                     <td class="required" colspan="2"><label for="verify_reason">未通过理由:</label></td>
                 </tr>
-                <tr style="display :none;" nctype="reason" class="noborder">
+                <tr style="display :none;" nctype="reason" class="nobappointment">
           <td class="vatop rowform"><textarea id="verify_reason" name="verify_reason" cols="60" class="tarea" rows="6"></textarea></td>
         </tr>
       </tbody>

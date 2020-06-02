@@ -1,6 +1,6 @@
 <?php
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 function get_height($image) {
 	$size = getimagesize($image);

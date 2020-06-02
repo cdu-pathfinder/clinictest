@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#submit").click(function(){
@@ -64,31 +64,31 @@ $(document).ready(function(){
   <form id="add_form" method="post" action="index.php?act=cms_navigation&op=cms_navigation_save">
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="navigation_title"><?php echo $lang['cms_navigation_name'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="navigation_title" id="navigation_title" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['navigation_title_error'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="navigation_link"><?php echo $lang['cms_navigation_url'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="navigation_link" id="navigation_link" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['navigation_link_error'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="navigation_sort" class="validation"><?php echo $lang['nc_sort'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="navigation_sort" name="navigation_sort" type="text" class="txt" value="255" /></td>
           <td class="vatop tips"><?php echo $lang['class_sort_explain'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="navigation_open_type" class="validation"><?php echo $lang['cms_navigation_open_type'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
             <td class="vatop rowform onoff">
                 <label for="isuse_1" class="cb-enable selected" title="<?php echo $lang['nc_yes'];?>"><span><?php echo $lang['nc_yes'];?></span></label>
                 <label for="isuse_0" class="cb-disable" title="<?php echo $lang['nc_no'];?>"><span><?php echo $lang['nc_no'];?></span></label>

@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class manage_mapplyControl extends BaseCircleManageControl{
 	public function __construct(){
@@ -29,7 +29,7 @@ class manage_mapplyControl extends BaseCircleManageControl{
 		$this->memberJoinCircle();
 		
 		$model = Model();
-		$mapply_list = $model->table('circle_mapply')->where(array('circle_id'=>$this->c_id))->page(10)->order('mapply_id desc')->select();
+		$mapply_list = $model->table('circle_mapply')->where(array('circle_id'=>$this->c_id))->page(10)->appointment('mapply_id desc')->select();
 		if(!empty($mapply_list)){
 			$memberid_array = array();
 			$mapply_array	= array();

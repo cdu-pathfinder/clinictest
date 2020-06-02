@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <ul class="circle-theme-list">
   <?php if(!empty($output['theme_list']) && is_array($output['theme_list'])) {?>

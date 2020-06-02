@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 $lang['admin_voucher_unavailable']    = '需开启 代金券、积分，正在跳转到设置页面 。。。';
 $lang['admin_voucher_jb_unavailable']    = '需开启金币，正在跳转至设置页面 。。。';
 $lang['admin_voucher_applystate_new']    = '待审核';
@@ -10,7 +10,7 @@ $lang['admin_voucher_quotastate_cancel']    = '取消';
 $lang['admin_voucher_quotastate_expire']    = '结束';
 $lang['admin_voucher_templatestate_usable']	= '有效';
 $lang['admin_voucher_templatestate_disabled']= '失效';
-$lang['admin_voucher_storename']			= '店铺名称';
+$lang['admin_voucher_clicname']			= '店铺名称';
 $lang['admin_voucher_cancel_confirm']    	= '您确认进行取消操作吗？';
 $lang['admin_voucher_verify_confirm']    	= '您确认进行审核操作吗？';
 //菜单
@@ -27,12 +27,12 @@ $lang['admin_voucher_styletemplate']	= '样式模板';
  * 设置
  */
 $lang['admin_voucher_setting_price_error']		= '购买单价应为大于0的整数';
-$lang['admin_voucher_setting_storetimes_error']	= '每月活动数量应为大于0的整数';
+$lang['admin_voucher_setting_clictimes_error']	= '每月活动数量应为大于0的整数';
 $lang['admin_voucher_setting_buyertimes_error']	= '最大领取数量应为大于0的整数';
 $lang['admin_voucher_setting_price']			= '购买单价（元/月）';
 $lang['admin_voucher_setting_price_tip']		= '购买代金劵活动所需费用，购买后卖家可以在所购买周期内发布代金劵促销活动';
-$lang['admin_voucher_setting_storetimes']		= '每月活动数量';
-$lang['admin_voucher_setting_storetimes_tip']	= '每月最多可以发布的代金劵促销活动数量';
+$lang['admin_voucher_setting_clictimes']		= '每月活动数量';
+$lang['admin_voucher_setting_clictimes_tip']	= '每月最多可以发布的代金劵促销活动数量';
 $lang['admin_voucher_setting_buyertimes']		= '买家最大领取数量';
 $lang['admin_voucher_setting_buyertimes_tip']	= '买家最多只能拥有同一个店铺尚未消费抵用的店铺代金券最大数量';
 //$lang['admin_voucher_setting_default_styleimg']	= '代金券默认样式模板';
@@ -84,7 +84,7 @@ $lang['admin_voucher_template_enddate']			= '有效期';
 $lang['admin_voucher_template_price']			= '面额';
 $lang['admin_voucher_template_total']			= '可发放总数';
 $lang['admin_voucher_template_eachlimit']		= '每人限领';
-$lang['admin_voucher_template_orderpricelimit']	= '消费金额';
+$lang['admin_voucher_template_appointmentpricelimit']	= '消费金额';
 $lang['admin_voucher_template_describe']		= '代金券描述';
 $lang['admin_voucher_template_styleimg']		= '选择代金券皮肤';
 $lang['admin_voucher_template_image']			= '代金券图片';

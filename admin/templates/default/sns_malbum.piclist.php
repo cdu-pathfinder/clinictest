@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,7 +16,7 @@
     <input type="hidden" name="act" value="sns_malbum">
     <input type="hidden" name="op" value="pic_list">
     <input type="hidden" name="id" value="<?php echo $output['id'];?>" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="pic_name"><?php echo $lang['snsalbum_pic_name'];?></label></th>

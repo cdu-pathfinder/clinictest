@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!-- 图片 -->
 <div class="cms-module-assembly-image">
     <div class="content-box">

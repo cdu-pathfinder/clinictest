@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class complainModel extends model{
     public function __construct() {
         parent::__construct('complain');
@@ -42,8 +42,8 @@ class complainModel extends model{
         if(!empty($condition['accused_id'])) {
             $condition_str.= " and  accused_id = '{$condition['accused_id']}'";
         }
-        if(!empty($condition['order_id'])) {
-            $condition_str.= " and  order_id = '{$condition['order_id']}'";
+        if(!empty($condition['appointment_id'])) {
+            $condition_str.= " and  appointment_id = '{$condition['appointment_id']}'";
         }
         if(!empty($condition['accused_progressing'])) {
             $condition_str.= " and complain_state > 10 and complain_state < 90 ";
@@ -127,7 +127,7 @@ class complainModel extends model{
         $param = array() ;
         $param['table'] = 'complain' ;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' complain_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' complain_id desc ';
         return Db::select($param,$page);
 	}
 

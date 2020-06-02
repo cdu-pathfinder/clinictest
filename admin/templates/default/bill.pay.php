@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,24 +15,24 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">账单编号<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $_GET['ob_no'];?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required">付款日期 <?php echo $lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input readonly id="pay_date" class="" name="pay_date" value="" type="text" /></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="closed_reason">付款备注<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="pay_content" rows="6" class="tarea" id="pay_content"></textarea></td>
           <td class="vatop tips"><span class="vatop rowform">请输入汇款单号、支付方式等付款凭证</span></td>
         </tr>

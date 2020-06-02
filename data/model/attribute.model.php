@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class attributeModel extends Model {
     const SHOW0 = 0;    // 不显示
@@ -27,7 +27,7 @@ class attributeModel extends Model {
      * @return array
      */
     public function getAttributeList($condition, $field = '*') {
-        return $this->table('attribute')->where($condition)->field($field)->order('attr_sort asc')->select();
+        return $this->table('attribute')->where($condition)->field($field)->appointment('attr_sort asc')->select();
     }
 
     /**
@@ -50,7 +50,7 @@ class attributeModel extends Model {
      * @return array
      */
     public function getAttributeValueList($condition, $field = '*') {
-        return $this->table('attribute_value')->where($condition)->field($field)->order('attr_value_sort asc,attr_value_id asc')->select();
+        return $this->table('attribute_value')->where($condition)->field($field)->appointment('attr_value_sort asc,attr_value_id asc')->select();
     }
     
     /**

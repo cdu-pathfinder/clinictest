@@ -2,7 +2,7 @@
 function drop_pcart_item(pcart_id){
     var tr = $('#pcart_item_' + pcart_id);
     var amount_span = $('#pcart_amount');
-    var cart_goods_kinds = $('#cart_goods_kinds');
+    var cart_doctors_kinds = $('#cart_doctors_kinds');
     $.getJSON('index.php?act=pointcart&op=drop&pc_id=' + pcart_id, function(result){
     	window.location.reload();    //刷新
     });

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class addressModel extends Model {
     
     public function __construct() {
@@ -23,7 +23,7 @@ class addressModel extends Model {
      * @param array $condition
      */
     public function getDefaultAddressInfo($condition = array()) {
-        return $this->where($condition)->order('is_default desc,address_id desc')->find();
+        return $this->where($condition)->appointment('is_default desc,address_id desc')->find();
     }
     
     public function getAddressInfo($condition) {
@@ -36,8 +36,8 @@ class addressModel extends Model {
 	 * @param 
 	 * @return array 数组格式的返回结果
 	 */
-	public function getAddressList($condition, $order='address_id asc'){
-        return $this->where($condition)->order($order)->select();
+	public function getAddressList($condition, $appointment='address_id asc'){
+        return $this->where($condition)->appointment($appointment)->select();
 	}
 
 	/**

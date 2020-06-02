@@ -9,10 +9,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class phpzip
     {
         private $ctrl_dir     = array();
@@ -294,7 +294,7 @@ class phpzip
             } else {
                 $header['mtime'] = time();
             }
-            $header['stored_filename'] = $header['filename'];
+            $header['clicd_filename'] = $header['filename'];
             $header['status'] = 'ok';
             if(substr($header['filename'], -1) == '/'){ $header['external'] = 0x41FF0010; }  // 判断是否文件夹
             return $header;
@@ -328,7 +328,7 @@ class phpzip
                 $header['mtime'] = time();
             }
     
-            $header['stored_filename'] = $header['filename'];
+            $header['clicd_filename'] = $header['filename'];
             $header['status']          = "ok";
             return $header;
         }
@@ -518,7 +518,7 @@ class phpzip
                 $header['index'] = $i;
                 $info = array(
                     'filename'        => $header['filename'],                   // 文件名
-                    'stored_filename' => $header['stored_filename'],            // 压缩后文件名
+                    'clicd_filename' => $header['clicd_filename'],            // 压缩后文件名
                     'size'            => $header['size'],                       // 大小
                     'compressed_size' => $header['compressed_size'],            // 压缩后大小
                     'crc'             => strtoupper(dechex($header['crc'])),    // CRC32

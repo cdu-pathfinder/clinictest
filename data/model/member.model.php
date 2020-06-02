@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class memberModel extends Model {
 
     public function __construct(){
@@ -32,10 +32,10 @@ class memberModel extends Model {
      * @param array $condition
      * @param string $field
      * @param number $page
-     * @param string $order
+     * @param string $appointment
      */
-    public function getMemberList($condition = array(), $field = '*', $page = 0, $order = 'member_id desc') {
-       return $this->where($condition)->page($page)->order($order)->select();
+    public function getMemberList($condition = array(), $field = '*', $page = 0, $appointment = 'member_id desc') {
+       return $this->where($condition)->page($page)->appointment($appointment)->select();
     }
 
     /**
@@ -61,7 +61,7 @@ class memberModel extends Model {
 		$_SESSION['is_buy']		= $member_info['is_buy'];
 		$_SESSION['avatar'] 	= $member_info['member_avatar'];
 		$seller_info = Model('seller')->getSellerInfo(array('member_id'=>$_SESSION['member_id']));
-		$_SESSION['store_id'] = $seller_info['store_id'];
+		$_SESSION['clic_id'] = $seller_info['clic_id'];
 		if (trim($member_info['member_qqopenid'])){
 			$_SESSION['openid']		= $member_info['member_qqopenid'];
 		}
@@ -195,16 +195,16 @@ class memberModel extends Model {
 		$param['limit'] = 1;
 		$member_list	= Db::select($param);
 		$member_info	= $member_list[0];
-		if (intval($member_info['store_id']) > 0){
+		if (intval($member_info['clic_id']) > 0){
 	      $param	= array();
-	      $param['table']	= 'store';
-	      $param['field']	= 'store_id';
-	      $param['value']	= $member_info['store_id'];
-	      $field	= 'store_id,store_name,grade_id';
-	      $store_info	= Db::getRow($param,$field);
-	      if (!empty($store_info) && is_array($store_info)){
-		      $member_info['store_name']	= $store_info['store_name'];
-		      $member_info['grade_id']	= $store_info['grade_id'];
+	      $param['table']	= 'clic';
+	      $param['field']	= 'clic_id';
+	      $param['value']	= $member_info['clic_id'];
+	      $field	= 'clic_id,clic_name,grade_id';
+	      $clic_info	= Db::getRow($param,$field);
+	      if (!empty($clic_info) && is_array($clic_info)){
+		      $member_info['clic_name']	= $clic_info['clic_name'];
+		      $member_info['grade_id']	= $clic_info['grade_id'];
 	      }
 		}
 		return $member_info;
@@ -335,7 +335,7 @@ class memberModel extends Model {
 // 		$param = array();
 // 		$param['table'] = 'member';
 // 		$param['where'] = $condition_str;
-// 		$param['order'] = $condition['order'] ? $condition['order'] : 'member_id desc';
+// 		$param['appointment'] = $condition['appointment'] ? $condition['appointment'] : 'member_id desc';
 // 		$param['field'] = $field;
 // 		$param['limit'] = $condition['limit'];
 // 		$member_list = Db::select($param,$obj_page);

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <link href="<?php echo ADMIN_TEMPLATES_URL;?>/css/font/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 <!--[if IE 7]>
   <link rel="stylesheet" href="<?php echo ADMIN_TEMPLATES_URL;?>/css/font/font-awesome/css/font-awesome-ie7.min.css">
@@ -130,7 +130,7 @@ $(function(){
                 alert('下面没有子地区，无需要编辑');
                 return;
             }
-            county_html = '<table id="table_area_box_edit" class="table tb-type2"><tbody><tr class="noborder"><td city_id="'+$(this).attr('city_id')+'" province_id="'+$(this).attr('province_id')+'">';
+            county_html = '<table id="table_area_box_edit" class="table tb-type2"><tbody><tr class="nobappointment"><td city_id="'+$(this).attr('city_id')+'" province_id="'+$(this).attr('province_id')+'">';
             for(i = 0; i < county_array.length; i++){
                 county_html += '<label><input type="checkbox"';
                 if (typeof(cur_county[county_array[i][0]]) != 'undefined') {
@@ -138,7 +138,7 @@ $(function(){
                 }
             	county_html += (' value="'+county_array[i][0]+'" name="county[]">' + county_array[i][1] + '</label>');
             }
-            county_html += '</td></tr><tr><td class="align-center"><a id="county_submit" class="btn" href="JavaScript:void(0);"><span>确认</span></a></td></tr><tr class="noborder"><td class="align-center" style="color:#f30;">确认后，还需要点击页面底部的保存按钮完成保存操作</td></tr></tbody></table>';
+            county_html += '</td></tr><tr><td class="align-center"><a id="county_submit" class="btn" href="JavaScript:void(0);"><span>确认</span></a></td></tr><tr class="nobappointment"><td class="align-center" style="color:#f30;">确认后，还需要点击页面底部的保存按钮完成保存操作</td></tr></tbody></table>';
             html_form('select_county', '选择 '+ $(this).attr('nc_title') +' 子地区', county_html, 500,1);
     });
 

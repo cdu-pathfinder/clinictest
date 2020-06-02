@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 $lang['error']				= '在处理您的请求时出现了问题:<br />';
 $lang['homepage']			= '首页';
 $lang['cur_location']		= '当前位置';
@@ -19,8 +19,8 @@ $lang['currency']			= '&yen;';
 $lang['currency_zh']		= '元';
 $lang['piece']				= '件';
 $lang['welcome_to_site']	= 'Welcome to';
-$lang['site_search_goods']	= "商品";
-$lang['site_search_store']	= "店铺";
+$lang['site_search_doctors']	= "商品";
+$lang['site_search_clic']	= "店铺";
 $lang['site_search_groupbuy']	= "团购";
 $lang['hot_search']			= 'Most searched';
 $lang['nc_colon']			= '：';
@@ -39,7 +39,7 @@ $lang['nc_common_from']	 = '来自';
 
 $lang['nc_common_rate_null']	 = '暂无评价';
 $lang['nc_common_credit_null']	 = '暂无信用';
-$lang['nc_common_goods_null']	 = 'No appointments';
+$lang['nc_common_doctors_null']	 = 'No appointments';
 $lang['nc_common_sell_null']	 = '暂无销量';
 $lang['nc_common_result_null']	 = '暂无符合条件的数据记录';
 
@@ -58,28 +58,28 @@ $lang['pointslogindesc']			=	'会员登录';
 $lang['pointsappdesc']				=	'兑换到其它应用';
 $lang['pointsregistdesc']			=	'注册会员';
 $lang['pointscommentsdesc']			=	'评论商品';
-$lang['pointsorderdesc']			=	'购物消费';
-$lang['pointsorderdesc_1'] 			=	'订单';
-$lang['points_pointorderdesc']		=	'消耗积分';
-$lang['points_pointorderdesc_1'] 	=	'兑换礼品信息';
+$lang['pointsappointmentdesc']			=	'购物消费';
+$lang['pointsappointmentdesc_1'] 			=	'订单';
+$lang['points_pointappointmentdesc']		=	'消耗积分';
+$lang['points_pointappointmentdesc_1'] 	=	'兑换礼品信息';
 $lang['points_unit'] = '分';
-$lang['points_pointorderdesc_app'] 	= 'UC应用的积分兑入';
+$lang['points_pointappointmentdesc_app'] 	= 'UC应用的积分兑入';
 $lang['credit_unit'] = '分';
 
-$lang['nc_buying_goods']			= "已买到的商品";
+$lang['nc_buying_doctors']			= "已买到的商品";
 $lang['nc_mysns']					= "个人主页";
 $lang['nc_myfriends']				= "我的好友";
-$lang['nc_selled_goods']			= "已售出的商品";
-$lang['nc_selling_goods']			= "销售中的商品";
+$lang['nc_selled_doctors']			= "已售出的商品";
+$lang['nc_selling_doctors']			= "销售中的商品";
 $lang['nc_mystroe']					= "我的店铺";
-$lang['nc_favorites_goods']			= "收藏的商品";
+$lang['nc_favorites_doctors']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
-$lang['nc_cart_no_goods']			= "You haven't made an appointment yet";
+$lang['nc_cart_no_doctors']			= "You haven't made an appointment yet";
 $lang['nc_check_cart']				= "查看购物车";
-$lang['nc_accounts_goods']			= "结算商品";
+$lang['nc_accounts_doctors']			= "结算商品";
 $lang['nc_delete']					= "删除";
-$lang['nc_goods_num_one']			= "共";
-$lang['nc_goods_num_two']			= "种商品   金额总计";
+$lang['nc_doctors_num_one']			= "共";
+$lang['nc_doctors_num_two']			= "种商品   金额总计";
 $lang['nc_sign_multiply']			= "×";
 //调试模式语言包
 $lang['nc_debug_current_page']			= "当前页面";
@@ -111,13 +111,13 @@ $lang['nc_shareset_sinaweibo'] 	= '新浪微博';
 $lang['nc_shareset_renren'] 		= '人人网';
 
 //功能模块
-$lang['nc_modules_microshop'] = 'microshop';
+$lang['nc_modules_microclinic'] = 'microclinic';
 $lang['nc_circle']	= '圈子';
 /**
  * 店铺地图
  */
 $lang['member_map_city']		= '市';
-$lang['member_map_store_name']		= '店铺名称';
+$lang['member_map_clic_name']		= '店铺名称';
 $lang['member_map_address']			= '详细地址';
 $lang['member_map_submit']			= '确认保存';
 $lang['member_map_success']			= '保存成功';

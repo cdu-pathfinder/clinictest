@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['sns_member_tag_name_not_null']	= '会员标签名称不能为空';
 $lang['sns_member_tag_sort_is_number']	= '会员标签排序只能为数字';

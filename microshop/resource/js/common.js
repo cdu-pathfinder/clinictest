@@ -2,7 +2,7 @@
  * 微商城弹出窗口
  */
 (function($) {
-    $.fn.microshop_form = function(options) {
+    $.fn.microclinic_form = function(options) {
         var settings = $.extend({}, {title: ''}, options);
         var _div = $(this);
         $(this).addClass("dialog_wrapper");
@@ -22,7 +22,7 @@
 })(jQuery);
 
 (function($) {
-    $.fn.microshop_form_show = function(options) {
+    $.fn.microclinic_form_show = function(options) {
         var settings = $.extend({}, {width: 480}, options);
         settings.left = $(window).scrollLeft() + ($(window).width() - settings.width) / 2;
         settings.top  = $(window).scrollTop()  + ($(window).height() - $(this).height()) / 2;
@@ -36,7 +36,7 @@
  * 微商城消息发布
  */
 (function($) {
-    $.fn.microshop_publish = function(options,submit_function) {
+    $.fn.microclinic_publish = function(options,submit_function) {
         var settings = $.extend({}, {max: 140,button_item:'#btn_publish_comment',allow_null:'false'}, options);
         $(this).after('<span id="_comment_count" nc_type="commend_count" class="commend_count"></div>');
         settings.message_item = $(this).next("[nc_type='commend_count']");
@@ -79,7 +79,7 @@
  * 微商城计数加减
  */
 (function($) {
-    $.fn.microshop_count = function(options) {
+    $.fn.microclinic_count = function(options) {
         var settings = $.extend({}, { type:'+',step:1}, options);
         var old_count = parseInt($(this).html());
         if(old_count >= 999) {
@@ -104,7 +104,7 @@
  * 微商城喜欢
  */
 (function($) {
-    $.fn.microshop_like = function(options) {
+    $.fn.microclinic_like = function(options) {
         var settings = $.extend({}, { type:null,count_target:'' }, options);
         if( settings.type == null ) return false;
         return this.each(function() {
@@ -116,9 +116,9 @@
             $.getJSON("index.php?act=like&op=like_save", { type: settings.type, like_id: item.attr("like_id") }, function(json){
                 if(json.result == "true") {
                     if(settings.count_target == '') {
-                        item.find("em").microshop_count({type:"+"});
+                        item.find("em").microclinic_count({type:"+"});
                     } else {
-                        settings.count_target.microshop_count({type:"+"});
+                        settings.count_target.microclinic_count({type:"+"});
                     }
                 }
                 $(".like_tooltips").hide();
@@ -264,7 +264,7 @@
  * 微商城图片延迟加载
  */
 (function($) {
-    $.fn.microshop_lazyload = function() {
+    $.fn.microclinic_lazyload = function() {
         var lazy_items = [];
         this.each(function() {
             var lazy_item = {

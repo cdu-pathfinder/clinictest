@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -14,17 +14,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="membertag_name"><?php echo $lang['sns_member_tag_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="membertag_name" id="membertag_name" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['sns_member_tag_name_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['nc_recommend']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="mtag_recommend1" class="cb-enable"><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="mtag_recommend0" class="cb-disable selected"><span><?php echo $lang['nc_no'];?></span></label>
             <input id="mtag_recommend1" name="membertag_recommend" value="1" type="radio">
@@ -34,14 +34,14 @@
         <tr>
           <td colspan="2" class="required"><label for="mtag_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="0" name="membertag_sort" id="mtag_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['sns_member_tag_sort_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['sns_member_tag_desc'];?>:</label></td>
         </tr>
-        <tr class="noborder" style="background: none repeat scroll 0% 0% rgb(251, 251, 251);">
+        <tr class="nobappointment" style="background: none repeat scroll 0% 0% rgb(251, 251, 251);">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="membertag_desc" id="membertag_desc"></textarea>
           </td>
@@ -50,7 +50,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['sns_member_tag_img'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-box">
             <input name="membertag_img" type="file" class="type-file-file" id="membertag_img" size="30" hidefocus="true">
             </span></td>

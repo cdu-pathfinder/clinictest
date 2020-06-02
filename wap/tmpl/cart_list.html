@@ -22,28 +22,28 @@
                 <ul class="cart-list">
                     <% for (var i = 0;i<cart_list.length;i++){%>
                         <li class="cart-list-item">
-                            <div class="cart-shop-name">
-                                店铺名称：<%=cart_list[i].store_name%>
+                            <div class="cart-clinic-name">
+                                店铺名称：<%=cart_list[i].clic_name%>
                             </div>
                             <div class="cart-litem-wp clearfix">
-                                <a class="cart-litemw-imgwp" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
-                                    <img src="<%=cart_list[i].goods_image_url%>"/>
+                                <a class="cart-litemw-imgwp" href="<%=WapSiteUrl%>/tmpl/doc_detail.html?doctors_id=<%=cart_list[i].doctors_id%>">
+                                    <img src="<%=cart_list[i].doctors_image_url%>"/>
                                 </a>
                                 <div class="cart-litemw-cnt" cart_id="<%=cart_list[i].cart_id%>">
-                                    <a class="cart-litemwc-pdname" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=cart_list[i].goods_id%>">
-                                        <%=cart_list[i].goods_name%>
+                                    <a class="cart-litemwc-pdname" href="<%=WapSiteUrl%>/tmpl/doc_detail.html?doctors_id=<%=cart_list[i].doctors_id%>">
+                                        <%=cart_list[i].doctors_name%>
                                     </a>
                                     <p class="mt5">
-                                        商品单价：$<%=cart_list[i].goods_price%>
+                                        商品单价：$<%=cart_list[i].doctors_price%>
                                     </p>
                                      <p class="mt5">
-                                        商品总价：$<span class="goods-total-price"><%=cart_list[i].goods_sum%></span>
+                                        商品总价：$<span class="doctors-total-price"><%=cart_list[i].doctors_sum%></span>
                                     </p>
                                     <p class="cart-litemwc-pdcount clearfix mt5">
                                         <span class="minus-wp fleft">
                                             <span class="i-minus"></span>
                                         </span>
-                                        <input type="text" class="buy-num buynum fleft" value="<%=cart_list[i].goods_num%>"/>
+                                        <input type="text" class="buy-num buynum fleft" value="<%=cart_list[i].doctors_num%>"/>
                                         <span class="add-wp fleft">
                                             <span class="i-add"></span>
                                         </span>
@@ -62,7 +62,7 @@
                         <a href="javascript:void(0)" class="goto-settlement mt10">去结算</a>
                     </li>
                     <li>
-                        <a href="<%=WapSiteUrl%>/tmpl/product_list.html?gc_id=0" class="goto-shopping mt10">去逛逛</a>
+                        <a href="<%=WapSiteUrl%>/tmpl/doc_list.html?gc_id=0" class="goto-clinicping mt10">去逛逛</a>
                     </li>
                 </ul>
             <%}else{%>

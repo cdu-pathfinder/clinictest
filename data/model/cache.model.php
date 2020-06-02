@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cacheModel extends Model {
 	
 	public function __construct(){
@@ -46,9 +46,9 @@ class cacheModel extends Model {
 	 *
 	 * @return array
 	 */
-	private function _goods_class(){
+	private function _doctors_class(){
 		$fields = 'gc_id,gc_name,type_id,gc_parent_id,gc_sort';
-	    $result = $this->table('goods_class')->field($fields)->order('gc_parent_id asc, gc_sort asc')->limit(10000)->select();
+	    $result = $this->table('doctors_class')->field($fields)->appointment('gc_parent_id asc, gc_sort asc')->limit(10000)->select();
 	    if (!is_array($result)) return null;
 
 	    $class_level = array();
@@ -104,9 +104,9 @@ class cacheModel extends Model {
 	 *
 	 * @return array
 	 */
-	private function _goods_class_seo(){
+	private function _doctors_class_seo(){
 
-		$list = $this->table('goods_class')->field('gc_id,gc_title,gc_keywords,gc_description')->where(array('gc_keywords'=>array('neq','')))->limit(2000)->select();
+		$list = $this->table('doctors_class')->field('gc_id,gc_title,gc_keywords,gc_description')->where(array('gc_keywords'=>array('neq','')))->limit(2000)->select();
 		if (!is_array($list)) return null;
 		$array = array();
 		foreach ($list as $k=>$v) {
@@ -149,8 +149,8 @@ class cacheModel extends Model {
 	 * @return array
 	 */
 	private function _express(){
-	    $fields = 'id,e_name,e_code,e_letter,e_order,e_url';
-		$list = $this->table('express')->field($fields)->order('e_order,e_letter')->where(array('e_state'=>1))->select();
+	    $fields = 'id,e_name,e_code,e_letter,e_appointment,e_url';
+		$list = $this->table('express')->field($fields)->appointment('e_appointment,e_letter')->where(array('e_state'=>1))->select();
 		if (!is_array($list)) return null;
 		$array = array();
 		foreach ($list as $k=>$v) {
@@ -165,7 +165,7 @@ class cacheModel extends Model {
 	 * @return array
 	 */
 	private function _nav(){
-		$list = $this->table('navigation')->order('nav_sort')->select();
+		$list = $this->table('navigation')->appointment('nav_sort')->select();
 		if (!is_array($list)) return null;
 		return $list;
 	}
@@ -176,13 +176,13 @@ class cacheModel extends Model {
 	 * @return array
 	 */
 	private function _groupbuy(){
-		$area = $this->table('groupbuy_area')->where('area_parent_id=0')->order('area_sort')->select();
+		$area = $this->table('groupbuy_area')->where('area_parent_id=0')->appointment('area_sort')->select();
 		if (!is_array($area)) $area = array();
 
-		$category = $this->table('groupbuy_class')->where('class_parent_id=0')->order('sort')->select();
+		$category = $this->table('groupbuy_class')->where('class_parent_id=0')->appointment('sort')->select();
 		if (!is_array($category)) $category = array();
 
-		$price = $this->table('groupbuy_price_range')->order('range_start')->select();
+		$price = $this->table('groupbuy_price_range')->appointment('range_start')->select();
 		if (!is_array($price)) $price = array();
 
 		return array('area'=>$area,'category'=>$category,'price'=>$price);
@@ -195,7 +195,7 @@ class cacheModel extends Model {
 	 */
 	private function _class_tag(){
 		$field = 'gc_tag_id,gc_tag_name,gc_tag_value,gc_id,type_id';
-		$list = $this->table('goods_class_tag')->field($field)->where(true)->select();
+		$list = $this->table('doctors_class_tag')->field($field)->where(true)->select();
 		if (!is_array($list)) return null;
 		return $list;
 	}
@@ -205,8 +205,8 @@ class cacheModel extends Model {
 	 *
 	 * @return array
 	 */
-	private function _store_class(){
-		$list = $this->table('store_class')->where(true)->order('sc_parent_id,sc_sort')->select();
+	private function _clic_class(){
+		$list = $this->table('clic_class')->where(true)->appointment('sc_parent_id,sc_sort')->select();
 		$tmp = array();
 		if (is_array($list)){
 			foreach ($list as $key => $value) {
@@ -228,8 +228,8 @@ class cacheModel extends Model {
 	 *
 	 * @return array
 	 */
-	private function _store_grade(){
-		$list =$this->table('store_grade')->where(true)->select();
+	private function _clic_grade(){
+		$list =$this->table('clic_grade')->where(true)->select();
 		$array = array();
 		foreach ((array)$list as $v) {
 			$array[$v['sg_id']] = $v;
@@ -257,15 +257,15 @@ class cacheModel extends Model {
 	/**
 	 * 递归取某个分类下的所有子类ID组成的字符串,以逗号隔开
 	 *
-	 * @param string $goodsclass 商品分类
+	 * @param string $doctorsclass 商品分类
 	 * @param int $gc_id	待查找子类的ID
 	 * @param string $child 存放被查出来的子类ID
 	 */
-	private function get_child(&$goodsclass,$gc_id,&$child){
-		foreach ($goodsclass as $k=>$v) {
+	private function get_child(&$doctorsclass,$gc_id,&$child){
+		foreach ($doctorsclass as $k=>$v) {
 			if ($v['gc_parent_id'] == $gc_id){
 				$child[] = $v['gc_id'];
-				$this->get_child($goodsclass,$v['gc_id'],$child);
+				$this->get_child($doctorsclass,$v['gc_id'],$child);
 			}
 		}
 	}

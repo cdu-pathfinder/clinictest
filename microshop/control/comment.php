@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class commentControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class commentControl extends MircroclinicControl{
 
 	public function __construct() {
         parent::__construct();
@@ -59,7 +59,7 @@ class commentControl extends MircroShopControl{
                 $data['message'] = Language::get('nc_common_save_succ');
                 $data['member_name'] = $_SESSION['member_name'].Language::get('nc_colon');
                 $data['member_avatar'] = getMemberAvatar($_SESSION['member_avatar']);
-                $data['member_link'] = MICROSHOP_SITE_URL.'/index.php?act=home&member_id='.$_SESSION['member_id'];
+                $data['member_link'] = MICROclinic_SITE_URL.'/index.php?act=home&member_id='.$_SESSION['member_id'];
                 $data['comment_message'] = parsesmiles(stripslashes($param['comment_message']));
                 $data['comment_time'] = date('Y-m-d H:i:s',$param['comment_time']);
                 $data['comment_id'] = $result; 
@@ -68,14 +68,14 @@ class commentControl extends MircroShopControl{
                 if(isset($_POST['share_app_items'])) {
                     $condition = array();
                     $condition[$comment_type['type_key']] = $_POST['comment_id'];
-                    if($_GET['type'] == 'store') {
-                        $info = $model->getOneWithStoreInfo($condition);
+                    if($_GET['type'] == 'clic') {
+                        $info = $model->getOneWithclicInfo($condition);
                     } else {
                         $info = $model->getOne($condition);
                     }
                     $info['commend_message'] = $param['comment_message'];
                     $info['type'] = $_GET['type'];
-                    $info['url'] = MICROSHOP_SITE_URL.DS."index.php?act={$_GET['type']}&op=detail&{$_GET['type']}_id=".$_POST['comment_id'].'#widgetcommenttitle';
+                    $info['url'] = MICROclinic_SITE_URL.DS."index.php?act={$_GET['type']}&op=detail&{$_GET['type']}_id=".$_POST['comment_id'].'#widgetcommenttitle';
                     self::share_app_publish('comment',$info);
                 }
             } else {

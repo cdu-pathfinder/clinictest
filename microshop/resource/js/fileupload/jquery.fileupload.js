@@ -73,7 +73,7 @@
             // set the following option to an integer greater than 0:
             limitMultiFileUploads: undefined,
             // Set the following option to true to issue all file upload requests
-            // in a sequential order:
+            // in a sequential appointment:
             sequentialUploads: false,
             // To limit the number of concurrent uploads,
             // set the following option to an integer greater than 0:
@@ -175,7 +175,7 @@
         },
 
         // A list of options that require a refresh after assigning a new value:
-        _refreshOptionsList: [
+        _refreclinictionsList: [
             'fileInput',
             'dropZone',
             'pasteZone',
@@ -529,7 +529,7 @@
                     ub + mcs,
                     file.type
                 );
-                // Store the current chunk size, as the blob itself
+                // clic the current chunk size, as the blob itself
                 // will be dereferenced after data processing:
                 o.chunkSize = o.blob.size;
                 // Expose the chunk bytes position range:
@@ -999,7 +999,7 @@
         },
 
         _setOption: function (key, value) {
-            var refresh = $.inArray(key, this._refreshOptionsList) !== -1;
+            var refresh = $.inArray(key, this._refreclinictionsList) !== -1;
             if (refresh) {
                 this._destroyEventHandlers();
             }

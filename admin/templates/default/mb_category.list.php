@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -41,7 +41,7 @@
         <?php foreach($output['link_list'] as $k => $v){ ?>
         <tr class="hover edit">
           <td class="w24"><input type="checkbox" name="del_id[]" value="<?php echo $v['gc_id'];?>" class="checkitem"></td>
-          <td><?php echo $output['goods_class'][$v['gc_id']]['gc_name'];?></td>
+          <td><?php echo $output['doctors_class'][$v['gc_id']]['gc_name'];?></td>
           <td class="picture"><?php
 				if($v['gc_thumb'] != ''){
 					echo "<div class='size-88x31'><span class='thumb size-88x31'><i></i><img width=\"88\" height=\"31\" src='".$v['gc_thumb']."' onload='javascript:DrawImage(this,88,31);' /></span></div>";

@@ -1,9 +1,9 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="sidebar">
   <?php if(in_array($output['identity'], array(1,2,3))){?>
   <div class="my-info">
-    <div class="avatar"><img src="<?php echo getMemberAvatarForID($output['cm_info']['member_id']);?>"/><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></div>
+    <div class="avatar"><img src="<?php echo getMemberAvatarForID($output['cm_info']['member_id']);?>"/><a href="<?php echo clinic_SITE_URL;?>/index.php?act=home&op=avatar" title="<?php echo $lang['nc_edit_avatar'];?>"><?php echo $lang['nc_edit_avatar'];?></a></div>
     <dl>
       <dt>
         <h3><a href="index.php?act=p_center" target="_blank"><?php echo $lang['nc_inro_personal_center'];?></a></h3>
@@ -61,14 +61,14 @@
       </dl>
       <dl>
         <dt><?php echo $lang['circle_manager'].$lang['nc_colon'];?></dt>
-        <dd><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&op=theme&mid=<?php echo $output['creator']['member_id'];?>" class="master" title="<?php echo $output['creator']['member_name'];?>" target="_blank"><i></i><?php echo $output['creator']['member_name'];?></a></dd>
+        <dd><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&op=theme&mid=<?php echo $output['creator']['member_id'];?>" class="master" title="<?php echo $output['creator']['member_name'];?>" target="_blank"><i></i><?php echo $output['creator']['member_name'];?></a></dd>
       </dl>
       <dl>
         <dt><?php echo $lang['circle_administrate'].$lang['nc_colon'];?></dt>
         <dd>
           <?php if(!empty($output['manager_list'])){?>
           <?php foreach ($output['manager_list'] as $val){?>
-          <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" class="moderator" title="<?php echo $val['member_name'];?>" target="_blank"><i></i><?php echo $val['member_name'];?></a>
+          <a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" class="moderator" title="<?php echo $val['member_name'];?>" target="_blank"><i></i><?php echo $val['member_name'];?></a>
           <?php }?>
           <?php }else{?>
           <span><?php echo $lang['circle_is_null'];?></span>
@@ -87,7 +87,7 @@
       <?php if(!empty($output['star_member'])){?>
       <?php foreach($output['star_member'] as $val){?>
       <dl>
-        <dt class="member-name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
+        <dt class="member-name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
         <dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /><em></em></dd>
         <dd class="theme-num" title="<?php echo $lang['circle_theme_count'];?>">(<b><?php echo $val['cm_thcount'];?></b>)</dd>
       </dl>
@@ -100,7 +100,7 @@
       <?php if(!empty($output['newest_member'])){?>
       <?php foreach($output['newest_member'] as $val){?>
       <dl>
-        <dt class="member-name"><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
+        <dt class="member-name"><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></dt>
         <dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /></dd>
         <dd class="theme-num" title="<?php echo $lang['circle_theme_count'];?>">(<b><?php echo $val['cm_thcount'];?></b>)</dd>
       </dl>

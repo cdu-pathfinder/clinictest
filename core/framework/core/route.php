@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class Route {
 
@@ -118,11 +118,11 @@ class Route {
      * @param unknown $path_info
      * @return mixed
      */
-    private function _shopPathInfo($path_info) {
+    private function _clinicPathInfo($path_info) {
         $reg_match_from = array(
             '/^item-(\d+)$/',
-            '/^shop-(\d+)$/',
-            '/^shop_view-(\d+)-(\d+)-([0-5])-([0-2])-(\d+)$/',
+            '/^clinic-(\d+)$/',
+            '/^clinic_view-(\d+)-(\d+)-([0-5])-([0-2])-(\d+)$/',
             '/^article-(\d+)$/',
             '/^article_cate-(\d+)$/',
             '/^document-([a-z_]+)$/',
@@ -140,24 +140,24 @@ class Route {
             '/^comments-(\d+)-([0-3])-(\d+)$/'
         );
         $reg_match_to = array(
-            'goods-index-goods_id-\\1',
-            'show_store-index-store_id-\\1',
-            'show_store-goods_all-store_id-\\1-stc_id-\\2-key-\\3-order-\\4-curpage-\\5',
+            'doctors-index-doctors_id-\\1',
+            'show_clic-index-clic_id-\\1',
+            'show_clic-doctors_all-clic_id-\\1-stc_id-\\2-key-\\3-appointment-\\4-curpage-\\5',
             'article-show-article_id-\\1',
             'article-article-ac_id-\\1',
             'document-index-code-\\1',
-            'search-index-cate_id-\\1-b_id-\\2-a_id-\\3-key-\\4-order-\\5-type-\\6-area_id-\\7-curpage-\\8',
-            'brand-list-brand-\\1-key-\\2-order-\\3-type-\\4-area_id-\\5-curpage-\\6',
+            'search-index-cate_id-\\1-b_id-\\2-a_id-\\3-key-\\4-appointment-\\5-type-\\6-area_id-\\7-curpage-\\8',
+            'brand-list-brand-\\1-key-\\2-appointment-\\3-type-\\4-area_id-\\5-curpage-\\6',
             'brand-index',
-            'show_groupbuy-index-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_order_key-\\4-groupbuy_order-\\5-curpage-\\6',
-            'show_groupbuy-groupbuy_soon-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_order_key-\\4-groupbuy_order-\\5-curpage-\\6',
-            'show_groupbuy-groupbuy_history-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_order_key-\\4-groupbuy_order-\\5-curpage-\\6',
+            'show_groupbuy-index-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_appointment_key-\\4-groupbuy_appointment-\\5-curpage-\\6',
+            'show_groupbuy-groupbuy_soon-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_appointment_key-\\4-groupbuy_appointment-\\5-curpage-\\6',
+            'show_groupbuy-groupbuy_history-area_id-\\1-groupbuy_class-\\2-groupbuy_price-\\3-groupbuy_appointment_key-\\4-groupbuy_appointment-\\5-curpage-\\6',
             'show_groupbuy-groupbuy_detail-group_id-\\1',
             'pointprod-index',
             'pointprod-plist',
             'pointprod-pinfo-id-\\1',
             'pointvoucher-index',
-            'goods-comments_list-goods_id-\\1-type-\\2-curpage-\\3'
+            'doctors-comments_list-doctors_id-\\1-type-\\2-curpage-\\3'
         );
         return preg_replace($reg_match_from,$reg_match_to,$path_info);
     }

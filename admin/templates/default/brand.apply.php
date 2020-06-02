@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -13,7 +13,7 @@
   </div>
   <div class="fixed-empty"></div>
   <form method="POST" name="formSearch">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_brand_name"><?php echo $lang['brand_index_name'];?></label></th>

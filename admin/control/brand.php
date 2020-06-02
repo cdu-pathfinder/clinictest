@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class brandControl extends SystemControl{
 	const EXPORT_SIZE = 1000;
 	public function __construct(){
@@ -57,7 +57,7 @@ class brandControl extends SystemControl{
 		}
 		$condition['brand_apply']	= '1';
 
-		$brand_list = $model_brand->table('brand')->where($condition)->order('brand_id desc')->page(20)->select();
+		$brand_list = $model_brand->table('brand')->where($condition)->appointment('brand_id desc')->page(20)->select();
 		Tpl::output('page',$model_brand->showpage());
 		Tpl::output('brand_list',$brand_list);
 		Tpl::output('search_brand_name',trim($_GET['search_brand_name']));
@@ -110,7 +110,7 @@ class brandControl extends SystemControl{
 		}
 
 		// 一级商品分类
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 
 		Tpl::showpage('brand.add');
@@ -176,7 +176,7 @@ class brandControl extends SystemControl{
 		Tpl::output('brand_array',$brand_array);
 
 		// 一级商品分类
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 
 		Tpl::showpage('brand.edit');
@@ -399,13 +399,13 @@ class brandControl extends SystemControl{
 				Tpl::output('murl','index.php?act=brand&op=brand');
 				Tpl::showpage('export.excel');
 			}else{	//如果数量小，直接下载
-				$data = $model->table('brand')->where($condition)->order('brand_id desc')->limit(self::EXPORT_SIZE)->select();
+				$data = $model->table('brand')->where($condition)->appointment('brand_id desc')->limit(self::EXPORT_SIZE)->select();
 				$this->createExcel($data);
 			}
 		}else{	//下载
 			$limit1 = ($_GET['curpage']-1) * self::EXPORT_SIZE;
 			$limit2 = self::EXPORT_SIZE;
-			$data = $model->table('brand')->where($condition)->order('brand_id desc')->limit("{$limit1},{$limit2}")->select();
+			$data = $model->table('brand')->where($condition)->appointment('brand_id desc')->limit("{$limit1},{$limit2}")->select();
 			$this->createExcel($data);
 		}
 	}

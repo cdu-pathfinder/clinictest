@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!doctype html>
 <html>
 <head>
@@ -7,8 +7,8 @@
 <title><?php echo $output['html_title'];?></title>
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
 <meta name="description" content="<?php echo $output['seo_description']; ?>" />
-<meta name="author" content="ShopNC">
-<meta name="copyright" content="ShopNC Inc. All Rights Reserved">
+<meta name="author" content="clinicNC">
+<meta name="copyright" content="clinicNC Inc. All Rights Reserved">
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
 <!--[if IE 6]><style type="text/css">body { _behavior: url(<?php echo CIRCLE_TEMPLATES_URL;?>/css/csshover.htc);}</style><![endif]-->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,8 +33,8 @@ catch(e){}
 </script> 
 <![endif]-->
 <script>
-var COOKIE_PRE = '<?php echo COOKIE_PRE;?>'; var _CHARSET = '<?php echo strtolower(CHARSET);?>'; var SITEURL = '<?php echo SHOP_SITE_URL;?>';
-var SHOP_SITE_URL = '<?php echo SHOP_SITE_URL;?>';
+var COOKIE_PRE = '<?php echo COOKIE_PRE;?>'; var _CHARSET = '<?php echo strtolower(CHARSET);?>'; var SITEURL = '<?php echo clinic_SITE_URL;?>';
+var clinic_SITE_URL = '<?php echo clinic_SITE_URL;?>';
 var CIRCLE_SITE_URL = '<?php echo CIRCLE_SITE_URL;?>'; var _ISLOGIN = <?php echo intval($_SESSION['is_login']);?>;
 var APP_SITE_URL = '<?php echo CIRCLE_SITE_URL;?>'; var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
 var NC_HASH = '<?php echo getNchash();?>'; var NC_TOKEN = '<?php echo Security::getTokenValue();?>';

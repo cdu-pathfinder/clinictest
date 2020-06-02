@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -13,31 +13,31 @@
   <div class="fixed-empty"></div>
   <table class="table tb-type2 nobdb">
     <tbody>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_sn']; ?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_sn']; ?></td>
         <td class="vatop tips"></td>
       </tr>
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_membername']; ?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_member_name']; ?></td>
         <td class="vatop tips"></td>
       </tr>
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_recharge_price'];?>(<?php echo $lang['currency_zh'];?>):</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_amount']; ?></td>
         <td class="vatop tips"></td>
       </tr>
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_apptime']?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo @date('Y-m-d H:i:s',$output['info']['pdr_add_time']); ?></td>
         <td class="vatop tips"></td>
       </tr>
@@ -45,14 +45,14 @@
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_payment'];?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_payment_name']; ?></td>
         <td class="vatop tips"></td>
       </tr>
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_paytime'];?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform">
         <?php if (date('His',$output['info']['pdr_payment_time']) == 0) {?>
         <?php echo date('Y-m-d',$output['info']['pdr_payment_time']);?>
@@ -65,7 +65,7 @@
       <tr>
         <td colspan="2" class="required"><label>第三方支付平台交易号:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_trade_sn'];?></td>
         <td class="vatop tips"></td>
       </tr>
@@ -75,7 +75,7 @@
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['admin_predeposit_adminname'];?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform"><?php echo $output['info']['pdr_admin']; ?></td>
         <td class="vatop tips"></td>
       </tr>

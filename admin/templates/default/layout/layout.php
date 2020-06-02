@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
@@ -12,9 +12,9 @@
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/common.js" charset="utf-8"></script>
 <link href="<?php echo ADMIN_TEMPLATES_URL;?>/css/skin_0.css" rel="stylesheet" type="text/css" id="cssfile2" />
 <script type="text/javascript">
-SITEURL = '<?php echo SHOP_SITE_URL;?>';
+SITEURL = '<?php echo clinic_SITE_URL;?>';
 RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
-MICROSHOP_SITE_URL = '<?php echo MICROSHOP_SITE_URL;?>';
+MICROclinic_SITE_URL = '<?php echo MICROclinic_SITE_URL;?>';
 CIRCLE_SITE_URL = '<?php echo CIRCLE_SITE_URL;?>';
 ADMIN_TEMPLATES_URL = '<?php echo ADMIN_TEMPLATES_URL;?>';
 LOADING_IMAGE = "<?php echo ADMIN_TEMPLATES_URL.DS.'images/loading.gif';?>";

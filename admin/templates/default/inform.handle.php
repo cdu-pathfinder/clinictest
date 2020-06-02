@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -16,17 +16,17 @@
     <input id="inform_id" name="inform_id" type="hidden" value="<?php echo $output['inform_id'];?>"/>
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
-          <td colspan="2" class="required"><label> <?php echo $lang['inform_goods_name'];?>:</label></td>
+        <tr class="nobappointment">
+          <td colspan="2" class="required"><label> <?php echo $lang['inform_doctors_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform" id="goods_name"><?php echo $output['inform_goods_name'];?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform" id="doctors_name"><?php echo $output['inform_doctors_name'];?></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['inform_handle_type'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul>
               <li><label>
                 <input type="radio" value="1" name="inform_handle_type">
@@ -43,7 +43,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['inform_handle_message'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea class="tarea" name="inform_handle_message" rows="6" id="inform_handle_message"></textarea></td>
           <td class="vatop tips"></td>
         </tr>

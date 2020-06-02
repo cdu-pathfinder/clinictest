@@ -8,10 +8,10 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 返回模板文件所在完整目录
@@ -113,7 +113,7 @@ function replaceUBBTag($ubb, $video_sign = 1){
 	return $ubb;
 }
 /**
- * tidy theme goods information
+ * tidy theme doctors information
  * 
  * @param array $array
  * @param string $key
@@ -121,15 +121,15 @@ function replaceUBBTag($ubb, $video_sign = 1){
  * @param string $type
  * @return array
  */
-function tidyThemeGoods($array, $key, $deep=1, $type= 60){
+function tidyThemedoctors($array, $key, $deep=1, $type= 60){
 	if (is_array($array)){
 		$tmp = array();
 		foreach ($array as 	$v) {
 			if($v['thg_type'] == 0){
 				$v['image']		= thumb($v, $type);
-				$v['thg_url']	= urlShop('goods', 'index', array('goods_id'=>$v['goods_id']));
+				$v['thg_url']	= urlclinic('doctors', 'index', array('doctors_id'=>$v['doctors_id']));
 			}else{
-				$v['image']	= $v['goods_image'];
+				$v['image']	= $v['doctors_image'];
 			}
 			if ($deep === 1){
 				$tmp[$v[$key]] = $v;
@@ -149,16 +149,16 @@ function tidyThemeGoods($array, $key, $deep=1, $type= 60){
  * @param string $content	The editor content
  * @param string $type		The toolbar type
  * @param array  $affix		The affix content
- * @param string $gname		The name of the goods content
- * @param array  $goods		The goods content
+ * @param string $gname		The name of the doctors content
+ * @param array  $doctors		The doctors content
  * @param array  $readperm	Optional permissions array
  * @param int    $rpvalue	Has chosen the permissions
  */
-function showMiniEditor($cname, $content = '', $type = 'all', $affix = array(), $gname = '', $goods = array(), $readperm = array(), $rpvalue = 0){
+function showMiniEditor($cname, $content = '', $type = 'all', $affix = array(), $gname = '', $doctors = array(), $readperm = array(), $rpvalue = 0){
 	switch ($type){
 		case 'manage':
 			$items = array('font', 'size', 'line', 'bold', 'italic', 'underline', 'color', 'line', 'url', 'flash', 'image', 'line', 'smilier');
-			$return = '$__content.$__maffix.$__goods.$__readperm';
+			$return = '$__content.$__maffix.$__doctors.$__readperm';
 			break;
 		case 'quickReply':
 			$items = array('font', 'size', 'line', 'bold', 'italic', 'underline', 'color', 'line', 'url', 'flash', 'line', 'smilier');
@@ -169,8 +169,8 @@ function showMiniEditor($cname, $content = '', $type = 'all', $affix = array(), 
 			$return = '$__content';
 			break;
 		default:
-			$items = array('font', 'size', 'line', 'bold', 'italic', 'underline', 'color', 'line', 'affix', 'line', 'url', 'flash', 'image', 'goods', 'line', 'smilier');
-			$return = '$__content.$__affix.$__goods.$__readperm';
+			$items = array('font', 'size', 'line', 'bold', 'italic', 'underline', 'color', 'line', 'affix', 'line', 'url', 'flash', 'image', 'doctors', 'line', 'smilier');
+			$return = '$__content.$__affix.$__doctors.$__readperm';
 			break;
 	}
 	
@@ -223,7 +223,7 @@ function showMiniEditor($cname, $content = '', $type = 'all', $affix = array(), 
 					</div>
 				</a>";
 	$_image	= "<a href=\"javascript:void(0);\" nctype=\"uploadImage\" title=\"".L('nc_insert_network_image')."\" class=\"mr5\"><i class=\"url-img\"></i>".L('nc_image')."</a>";
-	$_goods	= "<a href=\"javascript:void(0);\" nctype=\"chooseGoods\" title=\"".L('nc_insert_relevance_goods')."\"><i class=\"url-goods\"></i>".L('nc_goods')."</a>";
+	$_doctors	= "<a href=\"javascript:void(0);\" nctype=\"choosedoctors\" title=\"".L('nc_insert_relevance_doctors')."\"><i class=\"url-doctors\"></i>".L('nc_doctors')."</a>";
 	$_smilier	= "<a href=\"javascript:void(0);\" nctype=\"smilier\" title=\"".L('nc_insert_smilier')."\" class=\"smilier-handle\"><i class=\"smilier\"></i>".L('nc_smilier')."
 						<div class=\"ubb-layer smilier-layer\">
 							<div class=\"arrow\"></div>
@@ -272,28 +272,28 @@ function showMiniEditor($cname, $content = '', $type = 'all', $affix = array(), 
 	
 	$__maffix = str_replace("nctype=\"affix_delete\"", "nctype=\"maffix_delete\"", $__affix);
 	
-	// After insert part of goods
-	$__goods = '';
-	$__goods .= "<div class=\"insert-goods\" ".(empty($goods)?"style=\"display:none;\"":"").">
-	          <h3><i></i>".L('nc_select_insert_goods,nc_colon')."</h3>";
-	if(!empty($goods)){
-		foreach($goods as $val){
-	    	$__goods .= "<dl>
-	            <dt class=\"goods-name\">".$val['goods_name']."</dt>
-	            <dd class=\"goods-pic\"><a href=\"javascript:void(0);\"><img src=\"".$val['image']."\"></a></dd>
-	            <dd class=\"goods-price\"><em>".$val['goods_price']."</em></dd>
-	            <dd class=\"goods-del\">".L('nc_delete')."</dd>
-	            <input type=\"hidden\" value=\"".$val['goods_id']."\" name=\"".$gname."[".$val['themegoods_id']."][id]\">
-	            <input type=\"hidden\" value=\"".$val['goods_name']."\" name=\"".$gname."[".$val['themegoods_id']."][name]\">
-	            <input type=\"hidden\" value=\"".$val['goods_price']."\" name=\"".$gname."[".$val['themegoods_id']."][price]\">
-	            <input type=\"hidden\" value=\"".$val['goods_image']."\" name=\"".$gname."[".$val['themegoods_id']."][image]\">
-	            <input type=\"hidden\" value=\"".$val['store_id']."\" name=\"".$gname."[".$val['themegoods_id']."][storeid]\">
-	            <input type=\"hidden\" value=\"".$val['thg_type']."\" name=\"".$gname."[".$val['themegoods_id']."][type]\">
-	            <input type=\"hidden\" value=\"".$val['thg_url']."\" name=\"".$gname."[".$val['themegoods_id']."][uri]\">
+	// After insert part of doctors
+	$__doctors = '';
+	$__doctors .= "<div class=\"insert-doctors\" ".(empty($doctors)?"style=\"display:none;\"":"").">
+	          <h3><i></i>".L('nc_select_insert_doctors,nc_colon')."</h3>";
+	if(!empty($doctors)){
+		foreach($doctors as $val){
+	    	$__doctors .= "<dl>
+	            <dt class=\"doctors-name\">".$val['doctors_name']."</dt>
+	            <dd class=\"doctors-pic\"><a href=\"javascript:void(0);\"><img src=\"".$val['image']."\"></a></dd>
+	            <dd class=\"doctors-price\"><em>".$val['doctors_price']."</em></dd>
+	            <dd class=\"doctors-del\">".L('nc_delete')."</dd>
+	            <input type=\"hidden\" value=\"".$val['doctors_id']."\" name=\"".$gname."[".$val['themedoctors_id']."][id]\">
+	            <input type=\"hidden\" value=\"".$val['doctors_name']."\" name=\"".$gname."[".$val['themedoctors_id']."][name]\">
+	            <input type=\"hidden\" value=\"".$val['doctors_price']."\" name=\"".$gname."[".$val['themedoctors_id']."][price]\">
+	            <input type=\"hidden\" value=\"".$val['doctors_image']."\" name=\"".$gname."[".$val['themedoctors_id']."][image]\">
+	            <input type=\"hidden\" value=\"".$val['clic_id']."\" name=\"".$gname."[".$val['themedoctors_id']."][clicid]\">
+	            <input type=\"hidden\" value=\"".$val['thg_type']."\" name=\"".$gname."[".$val['themedoctors_id']."][type]\">
+	            <input type=\"hidden\" value=\"".$val['thg_url']."\" name=\"".$gname."[".$val['themedoctors_id']."][uri]\">
 	          </dl>";
 		}
 	}
-	$__goods .= "</div>";
+	$__doctors .= "</div>";
 	
 	// Part read permissions
 	$__readperm = '';

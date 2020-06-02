@@ -10,21 +10,21 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
-class store_classControl extends SystemControl{
+class clic_classControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
-		Language::read('store_class');
+		Language::read('clic_class');
 	}
 
 	/**
 	 * 店铺分类
 	 */
-	public function store_classOp(){
+	public function clic_classOp(){
 		$lang	= Language::getLangContent();
 
-		$model_class = Model('store_class');
+		$model_class = Model('clic_class');
 		//删除
 		if (chksubmit()){
 			if (!empty($_POST['check_sc_id'])){
@@ -36,7 +36,7 @@ class store_classControl extends SystemControl{
 						}
 					}
 				}
-				$this->log(L('nc_del,store_class').'[ID:'.implode(',',$_POST['check_sc_id']).']',1);
+				$this->log(L('nc_del,clic_class').'[ID:'.implode(',',$_POST['check_sc_id']).']',1);
 				showMessage($lang['nc_common_del_succ']);
 			}else {
 				showMessage($lang['nc_common_del_fail']);
@@ -67,25 +67,25 @@ class store_classControl extends SystemControl{
 			exit;
 		}else {
 			Tpl::output('class_list',$class_list);
-			Tpl::showpage('store_class.index');
+			Tpl::showpage('clic_class.index');
 		}
 	}
 
 	/**
 	 * 商品分类添加
 	 */
-	public function store_class_addOp(){
+	public function clic_class_addOp(){
 		$lang	= Language::getLangContent();
 
-		$model_class = Model('store_class');
+		$model_class = Model('clic_class');
 		if (chksubmit()){
 			/**
 			 * 验证
 			 */
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-			array("input"=>$_POST["sc_name"], "require"=>"true", "message"=>$lang['store_class_name_no_null']),
-			array("input"=>$_POST["sc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['store_class_sort_only_number']),
+			array("input"=>$_POST["sc_name"], "require"=>"true", "message"=>$lang['clic_class_name_no_null']),
+			array("input"=>$_POST["sc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['clic_class_sort_only_number']),
 			);
 			$error = $obj_validate->validate();
 			if ($error != ''){
@@ -99,15 +99,15 @@ class store_classControl extends SystemControl{
 				if ($result){
 					$url = array(
 					array(
-					'url'=>'index.php?act=store_class&op=store_class_add&sc_parent_id='.intval($_POST['sc_parent_id']),
-					'msg'=>$lang['continue_add_store_class'],
+					'url'=>'index.php?act=clic_class&op=clic_class_add&sc_parent_id='.intval($_POST['sc_parent_id']),
+					'msg'=>$lang['continue_add_clic_class'],
 					),
 					array(
-					'url'=>'index.php?act=store_class&op=store_class',
-					'msg'=>$lang['back_store_class_list'],
+					'url'=>'index.php?act=clic_class&op=clic_class',
+					'msg'=>$lang['back_clic_class_list'],
 					)
 					);
-					$this->log(L('nc_add,store_class').'['.$_POST['sc_name'].']',1);
+					$this->log(L('nc_add,clic_class').'['.$_POST['sc_name'].']',1);
 					showMessage($lang['nc_common_save_succ'],$url,'html','succ',1,5000);
 				}else {
 					showMessage($lang['nc_common_save_fail']);
@@ -124,23 +124,23 @@ class store_classControl extends SystemControl{
 
 		Tpl::output('sc_parent_id',intval($_GET['sc_parent_id']));
 		Tpl::output('parent_list',$parent_list);
-		Tpl::showpage('store_class.add');
+		Tpl::showpage('clic_class.add');
 	}
 
 	/**
 	 * 编辑
 	 */
-	public function store_class_editOp(){
+	public function clic_class_editOp(){
 		$lang	= Language::getLangContent();
 
-		$model_class = Model('store_class');
+		$model_class = Model('clic_class');
 
 		if (chksubmit()){
 			//验证
 			$obj_validate = new Validate();
 			$obj_validate->validateparam = array(
-			array("input"=>$_POST["sc_name"], "require"=>"true", "message"=>$lang['store_class_name_no_null']),
-			array("input"=>$_POST["sc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['store_class_sort_only_number']),
+			array("input"=>$_POST["sc_name"], "require"=>"true", "message"=>$lang['clic_class_name_no_null']),
+			array("input"=>$_POST["sc_sort"], "require"=>"true", 'validator'=>'Number', "message"=>$lang['clic_class_sort_only_number']),
 			);
 			$error = $obj_validate->validate();
 			if ($error != ''){
@@ -153,8 +153,8 @@ class store_classControl extends SystemControl{
 				$update_array['sc_sort'] = $_POST['sc_sort'];
 				$result = $model_class->update($update_array);
 				if ($result){
-					$this->log(L('nc_edit,store_class').'['.$_POST['sc_name'].']',1);
-					showMessage($lang['nc_common_save_succ'],'index.php?act=store_class&op=store_class');
+					$this->log(L('nc_edit,clic_class').'['.$_POST['sc_name'].']',1);
+					showMessage($lang['nc_common_save_succ'],'index.php?act=clic_class&op=clic_class');
 				}else {
 					showMessage($lang['nc_common_save_fail']);
 				}
@@ -167,16 +167,16 @@ class store_classControl extends SystemControl{
 		}
 
 		Tpl::output('class_array',$class_array);
-		Tpl::showpage('store_class.edit');
+		Tpl::showpage('clic_class.edit');
 	}
 
 	/**
 	 * 删除分类
 	 */
-	public function store_class_delOp(){
+	public function clic_class_delOp(){
 		$lang	= Language::getLangContent();
 
-		$model_class = Model('store_class');
+		$model_class = Model('clic_class');
 		if (intval($_GET['sc_id']) > 0){
 			$array = array(intval($_GET['sc_id']));
 
@@ -186,20 +186,20 @@ class store_classControl extends SystemControl{
 					$model_class->del($v['sc_id']);
 				}
 			}
-			$this->log(L('nc_del,store_class').'[ID:'.$_GET['sc_id'].']',1);
-			showMessage($lang['nc_common_del_succ'],'index.php?act=store_class&op=store_class');
+			$this->log(L('nc_del,clic_class').'[ID:'.$_GET['sc_id'].']',1);
+			showMessage($lang['nc_common_del_succ'],'index.php?act=clic_class&op=clic_class');
 		}else {
-			showMessage($lang['nc_common_del_fail'],'index.php?act=store_class&op=store_class');
+			showMessage($lang['nc_common_del_fail'],'index.php?act=clic_class&op=clic_class');
 		}
 	}
 
 	/**
 	 * 分类导入
 	 */
-	public function store_class_importOp(){
+	public function clic_class_importOp(){
 		$lang	= Language::getLangContent();
 
-		$model_class = Model('store_class');
+		$model_class = Model('clic_class');
 
 		if (chksubmit()){
 			//得到导入文件后缀名
@@ -229,7 +229,7 @@ class store_classControl extends SystemControl{
 						//逗号去除
 						$tmp_array = array();
 						$tmp_array = explode(',',$data);
-						if($tmp_array[0] == 'sort_order')continue;
+						if($tmp_array[0] == 'sort_appointment')continue;
 						//第一位是序号，后面的是内容，最后一位名称
 						$tmp_deep = 'parent_id_'.(count($tmp_array)-1);
 
@@ -244,28 +244,28 @@ class store_classControl extends SystemControl{
 					}
 				}
 				// 重新生成缓存
-				$this->log(L('import,store_class'),1);
-				showMessage($lang['import_ok'],'index.php?act=store_class&op=store_class');
+				$this->log(L('import,clic_class'),1);
+				showMessage($lang['import_ok'],'index.php?act=clic_class&op=clic_class');
 			}else {
 				showMessage($lang['import_csv_no_null']);
 			}
 		}
-		Tpl::showpage('store_class.import');
+		Tpl::showpage('clic_class.import');
 	}
 
 	/**
 	 * 分类导出
 	 */
-	public function store_class_exportOp(){
+	public function clic_class_exportOp(){
 
 		$lang	= Language::getLangContent();
 		if (chksubmit()){
-			$model_class = Model('store_class');
+			$model_class = Model('clic_class');
 			//分类信息
 			$class_list = $model_class->getTreeClassList();
 
 			@header("Content-type: application/unknown");
-			@header("Content-Disposition: attachment; filename=store_class.csv");
+			@header("Content-Disposition: attachment; filename=clic_class.csv");
 			if (is_array($class_list)){
 				foreach ($class_list as $k => $v){
 					$tmp = array();
@@ -296,7 +296,7 @@ class store_classControl extends SystemControl{
 			}
 			exit;
 		}
-		Tpl::showpage('store_class.export');
+		Tpl::showpage('clic_class.export');
 	}
 
 	/**
@@ -305,8 +305,8 @@ class store_classControl extends SystemControl{
 	public function ajaxOp(){
 		switch ($_GET['branch']){
 			//分类：验证是否有重复的名称
-			case 'store_class_name':
-				$model_class = Model('store_class');
+			case 'clic_class_name':
+				$model_class = Model('clic_class');
 				$class_array = $model_class->getOneClass(intval($_GET['id']));
 
 				$condition['sc_name'] = trim($_GET['value']);
@@ -324,8 +324,8 @@ class store_classControl extends SystemControl{
 				}
 				break;
 			//分类： 排序 显示 设置
-			case 'store_class_sort':
-				$model_class = Model('store_class');
+			case 'clic_class_sort':
+				$model_class = Model('clic_class');
 				$update_array = array();
 				$update_array['sc_id'] = intval($_GET['id']);
 				$update_array[$_GET['column']] = trim($_GET['value']);
@@ -336,7 +336,7 @@ class store_classControl extends SystemControl{
 			 * 分类：添加、修改操作中 检测类别名称是否有重复
 			 */
 			case 'check_class_name':
-				$model_class = Model('store_class');
+				$model_class = Model('clic_class');
 				$condition['sc_name'] = trim($_GET['sc_name']);
 				$condition['sc_parent_id'] = intval($_GET['sc_parent_id']);
 				$condition['no_sc_id'] = intval($_GET['sc_id']);

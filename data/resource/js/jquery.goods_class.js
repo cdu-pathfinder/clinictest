@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(this).attr('status','none');
 			//ajax
 			$.ajax({
-				url: 'index.php?act=goods_class&op=goods_class&ajax=1&gc_parent_id='+id,
+				url: 'index.php?act=doctors_class&op=doctors_class&ajax=1&gc_parent_id='+id,
 				dataType: 'json',
 				success: function(data){
 					var src='';
@@ -25,7 +25,7 @@ $(document).ready(function(){
 						}
 						src += "</td><td class='w48 sort'>";						
 						//排序
-						src += " <span title='可编辑下级分类排序' ajax_branch='goods_class_sort' datatype='number' fieldid='"+data[i].gc_id+"' fieldname='gc_sort' nc_type='inline_edit' class='editable tooltip'>"+data[i].gc_sort+"</span></td>";
+						src += " <span title='可编辑下级分类排序' ajax_branch='doctors_class_sort' datatype='number' fieldid='"+data[i].gc_id+"' fieldname='gc_sort' nc_type='inline_edit' class='editable tooltip'>"+data[i].gc_sort+"</span></td>";
 						//名称
 						src += "<td class='w50pre name'>";
 						
@@ -38,18 +38,18 @@ $(document).ready(function(){
 						}else{
 							src += " <img fieldid='"+data[i].gc_id+"' status='none' nc_type='flex' src='"+ADMIN_TEMPLATES_URL+"/images/tv-expandable1.gif' />";
 						}
-						src += " <span title='Editable lower category name' required='1' fieldid='"+data[i].gc_id+"' ajax_branch='goods_class_name' fieldname='gc_name' nc_type='inline_edit' class='editable tooltip'>"+data[i].gc_name+"</span>";
+						src += " <span title='Editable lower category name' required='1' fieldid='"+data[i].gc_id+"' ajax_branch='doctors_class_name' fieldname='gc_name' nc_type='inline_edit' class='editable tooltip'>"+data[i].gc_name+"</span>";
 						//新增下级
 						if(data[i].deep < 3){
-							src += "<a class='btn-add-nofloat marginleft' href='index.php?act=goods_class&op=goods_class_add&gc_parent_id="+data[i].gc_id+"'><span>Add subclass</span></a>";
+							src += "<a class='btn-add-nofloat marginleft' href='index.php?act=doctors_class&op=doctors_class_add&gc_parent_id="+data[i].gc_id+"'><span>Add subclass</span></a>";
 						}
 						src += "</td>";
 						//类型
 						src += "<td>"+data[i].type_name+"</td>";
 						//操作
 						src += "<td class='w84'>";
-						src += "<a href='index.php?act=goods_class&op=goods_class_edit&gc_id="+data[i].gc_id+"'>edit</a>";
-						src += " | <a href=\"javascript:if(confirm('Deleting the category will delete all the sub-categories of the category at the same time. Are you sure you want to delete it'))window.location = 'index.php?act=goods_class&op=goods_class_del&gc_id="+data[i].gc_id+"';\">delete</a>";
+						src += "<a href='index.php?act=doctors_class&op=doctors_class_edit&gc_id="+data[i].gc_id+"'>edit</a>";
+						src += " | <a href=\"javascript:if(confirm('Deleting the category will delete all the sub-categories of the category at the same time. Are you sure you want to delete it'))window.location = 'index.php?act=doctors_class&op=doctors_class_del&gc_id="+data[i].gc_id+"';\">delete</a>";
 						src += "</td>";
 						src += "</tr>";
 					}
@@ -61,7 +61,7 @@ $(document).ready(function(){
 					$('span[nc_type="inline_edit"]').unbind('click');
 					//重现初始化页面
                     $.getScript(RESOURCE_SITE_URL+"/js/jquery.edit.js");
-					$.getScript(RESOURCE_SITE_URL+"/js/jquery.goods_class.js");
+					$.getScript(RESOURCE_SITE_URL+"/js/jquery.doctors_class.js");
 					$.getScript(RESOURCE_SITE_URL+"/js/admincp.js");
 				},
 				error: function(){

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class complain_talkModel{
 
 	/*
@@ -75,7 +75,7 @@ class complain_talkModel{
         $param['table'] = 'complain_talk' ;
         $param['field'] = $field;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' talk_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' talk_id desc ';
         return Db::select($param,$page) ;
 	
 	}

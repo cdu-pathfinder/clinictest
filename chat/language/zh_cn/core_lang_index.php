@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * core简体语言包
@@ -7,7 +7,7 @@ defined('InShopNC') or exit('Access Invalid!');
 $lang['please_check_your_url_arg'] = '请检查您URL地址栏输入的参数信息！！ 错误编码：';
 
 $lang['error_info'] = '系统信息';
-$lang['error_notice_operate'] = '系统运行异常，由此给您带来的访问不便我们深感歉意，可登录 <a target="_blank" href="http://bbs.shopnc.net">官方论坛</a> 寻求帮助';
+$lang['error_notice_operate'] = '系统运行异常，由此给您带来的访问不便我们深感歉意，可登录 <a target="_blank" href="http://bbs.clinicnc.net">官方论坛</a> 寻求帮助';
 $lang['company_name'] = '天津市网城天创科技有限责任公司';
 
 $lang['has_been_canceled'] = '<span style="color:#999">订单已取消</span>';
@@ -23,10 +23,10 @@ $lang['to_be_shipped'] = '已确认，待发货';
 $lang['please_check_your_system_chmod'] = '系统配置信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_area'] = '地区缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_cache_type'] = '该方法不存在，请确定缓存类别是否正确!';
-$lang['please_check_your_system_chmod_goods'] = '商品类别缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
+$lang['please_check_your_system_chmod_doctors'] = '商品类别缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_ad'] = '广告信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_adv'] = '广告位信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
-$lang['please_check_your_system_chmod_goods_class']	= '分类商品列表缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
+$lang['please_check_your_system_chmod_doctors_class']	= '分类商品列表缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 
 $lang['first_page'] = '首页';
 $lang['last_page'] = '末页';

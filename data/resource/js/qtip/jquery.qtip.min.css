@@ -35,11 +35,11 @@
 	position: relative;
 	padding: 5px 35px 5px 10px;
 	overflow: hidden;
-	border-width: 0 0 1px;
+	bappointment-width: 0 0 1px;
 	font-weight: bold;
 }
 .qtip-titlebar + .qtip-content {
-	border-top-width: 0 !important;
+	bappointment-top-width: 0 !important;
 }
 /* Default close button class */
 .qtip-close {
@@ -48,9 +48,9 @@
 	top: -9px;
 	cursor: pointer;
 	outline: medium none;
-	border-width: 1px;
-	border-style: solid;
-	border-color: transparent;
+	bappointment-width: 1px;
+	bappointment-style: solid;
+	bappointment-color: transparent;
 }
 .qtip-titlebar .qtip-close {
 	right: 4px;
@@ -66,9 +66,9 @@
 	direction: ltr;
 }
 .qtip-icon, .qtip-icon .ui-icon {
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
+	-moz-bappointment-radius: 3px;
+	-webkit-bappointment-radius: 3px;
+	bappointment-radius: 3px;
 	text-decoration: none;
 }
 .qtip-icon .ui-icon {
@@ -89,9 +89,9 @@
 }
 /* Default tooltip style */
 .qtip-default {
-	border-width: 1px;
-	border-style: solid;
-	border-color: #AED2FF;
+	bappointment-width: 1px;
+	bappointment-style: solid;
+	bappointment-color: #AED2FF;
 	background-color: #FFF;
 	color: #555;
 }
@@ -99,12 +99,12 @@
 	background-color: #FFEF93;
 }
 .qtip-default .qtip-icon {
-	border-color: #CCC;
+	bappointment-color: #CCC;
 	background: #F1F1F1;
 	color: #777;
 }
 .qtip-default .qtip-titlebar .qtip-close {
-	border-color: #AAA;
+	bappointment-color: #AAA;
 	color: #111;
 }
 .qtip-shadow {
@@ -114,25 +114,25 @@
 }
 /* Add rounded corners to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE9+, Safari 2+ */
 .qtip-rounded, .qtip-tipsy, .qtip-bootstrap {
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	-moz-bappointment-radius: 5px;
+	-webkit-bappointment-radius: 5px;
+	bappointment-radius: 5px;
 }
 .qtip-rounded .qtip-titlebar {
-	-moz-border-radius: 4px 4px 0 0;
-	-webkit-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;
+	-moz-bappointment-radius: 4px 4px 0 0;
+	-webkit-bappointment-radius: 4px 4px 0 0;
+	bappointment-radius: 4px 4px 0 0;
 }
 /* Youtube tooltip style */
 .qtip-youtube {
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
+	-moz-bappointment-radius: 2px;
+	-webkit-bappointment-radius: 2px;
+	bappointment-radius: 2px;
 	-webkit-box-shadow: 0 0 3px #333;
 	-moz-box-shadow: 0 0 3px #333;
 	box-shadow: 0 0 3px #333;
 	color: white;
-	border-width: 0;
+	bappointment-width: 0;
 	background: #4A4A4A;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4A4A4A), color-stop(100%, black));
 	background-image: -webkit-linear-gradient(top, #4A4A4A 0, black 100%);
@@ -151,10 +151,10 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#4a4a4a,EndColorStr=#000000);";
 }
 .qtip-youtube .qtip-icon {
-	border-color: #222;
+	bappointment-color: #222;
 }
 .qtip-youtube .qtip-titlebar .ui-state-hover {
-	border-color: #303030;
+	bappointment-color: #303030;
 }
 /* jQuery TOOLS Tooltip style */
 .qtip-jtools {
@@ -165,11 +165,11 @@
 	background-image: -webkit-linear-gradient(top, #717171, #232323);
 	background-image: -ms-linear-gradient(top, #717171, #232323);
 	background-image: -o-linear-gradient(top, #717171, #232323);
-	border: 2px solid #ddd;
-	border: 2px solid rgba(241,241,241,1);
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
+	bappointment: 2px solid #ddd;
+	bappointment: 2px solid rgba(241,241,241,1);
+	-moz-bappointment-radius: 2px;
+	-webkit-bappointment-radius: 2px;
+	bappointment-radius: 2px;
 	-webkit-box-shadow: 0 0 12px #333;
 	-moz-box-shadow: 0 0 12px #333;
 	box-shadow: 0 0 12px #333;
@@ -187,13 +187,13 @@
 .qtip-jtools .qtip-titlebar,  .qtip-jtools .qtip-content {
 	background: transparent;
 	color: white;
-	border: 0 dashed transparent;
+	bappointment: 0 dashed transparent;
 }
 .qtip-jtools .qtip-icon {
-	border-color: #555;
+	bappointment-color: #555;
 }
 .qtip-jtools .qtip-titlebar .ui-state-hover {
-	border-color: #333;
+	bappointment-color: #333;
 }
 /* Cluetip style */
 .qtip-cluetip {
@@ -202,18 +202,18 @@
 	box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
 	background-color: #D9D9C2;
 	color: #111;
-	border: 0 dashed transparent;
+	bappointment: 0 dashed transparent;
 }
 .qtip-cluetip .qtip-titlebar {
 	background-color: #87876A;
 	color: white;
-	border: 0 dashed transparent;
+	bappointment: 0 dashed transparent;
 }
 .qtip-cluetip .qtip-icon {
-	border-color: #808064;
+	bappointment-color: #808064;
 }
 .qtip-cluetip .qtip-titlebar .ui-state-hover {
-	border-color: #696952;
+	bappointment-color: #696952;
 	color: #696952;
 }
 /* Tipsy style */
@@ -221,7 +221,7 @@
 	background: black;
 	background: rgba(0, 0, 0, .87);
 	color: white;
-	border: 0 solid transparent;
+	bappointment: 0 solid transparent;
 	font-size: 11px;
 	font-family: 'Lucida Grande', sans-serif;
 	font-weight: bold;
@@ -236,25 +236,25 @@
 	padding: 6px 10px;
 }
 .qtip-tipsy .qtip-icon {
-	border-color: #222;
+	bappointment-color: #222;
 	text-shadow: none;
 }
 .qtip-tipsy .qtip-titlebar .ui-state-hover {
-	border-color: #303030;
+	bappointment-color: #303030;
 }
 /* Tipped style */
 .qtip-tipped {
-	border: 3px solid #959FA9;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
+	bappointment: 3px solid #959FA9;
+	-moz-bappointment-radius: 3px;
+	-webkit-bappointment-radius: 3px;
+	bappointment-radius: 3px;
 	background-color: #F9F9F9;
 	color: #454545;
 	font-weight: normal;
 	font-family: serif;
 }
 .qtip-tipped .qtip-titlebar {
-	border-bottom-width: 0;
+	bappointment-bottom-width: 0;
 	color: white;
 	background: #3A79B8;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#3A79B8), to(#2E629D));
@@ -266,7 +266,7 @@
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#3A79B8,endColorstr=#2E629D)";
 }
 .qtip-tipped .qtip-icon {
-	border: 2px solid #285589;
+	bappointment: 2px solid #285589;
 	background: #285589;
 }
 .qtip-tipped .qtip-icon .ui-icon {
@@ -287,11 +287,11 @@
 	/** Taken from Bootstrap .popover */
 	padding: 1px;
 	background-color: #ffffff;
-	border: 1px solid #ccc;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
+	bappointment: 1px solid #ccc;
+	bappointment: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-bappointment-radius: 6px;
+	-moz-bappointment-radius: 6px;
+	bappointment-radius: 6px;
 	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -307,10 +307,10 @@
 	font-weight: normal;
 	line-height: 18px;
 	background-color: #f7f7f7;
-	border-bottom: 1px solid #ebebeb;
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
+	bappointment-bottom: 1px solid #ebebeb;
+	-webkit-bappointment-radius: 5px 5px 0 0;
+	-moz-bappointment-radius: 5px 5px 0 0;
+	bappointment-radius: 5px 5px 0 0;
 }
 .qtip-bootstrap .qtip-titlebar .qtip-close {
 	/**
@@ -320,12 +320,12 @@
 			 *   right: 4px;
 			 *   top: 50%;
 			 *   [...]
-			 *   border-style: solid;
+			 *   bappointment-style: solid;
 			 * }
 			 */
 	right: 11px;
 	top: 45%;
-	border-style: none;
+	bappointment-style: none;
 }
 .qtip-bootstrap .qtip-content {
 	/** Taken from Bootstrap .popover-content */
@@ -335,7 +335,7 @@
 	/**
 		 * Overrides qTip2:
 		 * .qtip-default .qtip-icon {
-		 *   border-color: #CCC;
+		 *   bappointment-color: #CCC;
 		 *   background: #F1F1F1;
 		 *   color: #777;
 		 * }
@@ -390,7 +390,7 @@
 	position: absolute;
 	color: #123456;
 	background: transparent;
-	border: 0 dashed transparent;
+	bappointment: 0 dashed transparent;
 }
 .qtip .qtip-tip canvas {
 	top: 0;

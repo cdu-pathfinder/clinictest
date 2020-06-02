@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_pictureModel extends Model{
 
     public function __construct(){
@@ -22,8 +22,8 @@ class cms_pictureModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-	public function getList($condition, $page=null, $order='', $field='*', $limit=''){
-        $result = $this->table('cms_picture')->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
+	public function getList($condition, $page=null, $appointment='', $field='*', $limit=''){
+        $result = $this->table('cms_picture')->field($field)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         return $result;
 	}
 	
@@ -39,10 +39,10 @@ class cms_pictureModel extends Model{
     /**
      * 根据tag编号查询
      */
-    public function getListByTagID($condition, $page=null, $order='', $field='*', $limit=''){
+    public function getListByTagID($condition, $page=null, $appointment='', $field='*', $limit=''){
         $condition['relation_type'] = 2;
         $on = 'cms_picture.picture_id= cms_tag_relation.relation_object_id';
-        $result = $this->table('cms_picture,cms_tag_relation')->field($field)->join('left')->on($on)->where($condition)->page($page)->order($order)->limit($limit)->select();
+        $result = $this->table('cms_picture,cms_tag_relation')->field($field)->join('left')->on($on)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         $this->cls();
         return $result;
     }
@@ -52,8 +52,8 @@ class cms_pictureModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-    public function getOne($condition,$order=''){
-        $result = $this->table('cms_picture')->where($condition)->order($order)->find();
+    public function getOne($condition,$appointment=''){
+        $result = $this->table('cms_picture')->where($condition)->appointment($appointment)->find();
         return $result;
     }
 

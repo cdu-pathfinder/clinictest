@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,38 +18,38 @@
     <input type="hidden" name="old_c_logo" value="<?php echo $output['list_setting']['circle_logo'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="c_interval"><?php echo $lang['circle_setting_exp_release'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_exprelease" id="c_exprelease" class="txt" value="<?php echo $output['list_setting']['circle_exprelease'];?>"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_contentleast"><?php echo $lang['circle_setting_exp_reply'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_expreply" id="c_expreply" class="txt" value="<?php echo $output['list_setting']['circle_expreply'];?>" /></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_contentleast"><?php echo $lang['circle_setting_exp_release_max'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_expreleasemax" id="c_expreleasemax" class="txt" value="<?php echo $output['list_setting']['circle_expreleasemax'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_exp_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_contentleast"><?php echo $lang['circle_setting_exp_replied'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_expreplied" id="c_expreplied" class="txt" value="<?php echo $output['list_setting']['circle_expreplied'];?>" /></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_contentleast"><?php echo $lang['circle_setting_exp_replied_max'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_exprepliedmax" id="c_exprepliedmax" class="txt" value="<?php echo $output['list_setting']['circle_exprepliedmax'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_exp_tips'];?></td>
         </tr>

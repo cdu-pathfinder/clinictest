@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class manageControl extends BaseCircleManageControl{
 	public function __construct(){
@@ -117,7 +117,7 @@ class manageControl extends BaseCircleManageControl{
 			$where['member_name'] = array('like', '%'.$_GET['mname'].'%');
 		}
 		$cm_list = $model->table('circle_member')->where($where)
-					->order('is_identity asc,cm_jointime desc')->page(15)->select();
+					->appointment('is_identity asc,cm_jointime desc')->page(15)->select();
 		Tpl::output('show_page', $model->showpage('2'));
 		Tpl::output('cm_list', $cm_list);
 		
@@ -255,7 +255,7 @@ class manageControl extends BaseCircleManageControl{
 		// 会员加入圈子列表
 		$this->memberJoinCircle();
 		// 成员列表
-		$cm_list = Model()->table('circle_member')->where(array('circle_id'=>$this->c_id, 'cm_state'=>0))->order('is_identity asc,cm_jointime desc')->select();
+		$cm_list = Model()->table('circle_member')->where(array('circle_id'=>$this->c_id, 'cm_state'=>0))->appointment('is_identity asc,cm_jointime desc')->select();
 		Tpl::output('cm_list', $cm_list);
 		
 		$this->sidebar_menu('applying');
@@ -313,7 +313,7 @@ class manageControl extends BaseCircleManageControl{
 		$this->memberJoinCircle();
 		
 		$model = Model();
-		$thclass_list = $model->table('circle_thclass')->where(array('circle_id'=>$this->c_id))->order('thclass_sort asc')->select();
+		$thclass_list = $model->table('circle_thclass')->where(array('circle_id'=>$this->c_id))->appointment('thclass_sort asc')->select();
 		Tpl::output('thclass_list', $thclass_list);
 		
 		$this->sidebar_menu('class');
@@ -436,7 +436,7 @@ class manageControl extends BaseCircleManageControl{
 		// 会员加入圈子列表
 		$this->memberJoinCircle();
 		
-		$fs_list = Model()->table('circle_fs')->where(array('circle_id'=>$this->c_id))->order('friendship_sort asc')->select();
+		$fs_list = Model()->table('circle_fs')->where(array('circle_id'=>$this->c_id))->appointment('friendship_sort asc')->select();
 		Tpl::output('fs_list', $fs_list);
 		
 		$this->sidebar_menu('friendship');
@@ -643,27 +643,27 @@ class manageControl extends BaseCircleManageControl{
 			$update['theme_readperm']	= intval($_POST['readperm']);
 			$rs = $model->table('circle_theme')->update($update);
 			if($rs){
-				$has_goods = 0;	// 存在商品标记
+				$has_doctors = 0;	// 存在商品标记
 				$has_affix = 0;// 存在附件标记
 				// 删除原有商品
-				$goods_list = Model()->table('circle_thg')->where(array('theme_id'=>$t_id, 'reply_id'=>0))->delete();
+				$doctors_list = Model()->table('circle_thg')->where(array('theme_id'=>$t_id, 'reply_id'=>0))->delete();
 				// 插入话题商品
-				if(!empty($_POST['goods'])){
-					$goods_insert = array();
-					foreach ($_POST['goods'] as $key=>$val){
+				if(!empty($_POST['doctors'])){
+					$doctors_insert = array();
+					foreach ($_POST['doctors'] as $key=>$val){
 						$p = array();
 						$p['theme_id']		= $t_id;
 						$p['reply_id']		= 0;
 						$p['circle_id']		= $this->c_id;
-						$p['goods_id']		= $key;
-						$p['goods_name']	= $val['name'];
-						$p['goods_price']	= $val['price'];
-						$p['goods_image']	= $val['image'];
-						$p['store_id']		= $val['storeid'];
-						$goods_insert[]		= $p;
+						$p['doctors_id']		= $key;
+						$p['doctors_name']	= $val['name'];
+						$p['doctors_price']	= $val['price'];
+						$p['doctors_image']	= $val['image'];
+						$p['clic_id']		= $val['clicid'];
+						$doctors_insert[]		= $p;
 					}
-					$rs = $model->table('circle_thg')->insertAll($goods_insert);
-					$has_goods = 1;
+					$rs = $model->table('circle_thg')->insertAll($doctors_insert);
+					$has_doctors = 1;
 				}
 		
 				// 更新话题信息
@@ -671,10 +671,10 @@ class manageControl extends BaseCircleManageControl{
 				if($affixe_count > 0){
 					$has_affix = 1;
 				}
-				if($has_goods || $has_affix){
+				if($has_doctors || $has_affix){
 					$update = array();
 					$update['theme_id']		= $t_id;
-					$update['has_goods']	= $has_goods;
+					$update['has_doctors']	= $has_doctors;
 					$update['has_affix']	= $has_affix;
 					$model->table('circle_theme')->update($update);
 				}
@@ -737,9 +737,9 @@ class manageControl extends BaseCircleManageControl{
 		
 		
 		// 话题商品
-		$goods_list = $model->table('circle_thg')->where(array('theme_id'=>$t_id, 'reply_id'=>0))->select();
-		$goods_list = tidyThemeGoods($goods_list, 'themegoods_id');
-		Tpl::output('goods_list', $goods_list);
+		$doctors_list = $model->table('circle_thg')->where(array('theme_id'=>$t_id, 'reply_id'=>0))->select();
+		$doctors_list = tidyThemedoctors($doctors_list, 'themedoctors_id');
+		Tpl::output('doctors_list', $doctors_list);
 		
 		// 话题附件
 		$affix_list = $model->table('circle_affix')->where(array('affix_type'=>1, 'theme_id'=>$t_id))->select();
@@ -763,7 +763,7 @@ class manageControl extends BaseCircleManageControl{
 		if($this->theme_info['theme_special'] == 1){
 			$poll_info = $model->table('circle_thpoll')->find($t_id);
 			Tpl::output('poll_info', $poll_info);
-			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$t_id))->order('pollop_sort asc')->select();
+			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$t_id))->appointment('pollop_sort asc')->select();
 			Tpl::output('option_list', $option_list);
 			
 			Tpl::showpage('group_manage_edit_themepoll');

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
     <input type="hidden" name="act" value="admin_log">
     <input type="hidden" name="op" value="list">
     <input type="hidden" name="delago" id="delago" value="">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><?php echo $lang['admin_log_man'];?></th>

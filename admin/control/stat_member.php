@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class stat_memberControl extends SystemControl{
     private $links = array(
@@ -294,52 +294,52 @@ class stat_memberControl extends SystemControl{
 		$where = array();
 		$where['statm_time'] = array('between',$searchtime_arr);
 		//下单量
-		$where['statm_ordernum'] = array('gt',0);
-		$field = ' statm_memberid, statm_membername, sum(statm_ordernum) as ordernum ';
-		$ordernum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'ordernum desc,statm_memberid desc', 'statm_memberid');
-		$stat_ordernum_arr = $stat_arr;
-		$stat_ordernum_arr['series'][0]['name'] = 'appointments';
-		$stat_ordernum_arr['series'][0]['data'] = array();
+		$where['statm_appointmentnum'] = array('gt',0);
+		$field = ' statm_memberid, statm_membername, sum(statm_appointmentnum) as appointmentnum ';
+		$appointmentnum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'appointmentnum desc,statm_memberid desc', 'statm_memberid');
+		$stat_appointmentnum_arr = $stat_arr;
+		$stat_appointmentnum_arr['series'][0]['name'] = 'appointments';
+		$stat_appointmentnum_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
-		    $stat_ordernum_arr['series'][0]['data'][] = array('name'=>strval($ordernum_listtop15[$i]['statm_membername']),'y'=>intval($ordernum_listtop15[$i]['ordernum']));
+		    $stat_appointmentnum_arr['series'][0]['data'][] = array('name'=>strval($appointmentnum_listtop15[$i]['statm_membername']),'y'=>intval($appointmentnum_listtop15[$i]['appointmentnum']));
 		}
-        $stat_ordernum_arr['yAxis'] = 'appointments';
-		$statordernum_json = getStatData_Column2D($stat_ordernum_arr);
-		unset($stat_ordernum_arr);
-		Tpl::output('statordernum_json',$statordernum_json);
-		Tpl::output('ordernum_listtop15',$ordernum_listtop15);
+        $stat_appointmentnum_arr['yAxis'] = 'appointments';
+		$statappointmentnum_json = getStatData_Column2D($stat_appointmentnum_arr);
+		unset($stat_appointmentnum_arr);
+		Tpl::output('statappointmentnum_json',$statappointmentnum_json);
+		Tpl::output('appointmentnum_listtop15',$appointmentnum_listtop15);
 		
 		//下单商品件数
-		$where['statm_goodsnum'] = array('gt',0);
-		$field = ' statm_memberid, statm_membername, sum(statm_goodsnum) as goodsnum ';
-		$goodsnum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'goodsnum desc,statm_memberid desc', 'statm_memberid');
-		$stat_goodsnum_arr = $stat_arr;
-		$stat_goodsnum_arr['series'][0]['name'] = 'doctors booked';
-		$stat_goodsnum_arr['series'][0]['data'] = array();
+		$where['statm_doctorsnum'] = array('gt',0);
+		$field = ' statm_memberid, statm_membername, sum(statm_doctorsnum) as doctorsnum ';
+		$doctorsnum_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'doctorsnum desc,statm_memberid desc', 'statm_memberid');
+		$stat_doctorsnum_arr = $stat_arr;
+		$stat_doctorsnum_arr['series'][0]['name'] = 'doctors booked';
+		$stat_doctorsnum_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
-		    $stat_goodsnum_arr['series'][0]['data'][] = array('name'=>strval($goodsnum_listtop15[$i]['statm_membername']),'y'=>intval($goodsnum_listtop15[$i]['goodsnum']));
+		    $stat_doctorsnum_arr['series'][0]['data'][] = array('name'=>strval($doctorsnum_listtop15[$i]['statm_membername']),'y'=>intval($doctorsnum_listtop15[$i]['doctorsnum']));
 		}
-        $stat_goodsnum_arr['yAxis'] = 'doctors booked';
-		$statgoodsnum_json = getStatData_Column2D($stat_goodsnum_arr);
-		unset($stat_goodsnum_arr);
-		Tpl::output('statgoodsnum_json',$statgoodsnum_json);
-		Tpl::output('goodsnum_listtop15',$goodsnum_listtop15);
+        $stat_doctorsnum_arr['yAxis'] = 'doctors booked';
+		$statdoctorsnum_json = getStatData_Column2D($stat_doctorsnum_arr);
+		unset($stat_doctorsnum_arr);
+		Tpl::output('statdoctorsnum_json',$statdoctorsnum_json);
+		Tpl::output('doctorsnum_listtop15',$doctorsnum_listtop15);
 		
 		//下单金额
-		$where['statm_orderamount'] = array('gt',0);
-		$field = ' statm_memberid, statm_membername, sum(statm_orderamount) as orderamount ';
-		$orderamount_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'orderamount desc,statm_memberid desc', 'statm_memberid');
-		$stat_orderamount_arr = $stat_arr;
-		$stat_orderamount_arr['series'][0]['name'] = 'booked price';
-		$stat_orderamount_arr['series'][0]['data'] = array();
+		$where['statm_appointmentamount'] = array('gt',0);
+		$field = ' statm_memberid, statm_membername, sum(statm_appointmentamount) as appointmentamount ';
+		$appointmentamount_listtop15 = $model->statByStatmember($where, $field, 0, 15, 'appointmentamount desc,statm_memberid desc', 'statm_memberid');
+		$stat_appointmentamount_arr = $stat_arr;
+		$stat_appointmentamount_arr['series'][0]['name'] = 'booked price';
+		$stat_appointmentamount_arr['series'][0]['data'] = array();
 		for ($i = 0; $i < 15; $i++){
-		    $stat_orderamount_arr['series'][0]['data'][] = array('name'=>strval($orderamount_listtop15[$i]['statm_membername']),'y'=>floatval($orderamount_listtop15[$i]['orderamount']));
+		    $stat_appointmentamount_arr['series'][0]['data'][] = array('name'=>strval($appointmentamount_listtop15[$i]['statm_membername']),'y'=>floatval($appointmentamount_listtop15[$i]['appointmentamount']));
 		}
-        $stat_orderamount_arr['yAxis'] = 'booked price';
-		$statorderamount_json = getStatData_Column2D($stat_orderamount_arr);
-		unset($stat_orderamount_arr);
-		Tpl::output('statorderamount_json',$statorderamount_json);
-		Tpl::output('orderamount_listtop15',$orderamount_listtop15);
+        $stat_appointmentamount_arr['yAxis'] = 'booked price';
+		$statappointmentamount_json = getStatData_Column2D($stat_appointmentamount_arr);
+		unset($stat_appointmentamount_arr);
+		Tpl::output('statappointmentamount_json',$statappointmentamount_json);
+		Tpl::output('appointmentamount_listtop15',$appointmentamount_listtop15);
 		Tpl::output('searchtime',implode('|',$searchtime_arr));
     	Tpl::output('top_link',$this->sublink($this->links, 'analyze'));
     	Tpl::showpage('stat.memberanalyze');
@@ -357,20 +357,20 @@ class stat_memberControl extends SystemControl{
 		//查询统计数据
 		$field = ' statm_memberid, statm_membername ';
 		switch ($_GET['type']){
-		   case 'orderamount':
-		       $where['statm_orderamount'] = array('gt',0);
-		       $field .= ' ,sum(statm_orderamount) as orderamount ';
+		   case 'appointmentamount':
+		       $where['statm_appointmentamount'] = array('gt',0);
+		       $field .= ' ,sum(statm_appointmentamount) as appointmentamount ';
 		       $caption = 'booked price';
 		       break;
-		   case 'goodsnum':
-		       $where['statm_goodsnum'] = array('gt',0);
-		       $field .= ' ,sum(statm_goodsnum) as goodsnum ';
+		   case 'doctorsnum':
+		       $where['statm_doctorsnum'] = array('gt',0);
+		       $field .= ' ,sum(statm_doctorsnum) as doctorsnum ';
 		       $caption = 'doctors';
 		       break;
 		   default:
-		       $_GET['type'] = 'ordernum';
-		       $where['statm_ordernum'] = array('gt',0);
-		       $field .= ' ,sum(statm_ordernum) as ordernum ';
+		       $_GET['type'] = 'appointmentnum';
+		       $where['statm_appointmentnum'] = array('gt',0);
+		       $field .= ' ,sum(statm_appointmentnum) as appointmentnum ';
 		       $caption = 'doctors booked';
 		       break;
 		}
@@ -456,7 +456,7 @@ class stat_memberControl extends SystemControl{
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_login_time'));
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_last_login'));
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_points'));
-		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_prestore'));
+		    $excel_data[0][] = array('styleid'=>'s_title','data'=>L('member_index_preclic'));
 			//data
 			foreach ($member_list as $k=>$v){
 				$excel_data[$k+1][] = array('data'=>$v['member_name'].'('.L('member_index_true_name,nc_colon').$v['member_truename'].')');
@@ -496,20 +496,20 @@ class stat_memberControl extends SystemControl{
 		if (trim($this->search_arr['membername'])){
 		    $where['statm_membername'] = array('like',"%".trim($this->search_arr['membername'])."%");
 		}
-		$field = ' statm_memberid, statm_membername, statm_time, sum(statm_orderamount) as orderamount, sum(statm_predincrease) as predincrease, -sum(statm_predreduce) as predreduce, sum(statm_pointsincrease) as pointsincrease, -sum(statm_pointsreduce) as pointsreduce ';		
-		if (trim($this->search_arr['orderby'])){
-		    $orderby = trim($this->search_arr['orderby']);
+		$field = ' statm_memberid, statm_membername, statm_time, sum(statm_appointmentamount) as appointmentamount, sum(statm_predincrease) as predincrease, -sum(statm_predreduce) as predreduce, sum(statm_pointsincrease) as pointsincrease, -sum(statm_pointsreduce) as pointsreduce ';		
+		if (trim($this->search_arr['appointmentby'])){
+		    $appointmentby = trim($this->search_arr['appointmentby']);
 		} else {
-		    $orderby = 'orderamount desc';
+		    $appointmentby = 'appointmentamount desc';
 		}
-		$orderby .= ',statm_memberid desc';
+		$appointmentby .= ',statm_memberid desc';
 	    //查询记录总条数
 		$count_arr = $model->statByStatmember($where, 'count(DISTINCT statm_memberid) as countnum');
 		$countnum = intval($count_arr[0]['countnum']);
 		if ($_GET['exporttype'] == 'excel'){
-		    $statlist = $model->statByStatmember($where, $field, 0, 0, $orderby, 'statm_memberid');
+		    $statlist = $model->statByStatmember($where, $field, 0, 0, $appointmentby, 'statm_memberid');
 		} else {
-		    $statlist = $model->statByStatmember($where, $field, array(10,$countnum), 0, $orderby, 'statm_memberid');
+		    $statlist = $model->statByStatmember($where, $field, array(10,$countnum), 0, $appointmentby, 'statm_memberid');
 		}
 	    //导出Excel
         if ($this->search_arr['exporttype'] == 'excel'){
@@ -529,7 +529,7 @@ class stat_memberControl extends SystemControl{
 			//data
 			foreach ($statlist as $k=>$v){
 				$excel_data[$k+1][] = array('data'=>$v['statm_membername']);
-				$excel_data[$k+1][] = array('data'=>$v['orderamount']);
+				$excel_data[$k+1][] = array('data'=>$v['appointmentamount']);
 				$excel_data[$k+1][] = array('data'=>$v['predincrease']);
 				$excel_data[$k+1][] = array('data'=>$v['predreduce']);
 				$excel_data[$k+1][] = array('data'=>$v['pointsincrease']);
@@ -569,39 +569,39 @@ class stat_memberControl extends SystemControl{
 		$where = array();
 		$searchtime_arr = explode('|',$this->search_arr['t']);
 		$where['add_time'] = array('between',$searchtime_arr);
-		//$where['order_state'] = array(array('neq',ORDER_STATE_CANCEL),array('neq',ORDER_STATE_NEW),'and');
-		$where['order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$where['payment_code'] = array('exp',"!(order.payment_code='offline' and order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		//$where['appointment_state'] = array(array('neq',appointment_STATE_CANCEL),array('neq',appointment_STATE_NEW),'and');
+		$where['appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$where['payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
 		
-		$field = ' order_common.reciver_province_id, count(*) as ordernum,sum(order.order_amount) as orderamount, count(DISTINCT order.buyer_id) as membernum ';
-	    if (!trim($this->search_arr['orderby'])){
-		    $this->search_arr['orderby'] = 'membernum desc';
+		$field = ' appointment_common.reciver_province_id, count(*) as appointmentnum,sum(appointment.appointment_amount) as appointmentamount, count(DISTINCT appointment.buyer_id) as membernum ';
+	    if (!trim($this->search_arr['appointmentby'])){
+		    $this->search_arr['appointmentby'] = 'membernum desc';
 		}
-		$orderby = trim($this->search_arr['orderby']).',order_common.reciver_province_id';
+		$appointmentby = trim($this->search_arr['appointmentby']).',appointment_common.reciver_province_id';
 		
-		$count_arr = $model->statByOrderCommon($where, 'count(DISTINCT order_common.reciver_province_id) as countnum');
+		$count_arr = $model->statByappointmentCommon($where, 'count(DISTINCT appointment_common.reciver_province_id) as countnum');
 		$countnum = intval($count_arr[0]['countnum']);
 		if ($this->search_arr['exporttype'] == 'excel'){
-		    $statlist_tmp = $model->statByOrderCommon($where, $field, 0, 0, $orderby, 'order_common.reciver_province_id');
+		    $statlist_tmp = $model->statByappointmentCommon($where, $field, 0, 0, $appointmentby, 'appointment_common.reciver_province_id');
 		} else {
-		    $statlist_tmp = $model->statByOrderCommon($where, $field, array(10,$countnum), 0, $orderby, 'order_common.reciver_province_id');
+		    $statlist_tmp = $model->statByappointmentCommon($where, $field, array(10,$countnum), 0, $appointmentby, 'appointment_common.reciver_province_id');
 		}
 		// 地区
         require_once(BASE_DATA_PATH.'/area/area.php');
         $statheader = array();
         $statheader[] = array('text'=>'state','key'=>'provincename');
-        $statheader[] = array('text'=>'memeber num','key'=>'membernum','isorder'=>1);
-        $statheader[] = array('text'=>'price booked','key'=>'orderamount','isorder'=>1);
-        $statheader[] = array('text'=>'num booked','key'=>'ordernum','isorder'=>1);
+        $statheader[] = array('text'=>'memeber num','key'=>'membernum','isappointment'=>1);
+        $statheader[] = array('text'=>'price booked','key'=>'appointmentamount','isappointment'=>1);
+        $statheader[] = array('text'=>'num booked','key'=>'appointmentnum','isappointment'=>1);
         $statlist = array();
 		foreach ((array)$statlist_tmp as $k=>$v){
 		    $province_id = intval($v['reciver_province_id']);
 		    $tmp = array();
 		    $tmp['provincename'] = ($t = $area_array[$province_id]['area_name']) ? $t : '其他';
 		    $tmp['membernum'] = $v['membernum'];
-		    $tmp['orderamount'] = $v['orderamount'];
-		    $tmp['ordernum'] = $v['ordernum'];
+		    $tmp['appointmentamount'] = $v['appointmentamount'];
+		    $tmp['appointmentnum'] = $v['appointmentnum'];
 		    $statlist[] = $tmp;
 		}
 	    //导出Excel
@@ -630,11 +630,11 @@ class stat_memberControl extends SystemControl{
         }
 		Tpl::output('statlist',$statlist);
 		Tpl::output('statheader',$statheader);
-		Tpl::output('orderby',$this->search_arr['orderby']);
+		Tpl::output('appointmentby',$this->search_arr['appointmentby']);
 		Tpl::output('actionurl',"index.php?act={$this->search_arr['act']}&op={$this->search_arr['op']}&t={$this->search_arr['t']}");
 		Tpl::output('show_page',$model->showpage(2));
 		Tpl::output('top_link',$this->sublink($this->links, 'area'));
-		Tpl::showpage('stat.listandorder','null_layout');
+		Tpl::showpage('stat.listandappointment','null_layout');
 	}
 	/**
 	 * 区域分析之地图数据
@@ -644,30 +644,30 @@ class stat_memberControl extends SystemControl{
 		$where = array();
 		$searchtime_arr = explode('|',$_GET['t']);
 		$where['add_time'] = array('between',$searchtime_arr);
-		//$where['order_state'] = array(array('neq',ORDER_STATE_CANCEL),array('neq',ORDER_STATE_NEW),'and');
-		$where['order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$where['payment_code'] = array('exp',"!(order.payment_code='offline' and order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		//$where['appointment_state'] = array(array('neq',appointment_STATE_CANCEL),array('neq',appointment_STATE_NEW),'and');
+		$where['appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$where['payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
 		$memberlist = array();
 		//查询统计数据
-		$field = ' order_common.reciver_province_id ';
+		$field = ' appointment_common.reciver_province_id ';
 		switch ($_GET['type']){
-		   case 'orderamount':
-		       $field .= ' ,count(*) as ordernum,sum(order.order_amount) as orderamount ';
-		       $orderby = 'orderamount desc';
+		   case 'appointmentamount':
+		       $field .= ' ,count(*) as appointmentnum,sum(appointment.appointment_amount) as appointmentamount ';
+		       $appointmentby = 'appointmentamount desc';
 		       break;
-		   case 'ordernum':
-		       $field .= ' ,count(*) as ordernum ';
-		       $orderby = 'ordernum desc';
+		   case 'appointmentnum':
+		       $field .= ' ,count(*) as appointmentnum ';
+		       $appointmentby = 'appointmentnum desc';
 		       break;
 		   default:
 		       $_GET['type'] = 'membernum';
-		       $field .= ' ,count(DISTINCT order.buyer_id) as membernum ';
-		       $orderby = 'membernum desc';
+		       $field .= ' ,count(DISTINCT appointment.buyer_id) as membernum ';
+		       $appointmentby = 'membernum desc';
 		       break;
 		}
-		$orderby .= ',order_common.reciver_province_id';
-		$statlist_tmp = $model->statByOrderCommon($where, $field, 10, 0, $orderby, 'order_common.reciver_province_id');
+		$appointmentby .= ',appointment_common.reciver_province_id';
+		$statlist_tmp = $model->statByappointmentCommon($where, $field, 10, 0, $appointmentby, 'appointment_common.reciver_province_id');
 		// 地区
         require_once(BASE_DATA_PATH.'/area/area.php');
         //地图显示等级数组
@@ -687,11 +687,11 @@ class stat_memberControl extends SystemControl{
 		foreach ((array)$area_array as $k=>$v){
 		    if ($statlist[$k]){
     		    switch ($_GET['type']){
-        		   case 'orderamount':
-        		       $des = "，orderamount：{$statlist[$k]['orderamount']}";
+        		   case 'appointmentamount':
+        		       $des = "，appointmentamount：{$statlist[$k]['appointmentamount']}";
         		       break;
-        		   case 'ordernum':
-        		       $des = "，ordernum：{$statlist[$k]['ordernum']}";
+        		   case 'appointmentnum':
+        		       $des = "，appointmentnum：{$statlist[$k]['appointmentnum']}";
         		       break;
         		   default:
         		       $des = "，membernum：{$statlist[$k]['membernum']}";
@@ -699,7 +699,7 @@ class stat_memberControl extends SystemControl{
         		}
 		        $stat_arr[] = array('cha'=>$k,'name'=>$v['area_name'],'des'=>$des,'level'=>$statlist[$k]['level']);
 		    } else {
-		        $des = "，No order data";
+		        $des = "，No appointment data";
 		        $stat_arr[] = array('cha'=>$k,'name'=>$v['area_name'],'des'=>$des,'level'=>4);
 		    }
 		}

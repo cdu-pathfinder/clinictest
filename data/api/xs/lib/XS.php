@@ -317,7 +317,7 @@ class XS extends XSComponent
 			$this->_search->markResetScheme();
 		}
 	}
-	public function restoreScheme()
+	public function reclicScheme()
 	{
 		if ($this->_scheme !== $this->_bindScheme) {
 			$this->_scheme = $this->_bindScheme;
@@ -491,7 +491,7 @@ class XS extends XSComponent
 			$cache_key = md5(__CLASS__ . '::ini::' . realpath($file));
 			if (function_exists('apc_fetch')) {
 				$cache = apc_fetch($cache_key);
-				$cache_write = 'apc_store';
+				$cache_write = 'apc_clic';
 			} elseif (function_exists('xcache_get') && php_sapi_name() !== 'cli') {
 				$cache = xcache_get($cache_key);
 				$cache_write = 'xcache_set';
@@ -1511,7 +1511,7 @@ class XSSearch extends XSServer
 		$this->execCommand($cmd);
 		return $this;
 	}
-	public function setDocOrder($asc = false)
+	public function setDocappointment($asc = false)
 	{
 		$type = CMD_SORT_TYPE_DOCID | ($asc ? CMD_SORT_FLAG_ASCENDING : 0);
 		$cmd = new XSCommand(CMD_SEARCH_SET_SORT, $type);
@@ -1733,13 +1733,13 @@ class XSSearch extends XSServer
 				$body = $doc->body;
 				$ret[$body] = $doc->f($type);
 			}
-			$this->restoreDb();
+			$this->reclicDb();
 		} catch (XSException $e) {
 			if ($e->getCode() != CMD_ERR_XAPIAN) {
 				throw $e;
 			}
 		}
-		$this->xs->restoreScheme();
+		$this->xs->reclicScheme();
 		return $ret;
 	}
 	public function getRelatedQuery($query = null, $limit = 6)
@@ -1772,8 +1772,8 @@ class XSSearch extends XSServer
 				throw $e;
 			}
 		}
-		$this->restoreDb();
-		$this->xs->restoreScheme();
+		$this->reclicDb();
+		$this->xs->reclicScheme();
 		$this->_defaultOp = $op;
 		return $ret;
 	}
@@ -1923,7 +1923,7 @@ class XSSearch extends XSServer
 		$this->execCommand($cmd);
 		return $this;
 	}
-	private function restoreDb()
+	private function reclicDb()
 	{
 		$db = $this->_lastDb;
 		$dbs = $this->_lastDbs;

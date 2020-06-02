@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function() {
     var personal_count = Math.ceil($("#indexPersonal li").length / 4);
@@ -35,7 +35,7 @@ $(document).ready(function() {
     };
 
     //店铺
-    $("[nc_type='index_store']").each(function() {
+    $("[nc_type='index_clic']").each(function() {
         var overall = $(this).find("li.overall");
         var simple = $(this).find("li.simple");
         overall.hide();

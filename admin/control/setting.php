@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class settingControl extends SystemControl{
 	private $links = array(
 		array('url'=>'act=setting&op=base','lang'=>'web_set'),
@@ -48,12 +48,12 @@ class settingControl extends SystemControl{
 					showMessage($upload->error,'','','error');
 				}
 			}
-			if (!empty($_FILES['seller_center_logo']['name'])){
+			if (!empty($_FILES['clinicer_center_logo']['name'])){
 				$upload = new UploadFile();
 				$upload->set('default_dir',ATTACH_COMMON);
-				$result = $upload->upfile('seller_center_logo');
+				$result = $upload->upfile('clinicer_center_logo');
 				if ($result){
-					$_POST['seller_center_logo'] = $upload->file_name;
+					$_POST['clinicer_center_logo'] = $upload->file_name;
 				}else {
 					showMessage($upload->error,'','','error');
 				}
@@ -72,8 +72,8 @@ class settingControl extends SystemControl{
 			if (!empty($_POST['member_logo'])){
 				$update_array['member_logo'] = $_POST['member_logo'];
 			}
-			if (!empty($_POST['seller_center_logo'])){
-				$update_array['seller_center_logo'] = $_POST['seller_center_logo'];
+			if (!empty($_POST['clinicer_center_logo'])){
+				$update_array['clinicer_center_logo'] = $_POST['clinicer_center_logo'];
 			}
 			$update_array['icp_number'] = $_POST['icp_number'];
 			$update_array['site_status'] = $_POST['site_status'];
@@ -87,8 +87,8 @@ class settingControl extends SystemControl{
 			    if (!empty($list_setting['member_logo']) && !empty($_POST['member_logo'])){
 			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['member_logo']);
 			    }
-			    if (!empty($list_setting['seller_center_logo']) && !empty($_POST['seller_center_logo'])){
-			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['seller_center_logo']);
+			    if (!empty($list_setting['clinicer_center_logo']) && !empty($_POST['clinicer_center_logo'])){
+			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['clinicer_center_logo']);
 			    }
 				$this->log(L('nc_edit,web_set'),1);
 				showMessage(L('nc_common_save_succ'));
@@ -121,7 +121,7 @@ class settingControl extends SystemControl{
 			$update_array['guest_comment'] = $_POST['guest_comment'];				
 			$update_array['captcha_status_login'] = $_POST['captcha_status_login'];
 			$update_array['captcha_status_register'] = $_POST['captcha_status_register'];
-			$update_array['captcha_status_goodsqa'] = $_POST['captcha_status_goodsqa'];
+			$update_array['captcha_status_doctorsqa'] = $_POST['captcha_status_doctorsqa'];
 			$result = $model_setting->updateSetting($update_array);
 			if ($result === true){
 				$this->log(L('nc_edit,dis_dump'),1);
@@ -166,14 +166,14 @@ class settingControl extends SystemControl{
 		Tpl::output('list_setting',$list_setting);
 		Tpl::output('seo',$seo);
 
-		$category = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$category = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('category',$category);
 
 		Tpl::showpage('setting.seo_setting');
 	}
 
 	public function ajax_categoryOp(){
-		$model = Model('goods_class');
+		$model = Model('doctors_class');
 		$list = $model->field('gc_title,gc_keywords,gc_description')->find(intval($_GET['id']));
 		//转码
 		if (strtoupper(CHARSET) == 'GBK'){
@@ -215,8 +215,8 @@ class settingControl extends SystemControl{
 			$input['gc_title'] = $_POST['cate_title'];
 			$input['gc_keywords'] = $_POST['cate_keywords'];
 			$input['gc_description'] = $_POST['cate_description'];
-			if (Model('goods_class')->goodsClassUpdate($input)){
-				H('goods_class_seo',true);
+			if (Model('doctors_class')->doctorsClassUpdate($input)){
+				H('doctors_class_seo',true);
 				showMessage(L('nc_common_save_succ'));
 			}
 		}

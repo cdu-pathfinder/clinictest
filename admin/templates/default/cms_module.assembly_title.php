@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!-- 标题 -->
 <div class="cms-module-title">
     <h2 id="cms_module_title" nctype="object_module_edit"><?php echo "<?php echo \$module_content['cms_module_title'];?>";?></h2>

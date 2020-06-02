@@ -13,7 +13,7 @@
 .progressContainer {
     margin: 5px;
     padding: 1px;
-    border: solid 1px #E8E8E8;
+    bappointment: solid 1px #E8E8E8;
     background-color: #F7F7F7;
     overflow: hidden;
 }
@@ -21,25 +21,25 @@
 .message {
     margin: 1em 0;
     padding: 10px 20px;
-    border: solid 1px #FFDD99;
+    bappointment: solid 1px #FFDD99;
     background-color: #FFFFCC;
     overflow: hidden;
 }
 /* Error */
 .swfupload_red {
-    border: solid 1px #B50000;
+    bappointment: solid 1px #B50000;
     background-color: #FFEBEB;
 }
 
 /* Current */
 .swfupload_green {
-    border: solid 1px #DDF0DD;
+    bappointment: solid 1px #DDF0DD;
     background-color: #EBFFEB;
 }
 
 /* Complete */
 .swfupload_blue {
-    border: solid 1px #CEE2F2;
+    bappointment: solid 1px #CEE2F2;
     background-color: #F0F5FF;
 }
 

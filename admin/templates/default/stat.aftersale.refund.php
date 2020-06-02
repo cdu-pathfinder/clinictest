@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,7 +12,7 @@
     <input type="hidden" name="act" value="stat_aftersale" />
     <input type="hidden" name="op" value="refund" />
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
               <td>

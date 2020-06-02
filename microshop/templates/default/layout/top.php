@@ -6,19 +6,19 @@
 <title><?php echo $output['html_title'];?></title>
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
 <meta name="description" content="<?php echo $output['seo_description']; ?>" />
-<meta name="author" content="ShopNC">
-<meta name="copyright" content="ShopNC Inc. All Rights Reserved">
-<link href="<?php echo MICROSHOP_TEMPLATES_URL;?>/css/base.css" rel="stylesheet" type="text/css">
-<link href="<?php echo MICROSHOP_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
-<!--[if IE 6]><style type="text/css">body { _behavior: url(<?php echo MICROSHOP_TEMPLATES_URL;?>/css/csshover.htc);}</style><![endif]-->
+<meta name="author" content="clinicNC">
+<meta name="copyright" content="clinicNC Inc. All Rights Reserved">
+<link href="<?php echo MICROclinic_TEMPLATES_URL;?>/css/base.css" rel="stylesheet" type="text/css">
+<link href="<?php echo MICROclinic_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]><style type="text/css">body { _behavior: url(<?php echo MICROclinic_TEMPLATES_URL;?>/css/csshover.htc);}</style><![endif]-->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="<?php echo RESOURCE_SITE_URL;?>/js/html5shiv.js"></script>
       <script src="<?php echo RESOURCE_SITE_URL;?>/js/respond.min.js"></script>
 <![endif]-->
 <!--[if IE 6]>
-<script src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/IE6_MAXMIX.js"></script>
-<script src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/IE6_PNG.js"></script>
+<script src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/IE6_MAXMIX.js"></script>
+<script src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/IE6_PNG.js"></script>
 <script>
 DD_belatedPNG.fix('.pngFix');
 </script>
@@ -35,16 +35,16 @@ catch(e){}
 <script>
 COOKIE_PRE = '<?php echo COOKIE_PRE;?>';
 _CHARSET = '<?php echo strtolower(CHARSET);?>';
-SITEURL = '<?php echo SHOP_SITE_URL;?>';
-SHOP_SITE_URL = '<?php echo SHOP_SITE_URL;?>';
+SITEURL = '<?php echo clinic_SITE_URL;?>';
+clinic_SITE_URL = '<?php echo clinic_SITE_URL;?>';
 var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
 </script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery-ui/jquery.ui.js"></script>
 <script id="dialog_js" type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/dialog/dialog.js" charset="utf-8"></script>
-<script type="text/javascript" src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/jquery.masonry.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/jquery.masonry.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".ms-box").mouseenter(function(){
@@ -116,15 +116,15 @@ var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
             //替换关键字
             html = html.replace(/@apikey/g,data_str.apikey);
             html = html.replace(/@apiname/g,data_str.apiname);
-            html_form("bindtooltip", "<?php echo $lang['microshop_share_account_link'];?>", html, 360, 0);	    
-            window.open('<?php echo SHOP_SITE_URL.DS;?>api.php?act=sharebind&type='+data_str.apikey);
+            html_form("bindtooltip", "<?php echo $lang['microclinic_share_account_link'];?>", html, 360, 0);	    
+            window.open('<?php echo clinic_SITE_URL.DS;?>api.php?act=sharebind&type='+data_str.apikey);
             }
     });
     $("#finishbtn").live('click',function(){
             var data_str = $(this).attr('data-param');
             eval( "data_str = "+data_str);
             //验证是否绑定成功
-            var url = '<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_sharemanage&op=checkbind&callback=?';
+            var url = '<?php echo clinic_SITE_URL.DS;?>index.php?act=member_sharemanage&op=checkbind&callback=?';
             $.getJSON(url, {'k':data_str.apikey}, function(data){
                 DialogManager.close('bindtooltip');
                 if (data.done)
@@ -151,28 +151,28 @@ var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
   <div class="topbar warp-all">
     <div class="user-entry">
       <?php if($_SESSION['is_login'] == '1'){?>
-      <?php echo $lang['nc_hello'];?><span><a href="<?php echo urlShop('member_snsindex');?>"><?php echo str_cut($_SESSION['member_name'],20);?></a></span><?php echo $lang['nc_comma'],$lang['welcome_to_site'];?> <a href="<?php echo SHOP_SITE_URL;?>"  title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><span><?php echo $GLOBALS['setting_config']['site_name']; ?></span></a> <span>[<a href="<?php echo urlShop('login','logout');?>"><?php echo $lang['nc_logout'];?></a>]</span>
+      <?php echo $lang['nc_hello'];?><span><a href="<?php echo urlclinic('member_snsindex');?>"><?php echo str_cut($_SESSION['member_name'],20);?></a></span><?php echo $lang['nc_comma'],$lang['welcome_to_site'];?> <a href="<?php echo clinic_SITE_URL;?>"  title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><span><?php echo $GLOBALS['setting_config']['site_name']; ?></span></a> <span>[<a href="<?php echo urlclinic('login','logout');?>"><?php echo $lang['nc_logout'];?></a>]</span>
       <?php }else{?>
-      <?php echo $lang['nc_hello'].$lang['nc_comma'].$lang['welcome_to_site'];?> <a href="<?php echo SHOP_SITE_URL;?>" title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><?php echo $GLOBALS['setting_config']['site_name']; ?></a> <span>[<a href="<?php echo urlShop('login');?>"><?php echo $lang['nc_login'];?></a>]</span> <span>[<a href="<?php echo urlShop('login','register');?>"><?php echo $lang['nc_register'];?></a>]</span>
+      <?php echo $lang['nc_hello'].$lang['nc_comma'].$lang['welcome_to_site'];?> <a href="<?php echo clinic_SITE_URL;?>" title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><?php echo $GLOBALS['setting_config']['site_name']; ?></a> <span>[<a href="<?php echo urlclinic('login');?>"><?php echo $lang['nc_login'];?></a>]</span> <span>[<a href="<?php echo urlclinic('login','register');?>"><?php echo $lang['nc_register'];?></a>]</span>
       <?php }?>
-      <span class="seller-login"><a href="<?php echo urlShop('seller_login','show_login');?>" target="_blank" title="登录商家管理中心"><i class="icon-signin"></i>商家管理中心</a></span></div>
+      <span class="seller-login"><a href="<?php echo urlclinic('seller_login','show_login');?>" target="_blank" title="登录商家管理中心"><i class="icon-signin"></i>商家管理中心</a></span></div>
     <div class="quick-menu">
       <dl>
-        <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order">我的订单</a><i></i></dt>
+        <dt><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment">我的订单</a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_new">待付款订单</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_send">待确认收货</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_noeval">待评价交易</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_new">待付款订单</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_send">待确认收货</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_noeval">待评价交易</a></li>
           </ul>
         </dd>
       </dl>
       <dl>
-        <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_favorites'];?></a><i></i></dt>
+        <dt><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_favorites'];?></a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist">商品收藏</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fslist">店铺收藏</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fglist">商品收藏</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fslist">店铺收藏</a></li>
           </ul>
         </dd>
       </dl>
@@ -180,9 +180,9 @@ var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
         <dt>客户服务<i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=2">帮助中心</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=5">售后服务</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=6">客服中心</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=2">帮助中心</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=5">售后服务</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=6">客服中心</a></li>
           </ul>
         </dd>
       </dl>
@@ -209,9 +209,9 @@ var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
         echo ' href="'; 
         switch($nav['nav_type']) {
         	case '0':echo $nav['nav_url'];break;
-    	case '1':echo urlShop('search', 'index', array('cate_id'=>$nav['item_id']));break;
-    	case '2':echo urlShop('article', 'article',array('ac_id'=>$nav['item_id']));break;
-    	case '3':echo urlShop('activity', 'index',array('activity_id'=>$nav['item_id']));break;
+    	case '1':echo urlclinic('search', 'index', array('cate_id'=>$nav['item_id']));break;
+    	case '2':echo urlclinic('article', 'article',array('ac_id'=>$nav['item_id']));break;
+    	case '3':echo urlclinic('activity', 'index',array('activity_id'=>$nav['item_id']));break;
         }
         echo '"'; 
         ?>><?php echo $nav['nav_title'];?></a></li>
@@ -237,18 +237,18 @@ $(function(){
 <!-- 导航 -->
 <header id="topHeader">
   <div class="warp-all">
-    <div class="micro-logo"> <a href="<?php echo MICROSHOP_SITE_URL;?>">
-      <?php if(C('microshop_logo')) { ?>
-      <img src="<?php echo MICROSHOP_IMG_URL.DS.C('microshop_logo');?>" class="pngFix">
+    <div class="micro-logo"> <a href="<?php echo MICROclinic_SITE_URL;?>">
+      <?php if(C('microclinic_logo')) { ?>
+      <img src="<?php echo MICROclinic_IMG_URL.DS.C('microclinic_logo');?>" class="pngFix">
       <?php } else { ?>
-      <img src="<?php echo MICROSHOP_IMG_URL.DS.'default_logo_image.png';?>" class="pngFix">
+      <img src="<?php echo MICROclinic_IMG_URL.DS.'default_logo_image.png';?>" class="pngFix">
       <?php } ?>
       </a> </div>
-    <div class="micro-header-pic"> <a href="<?php echo MICROSHOP_SITE_URL;?>">
-      <?php if(C('microshop_header_pic')) { ?>
-      <img src="<?php echo MICROSHOP_IMG_URL.DS.C('microshop_header_pic');?>" class="pngFix">
+    <div class="micro-header-pic"> <a href="<?php echo MICROclinic_SITE_URL;?>">
+      <?php if(C('microclinic_header_pic')) { ?>
+      <img src="<?php echo MICROclinic_IMG_URL.DS.C('microclinic_header_pic');?>" class="pngFix">
       <?php } else { ?>
-      <img src="<?php echo MICROSHOP_IMG_URL.DS.'default_header_pic_image.png';?>" class="pngFix">
+      <img src="<?php echo MICROclinic_IMG_URL.DS.'default_header_pic_image.png';?>" class="pngFix">
       <?php } ?>
       </a> </div>
     <div class="micro-search">
@@ -269,17 +269,17 @@ $(function(){
         </ul>
       </div>
       <div class="ms-form">
-        <form id="form_search" method="get" action="<?php echo MICROSHOP_SITE_URL;?>/index.php">
+        <form id="form_search" method="get" action="<?php echo MICROclinic_SITE_URL;?>/index.php">
           <?php if(in_array($_GET['act'],array_keys($output['search_type']))) { ?>
           <input id="act" name="act" type="hidden" value="<?php echo $_GET['act'];?>"/>
           <?php } else { ?>
-          <input id="act" name="act" type="hidden" value="goods"/>
+          <input id="act" name="act" type="hidden" value="doctors"/>
           <?php } ?>
-          <?php if(isset($_GET['goods_class_root_id'])) { ?>
-          <input name="goods_class_root_id" type="hidden" value="<?php echo $_GET['goods_class_root_id'];?>"/>
+          <?php if(isset($_GET['doctors_class_root_id'])) { ?>
+          <input name="doctors_class_root_id" type="hidden" value="<?php echo $_GET['doctors_class_root_id'];?>"/>
           <?php } ?>
-          <?php if(isset($_GET['goods_class_menu_id'])) { ?>
-          <input name="goods_class_menu_id" type="hidden" value="<?php echo $_GET['goods_class_menu_id'];?>"/>
+          <?php if(isset($_GET['doctors_class_menu_id'])) { ?>
+          <input name="doctors_class_menu_id" type="hidden" value="<?php echo $_GET['doctors_class_menu_id'];?>"/>
           <?php } ?>
           <input id="keyword" name="keyword" type="text" class="input-text" value="<?php echo isset($_GET['keyword'])?$_GET['keyword']:'';?>" maxlength="60" x-webkit-speech="" lang="zh-CN" onwebkitspeechchange="foo()" x-webkit-grammar="builtin:search" />
           <input id="btn_search" type="button" class="input-button pngFix">
@@ -291,16 +291,16 @@ $(function(){
 <div id="navBar" class="pngFix">
   <div id="navBox">
     <ul class="nc-nav-menu">
-      <li <?php echo $output['index_sign'] == 'index'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>" class="pngFix"><span class="pngFix"><?php echo $lang['nc_index'];?></span></a></li>
-      <li <?php echo $output['index_sign'] == 'goods'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=goods" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microshop_goods'];?></span></a></li>
+      <li <?php echo $output['index_sign'] == 'index'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>" class="pngFix"><span class="pngFix"><?php echo $lang['nc_index'];?></span></a></li>
+      <li <?php echo $output['index_sign'] == 'doctors'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=doctors" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microclinic_doctors'];?></span></a></li>
       <!--
-      <li <?php echo $output['index_sign'] == 'album'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=album"><span><?php echo $lang['nc_microshop_album'];?></span></a></li>
+      <li <?php echo $output['index_sign'] == 'album'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=album"><span><?php echo $lang['nc_microclinic_album'];?></span></a></li>
       -->
-      <li <?php echo $output['index_sign'] == 'personal'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=personal" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microshop_personal'];?></span></a></li>
-      <li <?php echo $output['index_sign'] == 'store'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=store" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microshop_store'];?></span></a></li>
+      <li <?php echo $output['index_sign'] == 'personal'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=personal" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microclinic_personal'];?></span></a></li>
+      <li <?php echo $output['index_sign'] == 'clic'&&$output['index_sign'] != '0'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=clic" class="pngFix"><span class="pngFix"><?php echo $lang['nc_microclinic_clic'];?></span></a></li>
     </ul>
     <div class="microMall-user">
-      <?php $member_avatar = MICROSHOP_TEMPLATES_URL.DS.'images'.DS.'default_user_portrait.gif' ?>
+      <?php $member_avatar = MICROclinic_TEMPLATES_URL.DS.'images'.DS.'default_user_portrait.gif' ?>
       <?php if(isset($_SESSION['is_login'])) { ?>
       <?php $member_avatar = getMemberAvatar($_SESSION['member_avatar']); ?>
       <?php } ?>
@@ -309,34 +309,34 @@ $(function(){
         <?php if(isset($_SESSION['is_login'])) {?>
         <li class="pngFix"><a href="javascript:void(0)"><span title="<?php echo $_SESSION['member_name'];?>"><?php echo $_SESSION['member_name'];?></span><i></i></a>
           <ul>
-            <li><a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=goods'?>"><?php echo $lang['nc_microshop_goods'];?></a></li>
-            <li><a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=personal'?>"><?php echo $lang['nc_microshop_personal'];?></a></li>
+            <li><a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=doctors'?>"><?php echo $lang['nc_microclinic_doctors'];?></a></li>
+            <li><a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=personal'?>"><?php echo $lang['nc_microclinic_personal'];?></a></li>
             <!--
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=album'?>"><?php echo $lang['nc_microshop_album'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=album'?>"><?php echo $lang['nc_microclinic_album'];?></a> </li>
             -->
           </ul>
         </li>
         <?php } else { ?>
-        <li class="no-sub pngFix"><a href="<?php echo SHOP_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl();?>"><?php echo $lang['nc_login'];?></a></li>
+        <li class="no-sub pngFix"><a href="<?php echo clinic_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl();?>"><?php echo $lang['nc_login'];?></a></li>
         <?php } ?>
         <li class="pngFix"><a href="javascript:void(0)"><?php echo $lang['nc_publish'];?><i></i></a>
           <ul>
-            <li><a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=publish&op=goods_buy';?>"><?php echo $lang['microshop_goods_buy'];?></a> </li>
-            <li><a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=publish&op=goods_favorites';?>"><?php echo $lang['microshop_goods_favorite'];?></a> </li>
-            <li><a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=personal&publish=personal';?>"><?php echo $lang['nc_microshop_personal'];?></a> </li>
+            <li><a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=publish&op=doctors_buy';?>"><?php echo $lang['microclinic_doctors_buy'];?></a> </li>
+            <li><a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=publish&op=doctors_favorites';?>"><?php echo $lang['microclinic_doctors_favorite'];?></a> </li>
+            <li><a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=personal&publish=personal';?>"><?php echo $lang['nc_microclinic_personal'];?></a> </li>
             <!--
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=publish&op=album';?>"><?php echo $lang['nc_microshop_album'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=publish&op=album';?>"><?php echo $lang['nc_microclinic_album'];?></a> </li>
             -->
           </ul>
         </li>
-        <li class="pngFix"><a href="javascript:void(0)"><?php echo $lang['microshop_text_like'];?><i></i></a>
+        <li class="pngFix"><a href="javascript:void(0)"><?php echo $lang['microclinic_text_like'];?><i></i></a>
           <ul>
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=like_list&type=goods'?>"><?php echo $lang['nc_microshop_goods'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=like_list&type=doctors'?>"><?php echo $lang['nc_microclinic_doctors'];?></a> </li>
             <!--
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=like_list&type=personal'?>"><?php echo $lang['nc_microshop_album'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=like_list&type=personal'?>"><?php echo $lang['nc_microclinic_album'];?></a> </li>
             -->
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=like_list&type=personal'?>"><?php echo $lang['nc_microshop_personal'];?></a> </li>
-            <li> <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=home&op=like_list&type=store'?>"><?php echo $lang['nc_microshop_store'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=like_list&type=personal'?>"><?php echo $lang['nc_microclinic_personal'];?></a> </li>
+            <li> <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=home&op=like_list&type=clic'?>"><?php echo $lang['nc_microclinic_clic'];?></a> </li>
           </ul>
         </li>
       </ul>

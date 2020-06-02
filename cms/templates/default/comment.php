@@ -1,5 +1,5 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
-<link type="text/css" rel="stylesheet" href="<?php echo SHOP_SITE_URL;?>/templates/default/css/home_login.css">
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
+<link type="text/css" rel="stylesheet" href="<?php echo clinic_SITE_URL;?>/templates/default/css/home_login.css">
 <script type="text/javascript">
 $(document).ready(function(){
     var url_comment_list = "<?php echo CMS_SITE_URL.DS;?>index.php?act=comment&op=comment_list&type=<?php echo $_GET['act'];?>&comment_object_id=<?php echo $output['detail_object_id'];?>&comment_all=<?php echo $output['comment_all'];?>";

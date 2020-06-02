@@ -84,7 +84,7 @@ function forbit_talk(talk_id) {
 }
 </script>
 
-<table class="table tb-type2 order mtw">
+<table class="table tb-type2 appointment mtw">
   <thead class="thead">
     <tr class="space">
       <th><?php echo $lang['talk_detail'];?></th>
@@ -94,14 +94,14 @@ function forbit_talk(talk_id) {
     <tr>
       <th><?php echo $lang['talk_list'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td class="complain-content"><div id="div_talk" class="div_talk"> </div></td>
     </tr>
     <?php if(intval($output['complain_info']['complain_state']) !== 99) { ?>
     <tr>
       <th><?php echo $lang['talk_send'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td>
           <textarea id="complain_talk" class="tarea"></textarea>
         </td>

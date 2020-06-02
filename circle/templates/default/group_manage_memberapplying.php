@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="base-layout">
   <div class="mainbox">
@@ -27,7 +27,7 @@
         <?php foreach ($output['cm_list'] as $val){?>
         <tr>
           <td><input class="checkitem" type="checkbox" value="<?php echo $val['member_id'];?>"></td>
-          <td><dl class="member-base"><dt class="name"><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $val['member_name'];?></a></dt><dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /></dd>
+          <td><dl class="member-base"><dt class="name"><a href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $val['member_name'];?></a></dt><dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /></dd>
             </dl></td>
           <td><?php echo date('Y-m-d', $val['cm_applytime']);?></td>
           <td><div class="long-text tip" title="<?php echo $val['cm_applycontent'];?>" style="color:#2D917A;"><?php echo $val['cm_applycontent'];?></div></td>
@@ -37,7 +37,7 @@
         <?php }?>
         <?php }else{?>
         <tr>
-          <td colspan="20" class="noborder"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
+          <td colspan="20" class="nobappointment"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
         </tr>
         <?php }?>
       </tbody>

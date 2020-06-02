@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class activityControl extends SystemControl{
 	public function __construct(){
@@ -48,7 +48,7 @@ class activityControl extends SystemControl{
                 $condition_arr['activity_daterange']['enddate'] += 86400;
             }
 		}
-		$condition_arr['order'] = 'activity_sort asc';
+		$condition_arr['appointment'] = 'activity_sort asc';
 		//活动列表
 		$page	= new Page();
 		$page->setEachNum(10);
@@ -289,14 +289,14 @@ class activityControl extends SystemControl{
 			$condition_arr['activity_detail_state'] = "$state";
 		}
 		//店铺名称
-		if (!empty($_GET['searchstore'])){
-			$condition_arr['store_name'] = $_GET['searchstore'];			
+		if (!empty($_GET['searchclic'])){
+			$condition_arr['clic_name'] = $_GET['searchclic'];			
 		}
 	    //商品名称
-		if (!empty($_GET['searchgoods'])){
-			$condition_arr['item_name'] = $_GET['searchgoods'];			
+		if (!empty($_GET['searchdoctors'])){
+			$condition_arr['item_name'] = $_GET['searchdoctors'];			
 		}
-		$condition_arr['order'] = 'activity_detail.activity_detail_state asc,activity_detail.activity_detail_sort asc';
+		$condition_arr['appointment'] = 'activity_detail.activity_detail_state asc,activity_detail.activity_detail_sort asc';
 		
 		$page	= new Page();
 		$page->setEachNum(10);

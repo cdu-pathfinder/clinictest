@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class predepositModel extends Model {
     /**
      * 生成充值编号
@@ -25,10 +25,10 @@ class predepositModel extends Model {
      * @param unknown $condition
      * @param string $pagesize
      * @param string $fields
-     * @param string $order
+     * @param string $appointment
      */
-    public function getPdRechargeList($condition = array(), $pagesize = '', $fields = '*', $order = '', $limit = '') {
-        return $this->table('pd_recharge')->where($condition)->field($fields)->order($order)->limit($limit)->page($pagesize)->select();
+    public function getPdRechargeList($condition = array(), $pagesize = '', $fields = '*', $appointment = '', $limit = '') {
+        return $this->table('pd_recharge')->where($condition)->field($fields)->appointment($appointment)->limit($limit)->page($pagesize)->select();
     }
 
     /**
@@ -86,10 +86,10 @@ class predepositModel extends Model {
      * @param unknown $condition
      * @param string $pagesize
      * @param string $fields
-     * @param string $order
+     * @param string $appointment
      */
-    public function getPdLogList($condition = array(), $pagesize = '', $fields = '*', $order = '', $limit = '') {
-        return $this->table('pd_log')->where($condition)->field($fields)->order($order)->limit($limit)->page($pagesize)->select();
+    public function getPdLogList($condition = array(), $pagesize = '', $fields = '*', $appointment = '', $limit = '') {
+        return $this->table('pd_log')->where($condition)->field($fields)->appointment($appointment)->limit($limit)->page($pagesize)->select();
     }
 
     /**
@@ -107,28 +107,28 @@ class predepositModel extends Model {
         $data_log['lg_add_time'] = TIMESTAMP;
         $data_log['lg_type'] = $change_type;
         switch ($change_type){
-            case 'order_pay':
+            case 'appointment_pay':
                 $data_log['lg_av_amount'] = -$data['amount'];
-                $data_log['lg_desc'] = '下单，支付预存款，订单号: '.$data['order_sn'];
+                $data_log['lg_desc'] = '下单，支付预存款，订单号: '.$data['appointment_sn'];
                 $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
                 break;
-            case 'order_freeze':
+            case 'appointment_freeze':
                 $data_log['lg_av_amount'] = -$data['amount'];
                 $data_log['lg_freeze_amount'] = $data['amount'];
-                $data_log['lg_desc'] = '下单，冻结预存款，订单号: '.$data['order_sn'];
+                $data_log['lg_desc'] = '下单，冻结预存款，订单号: '.$data['appointment_sn'];
                 $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit+'.$data['amount']);
                 $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
                 break;
-            case 'order_cancel':
+            case 'appointment_cancel':
                 $data_log['lg_av_amount'] = $data['amount'];
                 $data_log['lg_freeze_amount'] = -$data['amount'];
-                $data_log['lg_desc'] = '取消订单，解冻预存款，订单号: '.$data['order_sn'];
+                $data_log['lg_desc'] = '取消订单，解冻预存款，订单号: '.$data['appointment_sn'];
                 $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit-'.$data['amount']);
                 $data_pd['available_predeposit'] = array('exp','available_predeposit+'.$data['amount']);
                 break;
-            case 'order_comb_pay':
+            case 'appointment_comb_pay':
                 $data_log['lg_freeze_amount'] = -$data['amount'];
-                $data_log['lg_desc'] = '下单，支付被冻结的预存款，订单号: '.$data['order_sn'];
+                $data_log['lg_desc'] = '下单，支付被冻结的预存款，订单号: '.$data['appointment_sn'];
                 $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit-'.$data['amount']);
                 break;
         	case 'recharge':
@@ -139,26 +139,26 @@ class predepositModel extends Model {
         	    break;
         	case 'refund':
         	    $data_log['lg_av_amount'] = $data['amount'];
-        	    $data_log['lg_desc'] = '确认退款，订单号: '.$data['order_sn'];
+        	    $data_log['lg_desc'] = '确认退款，订单号: '.$data['appointment_sn'];
         	    $data_pd['available_predeposit'] = array('exp','available_predeposit+'.$data['amount']);
         	    break;
         	case 'cash_apply':
         	    $data_log['lg_av_amount'] = -$data['amount'];
         	    $data_log['lg_freeze_amount'] = $data['amount'];
-        	    $data_log['lg_desc'] = '申请提现，冻结预存款，提现单号: '.$data['order_sn'];
+        	    $data_log['lg_desc'] = '申请提现，冻结预存款，提现单号: '.$data['appointment_sn'];
         	    $data_pd['available_predeposit'] = array('exp','available_predeposit-'.$data['amount']);
         	    $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit+'.$data['amount']);
         	    break;
     	    case 'cash_pay':
     	        $data_log['lg_freeze_amount'] = -$data['amount'];
-    	        $data_log['lg_desc'] = '提现成功，提现单号: '.$data['order_sn'];
+    	        $data_log['lg_desc'] = '提现成功，提现单号: '.$data['appointment_sn'];
     	        $data_log['lg_admin_name'] = $data['admin_name'];
     	        $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit-'.$data['amount']);
     	        break;
 	        case 'cash_del':
 	            $data_log['lg_av_amount'] = $data['amount'];
 	            $data_log['lg_freeze_amount'] = -$data['amount'];
-	            $data_log['lg_desc'] = '取消提现申请，解冻预存款，提现单号: '.$data['order_sn'];
+	            $data_log['lg_desc'] = '取消提现申请，解冻预存款，提现单号: '.$data['appointment_sn'];
 	            $data_log['lg_admin_name'] = $data['admin_name'];
 	            $data_pd['available_predeposit'] = array('exp','available_predeposit+'.$data['amount']);
 	            $data_pd['freeze_predeposit'] = array('exp','freeze_predeposit-'.$data['amount']);
@@ -191,10 +191,10 @@ class predepositModel extends Model {
      * @param unknown $condition
      * @param string $pagesize
      * @param string $fields
-     * @param string $order
+     * @param string $appointment
      */
-    public function getPdCashList($condition = array(), $pagesize = '', $fields = '*', $order = '', $limit = '') {
-        return $this->table('pd_cash')->where($condition)->field($fields)->order($order)->limit($limit)->page($pagesize)->select();
+    public function getPdCashList($condition = array(), $pagesize = '', $fields = '*', $appointment = '', $limit = '') {
+        return $this->table('pd_cash')->where($condition)->field($fields)->appointment($appointment)->limit($limit)->page($pagesize)->select();
     }
 
     /**

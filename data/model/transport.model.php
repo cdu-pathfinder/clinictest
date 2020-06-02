@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class transportModel extends Model {
 
@@ -93,22 +93,22 @@ class transportModel extends Model {
 	 *
 	 * @param unknown_type $condition
 	 * @param unknown_type $page
-	 * @param unknown_type $order
+	 * @param unknown_type $appointment
 	 * @return unknown
 	 */
-	public function getTransportList($condition=array(), $pagesize = '', $order = 'id desc'){
-		return $this->table('transport')->where($condition)->order($order)->page($pagesize)->select();
+	public function getTransportList($condition=array(), $pagesize = '', $appointment = 'id desc'){
+		return $this->table('transport')->where($condition)->appointment($appointment)->page($pagesize)->select();
 	}
 
 	/**
 	 * 取得扩展信息列表
 	 *
 	 * @param unknown_type $condition
-	 * @param unknown_type $order
+	 * @param unknown_type $appointment
 	 * @return unknown
 	 */
-	public function getExtendList($condition=array(), $order='is_default'){
-		return $this->table('transport_extend')->where($condition)->order($order)->select();
+	public function getExtendList($condition=array(), $appointment='is_default'){
+		return $this->table('transport_extend')->where($condition)->appointment($appointment)->select();
 	}
 
 	public function transUpdate($data){
@@ -121,8 +121,8 @@ class transportModel extends Model {
 	 */
 	public function isUsing($id){
         if (!is_numeric($id)) return false;
-        $goods_info = $this->table('goods')->where(array('transport_id'=>$id))->field('goods_id')->find();
-        return $goods_info ? true : false;
+        $doctors_info = $this->table('doctors')->where(array('transport_id'=>$id))->field('doctors_id')->find();
+        return $doctors_info ? true : false;
 	}
     
 	/**

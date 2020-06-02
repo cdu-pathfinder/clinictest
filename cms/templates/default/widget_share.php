@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
         /**
@@ -54,14 +54,14 @@ $(document).ready(function(){
             html = html.replace(/@apikey/g,data_str.apikey);
             html = html.replace(/@apiname/g,data_str.apiname);
             html_form("bindtooltip", "<?php echo $lang['cms_share_account_link'];?>", html, 360, 0);	    
-            window.open('<?php echo SHOP_SITE_URL.DS;?>api.php?act=sharebind&type='+data_str.apikey);
+            window.open('<?php echo clinic_SITE_URL.DS;?>api.php?act=sharebind&type='+data_str.apikey);
         }
     });
     $("#finishbtn").live('click',function(){
         var data_str = $(this).attr('data-param');
         eval( "data_str = "+data_str);
         //验证是否绑定成功
-        var url = '<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_sharemanage&op=checkbind&callback=?';
+        var url = '<?php echo clinic_SITE_URL.DS;?>index.php?act=member_sharemanage&op=checkbind&callback=?';
         $.getJSON(url, {'k':data_str.apikey}, function(data){
             DialogManager.close('bindtooltip');
             if (data.done)
@@ -87,7 +87,7 @@ $(document).ready(function(){
 <?php } else { ?>
 <input nc_type="share_app_switch" name="share_app_switch" type="checkbox" class="input-checkbox" style="display:none"/>
 <?php } ?>
-<input name="share_app_items[]" type="hidden" value="shop" />
+<input name="share_app_items[]" type="hidden" value="clinic" />
 <?php if (!empty($output['app_arr'])){?>
 <ul>
   <?php foreach ($output['app_arr'] as $key=>$val){?>
@@ -112,7 +112,7 @@ $(document).ready(function(){
                 <dd style="width:75%">
                 <a href="javascript:void(0);" id="finishbtn" data-param='{"apikey":"@apikey"}' class="ncu-btn2 mr10"><?php echo $lang['cms_share_tip5'];?></a>
                 <span><?php echo $lang['cms_share_tip6'];?>
-                    <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/api.php?act=sharebind&type=@apikey" class="ml5"><?php echo $lang['cms_share_tip7'];?></a>
+                    <a target="_blank" href="<?php echo clinic_SITE_URL;?>/api.php?act=sharebind&type=@apikey" class="ml5"><?php echo $lang['cms_share_tip7'];?></a>
                 </span>
                 </dd>
             </dl>

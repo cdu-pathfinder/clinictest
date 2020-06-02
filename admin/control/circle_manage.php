@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class circle_manageControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -169,7 +169,7 @@ class circle_manageControl extends SystemControl{
 			}
 		}
 		// 圈子分类
-		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->order('class_sort asc')->select();
+		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->appointment('class_sort asc')->select();
 		Tpl::output('class_list', $class_list);
 		
 		Tpl::showpage('circle.add');
@@ -257,7 +257,7 @@ class circle_manageControl extends SystemControl{
 		Tpl::output('circle_info', $circle_info);
 		
 		// 圈子分类
-		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->order('class_sort asc')->select();
+		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->appointment('class_sort asc')->select();
 		Tpl::output('class_list', $class_list);
 		
 		Tpl::showpage('circle.edit');

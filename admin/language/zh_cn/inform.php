@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 页面需要的语言
@@ -11,7 +11,7 @@ $lang['inform'] 			= 'Report';
 $lang['inform_state_all'] = 'All report';
 $lang['inform_state_handled'] = 'Handled';
 $lang['inform_state_unhandle'] = 'Pending';
-$lang['inform_goods_name'] = 'Doctor name';
+$lang['inform_doctors_name'] = 'Doctor name';
 $lang['inform_member_name'] = 'Informer';
 $lang['inform_subject'] = 'Report subject';
 $lang['inform_type'] = 'Report type';
@@ -54,7 +54,7 @@ $lang['inform_type_error'] = '举报类型不存在请联系平台管理员添�
 $lang['inform_subject_null'] = '举报主题不存在请联系平台管理员';
 $lang['inform_success'] = '举报成功请等待处理';
 $lang['inform_fail'] = '举报失败请联系管理员';
-$lang['goods_null'] = '商品不存在';
+$lang['doctors_null'] = '商品不存在';
 $lang['deny_inform'] = '您已经被禁止举报商品，如有疑问请联系平台管理员'; 
 $lang['inform_help1']='举报类型和举报主题由管理员在后台设置，在商品信息页会员可根据举报主题举报违规商品';
 $lang['inform_help2']='点击详细，查看举报内容';

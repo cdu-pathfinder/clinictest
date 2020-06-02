@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['nc_common_pselect']	=  'please choose...';
 
@@ -65,35 +65,35 @@ $lang['nc_logout']	= "exit";
 $lang['nc_guest']	= "tourists";
 $lang['nc_login']	= "login";
 $lang['nc_register']	= "register";
-$lang['nc_seller'] = 'clinic center';
+$lang['nc_clinicer'] = 'clinic center';
 $lang['nc_user_center']	= "Personl Center";
 $lang['nc_message']		= "In-station message";
 $lang['nc_help_center']	= "Help center";
 $lang['nc_more_links']	= "More links";
 $lang['nc_index']		= "home page";
 $lang['nc_cart']			= "cart";
-$lang['nc_kindof_goods']	= "Kinds of goods";
+$lang['nc_kindof_doctors']	= "Kinds of doctors";
 $lang['nc_favorites']		= "My collection";
 $lang['nc_nothing']			= "no";
 $lang['nc_filter'] = 'screening';
-$lang['nc_all_goods'] = 'all doctors';
+$lang['nc_all_doctors'] = 'all doctors';
 $lang['nc_search'] = 'search';
 $lang['nc_publish'] = 'publish';
 $lang['nc_download'] = 'download';
 
-$lang['nc_buying_goods']			= "doctor booked";
+$lang['nc_buying_doctors']			= "doctor booked";
 $lang['nc_mysns']					= "my space";
 $lang['nc_myfriends']				= "my frinds";
-$lang['nc_selled_goods']			= "doctor who has an appointment";
-$lang['nc_selling_goods']			= "Doctor on appointment";
+$lang['nc_selled_doctors']			= "doctor who has an appointment";
+$lang['nc_selling_doctors']			= "Doctor on appointment";
 $lang['nc_mystroe']					= "my clinic";
-$lang['nc_favorites_goods']			= "Collection of the doctor";
+$lang['nc_favorites_doctors']			= "Collection of the doctor";
 $lang['nc_favorites_stroe']			= "Collection of the clinic";
-$lang['nc_cart_no_goods']			= "There is no doctor. Make an appointment now";
+$lang['nc_cart_no_doctors']			= "There is no doctor. Make an appointment now";
 $lang['nc_check_cart']				= "see the chart";
-$lang['nc_accounts_goods']			= "pay";
-$lang['nc_goods_num_one']			= "total";
-$lang['nc_goods_num_two']			= "kinds of doctors   total";
+$lang['nc_accounts_doctors']			= "pay";
+$lang['nc_doctors_num_one']			= "total";
+$lang['nc_doctors_num_two']			= "kinds of doctors   total";
 $lang['nc_sign_multiply']			= "×";
 
 
@@ -131,5 +131,5 @@ $lang['nc_del']				= 'delete';
 $lang['nc_cut']				= 'cut';
 $lang['download_lang']      = 'Download the data segment';
 
-$lang['order_log_cancel'] = 'cancelled';
-$lang['order_log_receive_paye'] = 'Received the payment';
+$lang['appointment_log_cancel'] = 'cancelled';
+$lang['appointment_log_receive_paye'] = 'Received the payment';

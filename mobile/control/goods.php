@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class goodsControl extends mobileHomeControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class doctorsControl extends mobileHomeControl{
 
 	public function __construct() {
         parent::__construct();
@@ -19,56 +19,56 @@ class goodsControl extends mobileHomeControl{
     /**
      * 商品列表
      */
-    public function goods_listOp() {
-        $model_goods = Model('goods');
+    public function doctors_listOp() {
+        $model_doctors = Model('doctors');
 
         //查询条件
         $condition = array();
         if(!empty($_GET['gc_id']) && intval($_GET['gc_id']) > 0) {
             $condition['gc_id'] = $_GET['gc_id'];
         } elseif (!empty($_GET['keyword'])) { 
-            $condition['goods_name|goods_jingle'] = array('like', '%' . $_GET['keyword'] . '%');
+            $condition['doctors_name|doctors_jingle'] = array('like', '%' . $_GET['keyword'] . '%');
         }
 
         //所需字段
-        $fieldstr = "goods_id,goods_commonid,store_id,goods_name,goods_price,goods_marketprice,goods_image,goods_salenum,evaluation_good_star,evaluation_count";
+        $fieldstr = "doctors_id,doctors_commonid,clic_id,doctors_name,doctors_price,doctors_marketprice,doctors_image,doctors_salenum,evaluation_doctor_star,evaluation_count";
 
         //Sorting method
-        $order = $this->_goods_list_order($_GET['key'], $_GET['order']);
+        $appointment = $this->_doctors_list_appointment($_GET['key'], $_GET['appointment']);
 
-        $goods_list = $model_goods->getGoodsListByColorDistinct($condition, $fieldstr, $order, $this->page);
-        $page_count = $model_goods->gettotalpage();
+        $doctors_list = $model_doctors->getdoctorsListByColorDistinct($condition, $fieldstr, $appointment, $this->page);
+        $page_count = $model_doctors->gettotalpage();
 
         //处理商品列表(团购、限时折扣、商品图片)
-        $goods_list = $this->_goods_list_extend($goods_list);
+        $doctors_list = $this->_doctors_list_extend($doctors_list);
 
-        output_data(array('goods_list' => $goods_list), mobile_page($page_count));
+        output_data(array('doctors_list' => $doctors_list), mobile_page($page_count));
     }
 
     /**
      * 商品列表Sorting method
      */
-    private function _goods_list_order($key, $order) {
-        $result = 'goods_id desc';
+    private function _doctors_list_appointment($key, $appointment) {
+        $result = 'doctors_id desc';
         if (!empty($key)) {
 
             $sequence = 'desc';
-            if($order == 1) {
+            if($appointment == 1) {
                 $sequence = 'asc';
             }
 
             switch ($key) {
                 //销量
                 case '1' :
-                    $result = 'goods_salenum' . ' ' . $sequence;
+                    $result = 'doctors_salenum' . ' ' . $sequence;
                     break;
                 //浏览量
                 case '2' : 
-                    $result = 'goods_click' . ' ' . $sequence;
+                    $result = 'doctors_click' . ' ' . $sequence;
                     break;
                 //价格
                 case '3' :
-                    $result = 'goods_price' . ' ' . $sequence;
+                    $result = 'doctors_price' . ' ' . $sequence;
                     break;
             }
         }
@@ -78,132 +78,132 @@ class goodsControl extends mobileHomeControl{
     /**
      * 处理商品列表(团购、限时折扣、商品图片)
      */
-    private function _goods_list_extend($goods_list) {
+    private function _doctors_list_extend($doctors_list) {
         //获取商品列表编号数组
         $commonid_array = array();
-        $goodsid_array = array();
-        foreach($goods_list as $key => $value) {
-            $commonid_array[] = $value['goods_commonid'];
-            $goodsid_array[] = $value['goods_id'];
+        $doctorsid_array = array();
+        foreach($doctors_list as $key => $value) {
+            $commonid_array[] = $value['doctors_commonid'];
+            $doctorsid_array[] = $value['doctors_id'];
         }
 
         //促销
-        $groupbuy_list = Model('groupbuy')->getGroupbuyListByGoodsCommonIDString(implode(',', $commonid_array));
-        $xianshi_list = Model('p_xianshi_goods')->getXianshiGoodsListByGoodsString(implode(',', $goodsid_array));
-        foreach ($goods_list as $key => $value) {
+        $groupbuy_list = Model('groupbuy')->getGroupbuyListBydoctorsCommonIDString(implode(',', $commonid_array));
+        $xianshi_list = Model('p_xianshi_doctors')->getXianshidoctorsListBydoctorsString(implode(',', $doctorsid_array));
+        foreach ($doctors_list as $key => $value) {
             //团购
-            if (isset($groupbuy_list[$value['goods_commonid']])) {
-                $goods_list[$key]['goods_price'] = $groupbuy_list[$value['goods_commonid']]['groupbuy_price'];
-                $goods_list[$key]['group_flag'] = true;
+            if (isset($groupbuy_list[$value['doctors_commonid']])) {
+                $doctors_list[$key]['doctors_price'] = $groupbuy_list[$value['doctors_commonid']]['groupbuy_price'];
+                $doctors_list[$key]['group_flag'] = true;
             } else {
-                $goods_list[$key]['group_flag'] = false;
+                $doctors_list[$key]['group_flag'] = false;
             }
 
             //限时折扣
-            if (isset($xianshi_list[$value['goods_id']]) && !$goods_list[$key]['group_flag']) {
-                $goods_list[$key]['goods_price'] = $xianshi_list[$value['goods_id']]['xianshi_price'];
-                $goods_list[$key]['xianshi_flag'] = true;
+            if (isset($xianshi_list[$value['doctors_id']]) && !$doctors_list[$key]['group_flag']) {
+                $doctors_list[$key]['doctors_price'] = $xianshi_list[$value['doctors_id']]['xianshi_price'];
+                $doctors_list[$key]['xianshi_flag'] = true;
             } else {
-                $goods_list[$key]['xianshi_flag'] = false;
+                $doctors_list[$key]['xianshi_flag'] = false;
             }
 
             //商品图片url
-            $goods_list[$key]['goods_image_url'] = cthumb($value['goods_image'], 360, $value['store_id']); 
+            $doctors_list[$key]['doctors_image_url'] = cthumb($value['doctors_image'], 360, $value['clic_id']); 
 
-            unset($goods_list[$key]['store_id']);
-            unset($goods_list[$key]['goods_commonid']);
-            unset($goods_list[$key]['nc_distinct']);
+            unset($doctors_list[$key]['clic_id']);
+            unset($doctors_list[$key]['doctors_commonid']);
+            unset($doctors_list[$key]['nc_distinct']);
         }
 
-        return $goods_list;
+        return $doctors_list;
     }
 
     /**
      * 商品详细页
      */
-    public function goods_detailOp() {
-        $goods_id = intval($_GET ['goods_id']);
+    public function doctors_detailOp() {
+        $doctors_id = intval($_GET ['doctors_id']);
         
         // 商品详细信息
-        $model_goods = Model('goods');
-        $goods_detail = $model_goods->getGoodsDetail($goods_id, '*');
-        if (empty($goods_detail)) {
+        $model_doctors = Model('doctors');
+        $doctors_detail = $model_doctors->getdoctorsDetail($doctors_id, '*');
+        if (empty($doctors_detail)) {
             output_error('商品不存在');
         }
 
         //推荐商品
-        $model_store = Model('store');
-        $hot_sales = $model_store->getHotSalesList($goods_detail['goods_info']['store_id'], 6);
-        $goods_commend_list = array();
+        $model_clic = Model('clic');
+        $hot_sales = $model_clic->getHotSalesList($doctors_detail['doctors_info']['clic_id'], 6);
+        $doctors_commend_list = array();
         foreach($hot_sales as $value) {
-            $goods_commend = array();
-            $goods_commend['goods_id'] = $value['goods_id'];
-            $goods_commend['goods_name'] = $value['goods_name'];
-            $goods_commend['goods_price'] = $value['goods_price'];
-            $goods_commend['goods_image_url'] = cthumb($value['goods_image'], 240);
-            $goods_commend_list[] = $goods_commend;
+            $doctors_commend = array();
+            $doctors_commend['doctors_id'] = $value['doctors_id'];
+            $doctors_commend['doctors_name'] = $value['doctors_name'];
+            $doctors_commend['doctors_price'] = $value['doctors_price'];
+            $doctors_commend['doctors_image_url'] = cthumb($value['doctors_image'], 240);
+            $doctors_commend_list[] = $doctors_commend;
         }
-        $goods_detail['goods_commend_list'] = $goods_commend_list;
+        $doctors_detail['doctors_commend_list'] = $doctors_commend_list;
 
         //商品详细信息处理
-        $goods_detail = $this->_goods_detail_extend($goods_detail);
+        $doctors_detail = $this->_doctors_detail_extend($doctors_detail);
 
-        output_data($goods_detail);
+        output_data($doctors_detail);
     }
 
     /**
      * 商品详细信息处理
      */
-    private function _goods_detail_extend($goods_detail) {
+    private function _doctors_detail_extend($doctors_detail) {
         //整理商品规格
-        unset($goods_detail['spec_list']);
-        $goods_detail['spec_list'] = $goods_detail['spec_list_mobile'];
-        unset($goods_detail['spec_list_mobile']);
+        unset($doctors_detail['spec_list']);
+        $doctors_detail['spec_list'] = $doctors_detail['spec_list_mobile'];
+        unset($doctors_detail['spec_list_mobile']);
 
         //整理商品图片
-        unset($goods_detail['goods_image']);
-        $goods_detail['goods_image'] = implode(',', $goods_detail['goods_image_mobile']);
-        unset($goods_detail['goods_image_mobile']);
+        unset($doctors_detail['doctors_image']);
+        $doctors_detail['doctors_image'] = implode(',', $doctors_detail['doctors_image_mobile']);
+        unset($doctors_detail['doctors_image_mobile']);
 
         //整理数据
-        unset($goods_detail['goods_info']['goods_commonid']);
-        unset($goods_detail['goods_info']['gc_id']);
-        unset($goods_detail['goods_info']['gc_name']);
-        unset($goods_detail['goods_info']['store_id']);
-        unset($goods_detail['goods_info']['store_name']);
-        unset($goods_detail['goods_info']['brand_id']);
-        unset($goods_detail['goods_info']['brand_name']);
-        unset($goods_detail['goods_info']['type_id']);
-        unset($goods_detail['goods_info']['goods_image']);
-        unset($goods_detail['goods_info']['goods_body']);
-        unset($goods_detail['goods_info']['goods_state']);
-        unset($goods_detail['goods_info']['goods_stateremark']);
-        unset($goods_detail['goods_info']['goods_verify']);
-        unset($goods_detail['goods_info']['goods_verifyremark']);
-        unset($goods_detail['goods_info']['goods_lock']);
-        unset($goods_detail['goods_info']['goods_addtime']);
-        unset($goods_detail['goods_info']['goods_edittime']);
-        unset($goods_detail['goods_info']['goods_selltime']);
-        unset($goods_detail['goods_info']['goods_show']);
-        unset($goods_detail['goods_info']['goods_commend']);
-        unset($goods_detail['groupbuy_info']);
-        unset($goods_detail['xianshi_info']);
+        unset($doctors_detail['doctors_info']['doctors_commonid']);
+        unset($doctors_detail['doctors_info']['gc_id']);
+        unset($doctors_detail['doctors_info']['gc_name']);
+        unset($doctors_detail['doctors_info']['clic_id']);
+        unset($doctors_detail['doctors_info']['clic_name']);
+        unset($doctors_detail['doctors_info']['brand_id']);
+        unset($doctors_detail['doctors_info']['brand_name']);
+        unset($doctors_detail['doctors_info']['type_id']);
+        unset($doctors_detail['doctors_info']['doctors_image']);
+        unset($doctors_detail['doctors_info']['doctors_body']);
+        unset($doctors_detail['doctors_info']['doctors_state']);
+        unset($doctors_detail['doctors_info']['doctors_stateremark']);
+        unset($doctors_detail['doctors_info']['doctors_verify']);
+        unset($doctors_detail['doctors_info']['doctors_verifyremark']);
+        unset($doctors_detail['doctors_info']['doctors_lock']);
+        unset($doctors_detail['doctors_info']['doctors_addtime']);
+        unset($doctors_detail['doctors_info']['doctors_edittime']);
+        unset($doctors_detail['doctors_info']['doctors_selltime']);
+        unset($doctors_detail['doctors_info']['doctors_show']);
+        unset($doctors_detail['doctors_info']['doctors_commend']);
+        unset($doctors_detail['groupbuy_info']);
+        unset($doctors_detail['xianshi_info']);
 
-        return $goods_detail;
+        return $doctors_detail;
     }
 
     /**
      * 商品详细页
      */
-    public function goods_bodyOp() {
-        $goods_id = intval($_GET ['goods_id']);
+    public function doctors_bodyOp() {
+        $doctors_id = intval($_GET ['doctors_id']);
 
-        $model_goods = Model('goods');
+        $model_doctors = Model('doctors');
 
-        $goods_info = $model_goods->getGoodsInfo(array('goods_id' => $goods_id));
-        $goods_common_info = $model_goods->getGoodeCommonInfo(array('goods_commonid' => $goods_info['goods_commonid']));
+        $doctors_info = $model_doctors->getdoctorsInfo(array('doctors_id' => $doctors_id));
+        $doctors_common_info = $model_doctors->getdoctoreCommonInfo(array('doctors_commonid' => $doctors_info['doctors_commonid']));
 
-        Tpl::output('goods_common_info', $goods_common_info);
-        Tpl::showpage('goods_body');
+        Tpl::output('doctors_common_info', $doctors_common_info);
+        Tpl::showpage('doctors_body');
     }
 }

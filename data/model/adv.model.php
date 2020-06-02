@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class advModel{
 	/**
@@ -105,14 +105,14 @@ class advModel{
 	 * @param obj $page 分页对象
 	 * @return array 二维数组
 	 */
-	public function getApList($condition=array(), $page='', $orderby=''){
+	public function getApList($condition=array(), $page='', $appointmentby=''){
 		$param	= array();
 		$param['table']	= 'adv_position';
 		$param['where']	= $this->getCondition($condition);
-	    if($orderby == ''){
-			$param['order'] = 'ap_id desc';
+	    if($appointmentby == ''){
+			$param['appointment'] = 'ap_id desc';
 		}else{
-			$param['order'] = $orderby;
+			$param['appointment'] = $appointmentby;
 		}
 		return Db::select($param,$page);
 	}
@@ -123,15 +123,15 @@ class advModel{
 	 * @param obj $page 分页对象
 	 * @return array 二维数组
 	 */
-	public function getList($condition=array(), $page='', $limit='', $orderby=''){
+	public function getList($condition=array(), $page='', $limit='', $appointmentby=''){
 		$param	= array();
 		$param['table']	= 'adv';
 		$param['field'] = $condition['field']?$condition['field']:'*';
 		$param['where']	= $this->getCondition($condition);
-		if($orderby == ''){
-			$param['order'] = 'slide_sort, adv_id desc';
+		if($appointmentby == ''){
+			$param['appointment'] = 'slide_sort, adv_id desc';
 		}else{
-			$param['order'] = $orderby;
+			$param['appointment'] = $appointmentby;
 		}
 		$param['limit'] = $limit;
 		return Db::select($param,$page);
@@ -293,7 +293,7 @@ class advModel{
 		if (empty($ap_id)) return '';
 		$model = model();
 		$ap_info = $model->table('adv_position')->where(array('ap_id'=>$ap_id))->find();
-		$ap_info['adv_list'] = $model->table('adv')->where(array('ap_id'=>$ap_id))->order('slide_sort, adv_id desc')->select();
+		$ap_info['adv_list'] = $model->table('adv')->where(array('ap_id'=>$ap_id))->appointment('slide_sort, adv_id desc')->select();
 		write_file(BASE_DATA_PATH.'/cache/adv/'.$ap_id.'.php',$ap_info);
 	}
 
@@ -306,7 +306,7 @@ class advModel{
 		delCacheFile('adv');
 		$model = model();
 		$ap_list =$model->table('adv_position')->where(true)->select();
-		$adv_list =$model->table('adv')->where(true)->order('slide_sort, adv_id desc')->select();
+		$adv_list =$model->table('adv')->where(true)->appointment('slide_sort, adv_id desc')->select();
 		$array = array();
 		foreach ((array)$ap_list as $v) {
 			foreach ((array)$adv_list as $xv) {

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class specModel extends Model {
     public function __construct() {
@@ -28,7 +28,7 @@ class specModel extends Model {
 		$array['table']		= 'spec';
 		$array['where']		= $condition_str;
 		$array['field']		= $field;
-		$array['order']		= $param['order'];
+		$array['appointment']		= $param['appointment'];
 		$list_spec		= Db::select($array, $page);
 		return $list_spec;
 	}
@@ -48,10 +48,10 @@ class specModel extends Model {
      * 
      * @param array     $where  添加
      * @param string    $field  字段
-     * @param string    $order  排序
+     * @param string    $appointment  排序
      */
-    public function getSpecValueList($where, $field = '*', $order = 'sp_value_sort asc,sp_value_id asc') {
-        $result = $this->table('spec_value')->field($field)->where($where)->order($order)->select();
+    public function getSpecValueList($where, $field = '*', $appointment = 'sp_value_sort asc,sp_value_id asc') {
+        $result = $this->table('spec_value')->field($field)->where($where)->appointment($appointment)->select();
         return empty($result) ? array() : $result;
     }
     
@@ -171,7 +171,7 @@ class specModel extends Model {
 		$array['table']		= 'spec_value';
 		$array['where']		= $condition_str;
 		$array['field']		= $field;
-		$array['order']		= $param['order'];
+		$array['appointment']		= $param['appointment'];
 		$list_spec		= Db::select($array, $page);
 		return $list_spec;
 	}

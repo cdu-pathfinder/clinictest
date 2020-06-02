@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class returnControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -26,7 +26,7 @@ class returnControl extends SystemControl{
 		$condition = array();
 		$condition['refund_state'] = '2';//状态:1为处理中,2为待管理员处理,3为已完成
 
-		$keyword_type = array('order_sn','refund_sn','store_name','buyer_name','goods_name');
+		$keyword_type = array('appointment_sn','refund_sn','clic_name','buyer_name','doctors_name');
 		if (trim($_GET['key']) != '' && in_array($_GET['type'],$keyword_type)) {
 			$type = $_GET['type'];
 			$condition[$type] = array('like','%'.$_GET['key'].'%');
@@ -52,7 +52,7 @@ class returnControl extends SystemControl{
 		$model_refund = Model('refund_return');
 		$condition = array();
 
-		$keyword_type = array('order_sn','refund_sn','store_name','buyer_name','goods_name');
+		$keyword_type = array('appointment_sn','refund_sn','clic_name','buyer_name','doctors_name');
 		if (trim($_GET['key']) != '' && in_array($_GET['type'],$keyword_type)) {
 			$type = $_GET['type'];
 			$condition[$type] = array('like','%'.$_GET['key'].'%');
@@ -84,12 +84,12 @@ class returnControl extends SystemControl{
 			if ($return['refund_state'] != '2') {//检查状态,防止页面刷新不及时造成数据错误
 				showMessage(Language::get('nc_common_save_fail'));
 			}
-			$order_id = $return['order_id'];
+			$appointment_id = $return['appointment_id'];
 			$refund_array = array();
 			$refund_array['admin_time'] = time();
 			$refund_array['refund_state'] = '3';//状态:1为处理中,2为待管理员处理,3为已完成
 			$refund_array['admin_message'] = $_POST['admin_message'];
-			$state = $model_refund->editOrderRefund($return);
+			$state = $model_refund->editappointmentRefund($return);
 			if ($state) {
 			    $model_refund->editRefundReturn($condition, $refund_array);
 			    $this->log('退货确认，退货编号'.$return['refund_sn']);

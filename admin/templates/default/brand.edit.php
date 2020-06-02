@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -19,17 +19,17 @@
     <input type="hidden" name="brand_id" value="<?php echo $output['brand_array']['brand_id']?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['brand_index_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['brand_array']['brand_name']?>" name="brand_name" id="brand_name" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['brand_index_class'];?>: </td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform" id="gcategory"><input type="hidden" value="<?php echo $output['brand_array']['class_id']?>" name="class_id" class="mls_id">
             <input type="hidden" value="<?php echo $output['brand_array']['brand_class']?>" name="brand_class" class="mls_name">
             <span class="mr10"><?php echo $output['brand_array']['brand_class']?></span>
@@ -51,7 +51,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['brand_index_pic_sign'];?>: </td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"> <img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview" style="display: none;"><img id="view_img" src="<?php echo UPLOAD_SITE_URL.'/'.ATTACH_BRAND.'/'.$output['brand_array']['brand_pic']; ?>"></div>
             </span> <span class="type-file-box">
@@ -64,7 +64,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['brand_add_if_recommend'];?>: </td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="brand_recommend1" class="cb-enable <?php if($output['brand_array']['brand_recommend'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_yes'];?>"><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="brand_recommend0" class="cb-disable <?php if($output['brand_array']['brand_recommend'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_no'];?>"><span><?php echo $lang['nc_no'];?></span></label>
             <input id="brand_recommend1" name="brand_recommend" <?php if($output['brand_array']['brand_recommend'] == '1'){ ?>checked="checked"<?php } ?>  value="1" type="radio">
@@ -74,7 +74,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['nc_sort'];?>: </td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['brand_array']['brand_sort']?>" name="brand_sort" id="brand_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['brand_add_update_sort'];?></td>
         </tr>

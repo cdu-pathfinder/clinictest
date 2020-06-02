@@ -12,12 +12,12 @@
 		return false;
   }
   var recommend_max = 4;//推荐数
-  var goods_max = 8;//商品数
+  var doctors_max = 8;//商品数
   var brand_max = 12;//品牌限制
   var recommend_show = 1;//当前选择的商品推荐
   var slide_pic_max = 5;//切换广告图片限制
   var sale_max = 5;//促销区组数
-  var sale_goods_max = 5;//商品数
+  var sale_doctors_max = 5;//商品数
 	var titles = new Array();
 	titles["category_list"] = '推荐分类';
 	titles["brand_list"] = '推荐品牌';
@@ -117,7 +117,7 @@ function upload_type(id){//标题类型选择
 	$("#upload_"+id+"_type_"+get_type).show();
 }
 //分类相关
-function get_goods_class() {//查询子分类
+function get_doctors_class() {//查询子分类
 	var gc_id = $("#gc_parent_id").val();
 	if (gc_id>0) {
 		$.get('index.php?act=web_api&op=category_list&id='+gc_id, function(data) {
@@ -133,7 +133,7 @@ function del_gc_parent(gc_id) {//删除已选分类
 	var obj = $("dt[select_class_id='"+gc_id+"']");
 	obj.parent().remove();
 }
-function del_goods_class(gc_id) {//删除已选分类
+function del_doctors_class(gc_id) {//删除已选分类
 	var obj = $("dd[gc_id='"+gc_id+"']");
 	obj.remove();
 }
@@ -164,14 +164,14 @@ function show_recommend_dialog(id) {//弹出框
 	$("dl[select_recommend_id='"+id+"']").show();
 	show_dialog('recommend_list');
 }
-function get_recommend_goods() {//查询商品
+function get_recommend_doctors() {//查询商品
 	var gc_id = 0;
 	$('#recommend_gcategory > select').each(function() {
 		if ($(this).val()>0) gc_id = $(this).val();
 	});
-	var goods_name = $.trim($('#recommend_goods_name').val());
-	if (gc_id>0 || goods_name!='') {
-		$("#show_recommend_goods_list").load('index.php?act=web_api&op=recommend_list&'+$.param({'id':gc_id,'goods_name':goods_name }));
+	var doctors_name = $.trim($('#recommend_doctors_name').val());
+	if (gc_id>0 || doctors_name!='') {
+		$("#show_recommend_doctors_list").load('index.php?act=web_api&op=recommend_list&'+$.param({'id':gc_id,'doctors_name':doctors_name }));
 	}
 }
 function del_recommend(id) {//删除商品推荐
@@ -194,53 +194,53 @@ function add_recommend() {//增加商品推荐
 			var del_append = '';
 			del_append = '<a href="JavaScript:del_recommend('+i+');"><i class="icon-remove-sign "></i>删除</a>';//删除
 			add_html = '<dl recommend_id="'+i+'"><dt><h4>商品推荐</h4>'+del_append+
-    			'<a href="JavaScript:show_recommend_dialog('+i+');"><i class="icon-shopping-cart"></i>商品块</a><a href="JavaScript:show_recommend_pic_dialog('+i+');"><i class="icon-lightbulb"></i>广告块</a></dt>'+
-    			'<dd><ul class="goods-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
+    			'<a href="JavaScript:show_recommend_dialog('+i+');"><i class="icon-clinicping-cart"></i>商品块</a><a href="JavaScript:show_recommend_pic_dialog('+i+');"><i class="icon-lightbulb"></i>广告块</a></dt>'+
+    			'<dd><ul class="doctors-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
     			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
     			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
 			$("#btn_add_list").before(add_html);
 			$("#add_recommend_list").before('<dl select_recommend_id="'+i+'"><dt><h4 class="dialog-handle-title">商品推荐模块标题名称</h4>'+
     			'<div class="dialog-handle-box"><span class="left"><input name="recommend_list['+i+'][recommend][name]" value="商品推荐" type="text" class="w200"></span>'+
     			'<span class="right">修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏</span>'+
-    			'<div class="clear"></div></div></dt><dd><h4 class="dialog-handle-title">推荐商品</h4><ul class="dialog-goodslist-s1 goods-list">'+
+    			'<div class="clear"></div></div></dt><dd><h4 class="dialog-handle-title">推荐商品</h4><ul class="dialog-doctorslist-s1 doctors-list">'+
     			'<div class="s-tips"><i></i>小提示：单击查询出的商品选中，双击已选择的可以删除，最多8个，保存后生效。</div></ul></dd></dl>');
 			$("#recommend_list_form dl dd ul").sortable({ items: 'li' });
 			break;
 		}
 	}
 }
-function select_recommend_goods(goods_id) {//商品选择
+function select_recommend_doctors(doctors_id) {//商品选择
 	var id = recommend_show;
 	var obj = $("dl[select_recommend_id='"+id+"']");
-	if(obj.find("img[select_goods_id='"+goods_id+"']").size()>0) return;//避免重复
-	if(obj.find("img[select_goods_id]").size()>=goods_max) return;
-	var goods = $("#show_recommend_goods_list img[goods_id='"+goods_id+"']");
+	if(obj.find("img[select_doctors_id='"+doctors_id+"']").size()>0) return;//避免重复
+	if(obj.find("img[select_doctors_id]").size()>=doctors_max) return;
+	var doctors = $("#show_recommend_doctors_list img[doctors_id='"+doctors_id+"']");
 	var text_append = '';
-	var goods_pic = goods.attr("src");
-	var goods_name = goods.attr("title");
-	var goods_price = goods.attr("goods_price");
-	var market_price = goods.attr("market_price");
-	text_append += '<div ondblclick="del_recommend_goods('+goods_id+');" class="goods-pic">';
-	text_append += '<span class="ac-ico" onclick="del_recommend_goods('+goods_id+');"></span>';
+	var doctors_pic = doctors.attr("src");
+	var doctors_name = doctors.attr("title");
+	var doctors_price = doctors.attr("doctors_price");
+	var market_price = doctors.attr("market_price");
+	text_append += '<div ondblclick="del_recommend_doctors('+doctors_id+');" class="doctors-pic">';
+	text_append += '<span class="ac-ico" onclick="del_recommend_doctors('+doctors_id+');"></span>';
 	text_append += '<span class="thumb size-72x72">';
 	text_append += '<i></i>';
-  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" onload="javascript:DrawImage(this,72,72);" />';
+  	text_append += '<img select_doctors_id="'+doctors_id+'" title="'+doctors_name+'" src="'+doctors_pic+'" onload="javascript:DrawImage(this,72,72);" />';
 	text_append += '</span></div>';
-	text_append += '<div class="goods-name">';
-	text_append += '<a href="'+SHOP_SITE_URL+'/index.php?act=goods&goods_id='+goods_id+'" target="_blank">';
-  	text_append += goods_name+'</a>';
+	text_append += '<div class="doctors-name">';
+	text_append += '<a href="'+clinic_SITE_URL+'/index.php?act=doctors&doctors_id='+doctors_id+'" target="_blank">';
+  	text_append += doctors_name+'</a>';
 	text_append += '</div>';
-	text_append += '<input name="recommend_list['+id+'][goods_list]['+goods_id+'][goods_id]" value="'+goods_id+'" type="hidden">';
-	text_append += '<input name="recommend_list['+id+'][goods_list]['+goods_id+'][market_price]" value="'+market_price+'" type="hidden">';
-	text_append += '<input name="recommend_list['+id+'][goods_list]['+goods_id+'][goods_name]" value="'+goods_name+'" type="hidden">';
-	text_append += '<input name="recommend_list['+id+'][goods_list]['+goods_id+'][goods_price]" value="'+goods_price+'" type="hidden">';
-	text_append += '<input name="recommend_list['+id+'][goods_list]['+goods_id+'][goods_pic]" value="'+replace_url(goods_pic)+'" type="hidden">';
-	obj.find("ul").append('<li id="select_recommend_'+id+'_goods_'+goods_id+'">'+text_append+'</li>');
+	text_append += '<input name="recommend_list['+id+'][doctors_list]['+doctors_id+'][doctors_id]" value="'+doctors_id+'" type="hidden">';
+	text_append += '<input name="recommend_list['+id+'][doctors_list]['+doctors_id+'][market_price]" value="'+market_price+'" type="hidden">';
+	text_append += '<input name="recommend_list['+id+'][doctors_list]['+doctors_id+'][doctors_name]" value="'+doctors_name+'" type="hidden">';
+	text_append += '<input name="recommend_list['+id+'][doctors_list]['+doctors_id+'][doctors_price]" value="'+doctors_price+'" type="hidden">';
+	text_append += '<input name="recommend_list['+id+'][doctors_list]['+doctors_id+'][doctors_pic]" value="'+replace_url(doctors_pic)+'" type="hidden">';
+	obj.find("ul").append('<li id="select_recommend_'+id+'_doctors_'+doctors_id+'">'+text_append+'</li>');
 }
-function del_recommend_goods(goods_id) {//删除已选商品
+function del_recommend_doctors(doctors_id) {//删除已选商品
 	var id = recommend_show;
 	var obj = $("dl[select_recommend_id='"+id+"']");
-	obj.find("img[select_goods_id='"+goods_id+"']").parent().parent().parent().remove();
+	obj.find("img[select_doctors_id='"+doctors_id+"']").parent().parent().parent().remove();
 }
 function update_recommend() {//更新
     var id = recommend_show;
@@ -253,13 +253,13 @@ function update_recommend() {//更新
 		var recommend_name = obj.find("dt input").val();
 		$(".middle dl[recommend_id='"+id+"'] dt h4").html(recommend_name);
 		obj.find("img").each(function() {
-			var goods = $(this);
-			var goods_pic = goods.attr("src");
-			var goods_name = goods.attr("title");
-			text_append += '<li><span><a href="javascript:void(0);"><img title="'+goods_name+'" src="'+goods_pic+'"/></span></a></li>';
+			var doctors = $(this);
+			var doctors_pic = doctors.attr("src");
+			var doctors_name = doctors.attr("title");
+			text_append += '<li><span><a href="javascript:void(0);"><img title="'+doctors_name+'" src="'+doctors_pic+'"/></span></a></li>';
 		});
 	  $("dl[recommend_id='"+id+"'] dd ul").html('');
-	  $(".middle dl[recommend_id='"+id+"'] dd").html('<ul class="goods-list">'+text_append+'</ul>');
+	  $(".middle dl[recommend_id='"+id+"'] dd").html('<ul class="doctors-list">'+text_append+'</ul>');
 		DialogManager.close("recommend_list");
 	}
 }
@@ -379,7 +379,7 @@ function recommend_pic(pic_id,pic_img) {//更新图片
 	    var id = recommend_show;
 	    var recommend_name = $("input[name='recommend_list[recommend][name]']").val();
 	    $("input[name='recommend_list["+id+"][recommend][name]']").val(recommend_name);
-	    $("li[id^='select_recommend_"+id+"_goods_']").remove();
+	    $("li[id^='select_recommend_"+id+"_doctors_']").remove();
 	    $("li[id='select_recommend_"+id+"_pic_"+pic_id+"']").remove();
 
 	    var pic_name = $("input[name='pic_list[pic_name]']").val();
@@ -475,15 +475,15 @@ function show_sale_dialog(id){//弹出框
 	$("dl[select_sale_id='"+id+"']").show();
 	show_dialog('sale_list');
 }
-function get_goods_list(){//查询商品
+function get_doctors_list(){//查询商品
 	var gc_id = 0;
 	$('#gcategory > select').each(function(){
 		if ($(this).val()>0) gc_id = $(this).val();
 	});
-	var goods_name = $.trim($('#order_goods_name').val());
-	var goods_order = $('#goods_order').val();
-	if (gc_id>0 || goods_name!='') {
-		$("#show_sale_goods_list").load('index.php?act=web_api&op=goods_list&'+$.param({'id':gc_id,'goods_order':goods_order,'goods_name':goods_name }));
+	var doctors_name = $.trim($('#appointment_doctors_name').val());
+	var doctors_appointment = $('#doctors_appointment').val();
+	if (gc_id>0 || doctors_name!='') {
+		$("#show_sale_doctors_list").load('index.php?act=web_api&op=doctors_list&'+$.param({'id':gc_id,'doctors_appointment':doctors_appointment,'doctors_name':doctors_name }));
 	}
 }
 function del_sale_list(id){//删除商品推荐
@@ -502,47 +502,47 @@ function add_sale_list() {//增加商品推荐
 			var add_html = '';
 			add_html = '<dl sale_id="'+i+'"><a href="JavaScript:del_sale_list('+i+');" class="del">X</a><dt><h4>商品推荐</h4><a href="JavaScript:show_sale_dialog('+i+
     			');"><i class="icon-edit"></i>编辑</a><input name="sale_list['+i+'][recommend][name]" value="" type="hidden"></dt>'+
-    			'<dd><ul class="goods-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
+    			'<dd><ul class="doctors-list"><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li>'+
     			'<li><span><i class="icon-gift"></i></span></li><li><span><i class="icon-gift"></i></span></li></ul></dd></dl>';
 			$("#add_list").before(add_html);
 			$("#select_sale_list").before('<dl select_sale_id="'+i+'"><dt><h4 class="dialog-handle-title">商品推荐模块标题名称</h4>'+
     			'<div class="dialog-handle-box"><span class="left"><input name="recommend" value="商品推荐" type="text" class="w200"></span>'+
     			'<span class="right">修改该区域中部推荐商品模块选项卡名称，控制名称字符在4-8字左右，超出范围自动隐藏</span>'+
-    			'<div class="clear"></div></div></dt><dd><ul class="dialog-goodslist-s1 goods-list">'+
+    			'<div class="clear"></div></div></dt><dd><ul class="dialog-doctorslist-s1 doctors-list">'+
     			'<div class="s-tips"><i></i>小提示：单击查询出的商品选中，双击已选择的可以删除，最多5个，保存后生效。</div></ul></dd></dl>');
 			$("dl[select_sale_id='"+i+"'] dd ul").sortable({ items: 'li' });
 			break;
 		}
 	}
 }
-function select_sale_goods(goods_id){//商品选择
+function select_sale_doctors(doctors_id){//商品选择
 	var id = recommend_show;
 	var obj = $("dl[select_sale_id='"+id+"']");
-	if(obj.find("img[select_goods_id='"+goods_id+"']").size()>0) return;//避免重复
-	if(obj.find("img[select_goods_id]").size()>=sale_goods_max) return;
-	var goods = $("#show_sale_goods_list img[goods_id='"+goods_id+"']");
+	if(obj.find("img[select_doctors_id='"+doctors_id+"']").size()>0) return;//避免重复
+	if(obj.find("img[select_doctors_id]").size()>=sale_doctors_max) return;
+	var doctors = $("#show_sale_doctors_list img[doctors_id='"+doctors_id+"']");
 	var text_append = '';
-	var goods_pic = goods.attr("src");
-	var goods_name = goods.attr("title");
-	var goods_price = goods.attr("goods_price");
-	var market_price = goods.attr("market_price");
-	text_append += '<div ondblclick="del_sale_goods('+goods_id+');" class="goods-pic">';
-	text_append += '<span class="ac-ico" onclick="del_sale_goods('+goods_id+');"></span>';
+	var doctors_pic = doctors.attr("src");
+	var doctors_name = doctors.attr("title");
+	var doctors_price = doctors.attr("doctors_price");
+	var market_price = doctors.attr("market_price");
+	text_append += '<div ondblclick="del_sale_doctors('+doctors_id+');" class="doctors-pic">';
+	text_append += '<span class="ac-ico" onclick="del_sale_doctors('+doctors_id+');"></span>';
 	text_append += '<span class="thumb size-72x72">';
 	text_append += '<i></i>';
-  	text_append += '<img select_goods_id="'+goods_id+'" title="'+goods_name+'" src="'+goods_pic+'" goods_price="'+goods_price+'" market_price="'+market_price+'" onload="javascript:DrawImage(this,72,72);" />';
+  	text_append += '<img select_doctors_id="'+doctors_id+'" title="'+doctors_name+'" src="'+doctors_pic+'" doctors_price="'+doctors_price+'" market_price="'+market_price+'" onload="javascript:DrawImage(this,72,72);" />';
 	text_append += '</span></div>';
-	text_append += '<div class="goods-name">';
-	text_append += '<a href="'+SITEURL+'/index.php?act=goods&goods_id='+goods_id+'" target="_blank">';
-  	text_append += goods_name+'</a>';
+	text_append += '<div class="doctors-name">';
+	text_append += '<a href="'+SITEURL+'/index.php?act=doctors&doctors_id='+doctors_id+'" target="_blank">';
+  	text_append += doctors_name+'</a>';
 	text_append += '</div>';
 	obj.find("ul").append('<li>'+text_append+'</li>');
 
 }
-function del_sale_goods(goods_id){//删除已选商品
+function del_sale_doctors(doctors_id){//删除已选商品
 	var id = recommend_show;
 	var obj = $("dl[select_sale_id='"+id+"']");
-	obj.find("img[select_goods_id='"+goods_id+"']").parent().parent().parent().remove();
+	obj.find("img[select_doctors_id='"+doctors_id+"']").parent().parent().parent().remove();
 }
 function update_sale(){//更新
     var id = recommend_show;
@@ -552,18 +552,18 @@ function update_sale(){//更新
     $("dl[sale_id='"+id+"'] dt h4").html(recommend_name);
     $("dl[sale_id='"+id+"'] dt input").val(recommend_name);
     obj.find("img").each(function(){
-    	var goods = $(this);
-    	var goods_id = goods.attr("select_goods_id");
-    	var goods_pic = goods.attr("src");
-    	var goods_name = goods.attr("title");
-    	var goods_price = goods.attr("goods_price");
-    	var market_price = goods.attr("market_price");
-    	text_append += '<li><div class="goods-thumb"><img title="'+goods_name+'" src="'+goods_pic+'"/></div>';
-    	text_append += '<input name="sale_list['+id+'][goods_list]['+goods_id+'][goods_id]" value="'+goods_id+'" type="hidden">';
-    	text_append += '<input name="sale_list['+id+'][goods_list]['+goods_id+'][market_price]" value="'+market_price+'" type="hidden">';
-    	text_append += '<input name="sale_list['+id+'][goods_list]['+goods_id+'][goods_name]" value="'+goods_name+'" type="hidden">';
-    	text_append += '<input name="sale_list['+id+'][goods_list]['+goods_id+'][goods_price]" value="'+goods_price+'" type="hidden">';
-    	text_append += '<input name="sale_list['+id+'][goods_list]['+goods_id+'][goods_pic]" value="'+replace_url(goods_pic)+'" type="hidden">';
+    	var doctors = $(this);
+    	var doctors_id = doctors.attr("select_doctors_id");
+    	var doctors_pic = doctors.attr("src");
+    	var doctors_name = doctors.attr("title");
+    	var doctors_price = doctors.attr("doctors_price");
+    	var market_price = doctors.attr("market_price");
+    	text_append += '<li><div class="doctors-thumb"><img title="'+doctors_name+'" src="'+doctors_pic+'"/></div>';
+    	text_append += '<input name="sale_list['+id+'][doctors_list]['+doctors_id+'][doctors_id]" value="'+doctors_id+'" type="hidden">';
+    	text_append += '<input name="sale_list['+id+'][doctors_list]['+doctors_id+'][market_price]" value="'+market_price+'" type="hidden">';
+    	text_append += '<input name="sale_list['+id+'][doctors_list]['+doctors_id+'][doctors_name]" value="'+doctors_name+'" type="hidden">';
+    	text_append += '<input name="sale_list['+id+'][doctors_list]['+doctors_id+'][doctors_price]" value="'+doctors_price+'" type="hidden">';
+    	text_append += '<input name="sale_list['+id+'][doctors_list]['+doctors_id+'][doctors_pic]" value="'+replace_url(doctors_pic)+'" type="hidden">';
     	text_append += '</li>';
     });
     $("dl[sale_id='"+id+"'] dd ul").html('');

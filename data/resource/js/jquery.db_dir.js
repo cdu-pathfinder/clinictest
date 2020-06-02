@@ -47,7 +47,7 @@ $(document).ready(function(){
 						$('img[nc_type="flex"]').unbind('click');
 						//重现初始化页面
 						$.getScript(RESOURCE_SITE_URL+"/js/jquery.edit.js");
-						$.getScript(RESOURCE_SITE_URL+"/js/jquery.goods_class.js");	
+						$.getScript(RESOURCE_SITE_URL+"/js/jquery.doctors_class.js");	
 					}
 				},
 				error: function(){

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="snstrace">
     <input type="hidden" name="op" value="tracelist">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_uname"><?php echo $lang['admin_snstrace_membername'];?></label></th>
@@ -62,10 +62,10 @@
           <td class="fd-list"><!-- 动态列表start -->
             
             <li>
-              <div class="fd-aside"> <span class="thumb size60"><a href="<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $v['trace_memberid'];?>" target="_blank"> <img src="<?php if ($v['trace_memberavatar']!='') { echo UPLOAD_SITE_URL.DS.ATTACH_AVATAR.DS.$v['trace_memberavatar']; } else {  echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" onload="javascript:DrawImage(this,60,60);"> </a> </span> </div>
+              <div class="fd-aside"> <span class="thumb size60"><a href="<?php echo clinic_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $v['trace_memberid'];?>" target="_blank"> <img src="<?php if ($v['trace_memberavatar']!='') { echo UPLOAD_SITE_URL.DS.ATTACH_AVATAR.DS.$v['trace_memberavatar']; } else {  echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.C('default_user_portrait'); } ?>" onload="javascript:DrawImage(this,60,60);"> </a> </span> </div>
               <dl class="fd-wrap">
                 <dt>
-                  <h3><a href="<?php echo SHOP_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $v['trace_memberid'];?>" target="_blank"><?php echo $v['trace_membername'];?></a><?php echo $lang['nc_colon'];?></h3>
+                  <h3><a href="<?php echo clinic_SITE_URL.DS;?>index.php?act=member_snshome&mid=<?php echo $v['trace_memberid'];?>" target="_blank"><?php echo $v['trace_membername'];?></a><?php echo $lang['nc_colon'];?></h3>
                   <h5><?php echo parsesmiles($v['trace_title']);?></h5>
                 </dt>
                 <dd>

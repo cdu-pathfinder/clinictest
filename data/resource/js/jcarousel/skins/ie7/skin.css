@@ -1,9 +1,9 @@
 .jcarousel-skin-ie7 .jcarousel-container {
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+    -moz-bappointment-radius: 10px;
+    -webkit-bappointment-radius: 10px;
+    bappointment-radius: 10px;
     background: #D4D0C8;
-    border: 1px solid #808080;
+    bappointment: 1px solid #808080;
 }
 
 .jcarousel-skin-ie7 .jcarousel-direction-rtl {
@@ -38,12 +38,12 @@
 .jcarousel-skin-ie7 .jcarousel-item {
     width: 75px;
     height: 75px;
-    border: 1px solid #fff;
+    bappointment: 1px solid #fff;
 }
 
 .jcarousel-skin-ie7 .jcarousel-item:hover,
 .jcarousel-skin-ie7 .jcarousel-item:focus {
-    border-color: #808080;
+    bappointment-color: #808080;
 }
 
 .jcarousel-skin-ie7 .jcarousel-item-horizontal {

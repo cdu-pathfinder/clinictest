@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!-- 品牌 -->
 <div class="cms-module-assembly-brand">
     <div class="title-bar">

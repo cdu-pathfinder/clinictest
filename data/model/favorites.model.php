@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class favoritesModel extends Model{
     public function __construct() {
         parent::__construct('favorites');
@@ -22,11 +22,11 @@ class favoritesModel extends Model{
      * @param array $condition
      * @param treing $field
      * @param int $page
-     * @param string $order
+     * @param string $appointment
      * @return array
      */
-    public function getFavoritesList($condition, $field = '*', $page = 0 , $order = 'fav_time desc') {
-        return $this->where($condition)->order($order)->page($page)->select();
+    public function getFavoritesList($condition, $field = '*', $page = 0 , $appointment = 'fav_time desc') {
+        return $this->where($condition)->appointment($appointment)->page($page)->select();
     }
     
     /**
@@ -34,12 +34,12 @@ class favoritesModel extends Model{
      * @param array $condition
      * @param treing $field
      * @param int $page
-     * @param string $order
+     * @param string $appointment
      * @return array
      */
-    public function getGoodsFavoritesList($condition, $field = '*', $page = 0, $order = 'fav_time desc') {
-        $condition['fav_type'] = 'goods';
-        return $this->getFavoritesList($condition, '*', $page, $order);
+    public function getdoctorsFavoritesList($condition, $field = '*', $page = 0, $appointment = 'fav_time desc') {
+        $condition['fav_type'] = 'doctors';
+        return $this->getFavoritesList($condition, '*', $page, $appointment);
     }
     
     /**
@@ -47,12 +47,12 @@ class favoritesModel extends Model{
      * @param array $condition
      * @param treing $field
      * @param int $page
-     * @param string $order
+     * @param string $appointment
      * @return array
      */
-    public function getStoreFavoritesList($condition, $field = '*', $page = 0, $order = 'fav_time desc') {
-        $condition['fav_type'] = 'store';
-        return $this->getFavoritesList($condition, $page, $order);
+    public function getclicFavoritesList($condition, $field = '*', $page = 0, $appointment = 'fav_time desc') {
+        $condition['fav_type'] = 'clic';
+        return $this->getFavoritesList($condition, $page, $appointment);
     }
 // 	/**
 // 	 * 收藏列表
@@ -66,7 +66,7 @@ class favoritesModel extends Model{
 // 		$param = array(
 // 					'table'=>'favorites',
 // 					'where'=>$condition_str,
-// 					'order'=>$condition['order'] ? $condition['order'] : 'fav_time desc'
+// 					'appointment'=>$condition['appointment'] ? $condition['appointment'] : 'fav_time desc'
 // 				);		
 // 		$result = Db::select($param,$page);
 // 		return $result;
@@ -171,11 +171,11 @@ class favoritesModel extends Model{
 		if ($condition['fav_type'] != ''){
 			$condition_str .= " and fav_type = '".$condition['fav_type']."'";
 		}
-		if ($condition['goods_id'] != ''){
-			$condition_str .= " and goods_id = '".$condition['goods_id']."'";
+		if ($condition['doctors_id'] != ''){
+			$condition_str .= " and doctors_id = '".$condition['doctors_id']."'";
 		}
-		if ($condition['store_id'] != ''){
-			$condition_str .= " and store_id = '".$condition['store_id']."'";
+		if ($condition['clic_id'] != ''){
+			$condition_str .= " and clic_id = '".$condition['clic_id']."'";
 		}
 		if ($condition['fav_id_in'] !=''){
 			$condition_str .= " and favorites.fav_id in({$condition['fav_id_in']}) ";

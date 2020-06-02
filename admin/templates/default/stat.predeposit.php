@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,12 +12,12 @@
     <input type="hidden" name="op" value="predeposit" />
     <input type="hidden" name="" value="" />
     <div class="w100pre" style="width: 100%;">
-      <table class="tb-type1 noborder search left">
+      <table class="tb-type1 nobappointment search left">
         <tbody>
           <tr>
             <td><select name="pd_type" id="pd_type" class="querySelect">
                 <option value="recharge" <?php echo $_GET['pd_type']=='recharge'?'selected':''; ?>>充值</option>
-                <option value="order_pay" <?php echo $_GET['pd_type']=='order_pay'?'selected':''; ?>>消费</option>
+                <option value="appointment_pay" <?php echo $_GET['pd_type']=='appointment_pay'?'selected':''; ?>>消费</option>
                 <option value="cash_pay" <?php echo $_GET['pd_type']=='cash_pay'?'selected':''; ?>>提现</option>
                 <option value="refund" <?php echo $_GET['pd_type']=='refund'?'selected':''; ?>>退款</option>
               </select></td>
@@ -61,7 +61,7 @@
   <div class="stat-info"><span>存入金额：
     <strong><?php echo number_format($output['stat_array']['recharge_amount'],2); ?></strong>
     元</span><span>消费金额：
-    <strong><?php echo number_format($output['stat_array']['order_amount'],2); ?></strong>
+    <strong><?php echo number_format($output['stat_array']['appointment_amount'],2); ?></strong>
     元</span><span>提现金额：
     <strong><?php echo number_format($output['stat_array']['cash_amount'],2); ?></strong>
     元</span><span>总余额：
@@ -99,7 +99,7 @@
 			case 'recharge':
 				echo '充值';
 				break;
-			case 'order_pay':
+			case 'appointment_pay':
 				echo '消费';
 				break;
 			case 'cash_pay':

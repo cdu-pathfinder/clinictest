@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <style type="text/css">
 .module-state-show { background-color: #FFF; }
 .module-state-hide { background-color: #CCC; }
@@ -387,7 +387,7 @@ $(document).ready(function(){
   </div>
   <div class="fixed-empty"></div>
   <div class="cms-edit-bg-line">
-  <div style=" background-color: #FFF; padding: 0 0 8px 0; margin-bottom: 12px; border-bottom: solid 1px #BCE6F8">
+  <div style=" background-color: #FFF; padding: 0 0 8px 0; margin-bottom: 12px; bappointment-bottom: solid 1px #BCE6F8">
   <a class="btn" href="index.php?act=cms_index&op=cms_index_preview" target="_blank"><span>预览</span></a> 
   <a class="btn" id="btn_index_build" href="Javascript: void(0)"><span><?php echo $lang['cms_index_build'];?></span></a> 
   <a class="btn" href="<?php echo CMS_SITE_URL;?>" target="_blank"><span><?php echo $lang['cms_index_go'];?></span></a></div>

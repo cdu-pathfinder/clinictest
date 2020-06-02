@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" action="index.php?act=adv&op=ap_manage" name="formSearch">
     <input type="hidden" name="act" value="adv" />
     <input type="hidden" name="op" value="ap_manage" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="search_name"><?php echo $lang['ap_name']; ?></label></th>
@@ -27,7 +27,7 @@
       </tbody>
     </table>
   </form>
-  <form method="post" id="store_form">
+  <form method="post" id="clic_form">
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <thead>
@@ -114,7 +114,7 @@
           <td><input type="checkbox" class="checkall" id="checkall"/></td>
           <td id="batchAction" colspan="15"><span class="all_checkbox">
             <label for="checkall"><?php echo $lang['nc_select_all'];?></label>
-            </span>&nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('<?php echo $lang['ap_del_sure'];?>')){$('#store_form').submit();}"><span><?php echo $lang['nc_del'];?></span></a>
+            </span>&nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('<?php echo $lang['ap_del_sure'];?>')){$('#clic_form').submit();}"><span><?php echo $lang['nc_del'];?></span></a>
             <div class="pagination"> <?php echo $output['page'];?> </div></td>
         </tr>
       </tfoot>

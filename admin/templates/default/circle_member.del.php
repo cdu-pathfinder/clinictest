@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <form method="post" id="delmember" name="delmember" action="index.php?act=circle_member&op=member_del&param=<?php echo $_GET['param'];?>">
     <input type="hidden" name="form_submit" value="ok"/>
     <dl><dd style="padding:10px 30px;"><p><?php echo $lang['circle_member_del_confirm'];?></p></dd></dl>

@@ -32,7 +32,7 @@ ul,ol{
 }
 
 .new-btn-login-sp{
-	border:1px solid #D74C00;
+	bappointment:1px solid #D74C00;
 	padding:1px;
 	display:inline-block;
 }
@@ -40,7 +40,7 @@ ul,ol{
 .new-btn-login{
     background-color: transparent;
     background-image: url("images/new-btn-fixed.png");
-    border: medium none;
+    bappointment: medium none;
 }
 .new-btn-login{
     background-position: 0 -198px;
@@ -79,7 +79,7 @@ ul,ol{
 #logo{
 	background-color: transparent;
     background-image: url("images/new-btn-fixed.png");
-    border: medium none;
+    bappointment: medium none;
 	background-position:0 0;
 	width:166px;
 	height:35px;
@@ -126,7 +126,7 @@ ul,ol{
     margin: 15px 0 10px;
     text-align: left;
     height:30px;
-    border-bottom:solid 2px #CFD2D7;
+    bappointment-bottom:solid 2px #CFD2D7;
 }
 .cashier-nav ol li {
     float: left;

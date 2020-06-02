@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if($_GET['act'] === 'picture') { ?>
 <?php $url_function = 'getPictureUrl';?>
 <?php } else { ?>

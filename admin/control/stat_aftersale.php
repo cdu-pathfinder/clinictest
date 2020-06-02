@@ -7,12 +7,12 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class stat_aftersaleControl extends SystemControl{
     private $links = array(
         array('url'=>'act=stat_aftersale&op=refund','lang'=>'stat_refund'),
-        array('url'=>'act=stat_aftersale&op=evalstore','lang'=>'stat_evalstore'),
+        array('url'=>'act=stat_aftersale&op=evalclic','lang'=>'stat_evalclic'),
     );
     public function __construct(){
         parent::__construct();
@@ -117,14 +117,14 @@ class stat_aftersaleControl extends SystemControl{
 		    $refundlist_tmp = $model->getRefundReturnList($where, 10, $fields);
 		}
 		$statheader = array();
-        $statheader[] = array('text'=>'订单编号','key'=>'order_sn');
+        $statheader[] = array('text'=>'订单编号','key'=>'appointment_sn');
         $statheader[] = array('text'=>'退款编号','key'=>'refund_sn');
-        $statheader[] = array('text'=>'店铺名','key'=>'store_name','class'=>'alignleft');
-        $statheader[] = array('text'=>'商品名称','key'=>'goods_name','class'=>'alignleft');
+        $statheader[] = array('text'=>'店铺名','key'=>'clic_name','class'=>'alignleft');
+        $statheader[] = array('text'=>'商品名称','key'=>'doctors_name','class'=>'alignleft');
         $statheader[] = array('text'=>'买家会员名','key'=>'buyer_name');
         $statheader[] = array('text'=>'申请时间','key'=>'add_time');
         $statheader[] = array('text'=>'退款金额','key'=>'refund_amount');
-        $statheader[] = array('text'=>'卖家审核','key'=>'seller_state');
+        $statheader[] = array('text'=>'卖家审核','key'=>'clinicer_state');
         $statheader[] = array('text'=>'平台确认','key'=>'refund_state');
         foreach ((array)$refundlist_tmp as $k=>$v){
             $tmp = $v;
@@ -134,13 +134,13 @@ class stat_aftersaleControl extends SystemControl{
                     $tmp[$h_v['key']] = @date('Y-m-d',$v['add_time']);
                 }
                 if ($h_v['key'] == 'refund_state'){
-                    $tmp[$h_v['key']] = $v['seller_state']==2 ? $refundstate_arr['admin'][$v['refund_state']]:'无';
+                    $tmp[$h_v['key']] = $v['clinicer_state']==2 ? $refundstate_arr['admin'][$v['refund_state']]:'无';
                 }
-                if ($h_v['key'] == 'seller_state'){
-                    $tmp[$h_v['key']] = $refundstate_arr['seller'][$v['seller_state']];
+                if ($h_v['key'] == 'clinicer_state'){
+                    $tmp[$h_v['key']] = $refundstate_arr['clinicer'][$v['clinicer_state']];
                 }
-                if ($h_v['key'] == 'goods_name'){
-                    $tmp[$h_v['key']] = '<a href="'.urlShop('goods', 'index', array('goods_id' => $v['goods_id'])).'" target="_blank">'.$v['goods_name'].'</a>';
+                if ($h_v['key'] == 'doctors_name'){
+                    $tmp[$h_v['key']] = '<a href="'.urlclinic('doctors', 'index', array('doctors_id' => $v['doctors_id'])).'" target="_blank">'.$v['doctors_name'].'</a>';
                 }
             }
             $statlist[] = $tmp;
@@ -172,18 +172,18 @@ class stat_aftersaleControl extends SystemControl{
     		Tpl::output('statlist',$statlist);
     		Tpl::output('show_page',$model->showpage(2));
     		Tpl::output('searchtime',$_GET['t']);
-    		Tpl::output('orderby',$orderby);
+    		Tpl::output('appointmentby',$appointmentby);
     		Tpl::output('actionurl',"index.php?act={$this->search_arr['act']}&op={$this->search_arr['op']}&t={$this->search_arr['t']}");
-        	Tpl::showpage('stat.listandorder','null_layout');
+        	Tpl::showpage('stat.listandappointment','null_layout');
         }
 	}
 	/**
 	 * 店铺动态评分统计
 	 */
-	public function evalstoreOp(){
+	public function evalclicOp(){
 	    //店铺分类
-		$model_store_class = Model('store_class');
-		$parent_list = $model_store_class->getTreeClassList(2);
+		$model_clic_class = Model('clic_class');
+		$parent_list = $model_clic_class->getTreeClassList(2);
 		if (is_array($parent_list)){
 			foreach ($parent_list as $k => $v){
 				$parent_list[$k]['sc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['sc_name'];
@@ -192,34 +192,34 @@ class stat_aftersaleControl extends SystemControl{
 		Tpl::output('class_list',$parent_list);
 		$model = Model('stat');
 		$where = array();
-		if($this->search_arr['store_class']){
-		    $sonclass_list = $model_store_class->getChildClass($this->search_arr['store_class']);
+		if($this->search_arr['clic_class']){
+		    $sonclass_list = $model_clic_class->getChildClass($this->search_arr['clic_class']);
 		    $search_classid = array();
 		    foreach((array)$sonclass_list as $k=>$v){
 		        $search_classid[] = $v['sc_id'];
 		    }
 		    $where['sc_id'] = array('in',$search_classid);
 		}
-		if (trim($this->search_arr['storename'])){
-		    $where['seval_storename'] = array('like',"%".trim($this->search_arr['storename'])."%");
+		if (trim($this->search_arr['clicname'])){
+		    $where['seval_clicname'] = array('like',"%".trim($this->search_arr['clicname'])."%");
 		}
-		$field = ' seval_storeid, seval_storename';
+		$field = ' seval_clicid, seval_clicname';
 		$field .= ' ,(SUM(seval_desccredit)/COUNT(*)) as avgdesccredit';
 		$field .= ' ,(SUM(seval_servicecredit)/COUNT(*)) as avgservicecredit';
 		$field .= ' ,(SUM(seval_deliverycredit)/COUNT(*)) as avgdeliverycredit';		
-		if (trim($this->search_arr['orderby'])){
-		    $orderby = trim($this->search_arr['orderby']);
+		if (trim($this->search_arr['appointmentby'])){
+		    $appointmentby = trim($this->search_arr['appointmentby']);
 		} else {
-		    $orderby = 'avgdesccredit desc';
+		    $appointmentby = 'avgdesccredit desc';
 		}
 		
 		//查询评论的店铺总数
-		$count_arr = $model->statByStoreAndEvaluatestore($where, 'count(DISTINCT evaluate_store.seval_storeid) as countnum');
+		$count_arr = $model->statByclicAndEvaluateclic($where, 'count(DISTINCT evaluate_clic.seval_clicid) as countnum');
 		$countnum = intval($count_arr[0]['countnum']);
 	    if ($this->search_arr['exporttype'] == 'excel'){
-		    $statlist_tmp = $model->statByStoreAndEvaluatestore($where, $field, 0, 0, $orderby, 'seval_storeid');
+		    $statlist_tmp = $model->statByclicAndEvaluateclic($where, $field, 0, 0, $appointmentby, 'seval_clicid');
 		} else {
-		    $statlist_tmp = $model->statByStoreAndEvaluatestore($where, $field, array(10,$countnum), 0, $orderby, 'seval_storeid');
+		    $statlist_tmp = $model->statByclicAndEvaluateclic($where, $field, array(10,$countnum), 0, $appointmentby, 'seval_clicid');
 		}
 		foreach((array)$statlist_tmp as $k=>$v){
 		    $tmp = $v;
@@ -243,7 +243,7 @@ class stat_aftersaleControl extends SystemControl{
 		    $excel_data[0][] = array('styleid'=>'s_title','data'=>'发货速度');
 			//data
 			foreach ((array)$statlist as $k=>$v){
-				$excel_data[$k+1][] = array('data'=>$v['seval_storename']);
+				$excel_data[$k+1][] = array('data'=>$v['seval_clicname']);
 				$excel_data[$k+1][] = array('data'=>$v['avgdesccredit']);
 				$excel_data[$k+1][] = array('data'=>$v['avgservicecredit']);
 				$excel_data[$k+1][] = array('data'=>$v['avgdeliverycredit']);
@@ -256,7 +256,7 @@ class stat_aftersaleControl extends SystemControl{
         }
 		Tpl::output('statlist',$statlist);
 		Tpl::output('show_page',$model->showpage(2));
-		Tpl::output('top_link',$this->sublink($this->links, 'evalstore'));
-		Tpl::showpage('stat.aftersale.evalstore');
+		Tpl::output('top_link',$this->sublink($this->links, 'evalclic'));
+		Tpl::showpage('stat.aftersale.evalclic');
 	}
 }

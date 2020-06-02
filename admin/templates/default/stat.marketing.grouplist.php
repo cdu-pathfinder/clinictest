@@ -1,11 +1,11 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <style>
 #glist tr.item{ cursor:pointer }
-#glist tr.selected{ border:#329ED1 1px solid; }
-#glist .ginfo .img{ border:1px #D9D9D9 solid; margin-right:10px; }
+#glist tr.selected{ bappointment:#329ED1 1px solid; }
+#glist .ginfo .img{ bappointment:1px #D9D9D9 solid; margin-right:10px; }
 #glist .ginfo .infoitem{ width:120px; height:30px; }
 </style>
-<div style="border:1px #D9D9D9 solid; padding:10px; width:98%;">
+<div style="bappointment:1px #D9D9D9 solid; padding:10px; width:98%;">
     <div style="text-align:right;">
     	<input class="txt" type="text" value="<?php echo $output['search_arr']['gname'];?>" id="gname" name="gname">
     	<a href="index.php?act=stat_marketing&op=grouplist&t=<?php echo $output['searchtime'];?>" id="glistsearchbtn" class="btn-search tooltip" title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
@@ -21,11 +21,11 @@
           </tr>
           <tr nc_type="ginfo" class="hover ginfo" style="display:none;">
             <td colspan="3">
-            	<div class="size-106x106 left img"><span class="thumb size-106x106"><i></i><a target="_blank" href="<?php echo SHOP_SITE_URL."/index.php?act=show_groupbuy&op=groupbuy_detail&group_id=".$v['groupbuy_id'];?>"><img src="<?php echo gthumb($v['groupbuy_image'], 'small');?>" style=" max-width: 106px; max-height: 106px;"/></a></span></div>
+            	<div class="size-106x106 left img"><span class="thumb size-106x106"><i></i><a target="_blank" href="<?php echo clinic_SITE_URL."/index.php?act=show_groupbuy&op=groupbuy_detail&group_id=".$v['groupbuy_id'];?>"><img src="<?php echo gthumb($v['groupbuy_image'], 'small');?>" style=" max-width: 106px; max-height: 106px;"/></a></span></div>
             	<div class="left">
-                	<h3><?php echo $v['goods_name'];?></h3>
+                	<h3><?php echo $v['doctors_name'];?></h3>
                 	<div class="close_float">
-                		<span class="infoitem left">原价：<em class="red_common"><?php echo $v['goods_price'].$lang['currency_zh'];?></em></span>
+                		<span class="infoitem left">原价：<em class="red_common"><?php echo $v['doctors_price'].$lang['currency_zh'];?></em></span>
                 		<span class="infoitem left">折扣：<em class="red_common"><?php echo $v['groupbuy_rebate'];?>折</em></span>
                 		<span class="infoitem left">团购价：<em class="red_common"><?php echo $v['groupbuy_price'].$lang['currency_zh'];?></em></span>
                 	</div>

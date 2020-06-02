@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class offpay_areaControl extends SystemControl {
 	public function __construct(){
@@ -17,24 +17,24 @@ class offpay_areaControl extends SystemControl {
 	public function indexOp() {
 	    $model_parea = Model('offpay_area');
 	    $model_area = Model('area');
-	    if (!defined('DEFAULT_PLATFORM_STORE_ID')) {
+	    if (!defined('DEFAULT_PLATFORM_clic_ID')) {
 	        showMessage('请系统管理员配置完自营店铺后再设置货到付款','index.php?act=dashboard&op=aboutus','html','error',1,5000);
 	    }
-	    $store_id = DEFAULT_PLATFORM_STORE_ID;
+	    $clic_id = DEFAULT_PLATFORM_clic_ID;
 	    if (chksubmit()) {
 	        if (!preg_match('/^[\d,]+$/',$_POST['county'])) {
 	            $_POST['county'] = '';
 	        }
 	        //内置自营店ID
-	        $area_info = $model_parea->getAreaInfo(array('store_id'=>$store_id));
+	        $area_info = $model_parea->getAreaInfo(array('clic_id'=>$clic_id));
             $data = array();
             $county = trim($_POST['county'],',');
             $data['area_id'] = serialize(explode(',',$county));	        
 	        if (!$area_info) {
-	            $data['store_id'] = $store_id;
+	            $data['clic_id'] = $clic_id;
 	            $result = $model_parea->addArea($data);
 	        } else {
-	            $result = $model_parea->updateArea(array('store_id'=>$store_id),$data);
+	            $result = $model_parea->updateArea(array('clic_id'=>$clic_id),$data);
 	        }
 	        if ($result) {
 	            showMessage('保存成功');
@@ -43,7 +43,7 @@ class offpay_areaControl extends SystemControl {
 	        }
 	    }
 	    //取出支持货到付款的县ID
-        $parea_info = $model_parea->getAreaInfo(array('store_id'=>$store_id));
+        $parea_info = $model_parea->getAreaInfo(array('clic_id'=>$clic_id));
         if (!empty($parea_info['area_id'])) {
             $parea_ids = @unserialize($parea_info['area_id']);
         }

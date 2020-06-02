@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,9 +12,9 @@
     <input type="hidden" name="act" value="stat_member" />
     <input type="hidden" name="op" value="scale" />
     <input type="hidden" id="exporttype" name="exporttype" value=""/>
-    <input type="hidden" id="orderby" name="orderby" value="<?php echo $output['search_arr']['orderby']?$output['search_arr']['orderby']:'orderamount desc';?>"/>
+    <input type="hidden" id="appointmentby" name="appointmentby" value="<?php echo $output['search_arr']['appointmentby']?$output['search_arr']['appointmentby']:'appointmentamount desc';?>"/>
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
               <td>
@@ -76,11 +76,11 @@
     <thead>
       <tr class="thead sortbar-array">
         <th class="align-center">会员名称</th>
-        <th class="align-center"><a nc_type="orderitem" data-param='{"orderby":"orderamount"}' class="<?php echo (!$output['search_arr']['orderby'] || $output['search_arr']['orderby']=='orderamount desc')?'selected desc':''; echo $output['search_arr']['orderby']=='orderamount asc'?'selected asc':''; ?>">下单金额<i></i></a></th>
-        <th class="align-center"><a nc_type="orderitem" data-param='{"orderby":"predincrease"}' class="<?php echo ($output['search_arr']['orderby']=='predincrease desc')?'selected desc':''; echo $output['search_arr']['orderby']=='predincrease asc'?'selected asc':''; ?>">增预存款<i></i></a></th>
-        <th class="align-center"><a nc_type="orderitem" data-param='{"orderby":"predreduce"}' class="<?php echo ($output['search_arr']['orderby']=='predreduce desc')?'selected desc':''; echo $output['search_arr']['orderby']=='predreduce asc'?'selected asc':''; ?>">减预存款<i></i></a></th>
-        <th class="align-center"><a nc_type="orderitem" data-param='{"orderby":"pointsincrease"}' class="<?php echo ($output['search_arr']['orderby']=='pointsincrease desc')?'selected desc':''; echo $output['search_arr']['orderby']=='pointsincrease asc'?'selected asc':''; ?>">增积分<i></i></a></th>
-        <th class="align-center"><a nc_type="orderitem" data-param='{"orderby":"pointsreduce"}' class="<?php echo ($output['search_arr']['orderby']=='pointsreduce desc')?'selected desc':''; echo $output['search_arr']['orderby']=='pointsreduce asc'?'selected asc':''; ?>">减积分<i></i></a></th>
+        <th class="align-center"><a nc_type="appointmentitem" data-param='{"appointmentby":"appointmentamount"}' class="<?php echo (!$output['search_arr']['appointmentby'] || $output['search_arr']['appointmentby']=='appointmentamount desc')?'selected desc':''; echo $output['search_arr']['appointmentby']=='appointmentamount asc'?'selected asc':''; ?>">下单金额<i></i></a></th>
+        <th class="align-center"><a nc_type="appointmentitem" data-param='{"appointmentby":"predincrease"}' class="<?php echo ($output['search_arr']['appointmentby']=='predincrease desc')?'selected desc':''; echo $output['search_arr']['appointmentby']=='predincrease asc'?'selected asc':''; ?>">增预存款<i></i></a></th>
+        <th class="align-center"><a nc_type="appointmentitem" data-param='{"appointmentby":"predreduce"}' class="<?php echo ($output['search_arr']['appointmentby']=='predreduce desc')?'selected desc':''; echo $output['search_arr']['appointmentby']=='predreduce asc'?'selected asc':''; ?>">减预存款<i></i></a></th>
+        <th class="align-center"><a nc_type="appointmentitem" data-param='{"appointmentby":"pointsincrease"}' class="<?php echo ($output['search_arr']['appointmentby']=='pointsincrease desc')?'selected desc':''; echo $output['search_arr']['appointmentby']=='pointsincrease asc'?'selected asc':''; ?>">增积分<i></i></a></th>
+        <th class="align-center"><a nc_type="appointmentitem" data-param='{"appointmentby":"pointsreduce"}' class="<?php echo ($output['search_arr']['appointmentby']=='pointsreduce desc')?'selected desc':''; echo $output['search_arr']['appointmentby']=='pointsreduce asc'?'selected asc':''; ?>">减积分<i></i></a></th>
       </tr>
     </thead>
     <tbody id="datatable">
@@ -88,7 +88,7 @@
         <?php foreach ($output['statlist'] as $k=>$v){?>
           <tr class="hover">
             <td class="align-center"><?php echo $v['statm_membername'];?></td>
-            <td class="align-center"><?php echo $v['orderamount'];?></td>
+            <td class="align-center"><?php echo $v['appointmentamount'];?></td>
             <td class="align-center"><?php echo $v['predincrease'];?></td>
             <td class="align-center"><?php echo $v['predreduce'];?></td>
             <td class="align-center"><?php echo $v['pointsincrease'];?></td>
@@ -146,7 +146,7 @@ $(function () {
 	
 	$('#ncsubmit').click(function(){
 		$("#exporttype").val('');
-		$("#orderby").val('');
+		$("#appointmentby").val('');
     	$('#formSearch').submit();
     });
 
@@ -156,14 +156,14 @@ $(function () {
     	$('#formSearch').submit();
     });
 
-    $("[nc_type='orderitem']").click(function(){
+    $("[nc_type='appointmentitem']").click(function(){
     	$("#exporttype").val('');
     	var data_str = $(this).attr('data-param');
 	    eval( "data_str = "+data_str);
         if($(this).hasClass('desc')){
-        	$("#orderby").val(data_str.orderby + ' asc');
+        	$("#appointmentby").val(data_str.appointmentby + ' asc');
         } else {
-        	$("#orderby").val(data_str.orderby + ' desc');
+        	$("#appointmentby").val(data_str.appointmentby + ' desc');
         }
         $('#formSearch').submit();
     });

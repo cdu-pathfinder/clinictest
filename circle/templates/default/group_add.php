@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="add-group">
   <dl class="top-box">
@@ -74,7 +74,7 @@
         <dt>&nbsp;</dt>
         <dd>
           <input type="checkbox" checked="checked" />
-          <?php echo $lang['circle_my_read_carefully_agree'];?><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=document&code=create_circle"><?php echo $lang['circle_notice_for_use']?></a><?php echo $lang['circle_all_terms'];?></dd>
+          <?php echo $lang['circle_my_read_carefully_agree'];?><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=document&code=create_circle"><?php echo $lang['circle_notice_for_use']?></a><?php echo $lang['circle_all_terms'];?></dd>
       </dl>
       <dl class="bottom">
         <dt>&nbsp;</dt>

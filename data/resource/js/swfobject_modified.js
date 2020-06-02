@@ -19,8 +19,8 @@ var swfobject = function() {
 		domLoadFnArr = [],
 		regObjArr = [],
 		timer = null,
-		storedAltContent = null,
-		storedAltContentId = null,
+		clicdAltContent = null,
+		clicdAltContentId = null,
 		isDomLoaded = false,
 		isExpressInstallActive = false;
 	
@@ -280,12 +280,12 @@ var swfobject = function() {
 			if (regObj.altContentId) {
 				var ac = getElementById(regObj.altContentId);
 				if (ac) {
-					storedAltContent = ac;
-					storedAltContentId = regObj.altContentId;
+					clicdAltContent = ac;
+					clicdAltContentId = regObj.altContentId;
 				}
 			}
 			else {
-				storedAltContent = abstractAltContent(obj);
+				clicdAltContent = abstractAltContent(obj);
 			}
 			if (!(/%$/.test(regObj.width)) && parseInt(regObj.width, 10) < 310) {
 				regObj.width = "310";
@@ -647,18 +647,18 @@ var swfobject = function() {
 		
 		// For internal usage only
 		expressInstallCallback: function() {
-			if (isExpressInstallActive && storedAltContent) {
+			if (isExpressInstallActive && clicdAltContent) {
 				var obj = getElementById(EXPRESS_INSTALL_ID);
 				if (obj) {
-					obj.parentNode.replaceChild(storedAltContent, obj);
-					if (storedAltContentId) {
-						setVisibility(storedAltContentId, true);
+					obj.parentNode.replaceChild(clicdAltContent, obj);
+					if (clicdAltContentId) {
+						setVisibility(clicdAltContentId, true);
 						if (ua.ie && ua.win) {
-							storedAltContent.style.display = "block";
+							clicdAltContent.style.display = "block";
 						}
 					}
-					storedAltContent = null;
-					storedAltContentId = null;
+					clicdAltContent = null;
+					clicdAltContentId = null;
 					isExpressInstallActive = false;
 				}
 			} 

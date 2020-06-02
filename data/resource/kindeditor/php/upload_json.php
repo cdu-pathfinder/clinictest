@@ -9,11 +9,11 @@
 
 define('BASE_PATH',str_replace('\\','/',dirname(__FILE__)));
 if (!@include('../../../../global.php')) exit('global.php isn\'t exists!');
-if (!@include(BASE_CORE_PATH.'/shopnc.php')) exit('shopnc.php isn\'t exists!');
+if (!@include(BASE_CORE_PATH.'/clinicnc.php')) exit('clinicnc.php isn\'t exists!');
 //文件保存目录路径
-$save_path = '../../../upload/shop/editor/';
+$save_path = '../../../upload/clinic/editor/';
 //文件保存目录URL
-$save_url = UPLOAD_SITE_URL.'/shop/editor/';
+$save_url = UPLOAD_SITE_URL.'/clinic/editor/';
 $save_url = str_replace('resource/kindeditor/php/data/','',$save_url);
 //定义允许上传的文件扩展名
 $ext_arr = array('gif', 'jpg', 'jpeg', 'png', 'bmp');

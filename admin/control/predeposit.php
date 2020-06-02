@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class predepositControl extends SystemControl{
 	const EXPORT_SIZE = 1000;
 	public function __construct(){
@@ -244,7 +244,7 @@ class predepositControl extends SystemControl{
 		    $data['member_id'] = $member_info['member_id'];
 		    $data['member_name'] = $member_info['member_name'];
 		    $data['amount'] = $info['pdc_amount'];
-		    $data['order_sn'] = $info['pdc_sn'];
+		    $data['appointment_sn'] = $info['pdc_sn'];
 		    $data['admin_name'] = $admininfo['name'];
 		    $model_pd->changePd('cash_del',$data);
 		    $model_pd->commit();
@@ -295,7 +295,7 @@ class predepositControl extends SystemControl{
             $data['member_id'] = $member_info['member_id'];
             $data['member_name'] = $member_info['member_name'];
             $data['amount'] = $info['pdc_amount'];
-            $data['order_sn'] = $info['pdc_sn'];
+            $data['appointment_sn'] = $info['pdc_sn'];
             $data['admin_name'] = $admininfo['name'];
             $model_pd->changePd('cash_pay',$data);
             $model_pd->commit();

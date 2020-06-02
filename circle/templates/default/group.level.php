@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if($output['circle_info']['circle_status'] == 1){?>
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/ubb.css" rel="stylesheet" type="text/css">
 <div class="group warp-all">
@@ -21,7 +21,7 @@
         <tr>
           <td height="40"><?php echo $i;?></td>
           <td><?php echo memberLevelHtml(array('cm_level'=>$i, 'cm_levelname'=>$output['ml_info']['ml_'.$i], 'circle_id'=>$output['c_id']));?></td>
-          <td style="border-right: solid 1px #E5ECEE"><?php echo $output['mld_array'][$i]['mld_exp'];?></td>
+          <td style="bappointment-right: solid 1px #E5ECEE"><?php echo $output['mld_array'][$i]['mld_exp'];?></td>
           <td><?php echo $i+8;?></td>
           <td><?php echo memberLevelHtml(array('cm_level'=>$i+8, 'cm_levelname'=>$output['ml_info']['ml_'.($i+8)], 'circle_id'=>$output['c_id']));?></td>
           <td><?php echo $output['mld_array'][($i+8)]['mld_exp'];?></td>
@@ -41,16 +41,16 @@
       <tbody>
         <tr>
           <td height="40"><?php echo $lang['level_release_theme'];?></td>
-          <td style="border-right: solid 1px #E5ECEE"><?php echo C('circle_exprelease');?></td>
+          <td style="bappointment-right: solid 1px #E5ECEE"><?php echo C('circle_exprelease');?></td>
           <td rowspan="2"><?php echo C('circle_expreleasemax');?></td>
         </tr>
         <tr>
           <td height="40"><?php echo $lang['level_reply_theme'];?></td>
-          <td style="border-right: solid 1px #E5ECEE"><?php echo C('circle_expreply');?></td>
+          <td style="bappointment-right: solid 1px #E5ECEE"><?php echo C('circle_expreply');?></td>
         </tr>
         <tr>
           <td height="40"><?php echo $lang['level_replied_theme'];?></td>
-          <td style="border-right: solid 1px #E5ECEE"><?php echo C('circle_expreplied');?></td>
+          <td style="bappointment-right: solid 1px #E5ECEE"><?php echo C('circle_expreplied');?></td>
           <td><?php echo C('circle_exprepliedmax');?></td>
         </tr>
       </tbody>

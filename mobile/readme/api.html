@@ -1,21 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" dir="ltr" lang="zh"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>dqw:shopnc:mobile_api</title>
+  <title>dqw:clinicnc:mobile_api</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="date" content="2014-03-07T07:01:16+0000">
-<meta name="keywords" content="dqw,shopnc,mobile_api">
+<meta name="keywords" content="dqw,clinicnc,mobile_api">
 <link rel="stylesheet" media="screen" type="text/css" href="api_files/css_003.css">
 <link rel="stylesheet" media="all" type="text/css" href="api_files/css.css">
 <link rel="stylesheet" media="print" type="text/css" href="api_files/css_002.css">
 <script type="text/javascript"><!--//--><![CDATA[//><!--
-var NS='dqw:shopnc';var SIG=' --- //[[admin@dqw.me|dqw]] 2014/03/07 07:02//';var JSINFO = {"id":"dqw:shopnc:mobile_api","namespace":"dqw:shopnc"};
+var NS='dqw:clinicnc';var SIG=' --- //[[admin@dqw.me|dqw]] 2014/03/07 07:02//';var JSINFO = {"id":"dqw:clinicnc:mobile_api","namespace":"dqw:clinicnc"};
 //--><!]]></script>
 <script type="text/javascript" charset="utf-8" src="api_files/js.php"></script>
 <script type="text/javascript" charset="utf-8" src="api_files/admmenu.js"></script>
 <script type="text/javascript" charset="utf-8" src="api_files/indexmenu.js"></script>
 <script type="text/javascript" charset="utf-8"><!--//--><![CDATA[//><!--
-var indexmenu_ID='dqw:shopnc:mobile_api'
+var indexmenu_ID='dqw:clinicnc:mobile_api'
 //--><!]]></script>
 </head>
 <body>
@@ -175,7 +175,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <div class="level4">
 <pre class="code">//有内容直接返回数组，无内容返回空数组[]
 //hasmore为是否有下一页
-{"code":200,"hasmore":true,"datas":{"goods_list":[]}}</pre>
+{"code":200,"hasmore":true,"datas":{"doctors_list":[]}}</pre>
 
 </div>
 
@@ -218,7 +218,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="一级分类接口_get" id="一级分类接口_get">一级分类接口(get)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=goods_class</pre>
+<pre class="code">  index.php?act=doctors_class</pre>
 
 </div>
 
@@ -228,7 +228,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <p>
 有下级分类返回分类列表，无分类返回'0'
 </p>
-<pre class="code">  index.php?act=goods_class&amp;gc_id=2</pre>
+<pre class="code">  index.php?act=doctors_class&amp;gc_id=2</pre>
 
 </div>
 <!-- EDIT9 SECTION "商品分类" [1428-1640] -->
@@ -239,14 +239,14 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="商品列表接口_get" id="商品列表接口_get">商品列表接口(get)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=goods&amp;op=goods_list</pre>
+<pre class="code">  index.php?act=doctors&amp;op=doctors_list</pre>
 
 </div>
 
 <h4><a name="请求参数" id="请求参数">请求参数</a></h4>
 <div class="level4">
 <pre class="code">  key Sorting method 1-销量 2-浏览量 3-价格 空-按最新发布排序
-  order Sorting method 1-升序 2-降序
+  appointment Sorting method 1-升序 2-降序
   page 每页数量
   curpage 当前页码
   gc_id 分类编号
@@ -257,17 +257,17 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="返回数据" id="返回数据">返回数据</a></h4>
 <div class="level4">
-<pre class="code">  goods_id  商品编号
-  goods_name  商品名称
-  goods_price 商品价格 
-  goods_marketprice 商品市场价
-  goods_salenum 销量 
-  evaluation_good_star 评价星级
+<pre class="code">  doctors_id  商品编号
+  doctors_name  商品名称
+  doctors_price 商品价格 
+  doctors_marketprice 商品市场价
+  doctors_salenum 销量 
+  evaluation_doctor_star 评价星级
   evaluation_count 评价数
   group_flag 是否团购
   xianshi_flag 是否限时折扣
-  goods_image 图片名称
-  goods_image_url 图片地址</pre>
+  doctors_image 图片名称
+  doctors_image_url 图片地址</pre>
 
 </div>
 <!-- EDIT10 SECTION "商品列表" [1641-2387] -->
@@ -278,13 +278,13 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="商品详细信息接口_get" id="商品详细信息接口_get">商品详细信息接口(get)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=goods&amp;op=goods_detail</pre>
+<pre class="code">  index.php?act=doctors&amp;op=doctors_detail</pre>
 
 </div>
 
 <h4><a name="请求参数1" id="请求参数1">请求参数</a></h4>
 <div class="level4">
-<pre class="code">  goods_id 商品编号</pre>
+<pre class="code">  doctors_id 商品编号</pre>
 
 </div>
 
@@ -293,21 +293,21 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 </div>
 
-<h5><a name="goods_info_商品信息" id="goods_info_商品信息">goods_info 商品信息</a></h5>
+<h5><a name="doctors_info_商品信息" id="doctors_info_商品信息">doctors_info 商品信息</a></h5>
 <div class="level5">
-<pre class="code">  goods_name 商品名称
-  goods_jingle 商品说明
+<pre class="code">  doctors_name 商品名称
+  doctors_jingle 商品说明
   spec_name 规格名称
   spec_value 规格名
-  goods_price 商品价格
-  goods_marketprice 商品市场价
-  goods_id 商品编号
-  goods_click 商品点击数
-  goods_commentnum 商品评论数
-  goods_salenum 商品销量
-  goods_spec 商品规格
-  goods_storage 商品库存
-  evaluation_good_star 评价等级
+  doctors_price 商品价格
+  doctors_marketprice 商品市场价
+  doctors_id 商品编号
+  doctors_click 商品点击数
+  doctors_commentnum 商品评论数
+  doctors_salenum 商品销量
+  doctors_spec 商品规格
+  doctors_storage 商品库存
+  evaluation_doctor_star 评价等级
   evaluation_count 评价数
   promotion_type 促销类型 groupbuy-团购 xianshi-限时折扣
   promotion_price 促销价格
@@ -325,12 +325,12 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 </div>
 
-<h5><a name="goods_image_商品图片" id="goods_image_商品图片">goods_image 商品图片</a></h5>
+<h5><a name="doctors_image_商品图片" id="doctors_image_商品图片">doctors_image 商品图片</a></h5>
 <div class="level5">
 
 </div>
 
-<h5><a name="goods_commend_list_推荐商品列表" id="goods_commend_list_推荐商品列表">goods_commend_list 推荐商品列表</a></h5>
+<h5><a name="doctors_commend_list_推荐商品列表" id="doctors_commend_list_推荐商品列表">doctors_commend_list 推荐商品列表</a></h5>
 <div class="level5">
 
 </div>
@@ -342,9 +342,9 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
   end_time 结束时间
   price 活动金额
   discount 减现金
-  mansong_goods_name 赠送商品名称
-  goods_id 赠送商品编号
-  goods_image_url 赠送商品图片地址</pre>
+  mansong_doctors_name 赠送商品名称
+  doctors_id 赠送商品编号
+  doctors_image_url 赠送商品图片地址</pre>
 
 </div>
 <!-- EDIT11 SECTION "商品详细信息" [2388-3579] -->
@@ -355,13 +355,13 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="调用接口_get" id="调用接口_get">调用接口(get)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=goods&amp;op=goods_body</pre>
+<pre class="code">  index.php?act=doctors&amp;op=doctors_body</pre>
 
 </div>
 
 <h4><a name="请求参数2" id="请求参数2">请求参数</a></h4>
 <div class="level4">
-<pre class="code">  goods_id 商品编号</pre>
+<pre class="code">  doctors_id 商品编号</pre>
 
 </div>
 
@@ -506,9 +506,9 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="返回数据7" id="返回数据7">返回数据</a></h4>
 <div class="level4">
-<pre class="code">  goods_name 商品名称
-  goods_image_url 商品图片地址
-  goods_price 商品价格
+<pre class="code">  doctors_name 商品名称
+  doctors_image_url 商品图片地址
+  doctors_price 商品价格
   fav_id 收藏编号</pre>
 
 </div>
@@ -526,7 +526,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="请求参数8" id="请求参数8">请求参数</a></h4>
 <div class="level4">
-<pre class="code">  goods_id 商品编号
+<pre class="code">  doctors_id 商品编号
   key 当前登陆令牌</pre>
 
 </div>
@@ -737,7 +737,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="调用接口_post10" id="调用接口_post10">调用接口(post)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=member_order&amp;op=order_list</pre>
+<pre class="code">  index.php?act=member_appointment&amp;op=appointment_list</pre>
 
 </div>
 
@@ -750,19 +750,19 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <h4><a name="返回数据16" id="返回数据16">返回数据</a></h4>
 <div class="level4">
 <ul>
-<li class="level1"><div class="li"> order_group_list </div>
+<li class="level1"><div class="li"> appointment_group_list </div>
 <ul>
-<li class="level2"><div class="li"> order_list 订单列表</div>
+<li class="level2"><div class="li"> appointment_list 订单列表</div>
 <ul>
-<li class="level3"><div class="li"> order_id 订单id</div>
+<li class="level3"><div class="li"> appointment_id 订单id</div>
 </li>
-<li class="level3"><div class="li"> order_sn 订单sn</div>
+<li class="level3"><div class="li"> appointment_sn 订单sn</div>
 </li>
-<li class="level3"><div class="li"> store_name 店铺名称</div>
+<li class="level3"><div class="li"> clic_name 店铺名称</div>
 </li>
-<li class="level3"><div class="li"> goods_amount 商品总价</div>
+<li class="level3"><div class="li"> doctors_amount 商品总价</div>
 </li>
-<li class="level3"><div class="li"> order_amount 订单总价</div>
+<li class="level3"><div class="li"> appointment_amount 订单总价</div>
 </li>
 <li class="level3"><div class="li"> pd_amount 预存款支付总价</div>
 </li>
@@ -780,15 +780,15 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 </li>
 <li class="level3"><div class="li"> if_deliver 是否显示查看物流按钮 true/false</div>
 </li>
-<li class="level3"><div class="li"> extend_order_goods 订单商品列表</div>
+<li class="level3"><div class="li"> extend_appointment_doctors 订单商品列表</div>
 <ul>
-<li class="level4"><div class="li"> goods_name 商品名称</div>
+<li class="level4"><div class="li"> doctors_name 商品名称</div>
 </li>
-<li class="level4"><div class="li"> goods_price 商品价格</div>
+<li class="level4"><div class="li"> doctors_price 商品价格</div>
 </li>
-<li class="level4"><div class="li"> goods_num 商品购买数量</div>
+<li class="level4"><div class="li"> doctors_num 商品购买数量</div>
 </li>
-<li class="level4"><div class="li"> goods_image_url 商品图片地址</div>
+<li class="level4"><div class="li"> doctors_image_url 商品图片地址</div>
 </li>
 </ul>
 </li>
@@ -823,14 +823,14 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="调用接口_post11" id="调用接口_post11">调用接口(post)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=member_order&amp;op=order_cancel</pre>
+<pre class="code">  index.php?act=member_appointment&amp;op=appointment_cancel</pre>
 
 </div>
 
 <h4><a name="请求参数17" id="请求参数17">请求参数</a></h4>
 <div class="level4">
 <pre class="code">  key 当前登陆令牌
-  order_id 订单编号</pre>
+  appointment_id 订单编号</pre>
 
 </div>
 
@@ -847,14 +847,14 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 
 <h4><a name="调用接口_post12" id="调用接口_post12">调用接口(post)</a></h4>
 <div class="level4">
-<pre class="code">  index.php?act=member_order&amp;op=order_receive</pre>
+<pre class="code">  index.php?act=member_appointment&amp;op=appointment_receive</pre>
 
 </div>
 
 <h4><a name="请求参数18" id="请求参数18">请求参数</a></h4>
 <div class="level4">
 <pre class="code">  key 当前登陆令牌
-  order_id 订单编号</pre>
+  appointment_id 订单编号</pre>
 
 </div>
 
@@ -890,14 +890,14 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <pre class="code">  
   cart_id 购物车编号
   buyer_id 买家member_id 
-  store_id 店铺编号 
-  store_name 店铺名称
-  goods_id 商品编号
-  goods_name 商品名称
-  goods_price 商品价格
-  goods_num 购买数量
-  goods_image_url 图片地址
-  goods_sum 商品总价
+  clic_id 店铺编号 
+  clic_name 店铺名称
+  doctors_id 商品编号
+  doctors_name 商品名称
+  doctors_price 商品价格
+  doctors_num 购买数量
+  doctors_image_url 图片地址
+  doctors_sum 商品总价
   </pre>
 
 <p>
@@ -921,7 +921,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <h4><a name="请求参数20" id="请求参数20">请求参数</a></h4>
 <div class="level4">
 <pre class="code">  key 当前登陆令牌
-  goods_id 商品编号
+  doctors_id 商品编号
   quantity 购买数量</pre>
 
 </div>
@@ -979,7 +979,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <h4><a name="返回数据22" id="返回数据22">返回数据</a></h4>
 <div class="level4">
 <pre class="code">  quantity 购买数量
-  goods_price 商品价格
+  doctors_price 商品价格
   total_price 商品总价</pre>
 
 </div>
@@ -1140,20 +1140,20 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 </p>
 
 <p>
-<strong>store_cart_list </strong>
+<strong>clic_cart_list </strong>
 </p>
 <pre class="code">购物车列表 店铺编号为下标的数组
-  * goods_list 商品列表
-    * goods_num 购买数量
-    * goods_id 商品编号
-    * goods_commonid 商品通用编号
-    * store_id 店铺编号
-    * goods_name 商品名称
-    * goods_price 商品价格
-    * goods_image_url 商品图片
+  * doctors_list 商品列表
+    * doctors_num 购买数量
+    * doctors_id 商品编号
+    * doctors_commonid 商品通用编号
+    * clic_id 店铺编号
+    * doctors_name 商品名称
+    * doctors_price 商品价格
+    * doctors_image_url 商品图片
     * transport_id 运费模板编号
-    * goods_freight 运费
-    * goods_storage 库存
+    * doctors_freight 运费
+    * doctors_storage 库存
     * state 商品是否有效 true
     * storage_state 
     * cart_id 购物车编号
@@ -1161,13 +1161,13 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
     * promotions_id
     * ifxianshi
     * premiums 赠品标志 true
-    * goods_total 总价
-  * store_goods_total 店铺商品总价 店铺编号为下标的数组
-  * store_mansong_rule_list 满送规则列表 店铺编号为下标的数组
-  * store_vouche_list  店铺代金券列表 数组下标是voucher_t_id
+    * doctors_total 总价
+  * clic_doctors_total 店铺商品总价 店铺编号为下标的数组
+  * clic_mansong_rule_list 满送规则列表 店铺编号为下标的数组
+  * clic_vouche_list  店铺代金券列表 数组下标是voucher_t_id
   * freight 0-免运费 1-需要计算运费
   * freight_message 免运费时的说明
-  * store_name 店铺名称</pre>
+  * clic_name 店铺名称</pre>
 
 <p>
 <strong>freight_hash</strong>
@@ -1311,7 +1311,7 @@ var indexmenu_ID='dqw:shopnc:mobile_api'
 <p>
 <strong>voucher</strong>
 </p>
-<pre class="code">以店铺编号为下标的数组，内容以竖线分割 voucher_t_id|store_id|voucher_price 例：10|2|10</pre>
+<pre class="code">以店铺编号为下标的数组，内容以竖线分割 voucher_t_id|clic_id|voucher_price 例：10|2|10</pre>
 
 <p>
 <strong>pd_pay</strong>

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,7 +17,7 @@
   <form id="search_form" method="get" name="formSearch">
     <input type="hidden" id="act" name="act" value="complain" />
     <input type="hidden" id="op" name="op" value="<?php echo $output['op'];?>" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="input_complain_accuser"><?php echo $lang['complain_accuser'];?></label></th>

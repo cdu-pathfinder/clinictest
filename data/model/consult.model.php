@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class consultModel extends Model{
     public function __construct() {
         parent::__construct('consult');
@@ -35,11 +35,11 @@ class consultModel extends Model{
 			return false;
 		}
 		$consult	= array();
-		$consult['goods_id']		= $input['goods_id'];
-		$consult['cgoods_name']		= $input['cgoods_name'];
+		$consult['doctors_id']		= $input['doctors_id'];
+		$consult['cdoctors_name']		= $input['cdoctors_name'];
 		$consult['member_id']		= $input['member_id'];
 		$consult['cmember_name']		= $input['cmember_name'];
-		$consult['store_id']		= $input['store_id'];
+		$consult['clic_id']		= $input['clic_id'];
 		$consult['email']			= trim($input['email']);
 		$consult['consult_content']	= trim($input['consult_content']);
 		$consult['consult_addtime']	= time();
@@ -81,13 +81,13 @@ class consultModel extends Model{
 				$param['table'] 	= 'consult';
 				break;
 			case 'admin'://后台查看
-				$param['field']		= 'consult.*,store.store_name,store.store_id';
-				$param['table']		= 'consult,store';
-				$param['join_on']	= array('consult.store_id=store.store_id');
+				$param['field']		= 'consult.*,clic.clic_name,clic.clic_id';
+				$param['table']		= 'consult,clic';
+				$param['join_on']	= array('consult.clic_id=clic.clic_id');
 				$param['join_type']	= 'LEFT JOIN';
 				break;
 		}
-		$param['order']	= $condition['order']?$condition['order']:'consult.consult_addtime DESC';
+		$param['appointment']	= $condition['appointment']?$condition['appointment']:'consult.consult_addtime DESC';
 		$consult_list = Db::select($param,$obj_page);
 		return $consult_list;
 	}
@@ -96,9 +96,9 @@ class consultModel extends Model{
 	 * 
 	 * @param unknown_type $id
 	 */
-	public function dropConsult($id,$store_id=0){
+	public function dropConsult($id,$clic_id=0){
 		$condition_sql = "where consult_id in ({$id})";
-		if($store_id > 0) $condition_sql .= " and store_id= '{$store_id}'";
+		if($clic_id > 0) $condition_sql .= " and clic_id= '{$clic_id}'";
 		return Db::delete('consult',$condition_sql);
 	}
 	/**
@@ -130,11 +130,11 @@ class consultModel extends Model{
 		if($condition_array['member_id'] != '') {
 			$condition_sql	.= " and consult.member_id= '{$condition_array['member_id']}'";
 		}
-		if($condition_array['store_id'] != '') {
-			$condition_sql	.= " and consult.store_id= '{$condition_array['store_id']}'";
+		if($condition_array['clic_id'] != '') {
+			$condition_sql	.= " and consult.clic_id= '{$condition_array['clic_id']}'";
 		}
-		if($condition_array['goods_id'] != '') {
-			$condition_sql	.= " and consult.goods_id= '{$condition_array['goods_id']}'";
+		if($condition_array['doctors_id'] != '') {
+			$condition_sql	.= " and consult.doctors_id= '{$condition_array['doctors_id']}'";
 		}
 		if($condition_array['type'] != ''){
 			if($condition_array['type'] == 'to_reply'){

@@ -262,37 +262,37 @@ $(document).ready(function(){
     };
 
     //商品拖动改变顺序
-    $("#goods_selected_list").sortable();
+    $("#doctors_selected_list").sortable();
     //商品修改
-    $("[nctype='btn_module_goods_edit']").click(function(){
+    $("[nctype='btn_module_doctors_edit']").click(function(){
         object_module_edit = $(this).parent().parent().find("[nctype='object_module_edit']");
-        var goods_list = object_module_edit.clone();
-        goods_list.find("dl").append('<dd class="taobao-item-delete" nctype="btn_goods_delete" title="删除添加的商品">&nbsp;</dd>');
+        var doctors_list = object_module_edit.clone();
+        doctors_list.find("dl").append('<dd class="taobao-item-delete" nctype="btn_doctors_delete" title="删除添加的商品">&nbsp;</dd>');
         limit_count = parseInt($(this).attr("limit_count"), 10);
         if(!limit_count) {
             limit_count = 0;
         }
-        $('#dialog_module_goods_edit').nc_show_dialog({width: 640, title: '编辑商品'});
-        $("#goods_selected_list").html(goods_list.html());
+        $('#dialog_module_doctors_edit').nc_show_dialog({width: 640, title: '编辑商品'});
+        $("#doctors_selected_list").html(doctors_list.html());
     });
     //选择商品
-    $("#btn_goods_search").live('click', function(){
-        var goods_list = $("#goods_selected_list");
-        var link_item = $("#input_goods_link");
+    $("#btn_doctors_search").live('click', function(){
+        var doctors_list = $("#doctors_selected_list");
+        var link_item = $("#input_doctors_link");
         var link = link_item.val();
         link_item.val('');
-        if($("#goods_selected_list li").length < limit_count || limit_count === 0) {
+        if($("#doctors_selected_list li").length < limit_count || limit_count === 0) {
             if(link != '') {
                 var url = encodeURIComponent(link);
-                $.getJSON('index.php?act=cms_base&op=goods_info_by_url', { url: url}, function(data){
+                $.getJSON('index.php?act=cms_base&op=doctors_info_by_url', { url: url}, function(data){
                     if(data.result == "true") {
-                        var temp = '<li nctype="btn_goods_select"><dl>'; 
+                        var temp = '<li nctype="btn_doctors_select"><dl>'; 
                         temp += '<dt class="name"><a href="'+data.url+'" target="_blank">'+data.title+'</a></dt>';
                         temp += '<dd class="cms-thumb" title="'+data.title+'"><a href="'+data.url+'" target="_blank"><img src="'+data.image+'" class="t-img"/></a></dd>';
                         temp += '<dd class="price"><em>'+data.price+'</em></dd>';
-                        temp += '<dd class="taobao-item-delete" nctype="btn_goods_delete" title="删除添加的商品">&nbsp;</dd>';
+                        temp += '<dd class="taobao-item-delete" nctype="btn_doctors_delete" title="删除添加的商品">&nbsp;</dd>';
                         temp += '</dl></li>';
-                        $(goods_list).append(temp);
+                        $(doctors_list).append(temp);
                     } else {
                         alert(data.message);
                     }
@@ -301,15 +301,15 @@ $(document).ready(function(){
         }
     });
     //删除商品
-    $("[nctype='btn_goods_delete']").live('click', function(){
+    $("[nctype='btn_doctors_delete']").live('click', function(){
         $(this).parent().parent().remove();
     });
     //保存商品列表
-    $("#btn_module_goods_save").live('click', function() {
-        var goods_list = $("#goods_selected_list").clone();
-        goods_list.find("[nctype='btn_goods_delete']").remove();
-        object_module_edit.html(goods_list.html());
-        $('#dialog_module_goods_edit').hide();
+    $("#btn_module_doctors_save").live('click', function() {
+        var doctors_list = $("#doctors_selected_list").clone();
+        doctors_list.find("[nctype='btn_doctors_delete']").remove();
+        object_module_edit.html(doctors_list.html());
+        $('#dialog_module_doctors_edit').hide();
     });
 
     //品牌拖动改变顺序
@@ -356,59 +356,59 @@ $(document).ready(function(){
     });
 
     //品牌拖动改变顺序
-    $("#goods_class_selected_list").sortable();
+    $("#doctors_class_selected_list").sortable();
     //商品分类修改
-    $("[nctype='btn_module_goods_class_edit']").click(function(){
+    $("[nctype='btn_module_doctors_class_edit']").click(function(){
         object_module_edit = $(this).parent().parent().find("[nctype='object_module_edit']");
-        var goods_class_list = object_module_edit.clone();
-        goods_class_list.find("dt").prepend("<i>删除</i>");
-        goods_class_list.find("dd").prepend("<i>删除</i>");
+        var doctors_class_list = object_module_edit.clone();
+        doctors_class_list.find("dt").prepend("<i>删除</i>");
+        doctors_class_list.find("dd").prepend("<i>删除</i>");
         //读取品牌列表
-        if($("#select_goods_class_list option").length < 1) {
-            $("#select_goods_class_list").html("");
-            $("#select_goods_class_list").append('<option value="0">请选择</option>');
-            $.getJSON("index.php?act=cms_base&op=get_goods_class_list_json", { }, function(result){
+        if($("#select_doctors_class_list option").length < 1) {
+            $("#select_doctors_class_list").html("");
+            $("#select_doctors_class_list").append('<option value="0">请选择</option>');
+            $.getJSON("index.php?act=cms_base&op=get_doctors_class_list_json", { }, function(result){
                 var count = result.length;
                 for(var i = 0; i < count; i++) {
-                    $("#select_goods_class_list").append('<option value="'+result[i]['gc_id']+'">'+result[i]['gc_name']+'</option>');
+                    $("#select_doctors_class_list").append('<option value="'+result[i]['gc_id']+'">'+result[i]['gc_name']+'</option>');
                 }
             });
         }
-        $('#dialog_module_goods_class_edit').nc_show_dialog({width: 640, title: '编辑分类'});
-        if(goods_class_list.find("dl").length > 0) {
-            $("#goods_class_selected_list").html(goods_class_list.html());
+        $('#dialog_module_doctors_class_edit').nc_show_dialog({width: 640, title: '编辑分类'});
+        if(doctors_class_list.find("dl").length > 0) {
+            $("#doctors_class_selected_list").html(doctors_class_list.html());
         }
     });
     //商品分类选择
-    $("#select_goods_class_list").change(function(){
-        $.get("index.php?act=cms_base&op=get_goods_class_detail", {class_id: $(this).val() }, function(result){
-            $("#goods_class_selected_list").append(result);
+    $("#select_doctors_class_list").change(function(){
+        $.get("index.php?act=cms_base&op=get_doctors_class_detail", {class_id: $(this).val() }, function(result){
+            $("#doctors_class_selected_list").append(result);
         });
     });
     //商品分类删除
-    $("#goods_class_selected_list dt i").live('click', function(){
+    $("#doctors_class_selected_list dt i").live('click', function(){
         $(this).parents("dl").remove();
     });
-    $("#goods_class_selected_list dd i").live('click', function(){
+    $("#doctors_class_selected_list dd i").live('click', function(){
         $(this).parents("dd").remove();
     });
     //商品分类列表保存
-    $("#btn_module_goods_class_save").click(function(){
-        var goods_class_list = $("#goods_class_selected_list").clone();
-        goods_class_list.find("i").remove();
-        object_module_edit.html(goods_class_list.html());
-        $('#dialog_module_goods_class_edit').hide();
+    $("#btn_module_doctors_class_save").click(function(){
+        var doctors_class_list = $("#doctors_class_selected_list").clone();
+        doctors_class_list.find("i").remove();
+        object_module_edit.html(doctors_class_list.html());
+        $('#dialog_module_doctors_class_edit').hide();
     });
 
     //微商城更新
     $("#btn_module_micro_edit").live('click', function(){
-        var micro_url = MICROSHOP_SITE_URL; 
+        var micro_url = MICROclinic_SITE_URL; 
         var api_url = "";
         var micro_html = "";
         var micro_name = "";
         var micro_personal_class = "";
         var micro_personal_commend = "";
-        var micro_store_commend = "";
+        var micro_clic_commend = "";
         var count = 0;
         api_url = micro_url+'/index.php?act=api&op=get_micro_name&callback=?';
         $.getJSON(api_url, {data_type: 'html'}, function(result){
@@ -425,9 +425,9 @@ $(document).ready(function(){
             micro_personal_commend = result;
             write_html();
         });
-        api_url = micro_url+'/index.php?act=api&op=get_store_commend&callback=?';
+        api_url = micro_url+'/index.php?act=api&op=get_clic_commend&callback=?';
         $.getJSON(api_url, {data_type: 'html', data_count: 10}, function(result){
-            micro_store_commend = result;
+            micro_clic_commend = result;
             write_html();
         });
        function write_html() {
@@ -441,7 +441,7 @@ $(document).ready(function(){
                 micro_html += '</div>';
                 micro_html += '<div class="micro-api-personal-list">'+micro_personal_commend+'</div>';
                 micro_html += '</div>';
-                micro_html += '<div class="micro-api-store-list">'+micro_store_commend+'</div>';
+                micro_html += '<div class="micro-api-clic-list">'+micro_clic_commend+'</div>';
                 micro_html += '<div class="clear"></div>';
                 
                 $("#micro_content").html(micro_html);
@@ -482,47 +482,47 @@ $(document).ready(function(){
     });
 
     //店铺拖动改变顺序
-    $("#store_selected_list").sortable();
+    $("#clic_selected_list").sortable();
     //店铺修改
-    $("[nctype='btn_module_store_edit']").click(function(){
+    $("[nctype='btn_module_clic_edit']").click(function(){
         object_module_edit = $(this).parent().parent().find("[nctype='object_module_edit']");
-        var store_list = object_module_edit.clone();
-        store_list.find("li").each(function(){
-            $(this).find('dl').append('<dd nctype="btn_store_select" class="handle-button" title="删除"></dd>');
+        var clic_list = object_module_edit.clone();
+        clic_list.find("li").each(function(){
+            $(this).find('dl').append('<dd nctype="btn_clic_select" class="handle-button" title="删除"></dd>');
         });
-        $('#dialog_module_store_edit').nc_show_dialog({width: 640, title: '编辑店铺'});
-        $("#store_selected_list").html(store_list.html());
-        $("#store_search_list").html("");
+        $('#dialog_module_clic_edit').nc_show_dialog({width: 640, title: '编辑店铺'});
+        $("#clic_selected_list").html(clic_list.html());
+        $("#clic_search_list").html("");
     });
     //店铺搜索
-    $("#btn_store_search").click(function(){
-        var search_keyword = $("#input_store_search_keyword").val();
+    $("#btn_clic_search").click(function(){
+        var search_keyword = $("#input_clic_search_keyword").val();
         if(search_keyword !== "") {
-            $("#div_store_select_list").load("index.php?act=cms_base&op=get_store_list&" + $.param({search_keyword: search_keyword}));
+            $("#div_clic_select_list").load("index.php?act=cms_base&op=get_clic_list&" + $.param({search_keyword: search_keyword}));
         }
     });
     //店铺选择翻页
-    $('#div_store_select_list').on('click', '.demo' ,function(){
-        $("#div_store_select_list").load($(this).attr('href'));
+    $('#div_clic_select_list').on('click', '.demo' ,function(){
+        $("#div_clic_select_list").load($(this).attr('href'));
         return false;
     });
     //店铺选择
-    $('#div_store_select_list').on('click', '[nctype="btn_store_select"]', function(){
+    $('#div_clic_select_list').on('click', '[nctype="btn_clic_select"]', function(){
         var current_count = $("#article_selected_list li").length;
         var temp = $(this).parents('li').clone();
-        temp.find("[nctype='btn_store_select']").attr("title","删除");
-        $("#store_selected_list").append($("<div />").append(temp).html());
+        temp.find("[nctype='btn_clic_select']").attr("title","删除");
+        $("#clic_selected_list").append($("<div />").append(temp).html());
     });
     //店铺删除
-    $('#store_selected_list').on('click', '[nctype="btn_store_select"]', function(){
+    $('#clic_selected_list').on('click', '[nctype="btn_clic_select"]', function(){
         $(this).parents('li').remove();
     });
     //店铺列表保存
-    $("#btn_module_store_save").click(function(){
-        $("#store_selected_list").find("[nctype='btn_store_select']").remove();
+    $("#btn_module_clic_save").click(function(){
+        $("#clic_selected_list").find("[nctype='btn_clic_select']").remove();
         object_module_edit.html("");
-        object_module_edit.html($('#store_selected_list').html());
-        $('#dialog_module_store_edit').hide();
+        object_module_edit.html($('#clic_selected_list').html());
+        $('#dialog_module_clic_edit').hide();
     });
 
     //用户拖动改变顺序
@@ -589,7 +589,7 @@ $(document).ready(function(){
         object_module_edit = $(this).parent().parent().find("[nctype='object_module_edit']");
         $('#dialog_module_html_edit').nc_show_dialog({width: 680, title: '编辑自定义块'});
         var KE = KindEditor.create("#textarea_module_html", {
-            items : ['source', '|', 'fullscreen', 'undo', 'redo', 'cut', 'copy', 'paste', '|','fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'about'],
+            items : ['source', '|', 'fullscreen', 'undo', 'redo', 'cut', 'copy', 'paste', '|','fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertappointmentedlist','insertunappointmentedlist', '|', 'emoticons', 'image', 'link', '|', 'about'],
             allowImageUpload: false,
             allowFlashUpload: false,
             allowMediaUpload: false,
@@ -659,9 +659,9 @@ $(window).load(function () {
 	$(".cms-index-module-article2-3 .t-img").VMiddleImg({"width":78,"height":38});
 	$(".cms-module-assembly-article-image .t-img").VMiddleImg({"width":160,"height":120});
 	$(".cms-module-assembly-brand .t-img").VMiddleImg({"width":80,"height":40});
-	$("#block1_goods_content .t-img").VMiddleImg({"width":148,"height":148});
-	$("#block2_goods_content .t-img").VMiddleImg({"width":148,"height":148});
-	$("#block3_goods_content .t-img").VMiddleImg({"width":148,"height":148});
+	$("#block1_doctors_content .t-img").VMiddleImg({"width":148,"height":148});
+	$("#block2_doctors_content .t-img").VMiddleImg({"width":148,"height":148});
+	$("#block3_doctors_content .t-img").VMiddleImg({"width":148,"height":148});
 	$("#block4_article_content .t-img").VMiddleImg({"width":148,"height":148});
 });
 

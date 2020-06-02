@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  *  登录-公共语言	
  */
@@ -27,10 +27,10 @@ $lang['login_index_friendly_reminder']				= 'Helpful hints';
 $lang['login_index_please_regist']					= 'If you are not a member, please register';
 $lang['login_index_after_regist']					= 'After registration you can';
 $lang['login_index_save_info']						= 'Save your personal information';
-$lang['login_index_collect_goods']					= 'Collect the doctors you care about';
-$lang['login_index_collect_store']					= 'Collect the clinic you care about';
+$lang['login_index_collect_doctors']					= 'Collect the doctors you care about';
+$lang['login_index_collect_clic']					= 'Collect the clinic you care about';
 $lang['login_index_subscribe_info']					= 'Subscribe the doctor information';
-$lang['login_index_openstore_info']					= 'Set up clinic';
+$lang['login_index_openclic_info']					= 'Set up clinic';
 $lang['login_index_regist_now_1']					= 'Not a member of this site? now';
 $lang['login_index_regist_now_2']					= 'register';
 $lang['login_index_login_fail']						= 'Login failed';

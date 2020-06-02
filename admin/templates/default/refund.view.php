@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,60 +14,60 @@
   <div class="fixed-empty"></div>
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo '退款单号'.$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['refund']['refund_sn']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo '商品名称'.$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['refund']['goods_name']; ?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['refund']['doctors_name']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
-          <td colspan="2" class="required"><?php echo $lang['refund_order_refund'].$lang['nc_colon'];?></td>
+        <tr class="nobappointment">
+          <td colspan="2" class="required"><?php echo $lang['refund_appointment_refund'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo ncPriceFormat($output['refund']['refund_amount']); ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo $lang['refund_buyer_message'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['refund']['buyer_message']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo '卖家审核'.$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['state_array'][$output['refund']['seller_state']];?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['state_array'][$output['refund']['clinicer_state']];?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
-          <td colspan="2" class="required"><?php echo $lang['refund_seller_message'].$lang['nc_colon'];?></td>
+        <tr class="nobappointment">
+          <td colspan="2" class="required"><?php echo $lang['refund_clinicer_message'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['refund']['seller_message']; ?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['refund']['clinicer_message']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <?php if ($output['refund']['seller_state'] == 2) { ?>
-        <tr class="noborder">
+        <?php if ($output['refund']['clinicer_state'] == 2) { ?>
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo '平台确认'.$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['admin_array'][$output['refund']['refund_state']];?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo $lang['refund_message'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['refund']['admin_message']; ?></td>
           <td class="vatop tips"></td>
         </tr>

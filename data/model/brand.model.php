@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class brandModel extends Model {
     public function __construct() {
@@ -48,7 +48,7 @@ class brandModel extends Model {
 		$condition_str = $this->_condition($condition);
 		$param = array();
 		$param['table'] = 'brand';
-		$param['order'] = $condition['order'] ? $condition['order'] : 'brand_sort';
+		$param['appointment'] = $condition['appointment'] ? $condition['appointment'] : 'brand_sort';
 		$param['where'] = $condition_str;
 		$param['field'] = $condition['field'];
 		$param['group'] = $condition['group'];
@@ -93,11 +93,11 @@ class brandModel extends Model {
 		if ($condition['brand_apply'] != ''){
 			$condition_str .= " and brand_apply = '". $condition['brand_apply'] ."'";
 		}
-		if($condition['storeid_equal'] != '') {
-			$condition_str	.= " and store_id = '{$condition['storeid_equal']}'";
+		if($condition['clicid_equal'] != '') {
+			$condition_str	.= " and clic_id = '{$condition['clicid_equal']}'";
 		}
-		if($condition['store_id'] != ''){
-			$condition_str	.= " and store_id in(".$condition['store_id'].")";
+		if($condition['clic_id'] != ''){
+			$condition_str	.= " and clic_id in(".$condition['clic_id'].")";
 		}
 		return $condition_str;
 	}

@@ -1,10 +1,10 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * index
  */
 $lang['express_name']	= '快递公司';
-$lang['express_order']	= '常用';
+$lang['express_appointment']	= '常用';
 $lang['express_state']	= '状态';
 $lang['express_letter']	= '首字母';
 $lang['express_url']	= '网址 (仅供参考)';

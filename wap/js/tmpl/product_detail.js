@@ -11,33 +11,33 @@ $(function (){
         }
       });
     } 
-    var goods_id = GetQueryString("goods_id");
+    var doctors_id = GetQueryString("doctors_id");
     //渲染页面
     $.ajax({
-       url:ApiUrl+"/index.php?act=goods&op=goods_detail",
+       url:ApiUrl+"/index.php?act=doctors&op=doctors_detail",
        type:"get",
-       data:{goods_id:goods_id},
+       data:{doctors_id:doctors_id},
        dataType:"json",
        success:function(result){
           var data = result.datas;
           if(!data.error){
             //商品图片格式化数据
-            if(data.goods_image){
-              var goods_image = data.goods_image.split(",");
-              data.goods_image = goods_image;
+            if(data.doctors_image){
+              var doctors_image = data.doctors_image.split(",");
+              data.doctors_image = doctors_image;
             }else{
-               data.goods_image = [];
+               data.doctors_image = [];
             }
             //商品规格格式化数据
-            if(data.goods_info.spec_name){
-              var goods_map_spec = $.map(data.goods_info.spec_name,function (v,i){
-                var goods_specs = {};
-                goods_specs["goods_spec_id"] = i;
-                goods_specs['goods_spec_name']=v;
-                if(data.goods_info.spec_value){
-	                $.map(data.goods_info.spec_value,function(vv,vi){
+            if(data.doctors_info.spec_name){
+              var doctors_map_spec = $.map(data.doctors_info.spec_name,function (v,i){
+                var doctors_specs = {};
+                doctors_specs["doctors_spec_id"] = i;
+                doctors_specs['doctors_spec_name']=v;
+                if(data.doctors_info.spec_value){
+	                $.map(data.doctors_info.spec_value,function(vv,vi){
 	                    if(i == vi){
-	                      goods_specs['goods_spec_value'] = $.map(vv,function (vvv,vvi){
+	                      doctors_specs['doctors_spec_value'] = $.map(vv,function (vvv,vvi){
 	                        var specs_value = {};
 	                        specs_value["specs_value_id"] = vvi;
 	                        specs_value["specs_value_name"] = vvv;
@@ -45,18 +45,18 @@ $(function (){
 	                      });
 	                    }
 	                  });
-	                  return goods_specs;               	
+	                  return doctors_specs;               	
                 }else{
-                	data.goods_info.spec_value = [];
+                	data.doctors_info.spec_value = [];
                 }
               });
-              data.goods_map_spec = goods_map_spec;
+              data.doctors_map_spec = doctors_map_spec;
             }else {
-              data.goods_map_spec = [];
+              data.doctors_map_spec = [];
             }
             //渲染模板
-            var html = template.render('product_detail', data);
-            $("#product_detail_wp").html(html);
+            var html = template.render('doc_detail', data);
+            $("#doc_detail_wp").html(html);
             //图片轮播
             picSwipe();
             //商品描述
@@ -80,7 +80,7 @@ $(function (){
             //购买数量加
             $(".add-wp").click(function (){
                var buynum = parseInt($(".buy-num").val());
-               if(buynum < data.goods_info.goods_storage){
+               if(buynum < data.doctors_info.doctors_storage){
                   $(".buy-num").val(parseInt(buynum+1));
                }
             });
@@ -94,7 +94,7 @@ $(function (){
                     url:ApiUrl+"/index.php?act=member_favorites&op=favorites_add",
                     type:"post",
                     dataType:"json",
-                    data:{goods_id:goods_id,key:key},
+                    data:{doctors_id:doctors_id,key:key},
                     success:function (fData){
                      if(checklogin(fData.login)){
                         if(!fData.datas.error){
@@ -126,7 +126,7 @@ $(function (){
                   var quantity = parseInt($(".buy-num").val());
                   $.ajax({
                      url:ApiUrl+"/index.php?act=member_cart&op=cart_add",
-                     data:{key:key,goods_id:goods_id,quantity:quantity},
+                     data:{key:key,doctors_id:doctors_id,quantity:quantity},
                      type:"post",
                      success:function (result){
                         var rData = $.parseJSON(result);
@@ -165,7 +165,7 @@ $(function (){
             	  var json = {};
             	  var buynum = $('.buy-num').val();
             	  json.key = key;
-            	  json.cart_id = goods_id+'|'+buynum;
+            	  json.cart_id = doctors_id+'|'+buynum;
             	  $.ajax({
             		  type:'post',
             		  url:ApiUrl+'/index.php?act=member_buy&op=buy_step1',
@@ -173,7 +173,7 @@ $(function (){
             		  dataType:'json',
             		  success:function(result){
             			  if(typeof(result.datas.error) == 'undefined'){
-            				  location.href = WapSiteUrl+'/tmpl/order/buy_step1.html?goods_id='+goods_id+'&buynum='+buynum;               				        				  
+            				  location.href = WapSiteUrl+'/tmpl/appointment/buy_step1.html?doctors_id='+doctors_id+'&buynum='+buynum;               				        				  
             			  }else{
                               $.sDialog({
                                   skin:"red",
@@ -188,7 +188,7 @@ $(function (){
             });
           }else {
             var html = data.error;
-            $("#product_detail_wp").html(html);
+            $("#doc_detail_wp").html(html);
           }
           //验证购买数量是不是数字
           $("#buynum").blur(buyNumer);
@@ -208,39 +208,39 @@ $(function (){
     });
     var spec_string = curSpec.sort().join("|");
     //获取商品ID
-    var spec_goods_id = myData.spec_list[spec_string];
-    window.location.href = "product_detail.html?goods_id="+spec_goods_id;
+    var spec_doctors_id = myData.spec_list[spec_string];
+    window.location.href = "doc_detail.html?doctors_id="+spec_doctors_id;
   }
   
   function AddView(){//增加浏览记录
-	  var goods_info = getcookie('goods');
-	  var goods_id = GetQueryString('goods_id');
-	  if(goods_id<1){
+	  var doctors_info = getcookie('doctors');
+	  var doctors_id = GetQueryString('doctors_id');
+	  if(doctors_id<1){
 		  return false;
 	  }
 
-	  if(goods_info==''){
-		  goods_info+=goods_id; 
+	  if(doctors_info==''){
+		  doctors_info+=doctors_id; 
 	  }else{
 
-		  var goodsarr = goods_info.split('@');
-		  if(contains(goodsarr,goods_id)){
+		  var doctorsarr = doctors_info.split('@');
+		  if(contains(doctorsarr,doctors_id)){
 			  return false;
 		  }
-		  if(goodsarr.length<5){
-			  goods_info+='@'+goods_id;
+		  if(doctorsarr.length<5){
+			  doctors_info+='@'+doctors_id;
 		  }else{
-			  goodsarr.splice(0,1);
-			  goodsarr.push(goods_id);
-			  goods_info = goodsarr.join('@');
+			  doctorsarr.splice(0,1);
+			  doctorsarr.push(doctors_id);
+			  doctors_info = doctorsarr.join('@');
 		  }
 	  }
 
-	  addcookie('goods',goods_info);
+	  addcookie('doctors',doctors_info);
 	  return false;
   }
   
-  function contains(arr, str) {//检测goods_id是否存入
+  function contains(arr, str) {//检测doctors_id是否存入
 	    var i = arr.length;
 	    while (i--) {
 	           if (arr[i] === str) {

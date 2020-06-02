@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_articleControl extends SystemControl{
     //文章状态草稿箱
     const ARTICLE_STATE_DRAFT = 1;

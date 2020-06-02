@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class typeControl extends SystemControl {
 	const EXPORT_SIZE = 5000;
 	public function __construct(){
@@ -28,7 +28,7 @@ class typeControl extends SystemControl {
 		$page->setEachNum(10);
 		$page->setStyle('admin');
 		
-		$type_list	= $model_type->typeList(array('order'=>'type_sort asc'),$page);
+		$type_list	= $model_type->typeList(array('appointment'=>'type_sort asc'),$page);
 		
 		Tpl::output('type_list',$type_list);
 		Tpl::output('page',$page->show());
@@ -139,7 +139,7 @@ class typeControl extends SystemControl {
 
 		// 品牌列表
 		$model_brand	= Model('brand');
-		$brand_list		= $model_brand->getBrandList(array('brand_apply'=>'1','order'=>'brand_class asc,brand_sort asc'));
+		$brand_list		= $model_brand->getBrandList(array('brand_apply'=>'1','appointment'=>'brand_class asc,brand_sort asc'));
 		$b_list = array();
 		if(is_array($brand_list) && !empty($brand_list)){
 			foreach($brand_list as $k=>$val){
@@ -150,7 +150,7 @@ class typeControl extends SystemControl {
 		ksort($b_list);
 		//规格列表
 		$model_spec		= Model('spec');
-		$spec_list		= $model_spec->specList(array('order'=>'sp_sort asc'), '', 'sp_id,sp_name,class_id,class_name');
+		$spec_list		= $model_spec->specList(array('appointment'=>'sp_sort asc'), '', 'sp_id,sp_name,class_id,class_name');
 		$s_list = array();
 		if(is_array($spec_list) && !empty($spec_list)){
 			foreach($spec_list as $k=>$val){
@@ -160,7 +160,7 @@ class typeControl extends SystemControl {
 		}
 		ksort($s_list);
 		// 一级分类列表
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 		
 		Tpl::output('spec_list', $s_list);
@@ -327,7 +327,7 @@ class typeControl extends SystemControl {
 		
 		//品牌
 		$model_brand	= Model('brand');
-		$brand_list		= $model_brand->getBrandList(array('brand_apply'=>'1','order'=>'brand_class asc,brand_sort asc'));
+		$brand_list		= $model_brand->getBrandList(array('brand_apply'=>'1','appointment'=>'brand_class asc,brand_sort asc'));
 		$b_list = array();
 		if(is_array($brand_list) && !empty($brand_list)){
 			foreach($brand_list as $k=>$val){
@@ -351,7 +351,7 @@ class typeControl extends SystemControl {
 
 		//规格表
 		$model_spec		= Model('spec');
-		$spec_list		= $model_spec->specList(array('order'=>'sp_sort asc'), '', 'sp_id,sp_name,class_id,class_name');
+		$spec_list		= $model_spec->specList(array('appointment'=>'sp_sort asc'), '', 'sp_id,sp_name,class_id,class_name');
 		$s_list = array();
 		if(is_array($spec_list) && !empty($spec_list)){
 			foreach($spec_list as $k=>$val){
@@ -375,11 +375,11 @@ class typeControl extends SystemControl {
 		
 		
 		// 一级分类列表
-		$gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+		$gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 		Tpl::output('gc_list', $gc_list);
 		
 		//属性
-		$attr_list	= $model_type->typeRelatedList('attribute', array('type_id'=>intval($_GET['t_id']), 'order'=>'attr_sort asc'));
+		$attr_list	= $model_type->typeRelatedList('attribute', array('type_id'=>intval($_GET['t_id']), 'appointment'=>'attr_sort asc'));
 		Tpl::output('attr_list', $attr_list);
 		
 		Tpl::showpage('type.edit');
@@ -475,7 +475,7 @@ class typeControl extends SystemControl {
 		$attr_info	= $model->table('attribute')->where('attr_id='.$attr_id)->find();
 		Tpl::output('attr_info', $attr_info);
 		
-		$attr_value_list = $model->table('attribute_value')->where('attr_id='.$attr_id)->order('attr_value_sort asc, attr_value_id asc')->select();
+		$attr_value_list = $model->table('attribute_value')->where('attr_id='.$attr_id)->appointment('attr_value_sort asc, attr_value_id asc')->select();
 		Tpl::output('attr_value_list', $attr_value_list);
 		
 		Tpl::showpage('type_attr.edit');
@@ -575,7 +575,7 @@ class typeControl extends SystemControl {
 		$model_type = Model('type');
 		$page	= new Page();
 		$page->setEachNum(self::EXPORT_SIZE);
-		$type_list	= $model_type->typeList(array('order'=>'type_sort asc'),$page);
+		$type_list	= $model_type->typeList(array('appointment'=>'type_sort asc'),$page);
 		if (!is_numeric($_GET['curpage'])){		
 			$count = $page->getTotalNum();
 			$array = array();

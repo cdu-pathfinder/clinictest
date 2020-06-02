@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <link href="<?php echo CMS_SITE_URL.DS;?>templates/cms_special.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 .dialog_content {
@@ -36,10 +36,10 @@
     <input name="module_id" type="hidden" value="<?php echo $output['module_detail']['module_id'];?>" />
     <table class="table tb-type2 nohover">
       <tbody>
-      <tr class="noborder">
+      <tr class="nobappointment">
           <td colspan="2" class="required"> <!-- <label><?php echo $lang['cms_index_module_edit'];?><?php echo $lang['nc_colon'];?></label> --></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" id="cmsIndexModuleEdit" class="vatop"><?php $module_content = unserialize(base64_decode($output['module_detail']['module_content']));?>
             <?php $value['module_style'] = $output['module_detail']['module_style'];?>
             <?php require($output['module_template']);?></td>
@@ -94,7 +94,7 @@
     </ul>
     <h4 class="dialog-handle-title"><?php echo $lang['cms_index_module_article_search'];?></h4>
     <div class="dialog-show-box">
-      <table class="tb-type1 noborder search">
+      <table class="tb-type1 nobappointment search">
         <tbody>
           <tr>
             <th class="w120"><input id="radio_article_search_type_1" name="article_search_type" type="radio" value="article_id" checked />
@@ -106,30 +106,30 @@
           </tr>
         </tbody>
       </table>
-      <div id="div_article_select_list" class="show-recommend-goods-list"> </div>
+      <div id="div_article_select_list" class="show-recommend-doctors-list"> </div>
     </div>
     <a class="btn" id="btn_module_article_save" href="JavaScript:void(0);"> <span><?php echo $lang['cms_text_save'];?></span> </a> </div>
   <!--编辑商品-->
-  <div id="dialog_module_goods_edit" class="dialog-special-insert-goods upload_adv_dialog" style="display:none;">
-      <div class="s-tips"><i></i><?php echo $lang['cms_index_module_goods_explain'];?></div>
+  <div id="dialog_module_doctors_edit" class="dialog-special-insert-doctors upload_adv_dialog" style="display:none;">
+      <div class="s-tips"><i></i><?php echo $lang['cms_index_module_doctors_explain'];?></div>
     <table id="upload_adv_type" class="table tb-type2">
       <tbody>
         <tr>
-          <td class="required" colspan="2"><?php echo $lang['cms_index_module_goods_input_url'];?><?php echo $lang['nc_colon'];?></td>
+          <td class="required" colspan="2"><?php echo $lang['cms_index_module_doctors_input_url'];?><?php echo $lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><input id="input_goods_link" type="text" class="txt" style=" width:200px; margin: 0;" />
-            <a class="btns"  id="btn_goods_search" href="javascript:void(0);"><span><?php echo $lang['cms_text_add'];?></span></a></td>
-          <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_index_module_goods_explain'];?></span></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><input id="input_doctors_link" type="text" class="txt" style=" width:200px; margin: 0;" />
+            <a class="btns"  id="btn_doctors_search" href="javascript:void(0);"><span><?php echo $lang['cms_text_add'];?></span></a></td>
+          <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_index_module_doctors_explain'];?></span></td>
         </tr>
-        <tr class="noborder">
-          <td colspan="2"><ul id="goods_selected_list" class="special-goods-list">
+        <tr class="nobappointment">
+          <td colspan="2"><ul id="doctors_selected_list" class="special-doctors-list">
             </ul></td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="2"><a id="btn_module_goods_save" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_text_save'];?></span></a></td>
+          <td colspan="2"><a id="btn_module_doctors_save" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_text_save'];?></span></a></td>
         </tr>
       </tfoot>
     </table>
@@ -146,39 +146,39 @@
       <a id="btn_module_brand_save" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_text_save'];?></span></a> </div>
 </div>
     <!-- 商品分类选择弹出窗口 -->
-    <div id="dialog_module_goods_class_edit" class="goods_class_list_dialog" style="display:none;">
-      <div class="s-tips"><i></i><?php echo $lang['cms_index_module_goods_class_explain'];?></div>
+    <div id="dialog_module_doctors_class_edit" class="doctors_class_list_dialog" style="display:none;">
+      <div class="s-tips"><i></i><?php echo $lang['cms_index_module_doctors_class_explain'];?></div>
       <div class="dialog-handle">
-        <h4 class="dialog-handle-title"><?php echo $lang['cms_index_module_goods_class'];?></h4>
+        <h4 class="dialog-handle-title"><?php echo $lang['cms_index_module_doctors_class'];?></h4>
         <p><span class="handle">
-          <select id="select_goods_class_list" class=" w200">
+          <select id="select_doctors_class_list" class=" w200">
           </select>
-          </span><span class="note"><?php echo $lang['cms_index_module_goods_class_explain'];?></span></p>
+          </span><span class="note"><?php echo $lang['cms_index_module_doctors_class_explain'];?></span></p>
       </div>
-      <div id="goods_class_selected_list" class="category-list category-list-edit"></div>
-      <a id="btn_module_goods_class_save" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_text_save'];?></span></a> 
+      <div id="doctors_class_selected_list" class="category-list category-list-edit"></div>
+      <a id="btn_module_doctors_class_save" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_text_save'];?></span></a> 
 </div>
 <!--编辑店铺-->
-<div id="dialog_module_store_edit" style="display:none;">
+<div id="dialog_module_clic_edit" style="display:none;">
     <h4 class="dialog-handle-title">已选店铺：</h4>
-    <ul id="store_selected_list" class="dialog-store-selected-list">
+    <ul id="clic_selected_list" class="dialog-clic-selected-list">
     </ul>
     <h4 class="dialog-handle-title">搜索店铺：</h4>
     <div class="dialog-show-box">
-        <table class="tb-type1 noborder search">
+        <table class="tb-type1 nobappointment search">
             <tbody>
             <tr>
                 <th class="w120">店铺关键字：</th>
                 <th>
-                    <input id="input_store_search_keyword" type="text" class="txt" />
-                    <a href="JavaScript:void(0);" id="btn_store_search" class="btn-search " title="<?php echo $lang['cms_text_search'];?>"></a>
+                    <input id="input_clic_search_keyword" type="text" class="txt" />
+                    <a href="JavaScript:void(0);" id="btn_clic_search" class="btn-search " title="<?php echo $lang['cms_text_search'];?>"></a>
             </th>
             </tr>
             </tbody>
         </table>
-        <div id="div_store_select_list" class="show-store-list"> </div>
+        <div id="div_clic_select_list" class="show-clic-list"> </div>
     </div>
-    <a class="btn" id="btn_module_store_save" href="JavaScript:void(0);"><span><?php echo $lang['cms_text_save'];?></span></a> 
+    <a class="btn" id="btn_module_clic_save" href="JavaScript:void(0);"><span><?php echo $lang['cms_text_save'];?></span></a> 
 </div>
 <!--编辑会员-->
 <div id="dialog_module_member_edit" style="display:none;">
@@ -187,7 +187,7 @@
     </ul>
     <h4 class="dialog-handle-title">搜索会员：</h4>
     <div class="dialog-show-box">
-        <table class="tb-type1 noborder search">
+        <table class="tb-type1 nobappointment search">
             <tbody>
             <tr>
                 <th class="w120">会员关键字：</th>

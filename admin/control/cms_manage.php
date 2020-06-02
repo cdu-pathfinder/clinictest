@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_manageControl extends SystemControl{
 
 	public function __construct(){
@@ -48,7 +48,7 @@ class cms_manageControl extends SystemControl{
                 showMessage($upload->error);
             }
             $update_array['cms_logo'] = $upload->file_name;
-            $old_image = BASE_UPLOAD_PATH.DS.ATTACH_CMS.DS.C('microshop_logo');
+            $old_image = BASE_UPLOAD_PATH.DS.ATTACH_CMS.DS.C('microclinic_logo');
             if(is_file($old_image)) {
                 unlink($old_image);
             }

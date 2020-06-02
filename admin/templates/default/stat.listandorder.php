@@ -1,23 +1,23 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
   <div class="w100pre close_float" style="text-align:right;">
-  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&orderby=<?php echo $output['orderby'];?>&exporttype=excel"}' value="excel"/>
+  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&appointmentby=<?php echo $output['appointmentby'];?>&exporttype=excel"}' value="excel"/>
   	<a class="btns" href="javascript:void(0);" id="export_btn"><span>导出Excel</span></a>
   </div>
-  <input type="hidden" id="orderby" name="orderby" value="<?php echo $output['orderby']; ?>"/>
+  <input type="hidden" id="appointmentby" name="appointmentby" value="<?php echo $output['appointmentby']; ?>"/>
   
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead sortbar-array">
         <?php foreach((array)$output['statheader'] as $k=>$v){?>
-        <?php if($v['isorder'] == 1){?>
+        <?php if($v['isappointment'] == 1){?>
         <!-- <th class="<?php echo $v['class']?$v['class']:'align-center';?>"> -->
         <th class="align-center">
-        	<?php if($output['orderby'] == $v['key'].' desc'){?>
-        	<a nc_type="orderitem" href="<?php echo $output['actionurl'];?>&orderby=<?php echo $v['key'].' asc';?>" class="selected desc"><?php echo $v['text'];?><i></i></a></th>
-        	<?php } elseif ($output['orderby'] == $v['key'].' asc'){?>
-        	<a nc_type="orderitem" href="<?php echo $output['actionurl'];?>&orderby=<?php echo $v['key'].' desc';?>" class="selected asc"><?php echo $v['text'];?><i></i></a></th>
+        	<?php if($output['appointmentby'] == $v['key'].' desc'){?>
+        	<a nc_type="appointmentitem" href="<?php echo $output['actionurl'];?>&appointmentby=<?php echo $v['key'].' asc';?>" class="selected desc"><?php echo $v['text'];?><i></i></a></th>
+        	<?php } elseif ($output['appointmentby'] == $v['key'].' asc'){?>
+        	<a nc_type="appointmentitem" href="<?php echo $output['actionurl'];?>&appointmentby=<?php echo $v['key'].' desc';?>" class="selected asc"><?php echo $v['text'];?><i></i></a></th>
         	<?php } else {?>
-        	<a nc_type="orderitem" href="<?php echo $output['actionurl'];?>&orderby=<?php echo $v['key'].' desc';?>"><?php echo $v['text'];?><i></i></a></th>
+        	<a nc_type="appointmentitem" href="<?php echo $output['actionurl'];?>&appointmentby=<?php echo $v['key'].' desc';?>"><?php echo $v['text'];?><i></i></a></th>
         	<?php }?>
         <?php } else {?>
         <th class="align-center"><?php echo $v['text'];?></th>
@@ -54,7 +54,7 @@ $(document).ready(function(){
 		loadingMsg:"<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif",
 		target:'#statlist'
 	});
-	$("[nc_type='orderitem']").ajaxContent({
+	$("[nc_type='appointmentitem']").ajaxContent({
 		event:'click',
 		loaderType:"img",
 		loadingMsg:"<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif",

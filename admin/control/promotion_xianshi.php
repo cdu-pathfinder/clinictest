@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class promotion_xianshiControl extends SystemControl{
 
     public function __construct(){
@@ -61,8 +61,8 @@ class promotion_xianshiControl extends SystemControl{
         if(!empty($_GET['xianshi_name'])) {
             $condition['xianshi_name'] = array('like', '%'.$_GET['xianshi_name'].'%');
         }
-        if(!empty($_GET['store_name'])) {
-            $condition['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        if(!empty($_GET['clic_name'])) {
+            $condition['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         }
         if(!empty($_GET['state'])) {
             $condition['state'] = intval($_GET['state']);
@@ -113,7 +113,7 @@ class promotion_xianshiControl extends SystemControl{
         $xianshi_id = intval($_GET['xianshi_id']);
 
         $model_xianshi = Model('p_xianshi');
-        $model_xianshi_goods = Model('p_xianshi_goods');
+        $model_xianshi_doctors = Model('p_xianshi_doctors');
 
         $xianshi_info = $model_xianshi->getXianshiInfoByID($xianshi_id);
         if(empty($xianshi_info)) {
@@ -124,8 +124,8 @@ class promotion_xianshiControl extends SystemControl{
         //获取限时折扣商品列表
         $condition = array();
         $condition['xianshi_id'] = $xianshi_id;
-        $xianshi_goods_list = $model_xianshi_goods->getXianshiGoodsList($condition);
-        Tpl::output('list',$xianshi_goods_list);
+        $xianshi_doctors_list = $model_xianshi_doctors->getXianshidoctorsList($condition);
+        Tpl::output('list',$xianshi_doctors_list);
 
         $this->show_menu('xianshi_detail');
         Tpl::showpage('promotion_xianshi.detail');
@@ -138,7 +138,7 @@ class promotion_xianshiControl extends SystemControl{
         $model_xianshi_quota = Model('p_xianshi_quota');
 
         $condition = array();
-        $condition['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        $condition['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         $list = $model_xianshi_quota->getXianshiQuotaList($condition, 10, 'end_time desc');
         Tpl::output('list',$list);
         Tpl::output('show_page',$model_xianshi_quota->showpage());
@@ -191,10 +191,10 @@ class promotion_xianshiControl extends SystemControl{
 
         switch ($_GET['branch']){
          case 'recommend':
-            $model= Model('p_xianshi_goods');
+            $model= Model('p_xianshi_doctors');
             $update_array['xianshi_recommend'] = $_GET['value'];
-            $where_array['xianshi_goods_id'] = $_GET['id'];
-            $result = $model->editXianshiGoods($update_array, $where_array);
+            $where_array['xianshi_doctors_id'] = $_GET['id'];
+            $result = $model->editXianshidoctors($update_array, $where_array);
             break;
         }
 

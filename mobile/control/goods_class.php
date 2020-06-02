@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class goods_classControl extends mobileHomeControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class doctors_classControl extends mobileHomeControl{
 
 	public function __construct() {
         parent::__construct();
@@ -28,12 +28,12 @@ class goods_classControl extends mobileHomeControl{
      * 返回一级分类列表
      */
     private function _get_root_class() {
-		$model_goods_class = Model('goods_class');
+		$model_doctors_class = Model('doctors_class');
         $model_mb_category = Model('mb_category');
 
-        $goods_class_array = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
+        $doctors_class_array = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
 
-		$class_list = $model_goods_class->getClassList(array('gc_parent_id' => 0), 'gc_id,gc_name');
+		$class_list = $model_doctors_class->getClassList(array('gc_parent_id' => 0), 'gc_id,gc_name');
         $mb_categroy = $model_mb_category->getLinkList(array());
         $mb_categroy = array_under_reset($mb_categroy, 'gc_id');
         foreach ($class_list as $key => $value) {
@@ -44,10 +44,10 @@ class goods_classControl extends mobileHomeControl{
             }
 
             $class_list[$key]['text'] = '';
-            $child_class_string = $goods_class_array[$value['gc_id']]['child'];
+            $child_class_string = $doctors_class_array[$value['gc_id']]['child'];
             $child_class_array = explode(',', $child_class_string);
             foreach ($child_class_array as $child_class) {
-                $class_list[$key]['text'] .= $goods_class_array[$child_class]['gc_name'] . '/';
+                $class_list[$key]['text'] .= $doctors_class_array[$child_class]['gc_name'] . '/';
             }
             $class_list[$key]['text'] = rtrim($class_list[$key]['text'], '/');
         }
@@ -59,22 +59,22 @@ class goods_classControl extends mobileHomeControl{
      * 根据分类编号返回下级分类列表
      */
     private function _get_class_list($gc_id) {
-        $goods_class_array = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
+        $doctors_class_array = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
 
-        $goods_class = $goods_class_array[$gc_id];
+        $doctors_class = $doctors_class_array[$gc_id];
 
-        if(empty($goods_class['child'])) {
+        if(empty($doctors_class['child'])) {
             //无下级分类返回0
             output_data(array('class_list' => '0'));
         } else {
             //返回下级分类列表
             $class_list = array();
-            $child_class_string = $goods_class_array[$gc_id]['child'];
+            $child_class_string = $doctors_class_array[$gc_id]['child'];
             $child_class_array = explode(',', $child_class_string);
             foreach ($child_class_array as $child_class) {
                 $class_item = array();
-                $class_item['gc_id'] .= $goods_class_array[$child_class]['gc_id'];
-                $class_item['gc_name'] .= $goods_class_array[$child_class]['gc_name'];
+                $class_item['gc_id'] .= $doctors_class_array[$child_class]['gc_id'];
+                $class_item['gc_name'] .= $doctors_class_array[$child_class]['gc_name'];
                 $class_list[] = $class_item;
             }
             output_data(array('class_list' => $class_list));

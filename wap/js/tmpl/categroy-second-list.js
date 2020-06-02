@@ -1,6 +1,6 @@
 $(function(){
 	$.ajax({
-		url:ApiUrl+"/index.php?act=goods_class&gc_id="+GetQueryString("gc_id"),
+		url:ApiUrl+"/index.php?act=doctors_class&gc_id="+GetQueryString("gc_id"),
 		type:'get',
 		dataType:'json',
 		success:function(result){
@@ -16,7 +16,7 @@ $(function(){
 				}
 						
 				$.ajax({
-					url:ApiUrl+"/index.php?act=goods_class&gc_id="+gc_id,
+					url:ApiUrl+"/index.php?act=doctors_class&gc_id="+gc_id,
 					type:'get',
 					dataType:'json',
 					success:function(result){
@@ -27,11 +27,11 @@ $(function(){
 							$(self).append(html);
 							$(self).addClass('open-sitem');
 						
-							$('.product_list').click(function(){	
-								location.href = WapSiteUrl+"/tmpl/product_list.html?gc_id="+$(this).attr('gc_id');			
+							$('.doc_list').click(function(){	
+								location.href = WapSiteUrl+"/tmpl/doc_list.html?gc_id="+$(this).attr('gc_id');			
 							});							
 						}else{
-							location.href = WapSiteUrl+"/tmpl/product_list.html?gc_id="+gc_id;
+							location.href = WapSiteUrl+"/tmpl/doc_list.html?gc_id="+gc_id;
 						}		
 					}
 				});

@@ -6,10 +6,10 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 压缩框架文件
  *
@@ -25,7 +25,7 @@ function build(){
 		BASE_PATH.'/framework/cache/cache.php',
 		BASE_PATH.'/framework/cache/cache.file.php',
 		BASE_PATH.'/framework/db/'.strtolower($dbdriver).'.php',
-		BASE_PATH.'/framework/function/goods.php',
+		BASE_PATH.'/framework/function/doctors.php',
 		BASE_PATH.'/framework/libraries/email.php',
 		BASE_PATH.'/framework/libraries/language.php',
 		BASE_PATH.'/framework/libraries/log.php',
@@ -61,7 +61,7 @@ function build(){
 	$compile .= "\nLanguage::appendLanguage(\$lang);";
 
 	$compile .= "\nBase::run();";
-	file_put_contents(RUNCOREPATH,compress_code("<?php defined('InShopNC') or exit('Access Invalid!');".$compile));
+	file_put_contents(RUNCOREPATH,compress_code("<?php defined('InclinicNC') or exit('Access Invalid!');".$compile));
 }
 
 /**
@@ -74,7 +74,7 @@ function compile($filename) {
     $content = file_get_contents($filename);
     //过滤不需要编译的内容
     $content = preg_replace('/\/\/\[NC_SKIPBUILD\](.*?)\/\/\[\/NC_SKIPBUILD\]/s', '', $content);
-    $content = str_ireplace("defined('InShopNC') or exit('Access Invalid!')", '', $content);
+    $content = str_ireplace("defined('InclinicNC') or exit('Access Invalid!')", '', $content);
     $content = substr(trim($content), 5);
     if ('?>' == substr($content, -2))
         $content = substr($content, 0, -2);

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class searchModel{
 
@@ -42,17 +42,17 @@ class searchModel{
     /**
      * 从全文索引库搜索关键词
      * @param unknown $condition 条件
-     * @param unknown $order 排序
+     * @param unknown $appointment 排序
      * @param number $pagesize 每页显示商品数
      * @return
      */
-    public function getIndexerList($condition = array(), $order = array(), $pagesize = 24) {
+    public function getIndexerList($condition = array(), $appointment = array(), $pagesize = 24) {
 
         //全文搜索初始化
         $this->_createXS($pagesize);
 
         //设置搜索内容
-        $this->_setQueryXS($condition,$order);
+        $this->_setQueryXS($condition,$appointment);
 
         //执行搜索
         $result = $this->_searchXS();
@@ -68,9 +68,9 @@ class searchModel{
     /**
      * 设置全文检索查询条件
      * @param unknown $condition
-     * @param array $order
+     * @param array $appointment
      */
-    private function _setQueryXS($condition,$order) {
+    private function _setQueryXS($condition,$appointment) {
         if (isset($condition['keyword'])) {
             $this->_xs_search->setQuery(is_null($condition['keyword']) ? '':$condition['keyword']);
         }
@@ -80,8 +80,8 @@ class searchModel{
         if (isset($condition['brand_id'])) {
             $this->_xs_search->addQueryString('brand_id'.':'.$condition['brand_id']);
         }
-        if (isset($condition['store_id'])) {
-            $this->_xs_search->addQueryString('store_id'.':'.$condition['store_id']);
+        if (isset($condition['clic_id'])) {
+            $this->_xs_search->addQueryString('clic_id'.':'.$condition['clic_id']);
         }
         if (isset($condition['area_id'])) {
             $this->_xs_search->addQueryString('area_id'.':'.$condition['area_id']);
@@ -91,7 +91,7 @@ class searchModel{
                 $this->_xs_search->addQueryString('attr_id'.':'.$attr_id);
             }
         }
-        $this->_xs_search->setSort($order['key'],$order['value']);
+        $this->_xs_search->setSort($appointment['key'],$appointment['value']);
 //         echo $this->_xs_search->getQuery();
     }
 
@@ -125,25 +125,25 @@ class searchModel{
     private function _searchXS(){
         try {
 
-            $goods_class = H('goods_class') ? H('goods_class') : H('goods_class', true);
+            $doctors_class = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
 
             $docs = $this->_xs_search->search();
             $count = $this->_xs_search->getLastCount();
-            $goods_ids = array();
+            $doctors_ids = array();
             $brands = array();
             $cates = array();
             foreach ($docs as $k => $doc) {
-                $goods_ids[] = $doc->goods_id;
+                $doctors_ids[] = $doc->doctors_id;
 //                 if ($doc->brand_id > 0) {
 //                     $brands[$doc->brand_id]['brand_id'] = $doc->brand_id;
 //                     $brands[$doc->brand_id]['brand_name'] = $doc->brand_name;                    
 //                 }
 //                 if ($doc->gc_id > 0) {
 //                     $cates[$doc->gc_id]['gc_id'] = $doc->gc_id;
-//                     $cates[$doc->gc_id]['gc_name'] = $goods_class[$doc->gc_id]['gc_name'];                    
+//                     $cates[$doc->gc_id]['gc_name'] = $doctors_class[$doc->gc_id]['gc_name'];                    
 //                 }
             }
-            $this->_indexer_ids = $goods_ids;
+            $this->_indexer_ids = $doctors_ids;
             $this->_indexer_count = $count;
             $this->_indexer_brands = $brands;
             $this->_indexer_cates = $cates;
@@ -263,7 +263,7 @@ class searchModel{
             $count = 0;
 
             // 获取当前的分类内容
-            $class_array = H('goods_class') ? H('goods_class') : H('goods_class', true);
+            $class_array = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
             $data = $class_array[$param['gc_id']];
             $child = (!empty($data['child'])) ? explode(',', $data['child']) : array();
             $childchild = (!empty($data['childchild'])) ? explode(',', $data['childchild']) : array();
@@ -272,30 +272,30 @@ class searchModel{
                 // 根据属性查找商品
                 if (is_array($param['attr_id'])) {
                     // 商品id数组
-                    $goodsid_array = array();
+                    $doctorsid_array = array();
                     $data['sign'] = false;
                     foreach ($param['attr_id'] as $val) {
                         $where = array();
                         $where['attr_value_id'] = $val;
                         if ($data['sign']) {
-                            $where['goods_id'] = array('in', $goodsid_array);
+                            $where['doctors_id'] = array('in', $doctorsid_array);
                         }
-                        $goodsattrindex_list = Model('goods_attr_index')->getGoodsAttrIndexList($where, 'goods_id');
-                        if (!empty($goodsattrindex_list)) {
+                        $doctorsattrindex_list = Model('doctors_attr_index')->getdoctorsAttrIndexList($where, 'doctors_id');
+                        if (!empty($doctorsattrindex_list)) {
                             $data['sign'] = true;
-                            $tpl_goodsid_array = array();
-                            foreach ($goodsattrindex_list as $val) {
-                                $tpl_goodsid_array[] = $val['goods_id'];
+                            $tpl_doctorsid_array = array();
+                            foreach ($doctorsattrindex_list as $val) {
+                                $tpl_doctorsid_array[] = $val['doctors_id'];
                             }
-                            $goodsid_array = $tpl_goodsid_array;
+                            $doctorsid_array = $tpl_doctorsid_array;
                         } else {
-                            $data['goodsid_array'] = $goodsid_array = array();
+                            $data['doctorsid_array'] = $doctorsid_array = array();
                             $data['sign'] = false;
                             break;
                         }
                     }
                     if ($data['sign']) {
-                        $data['goodsid_array'] = $goodsid_array;
+                        $data['doctorsid_array'] = $doctorsid_array;
                     }
                 }
 
@@ -366,7 +366,7 @@ class searchModel{
             $tag_list = ($tag = H('class_tag')) ? $tag : H('class_tag', true);
             if (!empty($tag_list) && is_array($tag_list)) {
                 foreach($tag_list as $key => $val) {
-                    $tag_value = str_replace(',', '==ShopNC==', $val['gc_tag_value']);
+                    $tag_value = str_replace(',', '==clinicNC==', $val['gc_tag_value']);
                     if (strpos($tag_value, $keyword)) {
                         $data[] = $val['gc_id'];
                     }
@@ -379,10 +379,10 @@ class searchModel{
     /**
      * 获取父级分类，递归调用
      */
-    private function _getParentCategory($gc_id, $goods_class, $data) {
+    private function _getParentCategory($gc_id, $doctors_class, $data) {
         array_unshift($data, $gc_id);
-        if ($goods_class[$gc_id]['gc_parent_id'] != 0) {
-            return $this->_getParentCategory($goods_class[$gc_id]['gc_parent_id'], $goods_class, $data);
+        if ($doctors_class[$gc_id]['gc_parent_id'] != 0) {
+            return $this->_getParentCategory($doctors_class[$gc_id]['gc_parent_id'], $doctors_class, $data);
         } else {
             return $data;
         }
@@ -396,13 +396,13 @@ class searchModel{
      public function getLeftCategory($param, $sign = 0) {
         $data = array();
         if (!empty($param)) {
-            $goods_class = H('goods_class') ? H('goods_class') : H('goods_class', true);
+            $doctors_class = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
             foreach ($param as $val) {
-                $data[] = $this->_getParentCategory($val, $goods_class, array());
+                $data[] = $this->_getParentCategory($val, $doctors_class, array());
             }
         }
         $tpl_data = array();
-        $gc_list = Model('goods_class')->get_all_category();
+        $gc_list = Model('doctors_class')->get_all_category();
         foreach ($data as $value) {
             //$tpl_data[$val[0]][$val[1]][$val[2]] = $val[2];
             if (!empty($gc_list[$value[0]])){   // 一级

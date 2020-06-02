@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if(!empty($output['option_list'])){?>
 
 <div class="theme-detail-poll-content">
@@ -13,7 +13,7 @@
         <?php if($output['vote_end']){echo $lang['circle_poll_ends'];}else if($output['partake']){echo $lang['circle_have_to_vote'];}?>
       </h5>
     </div>
-    <table width="100%" border=0 cellpadding="0" cellspacing="0">
+    <table width="100%" bappointment=0 cellpadding="0" cellspacing="0">
       <?php $i = 0;foreach ($output['option_list'] as $val){ $i++;?>
       <tr>
         <td class="w20"><?php if($output['poll_info']['poll_multiple'] == 1){?>

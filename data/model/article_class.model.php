@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class article_classModel{
 	/**
@@ -24,7 +24,7 @@ class article_classModel{
 		$param = array();
 		$param['table'] = 'article_class';
 		$param['where'] = $condition_str;
-		$param['order']	= empty($condition['order'])?'ac_parent_id asc,ac_sort asc,ac_id asc':$condition['order'];
+		$param['appointment']	= empty($condition['appointment'])?'ac_parent_id asc,ac_sort asc,ac_id asc':$condition['appointment'];
 		$result = Db::select($param);
 		return $result;
 	}
@@ -190,7 +190,7 @@ class article_classModel{
 	 * @return array $rs_row 返回数组形式的查询结果
 	 */
 	public function getChildClass($parent_id){
-		$all_class = $this->getClassList(array('order'=>'ac_parent_id asc,ac_sort asc,ac_id asc'));
+		$all_class = $this->getClassList(array('appointment'=>'ac_parent_id asc,ac_sort asc,ac_id asc'));
 		if (is_array($all_class)){
 			if (!is_array($parent_id)){
 				$parent_id = array($parent_id);

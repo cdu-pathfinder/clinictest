@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class homeControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class homeControl extends MircroclinicControl{
 
     private $member_info = array();
 	public function __construct() {
@@ -25,7 +25,7 @@ class homeControl extends MircroShopControl{
             }
         }
         if(empty($member_id)) {
-            header('Location: '.MICROSHOP_SITE_URL);die;
+            header('Location: '.MICROclinic_SITE_URL);die;
         }
         $model_member = Model('member');
         $member_info = $model_member->infoMember(array('member_id'=>$member_id));
@@ -33,11 +33,11 @@ class homeControl extends MircroShopControl{
             $this->member_info = $member_info;
             $member_info = self::get_member_detail_info($member_info);
             if(!$member_info) {
-                header('location: '.MICROSHOP_SITE_URL);die;
+                header('location: '.MICROclinic_SITE_URL);die;
             }
             Tpl::output('member_info',$member_info);
         } else {
-            header('Location: '.MICROSHOP_SITE_URL);die;
+            header('Location: '.MICROclinic_SITE_URL);die;
         }
 
         //是否本人标志
@@ -58,19 +58,19 @@ class homeControl extends MircroShopControl{
                 Tpl::output('follow_flag',FALSE);
             }
         }
-        Tpl::output('html_title',$member_info['member_name'].'-'.Language::get('nc_microshop').'-'.C('site_name'));
+        Tpl::output('html_title',$member_info['member_name'].'-'.Language::get('nc_microclinic').'-'.C('site_name'));
         Tpl::output('index_sign','');
     }
 
     //首页
     public function indexOp(){
-        $this->goodsOp();
+        $this->doctorsOp();
     }
 
-    public function goodsOp(){
+    public function doctorsOp(){
 
-        self::get_goods_list(array('commend_member_id'=>$this->member_info['member_id']));
-        Tpl::output('home_sign','goods');
+        self::get_doctors_list(array('commend_member_id'=>$this->member_info['member_id']));
+        Tpl::output('home_sign','doctors');
         Tpl::showpage('home');
     }
 
@@ -108,11 +108,11 @@ class homeControl extends MircroShopControl{
         if($item_id > 0) {
             $result = FALSE;
             switch(strval($_GET['type'])) {
-            case 'goods':
+            case 'doctors':
                 $result = $this->publish_drop('commend_id');
                 //计数
                 $model_micro_member_info = Model('micro_member_info');
-                $model_micro_member_info->updateMemberGoodsCount($_SESSION['member_id'],'-');
+                $model_micro_member_info->updateMemberdoctorsCount($_SESSION['member_id'],'-');
                 break;
             case 'personal':
                 $result = $this->publish_drop('personal_id');
@@ -147,7 +147,7 @@ class homeControl extends MircroShopControl{
      * 喜欢列表
      */
     public function like_listOp() {
-        $type = 'goods';
+        $type = 'doctors';
         if(isset($_GET['type'])) {
             $type = $_GET['type'];
         }
@@ -163,25 +163,25 @@ class homeControl extends MircroShopControl{
         case 'album':
             Tpl::output('list',array());
             break;
-        case 'store':
-            $like_store_list = $model_like->getStoreList($condition,30);
-            $store_list = array();
-            if(!empty($like_store_list)) {
-                $store_id = '';
-                foreach ($like_store_list as $value) {
-                    $store_id .= $value['like_object_id'].',';
+        case 'clic':
+            $like_clic_list = $model_like->getclicList($condition,30);
+            $clic_list = array();
+            if(!empty($like_clic_list)) {
+                $clic_id = '';
+                foreach ($like_clic_list as $value) {
+                    $clic_id .= $value['like_object_id'].',';
                 }
-                $store_id = rtrim($store_id, ',');
+                $clic_id = rtrim($clic_id, ',');
                 
-                $model_microshop_store = Model('micro_store');
-                $store_list = $model_microshop_store->getListWithStoreInfo(array('shop_store_id' => array('in' , $store_id)), null, 'microshop_sort asc');
+                $model_microclinic_clic = Model('micro_clic');
+                $clic_list = $model_microclinic_clic->getListWithclicInfo(array('clinic_clic_id' => array('in' , $clic_id)), null, 'microclinic_sort asc');
             }
-            $like_store_list = array_under_reset($like_store_list, 'like_object_id');
-            Tpl::output('like_store_list', $like_store_list);
-            Tpl::output('list',$store_list);
+            $like_clic_list = array_under_reset($like_clic_list, 'like_object_id');
+            Tpl::output('like_clic_list', $like_clic_list);
+            Tpl::output('list',$clic_list);
             break;
         default:
-            Tpl::output('list',$model_like->getGoodsList($condition,35));
+            Tpl::output('list',$model_like->getdoctorsList($condition,35));
             break;
         }
         Tpl::output('show_page',$model_like->showpage(2));	

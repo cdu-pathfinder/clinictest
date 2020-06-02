@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,17 +18,17 @@
     <input type="hidden" name="old_c_logo" value="<?php echo $output['list_setting']['circle_logo'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="c_interval"><?php echo $lang['circle_setting_interval'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_intervaltime" id="c_intervaltime" class="txt" value="<?php echo $output['list_setting']['circle_intervaltime'];?>"></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_interval_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="c_contentleast"><?php echo $lang['circle_setting_contentleast'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_contentleast" id="c_contentleast" class="txt" value="<?php echo $output['list_setting']['circle_contentleast'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['circle_setting_contentleast_tips'];?></td>
         </tr>

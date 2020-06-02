@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
     $("[nc_type=like_drop]").click(function(){
@@ -17,12 +17,12 @@ $(document).ready(function(){
 });
 </script>
 <ul class="user-like-nav">
-    <li <?php echo $output['like_sign'] == 'goods'?'class="current"':'class="link"'; ?> style="border-left:0; padding-left:0;"><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&op=like_list&type=goods&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microshop_goods'];?></a></li>
+    <li <?php echo $output['like_sign'] == 'doctors'?'class="current"':'class="link"'; ?> style="bappointment-left:0; padding-left:0;"><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&op=like_list&type=doctors&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microclinic_doctors'];?></a></li>
     <!--
-    <li <?php echo $output['like_sign'] == 'album'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&op=like_list&type=album&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microshop_album'];?></a></li>
+    <li <?php echo $output['like_sign'] == 'album'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&op=like_list&type=album&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microclinic_album'];?></a></li>
     -->
-    <li <?php echo $output['like_sign'] == 'personal'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&op=like_list&type=personal&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microshop_personal'];?></a></li>
-    <li <?php echo $output['like_sign'] == 'store'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&op=like_list&type=store&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microshop_store'];?></a></li>
+    <li <?php echo $output['like_sign'] == 'personal'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&op=like_list&type=personal&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microclinic_personal'];?></a></li>
+    <li <?php echo $output['like_sign'] == 'clic'?'class="current"':'class="link"'; ?>><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&op=like_list&type=clic&member_id=<?php echo $output['member_info']['member_id'];?>"><?php echo $lang['nc_microclinic_clic'];?></a></li>
 </ul>
 <?php 
 require("widget_{$output['like_sign']}_list.php");

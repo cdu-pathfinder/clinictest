@@ -6,8 +6,8 @@
 <title><?php echo empty($output['seo_title'])?$output['html_title']:$output['seo_title'].'-'.$output['html_title'];?></title>
 <meta name="keywords" content="<?php echo $output['seo_keywords']; ?>" />
 <meta name="description" content="<?php echo $output['seo_description']; ?>" />
-<meta name="author" content="ShopNC">
-<meta name="copyright" content="ShopNC Inc. All Rights Reserved">
+<meta name="author" content="clinicNC">
+<meta name="copyright" content="clinicNC Inc. All Rights Reserved">
 <link href="<?php echo CMS_TEMPLATES_URL;?>/css/base.css" rel="stylesheet" type="text/css">
 <link href="<?php echo CMS_TEMPLATES_URL;?>/css/layout.css" rel="stylesheet" type="text/css">
 <!--[if IE 6]><style type="text/css">body { _behavior: url(<?php echo CMS_TEMPLATES_URL;?>/css/csshover.htc);}</style><![endif]-->
@@ -33,7 +33,7 @@ catch(e){}
 </script> 
 <![endif]-->
 <script>
-var COOKIE_PRE = '<?php echo COOKIE_PRE;?>'; var _CHARSET = '<?php echo strtolower(CHARSET);?>'; var APP_SITE_URL = '<?php echo CMS_SITE_URL;?>'; var SITEURL = '<?php echo SHOP_SITE_URL;?>'; var SHOP_SITE_URL = '<?php echo SHOP_SITE_URL;?>'; var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
+var COOKIE_PRE = '<?php echo COOKIE_PRE;?>'; var _CHARSET = '<?php echo strtolower(CHARSET);?>'; var APP_SITE_URL = '<?php echo CMS_SITE_URL;?>'; var SITEURL = '<?php echo clinic_SITE_URL;?>'; var clinic_SITE_URL = '<?php echo clinic_SITE_URL;?>'; var RESOURCE_SITE_URL = '<?php echo RESOURCE_SITE_URL;?>';
 </script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery-ui/jquery.ui.js"></script>
@@ -67,33 +67,33 @@ $(function(){
   <div class="topbar warp-all">  
     <div class="user-entry">
     <?php if($_SESSION['is_login'] == '1'){?>
-      <?php echo $lang['nc_hello'];?><span><a href="<?php echo urlShop('member_snsindex');?>"><?php echo str_cut($_SESSION['member_name'],20);?></a></span><?php echo $lang['nc_comma'],$lang['welcome_to_site'];?>
-      <a href="<?php echo SHOP_SITE_URL;?>"  title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><span><?php echo $GLOBALS['setting_config']['site_name']; ?></span></a>
-      <span>[<a href="<?php echo urlShop('login','logout');?>"><?php echo $lang['nc_logout'];?></a>]</span>
+      <?php echo $lang['nc_hello'];?><span><a href="<?php echo urlclinic('member_snsindex');?>"><?php echo str_cut($_SESSION['member_name'],20);?></a></span><?php echo $lang['nc_comma'],$lang['welcome_to_site'];?>
+      <a href="<?php echo clinic_SITE_URL;?>"  title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><span><?php echo $GLOBALS['setting_config']['site_name']; ?></span></a>
+      <span>[<a href="<?php echo urlclinic('login','logout');?>"><?php echo $lang['nc_logout'];?></a>]</span>
     <?php }else{?>
       <?php echo $lang['nc_hello'].$lang['nc_comma'].$lang['welcome_to_site'];?>
-      <a href="<?php echo SHOP_SITE_URL;?>" title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><?php echo $GLOBALS['setting_config']['site_name']; ?></a>
-       <span>[<a href="<?php echo urlShop('login');?>"><?php echo $lang['nc_login'];?></a>]</span>
-        <span>[<a href="<?php echo urlShop('login','register');?>"><?php echo $lang['nc_register'];?></a>]</span>
-    <?php }?><span class="seller-login"><a href="<?php echo urlShop('seller_login','show_login');?>" target="_blank" title="登录商家管理中心"><i class="icon-signin"></i>商家管理中心</a></span></div>
+      <a href="<?php echo clinic_SITE_URL;?>" title="<?php echo $lang['homepage'];?>" alt="<?php echo $lang['homepage'];?>"><?php echo $GLOBALS['setting_config']['site_name']; ?></a>
+       <span>[<a href="<?php echo urlclinic('login');?>"><?php echo $lang['nc_login'];?></a>]</span>
+        <span>[<a href="<?php echo urlclinic('login','register');?>"><?php echo $lang['nc_register'];?></a>]</span>
+    <?php }?><span class="seller-login"><a href="<?php echo urlclinic('seller_login','show_login');?>" target="_blank" title="登录商家管理中心"><i class="icon-signin"></i>商家管理中心</a></span></div>
     
     <div class="quick-menu">
       <dl>
-        <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order">我的订单</a><i></i></dt>
+        <dt><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment">我的订单</a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_new">待付款订单</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_send">待确认收货</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_order&state_type=state_noeval">待评价交易</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_new">待付款订单</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_send">待确认收货</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_appointment&state_type=state_noeval">待评价交易</a></li>
           </ul>
         </dd>
       </dl>
       <dl>
-        <dt><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_favorites'];?></a><i></i></dt>
+        <dt><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fglist"><?php echo $lang['nc_favorites'];?></a><i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fglist">商品收藏</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_favorites&op=fslist">店铺收藏</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fglist">商品收藏</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_favorites&op=fslist">店铺收藏</a></li>
           </ul>
         </dd>
       </dl>
@@ -101,9 +101,9 @@ $(function(){
         <dt>客户服务<i></i></dt>
         <dd>
           <ul>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=2">帮助中心</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=5">售后服务</a></li>
-            <li><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=article&ac_id=6">客服中心</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=2">帮助中心</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=5">售后服务</a></li>
+            <li><a href="<?php echo clinic_SITE_URL;?>/index.php?act=article&ac_id=6">客服中心</a></li>
           </ul>
         </dd>
       </dl>
@@ -130,9 +130,9 @@ $(function(){
         echo ' href="'; 
         switch($nav['nav_type']) {
         	case '0':echo $nav['nav_url'];break;
-    	case '1':echo urlShop('search', 'index', array('cate_id'=>$nav['item_id']));break;
-    	case '2':echo urlShop('article', 'article',array('ac_id'=>$nav['item_id']));break;
-    	case '3':echo urlShop('activity', 'index',array('activity_id'=>$nav['item_id']));break;
+    	case '1':echo urlclinic('search', 'index', array('cate_id'=>$nav['item_id']));break;
+    	case '2':echo urlclinic('article', 'article',array('ac_id'=>$nav['item_id']));break;
+    	case '3':echo urlclinic('activity', 'index',array('activity_id'=>$nav['item_id']));break;
         }
         echo '"'; 
         ?>><?php echo $nav['nav_title'];?></a></li>
@@ -168,7 +168,7 @@ $(function(){
       <ul class="tab">
         <li <?php if($_GET['act'] != 'picture' ) echo 'class="current"'; ?> action="<?php echo CMS_SITE_URL.DS;?>index.php" act="article" op="article_search"><?php echo $lang['cms_article'];?><i></i></li>
         <li <?php if($_GET['act'] == 'picture' ) echo 'class="current"'; ?> action="<?php echo CMS_SITE_URL.DS;?>index.php" act="picture" op="picture_search"><?php echo $lang['cms_picture'];?><i></i></li>
-        <li action="<?php echo SHOP_SITE_URL.DS;?>index.php" act="search"><?php echo $lang['cms_goods'];?><i></i></li>
+        <li action="<?php echo clinic_SITE_URL.DS;?>index.php" act="search"><?php echo $lang['cms_doctors'];?><i></i></li>
       </ul>
       <div class="form-box">
         <form id="form_search" method="get" action="" >
@@ -184,7 +184,7 @@ $(function(){
     <div class="weather-box">
       <div class="content">
 <!--
-        <iframe allowtransparency="true" frameborder="0" width="140" height="109" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&v=1&f=1&b=&k=&t=1&a=1&c=54527&d=1&e=0"></iframe>
+        <iframe allowtransparency="true" framebappointment="0" width="140" height="109" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&v=1&f=1&b=&k=&t=1&a=1&c=54527&d=1&e=0"></iframe>
 -->
       </div>
     </div>

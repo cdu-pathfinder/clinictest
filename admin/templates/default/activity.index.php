@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -13,7 +13,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="activity">
     <input type="hidden" name="op" value="activity">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="searchtitle"><?php echo $lang['activity_index_title']; ?></label></th>
@@ -77,7 +77,7 @@
           <td><div class="link-logo"><span class="thumb size-logo"><i></i><img height="31" width="88" src="<?php if(is_file(BASE_UPLOAD_PATH.DS.ATTACH_ACTIVITY.DS.$v['activity_banner'])){echo UPLOAD_SITE_URL."/".ATTACH_ACTIVITY."/".$v['activity_banner'];}else{echo ADMIN_SITE_URL."/templates/".TPL_NAME."/images/sale_banner.jpg";}?>" onload="javascript:DrawImage(this,88,31);" /></span></div></td>
           <!-- <td class="align-center"><?php switch($v['activity_type']){
 					case '1':
-						echo $lang['activity_index_goods'];
+						echo $lang['activity_index_doctors'];
 						break;
 					case '2':
 						echo $lang['activity_index_group'];
@@ -123,7 +123,7 @@
 <script src="<?php echo RESOURCE_SITE_URL."/js/jquery-ui/jquery.ui.js";?>"></script> 
 <script src="<?php echo RESOURCE_SITE_URL."/js/jquery-ui/i18n/zh-CN.js";?>" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.edit.js" charset="utf-8"></script> 
-<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.goods_class.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.doctors_class.js" charset="utf-8"></script>
 <script type="text/javascript">
 $("#searchstartdate").datepicker({dateFormat: 'yy-mm-dd'});
 $("#searchenddate").datepicker({dateFormat: 'yy-mm-dd'});

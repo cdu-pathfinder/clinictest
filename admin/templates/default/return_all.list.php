@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,15 +14,15 @@
   <form method="get" action="index.php" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="return" />
     <input type="hidden" name="op" value="return_all" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
         <th><select name="type">
-            <option value="order_sn" <?php if($_GET['type'] == 'order_sn'){?>selected<?php }?>><?php echo $lang['refund_order_ordersn']; ?></option>
-            <option value="refund_sn" <?php if($_GET['type'] == 'refund_sn'){?>selected<?php }?>><?php echo $lang['return_order_returnsn']; ?></option>
-            <option value="store_name" <?php if($_GET['type'] == 'store_name'){?>selected<?php }?>><?php echo $lang['refund_store_name']; ?></option>
-            <option value="goods_name" <?php if($_GET['type'] == 'goods_name'){?>selected<?php }?>><?php echo '商品名称'; ?></option>
-            <option value="buyer_name" <?php if($_GET['type'] == 'buyer_name'){?>selected<?php }?>><?php echo $lang['refund_order_buyer']; ?></option>
+            <option value="appointment_sn" <?php if($_GET['type'] == 'appointment_sn'){?>selected<?php }?>><?php echo $lang['refund_appointment_appointmentsn']; ?></option>
+            <option value="refund_sn" <?php if($_GET['type'] == 'refund_sn'){?>selected<?php }?>><?php echo $lang['return_appointment_returnsn']; ?></option>
+            <option value="clic_name" <?php if($_GET['type'] == 'clic_name'){?>selected<?php }?>><?php echo $lang['refund_clic_name']; ?></option>
+            <option value="doctors_name" <?php if($_GET['type'] == 'doctors_name'){?>selected<?php }?>><?php echo '商品名称'; ?></option>
+            <option value="buyer_name" <?php if($_GET['type'] == 'buyer_name'){?>selected<?php }?>><?php echo $lang['refund_appointment_buyer']; ?></option>
           </select></th>
         <td><input type="text" class="text" name="key" value="<?php echo trim($_GET['key']); ?>" /></td>
           <th><label for="add_time_from"><?php echo '申请时间';?></label></th>
@@ -38,14 +38,14 @@
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
-        <th><?php echo $lang['refund_order_ordersn'];?></th>
-        <th><?php echo $lang['return_order_returnsn'];?></th>
-        <th><?php echo $lang['refund_store_name'];?></th>
+        <th><?php echo $lang['refund_appointment_appointmentsn'];?></th>
+        <th><?php echo $lang['return_appointment_returnsn'];?></th>
+        <th><?php echo $lang['refund_clic_name'];?></th>
         <th>商品名称</th>
-        <th><?php echo $lang['refund_order_buyer'];?></th>
+        <th><?php echo $lang['refund_appointment_buyer'];?></th>
         <th class="align-center"><?php echo $lang['refund_buyer_add_time'];?></th>
-        <th class="align-center"><?php echo $lang['refund_order_refund'];?></th>
-        <th class="align-center"><?php echo $lang['return_order_return'];?></th>
+        <th class="align-center"><?php echo $lang['refund_appointment_refund'];?></th>
+        <th class="align-center"><?php echo $lang['return_appointment_return'];?></th>
         <th class="align-center">商家审核</th>
         <th class="align-center">平台确认</th>
         <th class="align-center"><?php echo $lang['nc_handle'];?></th>
@@ -55,16 +55,16 @@
       <?php if (is_array($output['return_list']) && !empty($output['return_list'])) { ?>
       <?php foreach ($output['return_list'] as $key => $val) { ?>
       <tr class="bd-line" >
-        <td><?php echo $val['order_sn'];?></td>
+        <td><?php echo $val['appointment_sn'];?></td>
         <td><?php echo $val['refund_sn'];?></td>
-        <td><?php echo $val['store_name']; ?></td>
-        <td><?php echo $val['goods_name']; ?></td>
+        <td><?php echo $val['clic_name']; ?></td>
+        <td><?php echo $val['doctors_name']; ?></td>
         <td><?php echo $val['buyer_name']; ?></td>
         <td class="align-center"><?php echo date('Y-m-d H:i:s',$val['add_time']);?></td>
         <td class="align-center"><?php echo $val['refund_amount'];?></td>
-        <td class="align-center"><?php echo $val['return_type'] == 2 ? $val['goods_num']:'无';?></td>
-        <td class="align-center"><?php echo $output['state_array'][$val['seller_state']];?></td>
-        <td class="align-center"><?php echo ($val['seller_state'] == 2 && $val['refund_state'] >= 2) ? $output['admin_array'][$val['refund_state']]:'无'; ?></td>
+        <td class="align-center"><?php echo $val['return_type'] == 2 ? $val['doctors_num']:'无';?></td>
+        <td class="align-center"><?php echo $output['state_array'][$val['clinicer_state']];?></td>
+        <td class="align-center"><?php echo ($val['clinicer_state'] == 2 && $val['refund_state'] >= 2) ? $output['admin_array'][$val['refund_state']]:'无'; ?></td>
         <td class="align-center"><a href="index.php?act=return&op=view&return_id=<?php echo $val['refund_id']; ?>"> <?php echo $lang['nc_view'];?> </a></td>
       </tr>
       <?php } ?>

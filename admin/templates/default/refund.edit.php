@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,38 +16,38 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
-          <td colspan="2"><?php echo $lang['refund_order_refund'].$lang['nc_colon'];?></td>
+        <tr class="nobappointment">
+          <td colspan="2"><?php echo $lang['refund_appointment_refund'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo ncPriceFormat($output['refund']['refund_amount']); ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2"><?php echo '商品名称'.$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['refund']['goods_name']; ?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['refund']['doctors_name']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2"><?php echo $lang['refund_buyer_message'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $output['refund']['buyer_message']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
-          <td colspan="2"><?php echo $lang['refund_seller_message'].$lang['nc_colon'];?></td>
+        <tr class="nobappointment">
+          <td colspan="2"><?php echo $lang['refund_clinicer_message'].$lang['nc_colon'];?></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['refund']['seller_message']; ?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['refund']['clinicer_message']; ?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['refund_message'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
         	<textarea id="admin_message" name="admin_message" class="tarea"></textarea></td>
           <td class="vatop tips"></td>

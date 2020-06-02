@@ -9,7 +9,7 @@ $(function(){
 	
     if($("input[name=gc_id]").val()!=''){
     	$.ajax({
-    		url:ApiUrl+"/index.php?act=goods&op=goods_list&key=4&page="+pagesize+"&curpage=1"+'&gc_id='+$("input[name=gc_id]").val(),
+    		url:ApiUrl+"/index.php?act=doctors&op=doctors_list&key=4&page="+pagesize+"&curpage=1"+'&gc_id='+$("input[name=gc_id]").val(),
     		type:'get',
     		dataType:'json',
     		success:function(result){
@@ -33,12 +33,12 @@ $(function(){
     			$('select[name=page_list]').append(page_html);
     			
     			var html = template.render('home_body', result.datas);
-    			$("#product_list").append(html);	
+    			$("#doc_list").append(html);	
     		}
     	});
     }else{
     	$.ajax({
-    		url:ApiUrl+"/index.php?act=goods&op=goods_list&key=4&page="+pagesize+"&curpage=1"+'&keyword='+$("input[name=keyword]").val(),
+    		url:ApiUrl+"/index.php?act=doctors&op=doctors_list&key=4&page="+pagesize+"&curpage=1"+'&keyword='+$("input[name=keyword]").val(),
     		type:'get',
     		dataType:'json',
     		success:function(result){
@@ -62,7 +62,7 @@ $(function(){
     			$('select[name=page_list]').append(page_html);
     			
     			var html = template.render('home_body', result.datas);
-    			$("#product_list").append(html);	
+    			$("#doc_list").append(html);	
     		}
     	});
     }
@@ -70,7 +70,7 @@ $(function(){
     
     $("select[name=page_list]").change(function(){
 		var key = parseInt($("input[name=key]").val());
-		var order = parseInt($("input[name=order]").val());
+		var appointment = parseInt($("input[name=appointment]").val());
 		var page = parseInt($("input[name=page]").val());			
 		var gc_id = parseInt($("input[name=gc_id]").val());
 		var keyword = $("input[name=keyword]").val();
@@ -79,9 +79,9 @@ $(function(){
     	var curpage = $('select[name=page_list]').val();
     	
     	if(gc_id>0){
-    		var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
+    		var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
     	}else{
-    		var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
+    		var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
     	}
     	
     	$.ajax({
@@ -90,8 +90,8 @@ $(function(){
     		dataType:'json',
     		success:function(result){
 				var html = template.render('home_body', result.datas);
-				$("#product_list").empty();
-				$("#product_list").append(html);
+				$("#doc_list").empty();
+				$("#doc_list").append(html);
 				
 				if(curpage>1){
 					$('.pre-page').removeClass('disabled');
@@ -112,9 +112,9 @@ $(function(){
     });
     
     
-	$('.keyorder').click(function(){
+	$('.keyappointment').click(function(){
 		var key = parseInt($("input[name=key]").val());
-		var order = parseInt($("input[name=order]").val());
+		var appointment = parseInt($("input[name=appointment]").val());
 		var page = parseInt($("input[name=page]").val());			
 		var curpage = eval(parseInt($("input[name=curpage]").val())-1);
 		var gc_id = parseInt($("input[name=gc_id]").val());
@@ -123,21 +123,21 @@ $(function(){
 
 		var curkey = $(this).attr('key');//1.appointments 2.浏览量 3.price 4.最新排序
 		if(curkey == key){
-			if(order == 1){
-				var curorder = 2;
+			if(appointment == 1){
+				var curappointment = 2;
 			}else{
-				var curorder = 1;
+				var curappointment = 1;
 			}
 		}else{
-			var curorder = 1;
+			var curappointment = 1;
 		}	
 		
 		$(this).addClass("current").siblings().removeClass("current");
 		
 		if(gc_id>0){
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+curkey+"&order="+curorder+"&page="+page+"&curpage=1&gc_id="+gc_id;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+curkey+"&appointment="+curappointment+"&page="+page+"&curpage=1&gc_id="+gc_id;
 		}else{
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+curkey+"&order="+curorder+"&page="+page+"&curpage=1&keyword="+keyword;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+curkey+"&appointment="+curappointment+"&page="+page+"&curpage=1&keyword="+keyword;
 		}
 		
 		$.ajax({
@@ -147,17 +147,17 @@ $(function(){
 			success:function(result){
 				$("input[name=hasmore]").val(result.hasmore);
 				var html = template.render('home_body', result.datas);
-				$("#product_list").empty();
-				$("#product_list").append(html);	
+				$("#doc_list").empty();
+				$("#doc_list").append(html);	
 				$("input[name=key]").val(curkey);
-				$("input[name=order]").val(curorder);			
+				$("input[name=appointment]").val(curappointment);			
 			}
 		});
 	});
 	
 	$('.pre-page').click(function(){//previous page
 		var key = parseInt($("input[name=key]").val());
-		var order = parseInt($("input[name=order]").val());
+		var appointment = parseInt($("input[name=appointment]").val());
 		var page = parseInt($("input[name=page]").val());			
 		var curpage = eval(parseInt($("input[name=curpage]").val())-1);
 		var gc_id = parseInt($("input[name=gc_id]").val());
@@ -168,9 +168,9 @@ $(function(){
 		}
 		
 		if(gc_id>=0){
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
 		}else{
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
 		}
 		$.ajax({
 			url:url,
@@ -185,8 +185,8 @@ $(function(){
 					$('.next-page').removeClass('disabled');
 				}
 				var html = template.render('home_body', result.datas);
-				$("#product_list").empty();
-				$("#product_list").append(html);		
+				$("#doc_list").empty();
+				$("#doc_list").append(html);		
 				$("input[name=curpage]").val(curpage);
 				
     			var page_total = result.page_total;
@@ -212,16 +212,16 @@ $(function(){
 		}
 		
 		var key = parseInt($("input[name=key]").val());
-		var order = parseInt($("input[name=order]").val());
+		var appointment = parseInt($("input[name=appointment]").val());
 		var page = parseInt($("input[name=page]").val());
 		var curpage = eval(parseInt($("input[name=curpage]").val())+1);
 		var gc_id = parseInt($("input[name=gc_id]").val());
 		var keyword = $("input[name=keyword]").val();
 
 		if(gc_id>=0){
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&gc_id="+gc_id;
 		}else{
-			var url = ApiUrl+"/index.php?act=goods&op=goods_list&key="+key+"&order="+order+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
+			var url = ApiUrl+"/index.php?act=doctors&op=doctors_list&key="+key+"&appointment="+appointment+"&page="+page+"&curpage="+curpage+"&keyword="+keyword;
 		}		
 		$.ajax({
 			url:url,
@@ -236,8 +236,8 @@ $(function(){
 					$('.pre-page').removeClass('disabled');
 				}
 				var html = template.render('home_body', result.datas);
-				$("#product_list").empty();
-				$("#product_list").append(html);
+				$("#doc_list").empty();
+				$("#doc_list").append(html);
 				$("input[name=curpage]").val(curpage);
 				
     			var page_total = result.page_total;

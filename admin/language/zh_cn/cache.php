@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 
  */
@@ -14,7 +14,7 @@ $lang['cache_cls_nav']			= 'Bottom navigation';
 $lang['cache_cls_index']		= 'Homepage';
 $lang['cache_cls_table']		= 'Table structure';
 $lang['cache_cls_express']		= 'Delivery';
-$lang['cache_cls_store_class']	= 'Clinic type';
-$lang['cache_cls_store_grade']	= 'Clinic level';
+$lang['cache_cls_clic_class']	= 'Clinic type';
+$lang['cache_cls_clic_grade']	= 'Clinic level';
 $lang['cache_cls_circle_level']	= 'Clinic member level';
 $lang['cache_cls_ok']			= 'Update success';

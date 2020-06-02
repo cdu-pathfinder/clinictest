@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -14,10 +14,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label><?php echo $lang['snsalbum_allow_upload_max_count'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" value="<?php echo $output['list_setting']['malbum_max_sum'];?>" name="malbum_max_sum" id="malbum_max_sum"></td>
           <td class="vatop tips"><?php echo $lang['snsalbum_allow_upload_max_count_tip'];?></td>
         </tr>

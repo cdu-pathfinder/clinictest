@@ -1,11 +1,11 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
 
     //文件上传
     var textButton1="<input type='text' name='textfield' id='textfield1' class='type-file-text' /><input type='button' name='button' id='button1' value='' class='type-file-button' />";
     $(textButton1).insertBefore("#cms_logo");
-    $("#cms_store_banner").change(function(){
+    $("#cms_clic_banner").change(function(){
         $("#textfield3").val($("#cms_logo").val());
     });
     $("input[nc_type='cms_image']").live("change", function(){
@@ -42,10 +42,10 @@ $(document).ready(function(){
   <form id="add_form" method="post" enctype="multipart/form-data" action="index.php?act=cms_manage&op=cms_manage_save">
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="cms_isuse"><?php echo $lang['cms_isuse'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="cms_isuse_1" class="cb-enable <?php if($output['setting']['cms_isuse'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="cms_isuse_0" class="cb-disable <?php if($output['setting']['cms_isuse'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -56,7 +56,7 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label for="class_image"><?php echo $lang['nc_cms'].'LOGO'.$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"> <img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview">
               <?php if(empty($output['setting']['cms_logo'])) { ?>
@@ -74,7 +74,7 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label for="taobao_app_key"><?php echo $lang['cms_submit_verify'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="cms_submit_verify_flag_1" class="cb-enable <?php if($output['setting']['cms_submit_verify_flag'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="cms_submit_verify_flag_0" class="cb-disable <?php if($output['setting']['cms_submit_verify_flag'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -86,7 +86,7 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label for="taobao_app_key"><?php echo $lang['cms_comment_allow'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="cms_comment_flag_1" class="cb-enable <?php if($output['setting']['cms_comment_flag'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="cms_comment_flag_0" class="cb-disable <?php if($output['setting']['cms_comment_flag'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -98,7 +98,7 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label for="taobao_app_key"><?php echo $lang['cms_attitude_allow'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="cms_attitude_flag_1" class="cb-enable <?php if($output['setting']['cms_attitude_flag'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="cms_attitude_flag_0" class="cb-disable <?php if($output['setting']['cms_attitude_flag'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -111,7 +111,7 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['taobao_api_isuse'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
           	<label for="taobao_isuse_1" class="cb-enable <?php if($output['setting']['taobao_api_isuse'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_open'];?>"><span><?php echo $lang['nc_open'];?></span></label>
             <label for="taobao_isuse_0" class="cb-disable <?php if($output['setting']['taobao_api_isuse'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['nc_close'];?>"><span><?php echo $lang['nc_close'];?></span></label>
@@ -122,35 +122,35 @@ $(document).ready(function(){
         <tr>
           <td colspan="2" class="required"><label for="taobao_app_key"><?php echo $lang['taobao_app_key'].'(APP KEY)'.$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['setting']['taobao_app_key'];?>" name="taobao_app_key" class="txt"></td>
           <td class="vatop tips"><a style="color:#ffffff; font-weight:bold;" target="_blank" href="http://open.taobao.com"><?php echo $lang['taobao_app_key_explain'];?></a></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="taobao_secret_key"><?php echo $lang['taobao_secret_key'].'(APP SECRET)'.$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['setting']['taobao_secret_key'];?>" name="taobao_secret_key" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
             <td colspan="2" class="required"><label for="cms_seo_title"><?php echo $lang['cms_seo_title'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['setting']['cms_seo_title'];?>" name="cms_seo_title" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
             <td colspan="2" class="required"><label for="cms_seo_keywords"><?php echo $lang['cms_seo_keywords'];?>关键字<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['setting']['cms_seo_keywords'];?>" name="cms_seo_keywords" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="cms_seo_description"><?php echo $lang['cms_seo_description'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
             <td class="vatop rowform">
                 <textarea name="cms_seo_description" class="tarea" rows="6"><?php echo $output['setting']['cms_seo_description'];?></textarea>
             </td>

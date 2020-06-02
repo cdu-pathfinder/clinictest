@@ -8,10 +8,10 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 function getRefUrl() {
     return urlencode('http://'.$_SERVER['HTTP_HOST'].request_uri());
@@ -31,8 +31,8 @@ function getPictureImageUrl($picture_id) {
 /**
  * 获取商品URL
  */
-function getGoodsUrl($goods_id) {
-    return SHOP_SITE_URL.DS.'index.php?act=goods&goods_id='.$goods_id;
+function getdoctorsUrl($doctors_id) {
+    return clinic_SITE_URL.DS.'index.php?act=doctors&doctors_id='.$doctors_id;
 }
 
 /**

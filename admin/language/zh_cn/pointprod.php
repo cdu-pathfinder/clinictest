@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 积分礼品功能公用
  */
@@ -8,7 +8,7 @@ $lang['admin_pointprod_unavailable']	 		= '系统未开启积分中心，是否�
 $lang['admin_pointprod_parameter_error']		= '参数错误';
 $lang['admin_pointprod_record_error']			= '记录信息错误';
 $lang['admin_pointprod_userrecord_error']		= '用户信息错误';
-$lang['admin_pointprod_goodsrecord_error']		= '礼品信息错误';
+$lang['admin_pointprod_doctorsrecord_error']		= '礼品信息错误';
 $lang['admin_pointprod_list_title']			= '礼品列表';
 $lang['admin_pointprod_add_title']			= '新增礼品';
 $lang['admin_pointprod_state']				= '状态';
@@ -16,24 +16,24 @@ $lang['admin_pointprod_show_up']			= '上架';
 $lang['admin_pointprod_show_down']			= '下架';
 $lang['admin_pointprod_commend']			= '推荐';
 $lang['admin_pointprod_forbid']				= '禁售';
-$lang['admin_pointprod_goods_name']			= '礼品名称';
+$lang['admin_pointprod_doctors_name']			= '礼品名称';
 $lang['pointprod_help1']					= '礼品会出现在积分中心，会员可凭积兑换';
-$lang['admin_pointprod_goods_points']		= '兑换积分';
-$lang['admin_pointprod_goods_price']		= '礼品原价';
-$lang['admin_pointprod_goods_storage']		= '库存';
-$lang['admin_pointprod_goods_view']			= '浏览';
+$lang['admin_pointprod_doctors_points']		= '兑换积分';
+$lang['admin_pointprod_doctors_price']		= '礼品原价';
+$lang['admin_pointprod_doctors_storage']		= '库存';
+$lang['admin_pointprod_doctors_view']			= '浏览';
 $lang['admin_pointprod_salenum']			= '售出';
 $lang['admin_pointprod_yes']				= '是';
 $lang['admin_pointprod_no']					= '否';
 $lang['admin_pointprod_delfail']			= '删除失败';
-$lang['admin_pointorder_list_title']		= '兑换列表';
+$lang['admin_pointappointment_list_title']		= '兑换列表';
 /**
  * 添加
  */
 $lang['admin_pointprod_baseinfo']		= '礼品基本信息';
-$lang['admin_pointprod_goods_image']	= '礼品图片';
-$lang['admin_pointprod_goods_tag']		= '礼品标签';
-$lang['admin_pointprod_goods_serial']	= '礼品编号';
+$lang['admin_pointprod_doctors_image']	= '礼品图片';
+$lang['admin_pointprod_doctors_tag']		= '礼品标签';
+$lang['admin_pointprod_doctors_serial']	= '礼品编号';
 $lang['admin_pointprod_requireinfo']	= '兑换要求';
 $lang['admin_pointprod_limittip']		= '限制每会员兑换数量';
 $lang['admin_pointprod_limit_yes']		= '限制';
@@ -68,12 +68,12 @@ $lang['admin_pointprod_uploadimg_common']	= '普通上传';
 $lang['admin_pointprod_uploadimg_complete']	= '已传图片';
 $lang['admin_pointprod_uploadimg_add']	= '插入';
 $lang['admin_pointprod_uploadimg_addtoeditor']	= '插入编辑器';
-$lang['admin_pointprod_add_goodsname_error']	= '请添加礼品名称';
-$lang['admin_pointprod_add_goodsprice_null_error']	= '请添加礼品原价';
-$lang['admin_pointprod_add_goodsprice_number_error']	= '礼品原价必须为数字且大于等于0';
-$lang['admin_pointprod_add_goodspoint_null_error']	= '请添加兑换积分';
-$lang['admin_pointprod_add_goodspoint_number_error']	= '兑换积分为整数且大于等于0';
-$lang['admin_pointprod_add_goodsserial_null_error']	= '请添加礼品编号';
+$lang['admin_pointprod_add_doctorsname_error']	= '请添加礼品名称';
+$lang['admin_pointprod_add_doctorsprice_null_error']	= '请添加礼品原价';
+$lang['admin_pointprod_add_doctorsprice_number_error']	= '礼品原价必须为数字且大于等于0';
+$lang['admin_pointprod_add_doctorspoint_null_error']	= '请添加兑换积分';
+$lang['admin_pointprod_add_doctorspoint_number_error']	= '兑换积分为整数且大于等于0';
+$lang['admin_pointprod_add_doctorsserial_null_error']	= '请添加礼品编号';
 $lang['admin_pointprod_add_storage_null_error']	    = '请添加礼品库存';
 $lang['admin_pointprod_add_storage_number_error']	= '礼品库存必须为整数且大于等于0';
 $lang['admin_pointprod_add_limitnum_error']			= '请添加每会员限兑数量';

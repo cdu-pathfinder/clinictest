@@ -10,8 +10,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class orderControl extends SystemControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class appointmentControl extends SystemControl{
     /**
      * 每次导出订单数量
      * @var int
@@ -24,16 +24,16 @@ class orderControl extends SystemControl{
 	}
 
 	public function indexOp(){
-	    $model_order = Model('order');
+	    $model_appointment = Model('appointment');
         $condition	= array();
-        if($_GET['order_sn']) {
-        	$condition['order_sn'] = $_GET['order_sn'];
+        if($_GET['appointment_sn']) {
+        	$condition['appointment_sn'] = $_GET['appointment_sn'];
         }
-        if($_GET['store_name']) {
-            $condition['store_name'] = $_GET['store_name'];
+        if($_GET['clic_name']) {
+            $condition['clic_name'] = $_GET['clic_name'];
         }
-        if(in_array($_GET['order_state'],array('0','10','20','30','40','50'))){
-        	$condition['order_state'] = $_GET['order_state'];
+        if(in_array($_GET['appointment_state'],array('0','10','20','30','40','50'))){
+        	$condition['appointment_state'] = $_GET['appointment_state'];
         }
         if($_GET['payment_code']) {
             $condition['payment_code'] = $_GET['payment_code'];
@@ -48,21 +48,21 @@ class orderControl extends SystemControl{
         if ($start_unixtime || $end_unixtime) {
             $condition['add_time'] = array('time',array($start_unixtime,$end_unixtime));
         }
-        $order_list	= $model_order->getOrderList($condition,30);
+        $appointment_list	= $model_appointment->getappointmentList($condition,30);
 
-        foreach ($order_list as $order_id => $order_info) {
+        foreach ($appointment_list as $appointment_id => $appointment_info) {
             //显示取消订单
-            $order_list[$order_id]['if_cancel'] = $model_order->getOrderOperateState('system_cancel',$order_info);
+            $appointment_list[$appointment_id]['if_cancel'] = $model_appointment->getappointmentOperateState('system_cancel',$appointment_info);
             //显示收到货款
-            $order_list[$order_id]['if_system_receive_pay'] = $model_order->getOrderOperateState('system_receive_pay',$order_info);            
+            $appointment_list[$appointment_id]['if_system_receive_pay'] = $model_appointment->getappointmentOperateState('system_receive_pay',$appointment_info);            
         }
         //显示支付接口列表(搜索)
         $payment_list = Model('payment')->getPaymentOpenList();
         Tpl::output('payment_list',$payment_list);
 
-        Tpl::output('order_list',$order_list);
-        Tpl::output('show_page',$model_order->showpage());
-        Tpl::showpage('order.index');
+        Tpl::output('appointment_list',$appointment_list);
+        Tpl::output('show_page',$model_appointment->showpage());
+        Tpl::showpage('appointment.index');
 	}
 
 	/**
@@ -70,31 +70,31 @@ class orderControl extends SystemControl{
 	 *
 	 */
 	public function change_stateOp() {
-        $order_id = intval($_GET['order_id']);
-        if($order_id <= 0){
-            showMessage(L('miss_order_number'),$_POST['ref_url'],'html','error');
+        $appointment_id = intval($_GET['appointment_id']);
+        if($appointment_id <= 0){
+            showMessage(L('miss_appointment_number'),$_POST['ref_url'],'html','error');
         }
-        $model_order = Model('order');
+        $model_appointment = Model('appointment');
 
         //获取订单详细
         $condition = array();
-        $condition['order_id'] = $order_id;
-        $order_info	= $model_order->getOrderInfo($condition);
+        $condition['appointment_id'] = $appointment_id;
+        $appointment_info	= $model_appointment->getappointmentInfo($condition);
         try {
 
-            $model_order->beginTransaction();
+            $model_appointment->beginTransaction();
             $state_type	= $_GET['state_type'];
             if ($state_type == 'cancel') {
-                $this->_change_state_order_cancel($order_info);
+                $this->_change_state_appointment_cancel($appointment_info);
             } elseif ($state_type == 'receive_pay') {
-                $this->_change_state_order_receive_pay($order_info);
+                $this->_change_state_appointment_receive_pay($appointment_info);
             }
 
-            $model_order->commit();
+            $model_appointment->commit();
             showMessage(L('nc_common_op_succ'),$_POST['ref_url']);
 
         } catch (Exception $e) {
-            $model_order->rollback();
+            $model_appointment->rollback();
             showMessage($e->getMessage(),$_POST['ref_url'],'html','error');
         }
 	}
@@ -103,21 +103,21 @@ class orderControl extends SystemControl{
 	 * 系统取消订单
 	 * @throws Exception
 	 */
-	private function _change_state_order_cancel($order_info) {
-	    $order_id = $order_info['order_id'];
-	    $model_order = Model('order');
-	    $if_allow = $model_order->getOrderOperateState('system_cancel',$order_info);
+	private function _change_state_appointment_cancel($appointment_info) {
+	    $appointment_id = $appointment_info['appointment_id'];
+	    $model_appointment = Model('appointment');
+	    $if_allow = $model_appointment->getappointmentOperateState('system_cancel',$appointment_info);
 	    if (!$if_allow) {
 	        throw new Exception(L('invalid_request'));
 	    }
-	    $goods_list = $model_order->getOrderGoodsList(array('order_id'=>$order_id));
-	    $model_goods= Model('goods');
-	    if(is_array($goods_list) and !empty($goods_list)) {
+	    $doctors_list = $model_appointment->getappointmentdoctorsList(array('appointment_id'=>$appointment_id));
+	    $model_doctors= Model('doctors');
+	    if(is_array($doctors_list) and !empty($doctors_list)) {
 	        $data = array();
-	        foreach ($goods_list as $goods) {
-	            $data['goods_storage'] = array('exp','goods_storage+'.$goods['goods_num']);
-	            $data['goods_salenum'] = array('exp','goods_salenum-'.$goods['goods_num']);
-	            $update = $model_goods->editGoods($data,array('goods_id'=>$goods['goods_id']));
+	        foreach ($doctors_list as $doctors) {
+	            $data['doctors_storage'] = array('exp','doctors_storage+'.$doctors['doctors_num']);
+	            $data['doctors_salenum'] = array('exp','doctors_salenum-'.$doctors['doctors_num']);
+	            $update = $model_doctors->editdoctors($data,array('doctors_id'=>$doctors['doctors_id']));
 	            if (!$update) {
 	                throw new Exception(L('nc_common_save_fail'));
 	            }
@@ -125,50 +125,50 @@ class orderControl extends SystemControl{
 	    }
 
 	    //解冻预存款
-	    $pd_amount = floatval($order_info['pd_amount']);
+	    $pd_amount = floatval($appointment_info['pd_amount']);
 	    if ($pd_amount > 0) {
 	        $model_pd = Model('predeposit');
 	        $data_pd = array();
-            $data_pd['member_id'] = $order_info['buyer_id'];
-            $data_pd['member_name'] = $order_info['buyer_name'];
+            $data_pd['member_id'] = $appointment_info['buyer_id'];
+            $data_pd['member_name'] = $appointment_info['buyer_name'];
 	        $data_pd['amount'] = $pd_amount;
-	        $data_pd['order_sn'] = $order_info['order_sn'];
-	        $model_pd->changePd('order_cancel',$data_pd);
+	        $data_pd['appointment_sn'] = $appointment_info['appointment_sn'];
+	        $model_pd->changePd('appointment_cancel',$data_pd);
 	    }
 
 	    //更新订单状态
-	    $update_order = array('order_state' => ORDER_STATE_CANCEL);
-	    $update = $model_order->editOrder($update_order,array('order_id'=>$order_id));
+	    $update_appointment = array('appointment_state' => appointment_STATE_CANCEL);
+	    $update = $model_appointment->editappointment($update_appointment,array('appointment_id'=>$appointment_id));
 	    if (!$update) {
 	        throw new Exception(L('nc_common_save_fail'));
 	    }
 
 	    //添加订单日志
 	    $data = array();
-	    $data['order_id'] = $order_id;
+	    $data['appointment_id'] = $appointment_id;
 	    $data['log_role'] = 'system';
 	    $data['log_user'] = $this->admin_info['name'];
-	    $data['log_msg'] = L('order_log_cancel');
-	    $data['log_orderstate'] = ORDER_STATE_CANCEL;
-	    $model_order->addOrderLog($data);
+	    $data['log_msg'] = L('appointment_log_cancel');
+	    $data['log_appointmentstate'] = appointment_STATE_CANCEL;
+	    $model_appointment->addappointmentLog($data);
 	    
-	    $this->log(L('order_log_cancel').','.L('order_number').':'.$order_info['order_sn'],1);
+	    $this->log(L('appointment_log_cancel').','.L('appointment_number').':'.$appointment_info['appointment_sn'],1);
 	}
 	
 	/**
 	 * 系统收到货款
 	 * @throws Exception
 	 */
-	private function _change_state_order_receive_pay($order_info) {
-	    $order_id = $order_info['order_id'];
-	    $model_order = Model('order');
-	    $if_allow = $model_order->getOrderOperateState('system_receive_pay',$order_info);
+	private function _change_state_appointment_receive_pay($appointment_info) {
+	    $appointment_id = $appointment_info['appointment_id'];
+	    $model_appointment = Model('appointment');
+	    $if_allow = $model_appointment->getappointmentOperateState('system_receive_pay',$appointment_info);
 	    if (!$if_allow) {
 	        throw new Exception(L('invalid_request'));
 	    }
 
 	    if (!chksubmit()) {
-	        Tpl::output('order_info',$order_info);
+	        Tpl::output('appointment_info',$appointment_info);
 
 	        //显示支付接口列表
 	        $payment_list = Model('payment')->getPaymentOpenList();
@@ -180,64 +180,64 @@ class orderControl extends SystemControl{
 	        }
 	        Tpl::output('payment_list',$payment_list);
 
-	        Tpl::showpage('order.receive_pay');exit();
+	        Tpl::showpage('appointment.receive_pay');exit();
 	    }
 
 	    //下单，支付被冻结的预存款
-	    $pd_amount = floatval($order_info['pd_amount']);
+	    $pd_amount = floatval($appointment_info['pd_amount']);
 	    if ($pd_amount > 0) {
 	        $model_pd = Model('predeposit');
 	        $data_pd = array();
-	        $data_pd['member_id'] = $order_info['buyer_id'];
-	        $data_pd['member_name'] = $order_info['buyer_name'];
+	        $data_pd['member_id'] = $appointment_info['buyer_id'];
+	        $data_pd['member_name'] = $appointment_info['buyer_name'];
 	        $data_pd['amount'] = $pd_amount;
-	        $data_pd['order_sn'] = $order_info['order_sn'];
-	        $model_pd->changePd('order_comb_pay',$data_pd);
+	        $data_pd['appointment_sn'] = $appointment_info['appointment_sn'];
+	        $model_pd->changePd('appointment_comb_pay',$data_pd);
 	    }
 
 	    //更新订单状态
-	    $update_order = array();
-	    $update_order['order_state'] = ORDER_STATE_PAY;
-	    $update_order['payment_time'] = strtotime($_POST['payment_time']);
-	    $update_order['payment_code'] = $_POST['payment_code'];
-	    $update = $model_order->editOrder($update_order,array('order_id'=>$order_id));
+	    $update_appointment = array();
+	    $update_appointment['appointment_state'] = appointment_STATE_PAY;
+	    $update_appointment['payment_time'] = strtotime($_POST['payment_time']);
+	    $update_appointment['payment_code'] = $_POST['payment_code'];
+	    $update = $model_appointment->editappointment($update_appointment,array('appointment_id'=>$appointment_id));
 	    if (!$update) {
 	        throw new Exception(L('nc_common_save_fail'));
 	    }
 	
 	    //添加订单日志
 	    $data = array();
-	    $data['order_id'] = $order_id;
+	    $data['appointment_id'] = $appointment_id;
 	    $data['log_role'] = 'system';
 	    $data['log_user'] = $this->admin_info['name'];
-	    $data['log_msg'] = L('order_log_receive_paye').' ( 支付平台交易号 : '.$_POST['trade_no'].' )';
-	    $data['log_orderstate'] = ORDER_STATE_PAY;
-	    $model_order->addOrderLog($data);
+	    $data['log_msg'] = L('appointment_log_receive_paye').' ( 支付平台交易号 : '.$_POST['trade_no'].' )';
+	    $data['log_appointmentstate'] = appointment_STATE_PAY;
+	    $model_appointment->addappointmentLog($data);
 
-	    $this->log(L('order_change_received').','.L('order_number').':'.$order_info['order_sn'],1);
+	    $this->log(L('appointment_change_received').','.L('appointment_number').':'.$appointment_info['appointment_sn'],1);
 	}
 
 	/**
 	 * 查看订单
 	 *
 	 */
-	public function show_orderOp(){
-	    $order_id = intval($_GET['order_id']);
-	    if($order_id <= 0 ){
-	        showMessage(L('miss_order_number'));
+	public function show_appointmentOp(){
+	    $appointment_id = intval($_GET['appointment_id']);
+	    if($appointment_id <= 0 ){
+	        showMessage(L('miss_appointment_number'));
 	    }
-        $model_order	= Model('order');
-        $order_info	= $model_order->getOrderInfo(array('order_id'=>$order_id),array('order_goods','order_common','store'));
+        $model_appointment	= Model('appointment');
+        $appointment_info	= $model_appointment->getappointmentInfo(array('appointment_id'=>$appointment_id),array('appointment_doctors','appointment_common','clic'));
 
         //订单变更日志
-		$log_list	= $model_order->getOrderLogList(array('order_id'=>$order_info['order_id']));
-		Tpl::output('order_log',$log_list);
+		$log_list	= $model_appointment->getappointmentLogList(array('appointment_id'=>$appointment_info['appointment_id']));
+		Tpl::output('appointment_log',$log_list);
 
 		//退款退货信息
         $model_refund = Model('refund_return');
         $condition = array();
-        $condition['order_id'] = $order_info['order_id'];
-        $condition['seller_state'] = 2;
+        $condition['appointment_id'] = $appointment_info['appointment_id'];
+        $condition['clinicer_state'] = 2;
         $condition['admin_time'] = array('gt',0);
         $return_list = $model_refund->getReturnList($condition);
         Tpl::output('return_list',$return_list);
@@ -247,13 +247,13 @@ class orderControl extends SystemControl{
         Tpl::output('refund_list',$refund_list);
 
 		//卖家发货信息
-		if (!empty($order_info['extend_order_common']['daddress_id'])) {
-		    $daddress_info = Model('daddress')->getAddressInfo(array('address_id'=>$order_info['extend_order_common']['daddress_id']));
+		if (!empty($appointment_info['extend_appointment_common']['daddress_id'])) {
+		    $daddress_info = Model('daddress')->getAddressInfo(array('address_id'=>$appointment_info['extend_appointment_common']['daddress_id']));
 		    Tpl::output('daddress_info',$daddress_info);
 		}
 
-		Tpl::output('order_info',$order_info);
-        Tpl::showpage('order.view');
+		Tpl::output('appointment_info',$appointment_info);
+        Tpl::showpage('appointment.view');
 	}
 
 	/**
@@ -263,16 +263,16 @@ class orderControl extends SystemControl{
 	public function export_step1Op(){
 		$lang	= Language::getLangContent();
 
-	    $model_order = Model('order');
+	    $model_appointment = Model('appointment');
         $condition	= array();
-        if($_GET['order_sn']) {
-        	$condition['order_sn'] = $_GET['order_sn'];
+        if($_GET['appointment_sn']) {
+        	$condition['appointment_sn'] = $_GET['appointment_sn'];
         }
-        if($_GET['store_name']) {
-            $condition['store_name'] = $_GET['store_name'];
+        if($_GET['clic_name']) {
+            $condition['clic_name'] = $_GET['clic_name'];
         }
-        if(in_array($_GET['order_state'],array('0','10','20','30','40','50'))){
-        	$condition['order_state'] = $_GET['order_state'];
+        if(in_array($_GET['appointment_state'],array('0','10','20','30','40','50'))){
+        	$condition['appointment_state'] = $_GET['appointment_state'];
         }
         if($_GET['payment_code']) {
             $condition['payment_code'] = $_GET['payment_code'];
@@ -289,7 +289,7 @@ class orderControl extends SystemControl{
         }
 
 		if (!is_numeric($_GET['curpage'])){		
-			$count = $model_order->getOrderCount($condition);
+			$count = $model_appointment->getappointmentCount($condition);
 			$array = array();
 			if ($count > self::EXPORT_SIZE ){	//显示下载链接
 				$page = ceil($count/self::EXPORT_SIZE);
@@ -299,16 +299,16 @@ class orderControl extends SystemControl{
 					$array[$i] = $limit1.' ~ '.$limit2 ;
 				}
 				Tpl::output('list',$array);
-				Tpl::output('murl','index.php?act=order&op=index');
+				Tpl::output('murl','index.php?act=appointment&op=index');
 				Tpl::showpage('export.excel');
 			}else{	//如果数量小，直接下载
-				$data = $model_order->getOrderList($condition,'','*','order_id desc',self::EXPORT_SIZE);
+				$data = $model_appointment->getappointmentList($condition,'','*','appointment_id desc',self::EXPORT_SIZE);
 				$this->createExcel($data);
 			}
 		}else{	//下载
 			$limit1 = ($_GET['curpage']-1) * self::EXPORT_SIZE;
 			$limit2 = self::EXPORT_SIZE;
-			$data = $model_order->getOrderList($condition,'','*','order_id desc',"{$limit1},{$limit2}");
+			$data = $model_appointment->getappointmentList($condition,'','*','appointment_id desc',"{$limit1},{$limit2}");
 			$this->createExcel($data);
 		}
 	}
@@ -327,35 +327,35 @@ class orderControl extends SystemControl{
 		$excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
 		//header
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_no'));
-		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_store'));
+		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_clic'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_buyer'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_xtimd'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_count'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_yfei'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_paytype'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_state'));
-		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_storeid'));
+		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_clicid'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_buyerid'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_od_bemail'));
 		//data
 		foreach ((array)$data as $k=>$v){
 			$tmp = array();
-			$tmp[] = array('data'=>'NC'.$v['order_sn']);
-			$tmp[] = array('data'=>$v['store_name']);
+			$tmp[] = array('data'=>'NC'.$v['appointment_sn']);
+			$tmp[] = array('data'=>$v['clic_name']);
 			$tmp[] = array('data'=>$v['buyer_name']);
 			$tmp[] = array('data'=>date('Y-m-d H:i:s',$v['add_time']));
-			$tmp[] = array('format'=>'Number','data'=>ncPriceFormat($v['order_amount']));
+			$tmp[] = array('format'=>'Number','data'=>ncPriceFormat($v['appointment_amount']));
 			$tmp[] = array('format'=>'Number','data'=>ncPriceFormat($v['shipping_fee']));
-			$tmp[] = array('data'=>orderPaymentName($v['payment_code']));
-			$tmp[] = array('data'=>orderState($v));
-			$tmp[] = array('data'=>$v['store_id']);
+			$tmp[] = array('data'=>appointmentPaymentName($v['payment_code']));
+			$tmp[] = array('data'=>appointmentState($v));
+			$tmp[] = array('data'=>$v['clic_id']);
 			$tmp[] = array('data'=>$v['buyer_id']);
 			$tmp[] = array('data'=>$v['buyer_email']);
 			$excel_data[] = $tmp;
 		}
 		$excel_data = $excel_obj->charset($excel_data,CHARSET);
 		$excel_obj->addArray($excel_data);
-		$excel_obj->addWorksheet($excel_obj->charset(L('exp_od_order'),CHARSET));
-		$excel_obj->generateXML($excel_obj->charset(L('exp_od_order'),CHARSET).$_GET['curpage'].'-'.date('Y-m-d-H',time()));
+		$excel_obj->addWorksheet($excel_obj->charset(L('exp_od_appointment'),CHARSET));
+		$excel_obj->generateXML($excel_obj->charset(L('exp_od_appointment'),CHARSET).$_GET['curpage'].'-'.date('Y-m-d-H',time()));
 	}
 }

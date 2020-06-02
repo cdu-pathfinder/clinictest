@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="block-style-one">
     <div class="title">
         <h3><?php echo $lang['cms_article_tag'];?></h3>
@@ -15,7 +15,7 @@
 </div>
 <div class="block-style-one">
     <div class="title">
-        <h3><?php echo $lang['cms_article_good'];?></h3>
+        <h3><?php echo $lang['cms_article_doctor'];?></h3>
     </div>
     <div class="content">
         <?php if(!empty($output['article_commend_image_list']) && is_array($output['article_commend_image_list'])) {?>

@@ -58,7 +58,7 @@
 					self.$panels = self.$panels.add(a.hash);
 				// remote tab
 				else if ($(a).attr('href') != '#') { // prevent loading the page itself if href is just "#"
-					$.data(a, 'href.tabs', a.href); // required for restore on destroy
+					$.data(a, 'href.tabs', a.href); // required for reclic on destroy
 					$.data(a, 'load.tabs', a.href); // mutable
 					var id = self.tabId(a);
 					a.href = '#' + id;
@@ -99,7 +99,7 @@
 									var $toShow = $(location.hash), toShowId = $toShow.attr('id');
 									$toShow.attr('id', '');
 									setTimeout(function() {
-										$toShow.attr('id', toShowId); // restore id
+										$toShow.attr('id', toShowId); // reclic id
 									}, 500);
 								}
 								scrollTo(0, 0);
@@ -274,7 +274,7 @@
 						var showId = this.hash.replace('#', '');
 						$show.attr('id', '');
 						setTimeout(function() {
-							$show.attr('id', showId); // restore id
+							$show.attr('id', showId); // reclic id
 						}, 0);
 					}*/
 
@@ -300,7 +300,7 @@
 					throw 'jQuery UI Tabs: Mismatching fragment identifier.';
 
 				// Prevent IE from keeping other link focussed when using the back button
-				// and remove dotted border from clicked link. This is controlled in modern
+				// and remove dotted bappointment from clicked link. This is controlled in modern
 				// browsers via CSS, also blur removes focus from address bar in Firefox
 				// which can become a usability and annoying problem with tabsRotate.
 				if ($.browser.msie)
@@ -468,18 +468,18 @@
 					o.ajaxOptions.success && o.ajaxOptions.success(r, s);
 					
 					// This callback is required because the switch has to take
-					// place after loading has completed. Call last in order to 
+					// place after loading has completed. Call last in appointment to 
 					// fire load before show callback...
 					callback();
 				}
 			});
 			if (this.xhr) {
-				// terminate pending requests from other tabs and restore tab label
+				// terminate pending requests from other tabs and reclic tab label
 				this.xhr.abort();
 				cleanup();
 			}
 			$a.addClass(o.loadingClass);
-			setTimeout(function() { // timeout is again required in IE, "wait" for id being restored
+			setTimeout(function() { // timeout is again required in IE, "wait" for id being reclicd
 				self.xhr = $.ajax(ajaxOptions);
 			}, 0);
 

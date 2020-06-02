@@ -13,7 +13,7 @@
 define('APP_ID','cms');
 define('BASE_PATH',str_replace('\\','/',dirname(__FILE__)));
 if (!@include(dirname(dirname(__FILE__)).'/global.php')) exit('global.php isn\'t exists!');
-if (!@include(BASE_CORE_PATH.'/shopnc.php')) exit('shopnc.php isn\'t exists!');
+if (!@include(BASE_CORE_PATH.'/clinicnc.php')) exit('clinicnc.php isn\'t exists!');
 
 if (!@include(BASE_PATH.'/config/config.ini.php')){
 	@header("Location: install/index.php");die;

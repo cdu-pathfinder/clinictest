@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,24 +18,24 @@
     <input type="hidden" name="type_id" value="<?php echo $output['attr_info']['type_id']?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="required" colspan="2"><label class="validation" for="attr_name"><?php echo $lang['type_add_attr_name'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" name="attr_name" id="attr_name" value="<?php echo $output['attr_info']['attr_name'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['type_attr_edit_name_desc'];?></td>
         </tr>
         <tr>
           <td class="required" colspan="2"><label class="validation" for="attr_sort"><?php echo $lang['nc_sort'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" name="attr_sort" id="attr_sort" value="<?php echo $output['attr_info']['attr_sort'];?>" /></td>
           <td class="vatop tips"><?php echo $lang['type_attr_edit_sort_desc'];?></td>
         </tr>
         <tr>
           <td class="required" colspan="2"><label><?php echo $lang['type_edit_type_attr_is_show'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
 		  <td class="vatop rowform onoff"><label for="attr_show1" class="cb-enable <?php if($output['attr_info']['attr_show'] == '1'){?>selected<?php }?>"><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="attr_show0" class="cb-disable <?php if($output['attr_info']['attr_show'] == '0'){?>selected<?php }?>"><span><?php echo $lang['nc_no'];?></span></label>
             <input id="attr_show1" name="attr_show" <?php if($output['attr_info']['attr_show'] == '1'){?>checked="checked"<?php }?> value="1" type="radio" />
@@ -49,7 +49,7 @@
         <tr class="space">
           <th colspan="15"><?php echo $lang['spec_add_spec_add'];?></th>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <th><?php echo $lang['nc_del'];?></th>
           <th><?php echo $lang['nc_sort'];?></th>
           <th><?php echo $lang['type_add_attr_value'];?></th>
@@ -146,12 +146,12 @@ $(function(){
     });
 
     //预览图片
-    $("input[nc_type='change_default_goods_image']").live("change", function(){
+    $("input[nc_type='change_default_doctors_image']").live("change", function(){
 		var src = getFullPath($(this)[0]);
 		$(this).parent().prev().find('.low_source').attr('src',src);
 	});
 
-    $("input[nc_type='change_default_goods_image']").change(function(){
+    $("input[nc_type='change_default_doctors_image']").change(function(){
 		$(this).parents('tr:first').find("input[nc_type='submit_value']").val('ok');
 	});
 
@@ -167,7 +167,7 @@ function remove_tr(o){
 </script> 
 <script type="text/javascript">
 $(function(){
-	$('input[nc_type="change_default_goods_image"]').live("change", function(){
+	$('input[nc_type="change_default_doctors_image"]').live("change", function(){
 		$(this).parent().find('input[class="type-file-text"]').val($(this).val());
 	});
 });

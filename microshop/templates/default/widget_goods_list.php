@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
     //瀑布流
@@ -16,15 +16,15 @@ $(document).ready(function(){
             isRTL:false//使用从右到左的布局 Boolean
     });
 
-    $("img.lazy").microshop_lazyload();
+    $("img.lazy").microclinic_lazyload();
 
-    $("[nc_type=microshop_like]").microshop_like({type:'goods'});
+    $("[nc_type=microclinic_like]").microclinic_like({type:'doctors'});
 
 });
 </script>
 <?php if(!empty($output['list']) && is_array($output['list'])) {?>
 
-<div class="commend-goods-list">
+<div class="commend-doctors-list">
     <ul id="pinterest">
         <?php foreach($output['list'] as $key=>$value) {?>
         <li class="item">
@@ -34,25 +34,25 @@ $(document).ready(function(){
         <div class="del"><a nc_type="like_drop" like_id="<?php echo $value['like_id'];?>" href="javascript:void(0)"><?php echo $lang['nc_delete'];?></a></div>
         <?php } else { ?>
         <!-- 个人主页删除按钮 -->
-        <div class="del"><a nc_type="home_drop" type="goods" item_id="<?php echo $value['commend_id'];?>" href="javascript:void(0)" title="<?php echo $lang['nc_delete'];?>"><?php echo $lang['nc_delete'];?></a></div>
+        <div class="del"><a nc_type="home_drop" type="doctors" item_id="<?php echo $value['commend_id'];?>" href="javascript:void(0)" title="<?php echo $lang['nc_delete'];?>"><?php echo $lang['nc_delete'];?></a></div>
         <?php } ?>
         <?php } ?>
-        <div class="picture"> <a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=goods&op=detail&goods_id=<?php echo $value['commend_id'];?>" target="_blank">
-                <?php $image_url = cthumb($value['commend_goods_image'], 240,$value['commend_goods_store_id']);?>
-                <?php $size = getMicroshopImageSize($image_url, 240);?>   
-                <img class="lazy" height="<?php echo $size['height'];?>" width="<?php echo $size['width'];?>" src="<?php echo MICROSHOP_TEMPLATES_URL;?>/images/loading.gif" data-src="<?php echo $image_url;?>" title="<?php echo $value['commend_goods_name'];?>" alt="<?php echo $value['commend_goods_name'];?>" /> </a>
-            <div class="price"> <?php echo $lang['currency'];?><strong><?php echo ncPriceFormat($value['commend_goods_price']);?></strong></div>
+        <div class="picture"> <a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=doctors&op=detail&doctors_id=<?php echo $value['commend_id'];?>" target="_blank">
+                <?php $image_url = cthumb($value['commend_doctors_image'], 240,$value['commend_doctors_clic_id']);?>
+                <?php $size = getMicroclinicImageSize($image_url, 240);?>   
+                <img class="lazy" height="<?php echo $size['height'];?>" width="<?php echo $size['width'];?>" src="<?php echo MICROclinic_TEMPLATES_URL;?>/images/loading.gif" data-src="<?php echo $image_url;?>" title="<?php echo $value['commend_doctors_name'];?>" alt="<?php echo $value['commend_doctors_name'];?>" /> </a>
+            <div class="price"> <?php echo $lang['currency'];?><strong><?php echo ncPriceFormat($value['commend_doctors_price']);?></strong></div>
             
         </div>
         <div class="handle">
-            <span class="like-btn"><a nc_type="microshop_like" like_id="<?php echo $value['commend_id'];?>" href="javascript:void(0)"><i class="pngFix"></i><span><?php echo $lang['microshop_text_like'];?></span><em><?php echo $value['like_count']<=999?$value['like_count']:'999+';?></em></a></span>
-            <span class="comment"><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=goods&op=detail&goods_id=<?php echo $value['commend_id'];?>" target="_blank"><i title="<?php echo $lang['microshop_comment'];?>" class="pngFix">&nbsp;</i><em><?php echo $value['comment_count']<=999?$value['comment_count']:'999+';?></em></a></span>
+            <span class="like-btn"><a nc_type="microclinic_like" like_id="<?php echo $value['commend_id'];?>" href="javascript:void(0)"><i class="pngFix"></i><span><?php echo $lang['microclinic_text_like'];?></span><em><?php echo $value['like_count']<=999?$value['like_count']:'999+';?></em></a></span>
+            <span class="comment"><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=doctors&op=detail&doctors_id=<?php echo $value['commend_id'];?>" target="_blank"><i title="<?php echo $lang['microclinic_comment'];?>" class="pngFix">&nbsp;</i><em><?php echo $value['comment_count']<=999?$value['comment_count']:'999+';?></em></a></span>
         </div>
         <dl class="commentary">
-            <dt><span class="thumb size30"><i></i><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>" onload="javascript:DrawImage(this,30,30);" /> </a></span></dt>
+            <dt><span class="thumb size30"><i></i><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>" onload="javascript:DrawImage(this,30,30);" /> </a></span></dt>
             <dd>
-            <h4><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?> </a> </h4>
-            <p> <a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=goods&op=detail&goods_id=<?php echo $value['commend_id'];?>" target="_blank"> <?php echo $value['commend_message'];?> </a> </p>
+            <h4><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?> </a> </h4>
+            <p> <a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=doctors&op=detail&doctors_id=<?php echo $value['commend_id'];?>" target="_blank"> <?php echo $value['commend_message'];?> </a> </p>
             </dd>
         </dl>
         </li>
@@ -63,22 +63,22 @@ $(document).ready(function(){
 </div>
 <div class="pagination"> <?php echo $output['show_page'];?> </div>
 <?php } else { ?>
-<div class="no-content"> <i class="goods pngFix"></i>
-    <?php if($_GET['act'] == 'goods') { ?>
-    <p><?php echo $lang['microshop_goods_list_none'];?></p>
+<div class="no-content"> <i class="doctors pngFix"></i>
+    <?php if($_GET['act'] == 'doctors') { ?>
+    <p><?php echo $lang['microclinic_doctors_list_none'];?></p>
     <?php } else { ?>
         <?php if($_GET['op'] == 'like_list') { ?>
             <?php if($output['owner_flag'] === TRUE){ ?>
-            <p><?php echo $lang['microshop_goods_like_list_none'];?></p>
+            <p><?php echo $lang['microclinic_doctors_like_list_none'];?></p>
             <?php } else { ?>
-            <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microshop_goods_like_list_none_owner'];?></p>
+            <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microclinic_doctors_like_list_none_owner'];?></p>
             <?php } ?>
         <?php } else { ?>
             <?php if($output['owner_flag'] === TRUE){ ?>
-            <p><?php echo $lang['microshop_goods_list_none_publish'];?></p>
-            <a href="<?php echo MICROSHOP_SITE_URL.'/index.php?act=publish&op=goods_buy';?>"><?php echo $lang['microshop_goods_publish'];?></a>
+            <p><?php echo $lang['microclinic_doctors_list_none_publish'];?></p>
+            <a href="<?php echo MICROclinic_SITE_URL.'/index.php?act=publish&op=doctors_buy';?>"><?php echo $lang['microclinic_doctors_publish'];?></a>
             <?php } else { ?>
-            <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microshop_goods_list_none_publish_owner'];?></p>
+            <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microclinic_doctors_list_none_publish_owner'];?></p>
             <?php } ?>
         <?php } ?>
     <?php } ?>

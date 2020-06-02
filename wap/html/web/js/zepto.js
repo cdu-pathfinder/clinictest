@@ -44,7 +44,7 @@ var Zepto = (function() {
       'rowspan': 'rowSpan',
       'colspan': 'colSpan',
       'usemap': 'useMap',
-      'frameborder': 'frameBorder',
+      'framebappointment': 'frameBappointment',
       'contenteditable': 'contentEditable'
     }
 
@@ -759,9 +759,9 @@ var Zepto = (function() {
       offset.top  -= parseFloat( $(elem).css('margin-top') ) || 0
       offset.left -= parseFloat( $(elem).css('margin-left') ) || 0
 
-      // Add offsetParent borders
-      parentOffset.top  += parseFloat( $(offsetParent[0]).css('border-top-width') ) || 0
-      parentOffset.left += parseFloat( $(offsetParent[0]).css('border-left-width') ) || 0
+      // Add offsetParent bappointments
+      parentOffset.top  += parseFloat( $(offsetParent[0]).css('bappointment-top-width') ) || 0
+      parentOffset.left += parseFloat( $(offsetParent[0]).css('bappointment-left-width') ) || 0
 
       // Subtract the two offsets
       return {

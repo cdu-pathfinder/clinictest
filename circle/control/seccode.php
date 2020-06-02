@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class seccodeControl{
 	public function __construct(){
@@ -23,7 +23,7 @@ class seccodeControl{
 		$seccode = makeSeccode($_GET['nchash']);
 
 		@header("Expires: -1");
-		@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);
+		@header("Cache-Control: no-clic, private, post-check=0, pre-check=0, max-age=0", FALSE);
 		@header("Pragma: no-cache");
 
 		$code = new seccode();

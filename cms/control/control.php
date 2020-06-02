@@ -8,7 +8,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /********************************** 前台control父类 **********************************************/
 
@@ -50,7 +50,7 @@ class CMSControl{
          * cms开关判断
          */
         if(intval(C('cms_isuse')) !== 1) {
-            header('location: '.SHOP_SITE_URL);die;
+            header('location: '.clinic_SITE_URL);die;
         }
 		/**
 		 * 读取通用、布局的语言包
@@ -86,7 +86,7 @@ class CMSControl{
         /**
          * seo
          */
-        Tpl::output('html_title',C('cms_seo_title').'-'.C('site_name').' - Powered by ShopNC');
+        Tpl::output('html_title',C('cms_seo_title').'-'.C('site_name').' - Powered by clinicNC');
         Tpl::output('seo_keywords',C('cms_seo_keywords'));
         Tpl::output('seo_description',C('cms_seo_description'));
 
@@ -123,7 +123,7 @@ class CMSControl{
     protected function check_login() {
         if(!isset($_SESSION['is_login'])) {
             $ref_url = CMS_SITE_URL.request_uri();
-            header('location: '.SHOP_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl());die;
+            header('location: '.clinic_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl());die;
         }
     }
 
@@ -137,7 +137,7 @@ class CMSControl{
             header('location: '.CMS_SITE_URL);die;
 		}
 		//写入缓存的数据
-		$cachekey_arr = array('member_name','store_id','member_avatar','member_qq','member_email','member_msn','member_ww','member_goldnum','member_points',
+		$cachekey_arr = array('member_name','clic_id','member_avatar','member_qq','member_email','member_msn','member_ww','member_goldnum','member_points',
 				'available_predeposit','member_snsvisitnum','credit_arr','fan_count','attention_count');
 		//先查找$member_id缓存
 		if ($_cache = rcache($member_id,'sns_member')){
@@ -224,7 +224,7 @@ class CMSControl{
 
     //获得分享列表
     protected function get_share_app_list() {
-        $app_shop = array();
+        $app_clinic = array();
         $app_array = array();
 		if (C('share_isuse') == 1 && isset($_SESSION['member_id'])){
 			//站外分享接口
@@ -257,7 +257,7 @@ class CMSControl{
             //查询该用户的绑定信息
             $bind_list = $model->getUsableApp($_SESSION['member_id']);
             //商城
-            if (isset($app_items['shop'])){
+            if (isset($app_items['clinic'])){
 
                 $model_member = Model('member');
                 $member_info = $model_member->infoMember(array('member_id'=>$_SESSION['member_id']));
@@ -295,8 +295,8 @@ class CMSControl{
     protected function get_share_app_content($info) {
         $content_str = "
             <div class='fd-media'>
-            <div class='goodsimg'><a target=\"_blank\" href=\"{$info['url']}\"><img src=\"".$info['image']."\" onload=\"javascript:DrawImage(this,120,120);\"></a></div>
-            <div class='goodsinfo'>
+            <div class='doctorsimg'><a target=\"_blank\" href=\"{$info['url']}\"><img src=\"".$info['image']."\" onload=\"javascript:DrawImage(this,120,120);\"></a></div>
+            <div class='doctorsinfo'>
             <dl>
             <dt><a target=\"_blank\" href=\"{$info['url']}\">{$info['title']}</a></dt>
             <dd>{$info['comment']}<a target=\"_blank\" href=\"{$info['url']}\">".Language::get('nc_common_goto')."</a></dd>

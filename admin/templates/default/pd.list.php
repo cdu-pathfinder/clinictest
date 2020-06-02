@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,7 +15,7 @@
   <form method="get" action="index.php" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="predeposit">
     <input type="hidden" name="op" value="predeposit">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><?php echo $lang['admin_predeposit_membername'];?> </th>

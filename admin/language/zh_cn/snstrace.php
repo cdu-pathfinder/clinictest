@@ -1,10 +1,10 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * SNS功能公用
  */
-$lang['admin_snstrace_collectgoods']		= '收藏该宝贝';
-$lang['admin_snstrace_collectstore']		= '收藏该店铺';
+$lang['admin_snstrace_collectdoctors']		= '收藏该宝贝';
+$lang['admin_snstrace_collectclic']		= '收藏该店铺';
 $lang['admin_snstrace_pleasechoose_del']		= '请选择删除项';
 $lang['admin_snstrace_pleasechoose_edit']		= '请选择编辑项';
 $lang['admin_snstrace_manage']					= 'News manage';

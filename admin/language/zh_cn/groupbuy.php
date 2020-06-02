@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 团购状态 
  */
@@ -20,7 +20,7 @@ $lang['groupbuy_progress']  		= '已审核';
 $lang['groupbuy_close']     		= '已结束';
 $lang['groupbuy_back']     		= '返回列表';
 
-$lang['groupbuy_recommend_goods']	= '推荐商品';
+$lang['groupbuy_recommend_doctors']	= '推荐商品';
 $lang['groupbuy_template_list']		= '团购活动';
 $lang['groupbuy_template_add']		= '添加活动';
 $lang['groupbuy_template_name']		= '活动名称';
@@ -47,8 +47,8 @@ $lang['range_name']	    = '价格区间名称';
 $lang['range_start']	    = '价格区间下限';
 $lang['range_end']	    = '价格区间上限';
 $lang['groupbuy_index_name']		= '团购名称';
-$lang['groupbuy_index_goods_name']	= '商品名称';
-$lang['groupbuy_index_store_name']	= '店铺名称';
+$lang['groupbuy_index_doctors_name']	= '商品名称';
+$lang['groupbuy_index_clic_name']	= '店铺名称';
 $lang['start_time']             	= '开始时间';
 $lang['end_time']               	= '结束时间';
 $lang['join_end_time']             	= '报名截止时间';
@@ -68,13 +68,13 @@ $lang['groupbuy_index_ended']		= '已结束';
 $lang['groupbuy_index_published']	= '已发布';
 $lang['group_template'] = '团购活动';
 $lang['group_name'] = '团购名称';
-$lang['store_name'] = '店铺名称';
-$lang['goods_name'] = '商品名称';
+$lang['clic_name'] = '店铺名称';
+$lang['doctors_name'] = '商品名称';
 $lang['group_help'] = '团购说明';
 $lang['start_time'] = '开始时间';
 $lang['end_time'] = '结束时间';
-$lang['goods_price'] = '商品原价';
-$lang['store_price'] = 'Platform Price';
+$lang['doctors_price'] = '商品原价';
+$lang['clic_price'] = 'Platform Price';
 $lang['groupbuy_price'] = '团购价格';
 $lang['limit_type'] = '限制类型';
 $lang['virtual_quantity'] = '虚拟数量';

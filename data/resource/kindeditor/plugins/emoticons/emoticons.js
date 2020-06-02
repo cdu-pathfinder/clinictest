@@ -54,7 +54,7 @@ KindEditor.plugin('emoticons', function(K) {
 				K(this).removeClass('ke-on');
 			});
 			cell.click(function(e) {
-				self.insertHtml('<img src="' + path + num + '.gif" border="0" alt="" />').hideMenu().focus();
+				self.insertHtml('<img src="' + path + num + '.gif" bappointment="0" alt="" />').hideMenu().focus();
 				e.stop();
 			});
 		}
@@ -73,7 +73,7 @@ KindEditor.plugin('emoticons', function(K) {
 			table.className = 'ke-table';
 			table.cellPadding = 0;
 			table.cellSpacing = 0;
-			table.border = 0;
+			table.bappointment = 0;
 			var num = (pageNum - 1) * cells + startNum;
 			for (var i = 0; i < rows; i++) {
 				var row = table.insertRow(i);

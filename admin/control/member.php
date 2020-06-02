@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class memberControl extends SystemControl{
 	const EXPORT_SIZE = 5000;
@@ -58,11 +58,11 @@ class memberControl extends SystemControl{
 		/**
 		 * 排序
 		 */
-		$order = trim($_GET['search_sort']);
-		if (empty($order)) {
-		    $order = 'member_id desc';
+		$appointment = trim($_GET['search_sort']);
+		if (empty($appointment)) {
+		    $appointment = 'member_id desc';
 		}
-		$member_list = $model_member->getMemberList($condition, '*', 10, $order);
+		$member_list = $model_member->getMemberList($condition, '*', 10, $appointment);
 		/**
 		 * 整理会员信息
 		 */

@@ -1,7 +1,7 @@
 /**
  * 初始化HTML标签及常用类型
  * @kivenhan
- * www.shopnc.net
+ * www.clinicnc.net
  * Apr-01-2012
  **/
 
@@ -12,9 +12,9 @@ html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, b
 h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td { font-size: 1em; font-style: normal; font-weight: normal;}
 strong { font-weight: bold;}
 ul, ol { list-style: none outside none;}
-fieldset, img { border: medium none;}
+fieldset, img { bappointment: medium none;}
 caption, th {  text-align: left;}
-table { border-collapse: collapse; border-spacing: 0;}
+table { bappointment-collapse: collapse; bappointment-spacing: 0;}
 body { background: none repeat scroll 0 0 #FFF; color: #333333; font: 12px/1 "microsoft yahei", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 input, select, textarea { font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 a { outline: medium none;}
@@ -34,7 +34,7 @@ html {min-height:101%; }
 	*+html .clearfix{height:1%;}
 
 time { color: #777;}
-.noborder { border: 0!important; }
+.nobappointment { bappointment: 0!important; }
 
 
 /* ==========================
@@ -57,7 +57,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .lh200 { line-height:200%}
 .unl { text-decoration:underline;}
 .no_unl { text-decoration:none;}
-.noborder {border-style:none; border-width: 0;}
+.nobappointment {bappointment-style:none; bappointment-width: 0;}
 
 /*定位 
 ******************************/
@@ -225,16 +225,16 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	.thumb i , .logo i { *display:inline-block; *height:100%; *vertical-align:middle; }
 	.thumb img , .logo img { *vertical-align:middle; }
 
-#page { background-color: #F5F5F5; width: 100%; height: 29px; border-bottom: 1px solid #D8D8D8; }
+#page { background-color: #F5F5F5; width: 100%; height: 29px; bappointment-bottom: 1px solid #D8D8D8; }
 .warp-all { width: 1000px; margin: 0 auto;}
 
 
 /* 公用顶部区域
 -------------------------------------- */
-.public-top-layout { color: #777; background-color: #FAFAFA; border-bottom: solid 1px #F0F0F0;}
+.public-top-layout { color: #777; background-color: #FAFAFA; bappointment-bottom: solid 1px #F0F0F0;}
 .public-top-layout .topbar { height: 30px;}
 .public-top-layout .user-entry { width: 500px; height: 20px; float: left; padding: 5px 0;}
-.public-top-layout .seller-login { background-color: #D93600; display: inline-block; margin-left: 10px; border: 1px solid #B22D00; border-radius: 3px; box-shadow: 2px 2px 0 rgba(204,204,204,0.65);}
+.public-top-layout .seller-login { background-color: #D93600; display: inline-block; margin-left: 10px; bappointment: 1px solid #B22D00; bappointment-radius: 3px; box-shadow: 2px 2px 0 rgba(204,204,204,0.65);}
 .public-top-layout .seller-login a { line-height: 14px; color: #FFF; display: block; height: 14px; padding: 1px 4px;}
 .public-top-layout .seller-login a:hover { text-decoration: none; background-color: #B22D00;}
 .public-top-layout .seller-login i { font-size: 14px; vertical-align: middle; margin-right: 4px;}
@@ -246,17 +246,17 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .public-top-layout .quick-menu dl dt a:hover { text-decoration: none; color: #F30;}
 .public-top-layout .quick-menu dl dt i { background: url(../images/top_bg.png) no-repeat 0 0; vertical-align: middle; display: inline-block; width: 6px; height: 3px; margin-left: 6px;-webkit-transition: .2s ease-in; -moz-transition: -webkit-transform .2s ease-in; -o-transition: -webkit-transform .2s ease-in; transition: .2s ease-in;}
 .public-top-layout .quick-menu dl.hover dt i { FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); -moz-transform: rotate(180deg); -moz-transform-origin: 50% 30%; -webkit-transform: rotate(180deg); -webkit-transform-origin: 50% 30%; -o-transform: rotate(180deg); -o-transform-origin: 50% 30%; transform: rotate(180deg); transform-origin: 50% 30%;}
-.public-top-layout .quick-menu dl dd { background-color: #FFF; display: none; width: 78px; border: solid 1px #F0F0F0; position: absolute; z-index: 1; top: 0; left: 0;}
+.public-top-layout .quick-menu dl dd { background-color: #FFF; display: none; width: 78px; bappointment: solid 1px #F0F0F0; position: absolute; z-index: 1; top: 0; left: 0;}
 .public-top-layout .quick-menu dl.hover dd { display: block;}
 .public-top-layout .quick-menu dl dd ul { width: 78px; margin: 30px 0 10px 0; }
 .public-top-layout .quick-menu dl dd ul li a { font-size: 12px; line-height: 24px; display: block; clear: both; padding: 2px 0 2px 11px;}
 .public-top-layout .quick-menu dl dd ul li a:hover { text-decoration: none; background-color: #F7F7F7;}
 
 
-.warning { color: #C00; background-color: #FFC; width: 98%; clear: both; padding: 6px; margin: 6px auto; border: 1px dashed #F90;}	
+.warning { color: #C00; background-color: #FFC; width: 98%; clear: both; padding: 6px; margin: 6px auto; bappointment: 1px dashed #F90;}	
 .warning label { clear: both; line-height: 20px;}
 
-#footer { line-height: 20px; color: #aaa; text-align: center; display: block; width: 100%; clear: both; margin: 12px auto 0px auto; padding-bottom: 10px; border-top: 1px solid #E9ECEF; overflow: hidden;}
+#footer { line-height: 20px; color: #aaa; text-align: center; display: block; width: 100%; clear: both; margin: 12px auto 0px auto; padding-bottom: 10px; bappointment-top: 1px solid #E9ECEF; overflow: hidden;}
 #footer p { color: #666; word-spacing: 5px; padding: 10px 0; }
 #footer a { color: #666; text-decoration: none; }
 #footer a:hover { text-decoration: underline; }
@@ -266,7 +266,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 #footer .vol em { font-family: Georgia, Arial;  font-weight: 600; font-style: italic; color: #000; margin-left: 2px;}
 
 /* tip提示 */
-.tip-yellowsimple { color:#000; background-color:#fff9c9; text-align:left; min-width:50px; max-width:300px; border:1px solid #c7bf93; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; z-index:1000; padding:6px 8px;}
+.tip-yellowsimple { color:#000; background-color:#fff9c9; text-align:left; min-width:50px; max-width:300px; bappointment:1px solid #c7bf93; bappointment-radius:4px; -moz-bappointment-radius:4px; -webkit-bappointment-radius:4px; z-index:1000; padding:6px 8px;}
 .tip-yellowsimple .tip-inner { font:12px/16px arial,helvetica,sans-serif;}
 .tip-yellowsimple .tip-arrow-top { background:url(../images/tip-yellowsimple_arrows.gif) no-repeat; width:9px; height:6px; margin-top:-6px; margin-left:-5px; top:0; left:50%;}
 .tip-yellowsimple .tip-arrow-right { background:url(../images/tip-yellowsimple_arrows.gif) no-repeat -9px 0; width:6px; height:9px; margin-top:-4px; margin-left:0; top:50%; left:100%;}
@@ -274,7 +274,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .tip-yellowsimple .tip-arrow-left { background:url(../images/tip-yellowsimple_arrows.gif) no-repeat -27px 0; width:6px; height:9px; margin-top:-4px; margin-left:-6px; top:50%; left:0;}
 
 /* 调试模式 */
-.trace { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; color: #000; line-height: 18px; background:#FFF299; padding:8px; margin:8px; border:1px dashed silver;}
+.trace { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; color: #000; line-height: 18px; background:#FFF299; padding:8px; margin:8px; bappointment:1px dashed silver;}
 .trace fieldset { margin:8px;}
 .trace fieldset legend { font-size: 16px; color: #000; font-weight:bold;}
 .trace fieldset div { overflow:auto; max-height: 300px; _height: 300px; text-align:left;}
@@ -323,7 +323,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	margin-right: 3px;
 	padding: 0;
 	height: 23px;
-	border: 1px solid #999;
+	bappointment: 1px solid #999;
 	cursor: pointer;
 	-moz-box-shadow: 0 1px 0 #E5E5E5;
 	-webkit-box-shadow: 0 1px 0 #E5E5E5;
@@ -348,7 +348,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	line-height: 18px;
 }
 .pnc, a.pnc {
-	border-color: #235994;
+	bappointment-color: #235994;
 	background-color: #06C;
 	background-position: 0 -48px;
 	color: #FFF !important;
@@ -410,27 +410,27 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	width: 4px;
 }
 .t_l {
-	-moz-border-radius: 4px 0 0 0;
-	-webkit-border-radius: 4px 0 0 0;
-	border-radius: 4px 0 0 0;
+	-moz-bappointment-radius: 4px 0 0 0;
+	-webkit-bappointment-radius: 4px 0 0 0;
+	bappointment-radius: 4px 0 0 0;
 }
 .t_r {
-	-moz-border-radius: 0 4px 0 0;
-	-webkit-border-radius: 0 4px 0 0;
-	border-radius: 0 4px 0 0;
+	-moz-bappointment-radius: 0 4px 0 0;
+	-webkit-bappointment-radius: 0 4px 0 0;
+	bappointment-radius: 0 4px 0 0;
 }
 .b_l {
-	-moz-border-radius: 0 0 0 5px;
-	-webkit-border-radius: 0 0 0 5px;
-	border-radius: 0 0 0 5px;
+	-moz-bappointment-radius: 0 0 0 5px;
+	-webkit-bappointment-radius: 0 0 0 5px;
+	bappointment-radius: 0 0 0 5px;
 }
 .b_r {
-	-moz-border-radius: 0 0 4px 0;
-	-webkit-border-radius: 0 0 4px 0;
-	border-radius: 0 0 4px 0;
+	-moz-bappointment-radius: 0 0 4px 0;
+	-webkit-bappointment-radius: 0 0 4px 0;
+	bappointment-radius: 0 0 4px 0;
 }
 .m_c {
-	background: #FFF; border: 1px solid #7B7B7B;;
+	background: #FFF; bappointment: 1px solid #7B7B7B;;
 }
 .m_c .tb {
 	margin: 0 0 10px;
@@ -441,7 +441,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 }
 .m_c .o {
 	background-color: #F9F9F9;
-	border-top: 1px solid #EAEAEA;
+	bappointment-top: 1px solid #EAEAEA;
 	margin-top: 12px;
 	padding: 12px;
 	text-align: right; overflow:hidden; zoom:1; font-size:12px;
@@ -451,14 +451,14 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 }
 .m_c .el li {
 	padding: 0;
-	border: none;
+	bappointment: none;
 }
 .flb {
 	height: 31px;
 }
 .flb_title {
 	background-color: #F2F2F2;
-	border-bottom: 1px solid #EAEAEA;
+	bappointment-bottom: 1px solid #EAEAEA;
 	color: #666666;
 	display: block;
 	font-weight: bold;
@@ -545,15 +545,15 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 .f_c .list {
 	margin: 0 auto 10px;
 	width: 570px;
-	border-top: 3px solid #CDCDCD;
+	bappointment-top: 3px solid #CDCDCD;
 }
 .f_c .list th, .f_c .list td {
 	padding: 5px 2px;
 	height: auto;
-	border-bottom: 1px dashed #CDCDCD;
+	bappointment-bottom: 1px dashed #CDCDCD;
 }
 .f_c .list .btns th, .f_c .list .btns td {
-	border-bottom: none;
+	bappointment-bottom: none;
 }
 .f_c .th th, .f_c .th td {
 	padding: 10px 0;
@@ -570,7 +570,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	margin: 60px auto;
 	padding: 20px;
 	width: 580px;
-	border: 3px solid #F2F2F2;
+	bappointment: 3px solid #F2F2F2;
 	background: #FFF;
 }
 .nfl .loginform {
@@ -580,7 +580,7 @@ article, aside, dialog, footer, header, section, footer, nav, figure, menu { dis
 	width: auto;
 	height: auto;
 }
-.fwin { border-radius: 4px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);}
+.fwin { bappointment-radius: 4px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);}
 .fwin .rfm, .nfl .f_c .rfm {
 	width: 500px;
 }

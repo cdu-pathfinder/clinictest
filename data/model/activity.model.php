@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class activityModel{
 	/**
 	 * 活动列表
@@ -23,7 +23,7 @@ class activityModel{
 		$param	= array();
 		$param['table']	= 'activity';
 		$param['where']	= $this->getCondition($condition);
-		$param['order']	= $condition['order'] ? $condition['order'] : 'activity_id';
+		$param['appointment']	= $condition['appointment'] ? $condition['appointment'] : 'activity_id';
 		return Db::select($param,$page);
 	}
 	/**
@@ -76,7 +76,7 @@ class activityModel{
 		$param['join_type']	= empty($condition['join_type'])?'right join':$condition['join_type'];
 		$param['join_on']	= array('activity.activity_id=activity_detail.activity_id');
 		$param['where']	= $this->getCondition($condition);
-		$param['order']	= $condition['order'];
+		$param['appointment']	= $condition['appointment'];
 		return Db::select($param,$page);
 	}
 	/**

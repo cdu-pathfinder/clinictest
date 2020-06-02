@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_tagModel extends Model{
 
     public function __construct(){
@@ -22,8 +22,8 @@ class cms_tagModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-	public function getList($condition,$page=null,$order='',$field='*',$limit=''){
-        $result = $this->field($field)->where($condition)->page($page)->order($order)->limit($limit)->select();
+	public function getList($condition,$page=null,$appointment='',$field='*',$limit=''){
+        $result = $this->field($field)->where($condition)->page($page)->appointment($appointment)->limit($limit)->select();
         return $result;
 	}
 
@@ -32,8 +32,8 @@ class cms_tagModel extends Model{
 	 * @param array $condition
 	 *
 	 */
-    public function getOne($condition,$order=''){
-        $result = $this->where($condition)->order($order)->find();
+    public function getOne($condition,$appointment=''){
+        $result = $this->where($condition)->appointment($appointment)->find();
         return $result;
     }
 

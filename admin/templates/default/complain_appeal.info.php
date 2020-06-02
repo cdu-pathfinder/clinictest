@@ -1,4 +1,4 @@
-<table class="table tb-type2 order mtw">
+<table class="table tb-type2 appointment mtw">
   <thead class="thead">
     <tr class="space">
       <th><?php echo $lang['complain_appeal_detail'];?></th>
@@ -8,7 +8,7 @@
     <tr>
       <th><?php echo $lang['complain_appeal_message'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td><ul>
           <li><strong><?php echo $lang['complain_accused'];?>:</strong><?php echo $output['complain_info']['accused_name'];?></li>
           <li><strong><?php echo $lang['complain_appeal_evidence'];?>:</strong>
@@ -38,7 +38,7 @@
     <tr>
       <th><?php echo $lang['complain_appeal_content'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td><?php echo $output['complain_info']['appeal_message'];?></td>
     </tr>
   </tbody>

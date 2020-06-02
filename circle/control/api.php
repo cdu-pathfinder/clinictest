@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class apiControl extends BaseCircleControl{
 
@@ -31,7 +31,7 @@ class apiControl extends BaseCircleControl{
         }
 
         $model = Model();
-        $theme_list = $model->table('circle_theme')->field('*, is_recommend*rand()*10000 + has_affix*rand() as rand')->where(array('circle_status'=>1, 'is_closed'=>0))->where(array('has_affix'=>1))->order('rand desc')->limit($data_count)->select();
+        $theme_list = $model->table('circle_theme')->field('*, is_recommend*rand()*10000 + has_affix*rand() as rand')->where(array('circle_status'=>1, 'is_closed'=>0))->where(array('has_affix'=>1))->appointment('rand desc')->limit($data_count)->select();
         if(!empty($theme_list)){
             $theme_list = array_under_reset($theme_list, 'theme_id'); $themeid_array = array_keys($theme_list);
 
@@ -66,7 +66,7 @@ class apiControl extends BaseCircleControl{
         }
 
         $model = Model();
-        $reply_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->order('theme_commentcount desc')->limit($data_count)->select();
+        $reply_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->appointment('theme_commentcount desc')->limit($data_count)->select();
 
         if($this->data_type === 'json') {
             $result = json_encode($reply_themelist);
@@ -90,7 +90,7 @@ class apiControl extends BaseCircleControl{
 
         $model = Model();
         $more_membertheme = $model->table('circle_member,circle_theme')->field('circle_member.*,circle_theme.*, circle_member.is_recommend*10000*rand()+(circle_member.cm_thcount)/10000  as rand')
-            ->order('rand desc')
+            ->appointment('rand desc')
             ->join('inner')->on('circle_member.member_id = circle_theme.member_id and circle_member.circle_id = circle_theme.circle_id')
             ->group('circle_member.member_id,circle_member.circle_id')->limit($data_count)->select();
 

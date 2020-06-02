@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div id="container_<?php echo $_REQUEST['stattype'];?>"></div>
 <script>
 $(function () {

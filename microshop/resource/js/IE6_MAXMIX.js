@@ -31,7 +31,7 @@ document.body.insertBefore(em, document.body.firstChild);
 for (i= minmax_props.length; i-->0;)
 if (cs[minmax_props[i][0]])
 st[minmax_props[i][1]]= cs[minmax_props[i][0]];
-// add element with properties to list, store optimal size values
+// add element with properties to list, clic optimal size values
 for (i= minmax_props.length; i-->0;) {
 ms= cs[minmax_props[i][1]];
 if (ms && ms!='auto' && ms!='none' && ms!='0' && ms!='') {

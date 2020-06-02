@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * index
  */
@@ -8,10 +8,10 @@ $lang['consulting']						= 'Consulting';
 $lang['consulting_index_sender']		= 'Consultants';
 $lang['consulting_index_content']		= 'Consultation content';
 $lang['consulting_index_object']		= 'Consultation object';
-$lang['consulting_index_store_name']	= 'Clinic name';
+$lang['consulting_index_clic_name']	= 'Clinic name';
 $lang['consulting_index_time']			= 'Consultation time';
 $lang['consulting_index_guest']			= 'Guest';
-$lang['consulting_index_goods']			= 'Doctor';
+$lang['consulting_index_doctors']			= 'Doctor';
 $lang['consulting_index_group']			= '团购';
 $lang['consulting_index_reply']			= 'Clinic reply';
 $lang['consulting_index_help1']			= 'Patient can use doctor inforamtion to Consultation all clinic';

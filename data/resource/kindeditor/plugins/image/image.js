@@ -199,7 +199,7 @@ KindEditor.plugin('image', function(K) {
 						self.afterUpload.call(self, url, data, name);
 					}
 					if (!fillDescAfterUploadImage) {
-						clickFn.call(self, url, data.title, data.width, data.height, data.border, data.align);
+						clickFn.call(self, url, data.title, data.width, data.height, data.bappointment, data.align);
 					} else {
 						K(".ke-dialog-row #remoteUrl", div).val(url);
 						K(".ke-tabs-li", div)[0].click();
@@ -295,8 +295,8 @@ KindEditor.plugin('image', function(K) {
 				showRemote : allowImageRemote,
 				showLocal : allowImageUpload,
 				tabIndex: img ? 0 : imageTabIndex,
-				clickFn : function(url, title, width, height, border, align) {
-					self.exec('insertimage', url, title, width, height, border, align);
+				clickFn : function(url, title, width, height, bappointment, align) {
+					self.exec('insertimage', url, title, width, height, bappointment, align);
 					// Bugfix: [Firefox] 上传图片后，总是出现正在加载的样式，需要延迟执行hideDialog
 					setTimeout(function() {
 						self.hideDialog().focus();

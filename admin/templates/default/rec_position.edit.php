@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,17 +17,17 @@
     <input type="hidden" name="opic_type" value="<?php echo $output['info']['pic_type'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label><?php echo $lang['rec_ps_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="rtitle" value="<?php echo $output['info']['title'];?>" id="rtitle" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['rec_ps_title_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['rec_ps_type'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><select name="rec_type" id="rec_type">
               <option value="2" <?php if ($output['info']['pic_type'] !=0) echo 'selected';?>><?php echo $lang['rec_ps_pic'];?></option>
               <option value="1" <?php if ($output['info']['pic_type'] ==0) echo 'selected';?>><?php echo $lang['rec_ps_txt'];?></option>
@@ -36,7 +36,7 @@
         </tr>
       </tbody>
       <tbody>
-        <tr class="noborder" id="tr_pic_type" style="display:none">
+        <tr class="nobappointment" id="tr_pic_type" style="display:none">
           <td class="vatop rowform"><ul>
               <li>
                 <label>
@@ -59,7 +59,7 @@
         <tr class="space">
           <th colspan="10"><label class="validation"><?php echo $lang['rec_ps_ztxt'];?>:</label></th>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <th><?php echo $lang['rec_ps_ztxt'];?></th>
           <th><?php echo $lang['rec_ps_gourl'];?></th>
           <th></th>
@@ -83,7 +83,7 @@
         <tr class="space">
           <th colspan="10"><label class="validation"><?php echo $lang['rec_ps_selfile_edit'];?>:</label></th>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <th><?php echo $lang['rec_ps_selfile_local'];?></th>
           <th><?php echo $lang['rec_ps_gourl'];?></th>
           <th></th>
@@ -95,7 +95,7 @@
           <td class="vatop rowform w300"><span class="type-file-box">
             <input type="text" name="textfield" class="type-file-text" />
             <input type="button" name="button" value="" class="type-file-button" />
-            <input class="type-file-file" type="file" title="" nc_type="change_default_goods_image" hidefocus="true" size="30" name="pic[]">
+            <input class="type-file-file" type="file" title="" nc_type="change_default_doctors_image" hidefocus="true" size="30" name="pic[]">
             </span></td>
           <td class="name w270"><input type="text" value="http://" name="urlup[]"></td>
           <td></td>
@@ -111,7 +111,7 @@
         <tr class="space">
           <th colspan="10"><label class="validation"><?php echo $lang['rec_ps_edit_remote'];?>:</label></th>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <th><?php echo $lang['rec_ps_remote_url'];?></th>
           <th><?php echo $lang['rec_ps_gourl'];?></th>
           <th></th>
@@ -135,7 +135,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['rec_ps_kcg'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['rec_ps_image_width'];?>:
             <input type="text" style="width:30px" name="rwidth" value="<?php echo $output['info']['content']['width'];?>">
             px&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $lang['rec_ps_image_height'];?>:
@@ -146,7 +146,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['rec_ps_target'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul>
               <li>
                 <label>
@@ -207,7 +207,7 @@ $(function(){
 			alert('<?php echo $lang['rec_ps_error_jz'];?>');return;
 		}
 		$(this).parent().parent().remove();
-   		$('#UpFileBox').append("<tr><td class=\"vatop rowform w270\"><span class=\"type-file-box\"><input type=\"text\" name=\"textfield\" class=\"type-file-text\" /><input type=\"button\" name=\"button\" value=\"\" class=\"type-file-button\" /><input class=\"type-file-file\" type=\"file\" title=\"\" nc_type=\"change_default_goods_image\" hidefocus=\"true\" size=\"30\" name=\"pic[]\"></span></td><td class=\"name w270\"><input type=\"text\" value=\"http://\" name=\"urlup[]\"></td><td></td><td class=\"w150 align-center\"><a id=\"delUpFile\" href=\"javascript:void(0);\"><?php echo $lang['nc_del'];?></a></td></tr><tr><td colspan=\"4\"><a id=\"addUpFile\" class=\"btn-add marginleft\" href=\"javascript:void(0);\"><span><?php echo $lang['rec_ps_addjx'];?></span></a></td></tr>");
+   		$('#UpFileBox').append("<tr><td class=\"vatop rowform w270\"><span class=\"type-file-box\"><input type=\"text\" name=\"textfield\" class=\"type-file-text\" /><input type=\"button\" name=\"button\" value=\"\" class=\"type-file-button\" /><input class=\"type-file-file\" type=\"file\" title=\"\" nc_type=\"change_default_doctors_image\" hidefocus=\"true\" size=\"30\" name=\"pic[]\"></span></td><td class=\"name w270\"><input type=\"text\" value=\"http://\" name=\"urlup[]\"></td><td></td><td class=\"w150 align-center\"><a id=\"delUpFile\" href=\"javascript:void(0);\"><?php echo $lang['nc_del'];?></a></td></tr><tr><td colspan=\"4\"><a id=\"addUpFile\" class=\"btn-add marginleft\" href=\"javascript:void(0);\"><span><?php echo $lang['rec_ps_addjx'];?></span></a></td></tr>");
 	});
 	$("#addRemote").live('click',function(){
 		if ($('#RemoteBox').find('input[name="pic[]"]').size() >= 5){
@@ -283,7 +283,7 @@ $(function(){
 </script> 
 <script type="text/javascript">
 $(function(){
-	$('input[nc_type="change_default_goods_image"]').live("change", function(){
+	$('input[nc_type="change_default_doctors_image"]').live("change", function(){
 		$(this).parent().find('input[class="type-file-text"]').val($(this).val());
 	});
 });

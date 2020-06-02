@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cacheControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -27,10 +27,10 @@ class cacheControl extends SystemControl{
 
 			//清理所有缓存
 			if($_POST['cls_full']==1){
-				H('setting',true);H('goods_class',true);H('seo',true);H('goods_class_seo',true);
+				H('setting',true);H('doctors_class',true);H('seo',true);H('doctors_class_seo',true);
 				H('class_tag',true);H('groupbuy',true);H('nav',true);H('express',true);
-				H('store_class',true);
-				H('store_grade',true);
+				H('clic_class',true);
+				H('clic_grade',true);
 				H('circle_level',true);
 				Model('adv')->makeApAllCache();
 				Model('web_config')->getWebHtml('index',1);
@@ -45,8 +45,8 @@ class cacheControl extends SystemControl{
 			}
 
 			//清理商品分类，商品发布第一步中的搜索 缓存
-			if (@in_array('goodsclass',$_POST['cache'])){
-				H('goods_class',true);H('class_tag',true);
+			if (@in_array('doctorsclass',$_POST['cache'])){
+				H('doctors_class',true);H('class_tag',true);
 			}
 
 			//清理广告 缓存
@@ -77,7 +77,7 @@ class cacheControl extends SystemControl{
 
 			//清理SEO缓存
 			if (@in_array('seo',$_POST['cache'])){
-				H('seo',true);H('goods_class_seo',true);
+				H('seo',true);H('doctors_class_seo',true);
 			}
 
 			//清理快递公司
@@ -86,13 +86,13 @@ class cacheControl extends SystemControl{
 			}
 
 			//清理店铺分类
-			if (@in_array('store_class',$_POST['cache'])){
-				H('store_class',true);
+			if (@in_array('clic_class',$_POST['cache'])){
+				H('clic_class',true);
 			}
 
 			//清理店铺等级
-			if (@in_array('store_grade',$_POST['cache'])){
-				H('store_grade',true);
+			if (@in_array('clic_grade',$_POST['cache'])){
+				H('clic_grade',true);
 			}
 
 			// Circle Member Level Cache Clearner

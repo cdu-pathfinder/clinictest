@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -24,18 +24,18 @@ $(document).ready(function(){
             isRTL:false//使用从右到左的布局 Boolean
     });
 
-    $("img.lazy").microshop_lazyload();
+    $("img.lazy").microclinic_lazyload();
 
     //喜欢
-    $("[nc_type=microshop_like]").microshop_like({type:'personal'});
+    $("[nc_type=microclinic_like]").microclinic_like({type:'personal'});
 });
 </script>
 
-<div class="commend-goods-list">
+<div class="commend-doctors-list">
   <?php if(!empty($output['list']) && is_array($output['list'])) {?>
   <ul id="pinterest">
     <li id="btn_personal_publish" class="item" style="display:none;">
-      <div class="pinterest-button"><a id="btn_show_publish_div" href="javascript:void(0)" class="pngFix"><?php echo $lang['microshop_personal_publish'];?></a></div>
+      <div class="pinterest-button"><a id="btn_show_publish_div" href="javascript:void(0)" class="pngFix"><?php echo $lang['microclinic_personal_publish'];?></a></div>
     </li>
     <?php foreach($output['list'] as $key=>$value) {?>
     <li class="item">
@@ -48,16 +48,16 @@ $(document).ready(function(){
       <div class="del"><a nc_type="home_drop" type="personal" item_id="<?php echo $value['personal_id'];?>" href="javascript:void(0)"><?php echo $lang['nc_delete'];?></a></div>
       <?php } ?>
       <?php } ?>
-      <div class="picture"> <a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank">
-        <?php $personal_image_array = getMicroshopPersonalImageUrl($value,'list');?>
-        <?php $size = getMicroshopImageSize($personal_image_array[0], 238);?>
-        <img class="lazy" height="<?php echo $size['height'];?>" width="<?php echo $size['width'];?>" src="<?php echo MICROSHOP_TEMPLATES_URL;?>/images/loading.gif" data-src="<?php echo $personal_image_array[0];?>" /> </a> </div>
-      <div class="handle"> <span class="like-btn"><a nc_type="microshop_like" like_id="<?php echo $value['personal_id'];?>" href="javascript:void(0)"><i class="pngFix"></i><span><?php echo $lang['microshop_text_like'];?></span><em><?php echo $value['like_count']<=999?$value['like_count']:'999+';?></em></a></span> <span class="comment"><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank"><i title="<?php echo $lang['microshop_text_comment'];?>" class="pngFix">&nbsp;</i><em><?php echo $value['comment_count']<=999?$value['comment_count']:'999+';?></em></a></span> </div>
+      <div class="picture"> <a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank">
+        <?php $personal_image_array = getMicroclinicPersonalImageUrl($value,'list');?>
+        <?php $size = getMicroclinicImageSize($personal_image_array[0], 238);?>
+        <img class="lazy" height="<?php echo $size['height'];?>" width="<?php echo $size['width'];?>" src="<?php echo MICROclinic_TEMPLATES_URL;?>/images/loading.gif" data-src="<?php echo $personal_image_array[0];?>" /> </a> </div>
+      <div class="handle"> <span class="like-btn"><a nc_type="microclinic_like" like_id="<?php echo $value['personal_id'];?>" href="javascript:void(0)"><i class="pngFix"></i><span><?php echo $lang['microclinic_text_like'];?></span><em><?php echo $value['like_count']<=999?$value['like_count']:'999+';?></em></a></span> <span class="comment"><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank"><i title="<?php echo $lang['microclinic_text_comment'];?>" class="pngFix">&nbsp;</i><em><?php echo $value['comment_count']<=999?$value['comment_count']:'999+';?></em></a></span> </div>
       <dl class="commentary">
-        <dt><span class="thumb size30"><i></i><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>" onload="javascript:DrawImage(this,30,30);" /> </a></span></dt>
+        <dt><span class="thumb size30"><i></i><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>" onload="javascript:DrawImage(this,30,30);" /> </a></span></dt>
         <dd>
-          <h4><a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?> </a> </h4>
-          <p> <a href="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank"> <?php echo $value['commend_message'];?> </a> </p>
+          <h4><a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=home&member_id=<?php echo $value['commend_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?> </a> </h4>
+          <p> <a href="<?php echo MICROclinic_SITE_URL;?>/index.php?act=personal&op=detail&personal_id=<?php echo $value['personal_id'];?>" target="_blank"> <?php echo $value['commend_message'];?> </a> </p>
         </dd>
       </dl>
     </li>
@@ -69,20 +69,20 @@ $(document).ready(function(){
   </ul>
   <div class="no-content"><i class="personal pngFix">&nbsp;</i>
     <?php if($_GET['act'] == 'personal') { ?>
-    <p><?php echo $lang['microshop_personal_list_none'];?></p>
+    <p><?php echo $lang['microclinic_personal_list_none'];?></p>
     <?php } else { ?>
     <?php if($_GET['op'] == 'like_list') { ?>
     <?php if($output['owner_flag'] === TRUE){ ?>
-    <p><?php echo $lang['microshop_personal_like_list_none'];?></p>
+    <p><?php echo $lang['microclinic_personal_like_list_none'];?></p>
     <?php } else { ?>
-    <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microshop_personal_like_list_none_owner'];?></p>
+    <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microclinic_personal_like_list_none_owner'];?></p>
     <?php } ?>
     <?php } else { ?>
     <?php if($output['owner_flag'] === TRUE){ ?>
-    <p><?php echo $lang['microshop_personal_list_none_publish'];?></p>
-    <a id="link_personal_publish" href="javascript:void(0)"><?php echo $lang['microshop_personal_publish'];?></a></div>
+    <p><?php echo $lang['microclinic_personal_list_none_publish'];?></p>
+    <a id="link_personal_publish" href="javascript:void(0)"><?php echo $lang['microclinic_personal_publish'];?></a></div>
   <?php } else { ?>
-  <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microshop_personal_list_none_publish_owner'];?></p>
+  <p><?php echo $lang['nc_quote1'];?><?php echo $output['member_info']['member_name'];?><?php echo $lang['nc_quote2'];?><?php echo $lang['microclinic_personal_list_none_publish_owner'];?></p>
   <?php } ?>
   <?php } ?>
   <?php } ?>
@@ -92,14 +92,14 @@ $(document).ready(function(){
 <div class="pagination"> <?php echo $output['show_page'];?> </div>
 <?php } ?>
 <?php if(isset($_SESSION['member_id'])) { ?>
-<script type="text/javascript" src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/fileupload/jquery.iframe-transport.js" charset="utf-8"></script> 
-<script type="text/javascript" src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/fileupload/jquery.ui.widget.js" charset="utf-8"></script> 
-<script type="text/javascript" src="<?php echo MICROSHOP_RESOURCE_SITE_URL;?>/js/fileupload/jquery.fileupload.js" charset="utf-8"></script> 
+<script type="text/javascript" src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/fileupload/jquery.iframe-transport.js" charset="utf-8"></script> 
+<script type="text/javascript" src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/fileupload/jquery.ui.widget.js" charset="utf-8"></script> 
+<script type="text/javascript" src="<?php echo MICROclinic_RESOURCE_SITE_URL;?>/js/fileupload/jquery.fileupload.js" charset="utf-8"></script> 
 <!-- 发布个人秀 --> 
 <script type="text/javascript">
 $(document).ready(function(){
 
-    $("#publish_div").microshop_form({title:'<?php echo $lang['microshop_personal_publish'];?>'});
+    $("#publish_div").microclinic_form({title:'<?php echo $lang['microclinic_personal_publish'];?>'});
     $("#link_personal_publish").click(function(){
         show_publish_form();
     });
@@ -113,7 +113,7 @@ $(document).ready(function(){
     function show_publish_form() {
         $.getJSON("index.php?act=publish&op=personal_limit", {}, function(json){
             if(json.result == "true") {
-                $("#publish_div").microshop_form_show({width:480});
+                $("#publish_div").microclinic_form_show({width:480});
             } else {
                 showError(json.message);
             }
@@ -121,7 +121,7 @@ $(document).ready(function(){
     }
 
     //发布
-    $("#commend_message").microshop_publish({
+    $("#commend_message").microclinic_publish({
         button_item:'#btn_publish',
         allow_null:'true'
     },function(){
@@ -129,14 +129,14 @@ $(document).ready(function(){
             $("#publish_div").hide();
             ajaxpost('add_form', '', '', 'onerror'); 
         } else {
-            show_personal_message("<?php echo $lang['microshop_text_upload_image'];?>");
+            show_personal_message("<?php echo $lang['microclinic_text_upload_image'];?>");
         }
     });
 
     //图片上传
     $("#fileupload").fileupload({
         dataType: 'json',
-            url: "<?php echo MICROSHOP_SITE_URL.DS.'index.php?act=publish&op=personal_image_upload';?>",
+            url: "<?php echo MICROclinic_SITE_URL.DS.'index.php?act=publish&op=personal_image_upload';?>",
             add: function(e,data) {
                 $("#btn_personal_image").hide();
                 $("#personal_image_info").show();
@@ -145,7 +145,7 @@ $(document).ready(function(){
             done: function (e,data) {
                 result = data.result;
                 if(result.status == "success") {
-                    $("#_personal_image_list img").attr("src","<?php echo UPLOAD_SITE_URL.DS.ATTACH_MICROSHOP.DS.$_SESSION['member_id'].DS;?>"+result.file);
+                    $("#_personal_image_list img").attr("src","<?php echo UPLOAD_SITE_URL.DS.ATTACH_MICROclinic.DS.$_SESSION['member_id'].DS;?>"+result.file);
                     $("#_personal_image_list a").attr("image_name",result.file);
                     $("#personal_image_list").append($("#_personal_image_list").html());
                     var personal_image = $("#personal_image").val();
@@ -180,7 +180,7 @@ $(document).ready(function(){
     //图片删除按钮
     $("[nc_type='btn_personal_image_delete']").live('click',function(){
         var image_name = $(this).attr("image_name");
-        $.getJSON("<?php echo MICROSHOP_SITE_URL.DS.'index.php?act=publish&op=personal_image_delete';?>", { image_name: image_name }, function(json){
+        $.getJSON("<?php echo MICROclinic_SITE_URL.DS.'index.php?act=publish&op=personal_image_delete';?>", { image_name: image_name }, function(json){
         });
         $(this).parent("div").remove();
         var personal_image_array = $("#personal_image").val().split(",");
@@ -204,7 +204,7 @@ $(document).ready(function(){
         var link = encodeURIComponent($("#input_personal_image_link").val());
         $("#input_personal_image_link").val('');
         if(link != '') {
-            $.getJSON("<?php echo MICROSHOP_SITE_URL.DS.'index.php?act=publish&op=personal_link_add';?>", { link: link}, function(data){
+            $.getJSON("<?php echo MICROclinic_SITE_URL.DS.'index.php?act=publish&op=personal_link_add';?>", { link: link}, function(data){
                 if(data.result == "true") {
                     var link_item = '<div class="taobao-item">';
                     link_item += '<span class="taobao-item-img"><a href="'+data.url+'" target="_blank"><img src="'+data.image+'" alt="'+data.title+'" title="'+data.title+'" /></a></span>';
@@ -251,7 +251,7 @@ $(document).ready(function(){
 <!-- 发布按钮 --> 
 <!-- 弹出层开始 -->
 <div id="publish_div" style="display: none;">
-  <form action="<?php echo MICROSHOP_SITE_URL;?>/index.php?act=publish&op=personal_save" method="post" id="add_form" class="publish-div">
+  <form action="<?php echo MICROclinic_SITE_URL;?>/index.php?act=publish&op=personal_save" method="post" id="add_form" class="publish-div">
     <input id="personal_image" name="personal_image" type="hidden" />
     <div class="side-bar">
       <div id="personal_image_list" class="personal_image_list"> </div>
@@ -260,14 +260,14 @@ $(document).ready(function(){
           <input type="file" name="personal_image_ajax" id="fileupload" file_id="0" style="width:80px; height: 30px; cursor: pointer; opacity:0; filter: alpha(opacity=0)" size="1" hidefocus="true" maxlength="0" />
           </span>
           <div class="upload-button">&nbsp;</div>
-          <input id="submit_button" style="display:none" type="button" value="<?php echo $lang['microshop_text_upload_image'];?>" onClick="submit_form($(this))" />
+          <input id="submit_button" style="display:none" type="button" value="<?php echo $lang['microclinic_text_upload_image'];?>" onClick="submit_form($(this))" />
           </a></div>
-        <div id="personal_image_info" class="personal_image_info" style="display:none;" title="<?php echo $lang['microshop_text_uploading'];?>">&nbsp;</div>
+        <div id="personal_image_info" class="personal_image_info" style="display:none;" title="<?php echo $lang['microclinic_text_uploading'];?>">&nbsp;</div>
       </div>
     </div>
     <div class="express">
       <dl class="type">
-        <dt><?php echo $lang['microshop_text_class'];?></dt>
+        <dt><?php echo $lang['microclinic_text_class'];?></dt>
         <dd>
           <?php if(!empty($output['personal_class_list']) && is_array($output['personal_class_list'])) {?>
           <?php $count = 1;?>
@@ -282,17 +282,17 @@ $(document).ready(function(){
         </dd>
       </dl>
       <dl class="intro">
-        <dt><?php echo $lang['microshop_text_explain'];?></dt>
+        <dt><?php echo $lang['microclinic_text_explain'];?></dt>
         <dd>
           <textarea cols="55" rows="3" name="commend_message" id="commend_message"></textarea>
         </dd>
       </dl>
       <dl class="url">
-        <dt> <?php echo $lang['microshop_text_buy_link'];?>
+        <dt> <?php echo $lang['microclinic_text_buy_link'];?>
           <?php if(C('taobao_api_isuse')) { ?>
-          <span><?php echo $lang['microshop_personal_publish_explain_taobao'];?></span>
+          <span><?php echo $lang['microclinic_personal_publish_explain_taobao'];?></span>
           <?php } else { ?>
-          <span><?php echo $lang['microshop_personal_publish_explain_store'];?></span>
+          <span><?php echo $lang['microclinic_personal_publish_explain_clic'];?></span>
           <?php } ?>
         </dt>
         <dd>
@@ -300,13 +300,13 @@ $(document).ready(function(){
           <div id="div_personal_image_link" style="display:none;">
             <input id="input_personal_image_link" type="text" class="text" />
             <a id="btn_personal_link_add" href="javascript:void(0);" class="add-link"><?php echo $lang['nc_add'];?></a></div>
-          <div id="personal_image_link"><a id="btn_personal_link" href="javascript:void(0);" class="add-btn"><?php echo $lang['microshop_personal_add_link'];?></a> </div>
+          <div id="personal_image_link"><a id="btn_personal_link" href="javascript:void(0);" class="add-btn"><?php echo $lang['microclinic_personal_add_link'];?></a> </div>
         </dd>
       </dl>
     </div>
     <div class="handle">
       <div id="personal_image_notice" class="personal_image_notice" style="display:none;"></div>
-      <input id="btn_publish" type="button" value="<?php echo $lang['microshop_text_commend'];?>" />
+      <input id="btn_publish" type="button" value="<?php echo $lang['microclinic_text_commend'];?>" />
       <!-- 站外分享 -->
       <?php require('widget_share.php');?>
     </div>

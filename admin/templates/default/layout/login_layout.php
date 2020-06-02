@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +16,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-attachment: fixed;
-	background-clip: border-box;
+	background-clip: bappointment-box;
 	background-size: cover;
 	background-origin: padding-box;
 	width: 100%;

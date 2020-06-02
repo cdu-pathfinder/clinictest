@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
@@ -239,7 +239,7 @@ function addFavorite(url, title) {
               <li class="adminid" title="<?php echo $lang['nc_hello'];?>:<?php echo $output['admin_info']['name'];?>"><?php echo $lang['nc_hello'];?>&nbsp;:&nbsp;<strong><?php echo $output['admin_info']['name'];?></strong></li>
               <li><a href="index.php?act=index&op=modifypw" target="workspace" ><span><?php echo $lang['nc_modifypw']; ?></span></a></li>
               <li><a href="index.php?act=index&op=logout" title="<?php echo $lang['nc_logout'];?>"><span><?php echo $lang['nc_logout'];?></span></a></li>
-              <li><a href="<?php echo SHOP_SITE_URL;?>" target="_blank" title="<?php echo $lang['nc_homepage'];?>"><span><?php echo $lang['nc_homepage'];?></span></a></li>
+              <li><a href="<?php echo clinic_SITE_URL;?>" target="_blank" title="<?php echo $lang['nc_homepage'];?>"><span><?php echo $lang['nc_homepage'];?></span></a></li>
             </ul>
           </div>
           <!-- End of Top navigation --> 
@@ -273,9 +273,9 @@ function addFavorite(url, title) {
       <td class="menutd" valign="top" width="161"><div id="mainMenu" class="main-menu">
           <?php echo $output['left_nav'];?>
         </div><div class="copyright">
-        <p>Powered By <em><a href="http://cdu.edu.au" target="_blank"><?php echo $GLOBALS['setting_config']['shopnc_version'];?></a></em></p>
+        <p>Powered By <em><a href="http://cdu.edu.au" target="_blank"><?php echo $GLOBALS['setting_config']['clinicnc_version'];?></a></em></p>
         <p>&copy;2020 <a href="http://cdu.edu.au/" target="_blank"> group10.</a></p></div></td>
-      <td valign="top" width="100%"><iframe src="" id="workspace" name="workspace" style="overflow: visible;" frameborder="0" width="100%" height="100%" scrolling="yes" onload="window.parent"></iframe></td>
+      <td valign="top" width="100%"><iframe src="" id="workspace" name="workspace" style="overflow: visible;" framebappointment="0" width="100%" height="100%" scrolling="yes" onload="window.parent"></iframe></td>
     </tr>
   </tbody>
 </table>

@@ -1,15 +1,15 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
   <form method="get" action="index.php" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="bill" />
     <input type="hidden" name="op" value="show_bill" />
     <input type="hidden" name="ob_no" value="<?php echo $_GET['ob_no'];?>" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
         <th><label for="add_time_from">订单类型</label></th>
           <td>
 			<select name="query_type" class="querySelect">
-			<option value="order" <?php if($_GET['query_type'] == 'order'){?>selected<?php }?>>订单列表</option>
+			<option value="appointment" <?php if($_GET['query_type'] == 'appointment'){?>selected<?php }?>>订单列表</option>
 			<option value="refund" <?php if($_GET['query_type'] == 'refund'){?>selected<?php }?>>退单列表</option>
 			<option value="cost" <?php if($_GET['query_type'] == 'cost'){?>selected<?php }?>>店铺费用</option>
 			</select>
@@ -37,7 +37,7 @@
       <?php if(is_array($output['cost_list']) && !empty($output['cost_list'])){?>
       <?php foreach($output['cost_list'] as $cost_info){?>
       <tr class="hover">
-        <td class="align-center"><?php echo $output['store_info']['store_name'];?></td>
+        <td class="align-center"><?php echo $output['clic_info']['clic_name'];?></td>
         <td class="align-center"><?php echo $cost_info['cost_remark'];?></td>
         <td class="align-center"><?php echo ncPriceFormat($cost_info['cost_price']);?></td>
         <td class="align-center"><?php echo date('Y-m-d',$cost_info['cost_time']);?></td>

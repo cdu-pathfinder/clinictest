@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,10 +12,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
 		<tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="admin_name"><?php echo $lang['gadmin_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="gname" value="<?php echo $output['ginfo']['gname'];?>" maxlength="40" name="gname" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>		

@@ -693,7 +693,7 @@
 
         _create: function () {
             this._super();
-            this._refreshOptionsList.push(
+            this._refreclinictionsList.push(
                 'filesContainer',
                 'uploadTemplateId',
                 'downloadTemplateId'

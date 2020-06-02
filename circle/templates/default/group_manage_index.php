@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="base-layout">
   <div class="mainbox">
@@ -37,7 +37,7 @@
           <input type="radio" name="c_joinaudit" value="0" <?php if($output['circle_info']['circle_joinaudit'] == 0){?>checked="checked"<?php }?> />
           <h5><?php echo $lang['nc_no'];?></h5> </dd>
       </dl>
-      <dl style="border-bottom: none;">
+      <dl style="bappointment-bottom: none;">
         <dt><?php echo $lang['circle_mapply'].$lang['nc_colon'];?></dt>
         <dd>
           <input type="radio" name="c_mapply" value="1" <?php if($output['circle_info']['mapply_open'] == 1){?>checked="checked"<?php }?> />

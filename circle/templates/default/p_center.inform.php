@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="base-layout">
   <div class="mainbox">
@@ -47,7 +47,7 @@
         <?php }?>
         <?php }else{?>
         <tr>
-          <td colspan="20" class="noborder"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
+          <td colspan="20" class="nobappointment"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
         </tr>
         <?php }?>
       </tbody>

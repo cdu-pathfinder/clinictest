@@ -1,0 +1,36 @@
+<?php
+defined('InclinicNC') or exit('Access Invalid!');
+$lang['member_printappointment_appointmenterror']		= '订单信息错误';
+
+$lang['member_printappointment_title']			= '发货单';
+$lang['member_printappointment_appointmentno']			= '订单号';
+$lang['member_printappointment_appointmentadddate']		= '下单时间';
+$lang['member_printappointment_shippingcode']		= '发货单号';
+$lang['member_printappointment_truename']     	= '收货人';
+$lang['member_printappointment_area']     		= 'Area';
+$lang['member_printappointment_address']     		= 'Address';
+$lang['member_printappointment_zip_code']     	= '邮编';
+$lang['member_printappointment_tel_phone']     	= '电话';
+$lang['member_printappointment_mob_phone']     	= 'Phone number';
+$lang['member_printappointment_serialnumber']		= '序号';
+$lang['member_printappointment_doctorsname']     	= '商品名称';
+$lang['member_printappointment_specification']	= '规格';
+$lang['member_printappointment_doctorsprice']     	= '单价';
+$lang['member_printappointment_doctorsnum']     	= '数量';
+$lang['member_printappointment_subtotal']     	= '小计';
+$lang['member_printappointment_amountto']     	= '合计';
+$lang['member_printappointment_totle']     		= '总计';
+$lang['member_printappointment_freight']   		= '运费';
+$lang['member_printappointment_privilege']  		= '优惠';
+$lang['member_printappointment_appointmentamount']  	= '订单总额';
+$lang['member_printappointment_clinic']  			= 'Clinic';
+$lang['member_printappointment_clinicowner']  		= '店主名';
+$lang['member_printappointment_clinictelephone']  	= '电话';
+$lang['member_printappointment_clinicww']  			= '旺旺';
+$lang['member_printappointment_pagetext_1']  		= '第';
+$lang['member_printappointment_pagetext_2']  		= '页';
+$lang['member_printappointment_pagetext_3']  		= '共';
+$lang['member_printappointment_print']  			= '打印';
+$lang['member_printappointment_print_tip']	  	= '选择喷墨或激光打印机<br/>根据下列纸张描述进行<br/>设置并打印发货单据';
+$lang['member_printappointment_print_tip_A5']  	= '当打印设置选择A5纸张、横向打印、无边距时每张A5打印纸可输出1页订单。';
+$lang['member_printappointment_print_tip_A4']  	= '当打印设置选择A4纸张、竖向打印、无边距时每张A4打印纸可输出2页订单。';

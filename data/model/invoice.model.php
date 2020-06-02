@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class invoiceModel extends Model {
     
@@ -21,7 +21,7 @@ class invoiceModel extends Model {
      * @param array $condition
      */
     public function getDefaultInvInfo($condition = array()) {
-        return $this->where($condition)->order('inv_state asc')->find();
+        return $this->where($condition)->appointment('inv_state asc')->find();
     }
 
     /**

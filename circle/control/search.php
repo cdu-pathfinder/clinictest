@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class searchControl extends BaseCircleControl{
 	public function __construct(){
@@ -27,7 +27,7 @@ class searchControl extends BaseCircleControl{
 			$where['theme_name'] = array('like', '%'.$_GET['keyword'].'%');
 		}
 		$count = $model->table('circle_theme')->where($where)->count();
-		$theme_list = $model->table('circle_theme')->where($where)->page(10,$count)->order('theme_addtime desc')->select();
+		$theme_list = $model->table('circle_theme')->where($where)->page(10,$count)->appointment('theme_addtime desc')->select();
 		Tpl::output('count', $count);
 		Tpl::output('show_page', $model->showpage('2'));
 		Tpl::output('theme_list', $theme_list);

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class circle_memberControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -47,21 +47,21 @@ class circle_memberControl extends SystemControl{
 		    $where['is_identity'] = intval($_GET['searchidentity']);
 		}
 		
-		$order = array();
+		$appointment = array();
 		if(intval($_GET['searchsort']) > 0){
 			switch (intval($_GET['searchsort'])){
 				case 1:
-					$order = 'cm_thcount desc';
+					$appointment = 'cm_thcount desc';
 					break;
 				case 2:
-					$order = 'cm_comcount desc';
+					$appointment = 'cm_comcount desc';
 					break;
 				default:
-					$order = 'cm_jointime desc';
+					$appointment = 'cm_jointime desc';
 					break;
 			}
 		}
-		$member_list = $model->table('circle_member')->where($where)->page(10)->order($order)->select();
+		$member_list = $model->table('circle_member')->where($where)->page(10)->appointment($appointment)->select();
 		Tpl::output('show_page', $model->showpage('2'));
 		Tpl::output('member_list', $member_list);
 		Tpl::showpage('circle_member.list');

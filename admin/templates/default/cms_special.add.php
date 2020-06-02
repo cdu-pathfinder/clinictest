@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <style type="text/css">
 h3.dialog_head { margin: 0 !important;}
 .dialog_content { padding: 0 15px 15px !important; overflow: hidden;}
@@ -75,17 +75,17 @@ h3.dialog_head { margin: 0 !important;}
     <input id="special_state" name="special_state" type="hidden" value="" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="special_title" class="validation"><?php echo $lang['cms_text_title'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="special_title" name="special_title" class="txt" type="text" value="<?php if(!empty($output['special_detail'])) echo $output['special_detail']['special_title'];?>"/></td>
           <td class="vatop tips"><?php echo $lang['cms_special_title_explain'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['cms_special_image'];?><?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"> <a href="<?php if(!empty($output['special_detail']['special_image'])){ echo getCMSSpecialImageUrl($output['special_detail']['special_image']);}?>" nctype="nyroModal"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span> 
             <span class="type-file-box">
@@ -100,14 +100,14 @@ h3.dialog_head { margin: 0 !important;}
         <tr>
           <td colspan="2" class="required"><?php echo $lang['cms_special_background'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input class="txt" name="special_background_color" type="color" value="<?php if(!empty($output['special_detail'])) echo $output['special_detail']['special_background_color'];?>" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_special_background_color_explain'];?></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['cms_special_background_image'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"> <a href="<?php if(!empty($output['special_detail']['special_background'])){ echo getCMSSpecialImageUrl($output['special_detail']['special_background']);}?>" nctype="nyroModal"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span> <span class="type-file-box">
             <input name="special_background" type="file" class="type-file-file" id="special_background" size="30" hidefocus="true" nctype="cms_image">
@@ -118,7 +118,7 @@ h3.dialog_head { margin: 0 !important;}
         <tr>
           <td colspan="2" class="required"><?php echo $lang['cms_special_background_type'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><label class="mr10">
                   <input name="special_repeat" type="radio" value="no-repeat" <?php if($output['special_detail']['special_repeat'] == 'no-repeat') echo 'checked';?> />
               <?php echo $lang['cms_special_background_type_norepeat'];?></label>
@@ -136,7 +136,7 @@ h3.dialog_head { margin: 0 !important;}
         <tr class="space">
           <th colspan="2"><?php echo $lang['cms_special_content'];?><?php echo $lang['nc_colon'];?></th>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['cms_special_content_top_margin'];?>&nbsp;
             <input class="txt" style=" width: 50px;" name="special_margin_top" type="text" value="<?php echo empty($output['special_detail']['special_margin_top'])?'0':$output['special_detail']['special_margin_top'];?>" />
             像素</td>
@@ -148,16 +148,16 @@ h3.dialog_head { margin: 0 !important;}
           <input id="btn_content_view" type="button" value="<?php echo $lang['cms_text_view'];?>" class="tab-btn actived" />
           <input id="btn_content_edit" type="button" value="<?php echo $lang['nc_edit'];?>" class="tab-btn" />
           </div>
-          <div class="tab-content" style=" background-color: <?php echo $output['special_detail']['special_background_color'];?>; background-image: url(<?php if(!empty($output['special_detail']['special_background'])){echo getCMSSpecialImageUrl($output['special_detail']['special_background']);}?>); background-repeat: <?php echo $output['special_detail']['special_repeat'];?>; background-position: top center; width: 100%; padding: 0; margin: 0; overflow: hidden;"><div id="div_content_view" style=" background-color: transparent; background-image: none; width: 1000px; margin-top: <?php echo $output['special_detail']['special_margin_top']?>px; margin-right: auto; margin-bottom: 0; margin-left: auto; border: 0; overflow: hidden;"></div></div>
+          <div class="tab-content" style=" background-color: <?php echo $output['special_detail']['special_background_color'];?>; background-image: url(<?php if(!empty($output['special_detail']['special_background'])){echo getCMSSpecialImageUrl($output['special_detail']['special_background']);}?>); background-repeat: <?php echo $output['special_detail']['special_repeat'];?>; background-position: top center; width: 100%; padding: 0; margin: 0; overflow: hidden;"><div id="div_content_view" style=" background-color: transparent; background-image: none; width: 1000px; margin-top: <?php echo $output['special_detail']['special_margin_top']?>px; margin-right: auto; margin-bottom: 0; margin-left: auto; bappointment: 0; overflow: hidden;"></div></div>
           <div id="div_content_edit" class="tab-content" style="display:none;">
           <textarea id="special_content" name="special_content" rows="50" cols="80"><?php echo $output['special_detail']['special_content'];?></textarea>
           </div>
         </td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><?php echo $lang['cms_special_image_and_goods'];?></td>
+          <td colspan="2" class="required"><?php echo $lang['cms_special_image_and_doctors'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td><div class="upload-btn" style=" display: inline-block;"><a href="javascript:void(0);"><span>
               <input type="file" name="special_image_upload" id="picture_image_upload" multiple=""  file_id="0" style="width:120px; height: 40px; cursor: pointer; opacity:0; filter: alpha(opacity=0)" size="1" hidefocus="true" maxlength="0" />
               </span>
@@ -165,16 +165,16 @@ h3.dialog_head { margin: 0 !important;}
               <input id="submit_button" style="display:none" type="button" value="&nbsp;" onClick="submit_form($(this))" />
               </a></div>
             <div class="upload-btn"> <a href="javascript:void(0);"><span>
-              <input id="btn_show_special_insert_goods" type="button" value="" style="width:120px; height: 40px; cursor: pointer; opacity:0; filter: alpha(opacity=0)" />
+              <input id="btn_show_special_insert_doctors" type="button" value="" style="width:120px; height: 40px; cursor: pointer; opacity:0; filter: alpha(opacity=0)" />
               </span>
-              <div class="upload-button"><?php echo $lang['cms_text_goods_add'];?></div>
+              <div class="upload-button"><?php echo $lang['cms_text_doctors_add'];?></div>
               </a> </div></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_special_image_explain1'];?></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['cms_special_image_list'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="cms-special-uploadpic"><ul id="special_image_list" class="thumblists">
               <?php if(!empty($output['special_detail']['special_image_all'])) { ?>
               <?php $special_image_all = unserialize($output['special_detail']['special_image_all']);?>
@@ -207,11 +207,11 @@ h3.dialog_head { margin: 0 !important;}
           <tr>
             <td class="required" colspan="2"><?php echo $lang['cms_special_image_link_url'];?> </td>
           </tr>
-          <tr class="noborder">
+          <tr class="nobappointment">
             <td class="vatop rowform"><img alt="" src="" class=""></td>
             <td></td>
           </tr>
-          <tr class="noborder">
+          <tr class="nobappointment">
             <td class="vatop rowform"><input nctype="_image_insert_link" type="text" class="txt" /></td>
             <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_special_image_link_url_explain'];?></span></td>
           </tr>
@@ -233,13 +233,13 @@ h3.dialog_head { margin: 0 !important;}
           <tr>
             <td class="required" colspan="2"><?php echo $lang['cms_special_image_link_hot_select'];?><?php echo $lang['nc_colon'];?></td>
           </tr>
-          <tr class="noborder">
+          <tr class="nobappointment">
             <td colspan="2"><div ncytpe="div_image_insert_hot_point" class="special-hot-point" > <img nctype="img_hot_point" alt="" src="<?php echo $image_url;?>"> </div></td>
           </tr>
           <tr>
             <td class="required" colspan="2"><?php echo $lang['cms_special_image_link_hot_url'];?><?php echo $lang['nc_colon'];?></td>
           </tr>
-          <tr class="noborder">
+          <tr class="nobappointment">
             <td class="vatop rowform"><input nctype="x1" type="hidden" />
               <input nctype="y1" type="hidden" />
               <input nctype="x2" type="hidden" />
@@ -264,28 +264,28 @@ h3.dialog_head { margin: 0 !important;}
     </div>
   </div>
   <!-- 插入商品对话框 -->
-  <div id="_dialog_special_insert_goods" style="display:none;">
-    <div class="upload_adv_dialog dialog-special-insert-goods">
-      <div class="s-tips"><i></i><?php echo $lang['cms_special_goods_explain1'];?></div>
+  <div id="_dialog_special_insert_doctors" style="display:none;">
+    <div class="upload_adv_dialog dialog-special-insert-doctors">
+      <div class="s-tips"><i></i><?php echo $lang['cms_special_doctors_explain1'];?></div>
       <table id="upload_adv_type" class="table tb-type2">
         <tbody>
           <tr>
-            <td class="required" colspan="2"><?php echo $lang['cms_special_goods_url'];?><?php echo $lang['nc_colon'];?></td>
+            <td class="required" colspan="2"><?php echo $lang['cms_special_doctors_url'];?><?php echo $lang['nc_colon'];?></td>
           </tr>
-          <tr class="noborder">
-            <td class="vatop rowform"><input nctype="_input_goods_link" type="text" class="txt" style=" width:200px; margin: 0;" />
-              <a class="btns"  nctype="btn_special_goods" href="javascript:void(0);"><span><?php echo $lang['cms_text_save'];?></span></a></td>
-            <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_special_goods_explain3'];?></span></td>
+          <tr class="nobappointment">
+            <td class="vatop rowform"><input nctype="_input_doctors_link" type="text" class="txt" style=" width:200px; margin: 0;" />
+              <a class="btns"  nctype="btn_special_doctors" href="javascript:void(0);"><span><?php echo $lang['cms_text_save'];?></span></a></td>
+            <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['cms_special_doctors_explain3'];?></span></td>
           </tr>
-          <tr class="noborder">
-            <td colspan="2"><ul nctype="_special_goods_list" class="special-goods-list">
+          <tr class="nobappointment">
+            <td colspan="2"><ul nctype="_special_doctors_list" class="special-doctors-list">
               </ul></td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
               <td colspan="2">
-                  <a nctype="btn_special_insert_goods" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_special_insert_editor'];?></span></a>
+                  <a nctype="btn_special_insert_doctors" href="JavaScript:void(0);" class="btn" ><span><?php echo $lang['cms_special_insert_editor'];?></span></a>
               </td>
           </tr>
         </tfoot>

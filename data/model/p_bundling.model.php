@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class p_bundlingModel extends Model {
     const STATE1 = 1;       // 开启
@@ -35,27 +35,27 @@ class p_bundlingModel extends Model {
      * 
      * @param array $condition
      * @param string $field
-     * @param string $order
+     * @param string $appointment
      * @param int $page
      * @param int $limit
      * @param int $count
      * @return array
      */
-    public function getBundlingList($condition, $field = '*', $order = 'bl_id desc', $page = 10, $limit = 0, $count = 0) {
-        return $this->table('p_bundling')->where($condition)->order($order)->limit($limit)->page($page, $count)->select();
+    public function getBundlingList($condition, $field = '*', $appointment = 'bl_id desc', $page = 10, $limit = 0, $count = 0) {
+        return $this->table('p_bundling')->where($condition)->appointment($appointment)->limit($limit)->page($page, $count)->select();
     }
     
     /**
      * 开启的活动列表
      * @param array $condition
      * @param string $field
-     * @param string $order
+     * @param string $appointment
      * @param int $limit
      * @return array
      */
-    public function getBundlingOpenList($condition, $field = '*', $order = 'bl_id desc', $limit = 0) {
+    public function getBundlingOpenList($condition, $field = '*', $appointment = 'bl_id desc', $limit = 0) {
         $condition['bl_state'] = self::STATE1;
-        return $this->getBundlingList($condition, $field, $order, 0, $limit);
+        return $this->getBundlingList($condition, $field, $appointment, 0, $limit);
     }
     
     /**
@@ -94,11 +94,11 @@ class p_bundlingModel extends Model {
      * @param array $condition
      * @return boolean
      */
-    public function editBundlingCloseByGoodsIds($condition) {
-        $bundlinggoods_list = $this->getBundlingGoodsList($condition, 'bl_id');
-        if (!empty($bundlinggoods_list)) {
+    public function editBundlingCloseBydoctorsIds($condition) {
+        $bundlingdoctors_list = $this->getBundlingdoctorsList($condition, 'bl_id');
+        if (!empty($bundlingdoctors_list)) {
             $blid_array = array();
-            foreach ($bundlinggoods_list as $val) {
+            foreach ($bundlingdoctors_list as $val) {
                 $blid_array[] = $val['bl_id'];
             }
             $update = array('bl_state' => self::STATE0);
@@ -110,10 +110,10 @@ class p_bundlingModel extends Model {
     /**
      * 删除套餐活动
      * @param array $blids
-     * @param int $store_id
+     * @param int $clic_id
      * @return boolean
      */
-    public function delBundling($blids, $store_id) {
+    public function delBundling($blids, $clic_id) {
         $blid_array = explode(',', $blids);
         foreach ($blid_array as $val) {
             if (!is_numeric($val)) {
@@ -122,7 +122,7 @@ class p_bundlingModel extends Model {
         }
         $where = array();
         $where['bl_id'] = array('in', $blid_array);
-        $where['store_id'] = $store_id;
+        $where['clic_id'] = $clic_id;
         $bl_list = $this->getBundlingList($where, 'bl_id');
         $bl_list = array_under_reset($bl_list, 'bl_id');
         $blid_array = array_keys($bl_list);
@@ -131,7 +131,7 @@ class p_bundlingModel extends Model {
         $where['bl_id'] = array('in', $blid_array);
         $rs = $this->table('p_bundling')->where($where)->delete();
         if ($rs) {
-            return $this->delBundlingGoods($where);
+            return $this->delBundlingdoctors($where);
         } else {
             return false;
         }
@@ -145,7 +145,7 @@ class p_bundlingModel extends Model {
     public function delBundlingForAdmin($condition) {
         $rs = $this->table('p_bundling')->where($condition)->delete();
         if ($rs) {
-            return $this->delBundlingGoods($condition);
+            return $this->delBundlingdoctors($condition);
         } else {
             return false;
         }
@@ -182,7 +182,7 @@ class p_bundlingModel extends Model {
      * @return array
      */
     public function getBundlingQuotaList($condition, $page = 10, $limit = 0) {
-        return $this->table('p_bundling_quota')->where($condition)->order('bl_quota_id desc')->limit($limit)->page($page)->select();
+        return $this->table('p_bundling_quota')->where($condition)->appointment('bl_quota_id desc')->limit($limit)->page($page)->select();
     }
     
     /**
@@ -241,11 +241,11 @@ class p_bundlingModel extends Model {
         if (empty($quota_list)) {
             return true;
         }
-        $storeid_array = array();
+        $clicid_array = array();
         foreach ($quota_list as $val) {
-            $storeid_array[] = $val['store_id'];
+            $clicid_array[] = $val['clic_id'];
         }
-        $where = array('store_id' => array('in', $storeid_array));
+        $where = array('clic_id' => array('in', $clicid_array));
         $update = array('bl_state' => self::STATE0);
         $this->editBundlingQuota($update, $where);
         $this->editBundling($update, $where);
@@ -276,12 +276,12 @@ class p_bundlingModel extends Model {
      * 
      * @param array $condition
      * @param string $field
-     * @param string $order
+     * @param string $appointment
      * @param string $group
      * @return array
      */
-    public function getBundlingGoodsList($condition, $field = '*', $order = 'bl_goods_id asc', $group = '') {
-        return $this->table('p_bundling_goods')->field($field)->where($condition)->group($group)->order($order)->select();
+    public function getBundlingdoctorsList($condition, $field = '*', $appointment = 'bl_doctors_id asc', $group = '') {
+        return $this->table('p_bundling_doctors')->field($field)->where($condition)->group($group)->appointment($appointment)->select();
     }
 
     /**
@@ -290,8 +290,8 @@ class p_bundlingModel extends Model {
      * @param unknown $insert
      * @return boolean
      */
-    public function addBundlingGoodsAll($insert) {
-        return $this->table('p_bundling_goods')->insertAll($insert);
+    public function addBundlingdoctorsAll($insert) {
+        return $this->table('p_bundling_doctors')->insertAll($insert);
     }
     
     /**
@@ -300,8 +300,8 @@ class p_bundlingModel extends Model {
      * @param array $condition
      * @return boolean
      */
-    public function delBundlingGoods($condition) {
-        return $this->table('p_bundling_goods')->where($condition)->delete();
+    public function delBundlingdoctors($condition) {
+        return $this->table('p_bundling_doctors')->where($condition)->delete();
     }
     
 }

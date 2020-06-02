@@ -110,13 +110,13 @@ $(document).ready(function(){
                     var image_content = '<dd class="picture-abstract"><h4><?php echo $lang['cms_image_abstract'];?></h4>';
                     image_content += '<textarea name="picture_image_abstract[]" rows="2" class="textarea">';
                     image_content += '</textarea></dd>';
-                    image_content += '<dd class="picture-add-goods">';
-                    image_content += '<input class="btn-type-s" nctype="btn_add_image_goods" image_name="'+result.file_name+'" type="button" value="添加商品" />';
+                    image_content += '<dd class="picture-add-doctors">';
+                    image_content += '<input class="btn-type-s" nctype="btn_add_image_doctors" image_name="'+result.file_name+'" type="button" value="添加商品" />';
                     image_content += '</dd>';
                     $image_box.find("dl").append(image_content);
 
-                    var image_goods_list = '<div class="goods-for-picture" nctype="image_goods_list"></div>';
-                    $image_box.append(image_goods_list);
+                    var image_doctors_list = '<div class="doctors-for-picture" nctype="image_doctors_list"></div>';
+                    $image_box.append(image_doctors_list);
 
                     $image_box.find("textarea").nc_text_count({max:140});
 
@@ -149,34 +149,34 @@ $(document).ready(function(){
     });
 
     //绑定商品
-    $("[nctype='btn_add_image_goods']").live('click', function() {
-        var add = '<div nctype="div_image_goods_add"><input class="text" style="width:235px;" nctype="image_goods_url" type="text" /><input class="btn-type-s" nctype="btn_goods_add_commit" type="button" image_name="'+$(this).attr("image_name")+'" value="<?php echo $lang['nc_confirm'];?>" /><input class="btn-type-s" nctype="btn_goods_add_cancel" type="button" value="<?php echo $lang['nc_cancel'];?>" /><div class="hint"><?php echo $lang['cms_picture_image_tips'];?></div></div>'; 
+    $("[nctype='btn_add_image_doctors']").live('click', function() {
+        var add = '<div nctype="div_image_doctors_add"><input class="text" style="width:235px;" nctype="image_doctors_url" type="text" /><input class="btn-type-s" nctype="btn_doctors_add_commit" type="button" image_name="'+$(this).attr("image_name")+'" value="<?php echo $lang['nc_confirm'];?>" /><input class="btn-type-s" nctype="btn_doctors_add_cancel" type="button" value="<?php echo $lang['nc_cancel'];?>" /><div class="hint"><?php echo $lang['cms_picture_image_tips'];?></div></div>'; 
         $(this).after(add);
         $(this).hide();
     });
 
     //绑定商品确认
-    $("[nctype='btn_goods_add_commit']").live('click', function() {
+    $("[nctype='btn_doctors_add_commit']").live('click', function() {
         var btn = $(this);
-        var goods_list = btn.parents("li").find("[nctype='image_goods_list']");
-        if(goods_list.find("dl").length < 3) {
-            var url = encodeURIComponent($(this).parent().find("[nctype='image_goods_url']").val());
+        var doctors_list = btn.parents("li").find("[nctype='image_doctors_list']");
+        if(doctors_list.find("dl").length < 3) {
+            var url = encodeURIComponent($(this).parent().find("[nctype='image_doctors_url']").val());
             var image_name = $(this).attr("image_name");
             if(url != '') {
-                $.getJSON("<?php echo CMS_SITE_URL.DS.'index.php?act=api&op=goods_info_by_url';?>", { url: url}, function(data){
+                $.getJSON("<?php echo CMS_SITE_URL.DS.'index.php?act=api&op=doctors_info_by_url';?>", { url: url}, function(data){
                     if(data.result == "true") {
                         var url_item = '<dl class="taobao-item">';
                         url_item += '<dt class="taobao-item-title"><a href="'+data.url+'" target="_blank">'+data.title+'</a></dt>';
                         url_item += '<dd class="taobao-item-img"><a href="'+data.url+'" target="_blank"><img src="'+data.image+'" alt="'+data.title+'" title="'+data.title+'" /></a></dd>';
                         url_item += '<dd class="taobao-item-price"><?php echo $lang['currency'];?><em>'+data.price+'</em></dd>';
-                        url_item += '<dd class="taobao-item-delete" nctype="btn_image_goods_delete"><?php echo $lang['cms_delete'];?></dd>';
-                        url_item += '<input name="image_goods_url['+image_name+'][]" type="hidden" value="'+data.url+'" />';
-                        url_item += '<input name="image_goods_image['+image_name+'][]" type="hidden" value="'+data.image+'" />';
-                        url_item += '<input name="image_goods_price['+image_name+'][]" type="hidden" value="'+data.price+'"/>';
-                        url_item += '<input name="image_goods_title['+image_name+'][]" type="hidden" value="'+data.title+'"/>';
+                        url_item += '<dd class="taobao-item-delete" nctype="btn_image_doctors_delete"><?php echo $lang['cms_delete'];?></dd>';
+                        url_item += '<input name="image_doctors_url['+image_name+'][]" type="hidden" value="'+data.url+'" />';
+                        url_item += '<input name="image_doctors_image['+image_name+'][]" type="hidden" value="'+data.image+'" />';
+                        url_item += '<input name="image_doctors_price['+image_name+'][]" type="hidden" value="'+data.price+'"/>';
+                        url_item += '<input name="image_doctors_title['+image_name+'][]" type="hidden" value="'+data.title+'"/>';
                         url_item += '</dl>';
-                        goods_list.append(url_item);
-                        btn.parent().parent().find("[nctype='btn_add_image_goods']").show();
+                        doctors_list.append(url_item);
+                        btn.parent().parent().find("[nctype='btn_add_image_doctors']").show();
                         btn.parent().remove();
                     } else {
                         alert(data.message);
@@ -187,13 +187,13 @@ $(document).ready(function(){
     });
 
     //绑定商品取消
-    $("[nctype='btn_goods_add_cancel']").live('click', function() {
-        $(this).parent().parent().find("[nctype='btn_add_image_goods']").show();
+    $("[nctype='btn_doctors_add_cancel']").live('click', function() {
+        $(this).parent().parent().find("[nctype='btn_add_image_doctors']").show();
         $(this).parent().remove();
     });
 
     //绑定商品删除
-    $("[nctype='btn_image_goods_delete']").live('click', function() {
+    $("[nctype='btn_image_doctors_delete']").live('click', function() {
         $(this).parent().remove();
     });
 
@@ -276,23 +276,23 @@ $(document).ready(function(){
                       <h4><?php echo $lang['cms_image_abstract'];?></h4>
                       <textarea name="picture_image_abstract[]" rows="2" class="textarea"><?php echo $value['image_abstract'];?></textarea>
                     </dd>
-                    <dd class="picture-add-goods">
-                      <input class="btn-type-s" nctype="btn_add_image_goods" image_name="<?php echo $value['image_name'];?>" type="button" value="<?php echo $lang['cms_goods_add'];?>" />
+                    <dd class="picture-add-doctors">
+                      <input class="btn-type-s" nctype="btn_add_image_doctors" image_name="<?php echo $value['image_name'];?>" type="button" value="<?php echo $lang['cms_doctors_add'];?>" />
                     </dd>
                   </dl>
-                  <div class="goods-for-picture" nctype="image_goods_list">
-                    <?php $image_goods_list = unserialize($value['image_goods']);?>
-                    <?php if(!empty($image_goods_list) && is_array($image_goods_list)) { ?>
-                    <?php foreach ($image_goods_list as $image_value) {?>
+                  <div class="doctors-for-picture" nctype="image_doctors_list">
+                    <?php $image_doctors_list = unserialize($value['image_doctors']);?>
+                    <?php if(!empty($image_doctors_list) && is_array($image_doctors_list)) { ?>
+                    <?php foreach ($image_doctors_list as $image_value) {?>
                     <dl class="taobao-item">
                       <dt class="taobao-item-title"><a href="<?php echo $image_value['url'];?>" target="_blank"><?php echo $image_value['title'];?></a></dt>
                       <dd class="taobao-item-img"><a href="<?php echo $image_value['link'];?>" target="_blank"> <img src="<?php echo $image_value['image'];?>" alt="<?php echo $image_value['title'];?>" title="<?php echo $image_value['title'];?>" /> </a> </dd>
                       <dd class="taobao-item-price"><?php echo $lang['currency'];?><em><?php echo $image_value['price'];?></em></dd>
-                      <dd class="taobao-item-delete" nctype="btn_image_goods_delete" title="<?php echo $lang['nc_delete'];?>"><?php echo $lang['nc_delete'];?></dd>
-                      <input name="image_goods_url[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['url'];?>" />
-                      <input name="image_goods_image[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['image'];?>" />
-                      <input name="image_goods_price[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['price'];?>"/>
-                      <input name="image_goods_title[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['title'];?>"/>
+                      <dd class="taobao-item-delete" nctype="btn_image_doctors_delete" title="<?php echo $lang['nc_delete'];?>"><?php echo $lang['nc_delete'];?></dd>
+                      <input name="image_doctors_url[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['url'];?>" />
+                      <input name="image_doctors_image[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['image'];?>" />
+                      <input name="image_doctors_price[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['price'];?>"/>
+                      <input name="image_doctors_title[<?php echo $value['image_name'];?>][]" type="hidden" value="<?php echo $image_value['title'];?>"/>
                     </dl>
                     <?php } ?>
                     <?php } ?>

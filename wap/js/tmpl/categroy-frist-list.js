@@ -1,6 +1,6 @@
 $(function() {
 	$.ajax({
-		url:ApiUrl+"/index.php?act=goods_class",
+		url:ApiUrl+"/index.php?act=doctors_class",
 		type:'get',
 		jsonp:'callback',
 		dataType:'jsonp',

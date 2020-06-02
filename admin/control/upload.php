@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class uploadControl extends SystemControl{
 	private $links = array(
 		array('url'=>'act=upload&op=param','lang'=>'upload_param'),
@@ -76,27 +76,27 @@ class uploadControl extends SystemControl{
 			$upload = new UploadFile();
 			$upload->set('default_dir',ATTACH_COMMON);
 			//默认商品图片
-			if (!empty($_FILES['default_goods_image']['tmp_name'])){
-                $upload->set('thumb_width', GOODS_IMAGES_WIDTH);
-                $upload->set('thumb_height', GOODS_IMAGES_HEIGHT);
-                $upload->set('thumb_ext', GOODS_IMAGES_EXT);
+			if (!empty($_FILES['default_doctors_image']['tmp_name'])){
+                $upload->set('thumb_width', doctorS_IMAGES_WIDTH);
+                $upload->set('thumb_height', doctorS_IMAGES_HEIGHT);
+                $upload->set('thumb_ext', doctorS_IMAGES_EXT);
 				$upload->set('filling',false);
-				$result = $upload->upfile('default_goods_image');
+				$result = $upload->upfile('default_doctors_image');
 				if ($result){
-					$_POST['default_goods_image'] = $upload->file_name;
+					$_POST['default_doctors_image'] = $upload->file_name;
 				}else {
 					showMessage($upload->error,'','','error');
 				}
 			}
 			//默认店铺标志
-			if (!empty($_FILES['default_store_logo']['tmp_name'])){
+			if (!empty($_FILES['default_clic_logo']['tmp_name'])){
 				$upload->set('file_name', '');
 				$upload->set('thumb_width',	0);
 				$upload->set('thumb_height',0);
 				$upload->set('thumb_ext',	false);
-				$result = $upload->upfile('default_store_logo');
+				$result = $upload->upfile('default_clic_logo');
 				if ($result){
-					$_POST['default_store_logo'] = $upload->file_name;
+					$_POST['default_clic_logo'] = $upload->file_name;
 				}else {
 					showMessage($upload->error,'','','error');
 				}
@@ -119,11 +119,11 @@ class uploadControl extends SystemControl{
 			}
 			$list_setting = $model_setting->getListSetting();
 			$update_array = array();
-			if (!empty($_POST['default_goods_image'])){
-				$update_array['default_goods_image'] = $_POST['default_goods_image'];
+			if (!empty($_POST['default_doctors_image'])){
+				$update_array['default_doctors_image'] = $_POST['default_doctors_image'];
 			}
-			if (!empty($_POST['default_store_logo'])){
-				$update_array['default_store_logo'] = $_POST['default_store_logo'];
+			if (!empty($_POST['default_clic_logo'])){
+				$update_array['default_clic_logo'] = $_POST['default_clic_logo'];
 			}
 			if (!empty($_POST['default_user_portrait'])){
 				$update_array['default_user_portrait'] = $_POST['default_user_portrait'];
@@ -135,15 +135,15 @@ class uploadControl extends SystemControl{
 			}
 			if ($result === true){
 				//判断有没有之前的图片，如果有则删除
-			    if (!empty($list_setting['default_goods_image']) && !empty($_POST['default_goods_image'])){
-			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['default_goods_image']);
-			        $img_ext = explode(',', GOODS_IMAGES_EXT);
+			    if (!empty($list_setting['default_doctors_image']) && !empty($_POST['default_doctors_image'])){
+			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['default_doctors_image']);
+			        $img_ext = explode(',', doctorS_IMAGES_EXT);
 			        foreach ($img_ext as $val) {
-			            @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.str_ireplace('.', $val . '.', $list_setting['default_goods_image']));
+			            @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.str_ireplace('.', $val . '.', $list_setting['default_doctors_image']));
 			        }
 			    }
-			    if (!empty($list_setting['default_store_logo']) && !empty($_POST['default_store_logo'])){
-			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['default_store_logo']);
+			    if (!empty($list_setting['default_clic_logo']) && !empty($_POST['default_clic_logo'])){
+			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['default_clic_logo']);
 			    }
 			    if (!empty($list_setting['default_user_portrait']) && !empty($_POST['default_user_portrait'])){
 			        @unlink(BASE_UPLOAD_PATH.DS.ATTACH_COMMON.DS.$list_setting['default_user_portrait']);

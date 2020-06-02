@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class paymentModel extends Model {
     /**
      * 开启状态标识
@@ -92,7 +92,7 @@ class paymentModel extends Model {
     /**
      * 购买商品
      */
-    public function productBuy($pay_sn, $payment_code, $member_id) {
+    public function docBuy($pay_sn, $payment_code, $member_id) {
         $condition = array();
         $condition['payment_code'] = $payment_code;
         $payment_info = $this->getPaymentOpenInfo($condition);
@@ -101,90 +101,90 @@ class paymentModel extends Model {
         }
 
         //验证订单信息
-	    $model_order = Model('order');
-	    $order_pay_info = $model_order->getOrderPayInfo(array('pay_sn'=>$pay_sn,'buyer_id'=>$member_id));
-	    if(empty($order_pay_info)){
+	    $model_appointment = Model('appointment');
+	    $appointment_pay_info = $model_appointment->getappointmentPayInfo(array('pay_sn'=>$pay_sn,'buyer_id'=>$member_id));
+	    if(empty($appointment_pay_info)){
             return array('error' => '该订单不存在');
 	    }
-	    $order_pay_info['subject'] = '商品购买_'.$order_pay_info['pay_sn'];
-	    $order_pay_info['order_type'] = 'product_buy';
+	    $appointment_pay_info['subject'] = '商品购买_'.$appointment_pay_info['pay_sn'];
+	    $appointment_pay_info['appointment_type'] = 'doc_buy';
 
 	    //重新计算在线支付且处于待支付状态的订单总额
         $condition = array();
         $condition['pay_sn'] = $pay_sn;
-        $condition['order_state'] = ORDER_STATE_NEW;
-        $order_list = $model_order->getOrderList($condition,'','order_id,order_sn,order_amount,pd_amount');
-        if (empty($order_list)) {
+        $condition['appointment_state'] = appointment_STATE_NEW;
+        $appointment_list = $model_appointment->getappointmentList($condition,'','appointment_id,appointment_sn,appointment_amount,pd_amount');
+        if (empty($appointment_list)) {
             return array('error' => '该订单不存在');
         }
 
         //计算本次需要在线支付的订单总金额
         $pay_amount = 0;
-        foreach ($order_list as $order_info) {
-                $pay_amount += ncPriceFormat(floatval($order_info['order_amount']) - floatval($order_info['pd_amount']));
+        foreach ($appointment_list as $appointment_info) {
+                $pay_amount += ncPriceFormat(floatval($appointment_info['appointment_amount']) - floatval($appointment_info['pd_amount']));
         }
 
         //如果为空，说明已经都支付过了或已经取消或者是价格为0的商品订单，全部返回
         if (empty($pay_amount)) {
             return array('error' => '订单金额为0，不需要支付');
         }
-        $order_pay_info['pay_amount'] = $pay_amount;
+        $appointment_pay_info['pay_amount'] = $pay_amount;
 
-        return(array('order_pay_info' => $order_pay_info, 'payment_info' => $payment_info));
+        return(array('appointment_pay_info' => $appointment_pay_info, 'payment_info' => $payment_info));
 
     }
 
     /**
      * 购买订单支付成功后修改订单状态
      */
-    public function updateProductBuy($out_trade_no, $payment_code, $order_list, $trade_no) {
+    public function updatedocBuy($out_trade_no, $payment_code, $appointment_list, $trade_no) {
 	    try {
-	        $model_order = Model('order');
+	        $model_appointment = Model('appointment');
 	        $model_pd = Model('predeposit');
-	        $model_order->beginTransaction();
+	        $model_appointment->beginTransaction();
 
 	        $data = array();
 	        $data['api_pay_state'] = 1;
-	        $update = $model_order->editOrderPay($data,array('pay_sn'=>$out_trade_no));
+	        $update = $model_appointment->editappointmentPay($data,array('pay_sn'=>$out_trade_no));
 	        if (!$update) {
 	            throw new Exception('更新订单状态失败');
 	        }
 
 	        $data = array();
-	        $data['order_state']	= ORDER_STATE_PAY;
+	        $data['appointment_state']	= appointment_STATE_PAY;
 	        $data['payment_time']	= TIMESTAMP;
 	        $data['payment_code']   = $payment_code;
-	        $update = $model_order->editOrder($data,array('pay_sn'=>$out_trade_no,'order_state'=>ORDER_STATE_NEW));
+	        $update = $model_appointment->editappointment($data,array('pay_sn'=>$out_trade_no,'appointment_state'=>appointment_STATE_NEW));
 	        if (!$update) {
 	            throw new Exception('更新订单状态失败');
 	        }
 
-            foreach($order_list as $order_info) {
+            foreach($appointment_list as $appointment_info) {
                 //如果有预存款支付的，彻底扣除冻结的预存款
-                $pd_amount = floatval($order_info['pd_amount']);
+                $pd_amount = floatval($appointment_info['pd_amount']);
                 if ($pd_amount > 0) {
                     $data_pd = array();
-                    $data_pd['member_id'] = $order_info['buyer_id'];
-                    $data_pd['member_name'] = $order_info['buyer_name'];
-                    $data_pd['amount'] = $order_info['pd_amount'];
-                    $data_pd['order_sn'] = $order_info['order_sn'];
-                    $model_pd->changePd('order_comb_pay',$data_pd);
+                    $data_pd['member_id'] = $appointment_info['buyer_id'];
+                    $data_pd['member_name'] = $appointment_info['buyer_name'];
+                    $data_pd['amount'] = $appointment_info['pd_amount'];
+                    $data_pd['appointment_sn'] = $appointment_info['appointment_sn'];
+                    $model_pd->changePd('appointment_comb_pay',$data_pd);
                 }
                 //记录订单日志
                 $data = array();
-                $data['order_id'] = $order_info['order_id'];
+                $data['appointment_id'] = $appointment_info['appointment_id'];
                 $data['log_role'] = 'buyer';
-                $data['log_msg'] = L('order_log_pay').' ( 支付平台交易号 : '.$trade_no.' )';
-                $data['log_orderstate'] = ORDER_STATE_PAY;
-                $insert = $model_order->addOrderLog($data);
+                $data['log_msg'] = L('appointment_log_pay').' ( 支付平台交易号 : '.$trade_no.' )';
+                $data['log_appointmentstate'] = appointment_STATE_PAY;
+                $insert = $model_appointment->addappointmentLog($data);
                 if (!$insert) {
                     throw new Exception('记录订单日志出现错误');
                 }
             }
-	        $model_order->commit();
+	        $model_appointment->commit();
             return array('success' => true);
 	    } catch (Exception $e) {
-	        $model_order->rollback();
+	        $model_appointment->rollback();
             return array('error' => $e->getMessage());
 	    }
 

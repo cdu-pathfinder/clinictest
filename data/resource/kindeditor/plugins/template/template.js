@@ -31,7 +31,7 @@ KindEditor.plugin('template', function(K) {
 				'</div>',
 				'<div class="ke-clearfix"></div>',
 				'</div>',
-				'<iframe class="ke-textarea" frameborder="0" style="width:458px;height:260px;background-color:#FFF;"></iframe>',
+				'<iframe class="ke-textarea" framebappointment="0" style="width:458px;height:260px;background-color:#FFF;"></iframe>',
 				'</div>'].join('');
 		var dialog = self.createDialog({
 			name : name,

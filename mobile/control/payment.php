@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class paymentControl extends mobileHomeControl{
 
@@ -33,12 +33,12 @@ class paymentControl extends mobileHomeControl{
             $payment_code = 'alipay';
 
             //验证成功		
-            $model_order = Model('order');
+            $model_appointment = Model('appointment');
             $model_payment = Model('payment');
 
-    		$order_list = $model_order->getOrderList(array('pay_sn'=>$out_trade_no,'order_state'=>ORDER_STATE_NEW));
+    		$appointment_list = $model_appointment->getappointmentList(array('pay_sn'=>$out_trade_no,'appointment_state'=>appointment_STATE_NEW));
 
-            $result = $model_payment->updateProductBuy($out_trade_no, $payment_code, $order_list, $trade_no);
+            $result = $model_payment->updatedocBuy($out_trade_no, $payment_code, $appointment_list, $trade_no);
             if(empty($result['error'])) {
                 Tpl::output('result', 'success');
                 Tpl::output('message', '支付成功');
@@ -80,13 +80,13 @@ class paymentControl extends mobileHomeControl{
                 //支付接口代码
                 $payment_code = 'alipay';
 
-                $model_order = Model('order');
+                $model_appointment = Model('appointment');
                 $model_payment = Model('payment');
 				
 				if($trade_status == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS') {
-                    $order_list = $model_order->getOrderList(array('pay_sn'=>$out_trade_no,'order_state'=>ORDER_STATE_NEW));
+                    $appointment_list = $model_appointment->getappointmentList(array('pay_sn'=>$out_trade_no,'appointment_state'=>appointment_STATE_NEW));
 
-                    $result = $model_payment->updateProductBuy($out_trade_no, $payment_code, $order_list, $trade_no);
+                    $result = $model_payment->updatedocBuy($out_trade_no, $payment_code, $appointment_list, $trade_no);
                     if(empty($result['error'])) {
 						echo "success";		//请不要修改或删除
 					}else{

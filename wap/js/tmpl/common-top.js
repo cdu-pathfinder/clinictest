@@ -13,7 +13,7 @@ $(function (){
 		    				+'<span class="i-home"></span>'
 		    				+'<p>home</p>'
 		    			+'</a>'
-		    			+'<a href="'+WapSiteUrl+'/tmpl/product_first_categroy.html" class="quarter">'
+		    			+'<a href="'+WapSiteUrl+'/tmpl/doc_first_categroy.html" class="quarter">'
 		    				+'<span class="i-categroy"></span>'
 		    				+'<p>categories</p>'
 		    			+'</a>'

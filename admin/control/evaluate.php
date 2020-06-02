@@ -8,7 +8,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class evaluateControl extends SystemControl{
 	public function __construct() {
 		parent::__construct();
@@ -16,44 +16,44 @@ class evaluateControl extends SystemControl{
 	}
 
 	public function indexOp() {
-		$this->evalgoods_listOp();
+		$this->evaldoctors_listOp();
 	}
 
 	/**
 	 * 商品来自买家的评价列表
 	 */
-	public function evalgoods_listOp() {
-		$model_evaluate_goods = Model('evaluate_goods');
+	public function evaldoctors_listOp() {
+		$model_evaluate_doctors = Model('evaluate_doctors');
 
 		$condition = array();
 		//商品名称
-		if (!empty($_GET['goods_name'])) {
-			$condition['geval_goodsname'] = array('like', '%'.$_GET['goods_name'].'%');
+		if (!empty($_GET['doctors_name'])) {
+			$condition['geval_doctorsname'] = array('like', '%'.$_GET['doctors_name'].'%');
 		}
 		//店铺名称
-		if (!empty($_GET['store_name'])) {
-			$condition['geval_storename'] = array('like', '%'.$_GET['store_name'].'%');
+		if (!empty($_GET['clic_name'])) {
+			$condition['geval_clicname'] = array('like', '%'.$_GET['clic_name'].'%');
 		}
         $condition['geval_addtime'] = array('time', array(strtotime($_GET['stime']), strtotime($_GET['etime'])));
-		$evalgoods_list	= $model_evaluate_goods->getEvaluateGoodsList($condition, 10);
+		$evaldoctors_list	= $model_evaluate_doctors->getEvaluatedoctorsList($condition, 10);
 
-		Tpl::output('show_page',$model_evaluate_goods->showpage());
-		Tpl::output('evalgoods_list',$evalgoods_list);
-		Tpl::showpage('evalgoods.index');
+		Tpl::output('show_page',$model_evaluate_doctors->showpage());
+		Tpl::output('evaldoctors_list',$evaldoctors_list);
+		Tpl::showpage('evaldoctors.index');
 	}
 
 	/**
 	 * 删除商品评价
 	 */
-	public function evalgoods_delOp() {
+	public function evaldoctors_delOp() {
 		$geval_id = intval($_POST['geval_id']);
 		if ($geval_id <= 0) {
 			showMessage(Language::get('param_error'),'','','error');
 		}
 
-		$model_evaluate_goods = Model('evaluate_goods');
+		$model_evaluate_doctors = Model('evaluate_doctors');
 
-		$result = $model_evaluate_goods->delEvaluateGoods(array('geval_id'=>$geval_id));
+		$result = $model_evaluate_doctors->delEvaluatedoctors(array('geval_id'=>$geval_id));
 
 		if ($result) {
             $this->log('删除商品评价，评价编号'.$geval_id);
@@ -66,38 +66,38 @@ class evaluateControl extends SystemControl{
 	/**
 	 * 店铺动态评价列表
 	 */
-	public function evalstore_listOp() {
-        $model_evaluate_store = Model('evaluate_store');
+	public function evalclic_listOp() {
+        $model_evaluate_clic = Model('evaluate_clic');
 
 		$condition = array();
 		//商品名称
-		if (!empty($_GET['goods_name'])) {
-			$condition['geval_goodsname'] = array('like', '%'.$_GET['goods_name'].'%');
+		if (!empty($_GET['doctors_name'])) {
+			$condition['geval_doctorsname'] = array('like', '%'.$_GET['doctors_name'].'%');
 		}
 		//店铺名称
-		if (!empty($_GET['store_name'])) {
-			$condition['geval_storename'] = array('like', '%'.$_GET['store_name'].'%');
+		if (!empty($_GET['clic_name'])) {
+			$condition['geval_clicname'] = array('like', '%'.$_GET['clic_name'].'%');
 		}
         $condition['seval_addtime_gt'] = array('time', array(strtotime($_GET['stime']), strtotime($_GET['etime'])));
 
-		$evalstore_list	= $model_evaluate_store->getEvaluateStoreList($condition, 10);
-		Tpl::output('show_page',$model_evaluate_store->showpage());
-		Tpl::output('evalstore_list',$evalstore_list);
-		Tpl::showpage('evalstore.index');
+		$evalclic_list	= $model_evaluate_clic->getEvaluateclicList($condition, 10);
+		Tpl::output('show_page',$model_evaluate_clic->showpage());
+		Tpl::output('evalclic_list',$evalclic_list);
+		Tpl::showpage('evalclic.index');
 	}
 
 	/**
 	 * 删除店铺评价
 	 */
-	public function evalstore_delOp() {
+	public function evalclic_delOp() {
 		$seval_id = intval($_POST['seval_id']);
 		if ($seval_id <= 0) {
 			showMessage(Language::get('param_error'),'','','error');
 		}
 
-		$model_evaluate_store = Model('evaluate_store');
+		$model_evaluate_clic = Model('evaluate_clic');
 
-		$result = $model_evaluate_store->delEvaluateStore(array('seval_id'=>$seval_id));
+		$result = $model_evaluate_clic->delEvaluateclic(array('seval_id'=>$seval_id));
 
 		if ($result) {
             $this->log('删除店铺评价，评价编号'.$geval_id);

@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * core简体语言包
@@ -9,14 +9,14 @@ $lang['please_check_your_url_arg'] = 'Please check url ,Error';
 $lang['error_info'] = 'Error information';
 $lang['solution'] = 'Solution';
 $lang['please_login_in'] = 'Please login';
-$lang['shopnc_bbs'] = '官方论坛';
+$lang['clinicnc_bbs'] = '官方论坛';
 $lang['found_answer'] = '，将您发现的问题告诉我们，并寻求帮助！';
 $lang['company_name'] = '天津市网城天创科技有限责任公司';
 
 $lang['please_check_your_system_chmod'] = '系统配置信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_area'] = '地区缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_cache_type'] = 'Error,Please hceck your cache type!';
-$lang['please_check_your_system_chmod_goods'] = '商品类别缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
+$lang['please_check_your_system_chmod_doctors'] = '商品类别缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_ad'] = '广告信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 $lang['please_check_your_system_chmod_adv'] = '广告位信息缓存文件不能写入，请检查文件以及文件夹权限是否正确!';
 
@@ -46,12 +46,12 @@ $lang['upload_image_is_not_image'] = '非法图像文件';
 $lang['upload_image_mime_error'] = '图像文件类型非法';
 $lang['upload_file_attack'] = '非法上传文件';
 
-$lang['order_state_cancel'] = 'Cancel';
-$lang['order_state_new'] = 'Pending payment';
-$lang['order_state_pay'] = '待发货';
-$lang['order_state_send'] = '待收货';
-$lang['order_state_success'] = '交易完成';
-$lang['order_state_eval'] = '已评价';
+$lang['appointment_state_cancel'] = 'Cancel';
+$lang['appointment_state_new'] = 'Pending payment';
+$lang['appointment_state_pay'] = '待发货';
+$lang['appointment_state_send'] = '待收货';
+$lang['appointment_state_success'] = '交易完成';
+$lang['appointment_state_eval'] = '已评价';
 
 
 

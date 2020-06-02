@@ -1,17 +1,17 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 模块文字
  */
-$lang['nc_microshop']			    = "微商城";
-$lang['nc_microshop_goods']			= "随心看";
-$lang['nc_microshop_goods_content']			= "随心看的商品";
-$lang['nc_microshop_album']			= "爱专辑";
-$lang['nc_microshop_personal']		= "个人秀";
-$lang['nc_microshop_personal_content']		= "个人秀的展示";
-$lang['nc_microshop_store']			= "店铺街";
-$lang['nc_microshop_store_content']			= "店铺街的微店铺";
-$lang['nc_microshop_like']			= "喜欢";
+$lang['nc_microclinic']			    = "微商城";
+$lang['nc_microclinic_doctors']			= "随心看";
+$lang['nc_microclinic_doctors_content']			= "随心看的商品";
+$lang['nc_microclinic_album']			= "爱专辑";
+$lang['nc_microclinic_personal']		= "个人秀";
+$lang['nc_microclinic_personal_content']		= "个人秀的展示";
+$lang['nc_microclinic_clic']			= "店铺街";
+$lang['nc_microclinic_clic_content']			= "店铺街的微店铺";
+$lang['nc_microclinic_like']			= "喜欢";
 
 
 $lang['nc_common_pselect']	=  '请选择...';
@@ -22,8 +22,8 @@ $lang['nc_common_price']		= '价格';
 $lang['nc_common_goto']		= '去看看';
 $lang['piece']				= '件';
 $lang['welcome_to_site']	= 'Welcome to';
-$lang['site_search_goods']	= "商品";
-$lang['site_search_store']	= "店铺";
+$lang['site_search_doctors']	= "商品";
+$lang['site_search_clic']	= "店铺";
 $lang['site_search_groupbuy']	= "团购";
 $lang['hot_search']			= 'Most searched';
 $lang['nc_colon']			= '：';
@@ -94,28 +94,28 @@ $lang['nc_help_center']	= "帮助中心";
 $lang['nc_more_links']	= "更多链接";
 $lang['nc_index']		= "首页";
 $lang['nc_cart']			= "购物车";
-$lang['nc_kindof_goods']	= "种商品";
+$lang['nc_kindof_doctors']	= "种商品";
 $lang['nc_favorites']		= "我的收藏";
 $lang['nc_nothing']			= "无";
 $lang['nc_filter'] = '筛选';
-$lang['nc_all_goods'] = '全部商品';
+$lang['nc_all_doctors'] = '全部商品';
 $lang['nc_search'] = '搜索';
 $lang['nc_publish'] = '发布';
 
-$lang['nc_buying_goods']			= "已买到的商品";
+$lang['nc_buying_doctors']			= "已买到的商品";
 $lang['nc_mysns']					= "个人主页";
 $lang['nc_myfriends']				= "我的好友";
-$lang['nc_selled_goods']			= "已售出的商品";
-$lang['nc_selling_goods']			= "销售中的商品";
+$lang['nc_selled_doctors']			= "已售出的商品";
+$lang['nc_selling_doctors']			= "销售中的商品";
 $lang['nc_mystroe']					= "我的店铺";
-$lang['nc_favorites_goods']			= "收藏的商品";
+$lang['nc_favorites_doctors']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
-$lang['nc_cart_no_goods']			= "You haven't made an appointment yet";
+$lang['nc_cart_no_doctors']			= "You haven't made an appointment yet";
 $lang['nc_check_cart']				= "查看购物车";
-$lang['nc_accounts_goods']			= "结算商品";
+$lang['nc_accounts_doctors']			= "结算商品";
 $lang['nc_delete']					= "删除";
-$lang['nc_goods_num_one']			= "共";
-$lang['nc_goods_num_two']			= "种商品   金额总计";
+$lang['nc_doctors_num_one']			= "共";
+$lang['nc_doctors_num_two']			= "种商品   金额总计";
 $lang['nc_sign_multiply']			= "×";
 
 
@@ -142,6 +142,6 @@ $lang['pre_page'] = '上一页';
 $lang['next_page'] = '下一页';
 
 $lang['micro_personal_limit_error'] = '您发布个人秀的数量已经超过了平台限制';
-$lang['micro_api_store_info'] = '去店铺街查看该店';
+$lang['micro_api_clic_info'] = '去店铺街查看该店';
 
 

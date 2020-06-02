@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class loginControl extends BaseCircleControl {
 
@@ -70,7 +70,7 @@ class loginControl extends BaseCircleControl {
 	public function loginoutOp(){
 	    session_unset();
 	    session_destroy();
-	    setNcCookie('goodsnum','',-3600);
+	    setNcCookie('doctorsnum','',-3600);
 		showDialog(L('login_logout_success'),'','succ','',2);
 	}
 

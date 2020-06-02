@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class manage_informControl extends BaseCircleManageControl{
 	public function __construct(){
@@ -74,7 +74,7 @@ class manage_informControl extends BaseCircleManageControl{
 		$where['circle_id']	= $this->c_id;
 		$where['inform_state'] = $_GET['type'] == 'treated' ? 1 : 0;
 		
-		$inform_list = $model->table('circle_inform')->where($where)->page(10)->order('inform_id desc')->select();
+		$inform_list = $model->table('circle_inform')->where($where)->page(10)->appointment('inform_id desc')->select();
 		// tidy
 		if(!empty($inform_list)){
 			foreach ($inform_list as $key=>$val){

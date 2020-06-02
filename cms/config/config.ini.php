@@ -1,10 +1,10 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 //网站地址，最后不要斜杠
 //$config['site_url']					= '';	//可以留空
-//$config['cms_site_url'] = 'http://127.0.0.1/ShopNC_V2.5/trunk/modules/cms';
-//$config['cms_site_url_original'] = 'http://127.0.0.1/ShopNC_V2.5/trunk/modules/cms';
+//$config['cms_site_url'] = 'http://127.0.0.1/clinicNC_V2.5/trunk/modules/cms';
+//$config['cms_site_url_original'] = 'http://127.0.0.1/clinicNC_V2.5/trunk/modules/cms';
 //静态文件地址
 $config['cms_static_url'] = '';
 //微商城图片url，默认请留空

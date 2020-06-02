@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class apiControl extends CMSHomeControl{
 
 	public function __construct() {
@@ -19,22 +19,22 @@ class apiControl extends CMSHomeControl{
     /**
      * 商品列表
      */
-	public function goods_listOp() {
-		$model_goods = Model('goods');
+	public function doctors_listOp() {
+		$model_doctors = Model('doctors');
 		$page	= new Page();
 		$page->setEachNum(6);
 		$page->setStyle('1');
 		$condition = array();
-        if($_GET['search_type'] == 'goods_url') {
-            $condition['goods_id'] = intval($_GET['search_keyword']);
+        if($_GET['search_type'] == 'doctors_url') {
+            $condition['doctors_id'] = intval($_GET['search_keyword']);
         } else {
-            $condition['goods_name'] = trim($_GET['search_keyword']);
+            $condition['doctors_name'] = trim($_GET['search_keyword']);
         }
-		$condition['goods_show'] = '1';//上架:1是,0否
-		$goods_list = $model_goods->getGoods($condition,$page,'goods.goods_id,goods.goods_name,goods.store_id,goods.goods_image,goods.goods_store_price','goods');
+		$condition['doctors_show'] = '1';//上架:1是,0否
+		$doctors_list = $model_doctors->getdoctors($condition,$page,'doctors.doctors_id,doctors.doctors_name,doctors.clic_id,doctors.doctors_image,doctors.doctors_clic_price','doctors');
 		Tpl::output('show_page',$page->show());
-		Tpl::output('goods_list',$goods_list);
-		Tpl::showpage('api_goods_list','null_layout');
+		Tpl::output('doctors_list',$doctors_list);
+		Tpl::showpage('api_doctors_list','null_layout');
 	}
 
     /**
@@ -60,17 +60,17 @@ class apiControl extends CMSHomeControl{
     /**
      * 图片商品添加
      */
-    public function goods_info_by_urlOp() {
+    public function doctors_info_by_urlOp() {
         $url = urldecode($_GET['url']);
         if(empty($url)) {
-            self::return_json(Language::get('goods_not_exist'), 'false');
+            self::return_json(Language::get('doctors_not_exist'), 'false');
         }
-        $model_goods_info = Model('goods_info_by_url');
-        $result = $model_goods_info->get_goods_info_by_url($url);
+        $model_doctors_info = Model('doctors_info_by_url');
+        $result = $model_doctors_info->get_doctors_info_by_url($url);
         if($result) {
             self::echo_json($result);
         } else {
-            self::return_json(Language::get('goods_not_exist'), 'false');
+            self::return_json(Language::get('doctors_not_exist'), 'false');
         }
     }
 

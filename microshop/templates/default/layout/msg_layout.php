@@ -1,6 +1,6 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
-<?php require MICROSHOP_BASE_TPL_PATH.'/layout/top.php';?>
-<div id="microshop-content">
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
+<?php require MICROclinic_BASE_TPL_PATH.'/layout/top.php';?>
+<div id="microclinic-content">
     <div class="wrap-shadow">
         <div class="wrap-all" >
             <?php if($output['msg_type'] == 'error'){ ?>
@@ -26,4 +26,4 @@
     </script>
     <?php require_once($tpl_file);?>
 </div>
-<?php require MICROSHOP_BASE_TPL_PATH.'/layout/footer.php';?>
+<?php require MICROclinic_BASE_TPL_PATH.'/layout/footer.php';?>

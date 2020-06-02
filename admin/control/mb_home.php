@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class mb_homeControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -27,8 +27,8 @@ class mb_homeControl extends SystemControl{
 		Tpl::output('h_list',$h_list);
 
 		//商品分类
-		$goods_class = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
-		Tpl::output('goods_class',$goods_class);		
+		$doctors_class = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
+		Tpl::output('doctors_class',$doctors_class);		
 
 		Tpl::showpage('mb_home.list');
 	}

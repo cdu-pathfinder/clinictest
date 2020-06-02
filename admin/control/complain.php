@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class complainControl extends SystemControl {
     //定义投诉状态常量
     const STATE_NEW = 10;
@@ -84,9 +84,9 @@ class complainControl extends SystemControl {
         $condition['complain_datetime_start'] = strtotime($_GET['input_complain_datetime_start']);
         $condition['complain_datetime_end'] = strtotime($_GET['input_complain_datetime_end']);
         if($op === 'complain_finish_list') {
-            $condition['order'] = 'complain_id desc';
+            $condition['appointment'] = 'complain_id desc';
         } else {
-            $condition['order'] = 'complain_id asc';
+            $condition['appointment'] = 'complain_id asc';
         }
         $condition['complain_state'] = $complain_state;
         $complain_list = $model_complain->getComplain($condition,$page) ;
@@ -105,20 +105,20 @@ class complainControl extends SystemControl {
         //获取投诉详细信息
         $complain_info = $this->get_complain_info($complain_id);
         //获取订单详细信息
-        $order_info = $this->get_order_info($complain_info['order_id']);
+        $appointment_info = $this->get_appointment_info($complain_info['appointment_id']);
         //获取投诉的商品列表
-        $complain_goods_list = $this->get_complain_goods_list($complain_id);
+        $complain_doctors_list = $this->get_complain_doctors_list($complain_id);
         if(intval($complain_info['complain_subject_id']) == 1) {//退款信息
             $model_refund = Model('refund_return');
             $model_refund->getRefundStateArray();//向模板页面输出退款退货状态
-            $list = $model_refund->getComplainRefundList($order_info);
+            $list = $model_refund->getComplainRefundList($appointment_info);
             Tpl::output('refund_list',$list['refund']);//已退或处理中商品
-            Tpl::output('refund_goods',$list['goods']);//可退商品
+            Tpl::output('refund_doctors',$list['doctors']);//可退商品
         }
         $this->show_menu('complain_progress');
-        Tpl::output('order_info',$order_info);
+        Tpl::output('appointment_info',$appointment_info);
         Tpl::output('complain_info',$complain_info);
-        Tpl::output('complain_goods_list',$complain_goods_list);
+        Tpl::output('complain_doctors_list',$complain_doctors_list);
         Tpl::showpage('complain.info');
     }
 
@@ -177,26 +177,26 @@ class complainControl extends SystemControl {
             $where_array['complain_id'] = $complain_id;
             if($model_complain->updateComplain($update_array,$where_array)) {
             	if(intval($complain_info['complain_subject_id']) == 1) {//退款信息
-                    $order = $this->get_order_info($complain_info['order_id']);
+                    $appointment = $this->get_appointment_info($complain_info['appointment_id']);
             	    $model_refund = Model('refund_return');
-            	    $list = $model_refund->getComplainRefundList($order);
-            	    $refund_goods = $list['goods'];//可退商品
-            	    if (!empty($refund_goods) && is_array($refund_goods)) {
-            	        $checked_goods = $_POST['checked_goods'];
-            	        foreach ($refund_goods as $key => $value) {
-            	            $goods_id = $value['rec_id'];//订单商品表编号
-            	            if (!empty($checked_goods) && array_key_exists($goods_id,$checked_goods)) {//验证提交的商品属于订单
+            	    $list = $model_refund->getComplainRefundList($appointment);
+            	    $refund_doctors = $list['doctors'];//可退商品
+            	    if (!empty($refund_doctors) && is_array($refund_doctors)) {
+            	        $checked_doctors = $_POST['checked_doctors'];
+            	        foreach ($refund_doctors as $key => $value) {
+            	            $doctors_id = $value['rec_id'];//订单商品表编号
+            	            if (!empty($checked_doctors) && array_key_exists($doctors_id,$checked_doctors)) {//验证提交的商品属于订单
             	                $refund_array = array();
             	                $refund_array['refund_type'] = '1';//类型:1为退款,2为退货
-            	                $refund_array['seller_state'] = '2';//卖家处理状态:1为待审核,2为同意,3为不同意
+            	                $refund_array['clinicer_state'] = '2';//卖家处理状态:1为待审核,2为同意,3为不同意
             	                $refund_array['refund_state'] = '2';//状态:1为处理中,2为待管理员处理,3为已完成
-            	                $refund_array['order_lock'] = '1';//锁定类型:1为不用锁定,2为需要锁定
-            	                $refund_array['refund_amount'] = ncPriceFormat($value['goods_refund']);
+            	                $refund_array['appointment_lock'] = '1';//锁定类型:1为不用锁定,2为需要锁定
+            	                $refund_array['refund_amount'] = ncPriceFormat($value['doctors_refund']);
             	                $refund_array['buyer_message'] = '投诉成功,待管理员确认退款';
-            	                $refund_array['seller_message'] = '投诉成功,待管理员确认退款';
+            	                $refund_array['clinicer_message'] = '投诉成功,待管理员确认退款';
             	                $refund_array['add_time'] = time();
-            	                $refund_array['seller_time'] = time();
-            	                $model_refund->addRefundReturn($refund_array,$order,$value);
+            	                $refund_array['clinicer_time'] = time();
+            	                $model_refund->addRefundReturn($refund_array,$appointment,$value);
             	            }
             	        }
             	    }
@@ -227,7 +227,7 @@ class complainControl extends SystemControl {
         $model_complain_subject = Model('complain_subject') ;
         //搜索条件
         $condition = array();
-        $condition['order'] = 'complain_subject_id asc';
+        $condition['appointment'] = 'complain_subject_id asc';
         $condition['complain_subject_state'] = 1;
         $complain_subject_list = $model_complain_subject->getComplainSubject($condition,$page) ;
         $this->show_menu('complain_subject_list');
@@ -421,14 +421,14 @@ class complainControl extends SystemControl {
     /*
      * 获取订单信息
      */
-    private function get_order_info($order_id) {
-        $model_order = Model('order');
-        $order_info = $model_order->getOrderInfo(array('order_id' => $order_id),array('order_goods'));
-        if(empty($order_info)) {
+    private function get_appointment_info($appointment_id) {
+        $model_appointment = Model('appointment');
+        $appointment_info = $model_appointment->getappointmentInfo(array('appointment_id' => $appointment_id),array('appointment_doctors'));
+        if(empty($appointment_info)) {
             showMessage(Language::get('param_error'));
         }
-        $order_info['order_state_text'] = orderState($order_info);
-        return $order_info;
+        $appointment_info['appointment_state_text'] = appointmentState($appointment_info);
+        return $appointment_info;
     }
 
     /*
@@ -447,12 +447,12 @@ class complainControl extends SystemControl {
     /*
      * 获取投诉商品列表
      */
-    private function get_complain_goods_list($complain_id) {
-        $model_complain_goods = Model('complain_goods');
+    private function get_complain_doctors_list($complain_id) {
+        $model_complain_doctors = Model('complain_doctors');
         $param = array();
         $param['complain_id'] = $complain_id;
-        $complain_goods_list = $model_complain_goods->getComplainGoods($param);
-        return $complain_goods_list;
+        $complain_doctors_list = $model_complain_doctors->getComplaindoctors($param);
+        return $complain_doctors_list;
     }
 
     /*

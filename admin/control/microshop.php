@@ -10,19 +10,19 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class microshopControl extends SystemControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class microclinicControl extends SystemControl{
 
-    const MICROSHOP_CLASS_LIST = 'index.php?act=microshop&op=goodsclass_list';
-    const GOODS_FLAG = 1;
+    const MICROclinic_CLASS_LIST = 'index.php?act=microclinic&op=doctorsclass_list';
+    const doctorS_FLAG = 1;
     const PERSONAL_FLAG = 2;
     const ALBUM_FLAG = 3;
-    const STORE_FLAG = 4;
+    const clic_FLAG = 4;
 
 	public function __construct(){
 		parent::__construct();
-		Language::read('store');
-		Language::read('microshop');
+		Language::read('clic');
+		Language::read('microclinic');
 	}
 
 //	public function indexOp() {
@@ -37,7 +37,7 @@ class microshopControl extends SystemControl{
         $setting_list = $model_setting->getListSetting();
         Tpl::output('setting',$setting_list);
         $this->show_menu('manage');
-        Tpl::showpage('microshop_manage');
+        Tpl::showpage('microclinic_manage');
 	}
 
 	/**
@@ -46,35 +46,35 @@ class microshopControl extends SystemControl{
 	public function manage_saveOp() {
         $model_setting = Model('setting');
         $update_array = array();
-        $update_array['microshop_isuse'] = intval($_POST['microshop_isuse']);
-        $update_array['microshop_style'] = trim($_POST['microshop_style']);
-        $update_array['microshop_personal_limit'] = intval($_POST['microshop_personal_limit']);
+        $update_array['microclinic_isuse'] = intval($_POST['microclinic_isuse']);
+        $update_array['microclinic_style'] = trim($_POST['microclinic_style']);
+        $update_array['microclinic_personal_limit'] = intval($_POST['microclinic_personal_limit']);
         $old_image = array();
-        if(!empty($_FILES['microshop_logo']['name'])) {
+        if(!empty($_FILES['microclinic_logo']['name'])) {
             $upload	= new UploadFile();
-            $upload->set('default_dir',ATTACH_MICROSHOP);
-            $result = $upload->upfile('microshop_logo');
+            $upload->set('default_dir',ATTACH_MICROclinic);
+            $result = $upload->upfile('microclinic_logo');
             if(!$result) {
                 showMessage($upload->error);
             }
-            $update_array['microshop_logo'] = $upload->file_name;
-            $old_image[] = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.C('microshop_logo');
+            $update_array['microclinic_logo'] = $upload->file_name;
+            $old_image[] = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.C('microclinic_logo');
         }
-        if(!empty($_FILES['microshop_header_pic']['name'])) {
+        if(!empty($_FILES['microclinic_header_pic']['name'])) {
             $upload	= new UploadFile();
-            $upload->set('default_dir',ATTACH_MICROSHOP);
-            $result = $upload->upfile('microshop_header_pic');
+            $upload->set('default_dir',ATTACH_MICROclinic);
+            $result = $upload->upfile('microclinic_header_pic');
             if(!$result) {
                 showMessage($upload->error);
             }
-            $update_array['microshop_header_pic'] = $upload->file_name;
-            $old_image[] = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.C('microshop_header_pic');
+            $update_array['microclinic_header_pic'] = $upload->file_name;
+            $old_image[] = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.C('microclinic_header_pic');
         }
         $update_array['taobao_api_isuse'] = intval($_POST['taobao_api_isuse']);
         $update_array['taobao_app_key'] = $_POST['taobao_app_key'];
         $update_array['taobao_secret_key'] = $_POST['taobao_secret_key'];
-        $update_array['microshop_seo_keywords'] = $_POST['microshop_seo_keywords'];
-        $update_array['microshop_seo_description'] = $_POST['microshop_seo_description'];
+        $update_array['microclinic_seo_keywords'] = $_POST['microclinic_seo_keywords'];
+        $update_array['microclinic_seo_description'] = $_POST['microclinic_seo_description'];
 
         $result = $model_setting->updateSetting($update_array);
         if ($result === true){
@@ -94,8 +94,8 @@ class microshopControl extends SystemControl{
     /**
      * 微商城商品(随心看)分类管理
      **/
-    public function goodsclass_listOp() {
-        $this->class_list('goods');
+    public function doctorsclass_listOp() {
+        $this->class_list('doctors');
     }
 
     /**
@@ -111,27 +111,27 @@ class microshopControl extends SystemControl{
         Tpl::output('list',$list);
         $menu_function = "show_menu_{$type}_class";
         $this->{$menu_function}("{$type}_class_list");
-        Tpl::showpage("microshop_{$type}_class.list");
+        Tpl::showpage("microclinic_{$type}_class.list");
     }
 
     /**
      * 微商城商品(随心看)分类添加
      **/
-    public function goodsclass_addOp() {
+    public function doctorsclass_addOp() {
         //取得一级分类列表
-        $model_microshop_goods_class = Model('micro_goods_class');
+        $model_microclinic_doctors_class = Model('micro_doctors_class');
         $condition = array();
         $condition['class_parent_id'] = 0;
-        $goods_class_list = $model_microshop_goods_class->getList($condition);
-        Tpl::output('list',$goods_class_list);
+        $doctors_class_list = $model_microclinic_doctors_class->getList($condition);
+        Tpl::output('list',$doctors_class_list);
 
         $class_parent_id = intval($_GET['class_parent_id']);
         if(!empty($class_parent_id)) {
             Tpl::output('class_parent_id',$class_parent_id);
         }
 
-        $this->show_menu_goods_class('goods_class_add');
-        Tpl::showpage('microshop_goods_class.add');
+        $this->show_menu_doctors_class('doctors_class_add');
+        Tpl::showpage('microclinic_doctors_class.add');
     }
 
     /**
@@ -139,15 +139,15 @@ class microshopControl extends SystemControl{
      **/
     public function personalclass_addOp() {
         $this->show_menu_personal_class('personal_class_add');
-        Tpl::showpage('microshop_personal_class.add');
+        Tpl::showpage('microclinic_personal_class.add');
     }
 
 
     /**
      * 微商城商品(随心看)分类编辑
      **/
-    public function goodsclass_editOp() {
-        $this->class_edit('goods');
+    public function doctorsclass_editOp() {
+        $this->class_edit('doctors');
     }
 
     /**
@@ -170,14 +170,14 @@ class microshopControl extends SystemControl{
 
         $menu_function = "show_menu_{$type}_class";
         $this->{$menu_function}("{$type}_class_edit");
-        Tpl::showpage("microshop_{$type}_class.add");
+        Tpl::showpage("microclinic_{$type}_class.add");
     }
 
     /**
      * 微商城商品(随心看)分类保存
      **/
-    public function goodsclass_saveOp() {
-        $this->class_save('goods');
+    public function doctorsclass_saveOp() {
+        $this->class_save('doctors');
     }
 
     /**
@@ -197,7 +197,7 @@ class microshopControl extends SystemControl{
             array('input'=>$_POST['class_name'],'require'=>'true',"validator"=>"Length","min"=>"1","max"=>"10",'message'=>Language::get('class_name_error')),
             array('input'=>$_POST['class_sort'],'require'=>'true','validator'=>'Range','min'=>0,'max'=>255,'message'=>Language::get('class_sort_error')),
         );
-        if($type == 'goods') {
+        if($type == 'doctors') {
             $validate_array[] = array('input'=>$_POST['class_parent_id'],'require'=>'true','validator'=>'Number','message'=>Language::get('parent_id_error'));
         }
         $obj_validate->validateparam = $validate_array;
@@ -217,7 +217,7 @@ class microshopControl extends SystemControl{
         $param['class_sort'] = intval($_POST['class_sort']);
         if(!empty($_FILES['class_image']['name'])) {
             $upload	= new UploadFile();
-            $upload->set('default_dir',ATTACH_MICROSHOP);
+            $upload->set('default_dir',ATTACH_MICROclinic);
             $result = $upload->upfile('class_image');
             if(!$result) {
                 showMessage($upload->error);
@@ -225,7 +225,7 @@ class microshopControl extends SystemControl{
             $param['class_image'] = $upload->file_name;
             //删除老图片
             if(!empty($_POST['old_class_image'])) {
-                $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$_POST['old_class_image'];
+                $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$_POST['old_class_image'];
                 if(is_file($old_image)) {
                     unlink($old_image);
                 }
@@ -239,9 +239,9 @@ class microshopControl extends SystemControl{
             $result = $model_class->save($param);
         }
         if($result) {
-            showMessage(Language::get('class_add_success'),"index.php?act=microshop&op={$type}class_list");
+            showMessage(Language::get('class_add_success'),"index.php?act=microclinic&op={$type}class_list");
         } else {
-            showMessage(Language::get('class_add_fail'),"index.php?act=microshop&op={$type}class_list",'','error');
+            showMessage(Language::get('class_add_fail'),"index.php?act=microclinic&op={$type}class_list",'','error');
         }
 
     }
@@ -249,8 +249,8 @@ class microshopControl extends SystemControl{
     /* 
      * ajax修改分类排序
      */
-    public function goodsclass_sort_updateOp() {
-        $this->update_class_sort('goods');
+    public function doctorsclass_sort_updateOp() {
+        $this->update_class_sort('doctors');
     }
     public function personalclass_sort_updateOp() {
         $this->update_class_sort('personal');
@@ -280,8 +280,8 @@ class microshopControl extends SystemControl{
     /* 
      * ajax修改分类名称
      */
-    public function goodsclass_name_updateOp() {
-        $this->update_class_name('goods');
+    public function doctorsclass_name_updateOp() {
+        $this->update_class_name('doctors');
     }
     public function personalclass_name_updateOp() {
         $this->update_class_name('personal');
@@ -319,15 +319,15 @@ class microshopControl extends SystemControl{
     /**
      * 随心看分类删除
      **/
-     public function goodsclass_dropOp() {
+     public function doctorsclass_dropOp() {
 
         $class_id = trim($_POST['class_id']);
-        $model_microshop_goods_class = Model('micro_goods_class');
+        $model_microclinic_doctors_class = Model('micro_doctors_class');
         $condition = array();
         $condition['class_parent_id'] = array('in',$class_id);
-        $goods_class_list = $model_microshop_goods_class->getList($condition,'','','class_id');
-        if(!empty($goods_class_list) && is_array($goods_class_list)) {
-            foreach($goods_class_list as $val) {
+        $doctors_class_list = $model_microclinic_doctors_class->getList($condition,'','','class_id');
+        if(!empty($doctors_class_list) && is_array($doctors_class_list)) {
+            foreach($doctors_class_list as $val) {
                 $class_id .= ','.$val['class_id']; 
             }
         }
@@ -335,12 +335,12 @@ class microshopControl extends SystemControl{
         $condition = array();
         $condition['class_id'] = array('in',$class_id);
         //删除分类图片
-        $list = $model_microshop_goods_class->getList($condition);
+        $list = $model_microclinic_doctors_class->getList($condition);
         if(!empty($list)) {
             foreach ($list as $value) {
                 if(!empty($value['class_image'])) {
                     //删除老图片
-                    $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$value['class_image'];
+                    $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$value['class_image'];
                     if(is_file($old_image)) {
                         unlink($old_image);
                     }
@@ -349,11 +349,11 @@ class microshopControl extends SystemControl{
         }
 
         //删除绑定关系
-        $model_microshop_goods_relation = Model('micro_goods_relation');
-        $model_microshop_goods_relation->drop($condition);
+        $model_microclinic_doctors_relation = Model('micro_doctors_relation');
+        $model_microclinic_doctors_relation->drop($condition);
 
         //删除分类
-        $result = $model_microshop_goods_class->drop($condition);
+        $result = $model_microclinic_doctors_class->drop($condition);
         if($result) {
             showMessage(Language::get('class_drop_success'),'');
         } else {
@@ -377,7 +377,7 @@ class microshopControl extends SystemControl{
             foreach ($list as $value) {
                 //删除老图片
                 if(!empty($value['class_image'])) {
-                    $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$value['class_image'];
+                    $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$value['class_image'];
                     if(is_file($old_image)) {
                         unlink($old_image);
                     }
@@ -397,7 +397,7 @@ class microshopControl extends SystemControl{
     /**
      * 分类关键字和商品分类的绑定
      **/
-    public function goodsclass_bindingOp() {
+    public function doctorsclass_bindingOp() {
 
         $class_id = intval($_GET['class_id']);
         if($class_id <= 0) {
@@ -405,67 +405,67 @@ class microshopControl extends SystemControl{
         }
         Tpl::output('class_id',$class_id);
 
-		$model_class = Model('goods_class');
-        $goods_class_list = ($g = H('goods_class')) ? $g : H('goods_class',true);
-        $goods_class_root = array();
-        foreach($goods_class_list as $val) {
+		$model_class = Model('doctors_class');
+        $doctors_class_list = ($g = H('doctors_class')) ? $g : H('doctors_class',true);
+        $doctors_class_root = array();
+        foreach($doctors_class_list as $val) {
             if($val['gc_parent_id'] == '0') {
-                $goods_class_root[] = $val;
+                $doctors_class_root[] = $val;
             }
         }
-        Tpl::output('goods_class_root',$goods_class_root);
-        Tpl::output('goods_class',$goods_class_list);
+        Tpl::output('doctors_class_root',$doctors_class_root);
+        Tpl::output('doctors_class',$doctors_class_list);
 
-        $model_goods_relation = Model('micro_goods_relation');
-        $class_binding_list = $model_goods_relation->getList(array('class_id'=>$class_id));
+        $model_doctors_relation = Model('micro_doctors_relation');
+        $class_binding_list = $model_doctors_relation->getList(array('class_id'=>$class_id));
         Tpl::output('class_binding_list',$class_binding_list);
         $class_binding_string = '';
         if(!empty($class_binding_list)) {
             foreach ($class_binding_list as $val) {
-                $class_binding_string .= $val['shop_class_id'].',';
+                $class_binding_string .= $val['clinic_class_id'].',';
             }
         }
         Tpl::output('class_binding_string',rtrim($class_binding_string,','));
 
-        $this->show_menu_goods_class('goods_class_binding');
-        Tpl::showpage('microshop_goods_class.binding');
+        $this->show_menu_doctors_class('doctors_class_binding');
+        Tpl::showpage('microclinic_doctors_class.binding');
 
     }
 
     /**
      * 分类关键字和商品分类的绑定保存
      **/
-    public function goodsclass_binding_saveOp() {
+    public function doctorsclass_binding_saveOp() {
         $class_id = intval($_POST['class_id']);
-        $shop_class_id = trim($_POST['shop_class_id']);
-        $shop_class_array = explode(',',$shop_class_id);
+        $clinic_class_id = trim($_POST['clinic_class_id']);
+        $clinic_class_array = explode(',',$clinic_class_id);
         $param = array();
-        foreach($shop_class_array as $val) {
+        foreach($clinic_class_array as $val) {
             if(!empty($val)) {
-                $param[] = array('class_id'=>$class_id,'shop_class_id'=>$val);
+                $param[] = array('class_id'=>$class_id,'clinic_class_id'=>$val);
             }
         }
-        $model_goods_relation = Model('micro_goods_relation');
-        $model_goods_relation->drop(array('class_id'=>$class_id));
-        $result = $model_goods_relation->saveAll($param);
+        $model_doctors_relation = Model('micro_doctors_relation');
+        $model_doctors_relation->drop(array('class_id'=>$class_id));
+        $result = $model_doctors_relation->saveAll($param);
         if($result) {
-            showMessage(Language::get('goods_relation_save_success'),self::MICROSHOP_CLASS_LIST);
+            showMessage(Language::get('doctors_relation_save_success'),self::MICROclinic_CLASS_LIST);
         } else {
-            showMessage(Language::get('goods_relation_save_fail'),self::MICROSHOP_CLASS_LIST,'','error');
+            showMessage(Language::get('doctors_relation_save_fail'),self::MICROclinic_CLASS_LIST,'','error');
         }
     }
 
     /**
      * 设为默认分类
      **/
-    public function goodsclass_defaultOp() {
+    public function doctorsclass_defaultOp() {
         $class_id = intval($_GET['class_id']);
         if($class_id <= 0) {
             showMessage(Language::get('param_error'),'','','error');
         }
-        $model_goods_class = Model('micro_goods_class');
-        $model_goods_class->modify(array('class_default'=>0),TRUE);
-        $result = $model_goods_class->modify(array('class_default'=>1),array('class_id'=>$class_id));
+        $model_doctors_class = Model('micro_doctors_class');
+        $model_doctors_class->modify(array('class_default'=>0),TRUE);
+        $result = $model_doctors_class->modify(array('class_default'=>1),array('class_id'=>$class_id));
         if($result) {
             showMessage(Language::get('nc_common_op_succ'),'');
         } else {
@@ -473,41 +473,41 @@ class microshopControl extends SystemControl{
         }
     }
 
-    public function goodsclass_getOp() {
+    public function doctorsclass_getOp() {
 
-        $goods_class_id = intval($_GET['class_id']);
-        $goods_class_list = ($g = H('goods_class')) ? $g : H('goods_class',true);
-        if(empty($goods_class_list[$goods_class_id]['childchild'])) {
-            if(empty($goods_class_list[$goods_class_id]['child'])) {
-                $goods_class_child = $goods_class_id;
+        $doctors_class_id = intval($_GET['class_id']);
+        $doctors_class_list = ($g = H('doctors_class')) ? $g : H('doctors_class',true);
+        if(empty($doctors_class_list[$doctors_class_id]['childchild'])) {
+            if(empty($doctors_class_list[$doctors_class_id]['child'])) {
+                $doctors_class_child = $doctors_class_id;
             } else {
-                $goods_class_child = $goods_class_list[$goods_class_id]['child'];
+                $doctors_class_child = $doctors_class_list[$doctors_class_id]['child'];
             }
         } else {
-            $goods_class_child = $goods_class_list[$goods_class_id]['childchild'];
+            $doctors_class_child = $doctors_class_list[$doctors_class_id]['childchild'];
         }
-        $goods_class_child = explode(',',$goods_class_child);
+        $doctors_class_child = explode(',',$doctors_class_child);
 
-        $model_goods_relation = Model('micro_goods_relation');
-        $goods_relation_list = $model_goods_relation->getList(TRUE);
-        $goods_id_list = array();
-        $goods_class_selected_list = array();
-        if(!empty($goods_relation_list) && is_array($goods_relation_list)) {
-            foreach($goods_relation_list as $val) {
-                $goods_class_selected_list[] = $val['shop_class_id'];
+        $model_doctors_relation = Model('micro_doctors_relation');
+        $doctors_relation_list = $model_doctors_relation->getList(TRUE);
+        $doctors_id_list = array();
+        $doctors_class_selected_list = array();
+        if(!empty($doctors_relation_list) && is_array($doctors_relation_list)) {
+            foreach($doctors_relation_list as $val) {
+                $doctors_class_selected_list[] = $val['clinic_class_id'];
             }
         }
 
-        $goods_class_child_array = array();
-        if(!empty($goods_class_child) && is_array($goods_class_child)) {
-            foreach($goods_class_child as $val) {
-                if(in_array($val,$goods_class_selected_list)) {
-                    $goods_class_list[$val]['selected'] = TRUE;
+        $doctors_class_child_array = array();
+        if(!empty($doctors_class_child) && is_array($doctors_class_child)) {
+            foreach($doctors_class_child as $val) {
+                if(in_array($val,$doctors_class_selected_list)) {
+                    $doctors_class_list[$val]['selected'] = TRUE;
                 }
-                $goods_class_child_array[] = $goods_class_list[$val];
+                $doctors_class_child_array[] = $doctors_class_list[$val];
             }
         }
-        echo json_encode($goods_class_child_array);
+        echo json_encode($doctors_class_child_array);
         die;
         
     }
@@ -515,8 +515,8 @@ class microshopControl extends SystemControl{
 	/**
 	 * 随心看管理
 	 */
-	public function goods_manageOp() {
-        $model_microshop_goods = Model('micro_goods');
+	public function doctors_manageOp() {
+        $model_microclinic_doctors = Model('micro_doctors');
         $condition = array();
         if(!empty($_GET['commend_id']) && intval($_GET['commend_id']) > 0 ) {
             $condition['commend_id'] = $_GET['commend_id'];
@@ -524,25 +524,25 @@ class microshopControl extends SystemControl{
         if(!empty($_GET['member_name'])) {
             $condition['member_name'] = array('like','%'.trim($_GET['member_name']).'%');
         }
-        if(!empty($_GET['commend_goods_name'])) {
-            $condition['commend_goods_name'] = array('like','%'.trim($_GET['commend_goods_name']).'%');
+        if(!empty($_GET['commend_doctors_name'])) {
+            $condition['commend_doctors_name'] = array('like','%'.trim($_GET['commend_doctors_name']).'%');
         }
         if(!empty($_GET['commend_time_from']) && !empty($_GET['commend_time_to'])) {
             $condition['commend_time'] = array('between',strtotime($_GET['commend_time_from']).','.strtotime($_GET['commend_time_to']));
         }
-        $field = 'micro_goods.*,member.member_name,member.member_avatar';
-        $list = $model_microshop_goods->getListWithUserInfo($condition,10,'commend_time desc',$field);
-        Tpl::output('show_page',$model_microshop_goods->showpage(2));	
+        $field = 'micro_doctors.*,member.member_name,member.member_avatar';
+        $list = $model_microclinic_doctors->getListWithUserInfo($condition,10,'commend_time desc',$field);
+        Tpl::output('show_page',$model_microclinic_doctors->showpage(2));	
         Tpl::output('list',$list);
-        $this->show_menu('goods_manage');
-        Tpl::showpage('microshop_goods.manage');
+        $this->show_menu('doctors_manage');
+        Tpl::showpage('microclinic_doctors.manage');
     }
 
     /**
      * 随心看删除 
      */
-    public function goods_dropOp() {
-        $model = Model('micro_goods');
+    public function doctors_dropOp() {
+        $model = Model('micro_doctors');
         $condition = array();
         $condition['commend_id'] = array('in',trim($_POST['commend_id']));
         //删除随心看图片
@@ -551,7 +551,7 @@ class microshopControl extends SystemControl{
             foreach ($list as $info) {
                 //计数
                 $model_micro_member_info = Model('micro_member_info');
-                $model_micro_member_info->updateMemberGoodsCount($info['commend_member_id'],'-');
+                $model_micro_member_info->updateMemberdoctorsCount($info['commend_member_id'],'-');
             }
         }
         $result = $model->drop($condition);
@@ -582,7 +582,7 @@ class microshopControl extends SystemControl{
         Tpl::output('show_page',$model_personal->showpage(2));	
         Tpl::output('list',$list);
         $this->show_menu('personal_manage');
-        Tpl::showpage('microshop_personal.manage');
+        Tpl::showpage('microclinic_personal.manage');
     }
 
     /**
@@ -604,18 +604,18 @@ class microshopControl extends SystemControl{
                 $image_array = explode(',',$personal_info['commend_image']);
                 foreach ($image_array as $value) {
                     //删除原始图片
-                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$personal_info['commend_member_id'].DS.$value;
+                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$personal_info['commend_member_id'].DS.$value;
                     if(is_file($image_name)) {
                         unlink($image_name);
                     }
                     //删除列表图片
                     $ext = explode('.', $value);
                     $ext = $ext[count($ext) - 1];
-                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$personal_info['commend_member_id'].DS.$value.'_list.'.$ext;
+                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$personal_info['commend_member_id'].DS.$value.'_list.'.$ext;
                     if(is_file($image_name)) {
                         unlink($image_name);
                     }
-                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$personal_info['commend_member_id'].DS.$value.'_tiny.'.$ext;
+                    $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$personal_info['commend_member_id'].DS.$value.'_tiny.'.$ext;
                     if(is_file($image_name)) {
                         unlink($image_name);
                     }
@@ -634,40 +634,40 @@ class microshopControl extends SystemControl{
 	/**
 	 * 店铺管理
 	 */
-	public function store_manageOp(){
-		$model_store = Model('micro_store');
+	public function clic_manageOp(){
+		$model_clic = Model('micro_clic');
 
         $condition = array();
         if(!empty($_GET['owner_and_name'])) {
             $condition['member_name'] = array('like','%'.trim($_GET['owner_and_name']).'%');
         }
-        if(!empty($_GET['store_name'])) {
-            $condition['store_name'] = array('like','%'.trim($_GET['store_name']).'%');
+        if(!empty($_GET['clic_name'])) {
+            $condition['clic_name'] = array('like','%'.trim($_GET['clic_name']).'%');
         }
-		$store_list = $model_store->getListWithStoreInfo($condition,10);
-		Tpl::output('store_list',$store_list);
+		$clic_list = $model_clic->getListWithclicInfo($condition,10);
+		Tpl::output('clic_list',$clic_list);
 
-        $this->show_menu_store('store_manage');
-        Tpl::output('show_page',$model_store->showpage(2));
-        Tpl::showpage('microshop_store.manage');
+        $this->show_menu_clic('clic_manage');
+        Tpl::output('show_page',$model_clic->showpage(2));
+        Tpl::showpage('microclinic_clic.manage');
     }
 	
 
 	/**
 	 * 店铺街添加列表
 	 */
-	public function store_addOp(){
-		$model_store = Model('store');
-		$model_microshop_store = Model('micro_store');
+	public function clic_addOp(){
+		$model_clic = Model('clic');
+		$model_microclinic_clic = Model('micro_clic');
 
-        $microshop_store_list = $model_microshop_store->getList(TRUE);
-        $microshop_store_array = array();
-        if(!empty($microshop_store_list)) {
-            foreach($microshop_store_list as $value) {
-                $microshop_store_array[] = $value['shop_store_id'];
+        $microclinic_clic_list = $model_microclinic_clic->getList(TRUE);
+        $microclinic_clic_array = array();
+        if(!empty($microclinic_clic_list)) {
+            foreach($microclinic_clic_list as $value) {
+                $microclinic_clic_array[] = $value['clinic_clic_id'];
             }
         }
-		Tpl::output('microshop_store_array',$microshop_store_array);
+		Tpl::output('microclinic_clic_array',$microclinic_clic_array);
 
 		$page	= new Page();
 		$page->setEachNum(10);
@@ -675,33 +675,33 @@ class microshopControl extends SystemControl{
 
         $condition = array();
 		$condition['member_name'] = array('like', '%'.$_GET['owner_and_name'].'%');
-		$condition['store_name'] = array('like', '%'.$_GET['store_name'].'%');
-		$store_list = $model_store->getStoreOnlineList($condition,$page);
-		Tpl::output('store_list',$store_list);
+		$condition['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
+		$clic_list = $model_clic->getclicOnlineList($condition,$page);
+		Tpl::output('clic_list',$clic_list);
 
 		Tpl::output('page',$page->show());
-        $this->show_menu_store('store_add');
-        Tpl::showpage('microshop_store.add');
+        $this->show_menu_clic('clic_add');
+        Tpl::showpage('microclinic_clic.add');
 	}
 
     /**
      * 店铺街添加保存
      */
-    public function store_add_saveOp() {
-        $store_id_array = explode(',',$_POST['store_id']);
+    public function clic_add_saveOp() {
+        $clic_id_array = explode(',',$_POST['clic_id']);
         $param = array();
-        if(!empty($store_id_array)) {
-            foreach ($store_id_array as $value) {
+        if(!empty($clic_id_array)) {
+            foreach ($clic_id_array as $value) {
                 if(intval($value) > 0) {
-                    $microshop_store['shop_store_id'] = $value;
-                    $microshop_store['microshop_sort'] = 255;
-                    $microshop_store['microshop_commend'] = 0;
-                    $param[] = $microshop_store;
+                    $microclinic_clic['clinic_clic_id'] = $value;
+                    $microclinic_clic['microclinic_sort'] = 255;
+                    $microclinic_clic['microclinic_commend'] = 0;
+                    $param[] = $microclinic_clic;
                 }
             }
         }
-        $model_store = Model('micro_store');
-        $result = $model_store->saveAll($param);
+        $model_clic = Model('micro_clic');
+        $result = $model_clic->saveAll($param);
         if($result) {
             showMessage(Language::get('nc_common_op_succ'),'');
         } else {
@@ -712,11 +712,11 @@ class microshopControl extends SystemControl{
     /**
      * 店铺街删除保存 
      */
-    public function store_drop_saveOp() {
-        $model_store = Model('micro_store');
+    public function clic_drop_saveOp() {
+        $model_clic = Model('micro_clic');
         $condition = array();
-        $condition['shop_store_id'] = array('in',trim($_POST['store_id']));
-        $result = $model_store->drop($condition);
+        $condition['clinic_clic_id'] = array('in',trim($_POST['clic_id']));
+        $result = $model_clic->drop($condition);
         if($result) {
             showMessage(Language::get('nc_common_del_succ'),'');
         } else {
@@ -727,36 +727,36 @@ class microshopControl extends SystemControl{
     /**
      * 更新微商城店铺排序
      */
-    public function store_sort_updateOp() {
-        $this->update_microshop_sort('micro_store','shop_store_id');
+    public function clic_sort_updateOp() {
+        $this->update_microclinic_sort('micro_clic','clinic_clic_id');
     }
 
     /**
      * 更新微商城随心看排序
      */
-    public function goods_sort_updateOp() {
-        $this->update_microshop_sort('micro_goods','commend_id');
+    public function doctors_sort_updateOp() {
+        $this->update_microclinic_sort('micro_doctors','commend_id');
     }
 
     /**
      * 更新微商城个人秀排序
      */
     public function personal_sort_updateOp() {
-        $this->update_microshop_sort('micro_personal','personal_id');
+        $this->update_microclinic_sort('micro_personal','personal_id');
     }
 
-    private function update_microshop_sort($model_name,$key_name) {
+    private function update_microclinic_sort($model_name,$key_name) {
         if(intval($_GET['id']) <= 0) {
             echo json_encode(array('result'=>FALSE,'message'=>Language::get('param_error')));
             die;
         }
         $new_sort = intval($_GET['value']);
         if ($new_sort > 255){
-            echo json_encode(array('result'=>FALSE,'message'=>Language::get('microshop_sort_error')));
+            echo json_encode(array('result'=>FALSE,'message'=>Language::get('microclinic_sort_error')));
             die;
         } else {
             $model_class = Model($model_name);
-            $result = $model_class->modify(array('microshop_sort'=>$new_sort),array($key_name=>$_GET['id']));
+            $result = $model_class->modify(array('microclinic_sort'=>$new_sort),array($key_name=>$_GET['id']));
             if($result) {
                 echo json_encode(array('result'=>TRUE,'message'=>'nc_common_op_succ'));
                 die;
@@ -793,7 +793,7 @@ class microshopControl extends SystemControl{
         Tpl::output('show_page',$model_comment->showpage(2));	
         $this->get_channel_array();
         $this->show_menu('comment_manage');
-        Tpl::showpage('microshop_comment.manage');
+        Tpl::showpage('microclinic_comment.manage');
     }
 
     /**
@@ -828,7 +828,7 @@ class microshopControl extends SystemControl{
         Tpl::output('list',$list);
         $this->get_adv_type_list();
         $this->show_menu_adv('adv_manage');
-        Tpl::showpage('microshop_adv.manage');
+        Tpl::showpage('microclinic_adv.manage');
     }
 
     /**
@@ -837,7 +837,7 @@ class microshopControl extends SystemControl{
     public function adv_addOp() {
         $this->get_adv_type_list();
         $this->show_menu_adv('adv_add');
-        Tpl::showpage('microshop_adv.add');
+        Tpl::showpage('microclinic_adv.add');
     }
 
     public function adv_editOp() {
@@ -853,7 +853,7 @@ class microshopControl extends SystemControl{
 
         $this->get_adv_type_list();
         $this->show_menu_adv('adv_add');
-        Tpl::showpage("microshop_adv.add");
+        Tpl::showpage("microclinic_adv.add");
     }
 
     public function adv_saveOp() {
@@ -874,7 +874,7 @@ class microshopControl extends SystemControl{
         $param['adv_sort'] = intval($_POST['adv_sort']);
         if(!empty($_FILES['adv_image']['name'])) {
             $upload	= new UploadFile();
-            $upload->set('default_dir',ATTACH_MICROSHOP.DS.'adv');
+            $upload->set('default_dir',ATTACH_MICROclinic.DS.'adv');
             $result = $upload->upfile('adv_image');
             if(!$result) {
                 showMessage($upload->error);
@@ -882,14 +882,14 @@ class microshopControl extends SystemControl{
             $param['adv_image'] = $upload->file_name;
             //删除老图片
             if(!empty($_POST['old_adv_image'])) {
-                $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.'adv'.DS.$_POST['old_adv_image'];
+                $old_image = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.'adv'.DS.$_POST['old_adv_image'];
                 if(is_file($old_image)) {
                     unlink($old_image);
                 }
             }
         } else {
             if(empty($_POST['adv_id'])) {
-                showMessage(Language::get('microshop_adv_image_error'),'','','error');
+                showMessage(Language::get('microclinic_adv_image_error'),'','','error');
             }
         }
 
@@ -900,9 +900,9 @@ class microshopControl extends SystemControl{
             $result = $model_adv->save($param);
         }
         if($result) {
-            showMessage(Language::get('nc_common_save_succ'),"index.php?act=microshop&op=adv_manage");
+            showMessage(Language::get('nc_common_save_succ'),"index.php?act=microclinic&op=adv_manage");
         } else {
-            showMessage(Language::get('nc_common_save_fail'),"index.php?act=microshop&op=adv_manage",'','error');
+            showMessage(Language::get('nc_common_save_fail'),"index.php?act=microclinic&op=adv_manage",'','error');
         }
     }
 
@@ -919,7 +919,7 @@ class microshopControl extends SystemControl{
         if(!empty($list)) {
             foreach ($list as $adv_info) {
                 //删除原始图片
-                $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.'adv'.DS.$adv_info['adv_image'];
+                $image_name = BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.'adv'.DS.$adv_info['adv_image'];
                 if(is_file($image_name)) {
                     unlink($image_name);
                 }
@@ -963,8 +963,8 @@ class microshopControl extends SystemControl{
     //微商城广告类型列表
     private function get_adv_type_list() {
         $adv_type_list = array();
-        $adv_type_list['index'] = Language::get('microshop_adv_type_index');
-        $adv_type_list['store_list'] = Language::get('microshop_adv_type_store_list');
+        $adv_type_list['index'] = Language::get('microclinic_adv_type_index');
+        $adv_type_list['clic_list'] = Language::get('microclinic_adv_type_clic_list');
         Tpl::output('adv_type_list',$adv_type_list);
     }
 
@@ -975,9 +975,9 @@ class microshopControl extends SystemControl{
 
 		switch ($_GET['branch']){
             //随心看推荐
-			case 'goods_commend':
+			case 'doctors_commend':
                 if(intval($_GET['id']) > 0) {
-                    $model= Model('micro_goods');
+                    $model= Model('micro_doctors');
                     $condition['commend_id'] = intval($_GET['id']);
                     $update[$_GET['column']] = trim($_GET['value']);
                     $model->modify($update,$condition);
@@ -999,10 +999,10 @@ class microshopControl extends SystemControl{
                 }
                 break;
             //店铺街推荐
-			case 'store_commend':
+			case 'clic_commend':
                 if(intval($_GET['id']) > 0) {
-                    $model= Model('micro_store');
-                    $condition['shop_store_id'] = intval($_GET['id']);
+                    $model= Model('micro_clic');
+                    $condition['clinic_clic_id'] = intval($_GET['id']);
                     $update[$_GET['column']] = trim($_GET['value']);
                     $model->modify($update,$condition);
                     echo 'true';die;
@@ -1013,7 +1013,7 @@ class microshopControl extends SystemControl{
             //随心看分类推荐
 			case 'class_commend':
                 if(intval($_GET['id']) > 0) {
-                    $model= Model('micro_goods_class');
+                    $model= Model('micro_doctors_class');
                     $condition['class_id'] = intval($_GET['id']);
                     $update[$_GET['column']] = trim($_GET['value']);
                     $model->modify($update,$condition);
@@ -1030,9 +1030,9 @@ class microshopControl extends SystemControl{
      */
     private function get_channel_array() {
         $channel_array = array();
-        $channel_array[self::GOODS_FLAG] = array('name'=>Language::get('nc_microshop_goods'),'key'=>'goods');
-        $channel_array[self::PERSONAL_FLAG] = array('name'=>Language::get('nc_microshop_personal'),'key'=>'personal');
-        $channel_array[self::STORE_FLAG] = array('name'=>Language::get('nc_microshop_store'),'key'=>'store');
+        $channel_array[self::doctorS_FLAG] = array('name'=>Language::get('nc_microclinic_doctors'),'key'=>'doctors');
+        $channel_array[self::PERSONAL_FLAG] = array('name'=>Language::get('nc_microclinic_personal'),'key'=>'personal');
+        $channel_array[self::clic_FLAG] = array('name'=>Language::get('nc_microclinic_clic'),'key'=>'clic');
         Tpl::output('channel_array',$channel_array);
     }
 
@@ -1042,22 +1042,22 @@ class microshopControl extends SystemControl{
      */
     private function show_menu($menu_key) {
         $menu_array = array(
-            "{$menu_key}"=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microshop&op='.$menu_key),
+            "{$menu_key}"=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microclinic&op='.$menu_key),
         );
         $menu_array[$menu_key]['menu_type'] = 'text';
         Tpl::output('menu',$menu_array);
     }	
 
-    private function show_menu_goods_class($menu_key) {
+    private function show_menu_doctors_class($menu_key) {
         $menu_array = array(
-            'goods_class_list'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microshop&op=goodsclass_list'),
-            'goods_class_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microshop&op=goodsclass_add'),
+            'doctors_class_list'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microclinic&op=doctorsclass_list'),
+            'doctors_class_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microclinic&op=doctorsclass_add'),
         );
-        if($menu_key == 'goods_class_edit') {
-            $menu_array['goods_class_edit'] = array('menu_type'=>'link','menu_name'=>Language::get('nc_edit'),'menu_url'=>'###');
+        if($menu_key == 'doctors_class_edit') {
+            $menu_array['doctors_class_edit'] = array('menu_type'=>'link','menu_name'=>Language::get('nc_edit'),'menu_url'=>'###');
         }
-        if($menu_key == 'goods_class_binding') {
-            $menu_array['goods_class_binding'] = array('menu_type'=>'link','menu_name'=>Language::get('microshop_goods_class_binding'),'menu_url'=>'###');
+        if($menu_key == 'doctors_class_binding') {
+            $menu_array['doctors_class_binding'] = array('menu_type'=>'link','menu_name'=>Language::get('microclinic_doctors_class_binding'),'menu_url'=>'###');
         }
         $menu_array[$menu_key]['menu_type'] = 'text';
         Tpl::output('menu',$menu_array);
@@ -1065,8 +1065,8 @@ class microshopControl extends SystemControl{
 
     private function show_menu_personal_class($menu_key) {
         $menu_array = array(
-            'personal_class_list'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microshop&op=personalclass_list'),
-            'personal_class_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microshop&op=personalclass_add'),
+            'personal_class_list'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microclinic&op=personalclass_list'),
+            'personal_class_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microclinic&op=personalclass_add'),
         );
         if($menu_key == 'personal_class_edit') {
             $menu_array['personal_class_edit'] = array('menu_type'=>'link','menu_name'=>Language::get('nc_edit'),'menu_url'=>'###');
@@ -1075,10 +1075,10 @@ class microshopControl extends SystemControl{
         Tpl::output('menu',$menu_array);
     }	
 
-    private function show_menu_store($menu_key) {
+    private function show_menu_clic($menu_key) {
         $menu_array = array(
-            'store_manage'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microshop&op=store_manage'),
-            'store_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microshop&op=store_add'),
+            'clic_manage'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microclinic&op=clic_manage'),
+            'clic_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microclinic&op=clic_add'),
         );
         $menu_array[$menu_key]['menu_type'] = 'text';
         Tpl::output('menu',$menu_array);
@@ -1086,8 +1086,8 @@ class microshopControl extends SystemControl{
 
     private function show_menu_adv($menu_key) {
         $menu_array = array(
-            'adv_manage'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microshop&op=adv_manage'),
-            'adv_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microshop&op=adv_add'),
+            'adv_manage'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_manage'),'menu_url'=>'index.php?act=microclinic&op=adv_manage'),
+            'adv_add'=>array('menu_type'=>'link','menu_name'=>Language::get('nc_new'),'menu_url'=>'index.php?act=microclinic&op=adv_add'),
         );
 
         if($menu_key == 'adv_edit') {

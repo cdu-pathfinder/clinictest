@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class member_articleControl extends CMSMemberControl{
 
     public function __construct() {
@@ -90,8 +90,8 @@ class member_articleControl extends CMSMemberControl{
             Tpl::output('article_link_list', $article_link_list);
 
             //相关商品
-            $article_goods_list = unserialize($article_detail['article_goods']); 
-            Tpl::output('article_goods_list', $article_goods_list);
+            $article_doctors_list = unserialize($article_detail['article_doctors']); 
+            Tpl::output('article_doctors_list', $article_doctors_list);
 
             Tpl::output('article_detail', $article_detail);
 
@@ -104,7 +104,7 @@ class member_articleControl extends CMSMemberControl{
     /**
      * 移到回收站
      */
-    public function article_publishOp() {
+    public function article_publiclinic() {
         $this->article_state_change($this->publish_state);
     }
 

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,10 +12,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="email_type"><?php echo $lang['email_type_open'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="email_enabled_1" class="cb-enable <?php if($output['list_setting']['email_enabled'] == '1'){ ?>selected<?php } ?>" title="<?php echo $lang['open'];?>"><span><?php echo $lang['open'];?></span></label>
             <label for="email_enabled_0" class="cb-disable <?php if($output['list_setting']['email_enabled'] == '0'){ ?>selected<?php } ?>" title="<?php echo $lang['close'];?>"><span><?php echo $lang['close'];?></span></label>
             <input type="radio" <?php if($output['list_setting']['email_enabled'] == '1'){ ?>checked="checked"<?php } ?> value="1" name="email_enabled" id="email_enabled_1" />
@@ -27,7 +27,7 @@
           <td colspan="2" class="required">
 				<label for="email_type"><?php echo $lang['email_type'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
 					<label><input type="radio" <?php if($output['list_setting']['email_type'] == '1'){ ?>checked="checked"<?php } ?> value="1" name="email_type" id="email_type_1" />&nbsp;<?php echo $lang['use_other_smtp_service'];?></label>&nbsp;
 					<label><input type="radio" <?php if($output['list_setting']['email_type'] == '0'){ ?>checked="checked"<?php } ?> value="0" name="email_type" id="email_type_0" />&nbsp;<?php echo $lang['use_server_mail_service'];?></label>&nbsp;
@@ -38,42 +38,42 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['smtp_server'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['email_host'];?>" name="email_host" id="email_host" class="txt"></td>
           <td class="vatop tips"><label class="field_notice"><?php echo $lang['set_smtp_server_address'];?></label></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['smtp_port'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['email_port'];?>" name="email_port" id="email_port" class="txt"></td>
           <td class="vatop tips"><label class="field_notice"><?php echo $lang['set_smtp_port'];?></label></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['sender_mail_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['email_addr'];?>" name="email_addr" id="email_addr" class="txt"></td>
           <td class="vatop tips"><label class="field_notice"><?php echo $lang['if_smtp_authentication'];?></label></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['smtp_user_name'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['list_setting']['email_id'];?>" name="email_id" id="email_id" class="txt"></td>
           <td class="vatop tips"><label class="field_notice"><?php echo $lang['smtp_user_name_tip'];?></label></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['smtp_user_pwd'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="password" value="<?php echo $output['list_setting']['email_pass'];?>" name="email_pass" id="email_pass" class="txt"></td>
           <td class="vatop tips"><label class="field_notice"><?php echo $lang['smtp_user_pwd_tip'];?></label></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['test_mail_address'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="email_test" id="email_test" class="txt"></td>
           <td class="vatop tips"><input type="button" value="<?php echo $lang['test'];?>" name="send_test_email" class="btn" id="send_test_email"></td>
         </tr>

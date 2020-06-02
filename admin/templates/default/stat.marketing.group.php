@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,7 +12,7 @@
     <input type="hidden" name="act" value="stat_marketing" />
     <input type="hidden" name="op" value="group" />
     <div class="w100pre">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
               <td>
@@ -103,7 +103,7 @@ $(function () {
 
 	//加载统计列表
     $('#glist').load('index.php?act=stat_marketing&op=grouplist&t=<?php echo $output['searchtime'];?>');
-    $('#statlist').load('index.php?act=stat_marketing&op=groupgoods&t=<?php echo $output['searchtime'];?>');
+    $('#statlist').load('index.php?act=stat_marketing&op=groupdoctors&t=<?php echo $output['searchtime'];?>');
     
 	$('#ncsubmit').click(function(){
     	$('#formSearch').submit();

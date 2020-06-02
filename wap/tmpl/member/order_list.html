@@ -13,75 +13,75 @@
 </head>
 <body>
     <header id="header"></header>
-    <div class="order-list-wp" id="order-list"></div>
-    <script type="text/html" id="order-list-tmpl">
-        <div class="order-list">
-            <%if (order_group_list.length >0){%>
+    <div class="appointment-list-wp" id="appointment-list"></div>
+    <script type="text/html" id="appointment-list-tmpl">
+        <div class="appointment-list">
+            <%if (appointment_group_list.length >0){%>
                 <ul>
-                    <%for(var i = 0;i<order_group_list.length;i++){
-                        var orderlist = order_group_list[i].order_list;
+                    <%for(var i = 0;i<appointment_group_list.length;i++){
+                        var appointmentlist = appointment_group_list[i].appointment_list;
                     %>
-                        <li class="<%if(order_group_list[i].pay_amount){%>green-order-skin<%}else{%>gray-order-skin<%}%> <%if(i>0){%>mt10<%}%>">
-                            <div class="order-ltlt">
+                        <li class="<%if(appointment_group_list[i].pay_amount){%>green-appointment-skin<%}else{%>gray-appointment-skin<%}%> <%if(i>0){%>mt10<%}%>">
+                            <div class="appointment-ltlt">
                                 <p>
                                     下单时间：
-                                   <%=$getLocalTime(order_group_list[i].add_time)%>
+                                   <%=$getLocalTime(appointment_group_list[i].add_time)%>
                                 </p>
                             </div>
-                            <% for(var j = 0;j<orderlist.length;j++){
-                                var order_goods = orderlist[j].extend_order_goods;
+                            <% for(var j = 0;j<appointmentlist.length;j++){
+                                var appointment_doctors = appointmentlist[j].extend_appointment_doctors;
                             %>
-                                <div class="order-lcnt">
-                                    <div class="order-lcnt-shop">
-                                        <p>店铺名称：<%=orderlist[j].store_name%></p>
-                                        <p>order No.：<%=orderlist[j].order_sn%></p>
+                                <div class="appointment-lcnt">
+                                    <div class="appointment-lcnt-clinic">
+                                        <p>店铺名称：<%=appointmentlist[j].clic_name%></p>
+                                        <p>appointment No.：<%=appointmentlist[j].appointment_sn%></p>
                                     </div>
-                                    <div class="order-shop-pd">
-                                        <%for (var k = 0;k<order_goods.length;k++){%>
-                                        <a class="order-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=order_goods[k].goods_id%>">
-                                            <span class="order-pdpic">
-                                                <img src="<%=order_goods[k].goods_image_url%>"/>
+                                    <div class="appointment-clinic-pd">
+                                        <%for (var k = 0;k<appointment_doctors.length;k++){%>
+                                        <a class="appointment-ldetail clearfix <%if(k>0){%>bd-t-de<%}%>" href="<%=WapSiteUrl%>/tmpl/doc_detail.html?doctors_id=<%=appointment_doctors[k].doctors_id%>">
+                                            <span class="appointment-pdpic">
+                                                <img src="<%=appointment_doctors[k].doctors_image_url%>"/>
                                             </span>
-                                            <div class="order-pdinfor">
-                                                <p><%=order_goods[k].goods_name%></p>
+                                            <div class="appointment-pdinfor">
+                                                <p><%=appointment_doctors[k].doctors_name%></p>
                                                 <p>
-                                                    单价：<span class="clr-d94">$<%=order_goods[k].goods_price%></span>
+                                                    单价：<span class="clr-d94">$<%=appointment_doctors[k].doctors_price%></span>
                                                 </p>
                                                  <p>
-                                                    appointments：<%=order_goods[k].goods_num%>
+                                                    appointments：<%=appointment_doctors[k].doctors_num%>
                                                 </p>
                                             </div>
                                         </a>
                                         <%}%>
                                     </div>
-                                    <div class="order-shop-total">
-                                        <p>运费：<span class="clr-d94">$<%=orderlist[j].shipping_fee%></span></p>
-                                        <p class="clr-c07">合计：$<%=orderlist[j].order_amount%> </p>
+                                    <div class="appointment-clinic-total">
+                                        <p>运费：<span class="clr-d94">$<%=appointmentlist[j].shipping_fee%></span></p>
+                                        <p class="clr-c07">合计：$<%=appointmentlist[j].appointment_amount%> </p>
                                         <p class="mt5">
                                             <%
                                                 var stateClass ="ot-finish";
-                                                var orderstate = orderlist[j].order_state;
-                                                if(orderstate == 20 || orderstate == 30 || orderstate == 40){
+                                                var appointmentstate = appointmentlist[j].appointment_state;
+                                                if(appointmentstate == 20 || appointmentstate == 30 || appointmentstate == 40){
                                                     stateClass = stateClass;
-                                                }else if(orderstate == 0) {
+                                                }else if(appointmentstate == 0) {
                                                     stateClass = "ot-cancel";
                                                 }else {
                                                     stateClass = "ot-nofinish";
                                                 }
                                             %>
-                                            <span class="<%=stateClass%>"><%=orderlist[j].state_desc%></span>
-                                            <%if(orderlist[j].if_receive){%>
-                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="sure-order">确认订单</a>
+                                            <span class="<%=stateClass%>"><%=appointmentlist[j].state_desc%></span>
+                                            <%if(appointmentlist[j].if_receive){%>
+                                            <a href="javascript:void(0)" appointment_id="<%=appointmentlist[j].appointment_id%>" class="sure-appointment">确认订单</a>
                                             <%}%>
-                                             <%if(orderlist[j].if_cancel){%>
-                                            <a href="javascript:void(0)" order_id="<%=orderlist[j].order_id%>" class="cancel-order">取消订单</a>
+                                             <%if(appointmentlist[j].if_cancel){%>
+                                            <a href="javascript:void(0)" appointment_id="<%=appointmentlist[j].appointment_id%>" class="cancel-appointment">取消订单</a>
                                             <%}%>
                                         </p>
                                     </div>
                                 </div>
                             <%}%>
-                            <%if(order_group_list[i].pay_amount && order_group_list[i].pay_amount>0){%>
-                                <a href="<%=ApiUrl %>/index.php?act=member_payment&op=pay&key=<%=key %>&pay_sn=<%=order_group_list[i].pay_sn %>" class="l-btn-login" >订单支付</a>
+                            <%if(appointment_group_list[i].pay_amount && appointment_group_list[i].pay_amount>0){%>
+                                <a href="<%=ApiUrl %>/index.php?act=member_payment&op=pay&key=<%=key %>&pay_sn=<%=appointment_group_list[i].pay_sn %>" class="l-btn-login" >订单支付</a>
                             <%}%>
                         </li>
                     <%}%>
@@ -104,6 +104,6 @@
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
     <script type="text/javascript" src="../../js/tmpl/footer.js"></script>
-    <script type="text/javascript" src="../../js/tmpl/order_list.js"></script>
+    <script type="text/javascript" src="../../js/tmpl/appointment_list.js"></script>
 </body>
 </html>

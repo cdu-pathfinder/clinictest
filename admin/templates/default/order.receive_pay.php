@@ -1,53 +1,53 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3><?php echo $lang['order_manage'];?></h3>
+      <h3><?php echo $lang['appointment_manage'];?></h3>
       <ul class="tab-base">
-        <li><a href="index.php?act=order&op=index"><span><?php echo $lang['manage'];?></span></a></li>
+        <li><a href="index.php?act=appointment&op=index"><span><?php echo $lang['manage'];?></span></a></li>
         <li><a href="JavaScript:void(0);" class="current"><span>确认收款</span></a></li>
       </ul>
     </div>
   </div>
   <div class="fixed-empty"></div>
-  <form method="post" name="form1" id="form1" action="index.php?act=order&op=change_state&state_type=receive_pay&order_id=<?php echo intval($_GET['order_id']);?>">
+  <form method="post" name="form1" id="form1" action="index.php?act=appointment&op=change_state&state_type=receive_pay&appointment_id=<?php echo intval($_GET['appointment_id']);?>">
     <input type="hidden" name="form_submit" value="ok" />
     <input type="hidden" value="<?php echo getReferer();?>" name="ref_url">
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">订单编号<?php echo $lang['nc_colon'];?> </label></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['order_info']['order_sn'];?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['appointment_info']['appointment_sn'];?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">支付单号<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['order_info']['pay_sn'];?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['appointment_info']['pay_sn'];?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">订单总金额 <?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
-          <td class="vatop rowform"><?php echo $output['order_info']['order_amount'];?></td>
+        <tr class="nobappointment">
+          <td class="vatop rowform"><?php echo $output['appointment_info']['appointment_amount'];?></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">付款时间<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input readonly id="payment_time" class="" name="payment_time" value="" type="text" /></td>
           <td class="vatop tips"></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name">付款方式 <?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <select name="payment_code" class="querySelect">
             <option value=""><?php echo $lang['nc_please_choose'];?></option>
@@ -61,7 +61,7 @@
         <tr>
           <td colspan="2" class="required"><label for="closed_reason">第三方支付平台交易号<?php echo $lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt2" name="trade_no" id="trade_no" maxlength="40"></td>
           <td class="vatop tips"><span class="vatop rowform">支付宝等第三方支付平台交易号</span></td>
         </tr>

@@ -11,7 +11,7 @@
  * @since      File available since Release v1.1
  */
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class mb_feedbackModel{
 	/**
@@ -24,7 +24,7 @@ class mb_feedbackModel{
 	public function getList($condition,$page=''){
 		$param = array();
 		$param['table'] = 'mb_feedback';
-		$param['order'] = 'ftime desc';
+		$param['appointment'] = 'ftime desc';
 		$result = Db::select($param,$page);
 		return $result;
 	}

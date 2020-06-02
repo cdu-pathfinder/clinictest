@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,11 +17,11 @@
   <form id="search_form" method="get" name="formSearch">
     <input type="hidden" id="act" name="act" value="inform" />
     <input type="hidden" id="op" name="op" value="inform_handled_list" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
-          <th><label for="input_inform_goods_name"><?php echo $lang['inform_goods_name'];?></label></th>
-          <td><input class="txt" type="text" name="input_inform_goods_name" id="input_inform_goods_name" value="<?php echo $_GET['input_inform_goods_name'];?>"></td>
+          <th><label for="input_inform_doctors_name"><?php echo $lang['inform_doctors_name'];?></label></th>
+          <td><input class="txt" type="text" name="input_inform_doctors_name" id="input_inform_doctors_name" value="<?php echo $_GET['input_inform_doctors_name'];?>"></td>
           <th><label for="input_inform_type"><?php echo $lang['inform_type'];?></label></th>
           <td colspan="2"><input class="txt" type="text" name="input_inform_type" id="input_inform_type" value="<?php echo $_GET['input_inform_type'];?>"  style=" width:100px;">
             <label for="input_inform_member_name"><?php echo $lang['inform_member_name'];?></label>
@@ -35,7 +35,7 @@
             <label for="time_to">~</label>
             <input id="time_to" class="txt date" type="text" name="input_inform_datetime_end" value="<?php echo $_GET['input_inform_datetime_end'];?>"></td>
           <td><a href="javascript:document.formSearch.submit();" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
-            <?php if(!(empty($_GET['input_inform_goods_name'])&&empty($_GET['input_inform_member_name'])&&empty($_GET['input_inform_type'])&&empty($_GET['input_inform_subject'])&&empty($_GET['input_inform_datetime_start'])&&empty($_GET['input_inform_datetime_end']))) { ?>
+            <?php if(!(empty($_GET['input_inform_doctors_name'])&&empty($_GET['input_inform_member_name'])&&empty($_GET['input_inform_type'])&&empty($_GET['input_inform_subject'])&&empty($_GET['input_inform_datetime_start'])&&empty($_GET['input_inform_datetime_end']))) { ?>
             <a href="index.php?act=inform&op=inform_list" class="btns " title="<?php echo $lang['nc_cancel_search'];?>"><span><?php echo $lang['nc_cancel_search'];?></span></a>
             <?php } ?></td>
         </tr>
@@ -59,7 +59,7 @@
     <table class="table tb-type2">
       <thead>
         <tr class="thead">
-          <th><?php echo $lang['inform_goods_name'];?></th>
+          <th><?php echo $lang['inform_doctors_name'];?></th>
           <th><?php echo $lang['inform_member_name'];?></th>
           <th><?php echo $lang['inform_type'];?></th>
           <th><?php echo $lang['inform_subject'];?></th>
@@ -73,7 +73,7 @@
         <?php if(!empty($output['list']) && is_array($output['list'])){ ?>
         <?php foreach($output['list'] as $v){ ?>
         <tr class="line hover">
-          <td><a href="<?php echo urlShop('goods', 'index', array('goods_id'=>$v['inform_goods_id']));?>" target="_blank"><?php echo $v['inform_goods_name'];?></a></td>
+          <td><a href="<?php echo urlclinic('doctors', 'index', array('doctors_id'=>$v['inform_doctors_id']));?>" target="_blank"><?php echo $v['inform_doctors_name'];?></a></td>
           <td><?php echo $v['inform_member_name'];?></td>
           <td><?php echo $v['inform_subject_type_name'];?></td>
           <td><?php echo $v['inform_subject_content'];?></td>
@@ -111,7 +111,7 @@
                   <dt><?php echo $lang['inform_content'];?></dt>
                   <dd><?php echo $v['inform_content'];?></dd>
                 </dl>
-                <dl style=" border: none;">
+                <dl style=" bappointment: none;">
                   <dt><?php echo $lang['inform_handle_message'];?></dt>
                   <dd>
                     <?php

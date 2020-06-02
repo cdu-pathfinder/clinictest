@@ -1,6 +1,6 @@
 <?php
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 取广告内容
  *
@@ -49,7 +49,7 @@ function advshow($ap_id, $type = 'js'){
 				$pic = UPLOAD_SITE_URL."/".ATTACH_ADV."/".$pic;
 				$url = $pic_content['adv_slide_url'];
 				$content .= "<a href='http://".$pic_content['adv_slide_url']."' target='_blank'><img src='".$pic."' width='".$width."' height='".$height."' /></a>";
-//					$content .= "<a href='".SHOP_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'><img src='".$pic."' width='".$width."' height='".$height."' /></a>";
+//					$content .= "<a href='".clinic_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'><img src='".$pic."' width='".$width."' height='".$height."' /></a>";
 			}
 			$content .= "</div>\");";	 
 		 }
@@ -67,7 +67,7 @@ function advshow($ap_id, $type = 'js'){
 		        			$width   = $ap_width;
 					        $height  = $ap_height;
 		        			$content .= "document.write(\"<a href=''>";
-					        $content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+					        $content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					        $content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$default_content;
 				            $content .= "' alt=''/>";
 					        $content .= "</a>\");";
@@ -81,7 +81,7 @@ function advshow($ap_id, $type = 'js'){
 		        			$width   = $ap_width;
 					        $height  = $ap_height;
 		        			$content .= "document.write(\"<a href=''>";
-					        $content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+					        $content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					        $content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$default_content;
 				            $content .= "' alt=''/>";
 					        $content .= "</a>\");";
@@ -102,9 +102,9 @@ function advshow($ap_id, $type = 'js'){
 					$pic_content = unserialize($adv_content);
 					$pic     = $pic_content['adv_pic'];
 					$url     = $pic_content['adv_pic_url'];
-//					$content .= "document.write(\"<a href='".SHOP_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
+//					$content .= "document.write(\"<a href='".clinic_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
 					$content .= "document.write(\"<a href='http://".$pic_content['adv_pic_url']."' target='_blank'>";
-					$content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+					$content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$pic;
 				    $content .= "' alt='".$adv_title."'/>";
 					$content .= "</a>\");";
@@ -114,7 +114,7 @@ function advshow($ap_id, $type = 'js'){
 					$word_content = unserialize($adv_content);
 					$word    = $word_content['adv_word'];
 					$url     = $word_content['adv_word_url'];
-//					$content .= "document.write(\"<a href='".SHOP_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
+//					$content .= "document.write(\"<a href='".clinic_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
 					$content .= "document.write(\"<a href='http://".$pic_content['adv_word_url']."' target='_blank'>";
 					$content .= $word;
 					$content .= "</a>\");";
@@ -126,14 +126,14 @@ function advshow($ap_id, $type = 'js'){
 					$flash_content = unserialize($adv_content);
 					$flash   = $flash_content['flash_swf'];
 					$url     = $flash_content['flash_url'];
-					$content .= "document.write(\"<a href='".$url."' target='_blank'><button style='width:".$width."px; height:".$height."px; border:none; padding:0; background:none;' disabled><object id='FlashID' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='".$width."' height='".$height."'>";
+					$content .= "document.write(\"<a href='".$url."' target='_blank'><button style='width:".$width."px; height:".$height."px; bappointment:none; padding:0; background:none;' disabled><object id='FlashID' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='".$width."' height='".$height."'>";
 					$content .= "<param name='movie' value='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$flash;
 					$content .= "' /><param name='quality' value='high' /><param name='wmode' value='opaque' /><param name='swfversion' value='9.0.45.0' /><!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 --><param name='expressinstall' value='";
-					$content .= SHOP_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 --><!--[if !IE]>--><object type='application/x-shockwave-flash' data='";
+					$content .= clinic_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 --><!--[if !IE]>--><object type='application/x-shockwave-flash' data='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$flash;
 					$content .= "' width='".$width."' height='".$height."'><!--<![endif]--><param name='quality' value='high' /><param name='wmode' value='opaque' /><param name='swfversion' value='9.0.45.0' /><param name='expressinstall' value='";
-					$content .= SHOP_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 --><div><h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4><p><a href='http://www.adobe.com/go/getflashplayer'><img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='获取 Adobe Flash Player' width='112' height='33' /></a></p></div><!--[if !IE]>--></object><!--<![endif]--></object></button></a>";
+					$content .= clinic_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 --><div><h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4><p><a href='http://www.adobe.com/go/getflashplayer'><img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='获取 Adobe Flash Player' width='112' height='33' /></a></p></div><!--[if !IE]>--></object><!--<![endif]--></object></button></a>";
 					$content .= "<script type='text/javascript'>swfobject.registerObject('FlashID');</script>\");";
 				}
 		        }
@@ -151,7 +151,7 @@ function advshow($ap_id, $type = 'js'){
 		        			$width   = $ap_width;
 					        $height  = $ap_height;
 		        			$content .= "document.write(\"<a href=''>";
-					        $content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+					        $content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					        $content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$default_content;
 				            $content .= "' alt=''/>";
 					        $content .= "</a>\");";
@@ -165,7 +165,7 @@ function advshow($ap_id, $type = 'js'){
 		        			$width   = $ap_width;
 					        $height  = $ap_height;
 		        			$content .= "document.write(\"<a href=''>";
-					        $content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+					        $content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					        $content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$default_content;
 				            $content .= "' alt=''/>";
 					        $content .= "</a>\");";
@@ -181,8 +181,8 @@ function advshow($ap_id, $type = 'js'){
 					$pic     = $pic_content['adv_pic'];
 					$url     = $pic_content['adv_pic_url'];
 					$content .= "document.write(\"<a href='http://".$pic_content['adv_pic_url']."' target='_blank'>";
-//					$content .= "document.write(\"<a href='".SHOP_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
-					$content .= "<img style='width:{$width}px;height:{$height}px' border='0' src='";
+//					$content .= "document.write(\"<a href='".clinic_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
+					$content .= "<img style='width:{$width}px;height:{$height}px' bappointment='0' src='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$pic;
 				    $content .= "' alt='".$adv_title."'/>";
 					$content .= "</a>\");";
@@ -193,7 +193,7 @@ function advshow($ap_id, $type = 'js'){
 					$word    = $word_content['adv_word'];
 					$url     = $word_content['adv_word_url'];
 					$content .= "document.write(\"<a href='http://".$pic_content['adv_word_url']."' target='_blank'>";
-//					$content .= "document.write(\"<a href='".SHOP_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
+//					$content .= "document.write(\"<a href='".clinic_SITE_URL.DS."index.php?act=advclick&op=advclick&adv_id=".$adv_id."&ap_class=".$ap_class."' target='_blank'>";
 					$content .= $word;
 					$content .= "</a>\");";
 				}
@@ -204,14 +204,14 @@ function advshow($ap_id, $type = 'js'){
 					$flash_content = unserialize($adv_content);
 					$flash   = $flash_content['flash_swf'];
 					$url     = $flash_content['flash_url'];
-					$content .= "document.write(\"<a href='http://".$url."' target='_blank'><button style='width:".$width."px; height:".$height."px; border:none; padding:0; background:none;' disabled><object id='FlashID' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='".$width."' height='".$height."'>";
+					$content .= "document.write(\"<a href='http://".$url."' target='_blank'><button style='width:".$width."px; height:".$height."px; bappointment:none; padding:0; background:none;' disabled><object id='FlashID' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='".$width."' height='".$height."'>";
 					$content .= "<param name='movie' value='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$flash;
 					$content .= "' /><param name='quality' value='high' /><param name='wmode' value='opaque' /><param name='swfversion' value='9.0.45.0' /><!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 --><param name='expressinstall' value='";
-					$content .= SHOP_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 --><!--[if !IE]>--><object type='application/x-shockwave-flash' data='";
+					$content .= clinic_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 --><!--[if !IE]>--><object type='application/x-shockwave-flash' data='";
 					$content .= UPLOAD_SITE_URL."/".ATTACH_ADV."/".$flash;
 					$content .= "' width='".$width."' height='".$height."'><!--<![endif]--><param name='quality' value='high' /><param name='wmode' value='opaque' /><param name='swfversion' value='9.0.45.0' /><param name='expressinstall' value='";
-					$content .= SHOP_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 --><div><h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4><p><a href='http://www.adobe.com/go/getflashplayer'><img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='获取 Adobe Flash Player' width='112' height='33' /></a></p></div><!--[if !IE]>--></object><!--<![endif]--></object></button></a>";
+					$content .= clinic_RESOURCE_SITE_URL."/js/expressInstall.swf'/><!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 --><div><h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4><p><a href='http://www.adobe.com/go/getflashplayer'><img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='获取 Adobe Flash Player' width='112' height='33' /></a></p></div><!--[if !IE]>--></object><!--<![endif]--></object></button></a>";
 					$content .= "<script type='text/javascript'>swfobject.registerObject('FlashID');</script>\");";
 				}
 		        }	

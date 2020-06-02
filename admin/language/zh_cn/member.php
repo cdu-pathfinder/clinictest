@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * index
  */
@@ -14,13 +14,13 @@ $lang['member_index_login_time']	= 'login times';
 $lang['member_index_im']			= 'instant messaging';
 $lang['member_index_if_admin']		= 'Administrator or not';
 $lang['member_index_set_admin']		= 'make it an administrator';
-$lang['member_index_store']			= 'clinic';
-$lang['member_index_to_store']		= 'Visit the clinc';
-$lang['member_index_edit_store']		= 'edit the clinc';
+$lang['member_index_clic']			= 'clinic';
+$lang['member_index_to_clic']		= 'Visit the clinc';
+$lang['member_index_edit_clic']		= 'edit the clinc';
 $lang['member_index_to_message']	= 'notice';
 $lang['member_index_points']		= 'points';
 $lang['member_index_inform']		= 'Repot doctor';
-$lang['member_index_prestore']		= 'Advance deposit';
+$lang['member_index_preclic']		= 'Advance deposit';
 $lang['member_index_available']	    = 'available';
 $lang['member_index_frozen']		= 'frozen';
 $lang['member_index_help1']			= 'Through membership management, you can view, edit membership information and delete members and other operations';
@@ -56,7 +56,7 @@ $lang['member_edit_pic']			= 'Head portrait';
 $lang['member_edit_qq_wrong']       = '请输入正确的QQ号码';
 $lang['member_edit_wangwang']		= '阿里旺旺';
 $lang['member_edit_allowbuy']		= '允许购买商品';
-$lang['member_edit_allowbuy_tip']	= 'If the item is prohibited, the member cannot place the order at the front desk';
+$lang['member_edit_allowbuy_tip']	= 'If the item is prohibited, the member cannot place the appointment at the front desk';
 $lang['member_edit_allowtalk']		= 'Permission to speak';
 $lang['member_edit_allowtalk_tip']	= 'If the item is prohibited, the member cannot publish the consultation and send the in-station letter';
 $lang['member_edit_allowlogin']		= 'Allowed to login';

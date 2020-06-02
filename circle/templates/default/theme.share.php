@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="circle-share">
   <form method="post" action="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme_share&c_id=<?php echo $output['c_id'];?>&t_id=<?php echo $output['t_id'];?>" id="share_form" class="feededitor">
@@ -23,10 +23,10 @@
         <input type="hidden" id="checkapp_<?php echo $k;?>" name="checkapp_<?php echo $k;?>" value="<?php echo $v['isbind']?'1':'0';?>" />
       </label>
       <?php }?>
-      <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_sharemanage"><?php echo $lang['sharebind_alsosharesetting'];?></a> </span> </div>
+      <a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=member_sharemanage"><?php echo $lang['sharebind_alsosharesetting'];?></a> </span> </div>
     <?php }?>
     <div class="share-content">
-      <textarea placeholder="<?php echo $lang['sns_sharegoods_contenttip2'];?>" name="content" id="content_sgweibo" resize="none"></textarea>
+      <textarea placeholder="<?php echo $lang['sns_sharedoctors_contenttip2'];?>" name="content" id="content_sgweibo" resize="none"></textarea>
     </div>
     <input type="text" style="display:none;" />
     <!-- 防止点击Enter键提交 -->

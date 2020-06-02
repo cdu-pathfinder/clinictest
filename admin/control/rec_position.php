@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class rec_positionControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -55,7 +55,7 @@ class rec_positionControl extends SystemControl{
 		if (!empty($_GET['keywords'])){
 			$condition['title'] = array('like','%'.$_GET['keywords'].'%');
 		}
-		$list = $model->where($condition)->order('rec_id desc')->page(10)->select();
+		$list = $model->where($condition)->appointment('rec_id desc')->page(10)->select();
 		foreach ((array)$list as $k=>$v){
 			$list[$k]['content'] = unserialize($v['content']);
 			if ($v['pic_type'] == 1){

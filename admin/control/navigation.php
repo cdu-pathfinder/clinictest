@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class navigationControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -42,7 +42,7 @@ class navigationControl extends SystemControl{
 		 */
 		$condition['like_nav_title'] = trim($_GET['search_nav_title']);
 		$condition['nav_location'] = trim($_GET['search_nav_location']);
-		$condition['order'] = 'nav_sort asc';
+		$condition['appointment'] = 'nav_sort asc';
 		/**
 		 * 分页
 		 */
@@ -110,7 +110,7 @@ class navigationControl extends SystemControl{
 				 * 商品分类
 				 */
 				case '1':
-					$obj_validate->setValidate(array("input"=>$_POST["goods_class_id"], "require"=>"true", "message"=>$lang['navigation_add_goods_class_null']));
+					$obj_validate->setValidate(array("input"=>$_POST["doctors_class_id"], "require"=>"true", "message"=>$lang['navigation_add_doctors_class_null']));
 					break;
 				/**
 				 * 文章分类
@@ -148,7 +148,7 @@ class navigationControl extends SystemControl{
 					 * 商品分类
 					 */
 					case '1':
-						$insert_array['item_id'] = intval($_POST['goods_class_id']);
+						$insert_array['item_id'] = intval($_POST['doctors_class_id']);
 						break;
 					/**
 					 * 文章分类
@@ -187,11 +187,11 @@ class navigationControl extends SystemControl{
 		/**
 		 * 商品分类
 		 */
-		$model_goods_class = Model('goods_class');
-		$goods_class_list = $model_goods_class->getTreeClassList(3);
-		if (is_array($goods_class_list)){
-			foreach ($goods_class_list as $k => $v){
-				$goods_class_list[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
+		$model_doctors_class = Model('doctors_class');
+		$doctors_class_list = $model_doctors_class->getTreeClassList(3);
+		if (is_array($doctors_class_list)){
+			foreach ($doctors_class_list as $k => $v){
+				$doctors_class_list[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
 			}
 		}
 		/**
@@ -208,9 +208,9 @@ class navigationControl extends SystemControl{
 		 * 活动
 		 */
 		$activity	= Model('activity');
-		$activity_list	= $activity->getList(array('opening'=>true,'order'=>'activity.activity_sort'));
+		$activity_list	= $activity->getList(array('opening'=>true,'appointment'=>'activity.activity_sort'));
 		Tpl::output('activity_list',$activity_list);
-		Tpl::output('goods_class_list',$goods_class_list);
+		Tpl::output('doctors_class_list',$doctors_class_list);
 		Tpl::output('article_class_list',$article_class_list);
 		Tpl::showpage('navigation.add');
 	}
@@ -241,7 +241,7 @@ class navigationControl extends SystemControl{
 				 * 商品分类
 				 */
 				case '1':
-					$obj_validate->setValidate(array("input"=>$_POST["goods_class_id"], "require"=>"true", "message"=>$lang['navigation_add_goods_class_null']));
+					$obj_validate->setValidate(array("input"=>$_POST["doctors_class_id"], "require"=>"true", "message"=>$lang['navigation_add_doctors_class_null']));
 					break;
 				/**
 				 * 文章分类
@@ -274,7 +274,7 @@ class navigationControl extends SystemControl{
 					 * 商品分类
 					 */
 					case '1':
-						$update_array['item_id'] = intval($_POST['goods_class_id']);
+						$update_array['item_id'] = intval($_POST['doctors_class_id']);
 						break;
 					/**
 					 * 文章分类
@@ -317,11 +317,11 @@ class navigationControl extends SystemControl{
 		/**
 		 * 商品分类
 		 */
-		$model_goods_class = Model('goods_class');
-		$goods_class_list = $model_goods_class->getTreeClassList(3);
-		if (is_array($goods_class_list)){
-			foreach ($goods_class_list as $k => $v){
-				$goods_class_list[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
+		$model_doctors_class = Model('doctors_class');
+		$doctors_class_list = $model_doctors_class->getTreeClassList(3);
+		if (is_array($doctors_class_list)){
+			foreach ($doctors_class_list as $k => $v){
+				$doctors_class_list[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
 			}
 		}
 		/**
@@ -338,10 +338,10 @@ class navigationControl extends SystemControl{
 		 * 活动
 		 */
 		$activity	= Model('activity');
-		$activity_list	= $activity->getList(array('opening'=>true,'order'=>'activity.activity_sort'));
+		$activity_list	= $activity->getList(array('opening'=>true,'appointment'=>'activity.activity_sort'));
 		Tpl::output('activity_list',$activity_list);
 		Tpl::output('navigation_array',$navigation_array);
-		Tpl::output('goods_class_list',$goods_class_list);
+		Tpl::output('doctors_class_list',$doctors_class_list);
 		Tpl::output('article_class_list',$article_class_list);
 		Tpl::showpage('navigation.edit');
 	}

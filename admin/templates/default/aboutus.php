@@ -28,12 +28,12 @@
         <td class="w96"><?php echo $lang['dashboard_aboutus_manager'];?>&nbsp;:&nbsp;</td>
         <td class="team"><?php echo $lang['dashboard_aboutus_manager_name'];?></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
         <td><?php echo $lang['dashboard_aboutus_developer'];?>&nbsp;:&nbsp;</td>
         <td class="team"><?php echo $lang['dashboard_aboutus_developer_name']; ?></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
         <td><?php echo $lang['dashboard_aboutus_designer'];?>&nbsp;:&nbsp;</td>
         <td class="team"><?php echo $lang['dashboard_aboutus_designer_name']; ?></td>
@@ -56,17 +56,17 @@
         <td class="w12"></td>
         <td><strong><?php echo $lang['dashboard_aboutus_bbs'];?></strong>&nbsp;&nbsp;&nbsp;(&nbsp;<span><?php echo $lang['dashboard_aboutus_bbs_tip'];?></span>&nbsp;)&nbsp;</td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
-        <td><a href="http://bbs.shopnc.net" target="_blank">http://bbs.shopnc.net</a></td>
+        <td><a href="http://bbs.clinicnc.net" target="_blank">http://bbs.clinicnc.net</a></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
         <td><strong><?php echo $lang['dashboard_aboutus_website'];?></strong>&nbsp;&nbsp;&nbsp;(&nbsp;<span><?php echo $lang['dashboard_aboutus_website_tip'];?></span>&nbsp;)&nbsp;</td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
-        <td><a href="http://www.shopnc.net" target="_blank">http://www.shopnc.net</a></td>
+        <td><a href="http://www.clinicnc.net" target="_blank">http://www.clinicnc.net</a></td>
       </tr>
     </tbody>
     <tfoot>
@@ -86,9 +86,9 @@
         <td class="w12"></td>
         <td><strong><?php echo $lang['dashboard_aboutus_thanks_content'];?></strong></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
-        <td><a href="http://www.shopnc.net" target="_blank"><?php echo $lang['dashboard_aboutus_thanks_developer_name']; ?></a></td>
+        <td><a href="http://www.clinicnc.net" target="_blank"><?php echo $lang['dashboard_aboutus_thanks_developer_name']; ?></a></td>
       </tr>
     </tbody>
     <tfoot>
@@ -106,9 +106,9 @@
     <tbody>
       <tr>
         <td class="w12"></td>
-        <td><a href="http://www.shopnc.net" target="_blank"><?php echo $lang['dashboard_aboutus_notice1'];?></a>&nbsp;<?php echo $lang['dashboard_aboutus_notice2'];?>&nbsp;<a href="http://www.shopnc.net" target="_blank">ShopNC</a>&nbsp;<?php echo $lang['dashboard_aboutus_notice3'];?></td>
+        <td><a href="http://www.clinicnc.net" target="_blank"><?php echo $lang['dashboard_aboutus_notice1'];?></a>&nbsp;<?php echo $lang['dashboard_aboutus_notice2'];?>&nbsp;<a href="http://www.clinicnc.net" target="_blank">clinicNC</a>&nbsp;<?php echo $lang['dashboard_aboutus_notice3'];?></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td></td>
         <td><?php echo $lang['dashboard_aboutus_notice4'];?>&nbsp;:&nbsp;&nbsp;jQuery,kindeditor<?php echo $lang['dashboard_aboutus_notice5'];?>.&nbsp;<?php echo $lang['dashboard_aboutus_notice6'];?></td>
       </tr>

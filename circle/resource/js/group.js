@@ -33,16 +33,16 @@ $(function(){
 				// 内容部分
 				$content.append(data.theme_content);
 				// 商品部分
-				if(data.goods_list != ''){
+				if(data.doctors_list != ''){
 					var ul = $('<ul></ul>');
-					$.each(data.goods_list, function(e, d){
-						$('<li></li>').append('<div class="goods-pic thumb"><a href="javascript:void(0);"><img class="t-img" src="'+d.image+'" /></a></div>')
-							.append('<div class="goods-name">'+d.goods_name+'</div>')
-							.append('<div class="goods-price"><em>'+d.goods_price+'</em></div>')
+					$.each(data.doctors_list, function(e, d){
+						$('<li></li>').append('<div class="doctors-pic thumb"><a href="javascript:void(0);"><img class="t-img" src="'+d.image+'" /></a></div>')
+							.append('<div class="doctors-name">'+d.doctors_name+'</div>')
+							.append('<div class="doctors-price"><em>'+d.doctors_price+'</em></div>')
 							.append('<a class="goto" target="_blank" href="'+d.thg_url+'">商品详情</a>')
 							.appendTo(ul);
 					});
-					$('<div class="theme-content-goods"><h4><i></i>相关商品</h4></div>').append(ul).appendTo($content);
+					$('<div class="theme-content-doctors"><h4><i></i>相关商品</h4></div>').append(ul).appendTo($content);
 				}
 				// 附件部分
 				if(data.affix_list != ''){

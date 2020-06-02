@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -36,14 +36,14 @@
         <tr>
           <td class="required" colspan="2"><label class="validation" for="t_mane"><?php echo $lang['type_index_type_name'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" name="t_mane" id="t_mane" /></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td class="required" colspan="2"><label class="" for="s_sort"><?php echo $lang['type_common_belong_class'].$lang['nc_colon'];;?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform" id="gcategory">
             <input type="hidden" value="" class="mls_id" name="class_id" />
             <input type="hidden" value="" class="mls_name" name="class_name" />
@@ -62,13 +62,13 @@
         <tr>
           <td class="required" colspan="2"><label class="validation" for="t_sort"><?php echo $lang['nc_sort'].$lang['nc_colon'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" class="txt" name="t_sort" id="t_sort" value="0" /></td>
           <td class="vatop tips"><?php echo $lang['type_add_sort_desc'];?></td>
         </tr>
       </tbody>
     </table>
-    <div style="width: 49%; float: left; margin: 10px 0; border: solid #DEEFFB; border-width: 0 0 1px 0;">
+    <div style="width: 49%; float: left; margin: 10px 0; bappointment: solid #DEEFFB; bappointment-width: 0 0 1px 0;">
       <table class="table tb-type2" style="margin: 0;">
         <thead class="thead">
           <tr class="space">
@@ -115,14 +115,14 @@
           <?php }else{?>
           <tbody>
             <tr>
-              <td class="tips" colspan="15"><?php echo $lang['type_add_spec_null_one'];?><a href="JavaScript:void(0);" onclick="window.parent.openItem('spec,spec,goods')"><?php echo $lang['nc_spec_manage'];?></a><?php echo $lang['type_add_spec_null_two']?></td>
+              <td class="tips" colspan="15"><?php echo $lang['type_add_spec_null_one'];?><a href="JavaScript:void(0);" onclick="window.parent.openItem('spec,spec,doctors')"><?php echo $lang['nc_spec_manage'];?></a><?php echo $lang['type_add_spec_null_two']?></td>
             </tr>
           </tbody>
           <?php }?>
         </table>
       </div>
     </div>
-    <div style="width: 49%; float: right; margin: 10px 0; border: solid #DEEFFB; border-width: 0 0 1px 0;">
+    <div style="width: 49%; float: right; margin: 10px 0; bappointment: solid #DEEFFB; bappointment-width: 0 0 1px 0;">
       <table class="table tb-type2" style="margin: 0;">
         <thead class="thead">
           <tr class="space">
@@ -169,7 +169,7 @@
           <?php }else{?>
           <tbody>
             <tr>
-              <td class="tips" colspan="15"><?php echo $lang['type_add_brand_null_one'];?><a href="JavaScript:void(0);" onclick="window.parent.openItem('brand,brand,goods')"><?php echo $lang['nc_brand_manage'];?></a><?php echo $lang['type_add_brand_null_two']?></td>
+              <td class="tips" colspan="15"><?php echo $lang['type_add_brand_null_one'];?><a href="JavaScript:void(0);" onclick="window.parent.openItem('brand,brand,doctors')"><?php echo $lang['nc_brand_manage'];?></a><?php echo $lang['type_add_brand_null_two']?></td>
             </tr>
           </tbody>
           <?php }?>

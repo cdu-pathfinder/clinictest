@@ -7,10 +7,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class Db{
 
@@ -154,9 +154,9 @@ class Db{
 		if (!empty($param['group'])){
 			$param['where_group'] .= ' group by '.$param['group'];
 		}
-		$param['where_order'] = '';
-		if (!empty($param['order'])){
-			$param['where_order'] .= ' order by '.$param['order'];
+		$param['where_appointment'] = '';
+		if (!empty($param['appointment'])){
+			$param['where_appointment'] .= ' appointment by '.$param['appointment'];
 		}
 		//判断是否是联表查询
 		$tmp_table = explode(',',$param['table']);
@@ -171,12 +171,12 @@ class Db{
 			for ($i=1;$i<count($tmp_table);$i++){
 				$tmp_sql .= $param['join_type'].' `'.DBPRE.$tmp_table[$i].'` as `'.$tmp_table[$i].'` ON '.$param['join_on'][$i-1].' ';
 			}
-			$sql = 'SELECT '.$param['field'].' FROM `'.DBPRE.$tmp_table[0].'` as `'.$tmp_table[0].'` '.$tmp_sql.' '.$param['where'].$param['where_group'].$param['where_order'];
+			$sql = 'SELECT '.$param['field'].' FROM `'.DBPRE.$tmp_table[0].'` as `'.$tmp_table[0].'` '.$tmp_sql.' '.$param['where'].$param['where_group'].$param['where_appointment'];
 			
 			//如果有分页，计算信息总数
 			$count_sql = 'SELECT '.$param['count'].' as count FROM `'.DBPRE.$tmp_table[0].'` as `'.$tmp_table[0].'` '.$tmp_sql.' '.$param['where'].$param['where_group'];
 		}else {
-			$sql = 'SELECT '.$param['field'].' FROM `'.DBPRE.$param['table'].'` as `'.$param['table'].'` '.$param['index'].' '.$param['where'].$param['where_group'].$param['where_order'];
+			$sql = 'SELECT '.$param['field'].' FROM `'.DBPRE.$param['table'].'` as `'.$param['table'].'` '.$param['index'].' '.$param['where'].$param['where_group'].$param['where_appointment'];
 			$count_sql = 'SELECT '.$param['count'].' as count FROM `'.DBPRE.$param['table'].'` as `'.$param['table'].'` '.$param['index'].' '.$param['where'].$param['where_group'];
 		}
 

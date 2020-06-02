@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -13,10 +13,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label><?php echo $lang['notice_index_send_type'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul class="nofloat">
               <li>
                 <label><input type="radio" checked="" value="1" name="send_type"><?php echo $lang['notice_index_spec_member'];?></label>
@@ -33,7 +33,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="user_name"><?php echo $lang['notice_index_member_list'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea id="user_name" name="user_name" rows="6" class="tarea" ><?php echo base64_decode(str_replace(' ','+',$_GET['member_name'])); ?></textarea></td>
           <td class="vatop tips"><?php echo $lang['notice_index_member_tip'];?></td>
         </tr>
@@ -42,7 +42,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['notice_index_content'];?>: </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="vatop rowform"><textarea name="content1" rows="6" class="tarea"></textarea></td>
         </tr>
       </tbody>

@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 导出语言包，只有在执行导出行为时，才会调用
  */
@@ -11,7 +11,7 @@ $lang['exp_brand_cate']		= 'Type';
 $lang['exp_brand_img']		= 'Brand image';
 
 //商品
-$lang['exp_product']		= 'Doctor';
+$lang['exp_doc']		= 'Doctor';
 $lang['exp_pr_cate']		= 'Type';
 $lang['exp_pr_brand']		= 'Brand';
 $lang['exp_pr_price']		= 'Time';
@@ -19,8 +19,8 @@ $lang['exp_pr_serial']		= 'Date';
 $lang['exp_pr_state']		= 'Status';
 $lang['exp_pr_type']		= 'Type';
 $lang['exp_pr_addtime']		= 'Available time';
-$lang['exp_pr_store']		= 'Clinic';
-$lang['exp_pr_storeid']		= 'Clinic id';
+$lang['exp_pr_clic']		= 'Clinic';
+$lang['exp_pr_clicid']		= 'Clinic id';
 $lang['exp_pr_wgxj']		= '违规下架';
 $lang['exp_pr_sj']			= '上架';
 $lang['exp_pr_xj']			= '下架';
@@ -35,7 +35,7 @@ $lang['exp_spec']			= 'Standard';
 $lang['exp_sp_content']		= 'Standard content';
 
 //店铺
-$lang['exp_store']			= 'Clinic';
+$lang['exp_clic']			= 'Clinic';
 $lang['exp_st_name']		= 'Clinic Account';
 $lang['exp_st_sarea']		= 'Address';
 $lang['exp_st_grade']		= 'Level';
@@ -60,7 +60,7 @@ $lang['exp_mb_ww']			= '旺旺';
 $lang['exp_mb_dcs']			= 'Logintimes';
 $lang['exp_mb_rtime']		= 'Registration time';
 $lang['exp_mb_ltime']		= 'Last login';
-$lang['exp_mb_storeid']		= 'Clinic Id';
+$lang['exp_mb_clicid']		= 'Clinic Id';
 $lang['exp_mb_nan']			= 'Male';
 $lang['exp_mb_nv']			= 'Female';
 
@@ -108,14 +108,14 @@ $lang['exp_mx_rz']			= '预存款变更日志';
 
 //订单
 $lang['exp_od_no']			= '订单号';
-$lang['exp_od_store']		= '店铺';
+$lang['exp_od_clic']		= '店铺';
 $lang['exp_od_buyer']		= '买家';
 $lang['exp_od_xtimd']		= '下单时间';
 $lang['exp_od_count']		= '订单总额';
 $lang['exp_od_yfei']		= '运费';
 $lang['exp_od_paytype']		= '支付方式';
 $lang['exp_od_state']		= '订单状态';
-$lang['exp_od_storeid']		= '店铺ID';
+$lang['exp_od_clicid']		= '店铺ID';
 $lang['exp_od_selerid']		= '卖家ID';
 $lang['exp_od_buyerid']		= '买家ID';
 $lang['exp_od_bemail']		= '买家Email';
@@ -127,17 +127,17 @@ $lang['exp_od_sta_yfh']		= '已发货';
 $lang['exp_od_sta_yjs']		= '已结算';
 $lang['exp_od_sta_dsh']		= '待审核';
 $lang['exp_od_sta_yqr']		= '已确认';
-$lang['exp_od_order']		= '订单';
+$lang['exp_od_appointment']		= '订单';
 
 //金币购买记录
 $lang['exp_jbg_member']		= '会员名';
-$lang['exp_jbg_store']		= '店铺';
+$lang['exp_jbg_clic']		= '店铺';
 $lang['exp_jbg_jbs']		= '购买金币数';
 $lang['exp_jbg_money']		= '所需金额';
 $lang['exp_jbg_gtime']		= '购买时间';
 $lang['exp_jbg_paytype']	= '支付方式';
 $lang['exp_jbg_paystate']	= '支付状态';
-$lang['exp_jbg_storeid']	= '店铺ID';
+$lang['exp_jbg_clicid']	= '店铺ID';
 $lang['exp_jbg_memberid']	= '会员ID';
 $lang['exp_jbg_wpay']		= '未支付';
 $lang['exp_jbg_ypay']		= '已支付';
@@ -145,12 +145,12 @@ $lang['exp_jbg_jbgm']		= '金币购买';
 
 //金币日志
 $lang['exp_jb_member']		= '会员';
-$lang['exp_jb_store']		= '店铺';
+$lang['exp_jb_clic']		= '店铺';
 $lang['exp_jb_jbs']			= '金币数';
 $lang['exp_jb_type']		= '变更类型';
 $lang['exp_jb_btime']		= '变更时间';
 $lang['exp_jb_mshu']		= '描述';
-$lang['exp_jb_storeid']		= '店铺ID';
+$lang['exp_jb_clicid']		= '店铺ID';
 $lang['exp_jb_memberid']	= '会员ID';
 $lang['exp_jb_add']			= '增加';
 $lang['exp_jb_del']			= '减少';

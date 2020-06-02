@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if(!empty($_SESSION['member_id'])) { ?>
 <script type="text/javascript">
 $(document).ready(function(){

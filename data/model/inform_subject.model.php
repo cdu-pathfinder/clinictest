@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class inform_subjectModel{
 
 	/*
@@ -81,7 +81,7 @@ class inform_subjectModel{
         $param['table'] = 'inform_subject' ;
         $param['field'] = $field;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' inform_subject_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' inform_subject_id desc ';
         return Db::select($param,$page) ;
 	
 	}

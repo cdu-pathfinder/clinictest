@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 公用
  */
@@ -18,7 +18,7 @@ $lang['activity_index_banner']		= 'Banner';
 $lang['activity_index_style']		= 'Style';
 $lang['activity_index_start']		= 'Start Time';
 $lang['activity_index_end']			= 'End Time';
-$lang['activity_index_goods']		= 'Doctor';
+$lang['activity_index_doctors']		= 'Doctor';
 $lang['activity_index_group']		= '团购';
 $lang['activity_index_default']		= 'Default';
 $lang['activity_index_long_time']	= 'Long-term activity';
@@ -61,8 +61,8 @@ $lang['activity_del_choose_activity']	= 'Please choose activity';
 /**
  * 活动内容
  */
-$lang['activity_detail_index_goods_name']	= 'Doctor Name';
-$lang['activity_detail_index_store']		= 'Belong clinic';
+$lang['activity_detail_index_doctors_name']	= 'Doctor Name';
+$lang['activity_detail_index_clic']		= 'Belong clinic';
 $lang['activity_detail_index_auditstate']	= 'Review status';
 $lang['activity_detail_index_to_audit']		= 'Awaiting';
 $lang['activity_detail_index_passed']		= 'Approval';

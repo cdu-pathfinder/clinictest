@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['circle_default_series']	= '默认系列';
 $lang['circle_custom']			= '自定义';

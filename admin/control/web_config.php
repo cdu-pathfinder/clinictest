@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class web_configControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -61,17 +61,17 @@ class web_configControl extends SystemControl{
 		$web_id = intval($_GET["web_id"]);
 		$code_list = $model_web_config->getCodeList(array('web_id'=>"$web_id"));
 		if(is_array($code_list) && !empty($code_list)) {
-			$model_class = Model('goods_class');
-			$parent_goods_class = $model_class->getTreeClassList(2);//商品分类父类列表，只取到第二级
-			if (is_array($parent_goods_class) && !empty($parent_goods_class)){
-				foreach ($parent_goods_class as $k => $v){
-					$parent_goods_class[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
+			$model_class = Model('doctors_class');
+			$parent_doctors_class = $model_class->getTreeClassList(2);//商品分类父类列表，只取到第二级
+			if (is_array($parent_doctors_class) && !empty($parent_doctors_class)){
+				foreach ($parent_doctors_class as $k => $v){
+					$parent_doctors_class[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['gc_name'];
 				}
 			}
-			Tpl::output('parent_goods_class',$parent_goods_class);
+			Tpl::output('parent_doctors_class',$parent_doctors_class);
 
-			$goods_class = $model_class->getTreeClassList(1);//第一级商品分类
-			Tpl::output('goods_class',$goods_class);
+			$doctors_class = $model_class->getTreeClassList(1);//第一级商品分类
+			Tpl::output('doctors_class',$doctors_class);
 
 			foreach ($code_list as $key => $val) {//将变量输出到页面
 				$var_name = $val["var_name"];

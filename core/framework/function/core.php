@@ -8,10 +8,10 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 产生验证码
@@ -121,9 +121,9 @@ function showMessage($msg,$url='',$show_type='html',$msg_type='succ',$is_show=1,
 			echo '<title></title>';
 			echo '<style type="text/css">';
 			echo 'body { font-family: "Verdana";padding: 0; margin: 0;}';
-			echo 'h2 { font-size: 12px; line-height: 30px; border-bottom: 1px dashed #CCC; padding-bottom: 8px;width:800px; margin: 20px 0 0 150px;}';
+			echo 'h2 { font-size: 12px; line-height: 30px; bappointment-bottom: 1px dashed #CCC; padding-bottom: 8px;width:800px; margin: 20px 0 0 150px;}';
 			echo 'dl { float: left; display: inline; clear: both; padding: 0; margin: 10px 20px 20px 150px;}';
-			echo 'dt { font-size: 14px; font-weight: bold; line-height: 40px; color: #333; padding: 0; margin: 0; border-width: 0px;}';
+			echo 'dt { font-size: 14px; font-weight: bold; line-height: 40px; color: #333; padding: 0; margin: 0; bappointment-width: 0px;}';
 			echo 'dd { font-size: 12px; line-height: 40px; color: #333; padding: 0px; margin:0;}';
 			echo '</style>';
 			echo '</head>';
@@ -134,7 +134,7 @@ function showMessage($msg,$url='',$show_type='html',$msg_type='succ',$is_show=1,
 			echo '<dt><p /></dt>';
 			echo '<dd>'.$lang['error_notice_operate'].'</dd>';
 			echo '<dd><p /><p /><p /><p /></dd>';
-			echo '<dd><p /><p /><p /><p />Copyright 2007-2014 ShopNC, All Rights Reserved '.$lang['company_name'].'</dd>';
+			echo '<dd><p /><p /><p /><p />Copyright 2007-2014 clinicNC, All Rights Reserved '.$lang['company_name'].'</dd>';
 			echo '</dl>';
 			echo '</body>';
 			echo '</html>';
@@ -221,7 +221,7 @@ function showDialog($message = '', $url = '', $alert_type = 'error', $extrajs = 
 
 	ob_end_clean();
 	@header("Expires: -1");
-	@header("Cache-Control: no-store, private, post-check=0, pre-check=0, max-age=0", FALSE);
+	@header("Cache-Control: no-clic, private, post-check=0, pre-check=0, max-age=0", FALSE);
 	@header("Pragma: no-cache");
 	@header("Content-type: text/xml; charset=".CHARSET);
 
@@ -264,7 +264,7 @@ function getReferer(){
  */
 function getNchash(){
     if (C('captcha_status_login')){
-        return substr(md5(SHOP_SITE_URL.$_GET['act'].$_GET['op']),0,8);
+        return substr(md5(clinic_SITE_URL.$_GET['act'].$_GET['op']),0,8);
     } else {
         return '';
     }
@@ -463,13 +463,13 @@ function showEditor($id, $value='', $width='700px', $height='300px', $style='vis
     case 'simple':
         $items = "['source', '|', 'fullscreen', 'undo', 'redo', 'cut', 'copy', 'paste', '|',
             'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-            'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-            'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'about']";
+            'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertappointmentedlist',
+            'insertunappointmentedlist', '|', 'emoticons', 'image', 'link', '|', 'about']";
         break;
     default:
         $items = "['source', '|', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
             'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'justifyfull', 'insertappointmentedlist', 'insertunappointmentedlist', 'indent', 'outdent', 'subscript',
             'superscript', '|', 'selectall', 'clearhtml','quickformat','|',
             'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
             'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image'".$media.", 'table', 'hr', 'emoticons', 'link', 'unlink', '|', 'about']";
@@ -630,7 +630,7 @@ function ncPriceFormatForList($price) {
  * @return int 店铺id
  */
 function subdomain(){
-	$store_id = 0;
+	$clic_id = 0;
 	/**
 	 * 获得系统配置,二级域名功能是否开启
 	 */
@@ -639,15 +639,15 @@ function subdomain(){
 		$line = trim($line[0],'.');
 		if(empty($line) || strtolower($line) == 'www') return 0;
 
-		$model_store = Model('store');
-		$store_info = $model_store->getStoreInfo(array('store_domain'=>$line));
+		$model_clic = Model('clic');
+		$clic_info = $model_clic->getclicInfo(array('clic_domain'=>$line));
 		//二级域名存在
-		if ($store_info['store_id'] > 0){
-			$store_id = $store_info['store_id'];
-			$_GET['store_id'] = $store_info['store_id'];
+		if ($clic_info['clic_id'] > 0){
+			$clic_id = $clic_info['clic_id'];
+			$_GET['clic_id'] = $clic_info['clic_id'];
 		}
 	}
-	return $store_id;
+	return $clic_id;
 }
 
 /**
@@ -724,13 +724,13 @@ function str_cut($string, $length, $dot = '')
  * @param string $str 待转的字符串
  * @return string
  */
-function unicodeToUtf8($str, $order = "little")
+function unicodeToUtf8($str, $appointment = "little")
 {
 	$utf8string ="";
 	$n=strlen($str);
 	for ($i=0;$i<$n ;$i++ )
 	{
-		if ($order=="little")
+		if ($appointment=="little")
 		{
 			$val = str_pad(dechex(ord($str[$i+1])), 2, 0, STR_PAD_LEFT) .
 			str_pad(dechex(ord($str[$i])),      2, 0, STR_PAD_LEFT);
@@ -840,8 +840,8 @@ function C($key){
  * @param string $key	图片大小 small tiny
  * @return string
  */
-function defaultGoodsImage($key){
-    $file = str_ireplace('.', '_' . $key . '.', C('default_goods_image'));
+function defaultdoctorsImage($key){
+    $file = str_ireplace('.', '_' . $key . '.', C('default_doctors_image'));
 	return ATTACH_COMMON.DS.$file;
 }
 
@@ -881,14 +881,14 @@ function getMemberAvatarForID($id){
  * @param string $店铺标志
  * @return string
  */
-function getStoreLogo($store_logo){
-    if (empty($store_logo)) {
-        return UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['default_store_logo'];
+function getclicLogo($clic_logo){
+    if (empty($clic_logo)) {
+        return UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['default_clic_logo'];
     } else {
-        if (file_exists(BASE_UPLOAD_PATH.DS.ATTACH_STORE.DS.$store_logo)){
-            return UPLOAD_SITE_URL.DS.ATTACH_STORE.DS.$store_logo;
+        if (file_exists(BASE_UPLOAD_PATH.DS.ATTACH_clic.DS.$clic_logo)){
+            return UPLOAD_SITE_URL.DS.ATTACH_clic.DS.$clic_logo;
         } else {
-            return UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['default_store_logo'];
+            return UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$GLOBALS['setting_config']['default_clic_logo'];
         }
     }
 }
@@ -1003,7 +1003,7 @@ function getCMSSpecialHtml($special_id) {
 /**
  * 获取微商城个人秀图片地址
  */
-function getMicroshopPersonalImageUrl($personal_info,$type=''){
+function getMicroclinicPersonalImageUrl($personal_info,$type=''){
     $ext_array = array('list','tiny');
     $personal_image_array = array();
     $personal_image_list = explode(',',$personal_info['commend_image']);
@@ -1015,28 +1015,28 @@ function getMicroshopPersonalImageUrl($personal_info,$type=''){
                 $file_name = $value;
             }
             $file_path = $personal_info['commend_member_id'].DS.$file_name;
-            if(is_file(BASE_UPLOAD_PATH.DS.ATTACH_MICROSHOP.DS.$file_path)) {
-                $personal_image_array[] = UPLOAD_SITE_URL.DS.ATTACH_MICROSHOP.DS.$file_path;
+            if(is_file(BASE_UPLOAD_PATH.DS.ATTACH_MICROclinic.DS.$file_path)) {
+                $personal_image_array[] = UPLOAD_SITE_URL.DS.ATTACH_MICROclinic.DS.$file_path;
             } else {
-                $personal_image_array[] = getMicroshopDefaultImage();
+                $personal_image_array[] = getMicroclinicDefaultImage();
             }
         }
     } else {
-        $personal_image_array[] = getMicroshopDefaultImage();
+        $personal_image_array[] = getMicroclinicDefaultImage();
     }
     return $personal_image_array;
 
 }
 
-function getMicroshopDefaultImage() {
-    return UPLOAD_SITE_URL.'/'.defaultGoodsImage('240');
+function getMicroclinicDefaultImage() {
+    return UPLOAD_SITE_URL.'/'.defaultdoctorsImage('240');
 }
 
 /**
  * 获取开店申请图片
  */
-function getStoreJoininImageUrl($image_name='') {
-    return UPLOAD_SITE_URL.DS.ATTACH_STORE_JOININ.DS.$image_name;
+function getclicJoininImageUrl($image_name='') {
+    return UPLOAD_SITE_URL.DS.ATTACH_clic_JOININ.DS.$image_name;
 }
 
 
@@ -1163,7 +1163,7 @@ function parsesmiles($message) {
 			$imagesurl = RESOURCE_SITE_URL.DS.'js'.DS.'smilies'.DS.'images'.DS;
 			$replace_arr = array();
 			foreach($smilies_array['replacearray'] AS $key => $smiley) {
-				$replace_arr[$key] = '<img src="'.$imagesurl.$smiley['imagename'].'" title="'.$smiley['desc'].'" border="0" alt="'.$imagesurl.$smiley['desc'].'" />';
+				$replace_arr[$key] = '<img src="'.$imagesurl.$smiley['imagename'].'" title="'.$smiley['desc'].'" bappointment="0" alt="'.$imagesurl.$smiley['desc'].'" />';
 			}
 
 			$message = preg_replace($smilies_array['searcharray'], $replace_arr, $message);
@@ -1282,7 +1282,7 @@ function write_file($filepath, $data, $mode = null){
 		return false;
 	}
 	if ($data === '') $data = '\'\'';
-	$data = "<?php defined('InShopNC') or exit('Access Invalid!'); return ".$data."\n?>";
+	$data = "<?php defined('InclinicNC') or exit('Access Invalid!'); return ".$data."\n?>";
 	$mode = $mode == 'append' ? FILE_APPEND : null;
     if (false === file_put_contents($filepath,compress_code($data),$mode)){
     	return false;
@@ -1705,10 +1705,10 @@ function snsShareFrom($sign) {
     switch ($sign) {
         case '1' :
         case '2' :
-            return L('sns_from') . '<a target="_black" href="' . SHOP_SITE_URL . '">' . L('sns_shop') . '</a>';
+            return L('sns_from') . '<a target="_black" href="' . clinic_SITE_URL . '">' . L('sns_clinic') . '</a>';
             break;
         case '3' :
-            return L('sns_from') . '<a target="_black" href="' . MICROSHOP_SITE_URL . '">' . L('nc_modules_microshop') . '</a>';
+            return L('sns_from') . '<a target="_black" href="' . MICROclinic_SITE_URL . '">' . L('nc_modules_microclinic') . '</a>';
             break;
         case '4' :
             return L('sns_from') . '<a target="_black" href="' . CMS_SITE_URL . '">CMS</a>';
@@ -1755,7 +1755,7 @@ function url($act = '', $op = '', $args = array(), $model = false, $site_url = '
     $ext = '.html';
     //入口文件名
     $file = 'index.php';
-//    $site_url = empty($site_url) ? SHOP_SITE_URL : $site_url;
+//    $site_url = empty($site_url) ? clinic_SITE_URL : $site_url;
     $act = trim($act);
     $op = trim($op);
     $args = !is_array($args) ? array() : $args;
@@ -1787,29 +1787,29 @@ function url($act = '', $op = '', $args = array(), $model = false, $site_url = '
     }
     //将商品、店铺、分类、品牌、文章自动生成的伪静态URL使用短URL代替
     $reg_match_from = array(
-        '/^goods-index-goods_id-(\d+)\.html$/',
-        '/^show_store-index-store_id-(\d+)\.html$/',
-        '/^show_store-goods_all-store_id-(\d+)-stc_id-(\d+)-key-([0-5])-order-([0-2])-curpage-(\d+)\.html$/',
+        '/^doctors-index-doctors_id-(\d+)\.html$/',
+        '/^show_clic-index-clic_id-(\d+)\.html$/',
+        '/^show_clic-doctors_all-clic_id-(\d+)-stc_id-(\d+)-key-([0-5])-appointment-([0-2])-curpage-(\d+)\.html$/',
         '/^article-show-article_id-(\d+)\.html$/',
         '/^article-article-ac_id-(\d+)\.html$/',
         '/^document-index-code-([a-z_]+)\.html$/',
-        '/^search-index-cate_id-(\d+)-b_id-([0-9_]+)-a_id-([0-9_]+)-key-([0-3])-order-([0-2])-type-([0-2])-area_id-(\d+)-curpage-(\d+)\.html$/',
-        '/^brand-list-brand-(\d+)-key-([0-3])-order-([0-2])-type-([0-2])-area_id-(\d+)-curpage-(\d+)\.html$/',
+        '/^search-index-cate_id-(\d+)-b_id-([0-9_]+)-a_id-([0-9_]+)-key-([0-3])-appointment-([0-2])-type-([0-2])-area_id-(\d+)-curpage-(\d+)\.html$/',
+        '/^brand-list-brand-(\d+)-key-([0-3])-appointment-([0-2])-type-([0-2])-area_id-(\d+)-curpage-(\d+)\.html$/',
         '/^brand-index\.html$/',
-        '/^show_groupbuy-index-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_order_key-(\d+)-groupbuy_order-(\d+)-curpage-(\d+)\.html$/',
-        '/^show_groupbuy-groupbuy_soon-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_order_key-(\d+)-groupbuy_order-(\d+)-curpage-(\d+)\.html$/',
-        '/^show_groupbuy-groupbuy_history-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_order_key-(\d+)-groupbuy_order-(\d+)-curpage-(\d+)\.html$/',
+        '/^show_groupbuy-index-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_appointment_key-(\d+)-groupbuy_appointment-(\d+)-curpage-(\d+)\.html$/',
+        '/^show_groupbuy-groupbuy_soon-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_appointment_key-(\d+)-groupbuy_appointment-(\d+)-curpage-(\d+)\.html$/',
+        '/^show_groupbuy-groupbuy_history-area_id-(\d+)-groupbuy_class-(\d+)-groupbuy_price-(\d+)-groupbuy_appointment_key-(\d+)-groupbuy_appointment-(\d+)-curpage-(\d+)\.html$/',
         '/^show_groupbuy-groupbuy_detail-group_id-(\d+).html$/',
         '/^pointprod-index.html$/',
         '/^pointprod-plist.html$/',
         '/^pointprod-pinfo-id-(\d+).html$/',
         '/^pointvoucher-index.html$/',
-        '/^goods-comments_list-goods_id-(\d+)-type-([0-3])-curpage-(\d+).html$/'
+        '/^doctors-comments_list-doctors_id-(\d+)-type-([0-3])-curpage-(\d+).html$/'
         );
     $reg_match_to = array(
         'item-\\1.html',
-        'shop-\\1.html',
-        'shop_view-\\1-\\2-\\3-\\4-\\5.html',
+        'clinic-\\1.html',
+        'clinic_view-\\1-\\2-\\3-\\4-\\5.html',
         'article-\\1.html',
         'article_cate-\\1.html',
         'document-\\1.html',
@@ -1836,20 +1836,20 @@ function url($act = '', $op = '', $args = array(), $model = false, $site_url = '
  * @param string $act control文件名
  * @param string $op op方法名
  * @param array $args URL其它参数
- * @param string $store_domian 店铺二级域名
+ * @param string $clic_domian 店铺二级域名
  * @return string
  */
-function urlShop($act = '', $op = '', $args = array(), $store_domain = ''){
+function urlclinic($act = '', $op = '', $args = array(), $clic_domain = ''){
     // 开启店铺二级域名
-    if (intval(C('enabled_subdomain')) == 1 && !empty($store_domain)){
-        return 'http://'.$store_domain.'.'.SUBDOMAIN_SUFFIX.'/';
+    if (intval(C('enabled_subdomain')) == 1 && !empty($clic_domain)){
+        return 'http://'.$clic_domain.'.'.SUBDOMAIN_SUFFIX.'/';
     }
 
     // 默认标志为不开启伪静态
     $rewrite_flag = false;
 
     // 如果平台开启伪静态开关，并且为伪静态模块，修改标志为开启伪静态
-    $rewrite_item = array('goods:index', 'goods:comments_list', 'search:index', 'show_store:index', 'show_store:goods_all', 'article:show',
+    $rewrite_item = array('doctors:index', 'doctors:comments_list', 'search:index', 'show_clic:index', 'show_clic:doctors_all', 'article:show',
             'article:article','document:index', 'brand:list', 'brand:index', 'show_groupbuy:index', 'show_groupbuy:groupbuy_soon', 'show_groupbuy:groupbuy_history',
             'show_groupbuy:groupbuy_detail', 'pointprod:index', 'pointvoucher:index', 'pointprod:pinfo', 'pointprod:plist');
     if(URL_MODEL && in_array($act.':'.$op, $rewrite_item)) {
@@ -1865,28 +1865,28 @@ function urlShop($act = '', $op = '', $args = array(), $store_domain = ''){
                 $tpl_args['b_id'] = empty($args['b_id']) || intval($args['b_id']) == 0 ? 0 : $args['b_id'];
                 $tpl_args['a_id'] = empty($args['a_id']) || intval($args['a_id']) == 0 ? 0 : $args['a_id'];
                 $tpl_args['key'] = empty($args['key']) ? 0 : $args['key'];
-                $tpl_args['order'] = empty($args['order']) ? 0 : $args['order'];
+                $tpl_args['appointment'] = empty($args['appointment']) ? 0 : $args['appointment'];
                 $tpl_args['type'] = empty($args['type']) ? 0 : $args['type'];
                 $tpl_args['area_id'] = empty($args['area_id']) ? 0 : $args['area_id'];
                 $tpl_args['curpage'] = empty($args['curpage']) ? 0 : $args['curpage'];
                 $args = $tpl_args;
                 break;
-            case 'show_store:goods_all':
+            case 'show_clic:doctors_all':
                 if (isset($args['keyword'])) {
                     $rewrite_flag = false;
                     break;
                 }
-                $tpl_args['store_id'] = empty($args['store_id']) ? 0 : $args['store_id'];
+                $tpl_args['clic_id'] = empty($args['clic_id']) ? 0 : $args['clic_id'];
                 $tpl_args['stc_id'] = empty($args['stc_id']) ? 0 : $args['stc_id'];
                 $tpl_args['key'] = empty($args['key']) ? 0 : $args['key'];
-                $tpl_args['order'] = empty($args['order']) ? 0 : $args['order'];
+                $tpl_args['appointment'] = empty($args['appointment']) ? 0 : $args['appointment'];
                 $tpl_args['curpage'] = empty($args['curpage']) ? 0 : $args['curpage'];
                 $args = $tpl_args;
                 break;
             case 'brand:list':
                 $tpl_args['brand'] = empty($args['brand']) ? 0 : $args['brand'];
                 $tpl_args['key'] = empty($args['key']) ? 0 : $args['key'];
-                $tpl_args['order'] = empty($args['order']) ? 0 : $args['order'];
+                $tpl_args['appointment'] = empty($args['appointment']) ? 0 : $args['appointment'];
                 $tpl_args['type'] = empty($args['type']) ? 0 : $args['type'];
                 $tpl_args['area_id'] = empty($args['area_id']) ? 0 : $args['area_id'];
                 $tpl_args['curpage'] = empty($args['curpage']) ? 0 : $args['curpage'];
@@ -1898,13 +1898,13 @@ function urlShop($act = '', $op = '', $args = array(), $store_domain = ''){
                 $tpl_args['area_id'] = empty($args['area_id']) ? 0 : $args['area_id'];
                 $tpl_args['groupbuy_class'] = empty($args['groupbuy_class']) ? 0 : $args['groupbuy_class'];
                 $tpl_args['groupbuy_price'] = empty($args['groupbuy_price']) ? 0 : $args['groupbuy_price'];
-                $tpl_args['groupbuy_order_key'] = empty($args['groupbuy_order_key']) ? 0 : $args['groupbuy_order_key'];
-                $tpl_args['groupbuy_order'] = empty($args['groupbuy_order']) ? 0 : $args['groupbuy_order'];
+                $tpl_args['groupbuy_appointment_key'] = empty($args['groupbuy_appointment_key']) ? 0 : $args['groupbuy_appointment_key'];
+                $tpl_args['groupbuy_appointment'] = empty($args['groupbuy_appointment']) ? 0 : $args['groupbuy_appointment'];
                 $tpl_args['curpage'] = empty($args['curpage']) ? 0 : $args['curpage'];
                 $args = $tpl_args;
                 break;
-            case 'goods:comments_list':
-                $tpl_args['goods_id'] = empty($args['goods_id']) ? 0 : $args['goods_id'];
+            case 'doctors:comments_list':
+                $tpl_args['doctors_id'] = empty($args['doctors_id']) ? 0 : $args['doctors_id'];
                 $tpl_args['type'] = empty($args['type']) ? 0 : $args['type'];
                 $tpl_args['curpage'] = empty($args['curpage']) ? 0 : $args['curpage'];
                 $args = $tpl_args;
@@ -1914,7 +1914,7 @@ function urlShop($act = '', $op = '', $args = array(), $store_domain = ''){
         }
     }
 
-    return url($act, $op, $args, $rewrite_flag, SHOP_SITE_URL);
+    return url($act, $op, $args, $rewrite_flag, clinic_SITE_URL);
 }
 
 /**
@@ -1933,23 +1933,23 @@ function urlAdmin($act = '', $op = '', $args = array()){
  *
  * @return boolean
  */
-function checkPlatformStore(){
-    return ($_SESSION['store_id'] == DEFAULT_PLATFORM_STORE_ID) ? true : false;
+function checkPlatformclic(){
+    return ($_SESSION['clic_id'] == DEFAULT_PLATFORM_clic_ID) ? true : false;
 }
 
 /**
  * 获得店铺状态样式名称
- * @param $param array $store_info
+ * @param $param array $clic_info
  * @return string
  */
-function getStoreStateClassName($store_info) {
+function getclicStateClassName($clic_info) {
     $result = 'open';
-    if (intval($store_info['store_state']) === 1) {
-        $store_end_time = intval($store_info['store_end_time']);
-        if ($store_end_time > 0) {
-            if ($store_end_time < TIMESTAMP) {
+    if (intval($clic_info['clic_state']) === 1) {
+        $clic_end_time = intval($clic_info['clic_end_time']);
+        if ($clic_end_time > 0) {
+            if ($clic_end_time < TIMESTAMP) {
                 $result = 'expired';
-            } elseif (($store_end_time - 864000) < TIMESTAMP) {
+            } elseif (($clic_end_time - 864000) < TIMESTAMP) {
                 //距离到期10天
                 $result = 'expire';
             }

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,17 +17,17 @@
     <input type="hidden" name="link_id" value="<?php echo $output['link_array']['link_id'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="link_title"><?php echo $lang['link_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['link_array']['link_title'];?>" name="link_title" id="link_title" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['link_add_name'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="link_keyword">关键词:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <input type="text" name="link_keyword" id="link_keyword" value="<?php echo $output['link_array']['link_keyword'];?>" class="txt" >
           </td>
@@ -36,7 +36,7 @@
         <tr>
           <td colspan="2" class="required"><label for=""><?php echo $lang['link_index_pic_sign'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_MOBILE.'/ad/'.$output['link_array']['link_pic'];?>"></div>
             </span> <span class="type-file-box">
@@ -48,7 +48,7 @@
         <tr>
           <td colspan="2" class="required"><label for="link_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['link_array']['link_sort'];?>" name="link_sort" id="link_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['link_add_sort_tip'];?></td>
         </tr>

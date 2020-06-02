@@ -54,7 +54,7 @@ $(function(){
 	StartNum = $('.tbl-except>table>tbody>tr').size();
 
 	//头模板
-	RuleHead += "<table cellspacing=\"0\" class=\"ncsc-table-style\" cellpadding=\"0\" border=\"0\">\n";
+	RuleHead += "<table cellspacing=\"0\" class=\"ncsc-table-style\" cellpadding=\"0\" bappointment=\"0\">\n";
 	RuleHead += "<colgroup>\n";
 	RuleHead += "<col class=\"col-area\">\n";
 	RuleHead += "<col class=\"col-start\">\n";

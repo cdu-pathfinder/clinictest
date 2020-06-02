@@ -27,10 +27,10 @@ th,
 td,
 span,
 a{margin:0;padding:0}
-table{border-collapse:collapse;border-spacing:0}
+table{bappointment-collapse:collapse;bappointment-spacing:0}
 fieldset,
 img,
-iframe{border:0}
+iframe{bappointment:0}
 :focus{outline:0}
 address,
 caption,
@@ -52,7 +52,7 @@ blockquote:after,
 q:before,
 q:after{content:''}
 abbr,
-acronym{border:0;font-variant:normal}
+acronym{bappointment:0;font-variant:normal}
 /* to preserve line-height and selector appearance */
 sup{vertical-align:text-top}
 sub{vertical-align:text-bottom}

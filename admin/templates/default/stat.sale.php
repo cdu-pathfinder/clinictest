@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,7 +12,7 @@
     <input type="hidden" name="act" value="stat_trade" />
     <input type="hidden" name="op" value="sale" />
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
              <td>
@@ -22,13 +22,13 @@
                 </select></td>
               <td>
              <td>
-              	<select name="order_type" id="order_type" class="querySelect">
-                  <option value="" <?php echo $_REQUEST['order_type']==''?'selected':''; ?>>请选择</option>
-                  <option value="<?php echo ORDER_STATE_NEW; ?>" <?php echo $_REQUEST['order_type']!='' && $_REQUEST['order_type']==ORDER_STATE_NEW?'selected':''; ?>>待付款</option>
-                  <option value="<?php echo ORDER_STATE_PAY; ?>" <?php echo $_REQUEST['order_type']!='' && $_REQUEST['order_type']==ORDER_STATE_PAY?'selected':''; ?>>待发货</option>
-                  <option value="<?php echo ORDER_STATE_SEND; ?>" <?php echo $_REQUEST['order_type']!='' && $_REQUEST['order_type']==ORDER_STATE_SEND?'selected':''; ?>>待收货</option>
-                  <option value="<?php echo ORDER_STATE_SUCCESS; ?>" <?php echo $_REQUEST['order_type']!='' && $_REQUEST['order_type']==ORDER_STATE_SUCCESS?'selected':''; ?>>交易完成</option>
-                  <option value="<?php echo ORDER_STATE_CANCEL; ?>" <?php echo $_REQUEST['order_type']!='' && $_REQUEST['order_type']==ORDER_STATE_CANCEL?'selected':''; ?>>已取消</option>
+              	<select name="appointment_type" id="appointment_type" class="querySelect">
+                  <option value="" <?php echo $_REQUEST['appointment_type']==''?'selected':''; ?>>请选择</option>
+                  <option value="<?php echo appointment_STATE_NEW; ?>" <?php echo $_REQUEST['appointment_type']!='' && $_REQUEST['appointment_type']==appointment_STATE_NEW?'selected':''; ?>>待付款</option>
+                  <option value="<?php echo appointment_STATE_PAY; ?>" <?php echo $_REQUEST['appointment_type']!='' && $_REQUEST['appointment_type']==appointment_STATE_PAY?'selected':''; ?>>待发货</option>
+                  <option value="<?php echo appointment_STATE_SEND; ?>" <?php echo $_REQUEST['appointment_type']!='' && $_REQUEST['appointment_type']==appointment_STATE_SEND?'selected':''; ?>>待收货</option>
+                  <option value="<?php echo appointment_STATE_SUCCESS; ?>" <?php echo $_REQUEST['appointment_type']!='' && $_REQUEST['appointment_type']==appointment_STATE_SUCCESS?'selected':''; ?>>交易完成</option>
+                  <option value="<?php echo appointment_STATE_CANCEL; ?>" <?php echo $_REQUEST['appointment_type']!='' && $_REQUEST['appointment_type']==appointment_STATE_CANCEL?'selected':''; ?>>已取消</option>
                 </select></td>
               <td>
               	<select name="search_type" id="search_type" class="querySelect">
@@ -69,7 +69,7 @@
                 </select>
               </td>
               <th>店铺名称</th>
-         	  <td><input class="txt-long" type="text" name="store_name" value="<?php echo $_GET['store_name'];?>" /></td>
+         	  <td><input class="txt-long" type="text" name="clic_name" value="<?php echo $_GET['clic_name'];?>" /></td>
               <td><a href="javascript:void(0);" id="ncsubmit" class="btn-search tooltip" title="<?php echo $lang['nc_query'];?>">&nbsp;</a></td>
             </tr>
           </tbody>
@@ -79,10 +79,10 @@
         </span>
     </div>
   </form>
-  <div class="stat-info"><?php if(trim($output['data_null']) != 'yes' && trim($_GET['store_name'])!=''){ ?><span>店铺：<strong><?php echo trim($_GET['store_name']); ?></strong></span><?php } ?><span>总订单量：<strong><?php echo $output['sum_data'][0]; ?></strong></span><span>总销售额：<strong><?php echo $output['sum_data'][1]?$output['sum_data'][1]:'0.00'; ?></strong>元</span></div>
+  <div class="stat-info"><?php if(trim($output['data_null']) != 'yes' && trim($_GET['clic_name'])!=''){ ?><span>店铺：<strong><?php echo trim($_GET['clic_name']); ?></strong></span><?php } ?><span>总订单量：<strong><?php echo $output['sum_data'][0]; ?></strong></span><span>总销售额：<strong><?php echo $output['sum_data'][1]?$output['sum_data'][1]:'0.00'; ?></strong>元</span></div>
   <div id="container" class="w100pre close_float" style="height:400px"></div>
   <div style="text-align:right;">
-  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&order_type=<?php echo trim($_GET['order_type']); ?>&store_name=<?php echo trim($_GET['store_name']); ?>&exporttype=excel"}' value="excel"/>
+  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&appointment_type=<?php echo trim($_GET['appointment_type']); ?>&clic_name=<?php echo trim($_GET['clic_name']); ?>&exporttype=excel"}' value="excel"/>
   	<a class="btns" href="javascript:void(0);" id="export_btn"><span>导出Excel</span></a>
   </div>
   <table class="table tb-type2 nobdb">
@@ -94,29 +94,29 @@
       </tr>
     </thead>
     <tbody id="datatable">
-    <?php if(!empty($output['order_list'])){ ?>
-    <?php foreach ($output['order_list'] as $k=>$v){?>
+    <?php if(!empty($output['appointment_list'])){ ?>
+    <?php foreach ($output['appointment_list'] as $k=>$v){?>
       <tr class="hover">
-        <td class="align-center"><?php echo $v['order_sn'];?></td>
+        <td class="align-center"><?php echo $v['appointment_sn'];?></td>
         <td class="align-center"><?php echo $v['buyer_name'];?></td>
-        <td class="align-center"><?php echo $v['store_name'];?></td>
+        <td class="align-center"><?php echo $v['clic_name'];?></td>
         <td class="align-center"><?php echo date('Y-m-d H:i:s',$v['add_time']);?></td>
-        <td class="align-center"><?php echo number_format(($v['order_amount']),2); ?></td>
+        <td class="align-center"><?php echo number_format(($v['appointment_amount']),2); ?></td>
         <td class="align-center"><?php 
-        switch ($v['order_state']){
-        	case ORDER_STATE_CANCEL:
+        switch ($v['appointment_state']){
+        	case appointment_STATE_CANCEL:
         		echo '已取消';
         		break;
-        	case ORDER_STATE_NEW:
+        	case appointment_STATE_NEW:
         		echo '待付款';
         		break;
-        	case ORDER_STATE_PAY:
+        	case appointment_STATE_PAY:
         		echo '待发货';
         		break;
-        	case ORDER_STATE_SEND:
+        	case appointment_STATE_SEND:
         		echo '待收货';
         		break;
-        	case ORDER_STATE_SUCCESS:
+        	case appointment_STATE_SUCCESS:
         		echo '交易完成';
         		break;
         }

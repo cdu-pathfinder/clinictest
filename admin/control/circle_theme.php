@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class circle_themeControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -94,7 +94,7 @@ class circle_themeControl extends SystemControl{
 		if($_GET['searchrecommend'] != '' && in_array($_GET['searchrecommend'], array(0,1))){
 			$where['is_recommend'] = intval($_GET['searchrecommend']);
 		}
-		$theme_list	= $model->table('circle_theme')->where($where)->order('theme_id desc')->page(10)->select();
+		$theme_list	= $model->table('circle_theme')->where($where)->appointment('theme_id desc')->page(10)->select();
 		if(!empty($theme_list)){
 			$theme_list = array_under_reset($theme_list, 'theme_id'); $themeid_array = array_keys($theme_list);
 		
@@ -122,7 +122,7 @@ class circle_themeControl extends SystemControl{
 		
 		if($theme_info['theme_special'] == 1){
 			$poll_info = $model->table('circle_thpoll')->find($t_id);
-			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$t_id))->order('pollop_sort asc')->select();
+			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$t_id))->appointment('pollop_sort asc')->select();
 			Tpl::output('poll_info', $poll_info);
 			Tpl::output('option_list', $option_list);
 		}

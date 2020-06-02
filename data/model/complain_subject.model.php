@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class complain_subjectModel{
 
 	/*
@@ -74,7 +74,7 @@ class complain_subjectModel{
         $param = array() ;
         $param['table'] = 'complain_subject' ;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' complain_subject_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' complain_subject_id desc ';
         return Db::select($param,$page) ;
 
 	}
@@ -91,7 +91,7 @@ class complain_subjectModel{
         $condition['complain_subject_state'] = 1;
         $param['table'] = 'complain_subject' ;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' complain_subject_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' complain_subject_id desc ';
         return Db::select($param,$page) ;
 
 	}

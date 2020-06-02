@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -30,40 +30,40 @@
     <input type="hidden" name="old_login_pic4" value="<?php echo $output['list'][3];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label>IMG1:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_PATH.'/login/'.$output['list'][0]);?>"><img class="show_image" title="<?php echo Language::get('login_click_open');?>" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="login_pic1" type="file" class="type-file-file" id="login_pic1" size="30" hidefocus="true">
             </span></td>
           <td class="vatop tips">450px * 350px</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label>IMG2:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_PATH.'/login/'.$output['list'][1]);?>"><img class="show_image" title="<?php echo Language::get('login_click_open');?>" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="login_pic2" type="file" class="type-file-file" id="login_pic2" size="30" hidefocus="true">
             </span></td>
           <td class="vatop tips">450px * 350px</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label>IMG3:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_PATH.'/login/'.$output['list'][2]);?>"><img class="show_image" title="<?php echo Language::get('login_click_open');?>" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="login_pic3" type="file" class="type-file-file" id="login_pic3" size="30" hidefocus="true">
             </span></td>
           <td class="vatop tips">450px * 350px</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label>IMG4:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><a class="nyroModal" rel="gal" href="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_PATH.'/login/'.$output['list'][3]);?>"><img class="show_image" title="<?php echo Language::get('login_click_open');?>" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png"></a>
             </span><span class="type-file-box">
             <input name="login_pic4" type="file" class="type-file-file" id="login_pic4" size="30" hidefocus="true">

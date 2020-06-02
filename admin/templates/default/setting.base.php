@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,17 +12,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name"><?php echo $lang['web_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="site_name" name="site_name" value="<?php echo $output['list_setting']['site_name'];?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['web_name_notice'];?></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="site_logo"><?php echo $lang['site_logo'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.DS.$output['list_setting']['site_logo']);?>"></div>
             </span><span class="type-file-box"><input type='text' name='textfield' id='textfield1' class='type-file-text' /><input type='button' name='button' id='button1' value='' class='type-file-button' />
@@ -33,7 +33,7 @@
         <tr>
           <td colspan="2" class="required"><label for="site_logo"><?php echo $lang['member_logo'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.DS.$output['list_setting']['member_logo']);?>"></div>
             </span><span class="type-file-box"><input type='text' name='textfield2' id='textfield2' class='type-file-text' /><input type='button' name='button2' id='button2' value='' class='type-file-button' />
@@ -43,13 +43,13 @@
         </tr>
         <!-- 商家中心logo -->
         <tr>
-          <td colspan="2" class="required"><label for="seller_center_logo">商家中心Logo:</label></td>
+          <td colspan="2" class="required"><label for="clinicer_center_logo">商家中心Logo:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
-            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.DS.$output['list_setting']['seller_center_logo']);?>"></div>
+            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.DS.$output['list_setting']['clinicer_center_logo']);?>"></div>
             </span><span class="type-file-box"><input type='text' name='textfield' id='textfield3' class='type-file-text' /><input type='button' name='button' id='button1' value='' class='type-file-button' />
-            <input name="seller_center_logo" type="file" class="type-file-file" id="seller_center_logo" size="30" hidefocus="true" nc_type="change_seller_center_logo">
+            <input name="clinicer_center_logo" type="file" class="type-file-file" id="clinicer_center_logo" size="30" hidefocus="true" nc_type="change_clinicer_center_logo">
             </span></td>
           <td class="vatop tips"><span class="vatop rowform">150px * 40px</span></td>
         </tr>
@@ -57,14 +57,14 @@
         <tr>
           <td colspan="2" class="required"><label for="icp_number"><?php echo $lang['icp_number'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="icp_number" name="icp_number" value="<?php echo $output['list_setting']['icp_number'];?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['icp_number_notice'];?></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="site_phone"><?php echo $lang['site_phone'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="site_phone" name="site_phone" value="<?php echo $output['list_setting']['site_phone'];?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['site_phone_notice'];?></span></td>
         </tr>
@@ -73,7 +73,7 @@
         <tr>
           <td colspan="2" class="required"><label for="site_bank_account"><?php echo $lang['site_bank_account'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="site_bank_account" name="site_bank_account" value="<?php echo $output['list_setting']['site_bank_account'];?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['site_bank_account_notice'];?></span></td>
         </tr>
@@ -81,21 +81,21 @@
         <tr>
           <td colspan="2" class="required"><label for="site_email"><?php echo $lang['site_email'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="site_email" name="site_email" value="<?php echo $output['list_setting']['site_email'];?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['site_email_notice'];?></span></td>
         </tr>
          <tr>
           <td colspan="2" class="required"><label for="statistics_code"><?php echo $lang['flow_static_code'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="statistics_code" rows="6" class="tarea" id="statistics_code"><?php echo $output['list_setting']['statistics_code'];?></textarea></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['flow_static_code_notice'];?></span></td>
         </tr> 
         <tr>
           <td colspan="2" class="required"><label for="time_zone"> <?php echo $lang['time_zone_set'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><select id="time_zone" name="time_zone">
               <option value="-12">(GMT -12:00) Eniwetok, Kwajalein</option>
               <option value="-11">(GMT -11:00) Midway Island, Samoa</option>
@@ -135,7 +135,7 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['site_state'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="site_status1" class="cb-enable <?php if($output['list_setting']['site_status'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['open'];?></span></label>
             <label for="site_status0" class="cb-disable <?php if($output['list_setting']['site_status'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['close'];?></span></label>
             <input id="site_status1" name="site_status" <?php if($output['list_setting']['site_status'] == '1'){ ?>checked="checked"<?php } ?>  value="1" type="radio">
@@ -145,7 +145,7 @@
         <tr>
           <td colspan="2" class="required"><label for="closed_reason"><?php echo $lang['closed_reason'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="closed_reason" rows="6" class="tarea" id="closed_reason" ><?php echo $output['list_setting']['closed_reason'];?></textarea></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['closed_reason_notice'];?></span></td>
         </tr>
@@ -167,7 +167,7 @@ $(function(){
 	$("#member_logo").change(function(){
 		$("#textfield2").val($(this).val());
 	});
-	$("#seller_center_logo").change(function(){
+	$("#clinicer_center_logo").change(function(){
 		$("#textfield3").val($(this).val());
 	});
 // 上传图片类型

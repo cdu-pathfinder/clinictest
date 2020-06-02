@@ -9,12 +9,12 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class goodsControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class doctorsControl extends MircroclinicControl{
 
 	public function __construct() {
         parent::__construct();
-        Tpl::output('index_sign','goods');
+        Tpl::output('index_sign','doctors');
     }
 
 	public function indexOp() {
@@ -23,55 +23,55 @@ class goodsControl extends MircroShopControl{
 
 	public function listOp() {
 
-        $model_goods_class = Model('micro_goods_class');
-        $goods_class_list = $model_goods_class->getList(TRUE,NULL,'class_sort asc');
+        $model_doctors_class = Model('micro_doctors_class');
+        $doctors_class_list = $model_doctors_class->getList(TRUE,NULL,'class_sort asc');
 
-        $goods_class_root = array();
-        $goods_class_menu = array();
-        if(!empty($goods_class_list)) {
-            foreach($goods_class_list as $val) {
+        $doctors_class_root = array();
+        $doctors_class_menu = array();
+        if(!empty($doctors_class_list)) {
+            foreach($doctors_class_list as $val) {
                 if($val['class_parent_id'] == 0) {
-                    $goods_class_root[] = $val;
+                    $doctors_class_root[] = $val;
                 } else {
-                    $goods_class_menu[$val['class_parent_id']][] = $val;
+                    $doctors_class_menu[$val['class_parent_id']][] = $val;
                 }
             }
         }
 
         //处理一级菜单选中
-        $goods_class_root_id = $goods_class_root[0]['class_id'];
-        if(isset($_GET['goods_class_root_id'])) {
-            if(intval($_GET['goods_class_root_id']) > 0) {
-                $goods_class_root_id = $_GET['goods_class_root_id'];
+        $doctors_class_root_id = $doctors_class_root[0]['class_id'];
+        if(isset($_GET['doctors_class_root_id'])) {
+            if(intval($_GET['doctors_class_root_id']) > 0) {
+                $doctors_class_root_id = $_GET['doctors_class_root_id'];
             }
         }
-        Tpl::output('goods_class_root',$goods_class_root);
-        Tpl::output('goods_class_root_id',$goods_class_root_id);
+        Tpl::output('doctors_class_root',$doctors_class_root);
+        Tpl::output('doctors_class_root_id',$doctors_class_root_id);
 
         //处理二级菜单选中
-        $goods_class_menu_id = 0;
-        if(isset($_GET['goods_class_menu_id'])) {
-            if(intval($_GET['goods_class_menu_id']) > 0) {
-                $goods_class_menu_id = $_GET['goods_class_menu_id'];
+        $doctors_class_menu_id = 0;
+        if(isset($_GET['doctors_class_menu_id'])) {
+            if(intval($_GET['doctors_class_menu_id']) > 0) {
+                $doctors_class_menu_id = $_GET['doctors_class_menu_id'];
             }
         }
-        Tpl::output('goods_class_menu',$goods_class_menu[$goods_class_root_id]);
-        Tpl::output('goods_class_menu_id',$goods_class_menu_id);
+        Tpl::output('doctors_class_menu',$doctors_class_menu[$doctors_class_root_id]);
+        Tpl::output('doctors_class_menu_id',$doctors_class_menu_id);
 
         /**
          * 查询条件处理
          **/
         $condition = array();
         if(isset($_GET['keyword'])) {
-            $condition['commend_goods_name'] = array('like','%'.$_GET['keyword'].'%'); 
+            $condition['commend_doctors_name'] = array('like','%'.$_GET['keyword'].'%'); 
         }
         //分类条件 
-        if($goods_class_menu_id > 0) {
+        if($doctors_class_menu_id > 0) {
             //选中二级菜单
-            $condition['class_id'] = $goods_class_menu_id; 
+            $condition['class_id'] = $doctors_class_menu_id; 
         } else {
             //只选中一级菜单
-            $class_array = $goods_class_menu[$goods_class_root_id];
+            $class_array = $doctors_class_menu[$doctors_class_root_id];
             $class_id_string = '';
             if(!empty($class_array)) {
                 foreach ($class_array as $val) {
@@ -84,58 +84,58 @@ class goodsControl extends MircroShopControl{
             }
         }
 
-        $order = 'microshop_sort asc,commend_time desc';
-        if($_GET['order'] == 'hot') {
-            $order = 'microshop_sort asc,click_count desc';
+        $appointment = 'microclinic_sort asc,commend_time desc';
+        if($_GET['appointment'] == 'hot') {
+            $appointment = 'microclinic_sort asc,click_count desc';
         }
-        self::get_goods_list($condition,$order);
+        self::get_doctors_list($condition,$appointment);
 
-        Tpl::output('html_title',Language::get('nc_microshop_goods').'-'.Language::get('nc_microshop').'-'.C('site_name'));
-		Tpl::showpage('goods_list');
+        Tpl::output('html_title',Language::get('nc_microclinic_doctors').'-'.Language::get('nc_microclinic').'-'.C('site_name'));
+		Tpl::showpage('doctors_list');
 
 	}
 
     public function detailOp() {
 
-        $goods_id = intval($_GET['goods_id']);
-        if($goods_id <= 0) {
-            header('location: '.MICROSHOP_SITE_URL);die;
+        $doctors_id = intval($_GET['doctors_id']);
+        if($doctors_id <= 0) {
+            header('location: '.MICROclinic_SITE_URL);die;
         }
-        $model_microshop_goods = Model('micro_goods');
+        $model_microclinic_doctors = Model('micro_doctors');
         $condition = array();
-        $condition['commend_id'] = $goods_id;
-        $detail = $model_microshop_goods->getOneWithUserInfo($condition);
+        $condition['commend_id'] = $doctors_id;
+        $detail = $model_microclinic_doctors->getOneWithUserInfo($condition);
         if(empty($detail)) {
-            header('location: '.MICROSHOP_SITE_URL);die;
+            header('location: '.MICROclinic_SITE_URL);die;
         }
         Tpl::output('detail',$detail);
 
         //商品多图
-        $model_goods = Model('goods');
-        $goods_image_list = $model_goods->getGoodsImageList(array('goods_commonid' => $detail['commend_goods_commonid']));
-        Tpl::output('goods_image_list', $goods_image_list);
+        $model_doctors = Model('doctors');
+        $doctors_image_list = $model_doctors->getdoctorsImageList(array('doctors_commonid' => $detail['commend_doctors_commonid']));
+        Tpl::output('doctors_image_list', $doctors_image_list);
 
 
         //点击数加1
         $update = array();
         $update['click_count'] = array('exp','click_count+1');
-        $model_microshop_goods->modify($update,$condition);
+        $model_microclinic_doctors->modify($update,$condition);
 
         //侧栏
         self::get_sidebar_list($detail['commend_member_id']);
 
         //店铺信息
-		$model_store = Model('store');
-        $store_info = $model_store->getStoreInfoByID($detail['commend_goods_store_id']);
-        $store_info['hot_sales_list'] = $model_store->getHotSalesList($detail['commend_goods_store_id'], 5);
-        Tpl::output('store_info',$store_info);
+		$model_clic = Model('clic');
+        $clic_info = $model_clic->getclicInfoByID($detail['commend_doctors_clic_id']);
+        $clic_info['hot_sales_list'] = $model_clic->getHotSalesList($detail['commend_doctors_clic_id'], 5);
+        Tpl::output('clic_info',$clic_info);
 
         //获得分享app列表
         self::get_share_app_list();
         Tpl::output('comment_id',$detail['commend_id']);
-        Tpl::output('comment_type','goods');
-        Tpl::output('html_title',$detail['commend_goods_name'].'-'.Language::get('nc_microshop_goods').'-'.Language::get('nc_microshop').'-'.C('site_name'));
-		Tpl::showpage('goods_detail');
+        Tpl::output('comment_type','doctors');
+        Tpl::output('html_title',$detail['commend_doctors_name'].'-'.Language::get('nc_microclinic_doctors').'-'.Language::get('nc_microclinic').'-'.C('site_name'));
+		Tpl::showpage('doctors_detail');
 
     }
 }

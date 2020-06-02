@@ -1,4 +1,4 @@
-<table class="table tb-type2 order mtw">
+<table class="table tb-type2 appointment mtw">
   <thead class="thead">
     <tr class="space">
       <th><?php echo $lang['final_handle_detail'];?></th>
@@ -7,13 +7,13 @@
     <tr>
       <th><?php echo $lang['final_handle_message'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td><?php echo $output['complain_info']['final_handle_message'];?></td>
     </tr>
     <tr>
       <th><?php echo $lang['final_handle_datetime'];?></th>
     </tr>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td><?php echo date('Y-m-d H:i:s',$output['complain_info']['final_handle_datetime']);?></td>
     </tr>
   </tbody>

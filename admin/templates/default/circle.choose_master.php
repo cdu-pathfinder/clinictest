@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <input type="hidden" name="form_submit" value="ok" />
@@ -7,7 +7,7 @@
       <tr>
         <td colspan="2" class="required"><label for="searchname"><?php echo $lang['nc_member_name'];?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td class="vatop rowform">
           <input type="text" name="searchname" id="searchname" class="txt" style="width:190px;" />
           <input type="submit" nctype="cm_s" value="<?php echo $lang['nc_search'];?>" />
@@ -16,7 +16,7 @@
       <tr>
         <td colspan="2" class="required"><label><?php echo $lang['nc_result'];?>:</label></td>
       </tr>
-      <tr class="noborder">
+      <tr class="nobappointment">
         <td colspan="2" class="vatop rowform">
           <select id="searchresult" class="w300" style=" height:140px;" size="7" name="searchresult"></select>
         </td>

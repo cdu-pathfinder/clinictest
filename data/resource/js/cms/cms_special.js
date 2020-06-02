@@ -143,7 +143,7 @@ $(document).ready(function(){
             var xy = x1.val()+','+y1.val()+','+x2.val()+','+y2.val()+',';
             image_object.parent().find("map").append('<area id='+key+' shape="rect" coords="'+xy+'" href="'+url.val()+'" target="_blank" />');
             dialog_object.find("[nctype='list']").append('<li class="'+key+'"><i></i>热点区域'+count+'<span>('+url.val()+')</span><a nctype="select_hot_point" name="'+xy+'" href="###" class="btn-select-hot-point">选中</a><a nctype="delete_hot_point" class="btn-delete-hot-point" name="'+key+'" href="###">删除</a></li>');
-            image_object.after('<div class='+key+' style="width:'+w.val()+'px;height:'+h.val()+'px;position:absolute;left:'+x1.val()+'px;top:'+y1.val()+'px;border:1px solid #cccccc;">'+count+'</div>');
+            image_object.after('<div class='+key+' style="width:'+w.val()+'px;height:'+h.val()+'px;position:absolute;left:'+x1.val()+'px;top:'+y1.val()+'px;bappointment:1px solid #cccccc;">'+count+'</div>');
             url.val('');
             var ias = image_object.imgAreaSelect({ instance: true });
             ias.cancelSelection();
@@ -176,27 +176,27 @@ $(document).ready(function(){
     });
 
     //插入商品对话框
-    $("#btn_show_special_insert_goods").click(function(){
-        html_form('dialog_special_insert_goods', '插入商品', $("#_dialog_special_insert_goods").html(), 640);
+    $("#btn_show_special_insert_doctors").click(function(){
+        html_form('dialog_special_insert_doctors', '插入商品', $("#_dialog_special_insert_doctors").html(), 640);
     });
 
     //选择商品
-    $("[nctype='btn_special_goods']").live('click', function(){
-        var goods_list = $(this).parents("table").find("[nctype='_special_goods_list']");
-        var link_item = $(this).parents("table").find("[nctype='_input_goods_link']");
+    $("[nctype='btn_special_doctors']").live('click', function(){
+        var doctors_list = $(this).parents("table").find("[nctype='_special_doctors_list']");
+        var link_item = $(this).parents("table").find("[nctype='_input_doctors_link']");
         var link = link_item.val();
         link_item.val('');
         if(link != '') {
         var url = encodeURIComponent(link);
-        $.getJSON("index.php?act=cms_special&op=goods_info_by_url", { url: url}, function(data){
+        $.getJSON("index.php?act=cms_special&op=doctors_info_by_url", { url: url}, function(data){
             if(data.result == "true") {
-                var temp = '<li nctype="btn_goods_select"><dl>'; 
+                var temp = '<li nctype="btn_doctors_select"><dl>'; 
                 temp += '<dt class="name"><a href="'+data.url+'" target="_blank">'+data.title+'</a></dt>';
                 temp += '<dd class="image"><a href="'+data.url+'" target="_blank"><img title="'+data.title+'" src="'+data.image+'" /></a></dd>';
                 temp += '<dd class="price">价格：<em>'+data.price+'</em></dd>';
-                temp += '<dd class="taobao-item-delete" nctype="btn_special_goods_delete" title="删除添加的商品">&nbsp;</dd>';
+                temp += '<dd class="taobao-item-delete" nctype="btn_special_doctors_delete" title="删除添加的商品">&nbsp;</dd>';
                 temp += '</dl></li>';
-                $(goods_list).append(temp);
+                $(doctors_list).append(temp);
             } else {
                 alert(data.message);
             }
@@ -205,22 +205,22 @@ $(document).ready(function(){
     });
 
     //删除商品
-    $("[nctype='btn_special_goods_delete']").live('click', function(){
+    $("[nctype='btn_special_doctors_delete']").live('click', function(){
         $(this).parent().parent().remove();
     });
 
     //插入商品列表
-    $("[nctype='btn_special_insert_goods']").live('click', function(){
+    $("[nctype='btn_special_insert_doctors']").live('click', function(){
         var html = $("#special_content").val();
-        html += "<div class='special-content-goods-list'>";
-        var goods_list = $("<div />").append($(this).parents("table").find("[nctype='_special_goods_list']").clone());
-        goods_list.find("i").remove();
-        goods_list.find("[nctype='btn_special_goods_delete']").remove();
-        html += goods_list.html(); 
+        html += "<div class='special-content-doctors-list'>";
+        var doctors_list = $("<div />").append($(this).parents("table").find("[nctype='_special_doctors_list']").clone());
+        doctors_list.find("i").remove();
+        doctors_list.find("[nctype='btn_special_doctors_delete']").remove();
+        html += doctors_list.html(); 
         html += "</div>";
         $("#special_content").val(html);
         special_view_update();
-        DialogManager.close("dialog_special_insert_goods");
+        DialogManager.close("dialog_special_insert_doctors");
     });
 
     //编辑模式

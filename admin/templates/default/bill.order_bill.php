@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -18,10 +18,10 @@
   <form method="get" action="index.php" target="" name="formSearch" id="formSearch">
     <input type="hidden" name="act" value="bill" />
     <input type="hidden" name="op" value="bill_list" />
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
-          <th><label for="add_time_from"><?php echo $lang['order_time_from'];?>账期</label></th>
+          <th><label for="add_time_from"><?php echo $lang['appointment_time_from'];?>账期</label></th>
           <td>
 			<select name="query_month" class="querySelect">
 			<option value=""><?php echo $lang['nc_please_choose'];?></option>
@@ -30,8 +30,8 @@
 			<?php }?>
 			</select>
           </td>
-          <th><label for="order_amount_from"><?php echo $lang['order_price_from'];?>店铺ID/名称</label></th>
-          <td><input class="txt-short" type="text" value="<?php echo $_GET['query_store'];?>" name="query_store" id="query_store"/></td>
+          <th><label for="appointment_amount_from"><?php echo $lang['appointment_price_from'];?>店铺ID/名称</label></th>
+          <td><input class="txt-short" type="text" value="<?php echo $_GET['query_clic'];?>" name="query_clic" id="query_clic"/></td>
           <td><a href="javascript:viod(0);" id="ncsubmit" class="btn-search " title="<?php echo $lang['nc_query'];?>">&nbsp;</a>
           
             </td>
@@ -47,7 +47,7 @@
       <tr>
         <td>
         <ul>
-            <li><?php echo $lang['order_help1'];?>系统默认只显示上期账单</li>
+            <li><?php echo $lang['appointment_help1'];?>系统默认只显示上期账单</li>
           </ul></td>
       </tr>
     </tbody>
@@ -56,13 +56,13 @@
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
-        <th><?php echo $lang['order_number'];?>账单编号</th>
-        <th class="align-center"><?php echo $lang['store_name'];?>开始日期</th>
+        <th><?php echo $lang['appointment_number'];?>账单编号</th>
+        <th class="align-center"><?php echo $lang['clic_name'];?>开始日期</th>
         <th class="align-center"><?php echo $lang['buyer_name'];?>结束日期</th>
-        <th class="align-center"><?php echo $lang['order_time'];?>实收订单</th>
-        <th class="align-center"><?php echo $lang['order_state'];?>实收佣金</th>
-        <th class="align-center"><?php echo $lang['order_state'];?>应结金额</th>
-        <th class="align-center"><?php echo $lang['order_total_price'];?>退款订单</th>
+        <th class="align-center"><?php echo $lang['appointment_time'];?>实收订单</th>
+        <th class="align-center"><?php echo $lang['appointment_state'];?>实收佣金</th>
+        <th class="align-center"><?php echo $lang['appointment_state'];?>应结金额</th>
+        <th class="align-center"><?php echo $lang['appointment_total_price'];?>退款订单</th>
         <th class="align-center"><?php echo $lang['nc_handlxe'];?>出账日期</th>
         <th class="align-center"><?php echo $lang['nc_handlse'];?>账单状态</th>
         <th class="align-center"><?php echo $lang['nc_handlse'];?>店铺</th>
@@ -71,24 +71,24 @@
     </thead>
     <tbody>
       <?php if(count($output['list'])>0){?>
-      <?php foreach($output['list'] as $order){?>
+      <?php foreach($output['list'] as $appointment){?>
       <tr class="hover">
         <td>
-            <?php echo $order['ob_no'];?>
+            <?php echo $appointment['ob_no'];?>
         </td>
-        <td class="nowrap align-center"><?php echo date('Y-m-d',$order['ob_start_date']);?></td>
-        <td class="nowrap align-center"><?php echo date('Y-m-d',$order['ob_end_date']);?></td>
-        <td class="align-center"><?php echo $order['ob_state'] ? $order['ob_order_real_totals'] : '';?></td>
-        <td class="align-center"><?php echo $order['ob_state'] ? $order['ob_commission_totals'] : '';?></td>        
-        <td class="align-center"><?php echo $order['ob_state'] ? number_format($order['ob_order_real_totals']-$order['ob_commission_totals'],2) : '';?></td>        
-        <td class="align-center"><?php echo $order['ob_state'] ? $order['ob_order_tdth_totals'] : '';?></td>
-        <td class="align-center"><?php echo $order['ob_state'] ? date('Y-m-d',$order['ob_create_date']) : '';?></td>
+        <td class="nowrap align-center"><?php echo date('Y-m-d',$appointment['ob_start_date']);?></td>
+        <td class="nowrap align-center"><?php echo date('Y-m-d',$appointment['ob_end_date']);?></td>
+        <td class="align-center"><?php echo $appointment['ob_state'] ? $appointment['ob_appointment_real_totals'] : '';?></td>
+        <td class="align-center"><?php echo $appointment['ob_state'] ? $appointment['ob_commission_totals'] : '';?></td>        
+        <td class="align-center"><?php echo $appointment['ob_state'] ? number_format($appointment['ob_appointment_real_totals']-$appointment['ob_commission_totals'],2) : '';?></td>        
+        <td class="align-center"><?php echo $appointment['ob_state'] ? $appointment['ob_appointment_tdth_totals'] : '';?></td>
+        <td class="align-center"><?php echo $appointment['ob_state'] ? date('Y-m-d',$appointment['ob_create_date']) : '';?></td>
         <td class="align-center">
-        <?php echo str_replace(array('0','1','2','3','4'),array('未出账','已出账','店铺已确认','平台已审核','结算完成'),$order['ob_state']);?>
+        <?php echo str_replace(array('0','1','2','3','4'),array('未出账','已出账','店铺已确认','平台已审核','结算完成'),$appointment['ob_state']);?>
         </td>
-        <td class="align-center"><?php echo $order['ob_store_name'].'<br/>id:'.$order['ob_store_id'];?></td>
+        <td class="align-center"><?php echo $appointment['ob_clic_name'].'<br/>id:'.$appointment['ob_clic_id'];?></td>
         <td class="align-center">
-        <a href="index.php?act=bill&op=show_store_month_order&bill_id=<?php echo $order['ob_no'];?>"><?php echo $lang['nc_view'];?></a>
+        <a href="index.php?act=bill&op=show_clic_month_appointment&bill_id=<?php echo $appointment['ob_no'];?>"><?php echo $lang['nc_view'];?></a>
         </td>
       </tr>
       <?php }?>

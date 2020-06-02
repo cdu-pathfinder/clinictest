@@ -10,12 +10,12 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
-class goods_albumControl extends SystemControl{
+class doctors_albumControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
-		Language::read('goods_album');
+		Language::read('doctors_album');
 	}
 	/**
 	 * 相册列表
@@ -45,20 +45,20 @@ class goods_albumControl extends SystemControl{
 		}
 		$condiiton = array();
 		if (is_numeric($_GET['keyword'])){
-			$condiiton['store.store_id'] = $_GET['keyword'];
-			$store_name = $model->table('store')->getfby_store_id($_GET['keyword'],'store_name');
+			$condiiton['clic.clic_id'] = $_GET['keyword'];
+			$clic_name = $model->table('clic')->getfby_clic_id($_GET['keyword'],'clic_name');
 		}elseif (!empty($_GET['keyword'])){
-			$store_name = $_GET['keyword'];
-			$store_id = $model->table('store')->getfby_store_name($_GET['keyword'],'store_id');
-			if (is_numeric($store_id)){
-				$condiiton['store.store_id'] = $store_id;
+			$clic_name = $_GET['keyword'];
+			$clic_id = $model->table('clic')->getfby_clic_name($_GET['keyword'],'clic_id');
+			if (is_numeric($clic_id)){
+				$condiiton['clic.clic_id'] = $clic_id;
 			}else{
-				$condiiton['store.store_id'] = 0;
+				$condiiton['clic.clic_id'] = 0;
 			}
 		}
 
-		$model->table('album_class,store')->where($condiiton)->join('inner')->on('album_class.store_id=store.store_id');
-		$list = $model->field('album_class.*,store.store_name')->page(10)->select();
+		$model->table('album_class,clic')->where($condiiton)->join('inner')->on('album_class.clic_id=clic.clic_id');
+		$list = $model->field('album_class.*,clic.clic_name')->page(10)->select();
 		Tpl::output('page',$model->showpage());
 
 		$model->cls()->table('album_pic')->field('aclass_id,count(*) as pcount')->group('aclass_id');
@@ -76,8 +76,8 @@ class goods_albumControl extends SystemControl{
 		}
 		Tpl::output('pic_count',$pic_count);
 		Tpl::output('list',$list);
-		Tpl::output('store_name',$store_name);
-		Tpl::showpage('goods_album.index');
+		Tpl::output('clic_name',$clic_name);
+		Tpl::showpage('doctors_album.index');
 	}
 
 	/**
@@ -87,25 +87,25 @@ class goods_albumControl extends SystemControl{
 		$model = Model();
 		$condiiton = array();
 		if (is_numeric($_GET['keyword'])){
-			$condiiton['store_id'] = $_GET['keyword'];
-			$store_name = $model->table('store')->getfby_store_id($_GET['keyword'],'store_name');
+			$condiiton['clic_id'] = $_GET['keyword'];
+			$clic_name = $model->table('clic')->getfby_clic_id($_GET['keyword'],'clic_name');
 		}elseif (!empty($_GET['keyword'])){
-			$store_name = $_GET['keyword'];
-			$store_id = $model->table('store')->getfby_store_name($_GET['keyword'],'store_id');
-			if (is_numeric($store_id)){
-				$condiiton['store_id'] = $store_id;
+			$clic_name = $_GET['keyword'];
+			$clic_id = $model->table('clic')->getfby_clic_name($_GET['keyword'],'clic_id');
+			if (is_numeric($clic_id)){
+				$condiiton['clic_id'] = $clic_id;
 			}else{
-				$condiiton['store_id'] = 0;
+				$condiiton['clic_id'] = 0;
 			}
 		}elseif (is_numeric($_GET['aclass_id'])){
 			$condiiton['aclass_id'] = $_GET['aclass_id'];
 		}
-		$list = $model->table('album_pic')->where($condiiton)->order('apic_id desc')->page(40)->select();
+		$list = $model->table('album_pic')->where($condiiton)->appointment('apic_id desc')->page(40)->select();
 		$show_page = $model->showpage();
 		Tpl::output('page',$show_page);
 		Tpl::output('list',$list);
-		Tpl::output('store_name',$store_name);
-		Tpl::showpage('goods_album.pic_list');
+		Tpl::output('clic_name',$clic_name);
+		Tpl::showpage('doctors_album.pic_list');
 	}
 
 	/**
@@ -166,11 +166,11 @@ class goods_albumControl extends SystemControl{
 	private function del_file($filename){
 		//取店铺ID
 		if (preg_match('/^(\d+_)/',$filename)){
-			$store_id = substr($filename,0,strpos($filename,'_'));
+			$clic_id = substr($filename,0,strpos($filename,'_'));
 		}else{
-			$store_id = Model()->cls()->table('album_pic')->getfby_apic_cover($filename,'store_id');
+			$clic_id = Model()->cls()->table('album_pic')->getfby_apic_cover($filename,'clic_id');
 		}
-		$path = BASE_UPLOAD_PATH.'/'.ATTACH_GOODS.'/'.$store_id.'/'.$filename;
+		$path = BASE_UPLOAD_PATH.'/'.ATTACH_doctorS.'/'.$clic_id.'/'.$filename;
 		
 		$ext = strrchr($path, '.');
 		$type = array('_tiny','_small','_mid','_max','_240x240');

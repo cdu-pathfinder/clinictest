@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -12,32 +12,32 @@
     <input type="hidden" name="act" value="stat_trade" />
     <input type="hidden" name="op" value="class_sale" />
     <div class="w100pre" style="width: 100%;">
-        <table class="tb-type1 noborder search left">
+        <table class="tb-type1 nobappointment search left">
           <tbody>
             <tr>
             <th><label>类型</label></th>
              <td>
               	<select name="class_type" id="class_type" class="querySelect">
-                  <option value="goods_class" <?php echo $_REQUEST['class_type']=='goods_class'?'selected':''; ?>>商品类目</option>
-                  <option value="store_class" <?php echo $_REQUEST['class_type']=='store_class'?'selected':''; ?>>店铺类目</option>
+                  <option value="doctors_class" <?php echo $_REQUEST['class_type']=='doctors_class'?'selected':''; ?>>商品类目</option>
+                  <option value="clic_class" <?php echo $_REQUEST['class_type']=='clic_class'?'selected':''; ?>>店铺类目</option>
                 </select></td>
                 <th><label>分类</label></th>
           <td id="gcategory"><input type="hidden" id="cate_id" name="cate_id" value="" class="mls_id" />
             <input type="hidden" id="cate_name" name="cate_name" value="" class="mls_names" />
             <select class="querySelect">
               <option><?php echo $lang['nc_please_choose'];?>...</option>
-              <?php if(!empty($output['goods_class']) && is_array($output['goods_class'])){ ?>
-              <?php foreach($output['goods_class'] as $val) { ?>
+              <?php if(!empty($output['doctors_class']) && is_array($output['doctors_class'])){ ?>
+              <?php foreach($output['doctors_class'] as $val) { ?>
               <option value="<?php echo $val['gc_id']; ?>" <?php if($output['search']['cate_id'] == $val['gc_id']){?>selected<?php }?>><?php echo $val['gc_name']; ?></option>
               <?php } ?>
               <?php } ?>
             </select></td>
             <td id="scategory">
-            <select class="querySelect" name="store_class">
+            <select class="querySelect" name="clic_class">
               <option value="0"><?php echo $lang['nc_please_choose'];?>...</option>
               <?php if(is_array($output['class_list'])){ ?>
               <?php foreach($output['class_list'] as $k => $v){ ?>
-              <option <?php if(intval($_GET['store_class']) == $v['sc_id']){ ?>selected="selected"<?php } ?> value="<?php echo $v['sc_id']; ?>"><?php echo $v['sc_name']; ?></option>
+              <option <?php if(intval($_GET['clic_class']) == $v['sc_id']){ ?>selected="selected"<?php } ?> value="<?php echo $v['sc_id']; ?>"><?php echo $v['sc_name']; ?></option>
               <?php } ?>
               <?php } ?>
             </select></td>
@@ -90,10 +90,10 @@
   </form>
   <div id="container" class="w100pre close_float" style="height:400px"></div>
   <div style="text-align:right;">
-  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&class_type=<?php echo trim($_GET['class_type']); ?>&cate_id=<?php echo intval($_GET['cate_id']); ?>&store_class=<?php echo intval($_GET['store_class']); ?>&exporttype=excel"}' value="excel"/>
+  	<input type="hidden" id="export_type" name="export_type" data-param='{"url":"<?php echo $output['actionurl'];?>&class_type=<?php echo trim($_GET['class_type']); ?>&cate_id=<?php echo intval($_GET['cate_id']); ?>&clic_class=<?php echo intval($_GET['clic_class']); ?>&exporttype=excel"}' value="excel"/>
   	<a class="btns" href="javascript:void(0);" id="export_btn"><span>下载分类数据</span></a>
   </div>
-  <?php if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'goods_class'){ ?>
+  <?php if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'doctors_class'){ ?>
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
@@ -109,9 +109,9 @@
     <?php if(!empty($output['data_list'])){ ?>
     <?php foreach ($output['data_list'] as $k=>$v){?>
       <tr class="hover">
-        <td class="align-left"><a href="<?php echo urlShop('goods', 'index', array('goods_id' => $v['goods_id']));?>" target="_blank"><?php echo $v['goods_name']; ?></a></td>
+        <td class="align-left"><a href="<?php echo urlclinic('doctors', 'index', array('doctors_id' => $v['doctors_id']));?>" target="_blank"><?php echo $v['doctors_name']; ?></a></td>
         <td class="align-center"><?php echo $v['gc_name']; ?></td>
-        <td class="align-center"><?php echo $v['store_name']; ?></td>
+        <td class="align-center"><?php echo $v['clic_name']; ?></td>
         <td class="align-center"><?php echo $v['onum']; ?></td>
         <td class="align-center"><?php echo $v['gnum']; ?></td>
         <td class="align-center"><?php echo $v['pnum']; ?>元</td>
@@ -125,7 +125,7 @@
     </tbody>
   </table>
   <?php } ?>
-  <?php if(trim($_GET['class_type']) == 'store_class'){ ?>
+  <?php if(trim($_GET['class_type']) == 'clic_class'){ ?>
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
@@ -140,7 +140,7 @@
     <?php if(!empty($output['data_list'])){ ?>
     <?php foreach ($output['data_list'] as $k=>$v){?>
       <tr class="hover">
-        <td class="align-center"><?php echo $v['store_name']; ?></td>
+        <td class="align-center"><?php echo $v['clic_name']; ?></td>
         <td class="align-center"><?php echo $v['sc_name']; ?></td>
         <td class="align-center"><?php echo $v['member_name']; ?></td>
         <td class="align-center"><?php echo $v['onum']; ?></td>
@@ -166,13 +166,13 @@
 $(function () {
 	//分类相关
 	gcategoryInit("gcategory");
-	<?php if(trim($_GET['class_type']) == 'store_class'){ ?>
+	<?php if(trim($_GET['class_type']) == 'clic_class'){ ?>
 	$('#gcategory').hide();
 	<?php }else{ ?>
 	$('#scategory').hide();
 	<?php } ?>
 	$('#class_type').change(function(){
-		if($(this).val() == 'store_class'){
+		if($(this).val() == 'clic_class'){
 			$('#gcategory').hide();
 			$('#scategory').show();
 		}else{

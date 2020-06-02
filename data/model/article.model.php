@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class articleModel{
 	/**
@@ -26,7 +26,7 @@ class articleModel{
 		$param['table'] = 'article';
 		$param['where'] = $condition_str;
 		$param['limit'] = $condition['limit'];
-		$param['order']	= (empty($condition['order'])?'article_sort asc,article_time desc':$condition['order']);
+		$param['appointment']	= (empty($condition['appointment'])?'article_sort asc,article_time desc':$condition['appointment']);
 		$result = Db::select($param,$page);
 		return $result;
 	}
@@ -48,7 +48,7 @@ class articleModel{
 		$param['join_on']	= array('article.ac_id=article_class.ac_id');
 		$param['where'] = $condition_str;
 		$param['limit'] = $condition['limit'];
-		$param['order']	= empty($condition['order'])?'article.article_sort':$condition['order'];
+		$param['appointment']	= empty($condition['appointment'])?'article.article_sort':$condition['appointment'];
 		$result = Db::select($param,$page);
 		return $result;
 	}

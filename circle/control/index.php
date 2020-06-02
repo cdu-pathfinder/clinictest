@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class indexControl extends BaseCircleControl{
 	public function __construct(){
@@ -23,13 +23,13 @@ class indexControl extends BaseCircleControl{
 		$model = Model();
 		
 		// 热门圈子      **显示3个圈子，按推荐随机排列，推荐不够按成员数主题数降序排列**
-		$circle_list = $model->table('circle')->field('*, is_hot*rand() as rand')->where(array('circle_status'=>1, 'is_hot'=>1))->order('rand desc')->limit(3)->select();
+		$circle_list = $model->table('circle')->field('*, is_hot*rand() as rand')->where(array('circle_status'=>1, 'is_hot'=>1))->appointment('rand desc')->limit(3)->select();
 		if(!empty($circle_list)){
 			$circle_list = array_under_reset($circle_list, 'circle_id');$circleid_array = array_keys($circle_list);
 			// 查询圈子最新主题
 			foreach($circle_list as $key=>$val){
 				// 最新的两条数据
-				$theme_list = $model->table('circle_theme')->where(array('circle_id'=>$val['circle_id'], 'is_closed'=>0))->order('theme_id desc')->limit(2)->select();
+				$theme_list = $model->table('circle_theme')->where(array('circle_id'=>$val['circle_id'], 'is_closed'=>0))->appointment('theme_id desc')->limit(2)->select();
 				$circle_list[$key]['theme_list'] = $theme_list;
 			}
 			Tpl::output('circle_list', $circle_list);
@@ -51,15 +51,15 @@ class indexControl extends BaseCircleControl{
 		}
 		
 		// 圈子分类
-		$class_list = $model->table('circle_class')->where(array('class_status'=>1, 'is_recommend'=>1))->order('class_sort asc')->select();
+		$class_list = $model->table('circle_class')->where(array('class_status'=>1, 'is_recommend'=>1))->appointment('class_sort asc')->select();
 		Tpl::output('class_list', $class_list);
 		
 		// 推荐圈子
-		$rcircle_list = $model->table('circle')->field('*, is_recommend*rand() as rand')->where(array('circle_status'=>1, 'is_recommend'=>1))->order('rand desc')->limit('20')->select();
+		$rcircle_list = $model->table('circle')->field('*, is_recommend*rand() as rand')->where(array('circle_status'=>1, 'is_recommend'=>1))->appointment('rand desc')->limit('20')->select();
 		Tpl::output('rcircle_list', $rcircle_list);
 		
 		// 推荐话题
-		$theme_list = $model->table('circle_theme')->field('*, is_recommend*rand() as rand')->where(array('has_affix'=>1, 'is_closed'=>0, 'is_recommend'=>1))->order('rand desc')->limit(8)->select();
+		$theme_list = $model->table('circle_theme')->field('*, is_recommend*rand() as rand')->where(array('has_affix'=>1, 'is_closed'=>0, 'is_recommend'=>1))->appointment('rand desc')->limit(8)->select();
 		if(!empty($theme_list)){
 			$theme_list = array_under_reset($theme_list, 'theme_id'); $themeid_array = array_keys($theme_list);
 
@@ -76,20 +76,20 @@ class indexControl extends BaseCircleControl{
 		}
 		
 		// 商品话题
-		$gtheme_list = $model->table('circle_theme')->where(array('has_goods'=>1, 'is_closed'=>0))->order('theme_id desc')->limit(6)->select();
+		$gtheme_list = $model->table('circle_theme')->where(array('has_doctors'=>1, 'is_closed'=>0))->appointment('theme_id desc')->limit(6)->select();
 		if(!empty($gtheme_list)){
 			$gtheme_list = array_under_reset($gtheme_list, 'theme_id'); $themeid_array = array_keys($gtheme_list);
 			
 			// 圈子商品
 			$thg_list = $model->table('circle_thg')->where(array('theme_id'=>array('in', $themeid_array), 'reply_id'=>0))->select();
-			$thg_list = tidyThemeGoods($thg_list, 'theme_id', 2);
+			$thg_list = tidyThemedoctors($thg_list, 'theme_id', 2);
 			Tpl::output('thg_list', $thg_list);
 			
 			Tpl::output('gtheme_list', $gtheme_list);
 		}
 		
 		// 优秀成员
-		$member_list = $model->table('circle_member')->field('*, is_recommend*rand() as rand')->where(array('is_recommend'=>1))->order('rand desc')->limit(5)->select();
+		$member_list = $model->table('circle_member')->field('*, is_recommend*rand() as rand')->where(array('is_recommend'=>1))->appointment('rand desc')->limit(5)->select();
 
 		if(!empty($member_list)){
 			$member_list = array_reverse($member_list);
@@ -97,7 +97,7 @@ class indexControl extends BaseCircleControl{
 			$where = array();
 			$where['member_id']	= $one_member['member_id'];
 			$where['circle_id']	= $one_member['circle_id'];
-			$one_membertheme = $model->table('circle_theme')->where($where)->order('theme_id desc')->limit(4)->select();
+			$one_membertheme = $model->table('circle_theme')->where($where)->appointment('theme_id desc')->limit(4)->select();
 			Tpl::output('one_member', $one_member);
 			Tpl::output('one_membertheme', $one_membertheme);
 			
@@ -128,7 +128,7 @@ class indexControl extends BaseCircleControl{
 	 */
 	public function add_groupOp(){
 		if($_SESSION['is_login'] != 1){
-			@header('location: '.SHOP_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl());
+			@header('location: '.clinic_SITE_URL.'/index.php?act=login&ref_url='.getRefUrl());
 		}
 		if(!intval(C('circle_iscreate'))){
 			showMessage(L('circle_grooup_not_create'), '', '', 'error');
@@ -202,7 +202,7 @@ class indexControl extends BaseCircleControl{
 		Tpl::output('join_count', $join_count);
 		
 		// 圈子分类
-		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->order('class_sort asc')->select();
+		$class_list = $model->table('circle_class')->where(array('class_status'=>1))->appointment('class_sort asc')->select();
 		Tpl::output('class_list', $class_list);
 		
 		$this->circleSEO(L('circle_create'));
@@ -213,7 +213,7 @@ class indexControl extends BaseCircleControl{
 	 */
 	public function myjoinedcircleOp(){
 		$model = Model();
-		$cm_list = $model->table('circle_member')->field('circle_id,circle_name,is_identity')->where(array('member_id'=>$_SESSION['member_id']))->order('is_identity asc')->select();
+		$cm_list = $model->table('circle_member')->field('circle_id,circle_name,is_identity')->where(array('member_id'=>$_SESSION['member_id']))->appointment('is_identity asc')->select();
 		if (empty($cm_list)) {
 			echo false;die;
 		}

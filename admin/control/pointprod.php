@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class pointprodControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -50,14 +50,14 @@ class pointprodControl extends SystemControl{
 		}		
 		//条件
 		$condition_arr = array();
-		$pgoods_name = trim($_GET['pg_name']);
-		if ($pgoods_name){
-			$condition_arr['pgoods_name_like'] = $pgoods_name;			
+		$pdoctors_name = trim($_GET['pg_name']);
+		if ($pdoctors_name){
+			$condition_arr['pdoctors_name_like'] = $pdoctors_name;			
 		}
 		if ($_GET['pg_state']){
 			$condition_arr['pg_liststate'] = trim($_GET['pg_state']);
 		}
-		$condition_arr['order'] = " pgoods_sort asc,pgoods_id desc ";
+		$condition_arr['appointment'] = " pdoctors_sort asc,pdoctors_id desc ";
 		//分页
 		$page	= new Page();
 		$page->setEachNum(10);
@@ -83,11 +83,11 @@ class pointprodControl extends SystemControl{
 			 * 验证表单
 			 */
 			$obj_validate = new Validate();
-			$validate_arr[] = array("input"=>$_POST["goodsname"],"require"=>"true","message"=>Language::get('admin_pointprod_add_goodsname_error'));
-			$validate_arr[] = array("input"=>$_POST["goodsprice"],"require"=>"true","validator"=>"DoublePositive","message"=>Language::get('admin_pointprod_add_goodsprice_number_error'));
-			$validate_arr[] = array('input'=>$_POST['goodspoints'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_goodspoint_number_error'));
-			$validate_arr[] = array('input'=>$_POST['goodsserial'],'require'=>'true','message'=>Language::get('admin_pointprod_add_goodsserial_null_error'));
-			$validate_arr[] = array('input'=>$_POST['goodsstorage'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_storage_number_error'));
+			$validate_arr[] = array("input"=>$_POST["doctorsname"],"require"=>"true","message"=>Language::get('admin_pointprod_add_doctorsname_error'));
+			$validate_arr[] = array("input"=>$_POST["doctorsprice"],"require"=>"true","validator"=>"DoublePositive","message"=>Language::get('admin_pointprod_add_doctorsprice_number_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorspoints'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_doctorspoint_number_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorsserial'],'require'=>'true','message'=>Language::get('admin_pointprod_add_doctorsserial_null_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorsstorage'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_storage_number_error'));
 			$validate_arr[] = array('input'=>$_POST['sort'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_sort_number_error'));
 			if ($_POST['islimit'] == 1){
 				$validate_arr[] = array('input'=>$_POST['limitnum'],'validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_limitnum_digits_error'));
@@ -109,24 +109,24 @@ class pointprodControl extends SystemControl{
 			 */
 			$model_pointprod	= Model('pointprod');
 
-			$goods_array			= array();
-			$goods_array['pgoods_name']		= trim($_POST['goodsname']);
-			$goods_array['pgoods_tag']		= trim($_POST['goodstag']);
-			$goods_array['pgoods_price']	= trim($_POST['goodsprice']);
+			$doctors_array			= array();
+			$doctors_array['pdoctors_name']		= trim($_POST['doctorsname']);
+			$doctors_array['pdoctors_tag']		= trim($_POST['doctorstag']);
+			$doctors_array['pdoctors_price']	= trim($_POST['doctorsprice']);
 			
-			$goods_array['pgoods_points']	= trim($_POST['goodspoints']);
-			$goods_array['pgoods_serial']	= trim($_POST['goodsserial']);
-			$goods_array['pgoods_storage']	= intval($_POST['goodsstorage']);
+			$doctors_array['pdoctors_points']	= trim($_POST['doctorspoints']);
+			$doctors_array['pdoctors_serial']	= trim($_POST['doctorsserial']);
+			$doctors_array['pdoctors_storage']	= intval($_POST['doctorsstorage']);
 			
 			
-            $goods_array['pgoods_islimit'] = intval($_POST['islimit']);
-            if ($goods_array['pgoods_islimit'] == 1){
-            	$goods_array['pgoods_limitnum'] = intval($_POST['limitnum']);
+            $doctors_array['pdoctors_islimit'] = intval($_POST['islimit']);
+            if ($doctors_array['pdoctors_islimit'] == 1){
+            	$doctors_array['pdoctors_limitnum'] = intval($_POST['limitnum']);
             }else {
-            	$goods_array['pgoods_limitnum'] = 0;
+            	$doctors_array['pdoctors_limitnum'] = 0;
             }
-            $goods_array['pgoods_islimittime'] = intval($_POST['islimittime']);
-            if ($goods_array['pgoods_islimittime'] == 1){
+            $doctors_array['pdoctors_islimittime'] = intval($_POST['islimittime']);
+            if ($doctors_array['pdoctors_islimittime'] == 1){
              	//如果添加了开始时间
 	            if (trim($_POST['starttime'])){
 	            	$starttime = trim($_POST['starttime']);
@@ -139,39 +139,39 @@ class pointprodControl extends SystemControl{
 	            	$edatearr = explode('-',$endtime);
 	            	$endtime = mktime(intval($_POST['endhour']),0,0,$edatearr[1],$edatearr[2],$edatearr[0]);
 	            }
-	            $goods_array['pgoods_starttime'] = $starttime;
-            	$goods_array['pgoods_endtime'] = $endtime;
+	            $doctors_array['pdoctors_starttime'] = $starttime;
+            	$doctors_array['pdoctors_endtime'] = $endtime;
             }else {
-            	$goods_array['pgoods_starttime'] = '';
-            	$goods_array['pgoods_endtime'] = '';
+            	$doctors_array['pdoctors_starttime'] = '';
+            	$doctors_array['pdoctors_endtime'] = '';
             }
-			$goods_array['pgoods_show']		= trim($_POST['showstate']);
-			$goods_array['pgoods_commend']	= trim($_POST['commendstate']);
-			$goods_array['pgoods_add_time']	= time();
-			$goods_array['pgoods_state']		= trim($_POST['forbidstate']);
-			$goods_array['pgoods_close_reason']		= trim($_POST['forbidreason']);
-			$goods_array['pgoods_keywords']		= trim($_POST['keywords']);
-			$goods_array['pgoods_description']   = trim($_POST['description']);
-			$goods_array['pgoods_body']   = trim($_POST['pgoods_body']);
-			$goods_array['pgoods_sort']   = intval($_POST['sort']);	
+			$doctors_array['pdoctors_show']		= trim($_POST['showstate']);
+			$doctors_array['pdoctors_commend']	= trim($_POST['commendstate']);
+			$doctors_array['pdoctors_add_time']	= time();
+			$doctors_array['pdoctors_state']		= trim($_POST['forbidstate']);
+			$doctors_array['pdoctors_close_reason']		= trim($_POST['forbidreason']);
+			$doctors_array['pdoctors_keywords']		= trim($_POST['keywords']);
+			$doctors_array['pdoctors_description']   = trim($_POST['description']);
+			$doctors_array['pdoctors_body']   = trim($_POST['pdoctors_body']);
+			$doctors_array['pdoctors_sort']   = intval($_POST['sort']);	
 			
 			//添加礼品代表图片
 			$indeximg_succ = false;
-			if (!empty($_FILES['goods_image']['name'])){
+			if (!empty($_FILES['doctors_image']['name'])){
 				$upload = new UploadFile();
 				$upload->set('default_dir',ATTACH_POINTPROD);
 				$upload->set('thumb_width',	'160,300');
 				$upload->set('thumb_height','160,300');
 				$upload->set('thumb_ext',	'_small,_mid');				
-				$result = $upload->upfile('goods_image');
+				$result = $upload->upfile('doctors_image');
 				if ($result){
 					$indeximg_succ = true;
-					$goods_array['pgoods_image'] = $upload->file_name;
+					$doctors_array['pdoctors_image'] = $upload->file_name;
 				}else {
 					showMessage($upload->error,'','','error');
 				}
 			}
-			$state = $model_pointprod->addPointGoods($goods_array);				
+			$state = $model_pointprod->addPointdoctors($doctors_array);				
 			if($state){
 				//礼品代表图片数据入库
 				if ($indeximg_succ){
@@ -190,7 +190,7 @@ class pointprodControl extends SystemControl{
 					$file_idstr = "'".implode("','",$_POST['file_id'])."'";
 				}
 				$upload_model->updatebywhere(array('item_id'=>$state),array('upload_type'=>6,'item_id'=>'0','upload_id_in'=>"{$file_idstr}"));
-				$this->log(L('admin_pointprod_add_title').'['.$_POST['goodsname'].']');
+				$this->log(L('admin_pointprod_add_title').'['.$_POST['doctorsname'].']');
 				showMessage(Language::get('admin_pointprod_add_success'),'index.php?act=pointprod&op=pointprod');
 			}
 		}
@@ -223,7 +223,7 @@ class pointprodControl extends SystemControl{
 		}
 		$model_pointprod = Model('pointprod');
 		//查询礼品记录是否存在
-		$prod_info = $model_pointprod->getPointProdInfo(array('pgoods_id'=>$pg_id));
+		$prod_info = $model_pointprod->getPointProdInfo(array('pdoctors_id'=>$pg_id));
 		if (!is_array($prod_info) || count($prod_info)<=0){
 			showMessage(Language::get('admin_pointprod_record_error'),'index.php?act=pointprod&op=pointprod','','error');
 		}
@@ -232,11 +232,11 @@ class pointprodControl extends SystemControl{
 			 * 验证表单
 			 */
 			$obj_validate = new Validate();
-			$validate_arr[] = array("input"=>$_POST["goodsname"],"require"=>"true","message"=>Language::get('admin_pointprod_add_goodsname_error'));
-			$validate_arr[] = array("input"=>$_POST["goodsprice"],"require"=>"true","validator"=>"DoublePositive","message"=>Language::get('admin_pointprod_add_goodsprice_number_error'));
-			$validate_arr[] = array('input'=>$_POST['goodspoints'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_goodspoint_number_error'));
-			$validate_arr[] = array('input'=>$_POST['goodsserial'],'require'=>'true','message'=>Language::get('admin_pointprod_add_goodsserial_null_error'));
-			$validate_arr[] = array('input'=>$_POST['goodsstorage'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_storage_number_error'));
+			$validate_arr[] = array("input"=>$_POST["doctorsname"],"require"=>"true","message"=>Language::get('admin_pointprod_add_doctorsname_error'));
+			$validate_arr[] = array("input"=>$_POST["doctorsprice"],"require"=>"true","validator"=>"DoublePositive","message"=>Language::get('admin_pointprod_add_doctorsprice_number_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorspoints'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_doctorspoint_number_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorsserial'],'require'=>'true','message'=>Language::get('admin_pointprod_add_doctorsserial_null_error'));
+			$validate_arr[] = array('input'=>$_POST['doctorsstorage'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_storage_number_error'));
 			$validate_arr[] = array('input'=>$_POST['sort'],'require'=>'true','validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_sort_number_error'));
 			if ($_POST['islimit'] == 1){
 				$validate_arr[] = array('input'=>$_POST['limitnum'],'validator'=>'IntegerPositive','message'=>Language::get('admin_pointprod_add_limitnum_digits_error'));
@@ -258,28 +258,28 @@ class pointprodControl extends SystemControl{
 			 */
 			$model_pointprod	= Model('pointprod');
 
-			$goods_array			= array();
-			$goods_array['pgoods_name']		= trim($_POST['goodsname']);
-			$goods_array['pgoods_tag']		= trim($_POST['goodstag']);
-			$goods_array['pgoods_price']	= trim($_POST['goodsprice']);
+			$doctors_array			= array();
+			$doctors_array['pdoctors_name']		= trim($_POST['doctorsname']);
+			$doctors_array['pdoctors_tag']		= trim($_POST['doctorstag']);
+			$doctors_array['pdoctors_price']	= trim($_POST['doctorsprice']);
 			
-			$goods_array['pgoods_points']	= trim($_POST['goodspoints']);
-			$goods_array['pgoods_serial']	= trim($_POST['goodsserial']);
-			$goods_array['pgoods_storage']	= intval($_POST['goodsstorage']);
-            $goods_array['pgoods_islimit'] = intval($_POST['islimit']);
-            if ($goods_array['pgoods_islimit'] == 1){
-            	$goods_array['pgoods_limitnum'] = intval($_POST['limitnum']);
+			$doctors_array['pdoctors_points']	= trim($_POST['doctorspoints']);
+			$doctors_array['pdoctors_serial']	= trim($_POST['doctorsserial']);
+			$doctors_array['pdoctors_storage']	= intval($_POST['doctorsstorage']);
+            $doctors_array['pdoctors_islimit'] = intval($_POST['islimit']);
+            if ($doctors_array['pdoctors_islimit'] == 1){
+            	$doctors_array['pdoctors_limitnum'] = intval($_POST['limitnum']);
             }else {
-            	$goods_array['pgoods_limitnum'] = 0;
+            	$doctors_array['pdoctors_limitnum'] = 0;
             }
-		 	$goods_array['pgoods_freightcharge'] = intval($_POST['freightcharge']);
-            if ($goods_array['pgoods_freightcharge'] == 1){
-            	$goods_array['pgoods_freightprice'] = trim($_POST['freightprice']);
+		 	$doctors_array['pdoctors_freightcharge'] = intval($_POST['freightcharge']);
+            if ($doctors_array['pdoctors_freightcharge'] == 1){
+            	$doctors_array['pdoctors_freightprice'] = trim($_POST['freightprice']);
             }else {
-            	$goods_array['pgoods_freightprice'] = 0;
+            	$doctors_array['pdoctors_freightprice'] = 0;
             }
-            $goods_array['pgoods_islimittime'] = intval($_POST['islimittime']);
-            if ($goods_array['pgoods_islimittime'] == 1){
+            $doctors_array['pdoctors_islimittime'] = intval($_POST['islimittime']);
+            if ($doctors_array['pdoctors_islimittime'] == 1){
              	//如果添加了开始时间
 	            if (trim($_POST['starttime'])){
 	            	$starttime = trim($_POST['starttime']);
@@ -292,42 +292,42 @@ class pointprodControl extends SystemControl{
 	            	$edatearr = explode('-',$endtime);
 	            	$endtime = mktime(intval($_POST['endhour']),0,0,$edatearr[1],$edatearr[2],$edatearr[0]);
 	            }
-	            $goods_array['pgoods_starttime'] = $starttime;
-            	$goods_array['pgoods_endtime'] = $endtime;   
+	            $doctors_array['pdoctors_starttime'] = $starttime;
+            	$doctors_array['pdoctors_endtime'] = $endtime;   
             }else {
-            	$goods_array['pgoods_starttime'] = '';
-            	$goods_array['pgoods_endtime'] = '';   
+            	$doctors_array['pdoctors_starttime'] = '';
+            	$doctors_array['pdoctors_endtime'] = '';   
             }
-			$goods_array['pgoods_show']		= trim($_POST['showstate']);
-			$goods_array['pgoods_commend']	= trim($_POST['commendstate']);
-			$goods_array['pgoods_state']		= trim($_POST['forbidstate']);
-			$goods_array['pgoods_close_reason']		= trim($_POST['forbidreason']);
-			$goods_array['pgoods_keywords']		= trim($_POST['keywords']);
-			$goods_array['pgoods_description']   = trim($_POST['description']);
-			$goods_array['pgoods_body']   = trim($_POST['pgoods_body']);
-			$goods_array['pgoods_sort']   = intval($_POST['sort']);
+			$doctors_array['pdoctors_show']		= trim($_POST['showstate']);
+			$doctors_array['pdoctors_commend']	= trim($_POST['commendstate']);
+			$doctors_array['pdoctors_state']		= trim($_POST['forbidstate']);
+			$doctors_array['pdoctors_close_reason']		= trim($_POST['forbidreason']);
+			$doctors_array['pdoctors_keywords']		= trim($_POST['keywords']);
+			$doctors_array['pdoctors_description']   = trim($_POST['description']);
+			$doctors_array['pdoctors_body']   = trim($_POST['pdoctors_body']);
+			$doctors_array['pdoctors_sort']   = intval($_POST['sort']);
 			//添加礼品代表图片
 			$indeximg_succ = false;
-			if (!empty($_FILES['goods_image']['name'])){
+			if (!empty($_FILES['doctors_image']['name'])){
 				$upload = new UploadFile();
 				$upload->set('default_dir',ATTACH_POINTPROD);
 				$upload->set('thumb_width',	'160,300');
 				$upload->set('thumb_height','160,300');
 				$upload->set('thumb_ext',	'_small,_mid');
-				$result = $upload->upfile('goods_image');
+				$result = $upload->upfile('doctors_image');
 				if ($result){
 					$indeximg_succ = true;
-					$goods_array['pgoods_image'] = $upload->file_name;
+					$doctors_array['pdoctors_image'] = $upload->file_name;
 				}else {
 					showMessage($upload->error,'','','error');
 				}
 			}
-			$state = $model_pointprod->updatePointProd($goods_array,array('pgoods_id'=>$prod_info['pgoods_id']));
+			$state = $model_pointprod->updatePointProd($doctors_array,array('pdoctors_id'=>$prod_info['pdoctors_id']));
 			if($state){
 				//礼品代表图片数据入库
 				if ($indeximg_succ){
 					//删除原有图片
-					$upload_list = $upload_model->getUploadList(array('upload_type'=>5,'item_id'=>$prod_info['pgoods_id']));
+					$upload_list = $upload_model->getUploadList(array('upload_type'=>5,'item_id'=>$prod_info['pdoctors_id']));
 					
 					if (is_array($upload_list) && count($upload_list)>0){
 						$upload_idarr = array();
@@ -344,16 +344,16 @@ class pointprodControl extends SystemControl{
 					$insert_array['file_thumb'] = $upload->thumb_image;
 					$insert_array['upload_type'] = 5;
 					$insert_array['file_size'] = filesize(BASE_UPLOAD_PATH.DS.DS.ATTACH_POINTPROD.DS.$upload->file_name);
-					$insert_array['item_id'] = $prod_info['pgoods_id'];
+					$insert_array['item_id'] = $prod_info['pdoctors_id'];
 					$insert_array['upload_time'] = time();
 					$upload_model->add($insert_array);
 				}
-				$this->log(L('nc_edit,admin_pointprodp').'['.$_POST['goodsname'].']');
+				$this->log(L('nc_edit,admin_pointprodp').'['.$_POST['doctorsname'].']');
 				showMessage(Language::get('admin_pointprod_edit_success'),'index.php?act=pointprod&op=pointprod');
 			}
 		}else {
 			$condition['upload_type'] = '6';
-			$condition['item_id'] = $prod_info['pgoods_id'];
+			$condition['item_id'] = $prod_info['pdoctors_id'];
 			$file_upload = $upload_model->getUploadList($condition);
 			if (is_array($file_upload)){
 				foreach ($file_upload as $k => $v){
@@ -378,7 +378,7 @@ class pointprodControl extends SystemControl{
 		}
 		$model_pointprod = Model('pointprod');
 		//查询礼品是否存在
-		$prod_info = $model_pointprod->getPointProdInfo(array('pgoods_id'=>$pg_id));
+		$prod_info = $model_pointprod->getPointProdInfo(array('pdoctors_id'=>$pg_id));
 		if (!is_array($prod_info) || count($prod_info)<=0){
 			showMessage(Language::get('admin_pointprod_record_error'),'index.php?act=pointprod&op=pointprod','','error');
 		}
@@ -404,14 +404,14 @@ class pointprodControl extends SystemControl{
 		$pg_id = "'".implode("','",$pg_id)."'";
 		$model_pointprod = Model('pointprod');
 		//查询申请记录是否存在
-		$prod_list = $model_pointprod->getPointProdList(array('pgoods_id_in'=>$pg_id));
+		$prod_list = $model_pointprod->getPointProdList(array('pdoctors_id_in'=>$pg_id));
 		if (!is_array($prod_list) || count($prod_list)<=0){
 			showMessage(Language::get('admin_pointprod_record_error'),'index.php?act=pointprod&op=pointprod','','error');
 		}
 		$pg_idnew = array();
 		foreach ($prod_list as $k=>$v){
 			//查询积分礼品的下属信息（比如兑换信息）
-			$pg_idnew[] = $v['pgoods_id'];
+			$pg_idnew[] = $v['pdoctors_id'];
 		}
 		//删除操作
 		$result = true;
@@ -438,7 +438,7 @@ class pointprodControl extends SystemControl{
 		$model_pointprod = Model('pointprod');
 		$update_array = array();
 		$update_array[$_GET['column']] = trim($_GET['value']);
-		$model_pointprod->updatePointProd($update_array,array('pgoods_id'=>$id));
+		$model_pointprod->updatePointProd($update_array,array('pdoctors_id'=>$id));
 		echo 'true';exit;
 	}
 

@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * index
  */
@@ -21,4 +21,4 @@ $lang['login_index_checkcode_pattern']			= 'The captcha code is four characters 
 $lang['login_index_close_checkcode']			= 'close';
 $lang['login_index_change_checkcode']			= 'not clear, click to change the captcha code';
 $lang['login_index_button_login']				= 'login';
-$lang['login_index_shopnc']						= 'CDU group10';
+$lang['login_index_clinicnc']						= 'CDU group10';

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,32 +12,32 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
-          <td colspan="2" class="required"><label for="default_goods_image"><?php echo $lang['default_product_pic'];?>:</label></td>
+        <tr class="nobappointment">
+          <td colspan="2" class="required"><label for="default_doctors_image"><?php echo $lang['default_doc_pic'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
-            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.'/'.$output['list_setting']['default_goods_image']);?>"></div>
+            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.'/'.$output['list_setting']['default_doctors_image']);?>"></div>
             </span><span class="type-file-box">
-            <input class="type-file-file" id="default_goods_image" name="default_goods_image" type="file" size="30" hidefocus="true"  nc_type="change_default_goods_image" title="<?php echo $lang['default_product_pic'];?>">
+            <input class="type-file-file" id="default_doctors_image" name="default_doctors_image" type="file" size="30" hidefocus="true"  nc_type="change_default_doctors_image" title="<?php echo $lang['default_doc_pic'];?>">
             </span></td>
           <td class="vatop tips">300px * 300px</td>
         </tr>
         <tr>
-          <td colspan="2" class="required"><label for="default_store_logo"><?php echo $lang['default_store_logo'];?>:</label></td>
+          <td colspan="2" class="required"><label for="default_clic_logo"><?php echo $lang['default_clic_logo'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
-            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.'/'.$output['list_setting']['default_store_logo']);?>"></div>
+            <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.'/'.$output['list_setting']['default_clic_logo']);?>"></div>
             </span><span class="type-file-box">
-            <input class="type-file-file" id="default_store_logo" name="default_store_logo" type="file" size="30" hidefocus="true" nc_type="change_default_store_logo" title="<?php echo $lang['default_store_logo'];?>">
+            <input class="type-file-file" id="default_clic_logo" name="default_clic_logo" type="file" size="30" hidefocus="true" nc_type="change_default_clic_logo" title="<?php echo $lang['default_clic_logo'];?>">
             </span></td>
           <td class="vatop tips">100px * 100px</td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="default_user_portrait"><?php echo $lang['default_user_pic'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.'/'.(ATTACH_COMMON.'/'.$output['list_setting']['default_user_portrait']);?>"></div>
             </span><span class="type-file-box">
@@ -60,15 +60,15 @@
 $(function(){
 // 模拟默认商品图片上传input type='file'样式
 	var textButton="<input type='text' name='textfield' id='textfield1' class='type-file-text' /><input type='button' name='button' id='button1' value='' class='type-file-button' />"
-    $(textButton).insertBefore("#default_goods_image");
-    $("#default_goods_image").change(function(){
-	$("#textfield1").val($("#default_goods_image").val());
+    $(textButton).insertBefore("#default_doctors_image");
+    $("#default_doctors_image").change(function(){
+	$("#textfield1").val($("#default_doctors_image").val());
     });
 // 模拟默认店铺图片上传input type='file'样式
 	var textButton="<input type='text' name='textfield' id='textfield2' class='type-file-text' /><input type='button' name='button' id='button2' value='' class='type-file-button' />"
-    $(textButton).insertBefore("#default_store_logo");
-    $("#default_store_logo").change(function(){
-	$("#textfield2").val($("#default_store_logo").val());
+    $(textButton).insertBefore("#default_clic_logo");
+    $("#default_clic_logo").change(function(){
+	$("#textfield2").val($("#default_clic_logo").val());
     });
 // 模拟默认用户图片上传input type='file'样式
 	var textButton="<input type='text' name='textfield' id='textfield3' class='type-file-text' /><input type='button' name='button' id='button3' value='' class='type-file-button' />"

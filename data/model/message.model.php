@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class messageModel {
 	/**
 	 * 站内信列表
@@ -20,7 +20,7 @@ class messageModel {
 		$param	= array();
 		$param['table']		= 'message';
 		$param['where']		= $condition_str;
-		$param['order']		= 'message.message_id DESC';
+		$param['appointment']		= 'message.message_id DESC';
 		$message_list		= Db::select($param,$page);
 		return $message_list;
 	}
@@ -29,16 +29,16 @@ class messageModel {
 	 * @param	array $param	条件数组
 	 * @param	object $page	分页对象调用
 	 */
-	public function listAndStoreMessage($condition,$page='') {		
+	public function listAndclicMessage($condition,$page='') {		
 		//得到条件语句
 		$condition_str = $this->getCondition($condition);
 		$param	= array();
-		$param['table']	= 'message,store';
-		$param['field'] = 'message.*,store.store_name,store.store_id';
+		$param['table']	= 'message,clic';
+		$param['field'] = 'message.*,clic.clic_name,clic.clic_id';
 		$param['where']	= $condition_str;
 		$param['join_type'] = 'left join';
-		$param['join_on'] = array('message.from_member_id = store.member_id');
-		$param['order']	= 'message.message_id DESC';
+		$param['join_on'] = array('message.from_member_id = clic.member_id');
+		$param['appointment']	= 'message.message_id DESC';
 		$message_list	= Db::select($param,$page);
 		return $message_list;
 	}

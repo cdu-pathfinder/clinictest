@@ -7,11 +7,11 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 if (!@include(BASE_DATA_PATH.'/config/config.ini.php')) exit('config.ini.php isn\'t exists!');
 if (file_exists(BASE_PATH.'/config/config.ini.php')){
 	include(BASE_PATH.'/config/config.ini.php');
@@ -19,15 +19,15 @@ if (file_exists(BASE_PATH.'/config/config.ini.php')){
 global $config;
 
 //默认平台店铺id
-define('DEFAULT_PLATFORM_STORE_ID', $config['default_store_id']);
+define('DEFAULT_PLATFORM_clic_ID', $config['default_clic_id']);
 
 define('URL_MODEL',$config['url_model']);
 define(SUBDOMAIN_SUFFIX, $config['subdomain_suffix']);
 
-define('SHOP_SITE_URL', $config['shop_site_url']);
+define('clinic_SITE_URL', $config['clinic_site_url']);
 define('CMS_SITE_URL', $config['cms_site_url']);
 define('CIRCLE_SITE_URL', $config['circle_site_url']);
-define('MICROSHOP_SITE_URL', $config['microshop_site_url']);
+define('MICROclinic_SITE_URL', $config['microclinic_site_url']);
 define('ADMIN_SITE_URL', $config['admin_site_url']);
 define('MOBILE_SITE_URL', $config['mobile_site_url']);
 define('WAP_SITE_URL', $config['wap_site_url']);
@@ -57,7 +57,7 @@ $_GET['act'] = preg_match('/^[\w]+$/i',$_GET['act']) ? $_GET['act'] : 'index';
 $_GET['op'] = preg_match('/^[\w]+$/i',$_GET['op']) ? $_GET['op'] : 'index';
 
 //对GET POST接收内容进行过滤,$ignore内的下标不被过滤
-$ignore = array('article_content','pgoods_body','doc_content','content','sn_content','g_body','store_description','p_content','groupbuy_intro','remind_content','note_content','ref_url','adv_pic_url','adv_word_url','adv_slide_url','appcode','mail_content');
+$ignore = array('article_content','pdoctors_body','doc_content','content','sn_content','g_body','clic_description','p_content','groupbuy_intro','remind_content','note_content','ref_url','adv_pic_url','adv_word_url','adv_slide_url','appcode','mail_content');
 if (!class_exists('Security')) require(BASE_CORE_PATH.'/framework/libraries/security.php');
 $_GET = !empty($_GET) ? Security::getAddslashesForInput($_GET,$ignore) : array();
 $_POST = !empty($_POST) ? Security::getAddslashesForInput($_POST,$ignore) : array();
@@ -74,7 +74,7 @@ if ($config['gzip'] == 1 && function_exists('ob_gzhandler') && $_GET['inajax'] !
 require_once(BASE_CORE_PATH.'/framework/function/core.php');
 require_once(BASE_CORE_PATH.'/framework/core/base.php');
 
-require_once(BASE_CORE_PATH.'/framework/function/goods.php');
+require_once(BASE_CORE_PATH.'/framework/function/doctors.php');
 
 if(function_exists('spl_autoload_register')) {
 	spl_autoload_register(array('Base', 'autoload'));

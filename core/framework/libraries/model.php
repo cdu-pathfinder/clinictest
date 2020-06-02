@@ -8,7 +8,7 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
 class Model{
@@ -66,7 +66,7 @@ class Model{
 	}
 
     public function __call($method,$args) {
-        if(in_array(strtolower($method),array('table','order','where','on','limit','having','group','lock','distinct','index','attr','key'),true)) {
+        if(in_array(strtolower($method),array('table','appointment','where','on','limit','having','group','lock','distinct','index','attr','key'),true)) {
             $this->options[strtolower($method)] =   $args[0];
             if (strtolower($method) == 'table'){
             	if (strpos($args[0],',') !== false){
@@ -644,7 +644,7 @@ class ModelDb{
 
     protected $comparison      = array('eq'=>'=','neq'=>'<>','gt'=>'>','egt'=>'>=','lt'=>'<','elt'=>'<=','notlike'=>'NOT LIKE','like'=>'LIKE','in'=>'IN','not in'=>'NOT IN');
     // 查询表达式
-    protected $selectSql  =     'SELECT%DISTINCT% %FIELD% FROM %TABLE%%INDEX%%JOIN%%WHERE%%GROUP%%HAVING%%ORDER%%LIMIT% %UNION%';
+    protected $selectSql  =     'SELECT%DISTINCT% %FIELD% FROM %TABLE%%INDEX%%JOIN%%WHERE%%GROUP%%HAVING%%appointment%%LIMIT% %UNION%';
 
 
     public function select($options=array()) {
@@ -677,7 +677,7 @@ class ModelDb{
 
     public function parseSql($sql,$options=array()){
         $sql   = str_replace(
-            array('%TABLE%','%DISTINCT%','%FIELD%','%JOIN%','%WHERE%','%GROUP%','%HAVING%','%ORDER%','%LIMIT%','%UNION%','%INDEX%'),
+            array('%TABLE%','%DISTINCT%','%FIELD%','%JOIN%','%WHERE%','%GROUP%','%HAVING%','%appointment%','%LIMIT%','%UNION%','%INDEX%'),
             array(
                 $this->parseTable($options),
                 $this->parseDistinct(isset($options['distinct'])?$options['distinct']:false),
@@ -686,7 +686,7 @@ class ModelDb{
                 $this->parseWhere(isset($options['where'])?$options['where']:''),
                 $this->parseGroup(isset($options['group'])?$options['group']:''),
                 $this->parseHaving(isset($options['having'])?$options['having']:''),
-                $this->parseOrder(isset($options['order'])?$options['order']:''),
+                $this->parseappointment(isset($options['appointment'])?$options['appointment']:''),
                 $this->parseLimit(isset($options['limit'])?$options['limit']:''),
                 $this->parseUnion(isset($options['union'])?$options['union']:''),
                 $this->parseIndex(isset($options['index'])?$options['index']:'')
@@ -934,7 +934,7 @@ class ModelDb{
         $sql   = 'DELETE '.$this->parseAttr($options).' FROM '
             .$this->parseTable($options)
             .$this->parseWhere(isset($options['where'])?$options['where']:'')
-            .$this->parseOrder(isset($options['order'])?$options['order']:'')
+            .$this->parseappointment(isset($options['appointment'])?$options['appointment']:'')
             .$this->parseLimit(isset($options['limit'])?$options['limit']:'');
             if (stripos($sql,'where') === false && $options['where'] !== true){
             	//防止条件传错，删除所有记录
@@ -949,7 +949,7 @@ class ModelDb{
             .$this->parseTable($options)
             .$this->parseSet($data)
             .$this->parseWhere(isset($options['where'])?$options['where']:'')
-            .$this->parseOrder(isset($options['order'])?$options['order']:'')
+            .$this->parseappointment(isset($options['appointment'])?$options['appointment']:'')
             .$this->parseLimit(isset($options['limit'])?$options['limit']:'');
             if (stripos($sql,'where') === false && $options['where'] !== true){
             	//防止条件传错，更新所有记录
@@ -1033,19 +1033,19 @@ class ModelDb{
         return DB::execute($sql);
     }
 
-    protected function parseOrder($order) {
-        if(is_array($order)) {
+    protected function parseappointment($appointment) {
+        if(is_array($appointment)) {
             $array   =  array();
-            foreach ($order as $key=>$val){
+            foreach ($appointment as $key=>$val){
                 if(is_numeric($key)) {
                     $array[] =  $this->parseKey($val);
                 }else{
                     $array[] =  $this->parseKey($key).' '.$val;
                 }
             }
-            $order   =  implode(',',$array);
+            $appointment   =  implode(',',$array);
         }
-        return !empty($order)?  ' ORDER BY '.$order:'';
+        return !empty($appointment)?  ' appointment BY '.$appointment:'';
     }
 
     protected function parseGroup($group) {

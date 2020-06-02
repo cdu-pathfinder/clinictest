@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="base-layout">
   <div class="mainbox">
@@ -27,7 +27,7 @@
         <?php foreach ($output['mapply_list'] as $val){?>
         <tr>
           <td><input class="checkitem" type="checkbox" value="<?php echo $val['member_id'];?>"></td>
-          <td><dl class="member-base"><dt class="member-name"><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $val['member_name'];?></a><?php echo memberIdentity($val['is_identity']);?></dt><dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /><?php if($val['is_star']){echo '<dd class="member-star" title="'.$lang['circle_stat_member'].'"></dd>';}?></dd>
+          <td><dl class="member-base"><dt class="member-name"><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $val['member_name'];?></a><?php echo memberIdentity($val['is_identity']);?></dt><dd class="member-avatar-s"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>" /><?php if($val['is_star']){echo '<dd class="member-star" title="'.$lang['circle_stat_member'].'"></dd>';}?></dd>
           </dl></td>
           <td><?php echo $val['cm_level'];?></td>
           <td><?php echo @date('Y-m-d', $val['mapply_time']);?></td>
@@ -39,7 +39,7 @@
         <?php }?>
         <?php }else{?>
         <tr>
-          <td colspan="20" class="noborder"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
+          <td colspan="20" class="nobappointment"><p class="no-record"><?php echo $lang['no_record'];?></p></td>
         </tr>
         <?php }?>
       </tbody>

@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 导航菜单
@@ -38,8 +38,8 @@ $lang['complain_accused'] = 'Complained Clinic';
 $lang['complain_admin'] = 'Admin';
 $lang['complain_unknow'] = 'Unknow';
 $lang['complain_datetime'] = 'Complain time';
-$lang['complain_goods'] = '投诉的商品';
-$lang['complain_goods_name'] = 'Doctor name';
+$lang['complain_doctors'] = '投诉的商品';
+$lang['complain_doctors_name'] = 'Doctor name';
 $lang['complain_state'] = 'Complain status';
 $lang['complain_progress'] = 'Complain progress';
 $lang['complain_handle'] = 'Compalain handle';
@@ -58,31 +58,31 @@ $lang['complain_state_finish'] = 'Finished';
 $lang['final_handle_detail'] = 'Preocess detail';
 $lang['final_handle_message'] = 'Result';
 $lang['final_handle_datetime'] = 'Process time';
-$lang['order_detail'] = '订单详情';
-$lang['order_message'] = '订单信息';
-$lang['order_state'] = '订单状态';
-$lang['order_sn'] = '订单号';
-$lang['order_datetime'] = '下单时间';
-$lang['order_price'] = '订单总额';
-$lang['order_discount'] = '优惠打折';
-$lang['order_voucher_price'] = '使用的代金券面额';
-$lang['order_voucher_sn'] = '代金券编码';
-$lang['order_buyer_message'] = '买家信息';
-$lang['order_seller_message'] = '店铺信息';
-$lang['order_shop_name'] = '店铺名称';
-$lang['order_buyer_name'] = '买家名称';
-$lang['order_state_cancel'] = '已取消';
-$lang['order_state_unpay'] = '未付款';
-$lang['order_state_payed'] = '已付款';
-$lang['order_state_send'] = '已发货';
-$lang['order_state_receive'] = '已收货';
-$lang['order_state_commit'] = '已提交';
-$lang['order_state_verify'] = '已确认';
+$lang['appointment_detail'] = '订单详情';
+$lang['appointment_message'] = '订单信息';
+$lang['appointment_state'] = '订单状态';
+$lang['appointment_sn'] = '订单号';
+$lang['appointment_datetime'] = '下单时间';
+$lang['appointment_price'] = '订单总额';
+$lang['appointment_discount'] = '优惠打折';
+$lang['appointment_voucher_price'] = '使用的代金券面额';
+$lang['appointment_voucher_sn'] = '代金券编码';
+$lang['appointment_buyer_message'] = '买家信息';
+$lang['appointment_clinicer_message'] = '店铺信息';
+$lang['appointment_clinic_name'] = '店铺名称';
+$lang['appointment_buyer_name'] = '买家名称';
+$lang['appointment_state_cancel'] = '已取消';
+$lang['appointment_state_unpay'] = '未付款';
+$lang['appointment_state_payed'] = '已付款';
+$lang['appointment_state_send'] = '已发货';
+$lang['appointment_state_receive'] = '已收货';
+$lang['appointment_state_commit'] = '已提交';
+$lang['appointment_state_verify'] = '已确认';
 $lang['complain_time_limit'] = '投诉时效';
 $lang['complain_time_limit_desc'] = '单位为天，订单完成后开始计算，多少天内可以发起投诉';
 
 $lang['refund_message']	= '退款信息';
-$lang['refund_order_refund']	= '已确认退款金额';
+$lang['refund_appointment_refund']	= '已确认退款金额';
 
 /**
  * 提示信息
@@ -101,7 +101,7 @@ $lang['complain_subject_delete_success'] = '投诉主题删除成功';
 $lang['complain_subject_delete_fail'] = '投诉主题删除失败';
 $lang['complain_setting_save_success'] = '投诉设置保存成功';
 $lang['complain_setting_save_fail'] = '投诉设置保存失败';
-$lang['complain_goods_select'] = '选择要投诉的商品';
+$lang['complain_doctors_select'] = '选择要投诉的商品';
 $lang['complain_submit_success'] = '投诉提交成功';
 $lang['complain_close_confirm'] = '确认关闭此投诉?';
 $lang['appeal_submit_success'] = '申诉提交成功';

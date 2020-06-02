@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,19 +17,19 @@
     <input type="hidden" name="gc_id" value="<?php echo $output['link_array']['gc_id'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo $lang['link_index_category'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
- 			<?php echo $output['goods_class'][$output['link_array']['gc_id']]['gc_name'];?>
+ 			<?php echo $output['doctors_class'][$output['link_array']['gc_id']]['gc_name'];?>
           </td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for=""><?php echo $lang['link_index_pic_sign'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_MOBILE.'/category/'.$output['link_array']['gc_thumb'];?>"></div>
             </span> <span class="type-file-box">

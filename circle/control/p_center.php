@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class p_centerControl extends BaseCirclePersonalControl{
 	public function __construct(){
@@ -22,7 +22,7 @@ class p_centerControl extends BaseCirclePersonalControl{
 	 */
 	public function indexOp(){
 		$model = Model();
-		$theme_list = $model->table('circle_theme')->where(array('member_id'=>$this->m_id))->page(10)->order('theme_id desc')->select();
+		$theme_list = $model->table('circle_theme')->where(array('member_id'=>$this->m_id))->page(10)->appointment('theme_id desc')->select();
 		if(!empty($theme_list)){
 			$theme_list = array_under_reset($theme_list, 'theme_id');
 			$themeid_array = array(); $circleid_array = array();
@@ -59,7 +59,7 @@ class p_centerControl extends BaseCirclePersonalControl{
 	 */
 	public function likeingOp(){
 		$model = Model();
-		$like_array = $model->table('circle_like')->field('circle_id,theme_id')->where(array('member_id'=>$this->m_id))->order('theme_id desc')->page(10)->select();
+		$like_array = $model->table('circle_like')->field('circle_id,theme_id')->where(array('member_id'=>$this->m_id))->appointment('theme_id desc')->page(10)->select();
 		if(!empty($like_array)){
 			$theme_list = array_under_reset($like_array, 'theme_id');
 			$themeid_array = array(); $circleid_array = array();
@@ -109,7 +109,7 @@ class p_centerControl extends BaseCirclePersonalControl{
 		$model = Model();
 		$where = array();
 		$where['member_id'] = $_SESSION['member_id'];
-		$inform_list = $model->table('circle_inform')->where($where)->page(10)->order('inform_id desc')->select();	// tidy
+		$inform_list = $model->table('circle_inform')->where($where)->page(10)->appointment('inform_id desc')->select();	// tidy
 		if(!empty($inform_list)){
 			foreach ($inform_list as $key=>$val){
 				$inform_list[$key]['url']	= spellInformUrl($val);
@@ -160,7 +160,7 @@ class p_centerControl extends BaseCirclePersonalControl{
 	 */
 	public function my_recycledOp(){
 		$model = Model();
-		$recycle_list = $model->table('circle_recycle')->where(array('member_id'=>$_SESSION['member_id']))->order('recycle_id desc')->page(10)->select();
+		$recycle_list = $model->table('circle_recycle')->where(array('member_id'=>$_SESSION['member_id']))->appointment('recycle_id desc')->page(10)->select();
 		Tpl::output('recycle_list', $recycle_list);
 		Tpl::output('show_page', $model->showpage(2));
 		$this->profile_menu('recycled', 'recycled');

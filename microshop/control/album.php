@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class albumControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class albumControl extends MircroclinicControl{
 
 	public function __construct() {
 		parent::__construct();

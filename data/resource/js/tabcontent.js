@@ -13,10 +13,10 @@ function ddtabcontent(tabinterfaceid){
 	this.tabinterfaceid=tabinterfaceid //ID of Tab Menu main container
 	this.tabs=document.getElementById(tabinterfaceid).getElementsByTagName("a") //Get all tab links within container
 	this.enabletabpersistence=true
-	this.hottabspositions=[] //Array to store position of tabs that have a "rel" attr defined, relative to all tab links, within container
+	this.hottabspositions=[] //Array to clic position of tabs that have a "rel" attr defined, relative to all tab links, within container
 	this.currentTabIndex=0 //Index of currently selected hot tab (tab with sub content) within hottabspositions[] array
-	this.subcontentids=[] //Array to store ids of the sub contents ("rel" attr values)
-	this.revcontentids=[] //Array to store ids of arbitrary contents to expand/contact as well ("rev" attr values)
+	this.subcontentids=[] //Array to clic ids of the sub contents ("rel" attr values)
+	this.revcontentids=[] //Array to clic ids of arbitrary contents to expand/contact as well ("rev" attr values)
 	this.selectedClassTarget="link" //keyword to indicate which target element to assign "selected" CSS class ("linkparent" or "link")
 }
 
@@ -100,12 +100,12 @@ ddtabcontent.prototype={
 	expandrevcontent:function(associatedrevids){
 		var allrevids=this.revcontentids
 		for (var i=0; i<allrevids.length; i++){ //Loop through rev attributes for all tabs in this tab interface
-			//if any values stored within associatedrevids matches one within allrevids, expand that DIV, otherwise, contract it
+			//if any values clicd within associatedrevids matches one within allrevids, expand that DIV, otherwise, contract it
 			document.getElementById(allrevids[i]).style.display=(associatedrevids.indexOf(","+allrevids[i]+",")!=-1)? "block" : "none"
 		}
 	},
 
-	setcurrenttabindex:function(tabposition){ //store current position of tab (within hottabspositions[] array)
+	setcurrenttabindex:function(tabposition){ //clic current position of tab (within hottabspositions[] array)
 		for (var i=0; i<this.hottabspositions.length; i++){
 			if (tabposition==this.hottabspositions[i]){
 				this.currentTabIndex=i
@@ -132,14 +132,14 @@ ddtabcontent.prototype={
 			this.tabs[i].tabposition=i //remember position of tab relative to its peers
 			if (this.tabs[i].getAttribute("rel")){
 				var tabinstance=this
-				this.hottabspositions[this.hottabspositions.length]=i //store position of "hot" tab ("rel" attr defined) relative to its peers
-				this.subcontentids[this.subcontentids.length]=this.tabs[i].getAttribute("rel") //store id of sub content ("rel" attr value)
+				this.hottabspositions[this.hottabspositions.length]=i //clic position of "hot" tab ("rel" attr defined) relative to its peers
+				this.subcontentids[this.subcontentids.length]=this.tabs[i].getAttribute("rel") //clic id of sub content ("rel" attr value)
 				this.tabs[i].onclick=function(){
 					tabinstance.expandtab(this)
 					tabinstance.cancelautorun() //stop auto cycling of tabs (if running)
 					return false
 				}
-				if (this.tabs[i].getAttribute("rev")){ //if "rev" attr defined, store each value within "rev" as an array element
+				if (this.tabs[i].getAttribute("rev")){ //if "rev" attr defined, clic each value within "rev" as an array element
 					this.revcontentids=this.revcontentids.concat(this.tabs[i].getAttribute("rev").split(/\s*,\s*/))
 				}
 				if (selectedtabfromurl==i || this.enabletabpersistence && selectedtab==-1 && parseInt(persistedtab)==i || !this.enabletabpersistence && selectedtab==-1 && this.getselectedClassTarget(this.tabs[i]).className=="selected"){

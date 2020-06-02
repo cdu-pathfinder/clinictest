@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class themeControl extends BaseCircleThemeControl{
 	protected $c_id = 0;		// 圈子id
@@ -33,9 +33,9 @@ class themeControl extends BaseCircleThemeControl{
 		$data = $this->theme_info;
 		$model = Model();
 		// 话题商品
-		$goods_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->select();
-		$goods_list = tidyThemeGoods($goods_list, 'themegoods_id');
-		$data['goods_list'] = $goods_list;
+		$doctors_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->select();
+		$doctors_list = tidyThemedoctors($doctors_list, 'themedoctors_id');
+		$data['doctors_list'] = $doctors_list;
 		// 附件
 		$affix_list = $model->table('circle_affix')->where(array('affix_type'=>1, 'theme_id'=>$this->t_id))->select();
 		if(!empty($affix_list)){
@@ -75,7 +75,7 @@ class themeControl extends BaseCircleThemeControl{
 		$data['form_action'] = CIRCLE_SITE_URL.'/index.php?act=theme&op=save_reply&type=quick&c_id='.$this->c_id.'&t_id='.$this->t_id; 
 		$data['member_avatar'] = getMemberAvatarForID($_SESSION['member_id']); // 头像
 		// 回复
-		$reply_list = Model()->table('circle_threply')->where(array('theme_id'=>$this->t_id, 'circle_id'=>$this->c_id))->order('reply_id desc')->limit(5)->select();
+		$reply_list = Model()->table('circle_threply')->where(array('theme_id'=>$this->t_id, 'circle_id'=>$this->c_id))->appointment('reply_id desc')->limit(5)->select();
 		if(!empty($reply_list)){
 			foreach($reply_list as $key=>$val){
 				$reply_list[$key]['member_avatar'] = getMemberAvatarForID($val['member_id']);
@@ -160,27 +160,27 @@ class themeControl extends BaseCircleThemeControl{
 			$insert['theme_special']= intval($_GET['sp']);
 			$themeid = $model->table('circle_theme')->insert($insert);
 			if($themeid){
-				$has_goods = 0;	// 存在商品标记
+				$has_doctors = 0;	// 存在商品标记
 				$has_affix = 0;// 存在附件标记
 				// 插入话题商品
-				if(!empty($_POST['goods'])){
-					$goods_insert = array();
-					foreach ($_POST['goods'] as $key=>$val){
+				if(!empty($_POST['doctors'])){
+					$doctors_insert = array();
+					foreach ($_POST['doctors'] as $key=>$val){
 						$p = array();
 						$p['theme_id']		= $themeid;
 						$p['reply_id']		= 0;
 						$p['circle_id']		= $this->c_id;
-						$p['goods_id']		= $val['id'];
-						$p['goods_name']	= $val['name'];
-						$p['goods_price']	= $val['price'];
-						$p['goods_image']	= $val['image'];
-						$p['store_id']		= $val['storeid'];
+						$p['doctors_id']		= $val['id'];
+						$p['doctors_name']	= $val['name'];
+						$p['doctors_price']	= $val['price'];
+						$p['doctors_image']	= $val['image'];
+						$p['clic_id']		= $val['clicid'];
 						$p['thg_type']		= $val['type'];
 						$p['thg_url']		= ($val['type'] == 1)?$val['uri']:'';
-						$goods_insert[]		= $p;
+						$doctors_insert[]		= $p;
 					}
-					$rs = $model->table('circle_thg')->insertAll($goods_insert);
-					$has_goods = 1;
+					$rs = $model->table('circle_thg')->insertAll($doctors_insert);
+					$has_doctors = 1;
 				}
 				// 更新话题附件
 				$model->table('circle_affix')->where(array('affix_type'=>1, 'member_id'=>$_SESSION['member_id'], 'theme_id'=>0))->update(array('theme_id'=>$themeid, 'circle_id'=>$this->c_id));
@@ -190,10 +190,10 @@ class themeControl extends BaseCircleThemeControl{
 				if($affixe_count > 0){
 					$has_affix = 1;
 				}
-				if($has_goods || $has_affix){
+				if($has_doctors || $has_affix){
 					$update = array();
 					$update['theme_id']		= $themeid;
-					$update['has_goods']	= $has_goods;
+					$update['has_doctors']	= $has_doctors;
 					$update['has_affix']	= $has_affix;
 					$model->table('circle_theme')->update($update);
 				}
@@ -318,36 +318,36 @@ class themeControl extends BaseCircleThemeControl{
 	/**
 	 * 选择商品
 	 */
-	public function choose_goodsOp(){
+	public function choose_doctorsOp(){
 		$model = Model();
 		// 三个月内 已购买的商品
-		$order_goods = $model->table('order_goods,order')
-				->field('order_goods.goods_id,order_goods.goods_name,order_goods.goods_image,order_goods.goods_price,order.store_id as store_id')
-				->join('inner join')->on('order_goods.order_id=order.order_id')
-				->where(array('order.buyer_id'=>$_SESSION['member_id'], 'order.order_state'=>40, 'finnshed_time'=>array('gt',time()-60*60*24*30*3)))
+		$appointment_doctors = $model->table('appointment_doctors,appointment')
+				->field('appointment_doctors.doctors_id,appointment_doctors.doctors_name,appointment_doctors.doctors_image,appointment_doctors.doctors_price,appointment.clic_id as clic_id')
+				->join('inner join')->on('appointment_doctors.appointment_id=appointment.appointment_id')
+				->where(array('appointment.buyer_id'=>$_SESSION['member_id'], 'appointment.appointment_state'=>40, 'finnshed_time'=>array('gt',time()-60*60*24*30*3)))
 				->distinct(true)->select();
 		// 收藏的商品
-		$favorites_goods = $model->table('goods,favorites')
-				->field('goods.goods_id,goods.goods_name,goods.goods_image,goods.goods_price as goods_price,goods.store_id')
-				->join('inner join')->on('goods.goods_id=favorites.fav_id')
-				->where(array('favorites.fav_type'=>'goods', 'favorites.member_id'=>$_SESSION['member_id']))
+		$favorites_doctors = $model->table('doctors,favorites')
+				->field('doctors.doctors_id,doctors.doctors_name,doctors.doctors_image,doctors.doctors_price as doctors_price,doctors.clic_id')
+				->join('inner join')->on('doctors.doctors_id=favorites.fav_id')
+				->where(array('favorites.fav_type'=>'doctors', 'favorites.member_id'=>$_SESSION['member_id']))
 				->distinct(true)->select();
-		Tpl::output('order_goods', $order_goods);
-		Tpl::output('favorites_goods', $favorites_goods);
+		Tpl::output('appointment_doctors', $appointment_doctors);
+		Tpl::output('favorites_doctors', $favorites_doctors);
 		
-		Tpl::showpage('theme.choose_goods', 'null_layout');
+		Tpl::showpage('theme.choose_doctors', 'null_layout');
 	}
 	
 	/**
-	 * According to the product link to add goods
+	 * According to the doc link to add doctors
 	 */
 	public function check_linkOp(){
         $url = html_entity_decode($_GET['link']);
         if(empty($url)) {
             echo 'false';exit;
         }
-        $model_goods_info = Model('goods_info_by_url');
-        $result = $model_goods_info->get_goods_info_by_url($url);
+        $model_doctors_info = Model('doctors_info_by_url');
+        $result = $model_doctors_info->get_doctors_info_by_url($url);
         if($result) {
             if ($result) {
                 $result['type'] = ($result['type'] == 'taobao') ? 1 : 0;
@@ -358,17 +358,17 @@ class themeControl extends BaseCircleThemeControl{
         }
     }
 // 	/**
-// 	 * Get taobao product information
+// 	 * Get taobao doc information
 // 	 * 
 // 	 * @param string $link
 // 	 */
-// 	private function getTaobaoGoodsInfo($link){
+// 	private function getTaobaodoctorsInfo($link){
 // 		require(BASE_DATA_PATH.DS.'api'.DS.'taobao'.DS.'index.php');
 // 		$taobao_api = new taobao_item;
-// 		$taobao_goods_info = $taobao_api->fetch($link);
-// 		if(!$taobao_goods_info) return false;
+// 		$taobao_doctors_info = $taobao_api->fetch($link);
+// 		if(!$taobao_doctors_info) return false;
 		
-// 		$item_img = (array)$taobao_goods_info['item_imgs'];
+// 		$item_img = (array)$taobao_doctors_info['item_imgs'];
 // 		$item_img = (array)$item_img['item_img'][0];
 // 		$item_img = $item_img['url'];
 // 		$url_array = explode('.',$item_img);
@@ -377,9 +377,9 @@ class themeControl extends BaseCircleThemeControl{
 		
 // 		$return = array();
 // 		$return['id']		= 0;
-// 		$return['name']		= $taobao_goods_info['title'];
-// 		$return['price']	= $taobao_goods_info['price'];
-// 		$return['storeid']	= 0;
+// 		$return['name']		= $taobao_doctors_info['title'];
+// 		$return['price']	= $taobao_doctors_info['price'];
+// 		$return['clicid']	= 0;
 // 		$return['img']		= $item_img;
 // 		$return['image']	= $item_img;
 // 		$return['uri']		= $link;
@@ -387,30 +387,30 @@ class themeControl extends BaseCircleThemeControl{
 // 		return $return;
 // 	}
 // 	/**
-// 	 * Get self product information
+// 	 * Get self doc information
 // 	 * 
 // 	 * @param string $link
 // 	 */
-// 	private function getSelfGoodsInfo($link){
+// 	private function getSelfdoctorsInfo($link){
 // 		$array = parse_url($link);
 // 		if(isset($array['query'])){
 // 			// Not open the pseudo static
 // 			parse_str($array['query'],$arr);
-// 			$id = $arr['goods_id'];
+// 			$id = $arr['doctors_id'];
 // 		}else{
 // 			// Open the pseudo static
 // 			$id = preg_replace('/\/item-(\d+)\.html/i', '$1', $array['path']);
 // 		}
 // 		if(!is_numeric($id)) return false;
-// 		$goods_info = Model()->table('goods')->field('goods_id,goods_name,goods_store_price,goods_image,store_id')->find($id);
-// 		if(empty($goods_info)) return false;
+// 		$doctors_info = Model()->table('doctors')->field('doctors_id,doctors_name,doctors_clic_price,doctors_image,clic_id')->find($id);
+// 		if(empty($doctors_info)) return false;
 // 		$return = array();
-// 		$return['id']		= $goods_info['goods_id'];
-// 		$return['name']		= $goods_info['goods_name'];
-// 		$return['price']	= $goods_info['goods_store_price'];
-// 		$return['storeid']	= $goods_info['store_id'];
-// 		$return['img']		= thumb($goods_info, 60);
-// 		$return['image']	= $goods_info['goods_image'];
+// 		$return['id']		= $doctors_info['doctors_id'];
+// 		$return['name']		= $doctors_info['doctors_name'];
+// 		$return['price']	= $doctors_info['doctors_clic_price'];
+// 		$return['clicid']	= $doctors_info['clic_id'];
+// 		$return['img']		= thumb($doctors_info, 60);
+// 		$return['image']	= $doctors_info['doctors_image'];
 // 		$return['uri']		= $link;
 // 		$return['type']		= 0;
 // 		return $return;
@@ -561,7 +561,7 @@ class themeControl extends BaseCircleThemeControl{
 		if($_GET['only_id'] != ''){
 			$where['member_id'] = intval($_GET['only_id']);
 		}
-		$reply_info = $model->table('circle_threply')->where($where)->page(15)->order('reply_id asc')->select();
+		$reply_info = $model->table('circle_threply')->where($where)->page(15)->appointment('reply_id asc')->select();
 		Tpl::output('reply_info', $reply_info);
 		Tpl::output('show_page', $model->showpage(2));
 		
@@ -584,12 +584,12 @@ class themeControl extends BaseCircleThemeControl{
 		$where['theme_id']	= $this->t_id;
 		$where['reply_id']	= array('in', $replyid_array);
 		
-		// goods
-		$goods_array = $model->table('circle_thg')->where($where)->select();
-		$goods_array = tidyThemeGoods($goods_array, 'reply_id', 2);
+		// doctors
+		$doctors_array = $model->table('circle_thg')->where($where)->select();
+		$doctors_array = tidyThemedoctors($doctors_array, 'reply_id', 2);
 
-		Tpl::output('goods_list', $goods_array[0]); unset($goods_array[0]);
-		Tpl::output('reply_goods', $goods_array);
+		Tpl::output('doctors_list', $doctors_array[0]); unset($doctors_array[0]);
+		Tpl::output('reply_doctors', $doctors_array);
 		
 		// affix
 		$affix_array = $model->table('circle_affix')->where($where)->select();
@@ -627,7 +627,7 @@ class themeControl extends BaseCircleThemeControl{
 		if($this->theme_info['theme_special'] == 1){
 			$poll_info = $model->table('circle_thpoll')->find($this->t_id);
 			Tpl::output('poll_info', $poll_info);
-			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$this->t_id))->order('pollop_sort asc')->select();
+			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$this->t_id))->appointment('pollop_sort asc')->select();
 			Tpl::output('option_list', $option_list);
 			
 			// Verify the vote ended or not
@@ -735,29 +735,29 @@ class themeControl extends BaseCircleThemeControl{
 			$update['theme_readperm']	= intval($_POST['readperm']);
 			$rs = $model->table('circle_theme')->update($update);
 			if($rs){
-				$has_goods = 0;	// 存在商品标记
+				$has_doctors = 0;	// 存在商品标记
 				$has_affix = 0;// 存在附件标记
 				// 删除原有商品
-				$goods_list = Model()->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->delete();
+				$doctors_list = Model()->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->delete();
 				// 插入话题商品
-				if(!empty($_POST['goods'])){
-					$goods_insert = array();
-					foreach ($_POST['goods'] as $key=>$val){
+				if(!empty($_POST['doctors'])){
+					$doctors_insert = array();
+					foreach ($_POST['doctors'] as $key=>$val){
 						$p = array();
 						$p['theme_id']		= $this->t_id;
 						$p['reply_id']		= 0;
 						$p['circle_id']		= $this->c_id;
-						$p['goods_id']		= $val['id'];
-						$p['goods_name']	= $val['name'];
-						$p['goods_price']	= $val['price'];
-						$p['goods_image']	= $val['image'];
-						$p['store_id']		= $val['storeid'];
+						$p['doctors_id']		= $val['id'];
+						$p['doctors_name']	= $val['name'];
+						$p['doctors_price']	= $val['price'];
+						$p['doctors_image']	= $val['image'];
+						$p['clic_id']		= $val['clicid'];
 						$p['thg_type']		= $val['type'];
 						$p['thg_url']		= ($val['type'] == 1)?$val['uri']:'';
-						$goods_insert[]		= $p;
+						$doctors_insert[]		= $p;
 					}
-					$rs = $model->table('circle_thg')->insertAll($goods_insert);
-					$has_goods = 1;
+					$rs = $model->table('circle_thg')->insertAll($doctors_insert);
+					$has_doctors = 1;
 				}
 				// 更新话题附件
 				$model->table('circle_affix')->where(array('affix_type'=>1, 'member_id'=>$_SESSION['member_id'], 'theme_id'=>0))->update(array('theme_id'=>$this->t_id, 'circle_id'=>$this->c_id));
@@ -767,10 +767,10 @@ class themeControl extends BaseCircleThemeControl{
 				if($affixe_count > 0){
 					$has_affix = 1;
 				}
-				if($has_goods || $has_affix){
+				if($has_doctors || $has_affix){
 					$update = array();
 					$update['theme_id']		= $this->t_id;
-					$update['has_goods']	= $has_goods;
+					$update['has_doctors']	= $has_doctors;
 					$update['has_affix']	= $has_affix;
 					$model->table('circle_theme')->update($update);
 				}
@@ -824,9 +824,9 @@ class themeControl extends BaseCircleThemeControl{
 		$this->memberInfo();
 		
 		// 话题商品
-		$goods_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->select();
-		$goods_list = tidyThemeGoods($goods_list, 'themegoods_id');
-		Tpl::output('goods_list', $goods_list);
+		$doctors_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>0))->select();
+		$doctors_list = tidyThemedoctors($doctors_list, 'themedoctors_id');
+		Tpl::output('doctors_list', $doctors_list);
 		
 		// 话题附件
 		$affix_list = $model->table('circle_affix')->where(array('affix_type'=>1, 'theme_id'=>$this->t_id))->select();
@@ -853,7 +853,7 @@ class themeControl extends BaseCircleThemeControl{
 		if($this->theme_info['theme_special'] == 1){
 			$poll_info = $model->table('circle_thpoll')->find($this->t_id);
 			Tpl::output('poll_info', $poll_info);
-			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$this->t_id))->order('pollop_sort asc')->select();
+			$option_list = $model->table('circle_thpolloption')->where(array('theme_id'=>$this->t_id))->appointment('pollop_sort asc')->select();
 			Tpl::output('option_list', $option_list);
 			
 			Tpl::showpage('theme.edit_themepoll');
@@ -969,25 +969,25 @@ class themeControl extends BaseCircleThemeControl{
 				$rs = $model->table('circle_threply')->where(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id))->update($update);
 				if($rs){
 					// 删除原有商品
-					$goods_list = Model()->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id))->delete();
+					$doctors_list = Model()->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id))->delete();
 					// 插入话题商品
-					if(!empty($_POST['goods'])){
-						$goods_insert = array();
-						foreach ($_POST['goods'] as $key=>$val){
+					if(!empty($_POST['doctors'])){
+						$doctors_insert = array();
+						foreach ($_POST['doctors'] as $key=>$val){
 							$p = array();
 							$p['theme_id']		= $this->t_id;
 							$p['reply_id']		= $this->r_id;
 							$p['circle_id']		= $this->c_id;
-							$p['goods_id']		= $val['id'];
-							$p['goods_name']	= $val['name'];
-							$p['goods_price']	= $val['price'];
-							$p['goods_image']	= $val['image'];
-							$p['store_id']		= $val['storeid'];
+							$p['doctors_id']		= $val['id'];
+							$p['doctors_name']	= $val['name'];
+							$p['doctors_price']	= $val['price'];
+							$p['doctors_image']	= $val['image'];
+							$p['clic_id']		= $val['clicid'];
 							$p['thg_type']		= $val['type'];
 							$p['thg_url']		= ($val['type'] == 1)?$val['uri']:'';
-							$goods_insert[]		= $p;
+							$doctors_insert[]		= $p;
 						}
-						$rs = $model->table('circle_thg')->insertAll($goods_insert);
+						$rs = $model->table('circle_thg')->insertAll($doctors_insert);
 					}
 					// 更新话题附件
 					$model->table('circle_affix')->where(array('affix_type'=>2, 'member_id'=>$_SESSION['member_id'], 'reply_id'=>0))->update(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id, 'circle_id'=>$this->c_id));
@@ -1022,9 +1022,9 @@ class themeControl extends BaseCircleThemeControl{
 		$where = array();
 		$where['theme_id']	= $this->t_id;
 		$where['reply_id']	= $this->r_id;
-		$goods_list = Model()->table('circle_thg')->where($where)->select();
-		$goods_list = tidyThemeGoods($goods_list, 'themegoods_id');
-		Tpl::output('goods_list', $goods_list);
+		$doctors_list = Model()->table('circle_thg')->where($where)->select();
+		$doctors_list = tidyThemedoctors($doctors_list, 'themedoctors_id');
+		Tpl::output('doctors_list', $doctors_list);
 		
 		$this->circleSEO(L('nc_edit_theme'));
 
@@ -1089,23 +1089,23 @@ class themeControl extends BaseCircleThemeControl{
 				if($reply_id){
 					if($_GET['type'] == 'adv'){
 						// 插入话题商品
-						if(!empty($_POST['goods'])){
-							$goods_insert = array();
-							foreach ($_POST['goods'] as $key=>$val){
+						if(!empty($_POST['doctors'])){
+							$doctors_insert = array();
+							foreach ($_POST['doctors'] as $key=>$val){
 								$p = array();
 								$p['theme_id']		= $this->t_id;
 								$p['reply_id']		= $reply_id;
 								$p['circle_id']		= $this->c_id;
-								$p['goods_id']		= $val['id'];
-								$p['goods_name']	= $val['name'];
-								$p['goods_price']	= $val['price'];
-								$p['goods_image']	= $val['image'];
-								$p['store_id']		= $val['storeid'];
+								$p['doctors_id']		= $val['id'];
+								$p['doctors_name']	= $val['name'];
+								$p['doctors_price']	= $val['price'];
+								$p['doctors_image']	= $val['image'];
+								$p['clic_id']		= $val['clicid'];
 								$p['thg_type']		= $val['type'];
 								$p['thg_url']		= ($val['type'] == 1)?$val['uri']:'';
-								$goods_insert[]		= $p;
+								$doctors_insert[]		= $p;
 							}
-							$rs = $model->table('circle_thg')->insertAll($goods_insert);
+							$rs = $model->table('circle_thg')->insertAll($doctors_insert);
 						}
 						// 更新话题附件
 						$model->table('circle_affix')->where(array('affix_type'=>2, 'member_id'=>$_SESSION['member_id'], 'reply_id'=>0))->update(array('theme_id'=>$this->t_id, 'reply_id'=>$reply_id, 'circle_id'=>$this->c_id));
@@ -1166,7 +1166,7 @@ class themeControl extends BaseCircleThemeControl{
 		$this->checkReplySelf();
 		$model = Model();
 		// 删除商品
-		$goods_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id))->delete();
+		$doctors_list = $model->table('circle_thg')->where(array('theme_id'=>$this->t_id, 'reply_id'=>$this->r_id))->delete();
 		// 删除附件
 		$where = array();
 		$where['affix_type']= 2;

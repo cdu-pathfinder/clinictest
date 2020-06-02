@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class inform_subject_typeModel{
 
 	/*
@@ -74,7 +74,7 @@ class inform_subject_typeModel{
         $param = array() ;
         $param['table'] = 'inform_subject_type' ;
         $param['where'] = $this->getCondition($condition);
-        $param['order'] = $condition['order'] ? $condition['order']: ' inform_type_id desc ';
+        $param['appointment'] = $condition['appointment'] ? $condition['appointment']: ' inform_type_id desc ';
         return Db::select($param,$page) ;
 	
 	}
@@ -89,7 +89,7 @@ class inform_subject_typeModel{
 
         //搜索条件
         $condition = array();
-        $condition['order'] = 'inform_type_id asc';
+        $condition['appointment'] = 'inform_type_id asc';
         $condition['inform_type_state'] = 1;
         return $this->getInformSubjectType($condition,$page) ;
 	

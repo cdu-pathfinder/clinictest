@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class p_mansongModel extends Model{
 
     const MANSONG_STATE_NORMAL = 1;
@@ -32,13 +32,13 @@ class p_mansongModel extends Model{
      * 读取满即送列表
 	 * @param array $condition 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 所需字段
      * @return array 限时折扣列表
 	 *
 	 */
-	public function getMansongList($condition, $page=null, $order='', $field='*') {
-        $mansong_list = $this->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getMansongList($condition, $page=null, $appointment='', $field='*') {
+        $mansong_list = $this->field($field)->where($condition)->page($page)->appointment($appointment)->select();
         if(!empty($mansong_list)) {
             for($i =0, $j = count($mansong_list); $i < $j; $i++) {
                 $mansong_list[$i] = $this->getMansongExtendInfo($mansong_list[$i]);
@@ -51,12 +51,12 @@ class p_mansongModel extends Model{
      * 获取店铺新满即送活动开始时间限制
      *
      */
-    public function getMansongNewStartTime($store_id) {
-        if(empty($store_id)) {
+    public function getMansongNewStartTime($clic_id) {
+        if(empty($clic_id)) {
             return null;
         }
         $condition = array();
-        $condition['store_id'] = $store_id;
+        $condition['clic_id'] = $clic_id;
         $condition['state'] = self::MANSONG_STATE_NORMAL;
         $mansong_list = $this->getMansongList($condition, null, 'end_time desc');
         return $mansong_list[0]['end_time'];
@@ -77,11 +77,11 @@ class p_mansongModel extends Model{
     /**
 	 * 根据满即送编号读取信息
 	 * @param array $mansong_id 限制折扣活动编号
-	 * @param int $store_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
+	 * @param int $clic_id 如果提供店铺编号，判断是否为该店铺活动，如果不是返回null
      * @return array 限时折扣信息
 	 *
 	 */
-    public function getMansongInfoByID($mansong_id, $store_id = 0) {
+    public function getMansongInfoByID($mansong_id, $clic_id = 0) {
         if(intval($mansong_id) <= 0) {
             return null;
         }
@@ -89,7 +89,7 @@ class p_mansongModel extends Model{
         $condition = array();
         $condition['mansong_id'] = $mansong_id;
         $mansong_info = $this->getMansongInfo($condition);
-        if($store_id > 0 && $mansong_info['store_id'] != $store_id) {
+        if($clic_id > 0 && $mansong_info['clic_id'] != $clic_id) {
             return null;
         } else {
             return $mansong_info;
@@ -98,18 +98,18 @@ class p_mansongModel extends Model{
 
     /**
 	 * 获取店铺当前可用满即送活动
-	 * @param array $store_id 店铺编号 
+	 * @param array $clic_id 店铺编号 
      * @return array 满即送活动
 	 *
 	 */
-    public function getMansongInfoByStoreID($store_id) {
-        if(intval($store_id) <= 0) {
+    public function getMansongInfoByclicID($clic_id) {
+        if(intval($clic_id) <= 0) {
             return null;
         }
 
         $condition = array();
         $condition['state'] = self::MANSONG_STATE_NORMAL;
-        $condition['store_id'] = $store_id;
+        $condition['clic_id'] = $clic_id;
         $condition['start_time'] = array('lt', TIMESTAMP);
         $condition['end_time'] = array('gt', TIMESTAMP);
         $mansong_list = $this->getMansongList($condition, null, 'start_time asc');
@@ -128,13 +128,13 @@ class p_mansongModel extends Model{
 
     /**
 	 * 获取订单可用满即送规则
-	 * @param array $store_id 店铺编号 
-	 * @param array $order_price 订单金额
+	 * @param array $clic_id 店铺编号 
+	 * @param array $appointment_price 订单金额
      * @return array 满即送规则
 	 *
 	 */
-    public function getMansongRuleByStoreID($store_id, $order_price) {
-        $mansong_info = $this->getMansongInfoByStoreID($store_id);
+    public function getMansongRuleByclicID($clic_id, $appointment_price) {
+        $mansong_info = $this->getMansongInfoByclicID($clic_id);
 
         if(empty($mansong_info)) {
             return null;
@@ -143,7 +143,7 @@ class p_mansongModel extends Model{
         $rule_info = null;
 
         foreach ($mansong_info['rules'] as $value) {
-            if($order_price >= $value['price']) {
+            if($appointment_price >= $value['price']) {
                 $rule_info = $value;
                 $rule_info['mansong_name'] = $mansong_info['mansong_name'];
                 $rule_info['start_time'] = $mansong_info['start_time'];

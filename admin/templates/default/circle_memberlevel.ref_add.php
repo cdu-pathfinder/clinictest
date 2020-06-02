@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,17 +16,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="mlref_name"><?php echo $lang['circle_memberlevelgroup'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="mlref_name" name="mlref_name" class="txt" type="text"></td>
           <td class="vatop tips"><span class="vatop rowform"></span></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['circle_is_use'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="mlref_status1" class="cb-enable selected" ><span><?php echo $lang['open'];?></span></label>
             <label for="mlref_status0" class="cb-disable" ><span><?php echo $lang['close'];?></span></label>

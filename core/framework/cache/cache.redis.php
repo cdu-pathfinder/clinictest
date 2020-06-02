@@ -4,15 +4,15 @@
 //
 // 这个文件是 网城创想电商门户系统 项目的一部分
 //
-// Copyright (c) 2007 - 2013 www.shopnc.net
+// Copyright (c) 2007 - 2013 www.clinicnc.net
 //
 // 要查看完整的版权信息和许可信息，请查看源代码中附带的 COPYRIGHT 文件
-// 或者访问 http://www.shopnc.net/ 获得详细信息
+// 或者访问 http://www.clinicnc.net/ 获得详细信息
 //
 /////////////////////////////////////////////////////////////////////////////
 
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class CacheRedis extends Cache {
 	private $config;

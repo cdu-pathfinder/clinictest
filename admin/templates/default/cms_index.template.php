@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if($_GET['op'] === 'cms_index_preview') { ?>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo CMS_SITE_URL;?>/resource/js/common.js" charset="utf-8"></script>

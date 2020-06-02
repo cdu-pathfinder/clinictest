@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="choose-image">
   <ul class="tabs-nav">
     <li <?php if($_GET['curpage'] == ''){?>class="tabs-selected"<?php }?>><a href="javascript:void(0)"><?php echo $lang['circle_network_image'];?></a></li>
@@ -9,7 +9,7 @@
     <input name="" type="text" class="text w400" nctype="imageurl" />
     <div class="handle-bar" style="padding-left:0px;"><a href="Javascript: void(0)" class="button" nctype="imageurl"><?php echo $lang['circle_insert_theme'];?></a></div>
   </div>
-  <div class="goods-gallery tabs-panel <?php if($_GET['curpage'] == ''){?>tabs-hide<?php }?>">
+  <div class="doctors-gallery tabs-panel <?php if($_GET['curpage'] == ''){?>tabs-hide<?php }?>">
     <div class="nav"><i></i><?php echo $lang['circle_select_image_from_album'];?>
       <select name="jumpMenu" id="jumpMenu" style="width:100px;">
         <option value="0" style="width:80px;"><?php echo $lang['nc_common_pselect'];?></option>

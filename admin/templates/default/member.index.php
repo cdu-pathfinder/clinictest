@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,7 +14,7 @@
   <form method="get" name="formSearch" id="formSearch">
     <input type="hidden" value="member" name="act">
     <input type="hidden" value="member" name="op">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <td><select name="search_field_name" >
@@ -65,10 +65,10 @@
         <tr class="thead">
           <th>&nbsp;</th>
           <th colspan="2"><?php echo $lang['member_index_name']?></th>
-          <th class="align-center"><span fieldname="logins" nc_type="order_by"><?php echo $lang['member_index_login_time']?></span></th>
-          <th class="align-center"><span fieldname="last_login" nc_type="order_by"><?php echo $lang['member_index_last_login']?></span></th>
+          <th class="align-center"><span fieldname="logins" nc_type="appointment_by"><?php echo $lang['member_index_login_time']?></span></th>
+          <th class="align-center"><span fieldname="last_login" nc_type="appointment_by"><?php echo $lang['member_index_last_login']?></span></th>
           <th class="align-center"><?php echo $lang['member_index_points']; ?></th>
-          <th class="align-center"><?php echo $lang['member_index_prestore'];?></th>
+          <th class="align-center"><?php echo $lang['member_index_preclic'];?></th>
           <th class="align-center"><?php echo $lang['member_index_login']; ?></th>
           <th class="align-center"><?php echo $lang['nc_handle']; ?></th>
         </tr>
@@ -88,10 +88,10 @@
                 <a href="JavaScript:void(0);" class="" title="<?php echo $lang['member_index_null']?>" ><?php echo $v['member_email']; ?></a></span>
                 <?php } ?>
                 <?php if($v['member_ww'] != ''){ ?>
-                <a target="_blank" href="http://web.im.alisoft.com/msg.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cnalichn&s=11" class="" title="WangWang: <?php echo $v['member_ww'];?>"><img border="0" src="http://web.im.alisoft.com/online.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cntaobao&s=2&charset=<?php echo CHARSET;?>" /></a>
+                <a target="_blank" href="http://web.im.alisoft.com/msg.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cnalichn&s=11" class="" title="WangWang: <?php echo $v['member_ww'];?>"><img bappointment="0" src="http://web.im.alisoft.com/online.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cntaobao&s=2&charset=<?php echo CHARSET;?>" /></a>
                 <?php } ?>
                 <?php if($v['member_qq'] != ''){ ?>                
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['member_qq'];?>&site=qq&menu=yes" class=""  title="QQ: <?php echo $v['member_qq'];?>"><img border="0" src="http://wpa.qq.com/pa?p=2:<?php echo $v['member_qq'];?>:52"/></a>
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['member_qq'];?>&site=qq&menu=yes" class=""  title="QQ: <?php echo $v['member_qq'];?>"><img bappointment="0" src="http://wpa.qq.com/pa?p=2:<?php echo $v['member_qq'];?>:52"/></a>
                 <?php } ?>
               </div></td>
           <td class="align-center"><?php echo $v['member_login_num']; ?></td>

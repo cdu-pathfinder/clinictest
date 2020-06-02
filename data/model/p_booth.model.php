@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class p_boothModel extends Model {
     const STATE1 = 1;       // 开启
@@ -26,11 +26,11 @@ class p_boothModel extends Model {
      * @param array $condition
      * @param string $field
      * @param int $page
-     * @param string $order
+     * @param string $appointment
      * @return array
      */
-    public function getBoothQuotaList($condition, $field = '*', $page = 0, $order = 'booth_quota_id desc') {
-        return $this->table('p_booth_quota')->field($field)->where($condition)->order($order)->page($page)->select();
+    public function getBoothQuotaList($condition, $field = '*', $page = 0, $appointment = 'booth_quota_id desc') {
+        return $this->table('p_booth_quota')->field($field)->where($condition)->appointment($appointment)->page($page)->select();
     }
 
     /**
@@ -96,12 +96,12 @@ class p_boothModel extends Model {
      * @param string $field
      * @param int $page
      * @param int $limit
-     * @param string $order
+     * @param string $appointment
      * @return array
      */
-    public function getBoothGoodsList($condition, $field = '*', $page = 0, $limit = 0, $order = 'booth_goods_id asc') {
+    public function getBoothdoctorsList($condition, $field = '*', $page = 0, $limit = 0, $appointment = 'booth_doctors_id asc') {
         $condition = $this->_getRecursiveClass($condition);
-        return $this->table('p_booth_goods')->field($field)->where($condition)->limit($limit)->order($order)->page($page)->select();
+        return $this->table('p_booth_doctors')->field($field)->where($condition)->limit($limit)->appointment($appointment)->page($page)->select();
     }
     
     /**
@@ -110,8 +110,8 @@ class p_boothModel extends Model {
      * @param string $field
      * @return array
      */
-    public function getBoothGoodsInfo($condition, $field = '*') {
-        return $this->table('p_booth_goods')->field($field)->find();
+    public function getBoothdoctorsInfo($condition, $field = '*') {
+        return $this->table('p_booth_doctors')->field($field)->find();
     }
     
     /**
@@ -119,8 +119,8 @@ class p_boothModel extends Model {
      * @param array $insert
      * @return boolean
      */
-    public function addBoothGoods($insert) {
-        return $this->table('p_booth_goods')->insert($insert);
+    public function addBoothdoctors($insert) {
+        return $this->table('p_booth_doctors')->insert($insert);
     }
     
     /**
@@ -130,7 +130,7 @@ class p_boothModel extends Model {
      * @param array $condition
      */
     public function editBooth($update, $condition) {
-        return $this->table('p_booth_goods')->where($condition)->update($update);
+        return $this->table('p_booth_doctors')->where($condition)->update($update);
     }
 
     /**
@@ -143,11 +143,11 @@ class p_boothModel extends Model {
         if (empty($quota_list)) {
             return true;
         }
-        $storeid_array = array();
+        $clicid_array = array();
         foreach ($quota_list as $val) {
-            $storeid_array[] = $val['store_id'];
+            $clicid_array[] = $val['clic_id'];
         }
-        $where = array('store_id' => array('in', $storeid_array));
+        $where = array('clic_id' => array('in', $clicid_array));
         $update = array('booth_state' => self::STATE0);
         $this->editBoothQuota($update, $where);
         $this->editBooth($update, $where);
@@ -160,8 +160,8 @@ class p_boothModel extends Model {
      * @param unknown $condition
      * @return boolean
      */
-    public function delBoothGoods($condition) {
-        return $this->table('p_booth_goods')->where($condition)->delete();
+    public function delBoothdoctors($condition) {
+        return $this->table('p_booth_doctors')->where($condition)->delete();
     }
     
      /**
@@ -171,7 +171,7 @@ class p_boothModel extends Model {
       */
     private function _getRecursiveClass($condition){
         if (isset($condition['gc_id']) && !is_array($condition['gc_id']) ) {
-            $gc_list = H('goods_class') ? H('goods_class') : H('goods_class', true);
+            $gc_list = H('doctors_class') ? H('doctors_class') : H('doctors_class', true);
             if (isset($gc_list[$condition['gc_id']])) {
                 $gc_id[] = $condition['gc_id'];
                 $gcchild_id = empty($gc_list[$condition['gc_id']]['child']) ? array() : explode(',', $gc_list[$condition['gc_id']]['child']);

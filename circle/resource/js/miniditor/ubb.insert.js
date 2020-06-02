@@ -113,11 +113,11 @@
 		            }
 		    });
 		
-			$this.find('a[nctype="chooseGoods"]').click(function(){
+			$this.find('a[nctype="choosedoctors"]').click(function(){
 				// 已经插入的商品数量计算
-				var count = 10 - $('.insert-goods > dl').length; // 0 已经插入的商品数量
-				var _uri = CIRCLE_SITE_URL+'/index.php?act=theme&op=choose_goods&c_id='+c_id+'&count='+count;
-				CUR_DIALOG = ajax_form("choosegoods", '选择商品', _uri, 510);
+				var count = 10 - $('.insert-doctors > dl').length; // 0 已经插入的商品数量
+				var _uri = CIRCLE_SITE_URL+'/index.php?act=theme&op=choose_doctors&c_id='+c_id+'&count='+count;
+				CUR_DIALOG = ajax_form("choosedoctors", '选择商品', _uri, 510);
 			});
 		
 			$this.find('a[nctype="uploadImage"]').click(function(){
@@ -141,10 +141,10 @@
 		    $this.find('a[nctype="maffix_delete"]').click(function(){
 		    	affixDeleteManage($(this));
 			});
-		    // delete goods
-		    $this.find('.goods-del').click(function(){
+		    // delete doctors
+		    $this.find('.doctors-del').click(function(){
 				$(this).parent().remove();
-				checkInsertGoods();
+				checkInsertdoctors();
 			});
 			// 相册图片插入到话题
 			$('a[nctype="imagealbum"]').die().live('click',function(){
@@ -161,9 +161,9 @@
 			});
 
 			// 插入到主题
-			$('a[nctype="insertGoods"]').die().live('click',function(){
-				insertGoods($('.selected-goods > dd'));
-				DialogManager.close('choosegoods');
+			$('a[nctype="insertdoctors"]').die().live('click',function(){
+				insertdoctors($('.selected-doctors > dd'));
+				DialogManager.close('choosedoctors');
 			});
 			
 			// 提交表单
@@ -192,23 +192,23 @@
 			});
 		}
 		//插入商品
-		function insertGoods(o){
+		function insertdoctors(o){
 			o.each(function(){
 				var data_str = $(this).attr('data-param'); eval( "data_str = " + data_str);
-				var key = 'k'+$('.insert-goods').find('dl').length;
-				$('<dl></dl>').append('<dt class="goods-name">'+data_str.name+'</dt><dd class="goods-pic"><a href="javascript:void(0);"><img src="'+data_str.img+'" /></a></dd><dd class="goods-price"><em>'+data_str.price+'</em></dd><dd class="goods-del">删除</dd>')
-					.append('<input type="hidden" name="goods['+key+'][id]" value="'+data_str.id+'" /><input type="hidden" name="goods['+key+'][name]" value="'+data_str.name+'" /><input type="hidden" name="goods['+key+'][price]" value="'+data_str.price+'" /><input type="hidden" name="goods['+key+'][image]" value="'+data_str.image+'" />')
-					.append('<input type="hidden" name="goods['+key+'][storeid]" value="'+data_str.storeid+'" /><input type="hidden" name="goods['+key+'][type]" value="'+data_str.type+'" /><input type="hidden" name="goods['+key+'][uri]" value="'+data_str.uri+'" />')
-					.appendTo('.insert-goods').find('.goods-del').click(function(){
+				var key = 'k'+$('.insert-doctors').find('dl').length;
+				$('<dl></dl>').append('<dt class="doctors-name">'+data_str.name+'</dt><dd class="doctors-pic"><a href="javascript:void(0);"><img src="'+data_str.img+'" /></a></dd><dd class="doctors-price"><em>'+data_str.price+'</em></dd><dd class="doctors-del">删除</dd>')
+					.append('<input type="hidden" name="doctors['+key+'][id]" value="'+data_str.id+'" /><input type="hidden" name="doctors['+key+'][name]" value="'+data_str.name+'" /><input type="hidden" name="doctors['+key+'][price]" value="'+data_str.price+'" /><input type="hidden" name="doctors['+key+'][image]" value="'+data_str.image+'" />')
+					.append('<input type="hidden" name="doctors['+key+'][clicid]" value="'+data_str.clicid+'" /><input type="hidden" name="doctors['+key+'][type]" value="'+data_str.type+'" /><input type="hidden" name="doctors['+key+'][uri]" value="'+data_str.uri+'" />')
+					.appendTo('.insert-doctors').find('.doctors-del').click(function(){
 						$(this).parent().remove();
-						checkInsertGoods();
+						checkInsertdoctors();
 					});
 			});
-			checkInsertGoods();
+			checkInsertdoctors();
 		}
-		// 验证已插入商品数量，决定$('div[class="insert-goods"]')是否显示
-		function checkInsertGoods(){
-			var igs = $('.quick-thread').find('.insert-goods');
+		// 验证已插入商品数量，决定$('div[class="insert-doctors"]')是否显示
+		function checkInsertdoctors(){
+			var igs = $('.quick-thread').find('.insert-doctors');
 			var len = igs.children('dl').length;
 			if(len > 0){
 				igs.fadeIn('slow');

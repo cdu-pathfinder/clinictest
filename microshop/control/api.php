@@ -9,8 +9,8 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
-class apiControl extends MircroShopControl{
+defined('InclinicNC') or exit('Access Invalid!');
+class apiControl extends MircroclinicControl{
 
     private $data_type = 'html';
 
@@ -26,7 +26,7 @@ class apiControl extends MircroShopControl{
      */
     public function get_micro_nameOp() {
         $result = '';
-        $micro_name = Language::get('nc_microshop');
+        $micro_name = Language::get('nc_microclinic');
         if($this->data_type === 'json') {
             $result = json_encode($micro_name);
         } else {
@@ -46,7 +46,7 @@ class apiControl extends MircroShopControl{
             $data_count = 8;
         }
         $condition_personal = array();
-        $condition_personal['microshop_commend'] = 1;
+        $condition_personal['microclinic_commend'] = 1;
         $model_micro_personal = Model('micro_personal');
         $personal_list = $model_micro_personal->getListWithUserInfo($condition_personal, null, '', '*', $data_count);
         if($this->data_type === 'json') {
@@ -83,23 +83,23 @@ class apiControl extends MircroShopControl{
     /**
      * 推荐店铺
      */
-	public function get_store_commendOp(){
+	public function get_clic_commendOp(){
         $result = '';
         $data_count = intval($_GET['data_count']);
         if($data_count <= 0) {
             $data_count = 10;
         }
-        $condition_store = array();
-        $condition_store['microshop_commend'] = 1;
-        $model_micro_store = Model('micro_store');
-        $model_store = Model('store');
-        $store_list = $model_micro_store->getListWithStoreInfo($condition_personal, null, 'like_count desc,click_count desc', '*', $data_count);
+        $condition_clic = array();
+        $condition_clic['microclinic_commend'] = 1;
+        $model_micro_clic = Model('micro_clic');
+        $model_clic = Model('clic');
+        $clic_list = $model_micro_clic->getListWithclicInfo($condition_personal, null, 'like_count desc,click_count desc', '*', $data_count);
         if($this->data_type === 'json') {
-            $result = json_encode($store_list);
+            $result = json_encode($clic_list);
         } else {
-            Tpl::output('store_list',$store_list);
+            Tpl::output('clic_list',$clic_list);
             ob_start();
-            Tpl::showpage('api_store_list', 'null_layout');
+            Tpl::showpage('api_clic_list', 'null_layout');
             $result = ob_get_clean();
         }
 

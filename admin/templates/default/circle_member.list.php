@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/common.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/jquery-ui/jquery.ui.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo RESOURCE_SITE_URL;?>/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
@@ -15,7 +15,7 @@
   <form method="get" name="formSearch">
     <input type="hidden" name="act" value="circle_member">
     <input type="hidden" name="op" value="member_list">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th><label for="searchtitle"><?php echo $lang['circle_member_name'];?></label></th>
@@ -113,7 +113,7 @@
           <td class="align-center yes-onoff">
             <a href="JavaScript:void(0);" class="<?php echo $val['is_recommend']? 'enabled':'disabled'?>" ajax_branch='recommend' nc_type="inline_edit" fieldname="is_recommend" fieldid="<?php echo $val['member_id'].'|'.$val['circle_id'];?>" fieldvalue="<?php echo $val['is_recommend'];?>" title="<?php echo $val['is_recommend'] ? L('nc_yes') : L('nc_no');?>"><img src="<?php echo ADMIN_TEMPLATES_URL;?>/images/transparent.gif"></a>
           </td>
-          <td class="w72"><a href="javascript:void(0);" onclick="delmember('<?php echo $val['member_id']?>|<?php echo $val['circle_id'];?>')"><?php echo $lang['nc_del'];?></a> | <a href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $lang['nc_view'];?></a></td>
+          <td class="w72"><a href="javascript:void(0);" onclick="delmember('<?php echo $val['member_id']?>|<?php echo $val['circle_id'];?>')"><?php echo $lang['nc_del'];?></a> | <a href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>" target="_blank"><?php echo $lang['nc_view'];?></a></td>
         </tr>
         <?php } ?>
         <?php }else { ?>

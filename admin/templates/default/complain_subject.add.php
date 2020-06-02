@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -29,14 +29,14 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="complain_subject_content"><?php echo $lang['complain_subject_content'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="complain_subject_content" name="complain_subject_content" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="complain_subject_desc"><?php echo $lang['complain_subject_desc'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><textarea name="complain_subject_desc" rows="6" class="tarea" id="complain_subject_desc"></textarea></td>
           <td class="vatop tips"></td>
         </tr>

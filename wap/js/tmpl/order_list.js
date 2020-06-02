@@ -9,7 +9,7 @@ $(function(){
 	function initPage(page,curpage){
 		$.ajax({
 			type:'post',
-			url:ApiUrl+"/index.php?act=member_order&op=order_list&page="+page+"&curpage="+curpage,	
+			url:ApiUrl+"/index.php?act=member_appointment&op=appointment_list&page="+page+"&curpage="+curpage,	
 			data:{key:key},
 			dataType:'json',
 			success:function(result){
@@ -23,29 +23,29 @@ $(function(){
 				template.helper('$getLocalTime', function (nS) {
 					return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');  
 				});
-				var html = template.render('order-list-tmpl', data);
-				$("#order-list").html(html);
+				var html = template.render('appointment-list-tmpl', data);
+				$("#appointment-list").html(html);
 				//取消订单
-				$(".cancel-order").click(cancelOrder);
+				$(".cancel-appointment").click(cancelappointment);
 				//next page
 				$(".next-page").click(nextPage);
 				//previous page
 				$(".pre-page").click(prePage);
 				//确认订单
-				$(".sure-order").click(sureOrder);
+				$(".sure-appointment").click(sureappointment);
 			}
 		});
 	}
 	//初始化页面
 	initPage(page,curpage);
 	//取消订单
-	function cancelOrder(){
+	function cancelappointment(){
 		var self = $(this);
-		var order_id = self.attr("order_id");
+		var appointment_id = self.attr("appointment_id");
 		$.ajax({
 			type:"post",
-			url:ApiUrl+"/index.php?act=member_order&op=order_cancel",
-			data:{order_id:order_id,key:key},
+			url:ApiUrl+"/index.php?act=member_appointment&op=appointment_cancel",
+			data:{appointment_id:appointment_id,key:key},
 			dataType:"json",
 			success:function(result){
 				if(result.datas && result.datas == 1){
@@ -73,13 +73,13 @@ $(function(){
 		}
 	}
 	//确认订单
-	function sureOrder(){
+	function sureappointment(){
 		var self = $(this);
-		var order_id = self.attr("order_id");
+		var appointment_id = self.attr("appointment_id");
 		$.ajax({
 			type:"post",
-			url:ApiUrl+"/index.php?act=member_order&op=order_receive",
-			data:{order_id:order_id,key:key},
+			url:ApiUrl+"/index.php?act=member_appointment&op=appointment_receive",
+			data:{appointment_id:appointment_id,key:key},
 			dataType:"json",
 			success:function(result){
 				if(result.datas && result.datas == 1){

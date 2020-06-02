@@ -56,7 +56,7 @@
 			});
 			
 			// Membership card
-			$(dataContainer).find('[nctype="mcard"]').membershipCard({type:'shop'});
+			$(dataContainer).find('[nctype="mcard"]').membershipCard({type:'clinic'});
 		});
 		pageNo++;//延时分页自增一
     };

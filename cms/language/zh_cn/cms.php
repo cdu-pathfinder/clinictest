@@ -1,14 +1,14 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['cms_site_name'] = '门户首页';
 $lang['cms_article'] = '资讯';
 $lang['cms_picture'] = '画报';
 $lang['cms_special'] = '专题';
-$lang['cms_goods'] = '商品';
-$lang['cms_store'] = '店铺';
+$lang['cms_doctors'] = '商品';
+$lang['cms_clic'] = '店铺';
 
-$lang['goods_not_exist'] = '商品不存在';
+$lang['doctors_not_exist'] = '商品不存在';
 $lang['article_not_exist'] = '文章不存在';
 $lang['picture_not_exist'] = '文章不存在';
 $lang['font_zoom_b'] = '字号增大';
@@ -26,7 +26,7 @@ $lang['commit_closed'] = '投稿功能已关闭';
 $lang['share_article'] = '分享了文章';
 $lang['share_text'] = '不错哦';
 $lang['api_article_add'] = '选择添加为关联文章';
-$lang['api_goods_add'] = '选择添加为关联商品';
+$lang['api_doctors_add'] = '选择添加为关联商品';
 $lang['current_location'] = '当前位置';
 $lang['cms_article_keyword'] = '输入标题关键字';
 
@@ -36,10 +36,10 @@ $lang['cms_article_type_member'] = '用户投稿';
 $lang['cms_article_type_admin'] = '管理员发布';
 $lang['cms_login'] = '登录';
 $lang['cms_cover'] = '封面';
-$lang['cms_article_goods'] = '相关商品';
-$lang['cms_goods_detail'] = '商品详情';
+$lang['cms_article_doctors'] = '相关商品';
+$lang['cms_doctors_detail'] = '商品详情';
 $lang['cms_article_abstract'] = '摘要';
-$lang['cms_article_good'] = '最受Welcome文章';
+$lang['cms_article_doctor'] = '最受Welcome文章';
 $lang['cms_article_commend'] = '精彩推荐';
 $lang['cms_article_tag'] = '热门文章标签';
 $lang['cms_other_article'] = '相关文章';
@@ -80,11 +80,11 @@ $lang['cms_publish_time_explain'] = '默认发布时间为当前系统时间，�
 $lang['cms_article_orgin'] = '文章来源';
 $lang['cms_article_orgin_address'] = '来源地址';
 $lang['cms_article_orgin_explain'] = '如转载可注明文章来源及跳转地址，默认留空为本站名称及网址。';
-$lang['cms_article_goods_delete_explain'] = '选择删除相关商品';
+$lang['cms_article_doctors_delete_explain'] = '选择删除相关商品';
 $lang['cms_article_article_delete_explain'] = '选择删除相关文章';
-$lang['cms_goods_link'] = '商品链接';
-$lang['cms_goods_name'] = '商品名称';
-$lang['cms_goods_explain'] = '将商品网址复制到输入框可直接添加相关商品；或通过搜索商品名称选择要关联的商品。最多添加3件商品。';
+$lang['cms_doctors_link'] = '商品链接';
+$lang['cms_doctors_name'] = '商品名称';
+$lang['cms_doctors_explain'] = '将商品网址复制到输入框可直接添加相关商品；或通过搜索商品名称选择要关联的商品。最多添加3件商品。';
 $lang['cms_article_id'] = '文章编号';
 $lang['cms_article_title'] = '文章标题';
 $lang['cms_article_expalin'] = '直接搜索文章名称或输入文章编号进行关联；文章编号指文章网址的ID号，例：article_detail&amp;article_id=1 则文章编号为“1”。';
@@ -92,7 +92,7 @@ $lang['cms_article_save_draft'] = '保存到草稿箱';
 $lang['cms_image_abstract'] = '图片描述';
 $lang['cms_picture_image_tips'] = '将商品网址复制到输入框可直接添加相关商品,最多添加3件商品。';
 $lang['cms_keyword_expalin'] = '输入文章关键字，多个关键字请用英文半角逗号分割，例：文章,画报,资讯,CMS。';
-$lang['cms_goods_add'] = '添加商品';
+$lang['cms_doctors_add'] = '添加商品';
 $lang['cms_search_result'] = '搜索结果';
 $lang['cms_search_result1'] = '符合关键字“';
 $lang['cms_search_result2'] = '”的搜索结果为：';

@@ -8,7 +8,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class pointsControl extends SystemControl{
 	const EXPORT_SIZE = 5000;	
 	public function __construct(){
@@ -187,14 +187,14 @@ class pointsControl extends SystemControl{
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_pi_time'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_pi_jd'));
 		$excel_data[0][] = array('styleid'=>'s_title','data'=>L('exp_pi_ms'));
-		$state_cn = array(Language::get('admin_points_stage_regist'),Language::get('admin_points_stage_login'),Language::get('admin_points_stage_comments'),Language::get('admin_points_stage_order'),Language::get('admin_points_stage_system'),Language::get('admin_points_stage_pointorder'),Language::get('admin_points_stage_app'));
+		$state_cn = array(Language::get('admin_points_stage_regist'),Language::get('admin_points_stage_login'),Language::get('admin_points_stage_comments'),Language::get('admin_points_stage_appointment'),Language::get('admin_points_stage_system'),Language::get('admin_points_stage_pointappointment'),Language::get('admin_points_stage_app'));
 		foreach ((array)$data as $k=>$v){
 			$tmp = array();
 			$tmp[] = array('data'=>$v['pl_membername']);
 			$tmp[] = array('data'=>$v['pl_adminname']);
 			$tmp[] = array('format'=>'Number','data'=>ncPriceFormat($v['pl_points']));
 			$tmp[] = array('data'=>date('Y-m-d H:i:s',$v['pl_addtime']));
-			$tmp[] = array('data'=>str_replace(array('regist','login','comments','order','system','pointorder','app'),$state_cn,$v['pl_stage']));
+			$tmp[] = array('data'=>str_replace(array('regist','login','comments','appointment','system','pointappointment','app'),$state_cn,$v['pl_stage']));
 			$tmp[] = array('data'=>$v['pl_desc']);
 
 			$excel_data[] = $tmp;

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="cms-index-module-index1 module-style-<?php echo $value['module_style'];?>">
   <div class="cms-index-module-index1-1"> 
     <!-- 封面图 -->
@@ -87,10 +87,10 @@
     <div class="content-box mall-class">
       <div id="index1_3_content" nctype="object_module_edit"> <?php echo html_entity_decode($module_content['index1_3_content']);?> </div>
       <?php if($output['edit_flag']) { ?>
-      <div class="cms-index-module-handle"><a nctype="btn_module_goods_class_edit" href="JavaScript:void(0);"><?php echo $lang['cms_index_module_goods_class_edit'];?></a>
-        <a class="tip-l" nctype="btn_module_image_edit" image_count="2" href="JavaScript:void(0);" style="right: 90px;" data-title="<?php echo $lang['cms_index_module_image_goods_class_edit_title'];?>" title="<?php echo $lang['cms_index_module_image_goods_class_edit_title'];?>"><?php echo $lang['cms_index_module_image_edit'];?></a></div>
+      <div class="cms-index-module-handle"><a nctype="btn_module_doctors_class_edit" href="JavaScript:void(0);"><?php echo $lang['cms_index_module_doctors_class_edit'];?></a>
+        <a class="tip-l" nctype="btn_module_image_edit" image_count="2" href="JavaScript:void(0);" style="right: 90px;" data-title="<?php echo $lang['cms_index_module_image_doctors_class_edit_title'];?>" title="<?php echo $lang['cms_index_module_image_doctors_class_edit_title'];?>"><?php echo $lang['cms_index_module_image_edit'];?></a></div>
       <?php } ?>
-      <div class="goto-mall"><a href="<?php echo SHOP_SITE_URL;?>" target="_blank"><?php echo $lang['cms_index_enter_shop'];?></a></div>
+      <div class="goto-mall"><a href="<?php echo clinic_SITE_URL;?>" target="_blank"><?php echo $lang['cms_index_enter_clinic'];?></a></div>
    </div>
    <div class="clear"></div>
   </div>

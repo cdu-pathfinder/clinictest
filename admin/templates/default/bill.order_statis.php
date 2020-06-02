@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,7 +16,7 @@
       <tr>
         <td>
         <ul>
-            <li><?php echo $lang['order_help1'];?></li>
+            <li><?php echo $lang['appointment_help1'];?></li>
           </ul></td>
       </tr>
     </tbody>
@@ -24,13 +24,13 @@
   <table class="table tb-type2 nobdb">
     <thead>
       <tr class="thead">
-        <th><?php echo $lang['order_number'];?>账单（月）</th>
-        <th class="align-center"><?php echo $lang['store_name'];?>开始日期</th>
+        <th><?php echo $lang['appointment_number'];?>账单（月）</th>
+        <th class="align-center"><?php echo $lang['clic_name'];?>开始日期</th>
         <th class="align-center"><?php echo $lang['buyer_name'];?>结束日期</th>
-        <th class="align-center"><?php echo $lang['order_time'];?>成单金额</th>
-        <th class="align-center"><?php echo $lang['order_total_price'];?>退单金额</th>
+        <th class="align-center"><?php echo $lang['appointment_time'];?>成单金额</th>
+        <th class="align-center"><?php echo $lang['appointment_total_price'];?>退单金额</th>
         <th class="align-center"><?php echo $lang['payment'];?>实际订单金额</th>
-        <th class="align-center"><?php echo $lang['order_state'];?>实收佣金</th>
+        <th class="align-center"><?php echo $lang['appointment_state'];?>实收佣金</th>
         <th class="align-center"><?php echo $lang['nc_handlxe'];?>生成日期</th>
         <th class="align-center"><?php echo $lang['nc_handlse'];?>账单状态</th>
         <th class="align-center"><?php echo $lang['nc_handle'];?></th>
@@ -38,21 +38,21 @@
     </thead>
     <tbody>
       <?php if(count($output['list'])>0){?>
-      <?php foreach($output['list'] as $order){?>
+      <?php foreach($output['list'] as $appointment){?>
       <tr class="hover">
         <td>
-            <?php echo substr($order['os_month'],0,4).'-'.substr($order['os_month'],4);?>
+            <?php echo substr($appointment['os_month'],0,4).'-'.substr($appointment['os_month'],4);?>
         </td>
-        <td class="nowrap align-center"><?php echo date('Y-m-d',$order['os_start_date']);?></td>
-        <td class="nowrap align-center"><?php echo date('Y-m-d',$order['os_end_date']);?></td>
-        <td class="align-center"><?php echo $order['os_state'] ? $order['os_order_totals'] : '';?></td>
-        <td class="align-center"><?php echo $order['os_state'] ? $order['os_order_tkth_totals'] : '';?></td>
-        <td class="align-center"><?php echo $order['os_state'] ? $order['os_order_real_totals'] : '';?></td>
-        <td class="align-center"><?php echo $order['os_state'] ? $order['os_commission_totals'] : '';?></td>
-        <td><?php echo $order['os_create_date'] ? date('Y-m-d H:i:s',$order['os_create_date']) : '';?></td>
-        <td class="align-center"><?php echo $order['os_state'] ? '已出账' : '未出账';?></td>
+        <td class="nowrap align-center"><?php echo date('Y-m-d',$appointment['os_start_date']);?></td>
+        <td class="nowrap align-center"><?php echo date('Y-m-d',$appointment['os_end_date']);?></td>
+        <td class="align-center"><?php echo $appointment['os_state'] ? $appointment['os_appointment_totals'] : '';?></td>
+        <td class="align-center"><?php echo $appointment['os_state'] ? $appointment['os_appointment_tkth_totals'] : '';?></td>
+        <td class="align-center"><?php echo $appointment['os_state'] ? $appointment['os_appointment_real_totals'] : '';?></td>
+        <td class="align-center"><?php echo $appointment['os_state'] ? $appointment['os_commission_totals'] : '';?></td>
+        <td><?php echo $appointment['os_create_date'] ? date('Y-m-d H:i:s',$appointment['os_create_date']) : '';?></td>
+        <td class="align-center"><?php echo $appointment['os_state'] ? '已出账' : '未出账';?></td>
         <td class="align-center">
-        <a href="index.php?act=bill&op=show_month&month=<?php echo $order['os_month'];?>"><?php echo $lang['nc_view'];?></a>
+        <a href="index.php?act=bill&op=show_month&month=<?php echo $appointment['os_month'];?>"><?php echo $lang['nc_view'];?></a>
         </td>
       </tr>
       <?php }?>
@@ -81,7 +81,7 @@ $(function(){
     	$('#formSearch').submit();
     });
     $('#ncsubmit').click(function(){
-    	$('input[name="op"]').val('order_manage');$('#formSearch').submit();
+    	$('input[name="op"]').val('appointment_manage');$('#formSearch').submit();
     });
 });
 </script> 

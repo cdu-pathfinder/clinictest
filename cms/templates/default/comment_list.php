@@ -1,13 +1,13 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <?php if(!empty($output['comment_list']) && is_array($output['comment_list'])){ ?>
 <div class="article-comment-list-title">
   <h3><?php echo $lang['cms_comment_new'];?></h3>
 </div>
 <?php foreach($output['comment_list'] as $value){ ?>
 <dl>
-  <dt><span class="thumb"><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $value['comment_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>"/></a></span></dt>
+  <dt><span class="thumb"><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $value['comment_member_id'];?>" target="_blank"> <img src="<?php echo getMemberAvatar($value['member_avatar']);?>" alt="<?php echo $value['member_name'];?>"/></a></span></dt>
   <dd>
-    <p class="comment-user"><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $value['comment_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?></a><em>发表于<?php echo date('Y-m-d H:i:s',$value['comment_time']);?></em>
+    <p class="comment-user"><a href="<?php echo clinic_SITE_URL;?>/index.php?act=member_snshome&mid=<?php echo $value['comment_member_id'];?>" target="_blank"> <?php echo $value['member_name'];?></a><em>发表于<?php echo date('Y-m-d H:i:s',$value['comment_time']);?></em>
     </p>
     <p class="comment-quote-list">
     <?php if(!empty($value['comment_quote'])) { ?>

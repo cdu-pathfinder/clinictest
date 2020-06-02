@@ -5,7 +5,7 @@
 .evo-pop { filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#E5FFFFFF', endColorstr='#E5FFFFFF');background:rgba(255,255,255,0.9);
 	z-index:10000;
 	width:204px;
-	padding:3px 3px 0; border: solid 1px #AAA;
+	padding:3px 3px 0; bappointment: solid 1px #AAA;
 }
 .evo-pop-ie { background-color: #FFF;
 	z-index:10000;
@@ -14,31 +14,31 @@
 }
 
 .evo-palette, .evo-palette-ie  {
-	border-collapse: separate;
-	border-spacing: 4px 0px;
-	*border-collapse: expression('separate', cellSpacing = '2px');
+	bappointment-collapse: separate;
+	bappointment-spacing: 4px 0px;
+	*bappointment-collapse: expression('separate', cellSpacing = '2px');
 }
 .evo-palette td  {
 	font-size:1px;
 	height: auto !important;
-	border:solid 1px #c0c0c0;
+	bappointment:solid 1px #c0c0c0;
 	padding:7px!important;
 	cursor:pointer;
 }
 .evo-palette tr.top td {
-	border-bottom:0;
+	bappointment-bottom:0;
 }
 .evo-palette tr.in td {
-	border-top:0;
-	border-bottom:0;
+	bappointment-top:0;
+	bappointment-bottom:0;
 }
 .evo-palette tr.bottom td {
-	border-top:0;
+	bappointment-top:0;
 } 
 .evo-palette th, .evo-palette-ie th  {
 	line-height: normal !important;
 	height: auto !important;
-	border:0 !important;
+	bappointment:0 !important;
 	padding:5px 3px !important;
 	text-align:left;
 	font-weight:normal;
@@ -49,7 +49,7 @@
 }
 .evo-palette-ie td  {
 	font-size:1px;
-	border:solid 1px #c0c0c0;
+	bappointment:solid 1px #c0c0c0;
 	height: auto !important;
 	padding: 7px !important;
 	cursor:pointer;
@@ -57,7 +57,7 @@
 
 .evo-palette2, .evo-palette2-ie {
 	margin:auto;
-	border-collapse:collapse;
+	bappointment-collapse:collapse;
 }
 .evo-palette2 td, .evo-palette2-ie td{
 	font-size:1px;
@@ -75,7 +75,7 @@
 }
 
 .evo-colorind,.evo-colorind-ie,.evo-colorind-ff{
-	border:solid 1px #c3c3c3;
+	bappointment:solid 1px #c3c3c3;
 	width:20px;
 	height:20px;
 	float:right;
@@ -114,9 +114,9 @@
 	padding: 1px 3px 0 4px;
 }
 .evo-color div{
-	border:solid 1px #808080;
-	border-right:solid 1px #c0c0c0;
-	border-bottom:solid 1px #c0c0c0;
+	bappointment:solid 1px #808080;
+	bappointment-right:solid 1px #c0c0c0;
+	bappointment-bottom:solid 1px #c0c0c0;
 	padding:3px;
 	margin-bottom:5px;
 	width:10px;
@@ -143,7 +143,7 @@
 }
 .evo-cHist div{
 	cursor: pointer;
-	border:solid 1px #c0c0c0;
+	bappointment:solid 1px #c0c0c0;
 	padding:3px;
 	margin:5px;
 	width:10px;

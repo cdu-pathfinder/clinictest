@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="search-page">
   <div class="layout-l">
@@ -16,7 +16,7 @@
         <dl>
           <dt class="theme-title"><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $val['circle_id'];?>&t_id=<?php echo $val['theme_id'];?>"><?php echo $val['theme_name'];?></a></dt>
           <dd class="member-avatar-m"><img src="<?php echo getMemberAvatarForID($val['member_id']);?>"/></dd>
-          <dd class="theme-sub"><span class="theme-avatar"><?php echo $lang['circle_theme_author'].$lang['nc_colon'];?><a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></span><span><?php echo $lang['circle_release_time'].$lang['nc_colon'];?><em><?php echo @date('Y-m-d', $val['theme_addtime']);?></em></span><span class="theme-group"><?php echo $lang['circle_come_from_group'].$lang['nc_colon'];?><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=group&c_id=<?php echo $val['circle_id'];?>"><?php echo $val['circle_name'];?></a></span></dd>
+          <dd class="theme-sub"><span class="theme-avatar"><?php echo $lang['circle_theme_author'].$lang['nc_colon'];?><a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $val['member_id'];?>"><?php echo $val['member_name'];?></a></span><span><?php echo $lang['circle_release_time'].$lang['nc_colon'];?><em><?php echo @date('Y-m-d', $val['theme_addtime']);?></em></span><span class="theme-group"><?php echo $lang['circle_come_from_group'].$lang['nc_colon'];?><a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=group&c_id=<?php echo $val['circle_id'];?>"><?php echo $val['circle_name'];?></a></span></dd>
           <?php if($val['theme_editname'] != ''){?>
           <dd class="theme-date"><span class="theme-replyer"><?php echo $lang['circle_lastspeak'].$lang['nc_colon'];?><a href="Javascript: void(0);"><?php echo $val['theme_editname'];?></a></span><span><?php echo $lang['circle_reply_time'].$lang['nc_colon'];?><em><?php echo @date('Y-m-d', $val['theme_edittime']);?></em></span></dd>
           <?php }?>

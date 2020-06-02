@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class mb_categoryControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -60,8 +60,8 @@ class mb_categoryControl extends SystemControl{
 		/**
 		 * 商品分类
 		 */
-		$goods_class = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
-		Tpl::output('goods_class',$goods_class);		
+		$doctors_class = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
+		Tpl::output('doctors_class',$doctors_class);		
 
 		Tpl::output('link_list',$link_list);
 		Tpl::showpage('mb_category.list');
@@ -142,8 +142,8 @@ class mb_categoryControl extends SystemControl{
 		/**
 		 * 商品分类
 		 */
-		$goods_class = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
-		Tpl::output('goods_class',$goods_class);
+		$doctors_class = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
+		Tpl::output('doctors_class',$doctors_class);
 
 		Tpl::showpage('mb_category.add');
 	}
@@ -208,8 +208,8 @@ class mb_categoryControl extends SystemControl{
 		/**
 		 * 商品分类
 		 */
-		$goods_class = ($nav = F('goods_class'))? $nav :H('goods_class',true,'file');
-		Tpl::output('goods_class',$goods_class);		
+		$doctors_class = ($nav = F('doctors_class'))? $nav :H('doctors_class',true,'file');
+		Tpl::output('doctors_class',$doctors_class);		
 		
 		Tpl::output('link_array',$link_array);
 		Tpl::showpage('mb_category.edit');

@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class cms_baseControl extends SystemControl{
 
 	public function __construct(){
@@ -41,16 +41,16 @@ class cms_baseControl extends SystemControl{
     /**
      * 获取店铺列表
      */
-    public function get_store_listOp() {
+    public function get_clic_listOp() {
         //获取店铺列表
 		$condition = array();
-        $condition['store_name'] = array('like', $_GET['search_keyword']);
+        $condition['clic_name'] = array('like', $_GET['search_keyword']);
 
-        $model_store = Model('store');
-        $store_list = $model_store->getStoreOnlineList($condition, 5);
-        Tpl::output('show_page',$model_store->showpage());	
-        Tpl::output('store_list', $store_list);
-		Tpl::showpage('cms_widget_store_list', 'null_layout');
+        $model_clic = Model('clic');
+        $clic_list = $model_clic->getclicOnlineList($condition, 5);
+        Tpl::output('show_page',$model_clic->showpage());	
+        Tpl::output('clic_list', $clic_list);
+		Tpl::showpage('cms_widget_clic_list', 'null_layout');
     }
 
     /**
@@ -76,7 +76,7 @@ class cms_baseControl extends SystemControl{
 		$model_brand = Model('brand');
 		$condition = array();
 		$condition['brand_apply']	= '1';
-		$condition['order']	= ' brand_sort desc ';
+		$condition['appointment']	= ' brand_sort desc ';
 		$page	= new Page();
 		$page->setEachNum(6);
 		$page->setStyle('admin');
@@ -89,13 +89,13 @@ class cms_baseControl extends SystemControl{
     /**
      * 商品分类列表
      */
-    public function get_goods_class_list_jsonOp() {
-        $model_class = Model('goods_class');
-        $goods_class_list = $model_class->getTreeClassList(2);//商品分类父类列表，只取到第二级
+    public function get_doctors_class_list_jsonOp() {
+        $model_class = Model('doctors_class');
+        $doctors_class_list = $model_class->getTreeClassList(2);//商品分类父类列表，只取到第二级
         $result = array();
-        if (is_array($goods_class_list) && !empty($goods_class_list)){
+        if (is_array($doctors_class_list) && !empty($doctors_class_list)){
             $i = 0;
-            foreach ($goods_class_list as $key => $value){
+            foreach ($doctors_class_list as $key => $value){
                 $result[$i]['gc_name'] = str_repeat("&nbsp;",$value['deep']*2).$value['gc_name'];
                 $result[$i]['gc_id'] = $value['gc_id']; 
                 $i++;
@@ -107,26 +107,26 @@ class cms_baseControl extends SystemControl{
     /**
      * 商品分类详细列表
      */
-	public function get_goods_class_detailOp(){
-		$model_class = Model('goods_class');
+	public function get_doctors_class_detailOp(){
+		$model_class = Model('doctors_class');
 		$gc_parent_id = intval($_GET["class_id"]);
-		$gc_parent = $model_class->getOneGoodsClass($gc_parent_id);
-		$goods_class = $model_class->getClassList(array('gc_parent_id'=>$gc_parent_id));
+		$gc_parent = $model_class->getOnedoctorsClass($gc_parent_id);
+		$doctors_class = $model_class->getClassList(array('gc_parent_id'=>$gc_parent_id));
 		Tpl::output('gc_parent',$gc_parent);
-		Tpl::output('goods_class',$goods_class);
-		Tpl::showpage('cms_widget_goods_class_list','null_layout');
+		Tpl::output('doctors_class',$doctors_class);
+		Tpl::showpage('cms_widget_doctors_class_list','null_layout');
 	}
 
     /**
      * 图片商品添加
      */
-    public function goods_info_by_urlOp() {
+    public function doctors_info_by_urlOp() {
         $url = urldecode($_GET['url']);
         if(empty($url)) {
             self::return_json(Language::get('param_error'),'false');
         }
-        $model_goods_info = Model('goods_info_by_url');
-        $result = $model_goods_info->get_goods_info_by_url($url);
+        $model_doctors_info = Model('doctors_info_by_url');
+        $result = $model_doctors_info->get_doctors_info_by_url($url);
         if($result) {
             self::echo_json($result);
         } else {

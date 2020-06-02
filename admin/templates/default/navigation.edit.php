@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -17,22 +17,22 @@
     <input type="hidden" name="nav_id" value="<?php echo $output['navigation_array']['nav_id'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label> <?php echo $lang['navigation_add_type'];?></label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul class="nofloat">
               <li class="left w100pre"><span class="radio">
                 <input type="radio" <?php if($output['navigation_array']['nav_type'] == '0'){ ?>checked="checked"<?php } ?> value="0" name="nav_type" id="diy" onclick="showType('diy');">
                 <label for="diy"><?php echo $lang['navigation_add_custom'];?></label>
                 </span> </li>
               <li class="left w100pre"><span class="radio">
-                <input type="radio" <?php if($output['navigation_array']['nav_type'] == '1'){ ?>checked="checked"<?php } ?> value="1" name="nav_type" id="goods_class" onclick="showType('goods_class');">
-                <label for="goods_class"><?php echo $lang['navigation_add_goods_class'];?></label>
+                <input type="radio" <?php if($output['navigation_array']['nav_type'] == '1'){ ?>checked="checked"<?php } ?> value="1" name="nav_type" id="doctors_class" onclick="showType('doctors_class');">
+                <label for="doctors_class"><?php echo $lang['navigation_add_doctors_class'];?></label>
                 </span>
-                <select name="goods_class_id" id="goods_class_id" style="display: none;">
-                  <?php if(is_array($output['goods_class_list'])){ ?>
-                  <?php foreach($output['goods_class_list'] as $k => $v){ ?>
+                <select name="doctors_class_id" id="doctors_class_id" style="display: none;">
+                  <?php if(is_array($output['doctors_class_list'])){ ?>
+                  <?php foreach($output['doctors_class_list'] as $k => $v){ ?>
                   <option <?php if($output['navigation_array']['item_id'] == $v['gc_id']){ ?>selected="selected"<?php } ?> value="<?php echo $v['gc_id'];?>"><?php echo $v['gc_name'];?></option>
                   <?php } ?>
                   <?php } ?>
@@ -68,14 +68,14 @@
         <tr>
           <td colspan="2" class="required"><label class="validation" for="nav_title"><?php echo $lang['navigation_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['navigation_array']['nav_title'];?>" name="nav_title" id="nav_title" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label for="nav_url"><?php echo $lang['navigation_index_url'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['navigation_array']['nav_url'];?>" name="nav_url" id="nav_url" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
@@ -84,7 +84,7 @@
             <label for="type"><?php echo $lang['navigation_index_location'];?>:</label>
             </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform "><ul>
               <li>
                 <input type="radio" <?php if($output['navigation_array']['nav_location'] == '0'){ ?>checked="checked"<?php } ?> value="0" name="nav_location" id="nav_location0">
@@ -106,7 +106,7 @@
             <label><?php echo $lang['navigation_index_open_new'];?>:</label>
             </label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="nav_new_open1" class="cb-enable <?php if($output['navigation_array']['nav_new_open'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="nav_new_open0" class="cb-disable <?php if($output['navigation_array']['nav_new_open'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['nc_no'];?></span></label>
             <input id="nav_new_open1" name="nav_new_open" <?php if($output['navigation_array']['nav_new_open'] == '1'){ ?>checked="checked"<?php } ?>  value="1" type="radio">
@@ -116,7 +116,7 @@
         <tr>
           <td colspan="2" class="required"><label for="nav_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['navigation_array']['nav_sort'];?>" name="nav_sort" id="nav_sort" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
@@ -162,7 +162,7 @@ $(document).ready(function(){
     });
 	
 	<?php if($output['navigation_array']['nav_type'] == '1'){ ?>
-	showType('goods_class');
+	showType('doctors_class');
 	<?php } ?>
 	<?php if($output['navigation_array']['nav_type'] == '2'){ ?>
 	showType('article_class');
@@ -173,7 +173,7 @@ $(document).ready(function(){
 });
 
 function showType(type){
-	$('#goods_class_id').css('display','none');
+	$('#doctors_class_id').css('display','none');
 	$('#article_class_id').css('display','none');
 	$('#activity_id').css('display','none');
 	if(type == 'diy'){

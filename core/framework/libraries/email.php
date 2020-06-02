@@ -9,10 +9,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 final class Email{
 	/**
 	 * 邮件服务器
@@ -90,7 +90,7 @@ final class Email{
 			return false;
 		}
 
-		fputs($fp, 'EHLO'." shopnc\r\n");
+		fputs($fp, 'EHLO'." clinicnc\r\n");
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != 220 && substr($lastmessage, 0, 3) != 250) {
 			$this->resultLog($this->email_server.':'.$this->email_port." HELO/EHLO - $lastmessage");
@@ -190,7 +190,7 @@ final class Email{
 	 * @return string 字符串形式的返回结果
 	 */
 	private function html($subject, $message){
-		$message = preg_replace("/href\=\"(?!http\:\/\/)(.+?)\"/i", 'href="'.SHOP_SITE_URL.'\\1"', $message);
+		$message = preg_replace("/href\=\"(?!http\:\/\/)(.+?)\"/i", 'href="'.clinic_SITE_URL.'\\1"', $message);
 		$tmp .= "<html><head>";
 		$tmp .= '<meta http-equiv="Content-Type" content="text/html; charset='.CHARSET.'">';
 		$tmp .= "<title>". $subject ."</title>";
@@ -247,7 +247,7 @@ final class Email{
 		}
 		$header = "From: $from{$this->email_delimiter}";
 		$header .= "X-Priority: 3{$this->email_delimiter}";
-		$header .= "X-Mailer: ShopNC {$this->email_delimiter}";
+		$header .= "X-Mailer: clinicNC {$this->email_delimiter}";
 		$header .= "MIME-Version: 1.0{$this->email_delimiter}";
 		$header .= "Content-type: text/html; ";
 		$header .= "charset=".CHARSET."{$this->email_delimiter}";

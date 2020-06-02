@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,25 +14,25 @@
   <form method="post" name="formSearch">
     <input type="hidden" name="act" value="sns_strace">
     <input type="hidden" name="op" value="stracelist">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
-          <th><label for="search_uname"><?php echo $lang['admin_snsstrace_storename'];?></label></th>
+          <th><label for="search_uname"><?php echo $lang['admin_snsstrace_clicname'];?></label></th>
           <td><input type="text" value="<?php echo $_GET['search_sname'];?>" name="search_sname" id="search_sname" class="txt"></td>
           <th><label for="search_content"><?php echo $lang['admin_snstrace_content'];?></label></th>
           <td><input type="text" value="<?php echo $_GET['search_scontent'];?>" name="search_scontent" id="search_scontent" class="txt"></td>
-          <th><label><?php echo $lang['store_sns_trace_type'];?></label></th>
+          <th><label><?php echo $lang['clic_sns_trace_type'];?></label></th>
           <td><select name="search_type">
               <option value=''><?php echo $lang['nc_please_choose'];?>...</option>
-              <option value="normal" <?php echo $_GET['search_type'] == 'normal'?'selected="selected"':''; ?>><?php echo $lang['store_sns_normal'];?></option>
-              <option value="new" <?php echo $_GET['search_type'] == 'new'?'selected="selected"':''; ?>><?php echo $lang['store_sns_new'];?></option>
-              <option value="coupon" <?php echo $_GET['search_type'] == 'coupon'?'selected="selected"':''; ?>><?php echo $lang['store_sns_coupon'];?></option>
-              <option value="xianshi" <?php echo $_GET['search_type'] == 'xianshi'?'selected="selected"':''; ?>><?php echo $lang['store_sns_xianshi'];?></option>
-              <option value="mansong" <?php echo $_GET['search_type'] == 'mansong'?'selected="selected"':''; ?>><?php echo $lang['store_sns_mansong'];?></option>
-              <option value="bundling" <?php echo $_GET['search_type'] == 'bundling'?'selected="selected"':''; ?>><?php echo $lang['store_sns_bundling'];?></option>
-              <option value="groupbuy" <?php echo $_GET['search_type'] == 'groupbuy'?'selected="selected"':''; ?>><?php echo $lang['store_sns_groupbuy'];?></option>
-              <option value="recommend" <?php echo $_GET['search_type'] == 'recommend'?'selected="selected"':''; ?>><?php echo $lang['store_sns_recommend'];?></option>
-              <option value="hotsell" <?php echo $_GET['search_type'] == 'hotsell'?'selected="selected"':''; ?>><?php echo $lang['store_sns_hotsell'];?></option>
+              <option value="normal" <?php echo $_GET['search_type'] == 'normal'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_normal'];?></option>
+              <option value="new" <?php echo $_GET['search_type'] == 'new'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_new'];?></option>
+              <option value="coupon" <?php echo $_GET['search_type'] == 'coupon'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_coupon'];?></option>
+              <option value="xianshi" <?php echo $_GET['search_type'] == 'xianshi'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_xianshi'];?></option>
+              <option value="mansong" <?php echo $_GET['search_type'] == 'mansong'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_mansong'];?></option>
+              <option value="bundling" <?php echo $_GET['search_type'] == 'bundling'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_bundling'];?></option>
+              <option value="groupbuy" <?php echo $_GET['search_type'] == 'groupbuy'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_groupbuy'];?></option>
+              <option value="recommend" <?php echo $_GET['search_type'] == 'recommend'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_recommend'];?></option>
+              <option value="hotsell" <?php echo $_GET['search_type'] == 'hotsell'?'selected="selected"':''; ?>><?php echo $lang['clic_sns_hotsell'];?></option>
             </select></td>
           <th><label for="search_stime"><?php echo $lang['admin_snstrace_addtime'];?></label></th>
           <td><input type="text" class="txt date" value="<?php echo $_GET['search_stime'];?>" name="search_stime" id="search_stime" class="txt">
@@ -71,14 +71,14 @@
             <li>
               <div class="fd-aside">
               	<span class="thumb size60">
-					<a href="<?php echo SHOP_SITE_URL;?>/index.php?act=store_snshome&sid=<?php echo $v['strace_storeid'];?>" target="_blank">
-						<img onload="javascript:DrawImage(this,60,60);" src="<?php echo getStoreLogo($v['strace_storelogo']); ?>">
+					<a href="<?php echo clinic_SITE_URL;?>/index.php?act=clic_snshome&sid=<?php echo $v['strace_clicid'];?>" target="_blank">
+						<img onload="javascript:DrawImage(this,60,60);" src="<?php echo getclicLogo($v['strace_cliclogo']); ?>">
 					</a>
               	</span>
               </div>
               <dl class="fd-wrap">
                 <dt>
-					<h3><a href="<?php echo SHOP_SITE_URL;?>/index.php?act=store_snshome&sid=<?php echo $v['strace_storeid'];?>" target="_blank"><?php echo $v['strace_storename'];?></a><?php echo $lang['nc_colon'];?></h3>
+					<h3><a href="<?php echo clinic_SITE_URL;?>/index.php?act=clic_snshome&sid=<?php echo $v['strace_clicid'];?>" target="_blank"><?php echo $v['strace_clicname'];?></a><?php echo $lang['nc_colon'];?></h3>
 					<h5><?php echo parsesmiles($v['strace_title']);?></h5>
                 </dt>
                 <dd>

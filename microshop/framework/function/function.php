@@ -8,12 +8,12 @@
 
 
 * @liam      s328995
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
-function getMicroshopImageSize($image_url, $max_width = 238) {
+function getMicroclinicImageSize($image_url, $max_width = 238) {
     $local_file_path = str_replace(UPLOAD_SITE_URL, BASE_ROOT_PATH.DS.DIR_UPLOAD, $image_url);
     if(file_exists($local_file_path)) {
         list($width, $height) = getimagesize($local_file_path);

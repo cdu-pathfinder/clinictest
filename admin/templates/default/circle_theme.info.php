@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo $output['theme_info']['theme_name'];?></td>
         </tr>
       <tbody>
@@ -31,16 +31,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo $lang['circle_poll_form'].$lang['nc_colon'];if($output['poll_info']['poll_multiple'] == 0){echo $lang['circle_poll_radio'];}else{echo $lang['circle_poll_checkbox'];}?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo $lang['circle_poll_starttime'].$lang['nc_colon'].date('Y-m-d H:i:s', $output['poll_info']['poll_startime']);?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo $lang['circle_poll_days'].$lang['nc_colon'];if($output['poll_info']['poll_days'] == 0){echo $lang['nc_nothing'];}else{ echo $output['poll_info']['poll_days'];}?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo $lang['circle_poll_sum'].$lang['nc_colon'].$output['poll_info']['poll_voters'];?></td>
         </tr>
       </tbody>
@@ -50,12 +50,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="w132"><?php echo $lang['circle_poll_option'];?></td><td class="w48"><?php echo $lang['circle_poll_option_count'];?></td><td class="w830"><?php echo $lang['circle_poll_option_participant'];?></td>
         </tr>
         <?php if(!empty($output['option_list'])){?>
         <?php foreach ($output['option_list'] as $val){?>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td><?php echo $val['pollop_option'];?></td><td><?php echo $val['pollop_votes'];?></td><td><?php echo $val['pollop_votername'];?></td>
         </tr>
         <?php }?>
@@ -68,7 +68,7 @@
         </tr>
       </thead>
       </tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3"><?php echo ubb($output['theme_info']['theme_content']);?></td>
         </tr>
       </tbody>

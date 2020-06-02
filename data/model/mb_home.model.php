@@ -11,7 +11,7 @@
  * @since      File available since Release v1.1
  */
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class mb_homeModel extends Model{
     public function __construct() {
@@ -23,12 +23,12 @@ class mb_homeModel extends Model{
 	 *
 	 * @param array $condition 查询条件
 	 * @param int $page 分页数
-	 * @param string $order 排序
+	 * @param string $appointment 排序
 	 * @param string $field 字段
      * @return array
 	 */
-	public function getMbHomeList($condition, $page = null, $order = 'h_type asc', $field = '*') {
-        $h_list = $this->field($field)->where($condition)->page($page)->order($order)->select();
+	public function getMbHomeList($condition, $page = null, $appointment = 'h_type asc', $field = '*') {
+        $h_list = $this->field($field)->where($condition)->page($page)->appointment($appointment)->select();
 
 		//整理图片链接
 		if (is_array($h_list)){

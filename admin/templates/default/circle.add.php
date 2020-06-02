@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,17 +16,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="c_name"><?php echo $lang['circle_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" name="c_name" id="c_name" class="txt" /></td>
           <td class="vatop tips"><?php echo $lang['circle_name_tips'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="mastername"><?php echo $lang['circle_member_identity_master']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <input type="text" name="mastername" id="mastername" readonly="readonly" class="txt" />
             <input type="hidden" name="masterid" id="masterid" />
@@ -36,7 +36,7 @@
         <tr>
           <td colspan="2" class="required"><label class="" for="classid"><?php echo $lang['circle_class'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <select name="classid">
               <option value="0"><?php echo $lang['nc_common_pselect'];?></option>
@@ -52,7 +52,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_desc"><?php echo $lang['circle_desc']?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="c_desc" id="c_desc"></textarea>
           </td>
@@ -61,7 +61,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_tag"><?php echo $lang['circle_tag'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <input type="text" name="c_tag" class="txt" />
           </td>
@@ -70,7 +70,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_notice"><?php echo $lang['circle_notice'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
             <textarea class="tarea" rows="6" name="c_notice" id="c_notice"></textarea>
           </td>
@@ -79,7 +79,7 @@
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['circle_image'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
 			<span class="type-file-show">
 			<img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
@@ -96,7 +96,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_status"><?php echo $lang['circle_ststus'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="c_status1" class="cb-enable selected" ><span><?php echo $lang['open'];?></span></label>
             <label for="c_status0" class="cb-disable" ><span><?php echo $lang['close'];?></span></label>
@@ -107,7 +107,7 @@
         <tr>
           <td colspan="2" class="required"><label for="c_recommend"><?php echo $lang['circle_is_recommend'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff">
             <label for="c_recommend1" class="cb-enable selected" ><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="c_recommend0" class="cb-disable" ><span><?php echo $lang['nc_no'];?></span></label>

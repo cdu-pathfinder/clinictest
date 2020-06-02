@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class groupbuyControl extends SystemControl{
 
     public function __construct(){
@@ -51,8 +51,8 @@ class groupbuyControl extends SystemControl{
         if(!empty($_GET['groupbuy_name'])) {
             $condition['groupbuy_name'] = array('like', '%'.$_GET['groupbuy_name'].'%');
         }
-        if(!empty($_GET['store_name'])) {
-            $condition['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        if(!empty($_GET['clic_name'])) {
+            $condition['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         }
         if(!empty($_GET['groupbuy_state'])) {
             $condition['state'] = $_GET['groupbuy_state'];
@@ -188,7 +188,7 @@ class groupbuyControl extends SystemControl{
         $model_groupbuy_quota = Model('groupbuy_quota');
 
         $condition = array();
-        $condition['store_name'] = array('like', '%'.$_GET['store_name'].'%');
+        $condition['clic_name'] = array('like', '%'.$_GET['clic_name'].'%');
         $list = $model_groupbuy_quota->getGroupbuyQuotaList($condition, 10, 'end_time desc');
         Tpl::output('list',$list);
         Tpl::output('show_page',$model_groupbuy_quota->showpage());
@@ -204,7 +204,7 @@ class groupbuyControl extends SystemControl{
 
         $model_groupbuy_class = Model('groupbuy_class');
         $param = array();
-        $param['order'] = 'sort asc';
+        $param['appointment'] = 'sort asc';
         $groupbuy_class_list = $model_groupbuy_class->getTreeList($param);
 
         $this->show_menu('class_list');
@@ -219,7 +219,7 @@ class groupbuyControl extends SystemControl{
 
         $model_groupbuy_class = Model('groupbuy_class');
         $param = array();
-        $param['order'] = 'sort asc';
+        $param['appointment'] = 'sort asc';
         $param['class_parent_id'] = 0;
         $groupbuy_class_list = $model_groupbuy_class->getList($param);
         Tpl::output('list',$groupbuy_class_list);
@@ -304,7 +304,7 @@ class groupbuyControl extends SystemControl{
 
         $model_groupbuy_area = Model('groupbuy_area');
         $param = array();
-        $param['order'] = 'area_sort asc';
+        $param['appointment'] = 'area_sort asc';
         $groupbuy_area_list = $model_groupbuy_area->getTreeList($param,'',2);
         Tpl::output('list',$groupbuy_area_list);
 
@@ -319,7 +319,7 @@ class groupbuyControl extends SystemControl{
 
         $model_groupbuy_area = Model('groupbuy_area');
         $param = array();
-        $param['order'] = 'area_sort asc';
+        $param['appointment'] = 'area_sort asc';
         $param['area_parent_id'] = 0;
         $groupbuy_area_list = $model_groupbuy_area->getTreeList($param,'',1);
         Tpl::output('list',$groupbuy_area_list);

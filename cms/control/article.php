@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class articleControl extends CMSHomeControl{
 
     public function __construct() {
@@ -75,8 +75,8 @@ class articleControl extends CMSHomeControl{
         Tpl::output('article_link_list', $article_link_list);
 
         //相关商品
-        $article_goods_list = unserialize($article_detail['article_goods']); 
-        Tpl::output('article_goods_list', $article_goods_list);
+        $article_doctors_list = unserialize($article_detail['article_doctors']); 
+        Tpl::output('article_doctors_list', $article_doctors_list);
 
         //计数加1
         $model_article->modify(array('article_click'=>array('exp','article_click+1')),array('article_id'=>$article_id));

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,17 +15,17 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['article_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="article_title" id="article_title" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="cate_id"><?php echo $lang['article_add_class'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><select name="ac_id" id="ac_id">
               <option value=""><?php echo $lang['nc_please_choose'];?>...</option>
               <?php if(!empty($output['parent_list']) && is_array($output['parent_list'])){ ?>
@@ -39,14 +39,14 @@
         <tr>
           <td colspan="2" class="required"><label for="articleForm"><?php echo $lang['article_add_url'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="" name="article_url" id="article_url" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['article_add_url_tip'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label><?php echo $lang['article_add_show'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform onoff"><label for="article_show1" class="cb-enable selected" ><span><?php echo $lang['nc_yes'];?></span></label>
             <label for="article_show0" class="cb-disable" ><span><?php echo $lang['nc_no'];?></span></label>
             <input id="article_show1" name="article_show" checked="checked" value="1" type="radio">
@@ -56,20 +56,20 @@
         <tr>
           <td colspan="2" class="required"><?php echo $lang['nc_sort'];?>: 
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="255" name="article_sort" id="article_sort" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation"><?php echo $lang['article_add_content'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="vatop rowform"><?php showEditor('article_content');?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><?php echo $lang['article_add_upload'];?>:</td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="3" id="divComUploadContainer"><input type="file" multiple="multiple" id="fileupload" name="fileupload" /></td>
         </tr>
         <tr>

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -15,17 +15,17 @@
     <input type="hidden" name="act" value="bill" />
     <input type="hidden" name="op" value="show_statis" />
     <input type="hidden" name="os_month" value="<?php echo $_GET['os_month'];?>">
-    <table class="tb-type1 noborder search">
+    <table class="tb-type1 nobappointment search">
       <tbody>
         <tr>
           <th>店铺ID/名称</th>
-          <td><input class="txt-short" type="text" value="<?php echo $_GET['query_store'];?>" name="query_store" id="query_store"/></td>
+          <td><input class="txt-short" type="text" value="<?php echo $_GET['query_clic'];?>" name="query_clic" id="query_clic"/></td>
           <th>账单状态</th>
           <td>
           <select name="bill_state">
           <option><?php echo L('nc_please_choose');?></option>
           <option <?php if ($_GET['bill_state'] == BILL_STATE_CREATE) {?>selected<?php } ?> value="<?php echo BILL_STATE_CREATE;?>">已出账</option>
-          <option <?php if ($_GET['bill_state'] == BILL_STATE_STORE_COFIRM) {?>selected<?php } ?> value="<?php echo BILL_STATE_STORE_COFIRM;?>">商家已确认</option>
+          <option <?php if ($_GET['bill_state'] == BILL_STATE_clic_COFIRM) {?>selected<?php } ?> value="<?php echo BILL_STATE_clic_COFIRM;?>">商家已确认</option>
           <option <?php if ($_GET['bill_state'] == BILL_STATE_SYSTEM_CHECK) {?>selected<?php } ?> value="<?php echo BILL_STATE_SYSTEM_CHECK?>">平台已审核</option>
           <option <?php if ($_GET['bill_state'] == BILL_STATE_SUCCESS) {?>selected<?php } ?> value="<?php echo BILL_STATE_SUCCESS?>">结算完成</option>
           </select>
@@ -78,16 +78,16 @@
         <td><?php echo $bill_info['ob_no'];?></td>
         <td class="nowrap align-center"><?php echo date('Y-m-d',$bill_info['ob_start_date']);?></td>
         <td class="nowrap align-center"><?php echo date('Y-m-d',$bill_info['ob_end_date']);?></td>
-        <td class="align-center"><?php echo $bill_info['ob_order_totals'];?></td>
+        <td class="align-center"><?php echo $bill_info['ob_appointment_totals'];?></td>
         <td class="align-center"><?php echo $bill_info['ob_shipping_totals'];?></td>
         <td class="align-center"><?php echo $bill_info['ob_commis_totals'];?></td>        
-        <td class="align-center"><?php echo $bill_info['ob_order_return_totals'];?></td>        
+        <td class="align-center"><?php echo $bill_info['ob_appointment_return_totals'];?></td>        
         <td class="align-center"><?php echo $bill_info['ob_commis_return_totals'];?></td>       
-        <td class="align-center"><?php echo $bill_info['ob_store_cost_totals'];?></td>       
+        <td class="align-center"><?php echo $bill_info['ob_clic_cost_totals'];?></td>       
         <td class="align-center"><?php echo $bill_info['ob_result_totals'];?></td>
         <td class="align-center"><?php echo date('Y-m-d',$bill_info['ob_create_date']);?></td>
         <td class="align-center"><?php echo billState($bill_info['ob_state']);?></td>
-        <td class="align-center"><?php echo $bill_info['ob_store_name'].'<br/>id:'.$bill_info['ob_store_id'];?></td>
+        <td class="align-center"><?php echo $bill_info['ob_clic_name'].'<br/>id:'.$bill_info['ob_clic_id'];?></td>
         <td class="align-center">
         <a href="index.php?act=bill&op=show_bill&ob_no=<?php echo $bill_info['ob_no'];?>"><?php echo $lang['nc_view'];?></a>
         </td>

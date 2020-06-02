@@ -1,1 +1,1 @@
-<?php defined('InShopNC') or exit('Access Invalid!'); return array ( 'area' => array ( ), 'category' => array ( ), 'price' => array ( ), ) ?>
+<?php defined('InclinicNC') or exit('Access Invalid!'); return array ( 'area' => array ( ), 'category' => array ( ), 'price' => array ( ), ) ?>

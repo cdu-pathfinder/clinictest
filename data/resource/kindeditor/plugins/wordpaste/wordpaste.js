@@ -13,7 +13,7 @@ KindEditor.plugin('wordpaste', function(K) {
 		var lang = self.lang(name + '.'),
 			html = '<div style="padding:10px 20px;">' +
 				'<div style="margin-bottom:10px;">' + lang.comment + '</div>' +
-				'<iframe class="ke-textarea" frameborder="0" style="width:408px;height:260px;"></iframe>' +
+				'<iframe class="ke-textarea" framebappointment="0" style="width:408px;height:260px;"></iframe>' +
 				'</div>',
 			dialog = self.createDialog({
 				name : name,

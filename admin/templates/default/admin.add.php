@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,31 +12,31 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="admin_name"><?php echo $lang['admin_index_username'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="admin_name" name="admin_name" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['admin_add_username_tip'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="admin_password"><?php echo $lang['admin_index_password'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="password" id="admin_password" name="admin_password" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['admin_add_password_tip'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="admin_password"><?php echo $lang['admin_rpassword'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="password" id="admin_rpassword" name="admin_rpassword" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['admin_add_password_tip'];?></td>
         </tr>
         <tr>
           <td colspan="2" class="required"><label class="validation" for="gadmin_name"><?php echo $lang['gadmin_name'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform">
           <select name="gid">
           <?php foreach((array)$output['gadmin'] as $v){?>

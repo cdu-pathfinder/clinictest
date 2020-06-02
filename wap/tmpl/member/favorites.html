@@ -20,15 +20,15 @@
 		 <ul>
 			<%for(var i=0;i<favorites_list.length;i++){%>
             <li>
-                <a href="<%=WapSiteUrl%>/tmpl/product_detail.html?goods_id=<%=favorites_list[i].fav_id %>" class="mf-item clearfix">
+                <a href="<%=WapSiteUrl%>/tmpl/doc_detail.html?doctors_id=<%=favorites_list[i].fav_id %>" class="mf-item clearfix">
                     <span class="mf-pic">
-                        <img src="<%=favorites_list[i].goods_image_url %>"/>
+                        <img src="<%=favorites_list[i].doctors_image_url %>"/>
                     </span>
                     <div class="mf-infor">
-                        <p class="mf-pd-name"><%=favorites_list[i].goods_name %></p>
-                        <p class="mf-pd-price">$<%=favorites_list[i].goods_price %></p>
+                        <p class="mf-pd-name"><%=favorites_list[i].doctors_name %></p>
+                        <p class="mf-pd-price">$<%=favorites_list[i].doctors_price %></p>
                         <p class="mf-pd-comment">收藏编号：<%=favorites_list[i].fav_id %></p>
-                        <span class="i-del" goods_id="<%=favorites_list[i].fav_id %>"></span>
+                        <span class="i-del" doctors_id="<%=favorites_list[i].fav_id %>"></span>
                     </div>
                 </a>
             </li>

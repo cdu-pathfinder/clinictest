@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class offpay_areaModel extends Model {
     public function __construct() {
@@ -49,12 +49,12 @@ class offpay_areaModel extends Model {
      * 某县级地区是否支持货到付款
      *
      * @param unknown_type $area_id
-     * @param int $store_id 店铺ID（目前只会传平台店铺）
+     * @param int $clic_id 店铺ID（目前只会传平台店铺）
      * @return unknown
      */
-    public function checkSupportOffpay($area_id, $store_id) {
+    public function checkSupportOffpay($area_id, $clic_id) {
         if (empty($area_id)) return false;
-        $area = $this->getAreaInfo(array('store_id'=>$store_id));
+        $area = $this->getAreaInfo(array('clic_id'=>$clic_id));
         if (!empty($area['area_id'])) {
             $area_id_array = unserialize($area['area_id']);
         } else {

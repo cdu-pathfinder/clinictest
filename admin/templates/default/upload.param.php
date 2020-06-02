@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -12,10 +12,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="site_name"><?php echo $lang['image_dir_type'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><ul class="nofloat">
               <li>
                 <input id="image_dir_type_0" name="image_dir_type" type="radio" style="margin-bottom:6px;" value="1"<?php echo $output['list_setting']['image_dir_type'] == '1' ? ' checked="checked"' : '' ;?>/>
@@ -39,7 +39,7 @@
 		<tr>
           <td colspan="2" class="required"><label for="image_max_filesize"><?php echo $lang['upload_image_filesize'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><?php echo $lang['upload_image_file_size'];?>:
             <input id="image_max_filesize" name="image_max_filesize" type="text" class="txt" style="width:30px;" value="<?php echo $output['list_setting']['image_max_filesize'] ? $output['list_setting']['image_max_filesize'] : '1024' ;?>"/>
             KB&nbsp;(1024 KB = 1MB)</td>
@@ -48,7 +48,7 @@
 		<tr>
           <td colspan="2" class="required"><label for="image_allow_ext"><?php echo $lang['image_allow_ext'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="image_allow_ext" name="image_allow_ext" value="<?php echo $output['list_setting']['image_allow_ext'] ? $output['list_setting']['image_allow_ext'] : 'gif,jpeg,jpg,bmp,png,swf,tbi';?>" class="txt" type="text" /></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['image_allow_ext_notice'];?></span></td>
         </tr>

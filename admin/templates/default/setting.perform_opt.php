@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -138,8 +138,8 @@
 		<tr>
 			<td></td>
 			<td>商品数据</td>
-			<td><?php echo C('memory.product.open')? 'YES':'NO';?></td>
-			<td><?php echo C('memory.product.ttl');?></td>
+			<td><?php echo C('memory.doc.open')? 'YES':'NO';?></td>
+			<td><?php echo C('memory.doc.ttl');?></td>
 			<td class="vatop tips">0表示永不过期，缓存商品基本统计数据（浏览量、售出量）</td>
 			<td></td>
 		</tr>

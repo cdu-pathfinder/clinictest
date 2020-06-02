@@ -95,11 +95,11 @@ $(function (){
                     if(checklogin(res.login)){
                         if(!res.datas.error){
                             numInput.val(quantity);
-                            sPrents.find(".goods-total-price").html(res.datas.total_price);
-                            var goodsTotal = $(".goods-total-price");
+                            sPrents.find(".doctors-total-price").html(res.datas.total_price);
+                            var doctorsTotal = $(".doctors-total-price");
                             var totalPrice = parseFloat("0.00");
-                            for(var i = 0;i<goodsTotal.length;i++){
-                                totalPrice += parseFloat($(goodsTotal[i]).html());
+                            for(var i = 0;i<doctorsTotal.length;i++){
+                                totalPrice += parseFloat($(doctorsTotal[i]).html());
                             }
                             $(".total_price").html("$"+totalPrice.toFixed(2));
                         }else{
@@ -126,7 +126,7 @@ $(function (){
                 cartIdArr.push(cartIdNum);
             }
             var cart_id = cartIdArr.toString();
-            window.location.href = WapSiteUrl + "/tmpl/order/buy_step1.html?ifcart=1&cart_id="+cart_id;
+            window.location.href = WapSiteUrl + "/tmpl/appointment/buy_step1.html?ifcart=1&cart_id="+cart_id;
         }
         //验证
         $.sValid.init({

@@ -11,7 +11,7 @@
  * @since      File available since Release v1.1
  */
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class mb_categoryModel{
 	/**
@@ -25,7 +25,7 @@ class mb_categoryModel{
 		$param = array();
 		$param['table'] = 'mb_category';
 //		$param['where'] = $condition_str;
-		$param['order'] = $condition['order'] ? $condition['order'] : 'gc_id';
+		$param['appointment'] = $condition['appointment'] ? $condition['appointment'] : 'gc_id';
 		$result = Db::select($param,$page);
 		return $result;
 	}

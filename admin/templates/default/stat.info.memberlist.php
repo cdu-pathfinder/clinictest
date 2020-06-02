@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
@@ -22,7 +22,7 @@
           <th class="align-center"><?php echo $lang['member_index_login_time']?></th>
           <th class="align-center"><?php echo $lang['member_index_last_login']?></th>
           <th class="align-center"><?php echo $lang['member_index_points']; ?></th>
-          <th class="align-center"><?php echo $lang['member_index_prestore'];?></th>
+          <th class="align-center"><?php echo $lang['member_index_preclic'];?></th>
         </tr>
       <tbody id="datatable">
         <?php if(!empty($output['member_list']) && is_array($output['member_list'])){ ?>
@@ -38,10 +38,10 @@
                 <a href="JavaScript:void(0);" class="tooltip" title="<?php echo $lang['member_index_null']?>" ><?php echo $v['member_email']; ?></a></span>
                 <?php } ?>
                 <?php if($v['member_ww'] != ''){ ?>
-                <a target="_blank" href="http://web.im.alisoft.com/msg.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cnalichn&s=11" class="tooltip" title="WangWang: <?php echo $v['member_ww'];?>"><img border="0" src="http://web.im.alisoft.com/online.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cntaobao&s=2&charset=<?php echo CHARSET;?>" /></a>
+                <a target="_blank" href="http://web.im.alisoft.com/msg.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cnalichn&s=11" class="tooltip" title="WangWang: <?php echo $v['member_ww'];?>"><img bappointment="0" src="http://web.im.alisoft.com/online.aw?v=2&uid=<?php echo $v['member_ww'];?>&site=cntaobao&s=2&charset=<?php echo CHARSET;?>" /></a>
                 <?php } ?>
                 <?php if($v['member_qq'] != ''){ ?>                
-                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['member_qq'];?>&site=qq&menu=yes" class="tooltip"  title="QQ: <?php echo $v['member_qq'];?>"><img border="0" src="http://wpa.qq.com/pa?p=2:<?php echo $v['member_qq'];?>:52"/></a>
+                <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $v['member_qq'];?>&site=qq&menu=yes" class="tooltip"  title="QQ: <?php echo $v['member_qq'];?>"><img bappointment="0" src="http://wpa.qq.com/pa?p=2:<?php echo $v['member_qq'];?>:52"/></a>
                 <?php } ?>
               </div></td>
           <td class="align-center"><?php echo $v['member_time']; ?></td>

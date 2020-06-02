@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['limit_admin']			= 'Admin';
 $lang['limit_gadmin']			= 'Authority';

@@ -35,7 +35,7 @@ function change_quantity(cart_id, input){
     $.getJSON('index.php?act=cart&op=update&cart_id=' + cart_id + '&quantity=' + _value, function(result){
     	$(input).attr('changed', _value);
     	if(result.state == 'true'){
-            $('#item' + cart_id + '_price').html(number_format(result.goods_price,2));
+            $('#item' + cart_id + '_price').html(number_format(result.doctors_price,2));
             subtotal.html(number_format(result.subtotal,2));
             $('#cart_id'+cart_id).val(cart_id+'|'+_value);
         }
@@ -51,9 +51,9 @@ function change_quantity(cart_id, input){
         }
 
         if(result.state == 'shortage'){
-          $('#item' + cart_id + '_price').html(number_format(result.goods_price,2));
-          $('#cart_id'+cart_id).val(cart_id+'|'+result.goods_num);
-          $(input).val(result.goods_num);
+          $('#item' + cart_id + '_price').html(number_format(result.doctors_price,2));
+          $('#cart_id'+cart_id).val(cart_id+'|'+result.doctors_num);
+          $(input).val(result.doctors_num);
           showDialog(result.msg, 'error','','','','','','','','',2);
           return;
         }
@@ -103,12 +103,12 @@ function calc_cart_price() {
     obj.children('tbody').each(function(){
         //购物车每个店铺已选择商品的总价格
         var eachTotal = 0;
-        $(this).find('em[nc_type="eachGoodsTotal"]').each(function(){
+        $(this).find('em[nc_type="eachdoctorsTotal"]').each(function(){
             if ($(this).parent().parent().find('input[type="checkbox"]').eq(0).attr('checked') != 'checked') return;
             eachTotal = eachTotal + parseFloat($(this).html());  
         });
         allTotal += eachTotal;
-        $(this).children('tr').last().find('em[nc_type="eachStoreTotal"]').eq(0).html(number_format(eachTotal,2));
+        $(this).children('tr').last().find('em[nc_type="eachclicTotal"]').eq(0).html(number_format(eachTotal,2));
     });
     $('#cartTotal').html(number_format(allTotal,2));
 }
@@ -123,14 +123,14 @@ $(function(){
         }
         calc_cart_price();
     });
-    $('input[nc_type="eachGoodsCheckBox"]').on('click',function(){
+    $('input[nc_type="eachdoctorsCheckBox"]').on('click',function(){
         if (!$(this).attr('checked')) {
             $('#selectAll').attr('checked',false);
         }
         calc_cart_price();
     });
     $('#next_submit').on('click',function(){
-        if ($(document).find('input[nc_type="eachGoodsCheckBox"]:checked').size() == 0) {
+        if ($(document).find('input[nc_type="eachdoctorsCheckBox"]:checked').size() == 0) {
             showDialog('请选中要结算的商品', 'eror','','','','','','','','',2);
             return false;
         }else {

@@ -1,4 +1,4 @@
-<table class="table tb-type2 order mtw">
+<table class="table tb-type2 appointment mtw">
   <thead class="thead">
     <tr class="space">
       <th><?php echo $lang['complain_progress'];?></th>
@@ -12,28 +12,28 @@
     </tr>
   </tbody>
 </table>
-<table class="table tb-type2 order">
+<table class="table tb-type2 appointment">
   <thead class="thead">
     <tr class="space">
-      <th><?php echo $lang['order_detail'];?></th>
+      <th><?php echo $lang['appointment_detail'];?></th>
     </tr></thead>
     <tbody>
-    <tr class="noborder">
+    <tr class="nobappointment">
       <td><ul>
-          <li><strong><?php echo $lang['order_shop_name'];?>:</strong><a href="<?php echo urlShop('show_store','index', array('store_id'=>$output['order_info']['store_id']));?>" target="_blank">
-            <?php echo $output['order_info']['store_name'];?> </a> </li>
-          <li><strong><?php echo $lang['order_state'];?>:</strong><b><?php echo $output['order_info']['order_state_text'];?></b></li>
-          <li><strong>订单号:</strong><a href="index.php?act=order&op=show_order&order_id=<?php echo $output['order_info']['order_id'];?>" target="_blank">
-            <?php echo $output['order_info']['order_sn'];?></a> </li>
-          <li><strong><?php echo $lang['order_datetime'];?>:</strong><?php echo date('Y-m-d H:i:s',$output['order_info']['add_time']);?></li>
-          <li><strong><?php echo $lang['order_price'];?>:</strong><?php echo $lang['currency'].$output['order_info']['order_amount'];?>
-            <?php if($output['order_info']['refund_amount'] > 0) { ?>
-            (退款:<?php echo $lang['currency'].$output['order_info']['refund_amount'];?>)
+          <li><strong><?php echo $lang['appointment_clinic_name'];?>:</strong><a href="<?php echo urlclinic('show_clic','index', array('clic_id'=>$output['appointment_info']['clic_id']));?>" target="_blank">
+            <?php echo $output['appointment_info']['clic_name'];?> </a> </li>
+          <li><strong><?php echo $lang['appointment_state'];?>:</strong><b><?php echo $output['appointment_info']['appointment_state_text'];?></b></li>
+          <li><strong>订单号:</strong><a href="index.php?act=appointment&op=show_appointment&appointment_id=<?php echo $output['appointment_info']['appointment_id'];?>" target="_blank">
+            <?php echo $output['appointment_info']['appointment_sn'];?></a> </li>
+          <li><strong><?php echo $lang['appointment_datetime'];?>:</strong><?php echo date('Y-m-d H:i:s',$output['appointment_info']['add_time']);?></li>
+          <li><strong><?php echo $lang['appointment_price'];?>:</strong><?php echo $lang['currency'].$output['appointment_info']['appointment_amount'];?>
+            <?php if($output['appointment_info']['refund_amount'] > 0) { ?>
+            (退款:<?php echo $lang['currency'].$output['appointment_info']['refund_amount'];?>)
             <?php } ?>
             </li>
-          <?php if(!empty($output['order_info']['voucher_price'])) { ?>
-          <li><strong><?php echo $lang['order_voucher_price'];?>:</strong><?php echo $lang['currency'].$output['order_info']['voucher_price'].'.00';?></li>
-          <li><strong><?php echo $lang['order_voucher_sn'];?>:</strong><?php echo $output['order_info']['voucher_code'];?></li>
+          <?php if(!empty($output['appointment_info']['voucher_price'])) { ?>
+          <li><strong><?php echo $lang['appointment_voucher_price'];?>:</strong><?php echo $lang['currency'].$output['appointment_info']['voucher_price'].'.00';?></li>
+          <li><strong><?php echo $lang['appointment_voucher_sn'];?>:</strong><?php echo $output['appointment_info']['voucher_code'];?></li>
           <?php } ?>
         </ul></td>
     </tr>

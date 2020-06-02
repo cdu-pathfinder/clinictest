@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class daddressModel extends Model {
     public function __construct() {
         parent::__construct('daddress');        
@@ -51,9 +51,9 @@ class daddressModel extends Model {
      * @param unknown $condition
      * @param string $pagesize
      * @param string $fields
-     * @param string $order
+     * @param string $appointment
      */
-    public function getAddressList($condition, $fields = '*', $order = '', $limit = '') {
-        return $this->field($fields)->where($condition)->order($order)->limit($limit)->select();
+    public function getAddressList($condition, $fields = '*', $appointment = '', $limit = '') {
+        return $this->field($fields)->where($condition)->appointment($appointment)->limit($limit)->select();
     }
 }

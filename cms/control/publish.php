@@ -9,7 +9,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class publishControl extends CMSMemberControl{
 
     public function __construct() {
@@ -89,22 +89,22 @@ class publishControl extends CMSMemberControl{
         }
 
         //文章商品
-        if(!empty($_POST['article_goods_url'])) {
-            $article_goods_list = array();
-            for ($i = 0,$count = count($_POST['article_goods_url']); $i < $count; $i++) {
-                $article_goods = array();
-                $article_goods['url'] = $_POST['article_goods_url'][$i];
-                $article_goods['title'] = $_POST['article_goods_title'][$i];
-                $article_goods['image'] = $_POST['article_goods_image'][$i];
-                $article_goods['price'] = $_POST['article_goods_price'][$i];
-                $article_goods['type'] = $_POST['article_goods_type'][$i];
-                $article_goods_list[] = $article_goods;
+        if(!empty($_POST['article_doctors_url'])) {
+            $article_doctors_list = array();
+            for ($i = 0,$count = count($_POST['article_doctors_url']); $i < $count; $i++) {
+                $article_doctors = array();
+                $article_doctors['url'] = $_POST['article_doctors_url'][$i];
+                $article_doctors['title'] = $_POST['article_doctors_title'][$i];
+                $article_doctors['image'] = $_POST['article_doctors_image'][$i];
+                $article_doctors['price'] = $_POST['article_doctors_price'][$i];
+                $article_doctors['type'] = $_POST['article_doctors_type'][$i];
+                $article_doctors_list[] = $article_doctors;
             }
 
-            if(!empty($article_goods_list)) {
-                $param['article_goods'] = serialize($article_goods_list);
+            if(!empty($article_doctors_list)) {
+                $param['article_doctors'] = serialize($article_doctors_list);
             } else {
-                $param['article_goods'] = '';
+                $param['article_doctors'] = '';
             }
         }
 
@@ -238,18 +238,18 @@ class publishControl extends CMSMemberControl{
                 $picture_image['image_height'] = $height;
                 $picture_image['image_path'] = $file_path;
                 $picture_image['image_abstract'] = $_POST['picture_image_abstract'][$i];
-                $picture_image['image_goods'] = '';
-                if(isset($_POST['image_goods_url'][$picture_image['image_name']])) {
-                    $image_goods_list = array();
-                    for ($j = 0,$j_count = count($_POST['image_goods_url'][$picture_image['image_name']]); $j < $j_count; $j++) {
-                        $image_goods = array();
-                        $image_goods['url'] = $_POST['image_goods_url'][$picture_image['image_name']][$j];
-                        $image_goods['image'] = $_POST['image_goods_image'][$picture_image['image_name']][$j];
-                        $image_goods['price'] = $_POST['image_goods_price'][$picture_image['image_name']][$j];
-                        $image_goods['title'] = $_POST['image_goods_title'][$picture_image['image_name']][$j];
-                        $image_goods_list[] = $image_goods;
+                $picture_image['image_doctors'] = '';
+                if(isset($_POST['image_doctors_url'][$picture_image['image_name']])) {
+                    $image_doctors_list = array();
+                    for ($j = 0,$j_count = count($_POST['image_doctors_url'][$picture_image['image_name']]); $j < $j_count; $j++) {
+                        $image_doctors = array();
+                        $image_doctors['url'] = $_POST['image_doctors_url'][$picture_image['image_name']][$j];
+                        $image_doctors['image'] = $_POST['image_doctors_image'][$picture_image['image_name']][$j];
+                        $image_doctors['price'] = $_POST['image_doctors_price'][$picture_image['image_name']][$j];
+                        $image_doctors['title'] = $_POST['image_doctors_title'][$picture_image['image_name']][$j];
+                        $image_doctors_list[] = $image_doctors;
                     }
-                    $picture_image['image_goods'] = serialize($image_goods_list);;
+                    $picture_image['image_doctors'] = serialize($image_doctors_list);;
                 }
                 $picture_image_all[] = $picture_image;
 

@@ -8,7 +8,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /********************************** 前台control父类 **********************************************/
 
@@ -25,7 +25,7 @@ class BaseCircleControl{
 		 * 验证圈子是否开启
 		 */
 		if (C('circle_isuse') != '1'){
-			@header('location: '.SHOP_SITE_URL);die;
+			@header('location: '.clinic_SITE_URL);die;
 		}
 		/**
 		 * 读取通用、布局的语言包
@@ -96,15 +96,15 @@ class BaseCircleControl{
 		Tpl::output('class_info', $class_info);
 		
 		// 明星圈友
-		$star_member = Model()->table('circle_member')->where(array('cm_state'=>1, 'circle_id'=>$this->c_id, 'is_star'=>1))->order('rand()')->limit(5)->select();
+		$star_member = Model()->table('circle_member')->where(array('cm_state'=>1, 'circle_id'=>$this->c_id, 'is_star'=>1))->appointment('rand()')->limit(5)->select();
 		Tpl::output('star_member', $star_member);
 		
 		// 最新加入
-		$newest_member = Model()->table('circle_member')->where(array('cm_state'=>1, 'circle_id'=>$this->c_id))->order('cm_jointime desc')->limit(5)->select();
+		$newest_member = Model()->table('circle_member')->where(array('cm_state'=>1, 'circle_id'=>$this->c_id))->appointment('cm_jointime desc')->limit(5)->select();
 		Tpl::output('newest_member', $newest_member);
 		
 		// 友情圈子
-		$friendship_list = Model()->table('circle_fs')->where(array('circle_id'=>$this->c_id, 'friendship_status'=>1))->order('friendship_sort asc')->select();
+		$friendship_list = Model()->table('circle_fs')->where(array('circle_id'=>$this->c_id, 'friendship_status'=>1))->appointment('friendship_sort asc')->select();
 		Tpl::output('friendship_list', $friendship_list);
 	}
 	/**
@@ -113,20 +113,20 @@ class BaseCircleControl{
 	protected function themeTop(){
 		$model = Model();
 		// 最新话题
-		$new_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->order('theme_id desc')->limit(10)->select();
+		$new_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->appointment('theme_id desc')->limit(10)->select();
 		Tpl::output('new_themelist', $new_themelist);
 		// 热门话题
-		$hot_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->order('theme_browsecount desc')->limit(10)->select();
+		$hot_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->appointment('theme_browsecount desc')->limit(10)->select();
 		Tpl::output('hot_themelist', $hot_themelist);
 		// 人气回复
-		$reply_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->order('theme_commentcount desc')->limit(10)->select();
+		$reply_themelist = $model->table('circle_theme')->where(array('is_closed'=>0))->appointment('theme_commentcount desc')->limit(10)->select();
 		Tpl::output('reply_themelist', $reply_themelist);
 	}
 	/**
 	 * SEO
 	 */
 	protected function circleSEO($title= '') {
-        Tpl::output('html_title',$title.' '.C('circle_seotitle').' - Powered by ShopNC');
+        Tpl::output('html_title',$title.' '.C('circle_seotitle').' - Powered by clinicNC');
         Tpl::output('seo_keywords',C('circle_seokeywords'));
         Tpl::output('seo_description',C('circle_seodescription'));
 	}

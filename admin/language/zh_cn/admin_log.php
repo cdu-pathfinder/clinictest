@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['admin_log_man']			= 'Operator';
 $lang['admin_log_do']			= 'Activity';

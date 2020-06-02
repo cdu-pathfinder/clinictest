@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class upload_albumModel{
 	/**
@@ -53,8 +53,8 @@ class upload_albumModel{
 		if($condition['apic_size'] != '') {
 			$condition_str .= " and apic_size='{$condition['apic_size']}'";
 		}
-		if($condition['store_id'] != '') {
-			$condition_str .= " and store_id='{$condition['store_id']}'";
+		if($condition['clic_id'] != '') {
+			$condition_str .= " and clic_id='{$condition['clic_id']}'";
 		}
 		if($condition['upload_time'] != '') {
 			$condition_str .= " and upload_time='{$condition['upload_time']}'";
@@ -188,15 +188,15 @@ class upload_albumModel{
 	//	 * @param obj $page 分页
 	//	 * @return array 数组结构的返回结果
 	//	 */
-	//	public function getGradeShopList($condition,$page){
-	//		$condition_str = $this->_conditionShop($condition);
+	//	public function getGradeclinicList($condition,$page){
+	//		$condition_str = $this->_conditionclinic($condition);
 	//		$param = array(
-	//					'table'=>'store_grade,store',
-	//					'field'=>'store_grade.*,store.*',
+	//					'table'=>'clic_grade,clic',
+	//					'field'=>'clic_grade.*,clic.*',
 	//					'where'=>$condition_str,
 	//					'join_type'=>'left join',
 	//					'join_on'=>array(
-	//						'store_grade.sg_id = store.grade_id',
+	//						'clic_grade.sg_id = clic.grade_id',
 	//					)
 	//				);
 	//		$result = Db::select($param,$page);
@@ -209,11 +209,11 @@ class upload_albumModel{
 	//	 * @param array $condition 检索条件
 	//	 * @return string 字符串类型的返回结果
 	//	 */
-	//	private function _conditionShop($condition){
+	//	private function _conditionclinic($condition){
 	//		$condition_str = '';
 	//
 	//		if ($condition['sg_id'] != ''){
-	//			$condition_str .= " and store_grade.sg_id = '". $condition['sg_id'] ."'";
+	//			$condition_str .= " and clic_grade.sg_id = '". $condition['sg_id'] ."'";
 	//		}
 	//
 	//		return $condition_str;

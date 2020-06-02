@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 $lang['nc_common_pselect']	= 'please choose...';
 $lang['nc_circle']			= '圈子';
@@ -9,8 +9,8 @@ $lang['nc_common_price']		= 'Price';
 $lang['nc_common_goto']		= 'see';
 $lang['piece']				= 'person';
 $lang['welcome_to_site']	= 'Welcome to';
-$lang['site_search_goods']	= "doctor";
-$lang['site_search_store']	= "clinic";
+$lang['site_search_doctors']	= "doctor";
+$lang['site_search_clic']	= "clinic";
 $lang['site_search_groupbuy']	= "团购";
 $lang['hot_search']			= 'Most searched';
 $lang['nc_colon']			= '：';
@@ -128,29 +128,29 @@ $lang['nc_logout']	= "logout";
 $lang['nc_guest']	= "quest";
 $lang['nc_login']	= "login";
 $lang['nc_register']	= "注册";
-$lang['nc_seller'] = 'clinic center';
+$lang['nc_clinicer'] = 'clinic center';
 $lang['nc_user_center']	= "Personl Center";
 $lang['nc_message']		= "Inmessage";
 $lang['nc_help_center']	= "help center";
 $lang['nc_more_links']	= "more links";
 $lang['nc_index']		= "home";
 $lang['nc_cart']			= "购物车";
-$lang['nc_kindof_goods']	= "种商品";
+$lang['nc_kindof_doctors']	= "种商品";
 $lang['nc_favorites']		= "我的收藏";
 $lang['nc_nothing']			= "无";
 $lang['nc_filter'] = '筛选';
-$lang['nc_all_goods'] = 'all doctors';
+$lang['nc_all_doctors'] = 'all doctors';
 $lang['nc_search'] = '搜索';
 $lang['nc_search_nbsp']	= '搜&nbsp;索';
 $lang['nc_publish'] = '发布';
 
-$lang['nc_buying_goods']			= "已买到的商品";
+$lang['nc_buying_doctors']			= "已买到的商品";
 $lang['nc_mysns']					= "个人主页";
 $lang['nc_myfriends']				= "我的好友";
-$lang['nc_selled_goods']			= "已售出的商品";
-$lang['nc_selling_goods']			= "销售中的商品";
+$lang['nc_selled_doctors']			= "已售出的商品";
+$lang['nc_selling_doctors']			= "销售中的商品";
 $lang['nc_mystroe']					= "myclinic";
-$lang['nc_favorites_goods']			= "收藏的商品";
+$lang['nc_favorites_doctors']			= "收藏的商品";
 $lang['nc_favorites_stroe']			= "收藏的店铺";
 $lang['nc_check_cart']				= "查看购物车";
 

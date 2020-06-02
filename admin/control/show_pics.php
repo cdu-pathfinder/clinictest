@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 class show_picsControl extends SystemControl {
 
@@ -28,10 +28,10 @@ class show_picsControl extends SystemControl {
         $pic_path = '';
         switch ($type) {
             case 'inform':
-                $pic_path = UPLOAD_SITE_URL.'/shop/inform/'; 
+                $pic_path = UPLOAD_SITE_URL.'/clinic/inform/'; 
                 break;
             case 'complain':
-                $pic_path = UPLOAD_SITE_URL.'/shop/complain/';
+                $pic_path = UPLOAD_SITE_URL.'/clinic/complain/';
                 break;
             default:
                 $this->goto_index();

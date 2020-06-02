@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * 预存款功能公用
  */
@@ -127,7 +127,7 @@ $lang['admin_predeposit_log_help1']			= '此处展示了预存款详细的变更
 $lang['admin_predeposit_log_stage'] 	= '类型';
 $lang['admin_predeposit_log_stage_recharge']	= '充值';
 $lang['admin_predeposit_log_stage_cash']		= '提现';
-$lang['admin_predeposit_log_stage_order']		= '消费';
+$lang['admin_predeposit_log_stage_appointment']		= '消费';
 $lang['admin_predeposit_log_stage_artificial']	= '手动修改';
 $lang['admin_predeposit_log_stage_system']		= '系统';
 $lang['admin_predeposit_log_stage_income']	= '收入';

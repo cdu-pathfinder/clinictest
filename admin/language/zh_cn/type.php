@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 /**
  * index
  */
@@ -13,7 +13,7 @@ $lang['type_index_del_related_brand_fail']	= 'Failed to delete the associated br
 $lang['type_index_del_related_type_fail']	= 'Failed to delete the associated specifications.';
 $lang['type_index_type_name']				= 'Type name';
 $lang['type_index_no_checked']				= 'Please select the data item to operate.';
-$lang['type_index_prompts_one']				= 'When the administrator adds the product category, the type needs to be selected. The product list page under the front desk classification generates product search by type, which is convenient for users to search for the required products.';
+$lang['type_index_prompts_one']				= 'When the administrator adds the doc category, the type needs to be selected. The doc list page under the front desk classification generates doc search by type, which is convenient for users to search for the required docs.';
 /**
  * 新增属性
  */
@@ -22,7 +22,7 @@ $lang['type_add_related_spec']				= 'Select associated specifications';
 $lang['type_add_remove']					= 'Remove';
 $lang['type_add_name_no_null']				= 'Please fill in the type name';
 $lang['type_add_name_max']					= 'Type name length should be between 1-20 characters';
-$lang['type_add_sort_no_null']				= 'Please fill in the type order';
+$lang['type_add_sort_no_null']				= 'Please fill in the type appointment';
 $lang['type_add_sort_no_digits']			= 'Please fill in integer';
 $lang['type_add_sort_desc']					= 'Please fill in the natural number. The list of types will be sorted and displayed according to sorting.';
 $lang['type_add_spec_name']					= 'Specification name';
@@ -36,8 +36,8 @@ $lang['type_add_attr_add_one']				= 'Add one attribute';
 $lang['type_add_attr_add_one_value']		= 'Add one attribute value';
 $lang['type_add_attr_name']					= 'Attribute name';
 $lang['type_add_attr_value']				= 'Optional value of attribute';
-$lang['type_add_prompts_one']				= 'Association rules are not required, it will affect the entry of specifications and prices when the product is released. Not selected as no specifications.';
-$lang['type_add_prompts_two']				= 'Associated branding is not a mandatory option, it will affect the brand choice when the product is released.';
+$lang['type_add_prompts_one']				= 'Association rules are not required, it will affect the entry of specifications and prices when the doc is released. Not selected as no specifications.';
+$lang['type_add_prompts_two']				= 'Associated branding is not a mandatory option, it will affect the brand choice when the doc is released.';
 $lang['type_add_prompts_three']				= '属性值可以添加多个，每个属性值之间需要使用逗号隔开。';
 $lang['type_add_prompts_four']				= 'Multiple attribute values can be added, and each attribute value needs to be separated by a comma.';
 $lang['type_add_spec_must_choose']			= 'Please select at least one specification';

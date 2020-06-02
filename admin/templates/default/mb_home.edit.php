@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -16,17 +16,17 @@
     <input type="hidden" name="h_id" value="<?php echo $output['home_array']['h_id'];?>" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="h_title"><?php echo $lang['home_index_title'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['home_array']['h_title'];?>" name="h_title" id="h_title" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['home_add_name'];?></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="h_desc"><?php echo $lang['home_index_desc'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['home_array']['h_desc'];?>" name="h_desc" id="h_desc" class="txt"></td>
           <?php if($output['home_array']['h_type'] == 'type1') { ?>
           <td class="vatop tips"><?php echo $lang['home_add_desc'];?></td>
@@ -34,18 +34,18 @@
           <td class="vatop tips">推荐两个关键词用逗号分割(例：精品女装,服装箱包)</td>
           <?php } ?>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="h_keyword"><?php echo $lang['home_index_keyword'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['home_array']['h_keyword'];?>" name="h_keyword" id="h_keyword" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['home_add_keyword'];?></td>
         </tr>
         <?php if($output['home_array']['h_type'] == 'type1') { ?>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label class="validation" for="h_keyword">多关键词:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['home_array']['h_multi_keyword'];?>" name="h_multi_keyword" id="h_multi_keyword" class="txt"></td>
           <td class="vatop tips">首页显示的多关键词，最多6个词，用半角逗号分割(例子：男装,女装)</td>
         </tr>
@@ -53,7 +53,7 @@
         <tr>
           <td colspan="2" class="required"><label for=""><?php echo $lang['home_index_pic_sign'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><span class="type-file-show"><img class="show_image" src="<?php echo ADMIN_TEMPLATES_URL;?>/images/preview.png">
             <div class="type-file-preview"><img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_MOBILE.'/home/'.$output['home_array']['h_img'];?>"></div>
             </span> <span class="type-file-box">
@@ -64,7 +64,7 @@
         <tr>
           <td colspan="2" class="required"><label for="h_sort"><?php echo $lang['nc_sort'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" value="<?php echo $output['home_array']['h_sort'];?>" name="h_sort" id="h_sort" class="txt"></td>
           <td class="vatop tips"><?php echo $lang['home_add_sort_tip'];?></td>
         </tr>

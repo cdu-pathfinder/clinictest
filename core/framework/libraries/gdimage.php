@@ -10,10 +10,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class GdImage{
 	/**
 	 * 输入图片的文件名(必须包含路径名)
@@ -122,7 +122,7 @@ class GdImage{
 	 * <?php
 	 * 		$img = new GDImage();
 	 * 		//文字水印
-	 * 		$img->wm_text = "www.shopnc.net";
+	 * 		$img->wm_text = "www.clinicnc.net";
 	 * 		$img->wm_text_font = "./STXINWEI.TTF";
 	 * 		//图片水印
 	 * 		$img->wm_image_name="水印图片名";

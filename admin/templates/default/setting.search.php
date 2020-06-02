@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -14,10 +14,10 @@
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><label for="hot_search"><?php echo $lang['hot_search'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input id="hot_search" name="hot_search" value="<?php echo $output['list_setting']['hot_search'];?>" class="txt" type="text"></td>
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['field_notice'];?></span></td>
         </tr>

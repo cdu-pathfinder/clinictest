@@ -11,7 +11,7 @@
  * @since      File available since Release v1.1
  */
 
-class member_cardControl extends MircroShopControl{
+class member_cardControl extends MircroclinicControl{
 	public function mcard_infoOp(){
 		$uid	= intval($_GET['uid']);
         if($uid <= 0) {

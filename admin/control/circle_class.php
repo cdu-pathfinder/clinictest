@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class circle_classControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -40,7 +40,7 @@ class circle_classControl extends SystemControl{
 		if(trim($_GET['searchstatus']) != ''){
 			$where['class_status']		= intval($_GET['searchstatus']);
 		}
-		$class_list = $model->table('circle_class')->where($where)->order('class_sort asc')->select();
+		$class_list = $model->table('circle_class')->where($where)->appointment('class_sort asc')->select();
 		Tpl::output('class_list', $class_list);
 		Tpl::showpage('circle_class.list');
 	}
@@ -87,7 +87,7 @@ class circle_classControl extends SystemControl{
 			}
 		}
 		// 商品分类
-		$gc_list = $model->table('goods_class')->where(array('gc_parent_id'=>0))->order('gc_sort asc')->select();
+		$gc_list = $model->table('doctors_class')->where(array('gc_parent_id'=>0))->appointment('gc_sort asc')->select();
 		Tpl::output('gc_list', $gc_list);
 		
 		Tpl::showpage('circle_class.add');
@@ -132,7 +132,7 @@ class circle_classControl extends SystemControl{
 		
 		Tpl::output('class_info', $class_info);
 		// 商品分类
-		$gc_list = $model->table('goods_class')->where(array('gc_parent_id'=>0))->order('gc_sort asc')->select();
+		$gc_list = $model->table('doctors_class')->where(array('gc_parent_id'=>0))->appointment('gc_sort asc')->select();
 		Tpl::output('gc_list', $gc_list);
 		
 		Tpl::showpage('circle_class.edit');

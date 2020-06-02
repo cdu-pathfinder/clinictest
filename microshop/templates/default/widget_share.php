@@ -1,12 +1,12 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <div class="share-widget">
 <?php if (!empty($output['app_arr'])){?>
 <input nc_type="share_app_switch" name="share_app_switch" type="checkbox" class="input-checkbox"/>
-<span class="title"><?php echo $lang['microshop_share_to'];?><i></i></span>
+<span class="title"><?php echo $lang['microclinic_share_to'];?><i></i></span>
 <?php } else { ?>
 <input nc_type="share_app_switch" name="share_app_switch" type="checkbox" class="input-checkbox" style="display:none"/>
 <?php } ?>
-<input name="share_app_items[]" type="hidden" value="shop" />
+<input name="share_app_items[]" type="hidden" value="clinic" />
 <?php if (!empty($output['app_arr'])){?>
 <ul>
 <?php foreach ($output['app_arr'] as $key=>$val){?>
@@ -20,19 +20,19 @@
         <div class="eject_con">
             <dl>
                 <dt style="width:25%">
-                <img src="<?php echo MICROSHOP_TEMPLATES_URL;?>/images/shareicon/shareicon_@apikey.png" width="40" height="40" class="mt5 mr20">
+                <img src="<?php echo MICROclinic_TEMPLATES_URL;?>/images/shareicon/shareicon_@apikey.png" width="40" height="40" class="mt5 mr20">
                 </dt>
                 <dd style="width:75%">
-                <p><?php echo $lang['microshop_share_tip1'];?><strong class="ml5 mr5">@apiname</strong><?php echo $lang['microshop_share_tip2'];?><p>
-                <p class="red"><?php echo $lang['microshop_share_tip3'];?>@apiname<?php echo $lang['microshop_share_tip4'];?></p>
+                <p><?php echo $lang['microclinic_share_tip1'];?><strong class="ml5 mr5">@apiname</strong><?php echo $lang['microclinic_share_tip2'];?><p>
+                <p class="red"><?php echo $lang['microclinic_share_tip3'];?>@apiname<?php echo $lang['microclinic_share_tip4'];?></p>
                 </dd>
             </dl>
             <dl class="bottom">
                 <dt style="width:25%">&nbsp;</dt>
                 <dd style="width:75%">
-                <a href="javascript:void(0);" id="finishbtn" data-param='{"apikey":"@apikey"}' class="ncu-btn2 mr10"><?php echo $lang['microshop_share_tip5'];?></a>
-                <span><?php echo $lang['microshop_share_tip6'];?>
-                    <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/api.php?act=sharebind&type=@apikey" class="ml5"><?php echo $lang['microshop_share_tip7'];?></a>
+                <a href="javascript:void(0);" id="finishbtn" data-param='{"apikey":"@apikey"}' class="ncu-btn2 mr10"><?php echo $lang['microclinic_share_tip5'];?></a>
+                <span><?php echo $lang['microclinic_share_tip6'];?>
+                    <a target="_blank" href="<?php echo clinic_SITE_URL;?>/api.php?act=sharebind&type=@apikey" class="ml5"><?php echo $lang['microclinic_share_tip7'];?></a>
                 </span>
                 </dd>
             </dl>

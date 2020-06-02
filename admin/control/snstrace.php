@@ -7,7 +7,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class snstraceControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -48,14 +48,14 @@ class snstraceControl extends SystemControl{
 			foreach ($tracelist as $k=>$v){
 				if(!empty($v['trace_title'])){
 					//替换标题中的siteurl
-					$v['trace_title'] = str_replace("%siteurl%", SHOP_SITE_URL.DS, $v['trace_title']);
+					$v['trace_title'] = str_replace("%siteurl%", clinic_SITE_URL.DS, $v['trace_title']);
 				}
 				if(!empty($v['trace_content'])){
 					//替换内容中的siteurl
-					$v['trace_content'] = str_replace("%siteurl%", SHOP_SITE_URL.DS, $v['trace_content']);
+					$v['trace_content'] = str_replace("%siteurl%", clinic_SITE_URL.DS, $v['trace_content']);
 					//将收藏商品和店铺连接剔除
-					$v['trace_content'] = str_replace(Language::get('admin_snstrace_collectgoods'), "", $v['trace_content']);
-					$v['trace_content'] = str_replace(Language::get('admin_snstrace_collectstore'), "", $v['trace_content']);
+					$v['trace_content'] = str_replace(Language::get('admin_snstrace_collectdoctors'), "", $v['trace_content']);
+					$v['trace_content'] = str_replace(Language::get('admin_snstrace_collectclic'), "", $v['trace_content']);
 				}
 				$tracelist[$k] = $v;
 			}

@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <link href="<?php echo CIRCLE_TEMPLATES_URL;?>/css/ubb.css" rel="stylesheet" type="text/css">
 <div class="group warp-all">
   <?php require_once circle_template('group.top');?>
@@ -19,7 +19,7 @@
             }?>" title=""></i>
           <h3><?php echo $output['theme_info']['theme_name'];?></h3>
         </div>
-        <div class="theme-info-a"> <a target="_blank" href="<?php echo SHOP_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['theme_info']['member_id'];?>" nctype="mcard" data-param="{'id':<?php echo $output['theme_info']['member_id'];?>}"><?php echo $output['theme_info']['member_name'];?></a><span class="floor">(<?php echo $lang['circle_landlord'];?>)</span>
+        <div class="theme-info-a"> <a target="_blank" href="<?php echo clinic_SITE_URL;?>/index.php?act=sns_circle&mid=<?php echo $output['theme_info']['member_id'];?>" nctype="mcard" data-param="{'id':<?php echo $output['theme_info']['member_id'];?>}"><?php echo $output['theme_info']['member_name'];?></a><span class="floor">(<?php echo $lang['circle_landlord'];?>)</span>
           <?php echo memberLevelHtml(array('cm_level'=>intval($output['member_list'][$output['theme_info']['member_id']]['cm_level']), 'cm_levelname'=>$output['member_list'][$output['theme_info']['member_id']]['cm_levelname'], 'circle_id'=>$output['c_id']));?>
         </div>
         <div class="theme-info-b">
@@ -47,16 +47,16 @@
         <?php if($output['theme_info']['theme_edittime'] != ''){?>
         <div class="theme-edittime"><span><?php echo $output['theme_info']['theme_editname'];?>&nbsp;<?php echo $lang['nc_at'];?>&nbsp;<?php echo @date('Y-m-d', $output['theme_info']['theme_edittime'])?>&nbsp;<?php echo $lang['circle_last_edit'];?></span></div>
         <?php }?>
-        <?php if(!empty($output['goods_list'])){?>
-        <div class="theme-content-goods">
-          <h4><i></i><?php echo $lang['circle_relevance_goods'];?></h4>
+        <?php if(!empty($output['doctors_list'])){?>
+        <div class="theme-content-doctors">
+          <h4><i></i><?php echo $lang['circle_relevance_doctors'];?></h4>
           <ul>
-            <?php foreach($output['goods_list'] as $val){?>
+            <?php foreach($output['doctors_list'] as $val){?>
             <li>
-              <div class="goods-pic thumb"><a href="javascript:void(0);"><img src="<?php echo $val['image'];?>" class="t-img" /></a></div>
-              <div class="goods-name"><?php echo $val['goods_name'];?></div>
-              <div class="goods-price"><em><?php echo $val['goods_price'];?></em></div>
-              <a href="<?php echo $val['thg_url'];?>" class="goto" target="_blank"><?php echo $lang['circle_goods_detail'];?></a> </li>
+              <div class="doctors-pic thumb"><a href="javascript:void(0);"><img src="<?php echo $val['image'];?>" class="t-img" /></a></div>
+              <div class="doctors-name"><?php echo $val['doctors_name'];?></div>
+              <div class="doctors-price"><em><?php echo $val['doctors_price'];?></em></div>
+              <a href="<?php echo $val['thg_url'];?>" class="goto" target="_blank"><?php echo $lang['circle_doctors_detail'];?></a> </li>
             <?php }?>
           </ul>
         </div>
@@ -88,7 +88,7 @@
             <?php if($output['theme_info']['is_shut'] == 0){echo $lang['nc_close'];}else{echo $lang['nc_open'];}?>
             </a> <a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=manage&op=edit_theme&c_id=<?php echo $output['c_id'];?>&t_id=<?php echo $output['t_id'];?>"><?php echo $lang['nc_edit'];?></a> <a href="javascript:void(0);" nctype="themeDelManage"><?php echo $lang['nc_delete'];?></a> </span> </div>
           <?php }?>
-          <div class="normal"> <a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $output['c_id']?>&t_id=<?php echo $output['t_id'];if($_GET['only_id'] == ''){?>&only_id=<?php echo $val['member_id'];}?>" class="noborder">
+          <div class="normal"> <a href="<?php echo CIRCLE_SITE_URL;?>/index.php?act=theme&op=theme_detail&c_id=<?php echo $output['c_id']?>&t_id=<?php echo $output['t_id'];if($_GET['only_id'] == ''){?>&only_id=<?php echo $val['member_id'];}?>" class="nobappointment">
             <?php if($_GET['only_id'] != ''){echo $lang['circle_see_all'];}else{echo $lang['circle_see_TA'];}?>
             </a> <a href="javascript:void(0);" nctype="<?php if($output['theme_onlike'] == 1){?>themeLikeYes<?php }else{?>themeLikeNo<?php }?>">
             <?php if($output['theme_onlike'] == 1){echo $lang['circle_like'];}else{echo $lang['circle_like_cancel'];}?>
@@ -132,16 +132,16 @@
               </ul>
             </dd>
             <?php }?>
-            <?php if(!empty($output['reply_goods'][$val['reply_id']])){?>
-            <dd class="reply-goods clearfix">
-              <h4><i></i><?php echo $lang['circle_relevance_goods'];?></h4>
+            <?php if(!empty($output['reply_doctors'][$val['reply_id']])){?>
+            <dd class="reply-doctors clearfix">
+              <h4><i></i><?php echo $lang['circle_relevance_doctors'];?></h4>
               <ul>
-                <?php foreach ($output['reply_goods'][$val['reply_id']] as $val){?>
+                <?php foreach ($output['reply_doctors'][$val['reply_id']] as $val){?>
                 <li>
-                  <div class="goods-pic thumb size30"><a href="javascript:void(0);" class="size30"><img src="<?php echo $val['image'];?>" class="t-img" /></a></div>
-                  <div class="goods-name"><?php echo $val['goods_name'];?></div>
-                  <div class="goods-price"><em><?php echo $val['goods_price'];?></em></div>
-                  <a href="<?php echo $val['thg_url'];?>" class="goto" target="_blank"><?php echo $lang['circle_goods_detail'];?></a> </li>
+                  <div class="doctors-pic thumb size30"><a href="javascript:void(0);" class="size30"><img src="<?php echo $val['image'];?>" class="t-img" /></a></div>
+                  <div class="doctors-name"><?php echo $val['doctors_name'];?></div>
+                  <div class="doctors-price"><em><?php echo $val['doctors_price'];?></em></div>
+                  <a href="<?php echo $val['thg_url'];?>" class="goto" target="_blank"><?php echo $lang['circle_doctors_detail'];?></a> </li>
                 <?php }?>
               </ul>
             </dd>
@@ -236,8 +236,8 @@ $(function(){
 	
 //横高局中比例缩放隐藏显示图片
 	
-	$(".theme-content-goods .t-img").VMiddleImg({"width":60,"height":60});
-	$(".reply-goods .t-img").VMiddleImg({"width":30,"height":30});
+	$(".theme-content-doctors .t-img").VMiddleImg({"width":60,"height":60});
+	$(".reply-doctors .t-img").VMiddleImg({"width":30,"height":30});
 	
 	// 表单验证
     $('#reply_form').validate({

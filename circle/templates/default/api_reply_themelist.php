@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 <ul class="circle-reply-themelist">
     <?php if(!empty($output['reply_themelist']) && is_array($output['reply_themelist'])) {?>
     <?php foreach($output['reply_themelist'] as $key=>$value) {?>

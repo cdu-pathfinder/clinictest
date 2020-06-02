@@ -24,11 +24,11 @@ $(function(){
 	initPage();
 	//删除收藏
 	function delFavorites(){
-		var goods_id = $(this).attr('goods_id');
+		var doctors_id = $(this).attr('doctors_id');
 		$.ajax({
 			type:'post',
 			url:ApiUrl+"/index.php?act=member_favorites&op=favorites_del",
-			data:{fav_id:goods_id,key:key},
+			data:{fav_id:doctors_id,key:key},
 			dataType:'json',
 			success:function(result){
 				checklogin(result.login);

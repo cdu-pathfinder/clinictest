@@ -7,13 +7,13 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class stat_tradeControl extends SystemControl{
 	private $links = array(
-        array('url'=>'act=stat_trade&op=goods','lang'=>'stat_goods_ranking'),
+        array('url'=>'act=stat_trade&op=doctors','lang'=>'stat_doctors_ranking'),
         array('url'=>'act=stat_trade&op=income','lang'=>'stat_sale_income'),
         array('url'=>'act=stat_trade&op=predeposit','lang'=>'stat_predeposit'),
-        array('url'=>'act=stat_trade&op=goods_sale','lang'=>'stat_goods_sale'),
+        array('url'=>'act=stat_trade&op=doctors_sale','lang'=>'stat_doctors_sale'),
         array('url'=>'act=stat_trade&op=class_sale','lang'=>'stat_class_sale'),
         array('url'=>'act=stat_trade&op=sale','lang'=>'stat_sale')
     );
@@ -26,7 +26,7 @@ class stat_tradeControl extends SystemControl{
     /**
      * 商品统计排行
      */
-    public function goodsOp(){
+    public function doctorsOp(){
 		if(!$_REQUEST['search_type']){
 			$_REQUEST['search_type'] = 'day';
 		}
@@ -63,43 +63,43 @@ class stat_tradeControl extends SystemControl{
 		if($_REQUEST['search_type'] == 'day'){
 			$stime = $search_time;//昨天0点
 			$etime = $search_time + 86400 - 1;//今天24点
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods&search_type=day&search_time='.date('Y-m-d',$search_time).'&rank_type='.trim($_GET['rank_type']));
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors&search_type=day&search_time='.date('Y-m-d',$search_time).'&rank_type='.trim($_GET['rank_type']));
 		}
 		if($_REQUEST['search_type'] == 'week'){
 			$current_weekarr = explode('|', $current_week);
 			$stime = strtotime($current_weekarr[0])-86400*7;
 			$etime = strtotime($current_weekarr[1])+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week.'&rank_type='.trim($_GET['rank_type']));
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week.'&rank_type='.trim($_GET['rank_type']));
 		}
 		if($_REQUEST['search_type'] == 'month'){
 			$stime = strtotime($current_year.'-'.$current_month."-01 0 month");
 			$etime = getMonthLastDay($current_year,$current_month)+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month.'&rank_type='.trim($_GET['rank_type']));
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month.'&rank_type='.trim($_GET['rank_type']));
 		}
 		/*
 		 * 获取数据
 		 */
 		$model = Model('stat');
 		//获取上架商品数量
-		Tpl::output('goods_on_allnum',$model->getGoodsNum(array('goods_state'=>1)));
+		Tpl::output('doctors_on_allnum',$model->getdoctorsNum(array('doctors_state'=>1)));
 		//下单商品数
-		Tpl::output('order_goods_num',$model->getTradeInfo('order_goods_num',$stime,$etime));
+		Tpl::output('appointment_doctors_num',$model->getTradeInfo('appointment_doctors_num',$stime,$etime));
 		//下单单量
-		Tpl::output('order_num',$model->getTradeInfo('order_num',$stime,$etime));
+		Tpl::output('appointment_num',$model->getTradeInfo('appointment_num',$stime,$etime));
 		//下单客户数
-		Tpl::output('order_buyer_num',$model->getTradeInfo('order_buyer_num',$stime,$etime));
+		Tpl::output('appointment_buyer_num',$model->getTradeInfo('appointment_buyer_num',$stime,$etime));
 		//合计金额
-		Tpl::output('order_amount',$model->getTradeInfo('order_amount',$stime,$etime));
+		Tpl::output('appointment_amount',$model->getTradeInfo('appointment_amount',$stime,$etime));
 		//获取商品销售排名TOP15数据
 		switch (trim($_GET['rank_type'])){
 			case '':
 			case 'trade_num':
-				$goods_list = $model->getGoodsTradeRanking('trade_num',$stime,$etime);
+				$doctors_list = $model->getdoctorsTradeRanking('trade_num',$stime,$etime);
 				Tpl::output('table_tip','销量');
 				Tpl::output('chart_tip','商品销量排行TOP15');
 				break;
 			case 'trade_amount':
-				$goods_list = $model->getGoodsTradeRanking('trade_amount',$stime,$etime);
+				$doctors_list = $model->getdoctorsTradeRanking('trade_amount',$stime,$etime);
 				Tpl::output('table_tip','销售额');
 				Tpl::output('chart_tip','商品销售额排行TOP15');
 				break;
@@ -116,9 +116,9 @@ class stat_tradeControl extends SystemControl{
 			$excel_data[0][1] = array('styleid'=>'s_title','data'=>'商品名称');
 			$excel_data[0][2] = array('styleid'=>'s_title','data'=>trim($_GET['rank_type'])=='trade_amount'?'销售额':'销量');
 			//data
-			foreach ($goods_list as $k=>$v){
+			foreach ($doctors_list as $k=>$v){
 				$excel_data[$k+1][0] = array('data'=>$k+1);
-				$excel_data[$k+1][1] = array('data'=>$v['goods_name']);
+				$excel_data[$k+1][1] = array('data'=>$v['doctors_name']);
 				$excel_data[$k+1][2] = array('data'=>$v['allnum']);
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
@@ -137,14 +137,14 @@ class stat_tradeControl extends SystemControl{
 			$stat_arr['series'][0]['name'] = trim($_GET['rank_type'])=='trade_amount'?'销售额':'销量';
 			$stat_arr['series'][0]['data'] = array();
 			for ($i = 0; $i < 15; $i++){
-			    $stat_arr['series'][0]['data'][] = array('name'=>strval($goods_list[$i]['goods_name']),'y'=>floatval($goods_list[$i]['allnum']));
+			    $stat_arr['series'][0]['data'][] = array('name'=>strval($doctors_list[$i]['doctors_name']),'y'=>floatval($doctors_list[$i]['allnum']));
 			}
 			$stat_arr['legend']['enabled'] = false;
     		$stat_json = getStatData_Column2D($stat_arr);
     		Tpl::output('stat_json',$stat_json);
-			Tpl::output('goods_list',$goods_list);
-			Tpl::output('top_link',$this->sublink($this->links, 'goods'));
-			Tpl::showpage('stat.goods');
+			Tpl::output('doctors_list',$doctors_list);
+			Tpl::output('top_link',$this->sublink($this->links, 'doctors'));
+			Tpl::showpage('stat.doctors');
 		}
     }
     /**
@@ -190,13 +190,13 @@ class stat_tradeControl extends SystemControl{
 			$excel_data[0][7] = array('styleid'=>'s_title','data'=>'结算金额');
 			//data
 			foreach ($bill_list as $k=>$v){
-				$excel_data[$k+1][0] = array('data'=>$v['ob_store_name']);
+				$excel_data[$k+1][0] = array('data'=>$v['ob_clic_name']);
 				$excel_data[$k+1][1] = array('data'=>$v['member_name']);
-				$excel_data[$k+1][2] = array('data'=>$v['ob_order_totals']);
+				$excel_data[$k+1][2] = array('data'=>$v['ob_appointment_totals']);
 				$excel_data[$k+1][3] = array('data'=>$v['ob_commis_totals']);
-				$excel_data[$k+1][4] = array('data'=>$v['ob_order_return_totals']);
+				$excel_data[$k+1][4] = array('data'=>$v['ob_appointment_return_totals']);
 				$excel_data[$k+1][5] = array('data'=>$v['ob_commis_return_totals']);
-				$excel_data[$k+1][6] = array('data'=>$v['ob_store_cost_totals']);
+				$excel_data[$k+1][6] = array('data'=>$v['ob_clic_cost_totals']);
 				$excel_data[$k+1][7] = array('data'=>$v['ob_result_totals']);
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
@@ -209,7 +209,7 @@ class stat_tradeControl extends SystemControl{
 	    	$plat_data = $model->getBillList($condition,'os');
 	    	Tpl::output('plat_data',$plat_data[0]);
 	    	//店铺数据
-	    	Tpl::output('store_list',$model->getBillList($condition,'ob'));
+	    	Tpl::output('clic_list',$model->getBillList($condition,'ob'));
 	    	Tpl::output('show_page',$model->showpage());
 	    	Tpl::output('top_link',$this->sublink($this->links, 'income'));
 			Tpl::showpage('stat.income');
@@ -438,7 +438,7 @@ class stat_tradeControl extends SystemControl{
 					case 'recharge':
 						$excel_data[$k+1][] = array('data'=>'充值');
 						break;
-					case 'order_pay':
+					case 'appointment_pay':
 						$excel_data[$k+1][] = array('data'=>'消费');
 						break;
 					case 'cash_pay':
@@ -461,9 +461,9 @@ class stat_tradeControl extends SystemControl{
 			Tpl::output('show_page',$model->showpage());
 			//总数统计部分
 			$recharge_amount = $model->getPredepositInfo(array('lg_type'=>'recharge','lg_add_time'=>array('between', array($stime,$etime))), 'sum(lg_av_amount) as allnum');
-			$order_amount = $model->getPredepositInfo(array('lg_type'=>'order_pay','lg_add_time'=>array('between', array($stime,$etime))), 'sum(lg_av_amount) as allnum');
+			$appointment_amount = $model->getPredepositInfo(array('lg_type'=>'appointment_pay','lg_add_time'=>array('between', array($stime,$etime))), 'sum(lg_av_amount) as allnum');
 			$cash_amount = $model->getPredepositInfo(array('lg_type'=>'cash_pay','lg_add_time'=>array('between', array($stime,$etime))), 'sum(lg_freeze_amount) as allnum');
-			Tpl::output('stat_array',array('recharge_amount'=>$recharge_amount[0]['allnum'],'order_amount'=>abs($order_amount[0]['allnum']),'cash_amount'=>abs($cash_amount[0]['allnum'])));
+			Tpl::output('stat_array',array('recharge_amount'=>$recharge_amount[0]['allnum'],'appointment_amount'=>abs($appointment_amount[0]['allnum']),'cash_amount'=>abs($cash_amount[0]['allnum'])));
 			$user_amount = $model->getPredepositInfo(true, 'distinct lg_member_id');
 			Tpl::output('user_amount',count($user_amount));
 			$usable_amount = $model->getPredepositInfo(true, 'sum(lg_av_amount+lg_freeze_amount) as allnum');
@@ -481,7 +481,7 @@ class stat_tradeControl extends SystemControl{
     /**
      * 商品销售明细
      */
-    public function goods_saleOp(){
+    public function doctors_saleOp(){
     	if(!$_REQUEST['search_type']){
 			$_REQUEST['search_type'] = 'day';
 		}
@@ -518,45 +518,45 @@ class stat_tradeControl extends SystemControl{
 		if($_REQUEST['search_type'] == 'day'){
 			$stime = $search_time;//昨天0点
 			$etime = $search_time + 86400 - 1;//今天24点
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods_sale&search_type=day&search_time='.date('Y-m-d',$search_time));
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors_sale&search_type=day&search_time='.date('Y-m-d',$search_time));
 		}
 		if($_REQUEST['search_type'] == 'week'){
 			$current_weekarr = explode('|', $current_week);
 			$stime = strtotime($current_weekarr[0])-86400*7;
 			$etime = strtotime($current_weekarr[1])+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods_sale&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors_sale&search_type=week&search_time_year='.$current_year.'&search_time_month='.$current_month.'&search_time_week='.$current_week);
 		}
 		if($_REQUEST['search_type'] == 'month'){
 			$stime = strtotime($current_year.'-'.$current_month."-01 0 month");
 			$etime = getMonthLastDay($current_year,$current_month)+86400-1;
-			Tpl::output('actionurl','index.php?act=stat_trade&op=goods_sale&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
+			Tpl::output('actionurl','index.php?act=stat_trade&op=doctors_sale&search_type=month&search_time_year='.$current_year.'&search_time_month='.$current_month);
 		}
 		//获取相关数据
 		$where = array();
-		$where['order.add_time'] = array('between', array($stime,$etime));
-		$where['order.order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$where['order.refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$where['order.payment_code'] = array('exp',"!(order.payment_code='offline' and order.order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
-		if(trim($_GET['store_name'])){
-			$where['goods.store_name'] = array('like','%'.trim($_GET['store_name']).'%');
+		$where['appointment.add_time'] = array('between', array($stime,$etime));
+		$where['appointment.appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$where['appointment.refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$where['appointment.payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment.appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		if(trim($_GET['clic_name'])){
+			$where['doctors.clic_name'] = array('like','%'.trim($_GET['clic_name']).'%');
 		}
-    	if(trim($_GET['goods_name'])){
-			$where['goods.goods_name'] = array('like','%'.trim($_GET['goods_name']).'%');
+    	if(trim($_GET['doctors_name'])){
+			$where['doctors.doctors_name'] = array('like','%'.trim($_GET['doctors_name']).'%');
 		}
-    	if(trim($_GET['goods_serial'])){
-			$where['goods.goods_serial'] = array('like','%'.trim($_GET['goods_serial']).'%');
+    	if(trim($_GET['doctors_serial'])){
+			$where['doctors.doctors_serial'] = array('like','%'.trim($_GET['doctors_serial']).'%');
 		}
 		if(intval($_GET['brand_id']) > 0){
-			$where['goods.brand_id'] = intval($_GET['search_brand_id']);
+			$where['doctors.brand_id'] = intval($_GET['search_brand_id']);
 		}
     	if(intval($_GET['cate_id']) > 0){
-			$where['goods.gc_id'] = intval($_GET['cate_id']);
+			$where['doctors.gc_id'] = intval($_GET['cate_id']);
 		}
 		$model = Model('stat');
 		//导出Excel
         if ($_GET['exporttype'] == 'excel'){
         	//获取数据
-        	$goods_list = $model->getGoodsTradeDetailList($where,'');
+        	$doctors_list = $model->getdoctorsTradeDetailList($where,'');
 			//导出Excel
 			import('libraries.excel');
 		    $excel_obj = new Excel();
@@ -571,10 +571,10 @@ class stat_tradeControl extends SystemControl{
 			$excel_data[0][] = array('styleid'=>'s_title','data'=>'下单单量');
 			$excel_data[0][] = array('styleid'=>'s_title','data'=>'下单金额');
 			//data
-			foreach ($goods_list as $k=>$v){
-				$excel_data[$k+1][] = array('data'=>$v['goods_name']);
-				$excel_data[$k+1][] = array('data'=>$v['store_name']);
-				$excel_data[$k+1][] = array('data'=>$v['goods_selltime']==0?date('Y-m-d H:i:s',$v['goods_addtime']):date('Y-m-d H:i:s',$v['goods_selltime']));
+			foreach ($doctors_list as $k=>$v){
+				$excel_data[$k+1][] = array('data'=>$v['doctors_name']);
+				$excel_data[$k+1][] = array('data'=>$v['clic_name']);
+				$excel_data[$k+1][] = array('data'=>$v['doctors_selltime']==0?date('Y-m-d H:i:s',$v['doctors_addtime']):date('Y-m-d H:i:s',$v['doctors_selltime']));
 				$excel_data[$k+1][] = array('data'=>$v['gnum']);
 				$excel_data[$k+1][] = array('data'=>$v['onum']);
 				$excel_data[$k+1][] = array('data'=>$v['pnum']);
@@ -585,13 +585,13 @@ class stat_tradeControl extends SystemControl{
 		    $excel_obj->generateXML($excel_obj->charset('商品销售明细',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		} else {
-			$goods_list = $model->getGoodsTradeDetailList($where);
-			Tpl::output('goods_list',$goods_list);
+			$doctors_list = $model->getdoctorsTradeDetailList($where);
+			Tpl::output('doctors_list',$doctors_list);
 			Tpl::output('show_page',$model->showpage());
 			Tpl::output('brand_list',Model('brand')->getBrandList(array('brand_apply'=>1)));
-			Tpl::output('goods_class',Model('goods_class')->getTreeClassList(1));
-			Tpl::output('top_link',$this->sublink($this->links, 'goods_sale'));
-			Tpl::showpage('stat.goodssale');
+			Tpl::output('doctors_class',Model('doctors_class')->getTreeClassList(1));
+			Tpl::output('top_link',$this->sublink($this->links, 'doctors_sale'));
+			Tpl::showpage('stat.doctorssale');
 		}
     }
     /**
@@ -649,21 +649,21 @@ class stat_tradeControl extends SystemControl{
 		}
 		//获取销售排名数据Top10
 		$condition = array();
-		$condition['order.add_time'] = array('between',array($stime,$etime));
-		$condition['order.order_state'] = array('neq',ORDER_STATE_NEW);//去除未支付订单
-		$condition['order.refund_state'] = array('exp',"!(order_state = '".ORDER_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
-		$condition['order.payment_code'] = array('exp',"!(order.payment_code='offline' and order.order_state <> '".ORDER_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
+		$condition['appointment.add_time'] = array('between',array($stime,$etime));
+		$condition['appointment.appointment_state'] = array('neq',appointment_STATE_NEW);//去除未支付订单
+		$condition['appointment.refund_state'] = array('exp',"!(appointment_state = '".appointment_STATE_CANCEL."' and refund_state = 0)");//没有参与退款的取消订单，不记录到统计中
+		$condition['appointment.payment_code'] = array('exp',"!(appointment.payment_code='offline' and appointment.appointment_state <> '".appointment_STATE_SUCCESS."')");//货到付款订单，订单成功之后才计入统计
 		
-		if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'goods_class'){
-			$type = 'goods';
+		if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'doctors_class'){
+			$type = 'doctors';
 			if(intval($_GET['cate_id']) > 0){
-				$condition['goods.gc_id'] = intval($_GET['cate_id']);
+				$condition['doctors.gc_id'] = intval($_GET['cate_id']);
 			}
 			Tpl::output('chart_tip','商品类目销售排名Top10');
 		}else{
-			$type = 'store';
-			if(intval($_GET['store_class']) > 0){
-				$condition['store.sc_id'] = intval($_GET['store_class']);
+			$type = 'clic';
+			if(intval($_GET['clic_class']) > 0){
+				$condition['clic.sc_id'] = intval($_GET['clic_class']);
 			}
 			Tpl::output('chart_tip','店铺类目销售排名Top10');
 		}
@@ -671,7 +671,7 @@ class stat_tradeControl extends SystemControl{
 		//导出Excel
         if ($_GET['exporttype'] == 'excel'){
         	//获取数据
-        	$data_list = $model->getStoreTradeList($condition,$type);
+        	$data_list = $model->getclicTradeList($condition,$type);
         	//导出Excel
 			import('libraries.excel');
 		    $excel_obj = new Excel();
@@ -679,7 +679,7 @@ class stat_tradeControl extends SystemControl{
 		    //设置样式
 		    $excel_obj->setStyle(array('id'=>'s_title','Font'=>array('FontName'=>'宋体','Size'=>'12','Bold'=>'1')));
 			//header
-		    if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'goods_class'){
+		    if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'doctors_class'){
 		    	$excel_data[0][] = array('styleid'=>'s_title','data'=>'商品名称');
 				$excel_data[0][] = array('styleid'=>'s_title','data'=>'所属分类');
 				$excel_data[0][] = array('styleid'=>'s_title','data'=>'店铺名称');
@@ -695,15 +695,15 @@ class stat_tradeControl extends SystemControl{
 		    }
 			//data
 			foreach ($data_list as $k=>$v){
-				if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'goods_class'){
-					$excel_data[$k+1][] = array('data'=>$v['goods_name']);
+				if(trim($_GET['class_type']) == '' || trim($_GET['class_type']) == 'doctors_class'){
+					$excel_data[$k+1][] = array('data'=>$v['doctors_name']);
 					$excel_data[$k+1][] = array('data'=>$v['gc_name']);
-					$excel_data[$k+1][] = array('data'=>$v['store_name']);
+					$excel_data[$k+1][] = array('data'=>$v['clic_name']);
 					$excel_data[$k+1][] = array('data'=>$v['onum']);
 					$excel_data[$k+1][] = array('data'=>$v['gnum']);
 					$excel_data[$k+1][] = array('data'=>$v['pnum']);
 				}else{
-					$excel_data[$k+1][] = array('data'=>$v['store_name']);
+					$excel_data[$k+1][] = array('data'=>$v['clic_name']);
 					$excel_data[$k+1][] = array('data'=>$v['sc_name']);
 					$excel_data[$k+1][] = array('data'=>$v['member_name']);
 					$excel_data[$k+1][] = array('data'=>$v['onum']);
@@ -712,18 +712,18 @@ class stat_tradeControl extends SystemControl{
 			}
 			$excel_data = $excel_obj->charset($excel_data,CHARSET);
 			$excel_obj->addArray($excel_data);
-		    $excel_obj->addWorksheet($excel_obj->charset(trim($_GET['class_type']) == 'store_class'?'店铺类目销售排名':'商品类目销售排名',CHARSET));
-		    $excel_obj->generateXML($excel_obj->charset(trim($_GET['class_type']) == 'store_class'?'店铺类目销售排名':'商品类目销售排名',CHARSET).date('Y-m-d-H',time()));
+		    $excel_obj->addWorksheet($excel_obj->charset(trim($_GET['class_type']) == 'clic_class'?'店铺类目销售排名':'商品类目销售排名',CHARSET));
+		    $excel_obj->generateXML($excel_obj->charset(trim($_GET['class_type']) == 'clic_class'?'店铺类目销售排名':'商品类目销售排名',CHARSET).date('Y-m-d-H',time()));
 			exit();
         }else{
-        	$data_list = $model->getStoreTradeList($condition,$type,10);
+        	$data_list = $model->getclicTradeList($condition,$type,10);
 			Tpl::output('data_list',$data_list);
-			$stat_arr['title'] = trim($_GET['class_type']) == 'store_class'?'店铺类目销售排名':'商品类目销售排名';
+			$stat_arr['title'] = trim($_GET['class_type']) == 'clic_class'?'店铺类目销售排名':'商品类目销售排名';
             $stat_arr['yAxis'] = '下单金额';
 			$stat_arr['series'][0]['name'] = '下单金额';
 			$stat_arr['series'][0]['data'] = array();
 			for ($i = 0; $i < 15; $i++){
-			    $stat_arr['series'][0]['data'][] = array('name'=>strval($data_list[$i][trim($_GET['class_type']) == 'store_class'?'store_name':'goods_name']),'y'=>floatval($data_list[$i]['pnum']));
+			    $stat_arr['series'][0]['data'][] = array('name'=>strval($data_list[$i][trim($_GET['class_type']) == 'clic_class'?'clic_name':'doctors_name']),'y'=>floatval($data_list[$i]['pnum']));
 			}
         	//构造横轴数据
 			for($i=1; $i<=15; $i++){
@@ -734,15 +734,15 @@ class stat_tradeControl extends SystemControl{
     		$stat_json = getStatData_Column2D($stat_arr);
     		Tpl::output('stat_json',$stat_json);
 			//店铺分类
-			$model_store_class = Model('store_class');
-			$parent_list = $model_store_class->getTreeClassList(2);
+			$model_clic_class = Model('clic_class');
+			$parent_list = $model_clic_class->getTreeClassList(2);
 			if (is_array($parent_list)){
 				foreach ($parent_list as $k => $v){
 					$parent_list[$k]['sc_name'] = str_repeat("&nbsp;",$v['deep']*2).$v['sc_name'];
 				}
 			}
 			Tpl::output('class_list',$parent_list);
-			Tpl::output('goods_class',Model('goods_class')->getTreeClassList(1));
+			Tpl::output('doctors_class',Model('doctors_class')->getTreeClassList(1));
 	    	Tpl::output('top_link',$this->sublink($this->links, 'class_sale'));
 			Tpl::showpage('stat.classsale');
         }
@@ -752,20 +752,20 @@ class stat_tradeControl extends SystemControl{
 	 */
     public function saleOp(){
     	$where = array();
-    	if(trim($_GET['order_type']) != ''){
-    		$where['order_state'] = trim($_GET['order_type']);
+    	if(trim($_GET['appointment_type']) != ''){
+    		$where['appointment_state'] = trim($_GET['appointment_type']);
     	}
     	if(trim($_GET['stat_type']) == 'sale'){
-    		$field = ' sum(order_amount) as allnum ';
+    		$field = ' sum(appointment_amount) as allnum ';
     	}else{
     		$field = ' count(*) as allnum ';
     	}
 		if(!$_REQUEST['search_type']){
 			$_REQUEST['search_type'] = 'day';
 		}
-		if(trim($_GET['store_name']) != ''){
-			$where['store_name'] = trim($_GET['store_name']);
-			$store_name = trim($_GET['store_name']);
+		if(trim($_GET['clic_name']) != ''){
+			$where['clic_name'] = trim($_GET['clic_name']);
+			$clic_name = trim($_GET['clic_name']);
 		}
 		//初始化时间
 		//天
@@ -823,7 +823,7 @@ class stat_tradeControl extends SystemControl{
 			
 			$where['add_time'] = array('between',array($stime,$etime));
 			$field .= ' ,DAY(FROM_UNIXTIME(add_time)) as dayval,HOUR(FROM_UNIXTIME(add_time)) as hourval ';
-			$memberlist = $model->getStoreSaleStatList($where, $field, 0, '', 0, 'dayval,hourval');
+			$memberlist = $model->getclicSaleStatList($where, $field, 0, '', 0, 'dayval,hourval');
 			if($memberlist){
 				foreach($memberlist as $k => $v){
 					if($today_day == $v['dayval']){
@@ -835,7 +835,7 @@ class stat_tradeControl extends SystemControl{
 						$uplist_arr[$v['hourval']]['val'] = intval($v['allnum']);
 					}
 				}
-			}elseif(trim($_GET['store_name']) != ''){
+			}elseif(trim($_GET['clic_name']) != ''){
 				Tpl::output('data_null','yes');
 			}
 			$stat_arr['series'][0]['name'] = '昨天';
@@ -869,7 +869,7 @@ class stat_tradeControl extends SystemControl{
 			}
 			$where['add_time'] = array('between', array($stime,$etime));
 			$field .= ',WEEKOFYEAR(FROM_UNIXTIME(add_time)) as weekval,DAYOFWEEK(FROM_UNIXTIME(add_time)) as dayofweekval ';
-			$memberlist = $model->getStoreSaleStatList($where, $field, 0, '', 0, 'weekval,dayofweekval');
+			$memberlist = $model->getclicSaleStatList($where, $field, 0, '', 0, 'weekval,dayofweekval');
 			if($memberlist){
 				foreach($memberlist as $k=>$v){
 					if ($up_week == $v['weekval']){
@@ -881,7 +881,7 @@ class stat_tradeControl extends SystemControl{
 						$currlist_arr[$v['dayofweekval']]['val'] = intval($v['allnum']);
 					}
 				}
-			}elseif(trim($_GET['store_name']) != ''){
+			}elseif(trim($_GET['clic_name']) != ''){
 				Tpl::output('data_null','yes');
 			}
 			$stat_arr['series'][0]['name'] = '上周';
@@ -918,7 +918,7 @@ class stat_tradeControl extends SystemControl{
 			}
 			$where['add_time'] = array('between', array($stime,$etime));
 			$field .= ',MONTH(FROM_UNIXTIME(add_time)) as monthval,day(FROM_UNIXTIME(add_time)) as dayval ';
-			$memberlist = $model->getStoreSaleStatList($where, $field, 0, '', 0, 'monthval,dayval');
+			$memberlist = $model->getclicSaleStatList($where, $field, 0, '', 0, 'monthval,dayval');
 		    if($memberlist){
 				foreach($memberlist as $k=>$v){
 					if ($up_month == $v['monthval']){
@@ -930,7 +930,7 @@ class stat_tradeControl extends SystemControl{
 						$currlist_arr[$v['dayval']]['val'] = intval($v['allnum']);
 					}
 				}
-			}elseif(trim($_GET['store_name']) != ''){
+			}elseif(trim($_GET['clic_name']) != ''){
 				Tpl::output('data_null','yes');
 			}
 			$stat_arr['series'][0]['name'] = '上月';
@@ -954,28 +954,28 @@ class stat_tradeControl extends SystemControl{
 			foreach ($statlist['headertitle'] as $v){
 			    $excel_data[0][] = array('styleid'=>'s_title','data'=>$v);
 			}
-			$order_all_list = $model->getStoreOrderList($where,false);
+			$appointment_all_list = $model->getclicappointmentList($where,false);
 			//data
-			foreach ($order_all_list as $k=>$v){
-				$excel_data[$k+1][] = array('data'=>$v['order_sn']);
+			foreach ($appointment_all_list as $k=>$v){
+				$excel_data[$k+1][] = array('data'=>$v['appointment_sn']);
 				$excel_data[$k+1][] = array('data'=>$v['buyer_name']);
-				$excel_data[$k+1][] = array('data'=>$v['store_name']);
+				$excel_data[$k+1][] = array('data'=>$v['clic_name']);
 				$excel_data[$k+1][] = array('data'=>date('Y-m-d H:i:s',$v['add_time']));
-				$excel_data[$k+1][] = array('data'=>number_format(($v['order_amount']),2));
-				switch ($v['order_state']){
-		        	case ORDER_STATE_CANCEL:
+				$excel_data[$k+1][] = array('data'=>number_format(($v['appointment_amount']),2));
+				switch ($v['appointment_state']){
+		        	case appointment_STATE_CANCEL:
 		        		$excel_data[$k+1][] = array('data'=>'已取消');
 		        		break;
-		        	case ORDER_STATE_NEW:
+		        	case appointment_STATE_NEW:
 		        		$excel_data[$k+1][] = array('data'=>'待付款');
 		        		break;
-		        	case ORDER_STATE_PAY:
+		        	case appointment_STATE_PAY:
 		        		$excel_data[$k+1][] = array('data'=>'待发货');
 		        		break;
-		        	case ORDER_STATE_SEND:
+		        	case appointment_STATE_SEND:
 		        		$excel_data[$k+1][] = array('data'=>'待收货');
 		        		break;
-		        	case ORDER_STATE_SUCCESS:
+		        	case appointment_STATE_SUCCESS:
 		        		$excel_data[$k+1][] = array('data'=>'交易完成');
 		        		break;
 		        }
@@ -986,7 +986,7 @@ class stat_tradeControl extends SystemControl{
 		    $excel_obj->generateXML($excel_obj->charset('订单统计',CHARSET).date('Y-m-d-H',time()));
 			exit();
 		} else {
-			$order_list = $model->getStoreOrderList($where);
+			$appointment_list = $model->getclicappointmentList($where);
 			//得到统计图数据
 			if(trim($_GET['stat_type']) == 'sale'){
 				$stat_arr['title'] = '订单销售额统计';
@@ -997,12 +997,12 @@ class stat_tradeControl extends SystemControl{
 			}
     		$stat_json = getStatData_LineLabels($stat_arr);
     		//总数统计
-    		$amount = $model->getStoreSaleStatList($where,' count(*) as allnum ');
-    		$sale = $model->getStoreSaleStatList($where,' sum(order_amount) as allnum ');
+    		$amount = $model->getclicSaleStatList($where,' count(*) as allnum ');
+    		$sale = $model->getclicSaleStatList($where,' sum(appointment_amount) as allnum ');
     		Tpl::output('sum_data',array($amount[0]['allnum'],$sale[0]['allnum']));
     		Tpl::output('stat_json',$stat_json);
     		Tpl::output('statlist',$statlist);
-    		Tpl::output('order_list',$order_list);
+    		Tpl::output('appointment_list',$appointment_list);
     		Tpl::output('show_page',$model->showpage());
     		Tpl::output('top_link',$this->sublink($this->links, 'sale'));
 			Tpl::showpage('stat.sale');

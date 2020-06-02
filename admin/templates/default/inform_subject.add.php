@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -27,7 +27,7 @@
   <form id="add_form" method="post" enctype="multipart/form-data" action="index.php?act=inform&op=inform_subject_save">
     <table class="table tb-type2">
       <tbody>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td colspan="2" class="required"><?php echo $lang['inform_type'];?>:</td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@
         <tr>
           <td colspan="2" class="required"><label class="validation"  for="inform_subject_content"><?php echo $lang['inform_subject'];?>:</label></td>
         </tr>
-        <tr class="noborder">
+        <tr class="nobappointment">
           <td class="vatop rowform"><input type="text" id="inform_subject_content" name="inform_subject_content" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>

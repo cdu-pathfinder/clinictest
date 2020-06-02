@@ -1,5 +1,5 @@
 <?php
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * model简体语言包
@@ -17,18 +17,18 @@ $lang['month_oct'] = 'October';
 $lang['month_nov'] = 'November';
 $lang['month_dec'] = 'December';
 
-$lang['order_state_submitted'] = 'Submitted';
-$lang['order_state_pending_payment'] = 'Pending';
-$lang['order_state_canceled'] = 'Cancel';
-$lang['order_state_paid'] = 'Paid';
-$lang['order_state_to_be_shipped'] = 'Pending';
-$lang['order_state_shipped'] = 'Sending';
-$lang['order_state_be_receiving'] = 'Waiting';
-$lang['order_state_completed'] = 'Complete';
-$lang['order_state_to_be_evaluated'] = 'Waiting comment';
-$lang['order_state_to_be_confirmed'] = 'Waiting';
-$lang['order_state_confirmed'] = 'Confrimed';
-$lang['order_state_unknown'] = 'unknow';
-$lang['order_state_null'] = 'Null';
-$lang['order_state_operator'] = 'System';
-$lang['order_admin_operator'] = 'System operator';
+$lang['appointment_state_submitted'] = 'Submitted';
+$lang['appointment_state_pending_payment'] = 'Pending';
+$lang['appointment_state_canceled'] = 'Cancel';
+$lang['appointment_state_paid'] = 'Paid';
+$lang['appointment_state_to_be_shipped'] = 'Pending';
+$lang['appointment_state_shipped'] = 'Sending';
+$lang['appointment_state_be_receiving'] = 'Waiting';
+$lang['appointment_state_completed'] = 'Complete';
+$lang['appointment_state_to_be_evaluated'] = 'Waiting comment';
+$lang['appointment_state_to_be_confirmed'] = 'Waiting';
+$lang['appointment_state_confirmed'] = 'Confrimed';
+$lang['appointment_state_unknown'] = 'unknow';
+$lang['appointment_state_null'] = 'Null';
+$lang['appointment_state_operator'] = 'System';
+$lang['appointment_admin_operator'] = 'System operator';

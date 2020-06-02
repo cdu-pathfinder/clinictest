@@ -8,16 +8,16 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
 
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 
 /**
  * 通过FTP同步图片到远程服务器
  *
- * @param string $path 图片路径（upload/store/goods/4）
+ * @param string $path 图片路径（upload/clic/doctors/4）
  * @param string $file 图片名称（含年月日2012/06/12/03f625d923bfb1ca84355007487ed68b.jpg）
  * @param boolean $ifdel 是否删除本地图片，目前淘宝导入的图片上传到远程时，不会删除本地图片
  * @return string 远程图片路径部分
@@ -25,7 +25,7 @@ defined('InShopNC') or exit('Access Invalid!');
 function remote_ftp($path, $file, $ifdel = true){
 
 	ftpcmd('upload', $path.'/'.$file);
-	$img_ext = explode(',', GOODS_IMAGES_EXT);
+	$img_ext = explode(',', doctorS_IMAGES_EXT);
 	foreach ($img_ext as $val) {
         if(!ftpcmd('error')) ftpcmd('upload', $path.'/'.str_ireplace('.', $val . '.', $file));
 	}

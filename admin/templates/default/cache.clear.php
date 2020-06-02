@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -19,7 +19,7 @@
                     &nbsp;
                     <label for="cls_full"><?php echo $lang['cache_cls_all'];?></label></td>
                 </tr>
-                <tr class="noborder">
+                <tr class="nobappointment">
                   <td class="vatop rowform"><ul class="nofloat w830">
                       <li class="left w18pre">
                         <label>
@@ -28,7 +28,7 @@
                       </li>
                       <li class="left w18pre">
                         <label>
-                          <input type="checkbox" name="cache[]" value="goodsclass" >
+                          <input type="checkbox" name="cache[]" value="doctorsclass" >
                           &nbsp;<?php echo $lang['cache_cls_category'];?></label>
                       </li>
                       <li class="left w18pre">
@@ -68,13 +68,13 @@
                       </li>
                       <li class="left w18pre">
                         <label>
-                          <input type="checkbox" name="cache[]" id="store_class" value="store_class" >
-                          &nbsp;<?php echo $lang['cache_cls_store_class']?></label>
+                          <input type="checkbox" name="cache[]" id="clic_class" value="clic_class" >
+                          &nbsp;<?php echo $lang['cache_cls_clic_class']?></label>
                       </li>
                       <li class="left w18pre">
                         <label>
-                          <input type="checkbox" name="cache[]" id="store_grade" value="store_grade" >
-                          &nbsp;<?php echo $lang['cache_cls_store_grade']?></label>
+                          <input type="checkbox" name="cache[]" id="clic_grade" value="clic_grade" >
+                          &nbsp;<?php echo $lang['cache_cls_clic_grade']?></label>
                       </li>
                       <li class="left w18pre">
                         <label>

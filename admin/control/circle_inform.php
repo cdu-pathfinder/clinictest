@@ -10,7 +10,7 @@
  * @license    cdu
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class circle_informControl extends SystemControl{
 	public function __construct(){
 		parent::__construct();
@@ -46,7 +46,7 @@ class circle_informControl extends SystemControl{
 		if($_GET['searchstate'] != ''){
 			$where['inform_state'] = intval($_GET['searchstate']);
 		}
-		$inform_list = $model->table('circle_inform')->where($where)->page(10)->order('inform_id desc')->select();
+		$inform_list = $model->table('circle_inform')->where($where)->page(10)->appointment('inform_id desc')->select();
 		// tidy
 		if(!empty($inform_list)){
 			foreach ($inform_list as $key=>$val){

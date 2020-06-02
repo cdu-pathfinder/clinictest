@@ -1,4 +1,4 @@
-<?php defined('InShopNC') or exit('Access Invalid!');?>
+<?php defined('InclinicNC') or exit('Access Invalid!');?>
 
 <div class="page">
   <div class="fixed-bar">
@@ -11,7 +11,7 @@
     <input type="hidden" name="act" value="stat_marketing" />
     <input type="hidden" name="op" value="promotion" />
     <div class="w100pre" style="width: 100%;">
-      <table class="tb-type1 noborder search left">
+      <table class="tb-type1 nobappointment search left">
         <tbody>
           <tr>
             <td><select name="search_type" id="search_type" class="querySelect">
@@ -52,33 +52,33 @@
       <span class="right" style="margin:12px 0px 6px 4px;"> </span> </div>
   </form>
   <div class="stat-info"> <span>下单量：
-    <strong><?php echo intval($output['statcount']['ordernum']);?></strong>
+    <strong><?php echo intval($output['statcount']['appointmentnum']);?></strong>
     </span><span>下单商品数：
-    <strong><?php echo intval($output['statcount']['goodsnum']);?></strong>
+    <strong><?php echo intval($output['statcount']['doctorsnum']);?></strong>
     </span><span>下单金额：
-    <strong><?php echo ncPriceFormat($output['statcount']['orderamount']);?></strong>
+    <strong><?php echo ncPriceFormat($output['statcount']['appointmentamount']);?></strong>
     元 </span></div>
   <div id="stat_tabs" class="w100pre close_float ui-tabs">
     <div class="close_float tabmenu">
       <ul class="tab pngFix">
-        <li><a href="#ordernum_div" nc_type="showlinelabels" data-param='{"type":"ordernum"}'>下单量</a></li>
-        <li><a href="#goodsnum_div" nc_type="showlinelabels" data-param='{"type":"goodsnum"}'>下单商品数</a></li>
-        <li><a href="#orderamount_div" nc_type="showlinelabels" data-param='{"type":"orderamount"}'>下单金额</a></li>
+        <li><a href="#appointmentnum_div" nc_type="showlinelabels" data-param='{"type":"appointmentnum"}'>下单量</a></li>
+        <li><a href="#doctorsnum_div" nc_type="showlinelabels" data-param='{"type":"doctorsnum"}'>下单商品数</a></li>
+        <li><a href="#appointmentamount_div" nc_type="showlinelabels" data-param='{"type":"appointmentamount"}'>下单金额</a></li>
       </ul>
     </div>
     <!-- 下单量 -->
-    <div id="ordernum_div" class="close_float"></div>
+    <div id="appointmentnum_div" class="close_float"></div>
     <!-- 下单商品件数 -->
-    <div id="goodsnum_div"></div>
+    <div id="doctorsnum_div"></div>
     <!-- 下单金额 -->
-    <div id="orderamount_div"></div>
+    <div id="appointmentamount_div"></div>
   </div>
   
   <!-- pie stat start -->
   <div class="w100pre close_float" style="max-height:400px">
-    <div id="statpie_ordernum" class="w18pre" style="float:left; padding-left:50px;"></div>
-    <div id="statpie_goodsnum" class="w18pre" style="float:left; padding-left:50px;"></div>
-    <div id="statpie_orderamount" class="w18pre" style="float:left; padding-left:50px;"></div>
+    <div id="statpie_appointmentnum" class="w18pre" style="float:left; padding-left:50px;"></div>
+    <div id="statpie_doctorsnum" class="w18pre" style="float:left; padding-left:50px;"></div>
+    <div id="statpie_appointmentamount" class="w18pre" style="float:left; padding-left:50px;"></div>
   </div>
   <!-- pie stat end --> 
   
@@ -95,10 +95,10 @@
     <?php if(!empty($output['statlist'])){ ?>
       <?php foreach($output['statlist'] as $k => $v){ ?>
       <tr class="hover member">
-        <td><?php echo $v['goodstype_text'];?></td>
-        <td class="align-center"><?php echo $v['ordernum']; ?></td>
-        <td class="align-center"><?php echo $v['goodsnum']; ?></td>
-        <td class="align-center"><?php echo $v['orderamount']; ?></td>
+        <td><?php echo $v['doctorstype_text'];?></td>
+        <td class="align-center"><?php echo $v['appointmentnum']; ?></td>
+        <td class="align-center"><?php echo $v['doctorsnum']; ?></td>
+        <td class="align-center"><?php echo $v['appointmentamount']; ?></td>
       </tr>
       <?php } ?>
     <?php } else { ?>
@@ -155,7 +155,7 @@ $(function () {
 	});
 	
 	//linelabels
-	getLineLabels('ordernum');
+	getLineLabels('appointmentnum');
 	$("[nc_type='showlinelabels']").click(function(){
     	var data_str = $(this).attr('data-param');
 		eval('data_str = '+data_str);
@@ -167,9 +167,9 @@ $(function () {
     });
     
 	//pie
-	$('#statpie_ordernum').highcharts(<?php echo $output['stat_json']['ordernum'];?>);
-	$('#statpie_goodsnum').highcharts(<?php echo $output['stat_json']['goodsnum'];?>);
-	$('#statpie_orderamount').highcharts(<?php echo $output['stat_json']['orderamount'];?>);
+	$('#statpie_appointmentnum').highcharts(<?php echo $output['stat_json']['appointmentnum'];?>);
+	$('#statpie_doctorsnum').highcharts(<?php echo $output['stat_json']['doctorsnum'];?>);
+	$('#statpie_appointmentamount').highcharts(<?php echo $output['stat_json']['appointmentamount'];?>);
 });
 
 //load linelabels

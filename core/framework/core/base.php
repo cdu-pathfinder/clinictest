@@ -8,10 +8,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 final class Base{
 
 	const CPURL = '';
@@ -67,7 +67,7 @@ final class Base{
 		$nc_config['db']['master'] = $nc_config['db'][1];
 		$setting_config = $nc_config;
 		$setting = ($setting = H('setting')) ? $setting : H('setting',true);
-		$setting['shopnc_version'] = '<span class="vol"><font class="b">GROUP10-</font><font class="o">liam</font></span>';
+		$setting['clinicnc_version'] = '<span class="vol"><font class="b">GROUP10-</font><font class="o">liam</font></span>';
 		$setting_config = array_merge_recursive($setting,$nc_config);
 	}
 
@@ -78,8 +78,8 @@ final class Base{
 	private static function control(){
 		//二级域名
 		if ($GLOBALS['setting_config']['enabled_subdomain'] == '1' && $_GET['act'] == 'index' && $_GET['op'] == 'index'){
-			$store_id = subdomain();
-			if ($store_id > 0) $_GET['act'] = 'show_store';
+			$clic_id = subdomain();
+			if ($clic_id > 0) $_GET['act'] = 'show_clic';
 		}
 		$act_file = realpath(BASE_PATH.'/control/'.$_GET['act'].'.php');
 		$class_name = $_GET['act'].'Control';
@@ -178,11 +178,11 @@ final class Base{
 					continue;
 				}
 			}
-			header('location: http://www.shopnc.net');exit();
+			header('location: http://www.clinicnc.net');exit();
 		}else{
 			$d = strtolower(stristr($_SERVER['HTTP_HOST'],self::CPURL));
 			if ($d != strtolower(self::CPURL)){
-				header('location: http://www.shopnc.net');exit();
+				header('location: http://www.clinicnc.net');exit();
 			}
 		}
 	}

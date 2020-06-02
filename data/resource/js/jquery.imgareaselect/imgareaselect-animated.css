@@ -1,32 +1,32 @@
 /*
- * imgAreaSelect animated border style
+ * imgAreaSelect animated bappointment style
  */
 
-.imgareaselect-border1 {
-	background: url(border-anim-v.gif) repeat-y left top;
+.imgareaselect-bappointment1 {
+	background: url(bappointment-anim-v.gif) repeat-y left top;
 }
 
-.imgareaselect-border2 {
-    background: url(border-anim-h.gif) repeat-x left top;
+.imgareaselect-bappointment2 {
+    background: url(bappointment-anim-h.gif) repeat-x left top;
 }
 
-.imgareaselect-border3 {
-    background: url(border-anim-v.gif) repeat-y right top;
+.imgareaselect-bappointment3 {
+    background: url(bappointment-anim-v.gif) repeat-y right top;
 }
 
-.imgareaselect-border4 {
-    background: url(border-anim-h.gif) repeat-x left bottom;
+.imgareaselect-bappointment4 {
+    background: url(bappointment-anim-h.gif) repeat-x left bottom;
 }
 
-.imgareaselect-border1, .imgareaselect-border2,
-.imgareaselect-border3, .imgareaselect-border4 {
+.imgareaselect-bappointment1, .imgareaselect-bappointment2,
+.imgareaselect-bappointment3, .imgareaselect-bappointment4 {
     filter: alpha(opacity=50);
 	opacity: 0.5;
 }
 
 .imgareaselect-handle {
     background-color: #fff;
-	border: solid 1px #000;
+	bappointment: solid 1px #000;
     filter: alpha(opacity=50);
 	opacity: 0.5;
 }

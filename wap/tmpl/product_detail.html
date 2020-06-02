@@ -13,25 +13,25 @@
 </head>
 <body>
 	<header id="header"></header>
-	<div id="product_detail_wp"></div>
+	<div id="doc_detail_wp"></div>
 	<footer id="footer"></footer>
 	</div>
-	<script type="text/html" id="product_detail">
+	<script type="text/html" id="doc_detail">
 		<div class="content">
 			<div class="pddetail-cnt">
 				<div class="pddc-topwp">
 					<a href="javascript:void(0);" class="pddct-imgwp">
 						<div id='mySwipe'class='swiper-container'>
 						  <div class='swipe-wrap'>
-						  <% for(var i =0;i<goods_image.length;i++){　%>
-						      <div class="swipe-item"><img src="<%=goods_image[i]%>"/></div>
+						  <% for(var i =0;i<doctors_image.length;i++){　%>
+						      <div class="swipe-item"><img src="<%=doctors_image[i]%>"/></div>
 						   <%}%>
 						  </div>
 						</div>
 						<div class="pddct-shadow"></div>
 						<div class="pddct-name-wp">
 							<div class="pddctnw-name">
-								<%=goods_info.goods_name%>
+								<%=doctors_info.doctors_name%>
 							</div>
 						</div>
 						<span class="pd-collect">收藏</span>
@@ -39,12 +39,12 @@
 						<span class="pdpic-size">
 							<span class="pds-cursize">1</span>
 							/
-							<span class="pds-tsize"><%=goods_image.length%></span>
+							<span class="pds-tsize"><%=doctors_image.length%></span>
 						</span>
 					</a>
 				</div>
 				<div class="pddc-gray-warp">
-	                <a href="product_info.html?goods_id=<%=goods_info.goods_id%>"  class="pddetail-go-title clearfix">
+	                <a href="doc_info.html?doctors_id=<%=doctors_info.doctors_id%>"  class="pddetail-go-title clearfix">
 	                    <span class="pgt-title fleft">
 	                        pic-word infor
 	                    </span>
@@ -59,15 +59,15 @@
 							<ul>
 								<li class="clearfix">
 									<span class="key">price：</span>
-									<div class="price value">$<%=goods_info.goods_price%></div>
+									<div class="price value">$<%=doctors_info.doctors_price%></div>
 								</li>
 								<li class="clearfix">
 									<span class="key">原价：</span>
-									<div class="value"><del>$<%=goods_info.goods_marketprice%></del></div>
+									<div class="value"><del>$<%=doctors_info.doctors_marketprice%></del></div>
 								</li>
 								<li class="clearfix">
 									<span class="key">appointments：</span>
-									<div class="value"><%=goods_info.goods_salenum%>件</div>
+									<div class="value"><%=doctors_info.doctors_salenum%>件</div>
 								</li>
 							</ul>
 							<div class="pddcp-arrow">
@@ -79,10 +79,10 @@
 								<span class="key">商品描述：</span>
 							</div>
 							<p>
-								<% if(goods_info.goods_jingle.length <=0){%>
+								<% if(doctors_info.doctors_jingle.length <=0){%>
 									暂无商品描述
 								<%}else{%>
-									<%=goods_info.goods_jingle%>
+									<%=doctors_info.doctors_jingle%>
 								<%}%>
 							</p>
 						</div>
@@ -109,7 +109,7 @@
 								<div class="no-value mt5">
 									单笔订单满<span class="clr-d94 mr5 ml5"><%=mansong_info.rules[i].price%></span>元，立减<span class="clr-green mr5 ml5"><%=mansong_info.rules[i].discount%></span>元，送礼品：
 									<p class="">
-										<img src="<%=mansong_info.rules[i].goods_image_url%>"/>
+										<img src="<%=mansong_info.rules[i].doctors_image_url%>"/>
 									<p>
 								</div>
 								<%}}else {%>
@@ -123,20 +123,20 @@
 						<li class="pddc-stock-title clearfix">
 							<span class="key">库存：</span>
 							<div class="price value">
-								<span class="stock-num"><%=goods_info.goods_storage%></span>
+								<span class="stock-num"><%=doctors_info.doctors_storage%></span>
 								件
 							</div>
 						</li>
-						<% if(goods_map_spec.length>0){%>
-						<% for(var i =0;i<goods_map_spec.length;i++){%>
+						<% if(doctors_map_spec.length>0){%>
+						<% for(var i =0;i<doctors_map_spec.length;i++){%>
 						<li class="pddc-stock-spec bd-tdashed-dd">
-							<span class="key-no" spec_id="<%=goods_map_spec[i].id%>">
-								<%=goods_map_spec[i].goods_spec_name%>：
+							<span class="key-no" spec_id="<%=doctors_map_spec[i].id%>">
+								<%=doctors_map_spec[i].doctors_spec_name%>：
 							</span>
 							<div class="value-no mt10">
-								<%for(var j = 0;j<goods_map_spec[i].goods_spec_value.length;j++){%>
-									<a href="javascript:void(0);" <%if (goods_info.goods_spec[goods_map_spec[i].goods_spec_value[j].specs_value_id]){%> class="current" <%}%>specs_value_id = "<%=goods_map_spec[i].goods_spec_value[j].specs_value_id%>">
-										<%=goods_map_spec[i].goods_spec_value[j].specs_value_name%>
+								<%for(var j = 0;j<doctors_map_spec[i].doctors_spec_value.length;j++){%>
+									<a href="javascript:void(0);" <%if (doctors_info.doctors_spec[doctors_map_spec[i].doctors_spec_value[j].specs_value_id]){%> class="current" <%}%>specs_value_id = "<%=doctors_map_spec[i].doctors_spec_value[j].specs_value_id%>">
+										<%=doctors_map_spec[i].doctors_spec_value[j].specs_value_name%>
 										<i class="pd-choice-icon"></i>
 									</a>
 								<%}%>
@@ -159,9 +159,9 @@
 							</div>
 						</li>
 						<li class="bd-tdashed-dd">
-							<div class="opera-product-wp">
+							<div class="opera-doc-wp">
 								<div class="opera-pd-item buy-now">立即购买</div>
-								<%if(goods_info.promotion_type!='groupbuy'){%>
+								<%if(doctors_info.promotion_type!='groupbuy'){%>
 								<div class="opera-pd-item add-to-cart">加入chart</div>
 								<%}%>
 							</div>
@@ -172,13 +172,13 @@
 					<div class="pddc-commend-list">
 						<span class="pddc-commendl-title">商品推荐：</span>
 						<div class="pddc-commend-wp clearfix">
-							<%for (var i = 0;i<goods_commend_list.length;i++){%>
-								<a href="product_detail.html?goods_id=<%=goods_commend_list[i].goods_id%>">
-									<img src="<%=goods_commend_list[i].goods_image_url%>">
-									<span class="pddc-commendw-t" title="<%=goods_commend_list[i].goods_name%>">
-										<%=goods_commend_list[i].goods_name%>
+							<%for (var i = 0;i<doctors_commend_list.length;i++){%>
+								<a href="doc_detail.html?doctors_id=<%=doctors_commend_list[i].doctors_id%>">
+									<img src="<%=doctors_commend_list[i].doctors_image_url%>">
+									<span class="pddc-commendw-t" title="<%=doctors_commend_list[i].doctors_name%>">
+										<%=doctors_commend_list[i].doctors_name%>
 									</span>
-									<span class="pddc-commendw-price" title="$<%=goods_commend_list[i].goods_price%>">$<%=goods_commend_list[i].goods_price%></span>
+									<span class="pddc-commendw-price" title="$<%=doctors_commend_list[i].doctors_price%>">$<%=doctors_commend_list[i].doctors_price%></span>
 								</a>
 							<%}%>
 						</div>
@@ -195,6 +195,6 @@
 	<script type="text/javascript" src="../js/simple-plugin.js"></script>
 	<script type="text/javascript" src="../js/tmpl/common-top.js"></script>
 	<script type="text/javascript" src="../js/tmpl/footer.js"></script>
-	<script type="text/javascript" src="../js/tmpl/product_detail.js"></script>
+	<script type="text/javascript" src="../js/tmpl/doc_detail.js"></script>
 </body>
 </html>

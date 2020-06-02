@@ -7,10 +7,10 @@
  * @copyright  gourp10 
  * liam
  * @license    cdu
- * @author	   ShopNC Team
+ * @author	   clinicNC Team
  * @since      File available since Release v1.1
  */
-defined('InShopNC') or exit('Access Invalid!');
+defined('InclinicNC') or exit('Access Invalid!');
 class Page{
 	/**
 	 * url参数中页码参数名
@@ -349,12 +349,12 @@ class Page{
 				if ($this->getNowPage() == 1){
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</li>';
 				}else {
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl($this->getNowPage()-1) .'">'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl($this->getNowPage()-1) .'">'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</a></li>';
 				}
 				if ($this->getNowPage() == $this->getTotalPage() || $this->getTotalPage() == 0){
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</li>';
 				}else {
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl($this->getNowPage()+1) .'">'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl($this->getNowPage()+1) .'">'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</a></li>';
 				}
 				$html_page .= '</ul>';
 				break;
@@ -364,16 +364,16 @@ class Page{
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->pre_home.$this->right_inside_a_html.'</li>';
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</li>';
 				}else {
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl('1') .'">'.$this->left_inside_a_html.$this->pre_home.$this->right_inside_a_html.'</a></li>';
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl($this->getNowPage()-1) .'">'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl('1') .'">'.$this->left_inside_a_html.$this->pre_home.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl($this->getNowPage()-1) .'">'.$this->left_inside_a_html.$this->pre_page.$this->right_inside_a_html.'</a></li>';
 				}
 				$html_page .= $this->getNowBar();
 				if ($this->getNowPage() == $this->getTotalPage() || $this->getTotalPage() == 0){
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</li>';
 					$html_page .= '<li>'.$this->left_inside_a_html.$this->pre_last.$this->right_inside_a_html.'</li>';
 				}else {
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl($this->getNowPage()+1) .'">'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</a></li>';
-					$html_page .= '<li><a class="demo" href="'. $this->setShopPseudoStaticPageUrl($this->getTotalPage()) .'">'.$this->left_inside_a_html.$this->pre_last.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl($this->getNowPage()+1) .'">'.$this->left_inside_a_html.$this->next_page.$this->right_inside_a_html.'</a></li>';
+					$html_page .= '<li><a class="demo" href="'. $this->setclinicPseudoStaticPageUrl($this->getTotalPage()) .'">'.$this->left_inside_a_html.$this->pre_last.$this->right_inside_a_html.'</a></li>';
 				}
 				$html_page .= '</ul>';
 				break;
@@ -463,7 +463,7 @@ class Page{
 			$result = $this->left_current_html.$page.$this->right_current_html;
 		}else {
 		    if (in_array($this->style, array(4,5))) {     // 商城伪静态使用
-		        $result = $this->left_html."<a class='demo' href='". $this->setShopPseudoStaticPageUrl($page) ."'>".$this->left_inside_a_html.$page_name.$this->right_inside_a_html."</a>".$this->right_html;
+		        $result = $this->left_html."<a class='demo' href='". $this->setclinicPseudoStaticPageUrl($page) ."'>".$this->left_inside_a_html.$page_name.$this->right_inside_a_html."</a>".$this->right_html;
             } else {                                      // 普通分页使用
                 $result = $this->left_html."<a class='demo' href='". $this->page_url . $page ."'>".$this->left_inside_a_html.$page_name.$this->right_inside_a_html."</a>".$this->right_html;
 		    }
@@ -510,13 +510,13 @@ class Page{
      * @param int $page
      * @return string 字符串类型的返回结果
      */
-    private function setShopPseudoStaticPageUrl($page){
+    private function setclinicPseudoStaticPageUrl($page){
         $param = $_GET;
         $act = $param['act'] == '' ? 'index' : $param['act'];
         unset($param['act']);
         $op = $param['op'] == '' ? 'index' : $param['op'];
         unset($param['op']);
         $param[$this->page_name] = $page;
-        return urlShop($act, $op, $param);
+        return urlclinic($act, $op, $param);
     }
 }

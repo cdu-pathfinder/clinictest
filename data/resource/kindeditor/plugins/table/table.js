@@ -8,7 +8,7 @@
 *******************************************************************************/
 
 KindEditor.plugin('table', function(K) {
-	var self = this, name = 'table', lang = self.lang(name + '.'), zeroborder = 'ke-zeroborder';
+	var self = this, name = 'table', lang = self.lang(name + '.'), zerobappointment = 'ke-zerobappointment';
 	// 设置颜色
 	function _setColor(box, color) {
 		color = color.toUpperCase();
@@ -104,11 +104,11 @@ KindEditor.plugin('table', function(K) {
 				'<option value="right">' + lang.alignRight + '</option>',
 				'</select>',
 				'</div>',
-				//border
+				//bappointment
 				'<div class="ke-dialog-row">',
-				'<label for="keBorder" style="width:90px;">' + lang.border + '</label>',
-				lang.borderWidth + ' <input type="text" id="keBorder" class="ke-input-text ke-input-number" name="border" value="" maxlength="4" /> &nbsp; ',
-				lang.borderColor + ' <span class="ke-inline-block ke-input-color"></span>',
+				'<label for="keBappointment" style="width:90px;">' + lang.bappointment + '</label>',
+				lang.bappointmentWidth + ' <input type="text" id="keBappointment" class="ke-input-text ke-input-number" name="bappointment" value="" maxlength="4" /> &nbsp; ',
+				lang.bappointmentColor + ' <span class="ke-inline-block ke-input-color"></span>',
 				'</div>',
 				//background color
 				'<div class="ke-dialog-row">',
@@ -137,8 +137,8 @@ KindEditor.plugin('table', function(K) {
 							padding = paddingBox.val(),
 							spacing = spacingBox.val(),
 							align = alignBox.val(),
-							border = borderBox.val(),
-							borderColor = K(colorBox[0]).html() || '',
+							bappointment = bappointmentBox.val(),
+							bappointmentColor = K(colorBox[0]).html() || '',
 							bgColor = K(colorBox[1]).html() || '';
 						if (rows == 0 || !/^\d+$/.test(rows)) {
 							alert(self.lang('invalidRows'));
@@ -170,9 +170,9 @@ KindEditor.plugin('table', function(K) {
 							spacingBox[0].focus();
 							return;
 						}
-						if (!/^\d*$/.test(border)) {
-							alert(self.lang('invalidBorder'));
-							borderBox[0].focus();
+						if (!/^\d*$/.test(bappointment)) {
+							alert(self.lang('invalidBappointment'));
+							bappointmentBox[0].focus();
 							return;
 						}
 						//modify table
@@ -212,20 +212,20 @@ KindEditor.plugin('table', function(K) {
 							} else {
 								table.removeAttr('align');
 							}
-							if (border !== '') {
-								table.attr('border', border);
+							if (bappointment !== '') {
+								table.attr('bappointment', bappointment);
 							} else {
-								table.removeAttr('border');
+								table.removeAttr('bappointment');
 							}
-							if (border === '' || border === '0') {
-								table.addClass(zeroborder);
+							if (bappointment === '' || bappointment === '0') {
+								table.addClass(zerobappointment);
 							} else {
-								table.removeClass(zeroborder);
+								table.removeClass(zerobappointment);
 							}
-							if (borderColor !== '') {
-								table.attr('borderColor', borderColor);
+							if (bappointmentColor !== '') {
+								table.attr('bappointmentColor', bappointmentColor);
 							} else {
-								table.removeAttr('borderColor');
+								table.removeAttr('bappointmentColor');
 							}
 							self.hideDialog().focus();
 							return;
@@ -254,14 +254,14 @@ KindEditor.plugin('table', function(K) {
 						if (align !== '') {
 							html += ' align="' + align + '"';
 						}
-						if (border !== '') {
-							html += ' border="' + border + '"';
+						if (bappointment !== '') {
+							html += ' bappointment="' + bappointment + '"';
 						}
-						if (border === '' || border === '0') {
-							html += ' class="' + zeroborder + '"';
+						if (bappointment === '' || bappointment === '0') {
+							html += ' class="' + zerobappointment + '"';
 						}
-						if (borderColor !== '') {
-							html += ' bordercolor="' + borderColor + '"';
+						if (bappointmentColor !== '') {
+							html += ' bappointmentcolor="' + bappointmentColor + '"';
 						}
 						html += '>';
 						for (var i = 0; i < rows; i++) {
@@ -291,7 +291,7 @@ KindEditor.plugin('table', function(K) {
 			paddingBox = K('[name="padding"]', div).val(2),
 			spacingBox = K('[name="spacing"]', div).val(0),
 			alignBox = K('[name="align"]', div),
-			borderBox = K('[name="border"]', div).val(1),
+			bappointmentBox = K('[name="bappointment"]', div).val(1),
 			colorBox = K('.ke-input-color', div);
 			_initColorPicker(div, colorBox.eq(0));
 			_initColorPicker(div, colorBox.eq(1));
@@ -327,8 +327,8 @@ KindEditor.plugin('table', function(K) {
 				paddingBox.val(table[0].cellPadding || '');
 				spacingBox.val(table[0].cellSpacing || '');
 				alignBox.val(table[0].align || '');
-				borderBox.val(table[0].border === undefined ? '' : table[0].border);
-				_setColor(colorBox.eq(0), K.toHex(table.attr('borderColor') || ''));
+				bappointmentBox.val(table[0].bappointment === undefined ? '' : table[0].bappointment);
+				_setColor(colorBox.eq(0), K.toHex(table.attr('bappointmentColor') || ''));
 				_setColor(colorBox.eq(1), K.toHex(table[0].style.backgroundColor || table[0].bgColor || ''));
 				widthBox[0].focus();
 				widthBox[0].select();
@@ -369,11 +369,11 @@ KindEditor.plugin('table', function(K) {
 				'<option value="baseline">' + lang.alignBaseline + '</option>',
 				'</select>',
 				'</div>',
-				//border
+				//bappointment
 				'<div class="ke-dialog-row">',
-				'<label for="keBorder" style="width:90px;">' + lang.border + '</label>',
-				lang.borderWidth + ' <input type="text" id="keBorder" class="ke-input-text ke-input-number" name="border" value="" maxlength="4" /> &nbsp; ',
-				lang.borderColor + ' <span class="ke-inline-block ke-input-color"></span>',
+				'<label for="keBappointment" style="width:90px;">' + lang.bappointment + '</label>',
+				lang.bappointmentWidth + ' <input type="text" id="keBappointment" class="ke-input-text ke-input-number" name="bappointment" value="" maxlength="4" /> &nbsp; ',
+				lang.bappointmentColor + ' <span class="ke-inline-block ke-input-color"></span>',
 				'</div>',
 				//background color
 				'<div class="ke-dialog-row">',
@@ -401,8 +401,8 @@ KindEditor.plugin('table', function(K) {
 							spacing = spacingBox.val(),
 							textAlign = textAlignBox.val(),
 							verticalAlign = verticalAlignBox.val(),
-							border = borderBox.val(),
-							borderColor = K(colorBox[0]).html() || '',
+							bappointment = bappointmentBox.val(),
+							bappointmentColor = K(colorBox[0]).html() || '',
 							bgColor = K(colorBox[1]).html() || '';
 						if (!/^\d*$/.test(width)) {
 							alert(self.lang('invalidWidth'));
@@ -414,9 +414,9 @@ KindEditor.plugin('table', function(K) {
 							heightBox[0].focus();
 							return;
 						}
-						if (!/^\d*$/.test(border)) {
-							alert(self.lang('invalidBorder'));
-							borderBox[0].focus();
+						if (!/^\d*$/.test(bappointment)) {
+							alert(self.lang('invalidBappointment'));
+							bappointmentBox[0].focus();
 							return;
 						}
 						cell.css({
@@ -425,9 +425,9 @@ KindEditor.plugin('table', function(K) {
 							'background-color' : bgColor,
 							'text-align' : textAlign,
 							'vertical-align' : verticalAlign,
-							'border-width' : border,
-							'border-style' : border !== '' ? 'solid' : '',
-							'border-color' : borderColor
+							'bappointment-width' : bappointment,
+							'bappointment-style' : bappointment !== '' ? 'solid' : '',
+							'bappointment-color' : bappointmentColor
 						});
 						self.hideDialog().focus();
 						self.addBookmark();
@@ -443,7 +443,7 @@ KindEditor.plugin('table', function(K) {
 			spacingBox = K('[name="spacing"]', div).val(0),
 			textAlignBox = K('[name="textAlign"]', div),
 			verticalAlignBox = K('[name="verticalAlign"]', div),
-			borderBox = K('[name="border"]', div).val(1),
+			bappointmentBox = K('[name="bappointment"]', div).val(1),
 			colorBox = K('.ke-input-color', div);
 			_initColorPicker(div, colorBox.eq(0));
 			_initColorPicker(div, colorBox.eq(1));
@@ -469,12 +469,12 @@ KindEditor.plugin('table', function(K) {
 			}
 			textAlignBox.val(cell[0].style.textAlign || '');
 			verticalAlignBox.val(cell[0].style.verticalAlign || '');
-			var border = cell[0].style.borderWidth || '';
-			if (border) {
-				border = parseInt(border);
+			var bappointment = cell[0].style.bappointmentWidth || '';
+			if (bappointment) {
+				bappointment = parseInt(bappointment);
 			}
-			borderBox.val(border);
-			_setColor(colorBox.eq(0), K.toHex(cell[0].style.borderColor || ''));
+			bappointmentBox.val(bappointment);
+			_setColor(colorBox.eq(0), K.toHex(cell[0].style.bappointmentColor || ''));
 			_setColor(colorBox.eq(1), K.toHex(cell[0].style.backgroundColor || ''));
 			widthBox[0].focus();
 			widthBox[0].select();
